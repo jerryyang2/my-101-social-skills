@@ -844,4 +844,23 @@
     }
   };
 
+  // 自動依據 URL hash 呼叫冷靜通道
+  window.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash === '#calm') {
+      setTimeout(function() {
+        if (typeof window.openCalmCornerModal === 'function') {
+          window.openCalmCornerModal();
+        }
+      }, 350);
+    }
+  });
+
+  window.addEventListener('hashchange', function() {
+    if (window.location.hash === '#calm') {
+      if (typeof window.openCalmCornerModal === 'function') {
+        window.openCalmCornerModal();
+      }
+    }
+  });
+
 })(window);
