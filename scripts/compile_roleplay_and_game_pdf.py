@@ -418,6 +418,107 @@ html, body {
   font-weight: 900;
   color: #92400e;
 }
+
+/* ==========================================
+   線上閱讀螢幕自適應排版模式 (Reader Friendly Screen Mode)
+   消除列印高差空白、最適閱讀寬度、卡片自然流動
+   ========================================== */
+@media screen {
+  body {
+    background: #f1f5f9;
+    padding: 24px 16px 64px 16px;
+    min-height: 100vh;
+  }
+
+  .reader-toolbar {
+    position: sticky;
+    top: 16px;
+    z-index: 999;
+    max-width: 920px;
+    margin: 0 auto 24px auto;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border: 2px solid #cbd5e1;
+    border-radius: 9999px;
+    padding: 10px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  .reader-toolbar a, .reader-toolbar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
+    font-weight: 800;
+    color: #334155;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .reader-toolbar a:hover, .reader-toolbar button:hover {
+    background: #ede9fe;
+    color: #6d28d9;
+    border-color: #a78bfa;
+  }
+
+  .lesson-page, .cover-page, .toc-page {
+    max-width: 920px;
+    margin: 0 auto 36px auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    padding: 30px 34px !important;
+    gap: 18px !important;
+    justify-content: flex-start !important;
+    background: #ffffff !important;
+  }
+
+  .page-header {
+    margin-bottom: 6px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .roleplay-grid {
+    gap: 12px !important;
+  }
+
+  .roleplay-card {
+    padding: 12px 14px !important;
+    border-radius: 10px !important;
+  }
+
+  .game-grid {
+    gap: 14px !important;
+  }
+
+  .choice-box {
+    padding: 14px 16px !important;
+    border-radius: 10px !important;
+  }
+
+  .page-footer {
+    margin-top: 14px !important;
+    padding-top: 10px !important;
+    border-top: 1.5px solid #e2e8f0 !important;
+  }
+}
+
+@media print {
+  .reader-toolbar {
+    display: none !important;
+  }
+}
 """
 
 # ==================== Part A: 封面與目錄 ====================
@@ -432,11 +533,23 @@ intro_html = f"""<!doctype html>
 </head>
 <body>
 
+  <nav class="reader-toolbar">
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="index.html">🌱 備課平台</a>
+      <a href="../index.html">🏫 網站首頁</a>
+    </div>
+    <span style="font-weight:900; font-size:0.92rem; color:#1e293b;">🎭 角色劇場與遊樂場實戰全集 (104頁)</span>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="#toc-1">📋 目錄</a>
+      <button type="button" onclick="window.scrollTo({{top:0, behavior:'smooth'}})">⬆️ 頂部</button>
+    </div>
+  </nav>
+
   <!-- Page 1: 封面 -->
   <article class="lesson-page cover-page">
     <div style="margin-top:12mm;">
       <div style="display:inline-block; background:#8b5cf6; color:#ffffff; padding:4px 18px; border-radius:9999px; font-size:1.05rem; font-weight:900; letter-spacing:1px; margin-bottom:12px;">
-        🏆 全國特殊教育教材教具製作比賽 · 課堂演練手冊規格
+        🌱 大埤國小學習教室 · 角色大劇場與遊樂場實戰指南
       </div>
       <h1 style="font-size:2.35rem; font-weight:900; color:#1e3a8a; margin:0 0 10px 0; line-height:1.25;">
         特教社交技巧與溝通訓練<br>
