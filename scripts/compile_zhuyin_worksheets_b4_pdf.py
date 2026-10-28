@@ -577,7 +577,7 @@ intro_html = f"""<!doctype html>
   <article class="worksheet-page cover-page">
     <div>
       <div style="font-size:1.15rem; font-weight:bold; color:#1d4ed8; background:#eff6ff; border:2.5px solid #93c5fd; padding:8px 24px; border-radius:9999px; display:inline-block;">
-        ★ 115學年度雲林縣特殊教育教材教具製作比賽 · 數位化媒材組參賽特輯 ★
+        ★ 大埤國小學習教室 · 特殊需求領域（社會技巧）注音學習單全集 ★
       </div>
     </div>
     <div style="margin:20px 0;">
