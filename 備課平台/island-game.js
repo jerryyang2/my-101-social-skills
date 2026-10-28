@@ -114,60 +114,64 @@
   const ISLAND_THEMES = [
     {
       id: 0,
-      name: "🌋 情緒魔法島",
-      subtitle: "自我察覺與情緒調適",
+      name: "❤️ 氣噗噗降溫島",
+      shortName: "氣噗噗島",
+      subtitle: "火山不爆炸！深呼吸吸吐氣，抱抱自己心情好 🐢",
       color: "#ef4444",
       accent: "#f59e0b",
-      landColor: 0x86efac,
-      cliffColor: 0xd8c39a,
+      landColor: 0xffa8b5,
+      cliffColor: 0xfed7aa,
       mascot: "🦁 宇獅獅",
-      mascotRole: "情緒守護長",
-      mascotDesc: "自閉症特質小英雄，在島上學習感受自己的心跳、情緒溫度計與烏龜深呼吸",
+      mascotRole: "探索小隊長",
+      mascotDesc: "自閉症(ASD)特質小英雄，在立體愛心島上學習感受身體警報器、心跳溫度計與烏龜深呼吸",
       weeksRange: [1, 13],
       monster: "💥 暴怒火怪與焦慮雷雲",
       minigameType: "breathe"
     },
     {
       id: 1,
-      name: "📢 清晰溝通島",
-      subtitle: "專注傾聽與我訊息表達",
+      name: "💬 我想跟你說島",
+      shortName: "跟你說島",
+      subtitle: "眼睛看著你！發射我訊息超能力火箭，聲音剛剛好 🚀",
       color: "#3b82f6",
       accent: "#06b6d4",
       landColor: 0x7dd3fc,
       cliffColor: 0xcfd8dc,
       mascot: "🐻 畯熊熊",
-      mascotRole: "溝通傳訊官",
-      mascotDesc: "情緒行為特質小英雄，在島上學習拿起說話魔杖、發射我訊息火箭與調控音量",
+      mascotRole: "活力小英雄",
+      mascotDesc: "情緒行為(EBD)特質小英雄，在立體對話泡泡島上學習拿起說話魔杖、發射我訊息火箭與調控音量",
       weeksRange: [14, 26],
       monster: "🗯️ 動手動腳小怪獸與插嘴精靈",
       minigameType: "imsg"
     },
     {
       id: 2,
-      name: "🤝 同儕友誼島",
-      subtitle: "友善互動與團體合作",
+      name: "🍀 我們一起玩島",
+      shortName: "一起玩島",
+      subtitle: "借我玩一下好嗎？排隊輪流笑咪咪，擊掌好朋友 🌈",
       color: "#10b981",
       accent: "#ec4899",
-      landColor: 0xa7f3d0,
+      landColor: 0x86efac,
       cliffColor: 0xd7ccc8,
       mascot: "🐼 和貓熊",
-      mascotRole: "友誼大信使",
-      mascotDesc: "自閉症伴學障小英雄，在島上學習走過擊掌彩虹橋、輪流等待摩天輪與分享玩具",
+      mascotRole: "溫柔引航員",
+      mascotDesc: "自閉症伴學障(ASD/LD)小英雄，在立體幸運四葉草島上走過擊掌彩虹橋、輪流等待與分享玩具",
       weeksRange: [27, 39],
       monster: "🚫 霸佔玩具大王與不理人迷霧",
       minigameType: "highfive"
     },
     {
       id: 3,
-      name: "🛡️ 彈性解決島",
-      subtitle: "挫折修復與彈性應變",
+      name: "⚙️ 輸了沒關係島",
+      shortName: "沒關係島",
+      subtitle: "輸了不暴走！大腦轉個彎換招式，說聲對不起沒關係 🧩",
       color: "#8b5cf6",
       accent: "#eab308",
-      landColor: 0xc4b5fd,
+      landColor: 0xd8b4fe,
       cliffColor: 0xd1c4e9,
       mascot: "🦊 嘉狐狸",
       mascotRole: "思考智囊官",
-      mascotDesc: "自閉症(ASD)小英雄，在島上學習轉動彈性思考齒輪、寫下道歉修復信與輸了不暴走",
+      mascotDesc: "自閉症(ASD)小英雄，在立體童趣齒輪島上轉動彈性思考齒輪、寫下道歉修復信與輸了不暴走",
       weeksRange: [40, 52],
       monster: "💢 輸不起暴走龍與死板牛角尖",
       minigameType: "gear"
@@ -428,48 +432,192 @@
   // 幾何輔助積木
   function makeBox(w, h, d, color, x = 0, y = 0, z = 0) {
     const geo = new THREE.BoxGeometry(w, h, d);
-    const mat = new THREE.MeshLambertMaterial({ color, flatShading: true });
+    const mat = new THREE.MeshLambertMaterial({ color });
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.set(x, y + h / 2, z);
     return mesh;
   }
 
-  function makeHexIsland(radius, height, topColor, cliffColor = 0xd8c39a) {
+  // ==========================================
+  // 立體童趣造島造型形狀生成器 (Unique 3D Organic Beveled Shapes)
+  // ==========================================
+
+  // 1. 胖胖五角大金星 (中央英雄基地，象徵最高榮譽大星光)
+  function createStarShape(pts = 5, outerR = 6.2, innerR = 3.8) {
+    const shape = new THREE.Shape();
+    for (let i = 0; i < pts * 2; i++) {
+      const t = (i / (pts * 2)) * Math.PI * 2 - Math.PI / 2;
+      const r = (i % 2 === 0) ? outerR : innerR;
+      const x = Math.cos(t) * r;
+      const y = Math.sin(t) * r;
+      if (i === 0) shape.moveTo(x, y);
+      else shape.lineTo(x, y);
+    }
+    shape.closePath();
+    return shape;
+  }
+
+  // 2. 圓滾滾立體愛心 (❤️ 氣噗噗降溫島，象徵抱抱自己平息心跳)
+  function createHeartShape(scale = 0.29) {
+    const shape = new THREE.Shape();
+    const n = 36;
+    for (let i = 0; i <= n; i++) {
+      const t = (i / n) * Math.PI * 2;
+      const x = (16 * Math.pow(Math.sin(t), 3)) * scale;
+      const y = (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) * scale;
+      if (i === 0) shape.moveTo(x, y);
+      else shape.lineTo(x, y);
+    }
+    shape.closePath();
+    return shape;
+  }
+
+  // 3. 圓角對話泡泡框 (💬 我想跟你說島，象徵勇敢發聲與傾聽)
+  function createBubbleShape(w = 4.2, h = 3.2, r = 1.4) {
+    const shape = new THREE.Shape();
+    shape.moveTo(-w + r, -h);
+    shape.lineTo(w * 0.1, -h);
+    shape.lineTo(w * 0.45, -h - 1.3); // 可愛對話小尾巴
+    shape.lineTo(w * 0.35, -h);
+    shape.lineTo(w - r, -h);
+    shape.quadraticCurveTo(w, -h, w, -h + r);
+    shape.lineTo(w, h - r);
+    shape.quadraticCurveTo(w, h, w - r, h);
+    shape.lineTo(-w + r, h);
+    shape.quadraticCurveTo(-w, h, -w, h - r);
+    shape.lineTo(-w, -h + r);
+    shape.quadraticCurveTo(-w, -h, -w + r, -h);
+    shape.closePath();
+    return shape;
+  }
+
+  // 4. 幸運四葉草花朵 (🍀 我們一起玩島，象徵一人一片友善分享)
+  function createCloverShape(baseR = 3.8, petalDepth = 0.32) {
+    const shape = new THREE.Shape();
+    const n = 48;
+    for (let i = 0; i <= n; i++) {
+      const t = (i / n) * Math.PI * 2;
+      const radius = baseR * (1 + petalDepth * Math.cos(4 * t));
+      const x = Math.cos(t) * radius;
+      const y = Math.sin(t) * radius;
+      if (i === 0) shape.moveTo(x, y);
+      else shape.lineTo(x, y);
+    }
+    shape.closePath();
+    return shape;
+  }
+
+  // 5. 童趣魔術齒輪 (⚙️ 輸了沒關係島，象徵大腦轉彎彈性變通)
+  function createGearShape(teeth = 6, outerR = 4.8, innerR = 3.6) {
+    const shape = new THREE.Shape();
+    const n = teeth * 4;
+    for (let i = 0; i < n; i++) {
+      const t = (i / n) * Math.PI * 2;
+      const isOuter = (i % 4 === 1 || i % 4 === 2);
+      const r = isOuter ? outerR : innerR;
+      const x = Math.cos(t) * r;
+      const y = Math.sin(t) * r;
+      if (i === 0) shape.moveTo(x, y);
+      else shape.lineTo(x, y);
+    }
+    shape.closePath();
+    return shape;
+  }
+
+  // 建造雙層糖霜童話雕塑島 (Chubby Beveled Dual-Tier Island)
+  function makeChubbySculptedIsland(shape, height = 2.0, topColor = 0x86efac, cliffColor = 0xfed7aa, scale = 1) {
     const group = new THREE.Group();
-    // 懸崖底座
-    const cliffGeo = new THREE.CylinderGeometry(radius * 1.05, radius * 0.85, height, 6);
-    const cliffMat = new THREE.MeshLambertMaterial({ color: cliffColor, flatShading: true });
-    const cliff = new THREE.Mesh(cliffGeo, cliffMat);
-    cliff.position.y = height * 0.45;
-    group.add(cliff);
 
-    // 頂部草地
-    const topGeo = new THREE.CylinderGeometry(radius, radius * 1.05, height * 0.28, 6);
-    const topMat = new THREE.MeshLambertMaterial({ color: topColor, flatShading: true });
-    const top = new THREE.Mesh(topGeo, topMat);
-    top.position.y = height * 0.86;
-    group.add(top);
+    // 1. 下層戚風餅乾懸崖基座 (Biscuit Cliff Pedestal)
+    const cliffGeo = new THREE.ExtrudeGeometry(shape, {
+      depth: height * 0.72,
+      bevelEnabled: true,
+      bevelSegments: 3,
+      steps: 1,
+      bevelSize: 0.28,
+      bevelThickness: 0.35
+    });
+    const cliffMat = new THREE.MeshLambertMaterial({ color: cliffColor });
+    const cliffMesh = new THREE.Mesh(cliffGeo, cliffMat);
+    cliffMesh.rotation.x = -Math.PI / 2;
+    cliffMesh.position.y = 0.25;
+    cliffMesh.scale.set(scale * 0.96, scale * 0.96, 1);
+    group.add(cliffMesh);
 
-    group.userData.topY = height;
+    // 2. 上層糖霜草皮帽子 (Top Frosting / Grass Cap)
+    const topGeo = new THREE.ExtrudeGeometry(shape, {
+      depth: height * 0.36,
+      bevelEnabled: true,
+      bevelSegments: 4,
+      steps: 1,
+      bevelSize: 0.35,
+      bevelThickness: 0.35
+    });
+    const topMat = new THREE.MeshLambertMaterial({ color: topColor });
+    const topMesh = new THREE.Mesh(topGeo, topMat);
+    topMesh.rotation.x = -Math.PI / 2;
+    topMesh.position.y = height * 0.65;
+    topMesh.scale.set(scale, scale, 1);
+    group.add(topMesh);
+
+    // 3. 圍繞底座的浮空綿密小雲朵 (Floating Cloud Puffs)
+    const numClouds = 6;
+    for (let i = 0; i < numClouds; i++) {
+      const ang = (i / numClouds) * Math.PI * 2;
+      const r = 4.4 * scale;
+      const puffGeo = new THREE.SphereGeometry(0.55 + Math.random() * 0.2, 8, 8);
+      const puffMat = new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.88 });
+      const puff = new THREE.Mesh(puffGeo, puffMat);
+      puff.position.set(Math.cos(ang) * r, 0.4 + (i % 2) * 0.25, Math.sin(ang) * r);
+      group.add(puff);
+    }
+
+    group.userData.topY = height + 0.15;
     return group;
   }
 
-  function makeTree(scale = 1) {
+  // 建造 13 顆小週次圓潤布丁踏石島 (Chubby Sub-Island)
+  function makeChubbySubIsland(topColor = 0xffffff, cliffColor = 0xfed7aa) {
+    const g = new THREE.Group();
+    // 胖胖布丁基座
+    const baseGeo = new THREE.CylinderGeometry(1.15, 0.95, 0.65, 12);
+    const baseMat = new THREE.MeshLambertMaterial({ color: cliffColor });
+    const base = new THREE.Mesh(baseGeo, baseMat);
+    base.position.y = 0.32;
+    g.add(base);
+
+    // 頂部圓圓奶油蓋
+    const capGeo = new THREE.SphereGeometry(1.15, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2);
+    const capMat = new THREE.MeshLambertMaterial({ color: topColor });
+    const cap = new THREE.Mesh(capGeo, capMat);
+    cap.position.y = 0.55;
+    g.add(cap);
+
+    g.userData.topY = 0.85;
+    return g;
+  }
+
+  // 棒棒糖糖果樹
+  function makeLollipopTree(scale = 1, color = 0x22c55e) {
     const g = new THREE.Group();
     const trunk = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.12 * scale, 0.15 * scale, 0.6 * scale, 5),
-      new THREE.MeshLambertMaterial({ color: 0x8a5a2b, flatShading: true })
+      new THREE.CylinderGeometry(0.12 * scale, 0.16 * scale, 0.7 * scale, 6),
+      new THREE.MeshLambertMaterial({ color: 0x8a5a2b })
     );
-    trunk.position.y = 0.3 * scale;
+    trunk.position.y = 0.35 * scale;
     g.add(trunk);
 
-    const foliage = new THREE.Mesh(
-      new THREE.ConeGeometry(0.55 * scale, 1.2 * scale, 6),
-      new THREE.MeshLambertMaterial({ color: 0x22c55e, flatShading: true })
+    const puff = new THREE.Mesh(
+      new THREE.SphereGeometry(0.65 * scale, 8, 8),
+      new THREE.MeshLambertMaterial({ color })
     );
-    foliage.position.y = 0.9 * scale;
-    g.add(foliage);
+    puff.position.y = 1.0 * scale;
+    g.add(puff);
     return g;
+  }
+
+  function makeTree(scale = 1) {
+    return makeLollipopTree(scale, 0x22c55e);
   }
 
   // 建造 3D 低多邊形冒險者小英雄
@@ -546,106 +694,214 @@
     saveLocalProgress();
   }
 
-  // 建造群島全景
+  // 建造群島全景 (立體童話微縮模型島嶼)
   function buildArchipelago() {
-    // 1. 中央英雄總部島 (Hero's Citadel)
-    const centerGroup = makeHexIsland(5.8, 2.2, 0xe0e7ff, 0x94a3b8);
+    // 1. 中央閃亮亮英雄基地 (Hero's Star Citadel)
+    const centerGroup = makeChubbySculptedIsland(createStarShape(5, 6.2, 3.8), 2.2, 0xfef08a, 0x94a3b8, 1.0);
     centerGroup.position.set(0, 0, 0);
 
-    const citadelTower = makeBox(2.0, 3.5, 2.0, 0x6366f1, 0, centerGroup.userData.topY, 0);
-    centerGroup.add(citadelTower);
+    // 城堡主塔樓與童話尖頂
+    const citadelTower = makeBox(2.2, 3.6, 2.2, 0x6366f1, 0, centerGroup.userData.topY, 0);
+    const roof = new THREE.Mesh(new THREE.ConeGeometry(1.6, 1.6, 4), new THREE.MeshLambertMaterial({ color: 0x4f46e5 }));
+    roof.position.set(0, centerGroup.userData.topY + 4.4, 0);
+    roof.rotation.y = Math.PI / 4;
+    centerGroup.add(citadelTower, roof);
+
+    // 4 座小英雄色彩衛兵尖塔 (紅 🦁、橘 🐻、綠 🐼、紫 🦊)
+    const turretColors = [0xef4444, 0xf97316, 0x10b981, 0x8b5cf6];
+    const turretOffsets = [
+      { x: -1.4, z: -1.4 }, { x: 1.4, z: -1.4 },
+      { x: -1.4, z: 1.4 },  { x: 1.4, z: 1.4 }
+    ];
+    turretOffsets.forEach((t, i) => {
+      const turret = makeBox(0.65, 2.8, 0.65, 0xffffff, t.x, centerGroup.userData.topY, t.z);
+      const spire = new THREE.Mesh(new THREE.ConeGeometry(0.48, 1.0, 6), new THREE.MeshLambertMaterial({ color: turretColors[i] }));
+      spire.position.set(t.x, centerGroup.userData.topY + 3.3, t.z);
+      centerGroup.add(turret, spire);
+    });
 
     // 漂浮旋轉金色星星水晶
     const starGeo = new THREE.OctahedronGeometry(1.3, 0);
     const starMat = new THREE.MeshPhongMaterial({ color: 0xfbbf24, shininess: 90, flatShading: true });
     const starMesh = new THREE.Mesh(starGeo, starMat);
-    starMesh.position.set(0, centerGroup.userData.topY + 4.5, 0);
+    starMesh.position.set(0, centerGroup.userData.topY + 6.0, 0);
     centerGroup.add(starMesh);
     rotatingDecorations.push(starMesh);
 
     scene.add(centerGroup);
     centerMesh = centerGroup;
-    add3DLabel('⭐ 英雄總部', centerGroup, 7.8, true, -1);
+    add3DLabel('🏰 英雄基地', centerGroup, 8.5, true, -1);
 
-    // 2. 四大主題島嶼 (周圍環形排列)
+    // 2. 四大主題島嶼 (立體專屬外型：愛心、對話泡泡、四葉草、魔法齒輪)
     const islandRadius = 25;
     ISLAND_THEMES.forEach((theme, idx) => {
       const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
       const posX = Math.cos(angle) * islandRadius;
       const posZ = Math.sin(angle) * islandRadius;
 
-      const mainIsland = makeHexIsland(4.8, 1.8, theme.landColor, theme.cliffColor);
+      let shape;
+      if (idx === 0) shape = createHeartShape(0.28);
+      else if (idx === 1) shape = createBubbleShape(4.2, 3.2, 1.4);
+      else if (idx === 2) shape = createCloverShape(3.8, 0.32);
+      else shape = createGearShape(6, 4.8, 3.6);
+
+      const mainIsland = makeChubbySculptedIsland(shape, 1.9, theme.landColor, theme.cliffColor, 1.0);
       mainIsland.position.set(posX, 0, posZ);
+      mainIsland.rotation.y = -angle + Math.PI / 2;
       mainIsland.userData.islandIndex = idx;
       mainIsland.userData.islandCenter = { x: posX, z: posZ };
 
-      // 各島特色 3D 地標
+      // 各島特色 3D 童趣地標
       if (idx === 0) {
-        // 情緒島：火山燈塔
-        const beacon = makeBox(1.5, 2.8, 1.5, 0xef4444, 0, mainIsland.userData.topY, 0);
-        const topFire = new THREE.Mesh(new THREE.ConeGeometry(0.85, 1.3, 6), new THREE.MeshLambertMaterial({ color: 0xf59e0b }));
-        topFire.position.set(0, mainIsland.userData.topY + 3.4, 0);
-        mainIsland.add(beacon, topFire);
-      } else if (idx === 1) {
-        // 溝通島：雷達衛星高塔
-        const pole = makeBox(0.4, 3.8, 0.4, 0x3b82f6, 0, mainIsland.userData.topY, 0);
-        const dish = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.16, 6, 16), new THREE.MeshLambertMaterial({ color: 0x06b6d4 }));
-        dish.position.set(0, mainIsland.userData.topY + 3.4, 0);
-        dish.rotation.x = Math.PI / 3;
-        mainIsland.add(pole, dish);
-        rotatingDecorations.push(dish);
-      } else if (idx === 2) {
-        // 友誼島：彩虹拱門
-        const arch = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.28, 8, 24, Math.PI), new THREE.MeshLambertMaterial({ color: 0xec4899 }));
-        arch.position.set(0, mainIsland.userData.topY + 1.4, 0);
-        mainIsland.add(arch);
-      } else {
-        // 彈性島：思考齒輪風車
-        const windmill = makeBox(1.3, 3.0, 1.3, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
-        const gear = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.22, 6, 12), new THREE.MeshLambertMaterial({ color: 0xeab308 }));
-        gear.position.set(0, mainIsland.userData.topY + 2.6, 0.7);
-        mainIsland.add(windmill, gear);
-        rotatingDecorations.push(gear);
-      }
+        // ❤️ 氣噗噗降溫島：草莓布丁火山 + 浮空愛心煙霧
+        const volcano = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.85, 1.5, 1.8, 8),
+          new THREE.MeshLambertMaterial({ color: 0xf43f5e })
+        );
+        volcano.position.set(0, mainIsland.userData.topY + 0.9, 0);
+        const crater = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.55, 0.45, 0.35, 8),
+          new THREE.MeshLambertMaterial({ color: 0x9f1239 })
+        );
+        crater.position.set(0, mainIsland.userData.topY + 1.8, 0);
+        mainIsland.add(volcano, crater);
 
-      // 裝飾樹木
-      for (let t = 0; t < 3; t++) {
-        const tree = makeTree(0.9);
-        const tAngle = (t / 3) * Math.PI * 2;
-        tree.position.set(Math.cos(tAngle) * 3.0, mainIsland.userData.topY, Math.sin(tAngle) * 3.0);
-        mainIsland.add(tree);
+        // 浮空愛心微粒
+        for (let h = 0; h < 3; h++) {
+          const heartParticle = new THREE.Mesh(
+            new THREE.SphereGeometry(0.32, 8, 8),
+            new THREE.MeshLambertMaterial({ color: 0xfb7185, transparent: true, opacity: 0.9 })
+          );
+          heartParticle.position.set(Math.sin(h * 2) * 0.4, mainIsland.userData.topY + 2.3 + h * 0.7, Math.cos(h * 2) * 0.4);
+          mainIsland.add(heartParticle);
+          rotatingDecorations.push(heartParticle);
+        }
+
+        // 棒棒糖草莓樹
+        const treeA = makeLollipopTree(0.85, 0xfb7185);
+        treeA.position.set(2.4, mainIsland.userData.topY, 1.6);
+        const treeB = makeLollipopTree(0.75, 0x4ade80);
+        treeB.position.set(-2.4, mainIsland.userData.topY, 1.6);
+        mainIsland.add(treeA, treeB);
+
+      } else if (idx === 1) {
+        // 💬 我想跟你說島：留聲大廣播音響 + 我訊息火箭
+        const pole = makeBox(0.4, 3.8, 0.4, 0x3b82f6, 0, mainIsland.userData.topY, 0);
+        const megaphone = new THREE.Mesh(
+          new THREE.ConeGeometry(0.9, 1.5, 8),
+          new THREE.MeshLambertMaterial({ color: 0x06b6d4 })
+        );
+        megaphone.position.set(0, mainIsland.userData.topY + 3.4, 0.5);
+        megaphone.rotation.x = Math.PI / 2;
+        mainIsland.add(pole, megaphone);
+        rotatingDecorations.push(megaphone);
+
+        // 我訊息小火箭
+        const rocketGroup = new THREE.Group();
+        const rBody = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 1.2, 8), new THREE.MeshLambertMaterial({ color: 0xffffff }));
+        const rNose = new THREE.Mesh(new THREE.ConeGeometry(0.32, 0.6, 8), new THREE.MeshLambertMaterial({ color: 0xef4444 }));
+        rNose.position.y = 0.9;
+        const rFin = makeBox(0.9, 0.35, 0.08, 0x3b82f6, 0, 0.1, 0);
+        rocketGroup.add(rBody, rNose, rFin);
+        rocketGroup.position.set(2.2, mainIsland.userData.topY, -1.5);
+        mainIsland.add(rocketGroup);
+
+        const treeA = makeLollipopTree(0.85, 0x38bdf8);
+        treeA.position.set(-2.4, mainIsland.userData.topY, -1.2);
+        const treeB = makeLollipopTree(0.75, 0x818cf8);
+        treeB.position.set(2.2, mainIsland.userData.topY, 1.6);
+        mainIsland.add(treeA, treeB);
+
+      } else if (idx === 2) {
+        // 🍀 我們一起玩島：立體粉紅彩虹拱門 + 分享野餐墊
+        const rainbow = new THREE.Mesh(
+          new THREE.TorusGeometry(2.0, 0.32, 8, 24, Math.PI),
+          new THREE.MeshLambertMaterial({ color: 0xf472b6 })
+        );
+        rainbow.position.set(0, mainIsland.userData.topY + 1.4, 0);
+        rainbow.rotation.y = Math.PI / 4;
+        mainIsland.add(rainbow);
+
+        // 野餐分享墊
+        const mat = new THREE.Mesh(
+          new THREE.CylinderGeometry(1.2, 1.2, 0.1, 12),
+          new THREE.MeshLambertMaterial({ color: 0xfef08a })
+        );
+        mat.position.set(-1.8, mainIsland.userData.topY + 0.05, 1.6);
+        mainIsland.add(mat);
+
+        const treeA = makeLollipopTree(0.85, 0x34d399);
+        treeA.position.set(2.2, mainIsland.userData.topY, -1.8);
+        const treeB = makeLollipopTree(0.75, 0x10b981);
+        treeB.position.set(-2.2, mainIsland.userData.topY, -1.8);
+        mainIsland.add(treeA, treeB);
+
+      } else {
+        // ⚙️ 輸了沒關係島：魔術積木風車 + 彈性拼圖積木
+        const windmill = makeBox(1.3, 3.0, 1.3, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
+        const bladesGroup = new THREE.Group();
+        for (let b = 0; b < 4; b++) {
+          const blade = makeBox(0.28, 1.4, 0.08, (b % 2 === 0) ? 0xeab308 : 0xec4899, 0, 0.7, 0);
+          blade.rotation.z = (b / 4) * Math.PI * 2;
+          bladesGroup.add(blade);
+        }
+        bladesGroup.position.set(0, mainIsland.userData.topY + 2.7, 0.75);
+        mainIsland.add(windmill, bladesGroup);
+        rotatingDecorations.push(bladesGroup);
+
+        // 巨型積木拼圖塊
+        const puzzleA = makeBox(0.9, 0.7, 0.9, 0xf97316, 2.0, mainIsland.userData.topY, -1.5);
+        const puzzleB = makeBox(0.9, 0.5, 0.9, 0xa855f7, 2.6, mainIsland.userData.topY, -1.2);
+        mainIsland.add(puzzleA, puzzleB);
+
+        const treeA = makeLollipopTree(0.85, 0xc084fc);
+        treeA.position.set(-2.2, mainIsland.userData.topY, 1.8);
+        const treeB = makeLollipopTree(0.75, 0xfacc15);
+        treeB.position.set(-2.4, mainIsland.userData.topY, -1.8);
+        mainIsland.add(treeA, treeB);
       }
 
       scene.add(mainIsland);
       islandMeshes.push(mainIsland);
-      add3DLabel(`${theme.name}`, mainIsland, 6.0, false, idx);
+      add3DLabel(`${theme.name}`, mainIsland, 6.2, false, idx);
 
-      // 連接中央島的木橋
+      // 連接中央島的童話彩色浮橋
       const bridgeLen = islandRadius - 10.2;
-      const bridge = makeBox(1.3, 0.18, bridgeLen, 0xb45309, 0, 0.6, 0);
+      const bridge = makeBox(1.3, 0.18, bridgeLen, 0xd97706, 0, 0.6, 0);
       bridge.position.set(posX / 2, 0.6, posZ / 2);
       bridge.rotation.y = -angle + Math.PI / 2;
       scene.add(bridge);
 
-      // 環繞主島的 13 顆小週次階梯島 (代表該島的 13 堂課)
+      // 環繞主島的 13 顆小週次圓潤布丁踏石島 (代表該島的 13 堂課)
       const [startW, endW] = theme.weeksRange;
-      const subRadius = 8.0;
+      const subRadius = 8.5;
       for (let w = startW; w <= endW; w++) {
         const subIndex = w - startW;
         const subAngle = angle + (subIndex / 13) * Math.PI * 1.6 - Math.PI * 0.8;
         const subX = posX + Math.cos(subAngle) * subRadius;
         const subZ = posZ + Math.sin(subAngle) * subRadius;
 
-        const subIsland = makeHexIsland(1.1, 0.85, state.passedWeeks.has(w) ? 0xfbbf24 : 0xffffff);
+        const isPassed = state.passedWeeks.has(w);
+        const subIsland = makeChubbySubIsland(isPassed ? 0xfbbf24 : 0xffffff, 0xfed7aa);
         subIsland.position.set(subX, 0, subZ);
         subIsland.userData.weekNumber = w;
         subIsland.userData.parentIslandIndex = idx;
         subIsland.userData.subCenter = { x: subX, z: subZ };
 
-        // 週次小旗幟
-        const flag = makeBox(0.08, 0.9, 0.08, 0x475569, 0, subIsland.userData.topY, 0);
-        const banner = makeBox(0.35, 0.22, 0.04, state.passedWeeks.has(w) ? 0xf59e0b : 0x3b82f6, 0.18, subIsland.userData.topY + 0.7, 0);
-        subIsland.add(flag, banner);
+        // 週次小旗幟 / 通關小金星
+        if (isPassed) {
+          const starIcon = new THREE.Mesh(
+            new THREE.OctahedronGeometry(0.38, 0),
+            new THREE.MeshPhongMaterial({ color: 0xf59e0b, shininess: 80, flatShading: true })
+          );
+          starIcon.position.set(0, subIsland.userData.topY + 0.45, 0);
+          subIsland.add(starIcon);
+          rotatingDecorations.push(starIcon);
+        } else {
+          const flag = makeBox(0.08, 0.85, 0.08, 0x475569, 0, subIsland.userData.topY, 0);
+          const banner = makeBox(0.35, 0.22, 0.04, 0x3b82f6, 0.18, subIsland.userData.topY + 0.65, 0);
+          subIsland.add(flag, banner);
+        }
 
         scene.add(subIsland);
         subIslandMeshes.push(subIsland);
@@ -963,9 +1219,12 @@
       c.position.z = Math.sin(c.userData.angle) * c.userData.radius;
     });
 
-    // 5. 海浪微幅起伏
+    // 5. 海浪與小踏石浮島微幅起伏 (Bobbing Waves & Stepping Stones)
     const time = Date.now() * 0.0016;
     seaMesh.position.y = -0.2 + Math.sin(time) * 0.08;
+    subIslandMeshes.forEach((sub, i) => {
+      sub.position.y = Math.sin(time * 2 + i * 0.45) * 0.06;
+    });
 
     renderer.render(scene, camera);
     updateLabels();
