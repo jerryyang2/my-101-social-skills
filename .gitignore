@@ -1,0 +1,63 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# OS metadata
+.DS_Store
+*/.DS_Store
+
+# Local Netlify folder
+.netlify/
+*/.netlify/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# PDF Documents
+*.pdf
+*/*.pdf
+**/*.pdf
+
+# Word & Office Documents
+*.doc
+*.docx
+*/*.doc
+*/*.docx
+**/*.doc
+**/*.docx
+
+# Competition Materials (比賽與參賽相關檔案及腳本)
+*比賽*
+*參賽*
+*competition*
+*/*比賽*
+*/*參賽*
+*/*competition*
+**/*比賽*
+**/*參賽*
+**/*competition*
+
+# AI & LLM Assistants (Gemini, ChatGPT, Claude, Copilot, Antigravity, Cursor)
+GEMINI.md
+*gemini*
+.gemini/
+*/.gemini/
+*antigravity*
+.antigravity/
+*/.antigravity/
+.cursor/
+*/.cursor/
+.claude/
+*/.claude/
+.copilot/
+*/.copilot/
+.openai/
+*/.openai/
+.chatgpt/
+*/.chatgpt/
+*.ai_rules*
+*.prompt*
+.env*

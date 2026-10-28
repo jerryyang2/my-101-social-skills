@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大埤國小學習教室｜每日彩色圖文學習單</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <!-- 字嗨注音字型 CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="classroom.css">
+  <style>
+    :root {
+      --sheet-bg: #ffffff;
+      --sheet-border: #f59e0b;
+      --sheet-primary: #0f766e;
+    }
+
+    body {
+      background: #fdfaf3;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", sans-serif;
+      color: #1e293b;
+    }
+
+    /* Screen-Only Control Toolbar */
+    .screen-toolbar {
+      background: #ffffff;
+      border-bottom: 3px solid #fde68a;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .student-quick-pick {
+      display: inline-flex;
+      align-items: center;
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      padding: 4px 8px;
+      border-radius: 9999px;
+      gap: 6px;
+    }
+
+    .student-chip {
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 1rem;
+      font-weight: 900;
+      cursor: pointer;
+      border: 1.5px solid #cbd5e1;
+      background: #ffffff;
+      color: #334155;
+      transition: all 0.15s;
+    }
+
+    .student-chip.active {
+      background: #f59e0b;
+      color: white;
+      border-color: #d97706;
+      box-shadow: 0 2px 0 #b45309;
+      transform: translateY(-1px);
+    }
+
+    /* Printable A4 Container */
+    .sheet-wrapper {
+      padding: 20px 16px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .worksheet-page {
+      width: 210mm;
+      max-width: 100%;
+      min-height: 285mm;
+      background: #ffffff;
+      border: 4px solid var(--sheet-border);
+      border-radius: 20px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+      box-sizing: border-box;
+      padding: 10mm 12mm 10mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Worksheet Header */
+    .sheet-header-badge {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px dashed #fed7aa;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
+    }
+
+    .school-tag {
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #9a3412;
+      background: #ffedd5;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1.5px solid #fed7aa;
+    }
+
+    .unit-badge {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .sheet-title-row {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .sheet-main-title {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #78350f;
+      margin: 0 0 4px 0;
+      line-height: 1.25;
+    }
+
+    .sheet-target-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef3c7;
+      border: 2px solid #fde68a;
+      color: #92400e;
+      font-size: 1.05rem;
+      font-weight: 900;
+      padding: 3px 16px;
+      border-radius: 9999px;
+    }
+
+    /* Student Info Box */
+    .student-info-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fffdf5;
+      border: 2px solid #fde68a;
+      border-radius: 12px;
+      padding: 6px 14px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .student-name-display {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #0f172a;
+      background: #fef08a;
+      padding: 1px 12px;
+      border-radius: 6px;
+      border: 2px solid #f59e0b;
+      min-width: 40px;
+      text-align: center;
+    }
+
+    /* Task Sections */
+    .task-card {
+      background: #ffffff;
+      border: 2.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .task-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .task-num-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #f59e0b;
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 0 #b45309;
+    }
+
+    .task-title {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin: 0;
+    }
+
+    .task-prompt {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #475569;
+      margin: 0 0 8px 0;
+      line-height: 1.45;
+    }
+
+    /* Circle Question Grid */
+    .circle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+    }
+
+    .circle-item {
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      border-radius: 14px;
+      padding: 8px 6px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      user-select: none;
+    }
+
+    .circle-item:hover {
+      background: #f1f5f9;
+      transform: translateY(-2px);
+    }
+
+    .circle-item.circled {
+      border: 3px solid #dc2626;
+      background: #fef2f2;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+      transform: scale(1.02);
+    }
+
+    .circle-item.circled::after {
+      content: "⭕ 已圈選";
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      background: #dc2626;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 9999px;
+    }
+
+    .circle-icon {
+      font-size: 2rem;
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+
+    .circle-label {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #0f172a;
+      margin-bottom: 2px;
+      line-height: 1.25;
+    }
+
+    .circle-desc {
+      font-size: 0.8rem;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    /* Choice Options */
+    .choice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .choice-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .choice-card:hover {
+      background: #f8fafc;
+      border-color: #94a3b8;
+    }
+
+    .choice-card.selected {
+      border: 3px solid #10b981;
+      background: #ecfdf5;
+      box-shadow: 0 3px 8px rgba(16, 185, 129, 0.15);
+    }
+
+    .choice-radio {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #94a3b8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      background: white;
+    }
+
+    .choice-card.selected .choice-radio {
+      border-color: #10b981;
+      background: #10b981;
+      color: white;
+    }
+
+    .choice-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .choice-text {
+      flex: 1;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    /* Checklist Steps */
+    .checklist-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .checklist-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f0fdf4;
+      border: 2px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 8px 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s;
+    }
+
+    .checklist-row:hover {
+      background: #dcfce7;
+    }
+
+    .checklist-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 2px solid #16a34a;
+      background: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #16a34a;
+      flex-shrink: 0;
+    }
+
+    .checklist-row.checked .checklist-box {
+      background: #16a34a;
+      color: white;
+    }
+
+    .checklist-text {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #14532d;
+      flex: 1;
+      line-height: 1.35;
+    }
+
+    /* Footer Stamp & Stars */
+    .sheet-footer {
+      margin-top: auto;
+      border-top: 2.5px dashed #fed7aa;
+      padding-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .self-stars-box {
+      background: #fffbeb;
+      border: 2px solid #fde68a;
+      border-radius: 12px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+
+    .self-stars-title {
+      font-size: 0.88rem;
+      font-weight: 900;
+      color: #854d0e;
+      margin-bottom: 4px;
+    }
+
+    .stars-group {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .star-btn {
+      font-size: 1.8rem;
+      cursor: pointer;
+      filter: grayscale(100%);
+      opacity: 0.35;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .star-btn.earned {
+      filter: grayscale(0%);
+      opacity: 1;
+      transform: scale(1.15);
+    }
+
+    .teacher-stamp-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 8px;
+      text-align: center;
+      min-height: 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+    }
+
+    .teacher-stamp-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #64748b;
+    }
+
+    /* Print Styles - 嚴格單頁 A4 格式，絕不跨頁 */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 6mm 8mm;
+      }
+
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .screen-toolbar, .nav-hint, .btn-action {
+        display: none !important;
+      }
+
+      .sheet-wrapper {
+        padding: 0;
+        margin: 0;
+        display: block;
+      }
+
+      .worksheet-page {
+        width: 100%;
+        height: 100%;
+        max-height: 282mm;
+        box-shadow: none;
+        border: 3px solid var(--sheet-border);
+        border-radius: 14px;
+        padding: 6mm 8mm 6mm;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+        break-inside: avoid;
+      }
+
+      .sheet-header-badge {
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+      }
+
+      .sheet-title-row {
+        margin-bottom: 6px;
+      }
+
+      .sheet-main-title {
+        font-size: 1.55rem;
+        margin-bottom: 2px;
+      }
+
+      .sheet-target-badge {
+        font-size: 0.95rem;
+        padding: 2px 12px;
+      }
+
+      .student-info-bar {
+        padding: 4px 10px;
+        margin-bottom: 8px;
+        font-size: 0.88rem;
+      }
+
+      .task-card {
+        padding: 6px 10px;
+        margin-bottom: 6px;
+      }
+
+      .task-prompt {
+        font-size: 0.88rem;
+        margin-bottom: 4px;
+      }
+
+      .circle-icon {
+        font-size: 1.6rem;
+        margin-bottom: 2px;
+      }
+
+      .circle-item {
+        padding: 5px 4px;
+        border-radius: 10px;
+      }
+
+      .circle-label {
+        font-size: 0.9rem;
+      }
+
+      .circle-desc {
+        font-size: 0.72rem;
+      }
+
+      .choice-card {
+        padding: 5px 10px;
+      }
+
+      .checklist-row {
+        padding: 5px 10px;
+      }
+
+      .checklist-text {
+        font-size: 0.92rem;
+      }
+
+      .sheet-footer {
+        padding-top: 6px;
+        margin-top: auto;
+      }
+
+      .star-btn {
+        font-size: 1.5rem;
+      }
+
+      .teacher-stamp-box {
+        min-height: 44px;
+        padding: 4px;
+      }
+
+      .circle-item:hover, .choice-card:hover, .checklist-row:hover {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar -->
+  <aside class="screen-toolbar">
+    <div class="toolbar-left">
+      <a class="c-btn" href="index.html" style="font-size:0.9rem; padding:6px 14px;">🏠 備課平台</a>
+      <a class="c-btn c-btn-primary" id="launchClassroomLink" href="classroom.html" style="font-size:0.9rem; padding:6px 14px;">🎮 課堂簡報</a>
+      
+      <!-- Date Select -->
+      <select id="sheetDateSelector" class="date-selector-select" onchange="switchWorksheetDate(this.value)" style="font-size:0.95rem; font-weight:800;"></select>
+    </div>
+
+    <div class="toolbar-right">
+      <!-- Quick Student Picker -->
+      <div class="student-quick-pick">
+        <span style="font-weight:900; font-size:0.85rem; color:#64748b;">學生：</span>
+        <button class="student-chip active" onclick="pickStudent('宇')">宇 🦁</button>
+        <button class="student-chip" onclick="pickStudent('和')">和 🐼</button>
+        <button class="student-chip" onclick="pickStudent('嘉')">嘉 🦊</button>
+        <button class="student-chip" onclick="pickStudent('畯')">畯 🐻</button>
+      </div>
+
+      <!-- Zhuyin Toggle -->
+      <button class="c-btn c-btn-accent" id="zhuyinToggleBtn" onclick="toggleWorksheetZhuyin()" style="font-size:0.9rem; padding:6px 14px;">
+        ㄅ 字嗨注音：開啟
+      </button>
+
+      <!-- Print Button -->
+      <button class="c-btn" onclick="window.print()" style="background:#fef08a; border-color:#eab308; color:#854d0e; font-weight:900; font-size:1rem; padding:6px 18px; box-shadow:0 3px 0 #ca8a04;">
+        🖨️ 列印學習單 (A4單頁)
+      </button>
+
+      <!-- Master 101 Lessons PDF Download -->
+      <a class="c-btn" href="101堂特教學習單_注音版_B4.pdf" download="101堂特教學習單_注音版_B4.pdf" target="_blank" style="background:linear-gradient(135deg, #0d9488, #0f766e); color:#fff; font-weight:900; border-color:#0f766e; padding:6px 16px; box-shadow:0 3px 10px rgba(15,118,110,0.35); text-decoration:none; display:inline-flex; align-items:center; gap:6px;" title="下載全套 101 堂國字注音彩色學習單完整手冊（B4大開本正統直式注音，含封面與4頁目錄索引，共106頁PDF）">
+        🔤 下載 101 堂注音版學習單 (B4·106頁PDF)
+      </a>
+
+      <!-- Master 101 Lessons Regular PDF Download -->
+      <a class="c-btn" href="101堂特教社交技巧彩色學習單全集.pdf" download="101堂特教社交技巧彩色學習單全集.pdf" target="_blank" style="background:linear-gradient(135deg, #ec4899, #be185d); color:#fff; font-weight:900; border-color:#be185d; padding:6px 16px; box-shadow:0 3px 10px rgba(190,24,93,0.35); text-decoration:none; display:inline-flex; align-items:center; gap:6px;" title="下載全套 101 堂高解析彩色學習單完整手冊（含封面、4頁目錄與書籤大綱，共106頁）">
+        📥 下載原版學習單 (A4·106頁PDF)
+      </a>
+
+      <!-- Competition Manual -->
+      <a class="c-btn" href="manual.html" target="_blank" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:900; border-color:#d97706; padding:6px 14px; box-shadow:0 2px 8px rgba(217,119,6,0.3);" title="查看教育部特教教材教具比賽參賽手冊與教學指引">
+        🏆 參賽手冊
+      </a>
+    </div>
+  </aside>
+
+  <!-- Printable A4 Worksheet Area -->
+  <main class="sheet-wrapper">
+    <article class="worksheet-page" id="worksheetContainer">
+      <!-- Dynamic Content Rendered by JavaScript -->
+    </article>
+  </main>
+
+  <script src="worksheets-data.js"></script>
+  <script src="zhuyin.js"></script>
+  <script>
+    let currentSheetId = "b-week-1";
+    let selectedStudent = "宇";
+    let isZhuyinOn = true;
+
+    // 儲存目前學習單的作答狀態
+    let sheetAnswers = {
+      circled: {},
+      choice: null,
+      checked: {},
+      stars: 3
+    };
+
+    // 乾淨格式化學習單標題
+    function formatCleanSheetTitle(item) {
+      if (!item) return "";
+      const fest = item.festival ? `【${item.festival}】` : "";
+      let cleanTitle = (item.title || "").replace(/^【.*?】[——\-：:\s]*/, "");
+      if (item.festival && cleanTitle.startsWith(item.festival)) {
+        cleanTitle = cleanTitle.substring(item.festival.length).replace(/^[與和的大作戰——\-：:\s]+/, "");
+      }
+      return `${fest}${cleanTitle}`;
+    }
+
+    function initWorksheet() {
+      // 讀取網址參數
+      const params = new URLSearchParams(window.location.search);
+      const keys = Object.keys(dailyWorksheets);
+      if (!dailyWorksheets[currentSheetId] && keys.length > 0) {
+        currentSheetId = keys[0];
+      }
+      const urlId = params.get("id");
+      if (urlId && dailyWorksheets[urlId]) {
+        currentSheetId = urlId;
+      }
+      const studentParam = params.get("student");
+      if (studentParam) selectedStudent = studentParam;
+
+      // 填充日期下拉選單（分類呈現：52 週新課綱 vs 晨報靈感備份庫）
+      const select = document.getElementById("sheetDateSelector");
+      const ids = Object.keys(dailyWorksheets);
+      const newIds = ids.filter(id => !dailyWorksheets[id].legacy);
+      const legacyIds = ids.filter(id => dailyWorksheets[id].legacy);
+
+      let html = "";
+      if (newIds.length > 0) {
+        html += `<optgroup label="🌟 52 週特教社交技巧學習單（每週一課）">`;
+        html += newIds.map(id => {
+          const item = dailyWorksheets[id];
+          return `<option value="${id}" ${id === currentSheetId ? "selected" : ""}>
+            第 ${item.lessonNumber} 週 · ${formatCleanSheetTitle(item)} (${item.date})
+          </option>`;
+        }).join("");
+        html += `</optgroup>`;
+      }
+      if (legacyIds.length > 0) {
+        html += `<optgroup label="💡 特教備課靈感庫專題（第53-101課 · 共49堂）">`;
+        html += legacyIds.map(id => {
+          const item = dailyWorksheets[id];
+          return `<option value="${id}" ${id === currentSheetId ? "selected" : ""}>
+            第 ${item.lessonNumber} 課 [靈感庫] · ${item.title}
+          </option>`;
+        }).join("");
+        html += `</optgroup>`;
+      }
+      select.innerHTML = html;
+
+      // 更新課堂簡報連結
+      document.getElementById("launchClassroomLink").href = `classroom.html?id=${currentSheetId}`;
+
+      renderCurrentWorksheet();
+    }
+
+    function switchWorksheetDate(newId) {
+      currentSheetId = newId;
+      document.getElementById("launchClassroomLink").href = `classroom.html?id=${currentSheetId}`;
+      sheetAnswers = { circled: {}, choice: null, checked: {}, stars: 3 };
+      renderCurrentWorksheet();
+    }
+
+    function pickStudent(name) {
+      selectedStudent = name;
+      document.querySelectorAll(".student-chip").forEach(btn => {
+        btn.classList.toggle("active", btn.innerText.includes(name));
+      });
+      const nameEl = document.getElementById("studentNameDisplay");
+      if (nameEl) nameEl.innerText = name;
+    }
+
+    function toggleWorksheetZhuyin() {
+      isZhuyinOn = !isZhuyinOn;
+      const btn = document.getElementById("zhuyinToggleBtn");
+      if (isZhuyinOn) {
+        btn.innerHTML = "ㄅ 字嗨注音：開啟";
+        btn.classList.add("c-btn-accent");
+      } else {
+        btn.innerHTML = "ㄅ 字嗨注音：關閉";
+        btn.classList.remove("c-btn-accent");
+      }
+      renderCurrentWorksheet();
+    }
+
+    function formatText(text) {
+      if (!text) return "";
+      if (isZhuyinOn) {
+        return `<span class="zhuyin-mode">${text}</span>`;
+      }
+      return `<span class="plain-text-mode">${text}</span>`;
+    }
+
+    function renderCurrentWorksheet() {
+      const data = dailyWorksheets[currentSheetId];
+      if (!data) return;
+
+      const container = document.getElementById("worksheetContainer");
+      document.documentElement.style.setProperty("--sheet-border", data.themeColor);
+
+      container.innerHTML = `
+        <!-- Top Badge -->
+        <div class="sheet-header-badge">
+          <span class="school-tag">🏫 115年大埤國小學習教室 · 社交技巧與溝通訓練 成長學習單</span>
+          <span class="unit-badge">${data.unit}</span>
+        </div>
+
+        <!-- Title -->
+        <div class="sheet-title-row">
+          <h1 class="sheet-main-title">${formatText(formatCleanSheetTitle(data))}</h1>
+          <div class="sheet-target-badge" style="border-color:${data.themeColor};">
+            <span>${data.badgeEmoji}</span>
+            <span>本日超能力目標：${formatText(data.superSkill)}</span>
+          </div>
+        </div>
+
+        <!-- Student Info -->
+        <div class="student-info-bar">
+          <div class="info-item">
+            <span>${data.legacy ? '💡 專題：' : '📅 課堂進度：'}</span>
+            <span>${data.legacy ? `第 ${data.lessonNumber} 課（靈感庫無日期限制）` : `第 ${data.lessonNumber} 週 · ${data.date} (${data.dayOfWeek})`}</span>
+          </div>
+          <div class="info-item">
+            <span>👦 挑戰小英雄：</span>
+            <span class="student-name-display" id="studentNameDisplay">${selectedStudent}</span>
+          </div>
+          <div class="info-item">
+            <span>🎖️ 徽章稱號：</span>
+            <span style="color:#b45309;">${data.badgeLabel}</span>
+          </div>
+        </div>
+
+        <!-- Section 1: 圈圈看 -->
+        <div class="task-card">
+          <div class="task-header">
+            <span class="task-num-icon" style="background:${data.themeColor};">1</span>
+            <h3 class="task-title">${formatText(data.section1.title)}</h3>
+          </div>
+          <p class="task-prompt">${formatText(data.section1.prompt)}</p>
+          <div class="circle-grid">
+            ${data.section1.items.map(it => `
+              <div class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
+                <div class="circle-icon">${it.icon}</div>
+                <div class="circle-label">${formatText(it.label)}</div>
+                <div class="circle-desc">${it.desc}</div>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- Section 2: 選擇題 / 連連看 -->
+        <div class="task-card">
+          <div class="task-header">
+            <span class="task-num-icon" style="background:${data.themeColor};">2</span>
+            <h3 class="task-title">${formatText(data.section2.title)}</h3>
+          </div>
+          <p class="task-prompt">${formatText(data.section2.prompt)}</p>
+          
+          ${data.section2.type === "choice" ? `
+            <div class="choice-list">
+              ${data.section2.options.map(opt => `
+                <div class="choice-card ${sheetAnswers.choice === opt.id ? "selected" : ""}" onclick="selectChoice('${opt.id}')">
+                  <span class="choice-radio">${sheetAnswers.choice === opt.id ? "✓" : ""}</span>
+                  <span class="choice-icon">${opt.icon}</span>
+                  <span class="choice-text">${formatText(opt.label)}</span>
+                </div>
+              `).join("")}
+            </div>
+          ` : `
+            <div class="circle-grid">
+              ${data.section2.items.map(it => `
+                <div class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
+                  <div class="circle-icon">${it.icon}</div>
+                  <div class="circle-label">${formatText(it.label)}</div>
+                  <div class="circle-desc">${it.desc}</div>
+                </div>
+              `).join("")}
+            </div>
+          `}
+        </div>
+
+        <!-- Section 3: 動作打勾挑戰 -->
+        <div class="task-card">
+          <div class="task-header">
+            <span class="task-num-icon" style="background:${data.themeColor};">3</span>
+            <h3 class="task-title">${formatText(data.section3.title)}</h3>
+          </div>
+          <p class="task-prompt">${formatText(data.section3.prompt)}</p>
+          <div class="checklist-rows">
+            ${data.section3.steps.map(st => `
+              <div class="checklist-row ${sheetAnswers.checked[st.num] ? "checked" : ""}" onclick="toggleCheckStep(${st.num})">
+                <div class="checklist-box">${sheetAnswers.checked[st.num] ? "✓" : ""}</div>
+                <span style="font-size:1.3rem;">${st.icon}</span>
+                <span class="checklist-text">${formatText(st.text)}</span>
+              </div>
+            `).join("")}
+          </div>
+        </div>
+
+        <!-- Section 4: 榮譽蓋章與自我星星 -->
+        <div class="sheet-footer">
+          <div class="self-stars-box">
+            <div class="self-stars-title">🌟 我的今日超能力成果評量（點擊塗滿星星）</div>
+            <div class="stars-group">
+              <span class="star-btn ${sheetAnswers.stars >= 1 ? "earned" : ""}" onclick="rateStars(1)">⭐</span>
+              <span class="star-btn ${sheetAnswers.stars >= 2 ? "earned" : ""}" onclick="rateStars(2)">⭐</span>
+              <span class="star-btn ${sheetAnswers.stars >= 3 ? "earned" : ""}" onclick="rateStars(3)">⭐</span>
+            </div>
+          </div>
+
+          <div class="teacher-stamp-box">
+            <span class="teacher-stamp-title">💮 老師簽章</span>
+            <div style="font-size:0.82rem; color:#94a3b8; margin-top:4px;">（表現優秀，蓋章贈送課堂星星代幣！）</div>
+          </div>
+        </div>
+
+        <!-- Section 5: 普特融合與家庭生活類化任務卡 (Generalization) -->
+        <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div style="background:#fffbeb; border:2px dashed #f59e0b; border-radius:12px; padding:12px 14px;">
+            <div style="font-weight:900; font-size:0.9rem; color:#b45309; display:flex; align-items:center; gap:6px;">
+              <span>🏫</span> 普通班導師融合口訣便利貼
+            </div>
+            <div style="font-size:0.82rem; color:#78350f; margin-top:4px; line-height:1.5;">
+              ${data.generalization ? `${formatText(data.generalization.trigger)}➜<strong>${formatText(data.generalization.promptWord)}</strong>` : "在班級發現情緒或人際挑戰時，請提示今日超能力口訣！"}
+            </div>
+          </div>
+          <div style="background:#f0fdf4; border:2px dashed #10b981; border-radius:12px; padding:12px 14px;">
+            <div style="font-weight:900; font-size:0.9rem; color:#047857; display:flex; align-items:center; gap:6px;">
+              <span>🏠</span> 家庭生活小超人共學打卡
+            </div>
+            <div style="font-size:0.82rem; color:#065f46; margin-top:4px; line-height:1.5;">
+              ${data.homeTask ? `${formatText(data.homeTask.action)}` : "放學回家後向家長示範一次超能力動作！"}
+              <div style="margin-top:4px; font-weight:800; color:#047857;">家長簽章：［　　　　　］</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // 互動點選函式 (結合童趣正向回饋音效與彩帶)
+    function toggleCircleItem(id) {
+      sheetAnswers.circled[id] = !sheetAnswers.circled[id];
+      renderCurrentWorksheet();
+      if (sheetAnswers.circled[id]) {
+        AudioEffects.playDing();
+        triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.45, 20);
+      } else {
+        AudioEffects.playPop();
+      }
+    }
+
+    function selectChoice(id) {
+      sheetAnswers.choice = id;
+      renderCurrentWorksheet();
+      if (id === 't2') {
+        AudioEffects.playCelebration();
+        triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.55, 45);
+      } else {
+        AudioEffects.playDing();
+      }
+    }
+
+    function toggleCheckStep(num) {
+      sheetAnswers.checked[num] = !sheetAnswers.checked[num];
+      renderCurrentWorksheet();
+      if (sheetAnswers.checked[num]) {
+        AudioEffects.playDing();
+      } else {
+        AudioEffects.playPop();
+      }
+    }
+
+    function rateStars(count) {
+      sheetAnswers.stars = count;
+      renderCurrentWorksheet();
+      AudioEffects.playCelebration();
+      triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.75, count * 8);
+    }
+
+    // Web Audio 音效與 Confetti
+    const AudioEffects = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) this.ctx = new AudioCtx();
+        }
+      },
+      playDing() {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(587.33, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(880, this.ctx.currentTime + 0.12);
+          gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.3);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.3);
+        } catch(e) {}
+      },
+      playPop() {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(220, this.ctx.currentTime + 0.1);
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.15);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.15);
+        } catch(e) {}
+      },
+      playCelebration() {
+        try {
+          this.init();
+          if (!this.ctx) return;
+          if (this.ctx.state === 'suspended') this.ctx.resume();
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, this.ctx.currentTime + idx * 0.08);
+            gain.gain.setValueAtTime(0.18, this.ctx.currentTime + idx * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + idx * 0.08 + 0.4);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(this.ctx.currentTime + idx * 0.08);
+            osc.stop(this.ctx.currentTime + idx * 0.08 + 0.42);
+          });
+        } catch(e) {}
+      }
+    };
+
+    function triggerConfetti(originX, originY, count = 30) {
+      const canvas = document.getElementById("confettiCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      
+      const colors = ["#f59e0b", "#10b981", "#3b82f6", "#ec4899", "#8b5cf6", "#fde047"];
+      const particles = [];
+      const startX = originX || window.innerWidth / 2;
+      const startY = originY || window.innerHeight * 0.5;
+      
+      for (let i = 0; i < count; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 8;
+        particles.push({
+          x: startX,
+          y: startY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 3,
+          size: 5 + Math.random() * 6,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 12,
+          shape: Math.random() > 0.4 ? "rect" : "star",
+          alpha: 1
+        });
+      }
+      
+      let frame = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.22;
+          p.rotation += p.vRot;
+          p.alpha -= 0.016;
+          if (p.alpha > 0) {
+            alive = true;
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rotation * Math.PI / 180);
+            ctx.fillStyle = p.color;
+            if (p.shape === "rect") {
+              ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+            } else {
+              ctx.beginPath();
+              for (let s = 0; s < 5; s++) {
+                ctx.lineTo(Math.cos((18 + s * 72) * Math.PI / 180) * p.size, -Math.sin((18 + s * 72) * Math.PI / 180) * p.size);
+                ctx.lineTo(Math.cos((54 + s * 72) * Math.PI / 180) * (p.size / 2), -Math.sin((54 + s * 72) * Math.PI / 180) * (p.size / 2));
+              }
+              ctx.closePath();
+              ctx.fill();
+            }
+            ctx.restore();
+          }
+        });
+        frame++;
+        if (alive && frame < 90) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+
+    // 初始化執行
+    document.addEventListener("DOMContentLoaded", initWorksheet);
+  </script>
+  <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;"></canvas>
+</body>
+</html>

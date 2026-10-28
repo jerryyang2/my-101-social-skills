@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>社交小超人群島大冒險｜3D 特教互動闖關遊戲 (IsleForge 概念)</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <!-- 引入 字嗨注音標楷開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="island-game.css">
+</head>
+<body class="theme-cream">
+
+  <!-- 頂部遊戲導覽列 (Topbar) -->
+  <header class="game-topbar">
+    <div class="brand-section">
+      <div class="brand-logo">🏝️</div>
+      <div class="brand-info">
+        <h1>
+          社交小超人群島大冒險
+          <span class="badge-isleforge">IsleForge 3D 概念</span>
+        </h1>
+        <p>國小特教 52 週社交溝通與情緒調適闖關遊戲 · ASD / EBD / LD 專屬</p>
+      </div>
+    </div>
+
+    <div class="top-controls">
+      <!-- 光影天色切換 -->
+      <select class="c-game-btn" onchange="window.socialGame.setTheme(this.value)" title="切換島嶼晝夜天色（晴空、夕陽、星空夜海）">
+        <option value="cream">☀️ 晴空萬里</option>
+        <option value="sea">🌅 夕照海灣</option>
+        <option value="night">🌌 靜謐夜海</option>
+      </select>
+
+      <!-- 特教語速切換 -->
+      <select class="c-game-btn" onchange="window.socialGame.setTtsSpeed(this.value)" title="切換特教語音朗讀速度（適合自閉症與聽知覺處理需求）">
+        <option value="0.8" selected>🐢 0.8x 慢速</option>
+        <option value="1.0">⚡ 1.0x 正常</option>
+      </select>
+
+      <!-- 音效開關 -->
+      <button class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" title="開啟或關閉柔和無刺激音效">
+        🔊 音效：開
+      </button>
+
+      <!-- 2D / 3D 視角切換 (無障礙) -->
+      <button class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" title="切換為無障礙 2D 平面全地圖（適合前庭覺敏感或低硬體規格）">
+        🗺️ 2D 全地圖
+      </button>
+
+      <!-- 中央英豪總部與結業證書 -->
+      <button class="c-game-btn btn-citadel" onclick="window.socialGame.openCitadelModal()" title="開啟中央英雄榮譽總部，領取特教小超人結業證書">
+        ⭐ 英雄總部與證書
+      </button>
+
+      <!-- 匯出造島工坊草稿專案 -->
+      <button class="c-game-btn btn-accent" onclick="window.socialGame.exportIsleForgeDraft()" title="下載相容於 IsleForge (isleforge-tw.netlify.app) 的 project.json 草稿包">
+        📥 匯出造島包
+      </button>
+
+      <!-- 返回課堂與備課平台 -->
+      <a class="c-game-btn btn-primary" href="classroom.html" title="前往課堂投影互動簡報模式">
+        🎮 課堂教學
+      </a>
+      <a class="c-game-btn" href="index.html" title="返回備課平台主控台">
+        📋 備課平台
+      </a>
+    </div>
+  </header>
+
+  <!-- 3D 畫布主舞台 -->
+  <main id="stage">
+    <canvas id="threeCanvas"></canvas>
+    <!-- 3D 世界空間浮動標籤圖層 -->
+    <div id="labelLayer"></div>
+  </main>
+
+  <!-- 底部島嶼資訊 HUD 卡片 -->
+  <div class="game-hud">
+    <div class="hud-card" id="hudCurrentIsland">
+      <!-- 由 island-game.js 動態渲染 -->
+    </div>
+  </div>
+
+  <!-- 右下操作提示 -->
+  <div class="view-hints">
+    💡 滑鼠左鍵拖曳旋轉島嶼 · 滾輪縮放 · 點擊島嶼登陸探險
+  </div>
+
+  <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+  <div id="map2DView">
+    <!-- 由 island-game.js 動態渲染 -->
+  </div>
+
+  <!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
+  <div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
+    <aside class="quest-drawer">
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <span class="drawer-island-badge" id="drawerIslandBadge">主題島嶼</span>
+          <h2 class="drawer-title" id="drawerTitle">關卡考驗</h2>
+        </div>
+        <button class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="關閉抽屜" aria-label="關閉">
+          ✕
+        </button>
+      </div>
+
+      <!-- 週次快速切換橫列 (Carousel) -->
+      <div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+        <div class="weeks-carousel" id="weeksCarousel">
+          <!-- 由 JS 動態生成 -->
+        </div>
+      </div>
+
+      <!-- 抽屜主要滾動互動內容 -->
+      <div class="drawer-body" id="drawerDynamicBody">
+        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲 -->
+      </div>
+
+      <!-- 抽屜底部獎勵資訊 -->
+      <div class="drawer-footer">
+        <span class="quest-reward-hint">
+          🌟 通關獎勵：獲得本週特教徽章與 3 顆社交星
+        </span>
+        <button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
+          ✔️ 繼續巡島
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 中央英雄總部與結業證書 Modal -->
+  <div class="modal-citadel-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
+    <div class="citadel-card">
+      <div class="citadel-header">
+        <h2>⭐ 社交小超人英豪總部 · 榮譽殿堂</h2>
+        <button class="drawer-close-btn" style="color:#ffffff; background:rgba(255,255,255,0.2);" onclick="window.socialGame.closeCitadelModal()">
+          ✕
+        </button>
+      </div>
+
+      <div class="citadel-body">
+        <!-- 數據統計 -->
+        <div class="citadel-stats-grid">
+          <div class="stat-box">
+            <div class="stat-val" id="citadelPassedCount">0 / 52 關</div>
+            <div class="stat-label">全學期通關進度</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="citadelTotalStars">0 ⭐</div>
+            <div class="stat-label">累積社交超人星</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="citadelProgressPct">0%</div>
+            <div class="stat-label">精熟達成率</div>
+          </div>
+        </div>
+
+        <!-- 結業證書預覽框 (可直接列印) -->
+        <div class="certificate-preview-box">
+          <div class="cert-emblem">🏆</div>
+          <h3 class="cert-title">特教社交小超人 · 榮譽通關證書</h3>
+          <div class="cert-input-row">
+            <span>茲證明</span>
+            <input type="text" class="cert-name-input" id="certStudentName" placeholder="請輸入學生姓名" value="王小宇 同學">
+          </div>
+          <p class="cert-text">
+            在國小特教 52 週社交技巧與情緒管理課程中，勇敢登陸「情緒魔法島」、「清晰溝通島」、「同儕友誼島」與「彈性解決島」，展現無比勇氣打倒衝動怪獸，精熟自我察覺、我訊息表達、友善分享與抗挫彈性思考，特頒此狀以資表揚與鼓勵！
+          </p>
+          <div class="cert-footer-row">
+            <div>
+              <span>頒發單位：</span>大埤國小學習教室 特教教學團隊
+            </div>
+            <div>
+              <span>頒發日期：</span><span id="certIssueDate">2026 年 10 月 27 日</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 證書操作列 -->
+        <div style="display:flex; justify-content:center; gap:14px; margin-top:8px;">
+          <button class="c-game-btn btn-accent" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.printCertificate()">
+            🖨️ 列印 / 儲存 PDF 證書
+          </button>
+          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.exportIsleForgeDraft()">
+            📥 下載造島工坊草稿包
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
+  <script src="three.min.js"></script>
+  <script src="app.js"></script>
+  <script src="roleplay-data.js"></script>
+  <script src="island-game.js"></script>
+</body>
+</html>

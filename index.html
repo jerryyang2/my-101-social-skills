@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>國小特教國語文備課晨報與互動教學平台</title>
+  <meta name="description" content="專為國小特教班、資源班及融合教育設計之全方位國語文數位備課與輔助教學系統，收錄 101 篇完整課堂進度、互動簡報、彩色學習單與全冊教師手冊。">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #10b981;
+      --primary-bg: #ecfdf5;
+      --ink: #111827;
+      --slate: #4b5563;
+      --paper: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --gold: #d97706;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      --shadow-lg: 0 20px 30px -10px rgba(5, 150, 105, 0.12), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: linear-gradient(145deg, #f0fdf4 0%, #f8fafc 45%, #ecfeff 100%);
+      font-family: system-ui, -apple-system, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(5, 150, 105, 0.2);
+    }
+    .brand-text {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #065f46;
+    }
+    main {
+      width: min(1140px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+      flex: 1;
+    }
+    .hero {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 48px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: var(--primary-bg);
+      border: 1px solid #a7f3d0;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(2.3rem, 5.5vw, 3.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: #064e3b;
+      font-weight: 900;
+    }
+    .lead {
+      color: var(--slate);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.7;
+      margin: 0 auto 36px;
+      max-width: 760px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 52px;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--ink);
+      background: #ffffff;
+      font-weight: 700;
+      font-size: 1.02rem;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+    }
+    a.button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    a.button.primary {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+      color: #ffffff;
+      border-color: #047857;
+      box-shadow: 0 10px 20px rgba(5, 150, 105, 0.25);
+    }
+    a.button.primary:hover {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+    .stat-item {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 0.88rem;
+      color: var(--slate);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #6ee7b7;
+      box-shadow: var(--shadow-lg);
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      border-radius: 12px;
+      background: var(--primary-bg);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      color: #064e3b;
+      font-weight: 800;
+    }
+    .card p {
+      margin: 0 0 18px;
+      color: var(--slate);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      flex: 1;
+    }
+    .card-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .card-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+    .banner {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 36px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: var(--shadow-lg);
+    }
+    .banner h3 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+    .banner p {
+      margin: 0;
+      color: #a7f3d0;
+      font-size: 1.02rem;
+      max-width: 600px;
+    }
+    .banner a.btn-light {
+      background: #ffffff;
+      color: #064e3b;
+      font-weight: 800;
+      padding: 12px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s ease;
+    }
+    .banner a.btn-light:hover {
+      transform: scale(1.03);
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      background: #ffffff;
+      padding: 30px 0;
+      text-align: center;
+      color: var(--slate);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 768px) {
+      .hero { text-align: left; }
+      .actions { justify-content: flex-start; }
+      .banner { padding: 28px 24px; }
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img class="brand-icon" src="favicon.svg" alt="特教備課平台圖標">
+        <span class="brand-text">特教備課晨報平台</span>
+      </a>
+      <a href="備課平台/index.html" class="button" style="min-height: 38px; padding: 6px 16px; font-size: 0.9rem;">進入備課庫 →</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">🌱 國小特教班 · 資源班 · 融合教育全方位備課系統</div>
+      <h1>國小特教國語文<br>備課晨報與互動教學平台</h1>
+      <p class="lead">結合特殊教育課綱核心素養，專為特教教師量身打造的智慧備課與數位教學輔助系統。提供 101 週完整進度與專題靈感庫、無障礙多模態課堂簡報、彩色列印學習單與全冊教學指引手冊。</p>
+      
+      <div class="actions">
+        <a class="button primary" href="備課平台/index.html">🌱 進入特教備課主平台 →</a>
+        <a class="button" href="備課平台/classroom.html">🎮 課堂互動簡報與遊戲 →</a>
+        <a class="button" href="備課平台/worksheet.html">📄 每日彩色學習單 (可列印) →</a>
+        <a class="button" href="備課平台/manual.html">📘 教學指引手冊 →</a>
+        <a class="button" href="備課平台/教師手冊.pdf" target="_blank">📥 下載全冊教師手冊 (PDF)</a>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">101 課</div>
+          <div class="stat-label">完整週次教案與靈感庫</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">300+ 組</div>
+          <div class="stat-label">生活情境核心字詞</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">3 層</div>
+          <div class="stat-label">認知難度階梯學習單</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">標準 A4 彩色輸出支援</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" aria-label="系統核心功能">
+      <article class="card">
+        <div>
+          <span class="card-icon">🌱</span>
+          <h2>每日備課晨報庫</h2>
+          <p>收錄 101 篇國語文備課晨報。完整標註十二年國教特殊教育課綱核心素養、學習表現與學習內容，附帶句型教學、生活應用與親師聯絡指引。</p>
+        </div>
+        <a class="card-link" href="備課平台/index.html">瀏覽備課晨報清單 →</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-icon">🎮</span>
+          <h2>多模態課堂互動簡報</h2>
+          <p>高對比度、超大字型與自適應語音朗讀支援。具備情境探索、字詞互動挑戰與課堂問答遊戲，讓注意力弱勢學生也能沉浸學習。</p>
+        </div>
+        <a class="card-link" href="備課平台/classroom.html">開啟課堂簡報系統 →</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-icon">📄</span>
+          <h2>三層認知彩色學習單</h2>
+          <p>標準 A4 彩色橫式/直式版面設計，採「基礎認讀 ➔ 核心理解 ➔ 生活實踐」三層認知難度設計，支援一鍵列印與隨堂檢核評量。</p>
+        </div>
+        <a class="card-link" href="備課平台/worksheet.html">檢視學習單列印中心 →</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-icon">📘</span>
+          <h2>全冊教師教學手冊</h2>
+          <p>完整彙編 101 課教案、學習單與評量指引之超高清電子書。可線上逐頁瀏覽，亦支援直接下載完整 PDF 便於隨身研閱。</p>
+        </div>
+        <a class="card-link" href="備課平台/all_teacher_manual_book.html">閱讀全冊手冊電子書 →</a>
+      </article>
+    </section>
+
+    <section class="banner">
+      <div>
+        <h3>完整教案與學習單 PDF 下載</h3>
+        <p>包含完整 101 課教案目標、學習表現代碼、句型解析與三層認知學習單，歡迎特教與普通班教師下載應用。</p>
+      </div>
+      <a class="btn-light" href="備課平台/教師手冊.pdf" target="_blank">
+        <span>📥 下載 101 課全冊手冊 (PDF)</span>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div style="width: min(1140px, calc(100% - 32px)); margin: 0 auto;">
+      國小特教國語文備課晨報與互動教學平台 · 融合教育與個別化教育計畫（IEP）專用教材系統
+    </div>
+  </footer>
+</body>
+</html>

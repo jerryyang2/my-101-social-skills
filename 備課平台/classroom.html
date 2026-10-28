@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大埤國小學習教室｜每日課堂互動教學簡報與遊戲</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="classroom.css">
+  <link rel="stylesheet" href="teacher-tools.css">
+</head>
+<body>
+
+  <!-- Top Classroom Control Header -->
+  <header class="classroom-header">
+    <div class="lesson-info">
+      <span class="lesson-day-badge" id="lessonDayBadge">載入中...</span>
+      <h1 class="lesson-title-text" id="lessonTitleText">課堂互動教學</h1>
+    </div>
+
+    <div class="classroom-controls">
+      <!-- Calm Corner Button -->
+      <button class="c-btn" onclick="openCalmCornerModal()" style="background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:900; border-color:#059669; box-shadow:0 2px 8px rgba(16,185,129,0.3);" title="突發情緒急救！開啟冷靜角（4-7-8 呼吸光環、視覺沙漏計時器、5-4-3-2-1 五感著陸、舒緩雨聲白噪音）">
+        🧘 冷靜角
+      </button>
+
+      <!-- Giant Whiteboard Mode -->
+      <button class="c-btn" onclick="openWhiteboardModal()" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="切換為電子白板超大字號招式投影卡（專供視知覺障礙、注意力分散學生）">
+        🖥️ 白板大字
+      </button>
+
+      <!-- Parent & IEP Slip Generator -->
+      <button class="c-btn" onclick="openCommunicationModal()" style="background:#ede9fe; border-color:#8b5cf6; color:#5b21b6; font-weight:900;" title="課後一鍵生成 LINE 家長聯絡、IEP 評量草稿與 4合1 實體小單">
+        📝 親師單
+      </button>
+
+      <!-- Zhuyin Ruby Toggle -->
+      <button class="c-btn c-btn-accent" id="zhuyinToggleBtn" onclick="toggleZhuyin()" title="點擊開啟或關閉國字注音符號">
+        ㄅ 注音：開啟
+      </button>
+
+      <!-- Accessibility Speed Selector -->
+      <select class="c-btn" id="ttsSpeedSelector" onchange="changeTtsSpeed(this.value)" style="font-weight:800; background:#f0fdf4; border-color:#86efac; color:#166534;" title="切換特教語音朗讀速度（適合自閉症與聽覺處理需求）">
+        <option value="0.8">🐢 0.8x 慢速</option>
+        <option value="1.0" selected>⚡ 1.0x 正常</option>
+        <option value="1.2">🐇 1.2x 快速</option>
+      </select>
+
+      <!-- Font Zoom Button -->
+      <button class="c-btn" onclick="toggleSlideFontSize()" title="放大或還原投影片字級（通用設計 UDL 無障礙）" style="font-weight:900; padding:6px 10px;">
+        🔤 字級
+      </button>
+
+      <!-- Quick Switch Date Dropdown -->
+      <select class="date-selector-select" id="dateDropdown" title="切換教學日期"></select>
+
+      <!-- Manual Link -->
+      <a class="c-btn" href="manual.html" target="_blank" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:900; border-color:#d97706; box-shadow:0 2px 8px rgba(217,119,6,0.3);" title="查看教育部特教教材教具比賽參賽手冊與教學指引">
+        🏆 參賽手冊
+      </a>
+
+      <!-- 3D Island Game Shortcut -->
+      <a class="c-btn" href="island-game.html" target="_blank" style="background:linear-gradient(135deg, #06b6d4, #0284c7); color:#fff; font-weight:900; border-color:#0284c7; box-shadow:0 2px 8px rgba(2,132,199,0.3);" title="登陸 3D 社交冒險群島遊戲（IsleForge 造島工坊概念，探索 4 大主題島嶼與 52 關超能力）">
+        🏝️ 3D群島闖關
+      </a>
+
+      <!-- Fullscreen Toggle (Icon Only) -->
+      <button class="c-btn c-icon-btn" onclick="toggleFullscreen()" title="切換全螢幕投影模式" aria-label="全螢幕">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+      </button>
+
+      <!-- Open in New Tab Fullscreen for Google Sites -->
+      <a class="c-btn" id="openExternalBtn" href="classroom.html" target="_blank" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="在獨立新分頁開啟（大螢幕投影最推薦，滿版無框框）">
+        ↗️ 獨立全頁
+      </a>
+
+      <!-- Worksheet Shortcut -->
+      <a class="c-btn" id="classWorksheetBtn" href="worksheet.html" target="_blank" style="background:#fef08a; border-color:#eab308; color:#854d0e; font-weight:900;" title="開啟今日彩色圖文學習單（適合勾選、圈選與列印）">
+        📄 今日學習單
+      </a>
+
+      <!-- 101 Stories & Skills PDF Download -->
+      <a class="c-btn" href="101堂特教社交技巧故事島與超能力招式全集.pdf" download="101堂特教社交技巧故事島與超能力招式全集.pdf" target="_blank" style="background:#ede9fe; border-color:#8b5cf6; color:#5b21b6; font-weight:900;" title="下載全套101堂課情境故事島與超能力動作圖卡完整教學手冊（A4單頁版，共104頁PDF）">
+        📖 故事與招式手冊 (104頁PDF)
+      </a>
+
+      <!-- 101 Roleplay & Games PDF Download -->
+      <a class="c-btn" href="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" download="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" target="_blank" style="background:#d1fae5; border-color:#10b981; color:#065f46; font-weight:900;" title="下載全套101堂課四角色大劇場與行為決策分岔路實戰演練手冊（A4單頁版，共104頁PDF）">
+        🎭 劇場與實戰手冊 (104頁PDF)
+      </a>
+
+      <!-- 101 Teacher Manual PDF Download -->
+      <a class="c-btn" href="教師手冊.pdf" download="教師手冊.pdf" target="_blank" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="下載全套101堂課教師手冊（B4單頁大版面，共106頁PDF）">
+        📘 教師手冊 (106頁PDF)
+      </a>
+
+      <!-- 101 Zhuyin Worksheets B4 PDF Download -->
+      <a class="c-btn" href="101堂特教學習單_注音版_B4.pdf" download="101堂特教學習單_注音版_B4.pdf" target="_blank" style="background:#ccfbf1; border-color:#0d9488; color:#0f766e; font-weight:900;" title="下載全套101堂課注音版彩色學習單（B4大開本，共106頁PDF）">
+        🔤 注音學習單 (106頁PDF)
+      </a>
+
+      <!-- Return to Briefing -->
+      <a class="c-btn c-btn-primary" href="index.html">
+        📋 備課筆記
+      </a>
+
+      <!-- 🦁 4 Student Star Widget - Anchored to Far Right, Vertical Dropdown (上下垂直收合，完全不影響其他工具列按鍵) -->
+      <div class="students-star-widget" id="starWidget">
+        <button class="c-btn star-toggle-btn" id="starToggleBtn" onclick="toggleStarBar(event)" title="收合或展開學生星星列（上下垂直展開，不影響左側工具列按鈕）">
+          <span>⭐ 學生星星</span>
+          <span class="star-total-badge" id="classStarTotalBadge">共 0 顆</span>
+          <span class="toggle-icon" id="starToggleIcon">▼ 展開</span>
+        </button>
+        <div class="students-bar" id="topStudentsBar">
+          <!-- Rendered by classroom.js -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slide Viewport -->
+  <main class="slide-viewport">
+    
+    <!-- Previous Slide Arrow -->
+    <button class="slide-nav-btn slide-prev" id="prevBtn" onclick="prevSlide()" title="上一頁 (←)">
+      ‹
+    </button>
+
+    <!-- Center Slide Canvas -->
+    <article class="slide-canvas">
+      <div class="washi-tape-strip washi-tape-yellow"></div>
+      
+      <!-- Slide Top Bar -->
+      <div class="slide-top">
+        <div class="slide-step-indicator" id="slideDots">
+          <!-- Rendered by classroom.js -->
+        </div>
+        <div class="slide-time-tag" id="slideTimeTag">00-08分</div>
+      </div>
+
+      <!-- Slide Main Interactive Content -->
+      <div class="slide-content" id="slideMainContent">
+        <!-- Rendered by classroom.js (Stories, Flashcards, Games, Rewards) -->
+      </div>
+
+      <!-- Slide Bottom Bar -->
+      <div class="slide-bottom">
+        <span class="nav-hint">💡 支援點擊畫面兩側 ‹ › 按鈕、鍵盤 ← → 方向鍵或空白鍵切換投影片</span>
+      </div>
+
+    </article>
+
+    <!-- Next Slide Arrow -->
+    <button class="slide-nav-btn slide-next" id="nextBtn" onclick="nextSlide()" title="下一頁 (→)">
+      ›
+    </button>
+
+  </main>
+
+  <!-- Import Data and Controller Scripts -->
+  <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;"></canvas>
+  <script src="app.js"></script>
+  <script src="zhuyin.js"></script>
+  <script src="roleplay-data.js"></script>
+  <script src="classroom.js"></script>
+  <script src="teacher-tools.js"></script>
+</body>
+</html>

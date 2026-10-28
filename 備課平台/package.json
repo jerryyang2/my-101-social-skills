@@ -1,0 +1,10 @@
+{
+  "name": "dapi-classroom",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@netlify/blobs": "^8.2.0",
+    "@netlify/functions": "^3.0.0",
+    "node-edge-tts": "^1.2.12"
+  }
+}

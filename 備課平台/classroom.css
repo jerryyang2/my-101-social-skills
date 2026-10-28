@@ -1,0 +1,1437 @@
+:root {
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #cffafe;
+  --yellow: #fbbf24;
+  --yellow-dark: #d97706;
+  --yellow-light: #fef3c7;
+  --green: #10b981;
+  --green-dark: #059669;
+  --green-light: #d1fae5;
+  --coral: #f43f5e;
+  --coral-light: #ffe4e6;
+  --purple: #8b5cf6;
+  --purple-light: #ede9fe;
+  --blue: #3b82f6;
+  --blue-light: #dbeafe;
+  --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #fef3c7 50%, #dcfce7 100%);
+  --card-bg: #ffffff;
+  --ink: #1e293b;
+  --ink-light: #475569;
+  --border-thick: 3px solid #cbd5e1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Chalkboard SE", "Comic Sans MS", "PingFang TC", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  user-select: none;
+}
+
+/* 🎈 Top Classroom Navigation Bar (Candy Style) */
+.classroom-header {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 3px solid #fed7aa;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 12px rgba(251, 146, 60, 0.1);
+  z-index: 50;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lesson-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lesson-day-badge {
+  background: #f59e0b;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-weight: 900;
+  font-size: 0.85rem;
+  box-shadow: 0 3px 0 #b45309;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.lesson-title-text {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.classroom-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+/* 🦁 4 Student Star Widget - Anchored to Far Right, Vertical Dropdown (上下收合，完全不影響原按鈕排版) */
+.students-star-widget {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  z-index: 100;
+  margin-left: auto;
+}
+
+.star-toggle-btn {
+  background: #f59e0b;
+  color: white;
+  border: 2px solid #d97706;
+  border-radius: 9999px;
+  padding: 5px 11px;
+  font-size: 0.84rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 3px 0 #b45309;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.star-toggle-btn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 #b45309;
+}
+
+.star-toggle-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.star-total-badge {
+  background: #fef3c7;
+  color: #78350f;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  border: 1px solid #fde68a;
+  line-height: 1.2;
+}
+
+.toggle-icon {
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.16);
+  padding: 2px 7px;
+  border-radius: 9999px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 🌟 Vertical Floating Panel: 下拉展開卡片，懸浮於畫面右上角，完全不佔橫向版面 */
+.students-bar {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 295px;
+  background: #ffffff;
+  border: 2.5px solid #f59e0b;
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.2), 0 4px 12px rgba(245, 158, 11, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+  transform-origin: top right;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* 學生星星收合狀態 (向上垂直收合隱藏) */
+.students-star-widget.collapsed .students-bar {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.96);
+}
+
+/* 面板頂部小標題與收合快捷紐 */
+.students-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 2px 8px 2px;
+  border-bottom: 1.5px dashed #fed7aa;
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #9a3412;
+}
+
+.cloud-sync-badge {
+  font-size: 0.72rem;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: all 0.2s ease;
+}
+
+.star-panel-close-btn {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.star-panel-close-btn:hover {
+  background: #fecaca;
+  transform: scale(1.05);
+}
+
+/* 面板內四位學生垂直條列 */
+.students-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.student-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  padding: 7px 12px;
+  border-radius: 14px;
+  box-shadow: 0 2px 0 #e2e8f0;
+  transition: all 0.15s ease;
+}
+
+.student-pill:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.student-pill-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-avatar {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.pill-name-tag {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+.student-pill-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pill-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.1s;
+  line-height: 1;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+.pill-btn-minus {
+  background: #ffffff;
+  color: #dc2626;
+  border: 1.5px solid #fca5a5;
+}
+
+.pill-btn-minus:hover {
+  background: #fee2e2;
+  border-color: #dc2626;
+  transform: scale(1.1);
+}
+
+.pill-btn-minus:active {
+  transform: translateY(1px);
+}
+
+.pill-btn-plus {
+  background: #f59e0b;
+  color: #ffffff;
+  border: 1.5px solid #d97706;
+}
+
+.pill-btn-plus:hover {
+  background: #d97706;
+  transform: scale(1.1);
+}
+
+.pill-btn-plus:active {
+  transform: translateY(1px);
+}
+
+.pill-stars {
+  color: #78350f;
+  background: #fef3c7;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.95rem;
+  font-weight: 900;
+  border: 1.5px solid #fde68a;
+  min-width: 58px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+/* 面板底部快捷按鈕：全員+1 / 重設歸零 */
+.students-bar-footer {
+  display: flex;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1.5px dashed #fed7aa;
+  margin-top: 2px;
+}
+
+.star-panel-btn-all {
+  flex: 1;
+  background: #fef3c7;
+  border: 1.5px solid #f59e0b;
+  color: #92400e;
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 5px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.star-panel-btn-all:hover {
+  background: #fde68a;
+  transform: translateY(-1px);
+}
+
+.star-panel-btn-reset {
+  background: #fff1f2;
+  border: 1.5px solid #fecdd3;
+  color: #be123c;
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 5px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.star-panel-btn-reset:hover {
+  background: #ffe4e6;
+  transform: translateY(-1px);
+}
+
+/* Chunky 3D Buttons */
+.c-btn {
+  background: white;
+  color: var(--ink);
+  border: 2.5px solid #cbd5e1;
+  padding: 5px 10px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 3px 0 #94a3b8;
+  transition: all 0.15s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.c-btn:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #94a3b8;
+}
+
+.c-btn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #94a3b8;
+}
+
+.c-icon-btn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.c-icon-btn svg {
+  display: block;
+}
+
+.c-btn-primary {
+  background: #06b6d4;
+  color: white;
+  border-color: #0891b2;
+  box-shadow: 0 4px 0 #0e7490;
+}
+
+.c-btn-primary:hover {
+  background: #0891b2;
+  box-shadow: 0 6px 0 #0e7490;
+}
+
+.c-btn-accent {
+  background: #f59e0b;
+  color: white;
+  border-color: #d97706;
+  box-shadow: 0 4px 0 #b45309;
+}
+
+.c-btn-accent:hover {
+  background: #d97706;
+}
+
+.date-selector-select {
+  background: white;
+  color: var(--ink);
+  border: 2.5px solid #f59e0b;
+  padding: 5px 8px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #d97706;
+  outline: none;
+  max-width: 175px;
+  text-overflow: ellipsis;
+}
+
+/* 🎪 Main Classroom Viewport & Slide Canvas */
+.slide-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  position: relative;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.slide-canvas {
+  width: min(1200px, 98vw);
+  height: min(720px, calc(100vh - 85px));
+  min-height: 420px;
+  background: #ffffff;
+  color: var(--ink);
+  border-radius: 28px;
+  border: 4px solid #fbbf24;
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.15), 0 0 0 6px rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* 🎨 Slide Top Step Bar (Toy Block Tabs) */
+.slide-top {
+  padding: 8px 18px;
+  border-bottom: 3px solid #fef3c7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fffdf5;
+  flex-shrink: 0;
+}
+
+.slide-step-indicator {
+  display: flex;
+  gap: 10px;
+}
+
+.step-dot {
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 900;
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: pointer;
+  border: 2px solid #cbd5e1;
+  box-shadow: 0 3px 0 #94a3b8;
+  transition: all 0.15s;
+}
+
+.step-dot:hover {
+  transform: translateY(-2px);
+}
+
+.step-dot:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.step-dot.active {
+  background: #06b6d4;
+  color: white;
+  border-color: #0891b2;
+  box-shadow: 0 3px 0 #0e7490;
+}
+
+.slide-time-tag {
+  font-weight: 900;
+  color: #b45309;
+  font-size: 0.88rem;
+  background: #fef3c7;
+  border: 2px solid #fde68a;
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+/* 🎠 Slide Content Area - 頂部對齊與充足邊距，絕不切到頂部標題 */
+.slide-content {
+  flex: 1;
+  min-height: 0;
+  padding: 12px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+  align-items: center;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fafaf9;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.slide-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 900;
+  color: #0f172a;
+  margin-top: 2px;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.slide-subtitle {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  color: #475569;
+  max-width: 850px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+/* Slide Bottom Controls */
+.slide-bottom {
+  padding: 6px 20px;
+  border-top: 2px solid #fef3c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fffdf5;
+  flex-shrink: 0;
+}
+
+.nav-hint {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.2px;
+}
+
+/* Giant Floating Arrow Buttons */
+.slide-nav-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: white;
+  border: 3.5px solid #f59e0b;
+  color: #f59e0b;
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.25), 0 3px 0 #d97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.15s;
+  z-index: 20;
+}
+
+.slide-nav-btn:hover {
+  background: #fbbf24;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slide-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+  box-shadow: 0 2px 0 #d97706;
+}
+
+.slide-prev { left: 18px; }
+.slide-next { right: 18px; }
+
+/* ----------------------------------------------------
+   📖 Slide 1: Picture Book Story Island (故事島)
+---------------------------------------------------- */
+.story-wrapper {
+  width: 100%;
+  max-width: 980px;
+  background: #ffffff;
+  border: 4px solid #fdba74;
+  border-radius: 28px;
+  padding: 24px 32px;
+  text-align: left;
+  box-shadow: 0 12px 24px rgba(251, 146, 60, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.story-wrapper.story-speaking-glow {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 8px rgba(245, 158, 11, 0.25), 0 16px 32px rgba(251, 146, 60, 0.25);
+  background: #fffdfa;
+}
+
+.story-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 3px dashed #fed7aa;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.tts-btn {
+  background: #fef08a;
+  color: #854d0e;
+  border: 2px solid #facc15;
+  box-shadow: 0 3px 0 #eab308;
+  font-size: 0.95rem;
+  font-weight: 900;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  transition: all 0.15s;
+}
+
+.tts-btn:hover {
+  background: #fde047;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #eab308;
+}
+
+.tts-btn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.tts-btn.speaking {
+  background: #fee2e2;
+  color: #991b1b;
+  border-color: #fca5a5;
+  box-shadow: 0 3px 0 #f87171;
+  animation: pulseSpeaking 1.2s infinite;
+}
+
+@keyframes pulseSpeaking {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.story-badge {
+  background: #fef3c7;
+  color: #b45309;
+  font-size: 0.95rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 2px solid #fde68a;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.story-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #7c2d12;
+}
+
+/* 🎯 字嗨注音字型 (Bpmf Zihi Kai Std · 右側直排教育部標準楷體注音) */
+.zhuyin-mode {
+  font-family: "Bpmf Zihi Kai Std", "Bpmf Iansui", "BiauKai", "DFKai-SB", serif !important;
+  letter-spacing: 0.04em;
+}
+
+.plain-text-mode {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* 相容既有 ruby 標籤若被使用 */
+ruby {
+  font-size: inherit;
+  margin: 0 1px;
+}
+
+rt {
+  font-size: 0.5em;
+  font-weight: 900;
+  color: #b45309;
+}
+
+.story-body {
+  font-size: 1.42rem;
+  line-height: 2.6 !important;
+  color: #334155;
+  white-space: normal;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.story-body:hover {
+  background: rgba(254, 243, 199, 0.45);
+  box-shadow: inset 0 0 0 2px #fde68a;
+}
+
+.story-question-box {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  border: 3px solid #10b981;
+  border-radius: 18px;
+  padding: 16px 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+}
+
+.story-question-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.story-question-title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #047857;
+  margin-bottom: 4px;
+}
+
+.story-question-text {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #064e3b;
+  line-height: 1.45;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.story-question-text:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* ----------------------------------------------------
+   💡 Slide 2: Superpower Cards (超能力卡片)
+---------------------------------------------------- */
+.visual-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.visual-step {
+  background: white;
+  padding: 24px 16px;
+  border-radius: 24px;
+  border: 4px solid #67e8f9;
+  box-shadow: 0 10px 0 #06b6d4;
+  transition: all 0.2s;
+}
+
+.visual-step:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 0 #06b6d4;
+}
+
+.step-num {
+  width: 44px;
+  height: 44px;
+  background: #f59e0b;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.3rem;
+  margin: 0 auto 10px;
+  box-shadow: 0 3px 0 #b45309;
+}
+
+.step-text {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+/* ----------------------------------------------------
+   🎮 Slide 3: Carnival Playground Games
+---------------------------------------------------- */
+.game-container {
+  width: 100%;
+  max-width: 950px;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 28px;
+  border: 4px solid #38bdf8;
+  box-shadow: 0 12px 24px rgba(56, 189, 248, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Thermometer Game */
+.thermo-stage {
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.thermo-tube {
+  width: 56px;
+  height: 250px;
+  background: #f1f5f9;
+  border-radius: 28px;
+  position: relative;
+  border: 4px solid #64748b;
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 6px;
+  overflow: hidden;
+}
+
+.thermo-fluid {
+  width: 100%;
+  height: 20%;
+  background: #10b981;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.thermo-levels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.thermo-btn {
+  padding: 12px 22px;
+  border-radius: 16px;
+  border: 3px solid #cbd5e1;
+  background: white;
+  font-size: 1.15rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 0 #94a3b8;
+  transition: all 0.15s;
+}
+
+.thermo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #94a3b8;
+}
+
+.thermo-btn:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.avatar-display {
+  font-size: 6rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+}
+
+/* Turtle Breathing Circle */
+.breathing-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.breathe-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #38bdf8 0%, #0284c7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.7rem;
+  font-weight: 900;
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.35);
+  border: 6px solid #e0f2fe;
+  transition: all 3s ease-in-out;
+}
+
+.breathe-circle.expanding {
+  transform: scale(1.6);
+  background: radial-gradient(circle, #fbbf24 0%, #d97706 100%);
+  box-shadow: 0 15px 45px rgba(217, 119, 6, 0.45);
+}
+
+.breathe-circle.shrinking {
+  transform: scale(0.9);
+  background: radial-gradient(circle, #34d399 0%, #059669 100%);
+}
+
+/* Radar Target */
+.radar-screen {
+  width: 340px;
+  height: 250px;
+  background: #f0fdf4;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 4px solid #10b981;
+  box-shadow: 0 8px 16px rgba(16, 185, 129, 0.15);
+}
+
+.radar-target {
+  width: 76px;
+  height: 76px;
+  border: 4px dashed #f59e0b;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f59e0b;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(254, 243, 199, 0.7);
+}
+
+.radar-target.locked {
+  border: 5px solid #10b981;
+  background: rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  transform: scale(1.2);
+}
+
+/* ----------------------------------------------------
+   🏆 Slide 4: Four Kids Star Scoreboard (榮譽頒獎台)
+---------------------------------------------------- */
+.student-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+  max-width: 960px;
+  margin: 8px auto 14px;
+}
+
+.student-score-card {
+  background: white;
+  border: 3.5px solid #1e293b;
+  border-radius: 22px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 0 #1e293b;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.student-score-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #1e293b;
+}
+
+/* 🎯 Slide 4 清楚學生姓名：無框框、純淨醒目大字 */
+.card-name-plate {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #0f172a;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0 4px;
+  letter-spacing: 0.05em;
+  box-shadow: none;
+  line-height: 1;
+}
+
+.card-star-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef9c3;
+  border: 2px solid #fde047;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #854d0e;
+  box-shadow: 0 3px 0 #facc15;
+}
+
+.card-actions {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  margin-top: 2px;
+}
+  margin-top: 6px;
+}
+
+.btn-add-star {
+  flex: 1.4;
+  background: #fbbf24;
+  color: #78350f;
+  border: 3px solid #f59e0b;
+  border-radius: 14px;
+  padding: 10px;
+  font-weight: 900;
+  font-size: 1.15rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #d97706;
+  transition: all 0.15s;
+}
+
+.btn-add-star:hover {
+  background: #f59e0b;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #d97706;
+}
+
+.btn-add-star:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.btn-minus-star {
+  flex: 1;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 3px solid #fca5a5;
+  border-radius: 14px;
+  padding: 10px 8px;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #f87171;
+  transition: all 0.15s;
+}
+
+.btn-minus-star:hover {
+  background: #fecaca;
+  transform: translateY(-2px);
+}
+
+.btn-minus-star:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+/* Puzzle Blocks for I-Message */
+.puzzle-board {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.puzzle-block {
+  padding: 18px 28px;
+  border-radius: 18px;
+  font-size: 1.3rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 3px solid;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.1);
+}
+
+.puzzle-block:hover {
+  transform: translateY(-3px);
+}
+
+.puzzle-block:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.block-blue { background: #dbeafe; color: #1e40af; border-color: #60a5fa; }
+.block-yellow { background: #fef9c3; color: #854d0e; border-color: #facc15; }
+.block-green { background: #dcfce7; color: #166534; border-color: #4ade80; }
+
+/* 🖥️ 擬真滿版全螢幕模式 (適用於 iPad、Safari、不支援全螢幕 API 或 Google 協作平台嵌入) */
+body.simulated-fullscreen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: var(--bg) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.simulated-fullscreen .slide-viewport {
+  flex: 1 !important;
+  height: calc(100vh - 65px) !important;
+  max-height: calc(100vh - 65px) !important;
+}
+
+body.simulated-fullscreen .slide-canvas {
+  max-height: calc(100vh - 85px) !important;
+}
+
+/* 🎭 角色大劇場專用樣式 */
+.roleplay-theater-wrapper {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rp-header-banner {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.rp-badge {
+  background: #ede9fe;
+  color: #6d28d9;
+  font-size: 0.95rem;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1.5px solid #c4b5fd;
+}
+
+.rp-scenario-text {
+  font-size: 1.05rem;
+  color: #1e293b;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.rp-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.rp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .lesson-title-text {
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .date-selector-select {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 990px) {
+  .lesson-title-text {
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .date-selector-select {
+    max-width: 150px;
+  }
+  .c-btn {
+    padding: 5px 10px;
+    font-size: 0.82rem;
+  }
+  .star-toggle-btn {
+    padding: 5px 11px;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 860px) {
+  .rp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rp-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-top: 6px solid #3b82f6;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.rp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.rp-card.rp-card-speaking {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.35), 0 8px 20px rgba(0,0,0,0.12) !important;
+  transform: scale(1.02);
+}
+
+.rp-card-header {
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rp-student-tag {
+  font-size: 0.95rem;
+  font-weight: 900;
+  padding: 3px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.rp-role-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  flex: 1;
+}
+
+.rp-card-body {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.rp-section-box {
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.rp-action-box {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+}
+
+.rp-label {
+  font-size: 0.82rem;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.rp-action-label {
+  color: #475569;
+}
+
+.rp-action-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #1e293b;
+  font-weight: 700;
+}
+
+.rp-dialogue-box {
+  background: #fefce8;
+  border: 1.5px solid #fef08a;
+}
+
+.rp-dialogue-label {
+  color: #854d0e;
+}
+
+.rp-speech-bubble {
+  background: #ffffff;
+  border: 2px solid #facc15;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #0f172a;
+  font-weight: 800;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.role-tts-btn {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  color: #b45309;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.role-tts-btn:hover {
+  background: #fef3c7;
+  transform: translateY(-1px);
+}
+
+.rp-tip-box {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.5;
+  background: #f1f5f9;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: auto;
+}
+
+/* 🌟 童趣繪本風紙膠帶與慶祝特效 */
+.washi-tape-strip {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 160px;
+  height: 26px;
+  background: rgba(254, 240, 138, 0.95);
+  border: 1px dashed rgba(202, 138, 4, 0.45);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  clip-path: polygon(2% 0%, 98% 2%, 99% 98%, 1% 97%);
+  z-index: 100;
+  pointer-events: none;
+}
+.washi-tape-yellow {
+  background: rgba(254, 240, 138, 0.95);
+  border-color: rgba(202, 138, 4, 0.45);
+}

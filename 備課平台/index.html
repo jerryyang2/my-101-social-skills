@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大埤國小學習教室｜社交技巧與溝通訓練 備課平台</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="teacher-tools.css">
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">🌱</div>
+        <div class="brand-text">
+          <h1>大埤國小學習教室｜社交與溝通技巧 備課平台</h1>
+          <p>國小中年級 · 自閉症 (ASD) · 學習障礙 (LD) · 情緒障礙 (EBD) 差異化教學導航</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn" onclick="openCalmCornerModal()" style="background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(16,185,129,0.35);" title="🚨 開啟急性情緒冷靜通道（4-7-8 呼吸光環、視覺沙漏、5-4-3-2-1 五感著陸法、舒緩雨聲白噪音）">🧘 冷靜通道</button>
+        <button class="btn" onclick="openCommunicationModal()" style="background:linear-gradient(135deg, #4f46e5, #4338ca); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(79,70,229,0.35);" title="📝 一鍵生成今日 LINE 聯絡簿通知、特教通報網 IEP 評量草稿與 A4 四合一實體聯絡單">📝 親師聯絡 & IEP</button>
+        <a class="btn" href="manual.html" target="_blank" style="background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(217,119,6,0.35);" title="查看教育部特教教材教具比賽參賽說明、UDL設計理念與108課綱對應矩陣">🏆 參賽專區手冊</a>
+        <a class="btn" href="參賽說明書.doc" download="教育部特教比賽_參賽說明書.doc" style="background:linear-gradient(135deg, #2563eb, #1d4ed8); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(37,99,235,0.35);" title="下載教育部特教教材教具比賽標準參賽作品說明書 Word .doc 檔">📄 下載 .doc 說明書</a>
+        <a class="btn" href="island-game.html" target="_blank" style="background:linear-gradient(135deg, #06b6d4, #0284c7); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(6,182,212,0.35);" title="啟動 3D 社交冒險群島遊戲（探索 4 大主題島嶼與 52 關超能力闖關，IsleForge 造島工坊概念）">🏝️ 3D群島大冒險遊戲</a>
+        <a class="btn btn-accent" id="headerLaunchClassBtn" href="classroom.html">🎮 課堂投影與遊戲模式</a>
+        <button class="btn btn-primary" onclick="openAddModal()">➕ 新增備課課程</button>
+        <button class="btn" onclick="copyFullLesson()">📋 複製今日教案</button>
+        <a class="btn" href="101堂特教社交技巧故事島與超能力招式全集.pdf" download="101堂特教社交技巧故事島與超能力招式全集.pdf" target="_blank" style="background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(109,40,217,0.35);" title="下載全套101堂課情境故事島與超能力三步驟動作圖卡教學手冊（A4單頁向量版，含封面與雙頁目錄索引）">📖 故事與招式手冊</a>
+        <a class="btn" href="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" download="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" target="_blank" style="background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(5,150,105,0.35);" title="下載全套101堂課四角色大劇場與行為決策分岔路實戰演練手冊（A4單頁向量版，含封面與雙頁目錄索引）">🎭 劇場與實戰手冊</a>
+        <a class="btn" href="教師手冊.pdf" download="教師手冊.pdf" target="_blank" style="background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(2,132,199,0.35);" title="下載全套 101 堂備課筆記教師手冊（B4單頁大版面，含教案引導話術、IEP與防雷檢核，共106頁PDF）">📘 教師手冊 (B4)</a>
+        <a class="btn" href="101堂特教社交技巧彩色學習單全集.pdf" download="101堂特教社交技巧彩色學習單全集.pdf" target="_blank" style="background:linear-gradient(135deg, #ec4899, #be185d); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(190,24,93,0.35);" title="下載全套101堂課高解析度彩色學習單完整彙編手冊（A4單頁向量版，含封面與目錄索引）">📥 學習單 (A4)</a>
+        <a class="btn" href="101堂特教學習單_注音版_B4.pdf" download="101堂特教學習單_注音版_B4.pdf" target="_blank" style="background:linear-gradient(135deg, #0d9488, #0f766e); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(15,118,110,0.35);" title="下載全套 101 堂國字注音彩色學習單完整手冊（B4大開本正統直式注音，含封面與4頁目錄索引，共106頁PDF）">🔤 注音版學習單 (B4)</a>
+        <button class="btn" onclick="window.print()">🖨️ 列印 / 匯出 PDF</button>
+        <a class="btn" href="../index.html">🏠 返回首頁</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- App Layout -->
+  <main class="app-layout">
+    <!-- Left Sidebar: Chronological Date Timeline -->
+    <aside class="sidebar">
+      <div class="sidebar-title">
+        <h2>📅 課堂備課歷程</h2>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">按日期與週次排序</span>
+      </div>
+
+      <!-- Course Completion Semester Progress Bar -->
+      <div class="course-progress-panel">
+        <div class="progress-info-row">
+          <span class="progress-info-title">📊 學期授課進度：</span>
+          <span class="progress-info-val" id="courseProgressText">已完成 0 / 49 堂 (0%)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="courseProgressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- 4 Student Star Bank Chips -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:10px; margin-bottom:12px;">
+        <div style="font-size:0.75rem; font-weight:800; color:#64748b; margin-bottom:6px;">⭐ 四位學生代幣存摺：</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; font-size:0.8rem; font-weight:800;" id="indexStudentsBar">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+
+      <!-- Keyword Search -->
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="搜尋主題、關鍵字或日期...">
+      </div>
+
+      <!-- Quick Filter Pills -->
+      <div class="filter-pills">
+        <button class="pill active" data-filter="ALL">全部</button>
+        <button class="pill" data-filter="ASD">自閉症 (ASD)</button>
+        <button class="pill" data-filter="LD">學障 (LD)</button>
+        <button class="pill" data-filter="EBD">情障 (EBD)</button>
+      </div>
+
+      <!-- Chronological Date Cards -->
+      <div class="date-list" id="dateList">
+        <!-- Rendered by app.js -->
+      </div>
+    </aside>
+
+    <!-- Right Main Area: Daily Lesson Briefing Content -->
+    <section class="main-content">
+      
+      <!-- Storybook Child-Friendly Welcome Hero & Mascots -->
+      <section class="storybook-welcome-hero">
+        <div class="washi-tape-strip washi-tape-pink"></div>
+        <div class="hero-header-row">
+          <div class="hero-title-box">
+            <span style="font-size:2.4rem; filter:drop-shadow(0 3px 6px rgba(245,158,11,0.3));">🏰</span>
+            <div>
+              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+                <h2 class="hero-main-title">大埤國小特教學習教室 · 社交技巧超能力總部</h2>
+                <span class="hero-badge-pill">🏅 全國特教教材教具比賽參賽特輯</span>
+              </div>
+              <p class="hero-subtitle">四位小英雄伴學成長 🌟 點擊萌寵擊掌打氣、測量今日心情天氣瓶！</p>
+            </div>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn btn-sm" onclick="celebrateAllMascots()" style="background:#fef08a; border:2px solid #eab308; color:#854d0e; font-weight:900; border-radius:999px; box-shadow:0 3px 0 #ca8a04;">
+              ✨ 全員小英雄大擊掌！
+            </button>
+          </div>
+        </div>
+
+        <!-- 4 Mascots Interactive Bar -->
+        <div class="mascots-interactive-bar">
+          <!-- 小宇 -->
+          <div class="mascot-avatar-card yu" id="card-yu" onclick="highFiveMascot('yu')" title="點擊跟勇敢小宇擊掌！">
+            <span class="mascot-face-anim">🦁</span>
+            <div class="mascot-name-tag">小宇 <span style="font-size:0.8rem;">⭐</span></div>
+            <span class="mascot-role-badge" style="background:#fef9c3; color:#854d0e;">ASD · 探索小隊長</span>
+            <div class="mascot-speech-bubble-pop" id="bubble-yu">「深呼吸，看著眉心大聲說早安！」</div>
+          </div>
+          <!-- 小畯 -->
+          <div class="mascot-avatar-card jun" id="card-jun" onclick="highFiveMascot('jun')" title="點擊跟活力小畯擊掌！">
+            <span class="mascot-face-anim">🐻</span>
+            <div class="mascot-name-tag">小畯 <span style="font-size:0.8rem;">🔥</span></div>
+            <span class="mascot-role-badge" style="background:#ffedd5; color:#9a3412;">EBD · 活力小英雄</span>
+            <div class="mascot-speech-bubble-pop" id="bubble-jun">「烏龜縮殼數到十，大腦踩煞車！」</div>
+          </div>
+          <!-- 小和 -->
+          <div class="mascot-avatar-card he" id="card-he" onclick="highFiveMascot('he')" title="點擊跟溫柔小和擊掌！">
+            <span class="mascot-face-anim">🐼</span>
+            <div class="mascot-name-tag">小和 <span style="font-size:0.8rem;">🌱</span></div>
+            <span class="mascot-role-badge" style="background:#d1fae5; color:#065f46;">ASD/LD · 溫柔引航員</span>
+            <div class="mascot-speech-bubble-pop" id="bubble-he">「微笑點頭三次，我們一起慢慢學！」</div>
+          </div>
+          <!-- 小嘉 -->
+          <div class="mascot-avatar-card jia" id="card-jia" onclick="highFiveMascot('jia')" title="點擊跟機智小嘉擊掌！">
+            <span class="mascot-face-anim">🦊</span>
+            <div class="mascot-name-tag">小嘉 <span style="font-size:0.8rem;">💡</span></div>
+            <span class="mascot-role-badge" style="background:#fef3c7; color:#92400e;">ASD · 機智探險家</span>
+            <div class="mascot-speech-bubble-pop" id="bubble-jia">「通關密語請謝謝，交朋友好開心！」</div>
+          </div>
+        </div>
+
+        <!-- Emotion Weather Station -->
+        <div class="emotion-weather-station">
+          <div class="emotion-station-header">
+            <span class="emotion-station-title">
+              <span>🌤️ 今日心情天氣瓶：</span>
+              <span style="font-size:0.8rem; font-weight:700; color:#64748b;">小朋友，今天你心裡的微風吹向哪裡呢？（點擊測量）</span>
+            </span>
+            <span id="emotionSelectedStatus" style="font-size:0.82rem; font-weight:900; color:#0284c7; background:#e0f2fe; padding:2px 10px; border-radius:999px;">☀️ 陽光晴朗</span>
+          </div>
+          <div class="emotion-buttons-row">
+            <button class="emotion-btn active" onclick="selectEmotion('sunny', this)">
+              <span>☀️</span> 陽光晴朗 (元氣充沛)
+            </button>
+            <button class="emotion-btn" onclick="selectEmotion('breezy', this)">
+              <span>🌤️</span> 舒適微風 (平靜專注)
+            </button>
+            <button class="emotion-btn" onclick="selectEmotion('rainy', this)">
+              <span>🌧️</span> 偶陣小雨 (疲累難過)
+            </button>
+            <button class="emotion-btn" onclick="selectEmotion('stormy', this)">
+              <span>⚡</span> 烏雲雷電 (生氣著急)
+            </button>
+            <button class="emotion-btn" onclick="selectEmotion('rainbow', this)">
+              <span>🌈</span> 魔法彩虹 (信心滿滿)
+            </button>
+          </div>
+          <div class="emotion-feedback-box" id="emotionFeedbackBox">
+            <span class="calming-breathing-dot"></span>
+            <span id="emotionFeedbackText">太棒了！今天帶著滿滿陽光能量，我們一起施展社交超能力！</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Banner -->
+      <article class="daily-banner">
+        <div class="washi-tape-strip washi-tape-yellow"></div>
+        <div class="banner-meta">
+          <span class="date-pill" id="bannerDate">📅 2026-10-26 (一)</span>
+          <span class="curriculum-code" id="bannerCode">特需領綱 社2-II-1</span>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);" id="bannerUnit">第一單元：處己篇</span>
+        </div>
+        <h1 class="banner-title" id="bannerTitle">情緒溫度計與我的身體訊號</h1>
+        <p class="banner-summary" id="bannerSummary">引導學生覺察心跳加快、握拳等生理訊號，使用 1-5 分情緒溫度計將怒氣具象化，建立煞車意識。</p>
+
+        <!-- Course Completion Direct Toggle Box -->
+        <div class="course-completion-box" id="bannerCompletionBox">
+          <label class="completion-checkbox-label">
+            <input type="checkbox" id="bannerCompletionCheckbox" class="completion-input" onchange="toggleCurrentCourseCompleted(this.checked)">
+            <span class="completion-checkmark-box"></span>
+            <div class="completion-label-text">
+              <span class="completion-main-title" id="completionMainTitle">標記今日課程：尚未完成</span>
+              <span class="completion-sub-title" id="completionSubTitle">點擊可直接勾選完成，記錄教學進度並自動同步至雲端存摺與側邊欄進度條</span>
+            </div>
+          </label>
+          <div class="completion-status-pill" id="completionStatusPill">⬜ 尚未授課</div>
+        </div>
+
+        <div class="banner-badges" id="bannerBadges">
+          <!-- Rendered by app.js -->
+        </div>
+        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+          <button class="btn btn-accent" style="padding:10px 22px; font-size:1rem; box-shadow:0 4px 12px rgba(245,158,11,0.25);" onclick="launchClassroomForCurrent()">
+            🚀 立即開啟今日課堂互動簡報與遊戲模式 →
+          </button>
+          <button class="btn" onclick="openQuickBriefingModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(217,119,6,0.35);" title="課前 60 秒極速提要（核心動作口訣、教具檢核、ASD/LD/EBD 三障別防雷指南）">
+            ⚡ 60 秒極速備課卡
+          </button>
+          <button class="btn" onclick="openWhiteboardModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(2,132,199,0.35);" title="啟動電子白板/智慧黑板專用超大字號招式投影卡（大班級或弱視、注意力缺陷學生一眼看懂）">
+            🖥️ 白板大字版招式
+          </button>
+          <button class="btn" onclick="openCommunicationModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #4f46e5, #4338ca); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(79,70,229,0.35);" title="一鍵生成今日 LINE 聯絡簿通知、特教通報網 IEP 評量草稿與 A4 四合一實體聯絡單">
+            📝 親師聯絡單 (4合1)
+          </button>
+          <a class="btn" id="bannerWorksheetBtn" href="worksheet.html" target="_blank" style="padding:10px 20px; font-size:1rem; background:#fef08a; border:2px solid #eab308; color:#854d0e; font-weight:800; box-shadow:0 3px 0 #ca8a04;">
+            📄 開啟／列印今日彩色圖文學習單 →
+          </a>
+          <a class="btn" href="101堂特教社交技巧故事島與超能力招式全集.pdf" download="101堂特教社交技巧故事島與超能力招式全集.pdf" target="_blank" style="padding:10px 20px; font-size:1rem; background:linear-gradient(135deg, #8b5cf6, #6d28d9); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(109,40,217,0.35);" title="下載全套101堂課情境故事島與超能力三步驟動作圖卡手冊（A4單頁版，共104頁PDF）">
+            📖 下載 101 堂故事與招式手冊 (104頁PDF)
+          </a>
+          <a class="btn" href="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" download="101堂特教社交技巧角色劇場與遊樂場實戰全集.pdf" target="_blank" style="padding:10px 20px; font-size:1rem; background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(5,150,105,0.35);" title="下載全套101堂課四角色大劇場與行為決策分岔路實戰演練手冊（A4單頁版，共104頁PDF）">
+            🎭 下載 101 堂劇場與實戰手冊 (104頁PDF)
+          </a>
+          <a class="btn" href="教師手冊.pdf" download="教師手冊.pdf" target="_blank" style="padding:10px 18px; font-size:0.95rem; background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(2,132,199,0.35);" title="下載全套 101 堂備課筆記教師手冊（B4單頁大版面，含教案引導話術、IEP與防雷檢核，共106頁PDF）">
+            📘 教師手冊 (B4·106頁)
+          </a>
+          <a class="btn" href="101堂特教學習單_注音版_B4.pdf" download="101堂特教學習單_注音版_B4.pdf" target="_blank" style="padding:10px 18px; font-size:0.95rem; background:linear-gradient(135deg, #0d9488, #0f766e); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(15,118,110,0.35);" title="下載全套 101 堂國字注音彩色學習單完整手冊（B4大開本正統直式注音，含封面與4頁目錄索引，共106頁PDF）">
+            🔤 注音版學習單 (B4·106頁)
+          </a>
+          <a class="btn" href="101堂特教社交技巧彩色學習單全集.pdf" download="101堂特教社交技巧彩色學習單全集.pdf" target="_blank" style="padding:10px 18px; font-size:0.95rem; background:linear-gradient(135deg, #ec4899, #be185d); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(190,24,93,0.35);" title="下載全套101堂課高解析度彩色學習單完整手冊（A4單頁向量版，含封面與4頁完整目錄索引，共106頁）">
+            📥 原版學習單 (A4·106頁)
+          </a>
+        </div>
+      </article>
+
+      <!-- Daily Rich Story Box -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#fef3c7; color:#b45309;">📖</div>
+            <h2 class="card-title" id="briefingStoryTitle">今日課堂情境小故事</h2>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <select id="indexVoiceGenderSelector" onchange="changeVoiceGender(this.value)" style="padding:4px 10px; border-radius:8px; border:1.5px solid #fed7aa; font-size:0.85rem; font-weight:700; color:#78350f; background:#fff7ed; cursor:pointer;" title="切換朗讀聲音風格">
+              <option value="female">🌸 國語課本配音（溫柔女聲）</option>
+              <option value="male">👦 陽光活力男聲</option>
+            </select>
+            <button class="btn btn-sm" id="indexStoryTtsBtn" onclick="toggleIndexStorySpeech()" style="background:#fef08a; color:#854d0e; font-weight:800; border:1.5px solid #facc15;" title="點擊朗讀故事全文（再次點擊暫停）">
+              🔊 朗讀故事全文
+            </button>
+          </div>
+        </div>
+        <div id="briefingStoryContent" onclick="toggleIndexStorySpeech()" style="font-size:0.95rem; line-height:1.8; color:#334155; white-space:pre-line; cursor:pointer;" title="點擊故事文字也可以直接朗讀喔！">
+          載入中...
+        </div>
+        <div style="margin-top:14px; padding:12px 16px; background:#f0fdfa; border:1px solid #99f6e4; border-radius:10px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1;">
+            <strong style="color:#0f766e;">🤔 課堂討論引導提問：</strong>
+            <span id="briefingStoryQuestion" onclick="toggleIndexQuestionSpeech()" style="color:#134e4a; font-weight:700; cursor:pointer;" title="點擊題目文字也可以直接朗讀喔！"></span>
+          </div>
+          <button class="btn btn-sm" id="indexQuestionTtsBtn" onclick="toggleIndexQuestionSpeech()" style="background:#d1fae5; color:#065f46; font-weight:800; border:1.5px solid #6ee7b7; white-space:nowrap;" title="點擊朗讀提問題目">
+            🔊 唸題目
+          </button>
+        </div>
+      </article>
+
+      <!-- Daily 4-Role Play Theater Box -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1; margin-top:20px;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#ede9fe; color:#6d28d9;">🎭</div>
+            <h2 class="card-title">今日四角色情境小劇場（動作與對話演練）</h2>
+          </div>
+          <span style="font-size:0.85rem; font-weight:800; color:#64748b; background:#f1f5f9; padding:4px 10px; border-radius:999px;">
+            🦁宇 · 🐻畯 · 🐼和 · 🦊嘉 全員角色任務
+          </span>
+        </div>
+        <div id="briefingRoleplayContent" style="margin-top:10px;">
+          <!-- Rendered by app.js -->
+        </div>
+      </article>
+
+      <!-- 40-Min Lesson 5-Step Teacher Guidance & Manual -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1; margin-top:20px;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#ccfbf1; color:#0f766e;">🏫</div>
+            <h2 class="card-title">40 分鐘 5 步走課堂教學指引（精確教材操作與引導話術）</h2>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm" onclick="toggleAllTeacherGuides(true)" style="background:#f1f5f9; color:#334155; font-weight:800; border:1px solid #cbd5e1;" title="展開所有環節詳細指引">
+              📂 全部展開
+            </button>
+            <button class="btn btn-sm" onclick="toggleAllTeacherGuides(false)" style="background:#f1f5f9; color:#334155; font-weight:800; border:1px solid #cbd5e1;" title="收合指引">
+              📁 全部收合
+            </button>
+          </div>
+        </div>
+        <div style="font-size:0.88rem; color:#64748b; margin-top:4px; font-weight:700;">
+          💡 點擊任一環節即可展開或收合詳細指引；包含大螢幕按鈕操作、逐字話術、四生個別化支援與防雷提醒。
+        </div>
+        <div id="timelineList" style="margin-top:14px; display:flex; flex-direction:column; gap:12px;">
+          <!-- Rendered by app.js -->
+        </div>
+      </article>
+
+      <!-- 2-Column Detail Grid: Scaffolds & Visual Card Preview -->
+      <div class="detail-grid">
+        
+        <!-- Differential Support Scaffolds -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#ede9fe; color:#6b21a8;">🧩</div>
+            <h2 class="card-title">個別化差異支援（特需鷹架）</h2>
+          </div>
+          <div class="scaffold-box">
+            <div class="scaffold-item scaffold-asd">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#0f766e;">🔹 自閉症 (ASD) 學生</span>
+                <span style="font-size:0.75rem; color:#0f766e; font-weight:700;">視覺流程 / 具體台詞</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldAsd">載入中...</div>
+            </div>
+
+            <div class="scaffold-item scaffold-ld">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#6b21a8;">🔹 學習障礙 (LD) 學生</span>
+                <span style="font-size:0.75rem; color:#6b21a8; font-weight:700;">減量免寫 / 多感官圖像</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldLd">載入中...</div>
+            </div>
+
+            <div class="scaffold-item scaffold-ebd">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#991b1b;">🔹 情緒障礙 (EBD) 學生</span>
+                <span style="font-size:0.75rem; color:#991b1b; font-weight:700;">冷靜通道 / 即時煞車</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldEbd">載入中...</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Visual Flashcard Projection Preview -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#e0f2fe; color:#0284c7;">🖼️</div>
+            <h2 class="card-title">課堂投影視覺圖卡（可直接向學童展示）</h2>
+          </div>
+          <div class="visual-card-preview">
+            <div class="visual-card-title" id="visualCardTitle">載入中...</div>
+            <div class="visual-steps-grid" id="visualSteps">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Bottom 2-Column Grid: IEP & Checklist -->
+      <div class="detail-grid">
+
+        <!-- IEP Measurable Goal -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fef3c7; color:#b45309;">🎯</div>
+            <h2 class="card-title">IEP 可觀察量化目標</h2>
+          </div>
+          <div class="iep-box">
+            <button class="copy-badge" onclick="copyIep()">📋 一鍵複製</button>
+            <p id="iepText" style="line-height:1.7; margin-right:70px;">載入中...</p>
+          </div>
+
+          <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="padding:16px; background:#fffbeb; border-radius:var(--radius-md); border:1.5px solid #fde68a; position:relative;">
+              <button class="copy-badge" onclick="copyRegularTip()" style="top:12px; right:12px;">📋 複製口訣</button>
+              <div style="font-weight:800; font-size:0.92rem; margin-bottom:8px; color:#92400e; display:flex; align-items:center; gap:6px;">
+                <span>🏫</span> 普通班導師融合合作口訣：
+              </div>
+              <p id="regularTipText" style="font-size:0.88rem; color:#78350f; line-height:1.6; margin:0; padding-right:75px;"></p>
+            </div>
+            <div style="padding:16px; background:#f0fdf4; border-radius:var(--radius-md); border:1.5px solid #bbf7d0;">
+              <div style="font-weight:800; font-size:0.92rem; margin-bottom:8px; color:#166534; display:flex; align-items:center; gap:6px;">
+                <span>🏠</span> 家庭生活小超人共學打卡：
+              </div>
+              <p id="homeTaskText" style="font-size:0.88rem; color:#14532d; line-height:1.6; margin:0;"></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pre-Class Safety Checklist -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fee2e2; color:#b91c1c;">🛡️</div>
+            <h2 class="card-title">特教課前人工審核防雷檢核</h2>
+          </div>
+          <div class="checklist">
+            <label class="check-item">
+              <input type="checkbox" id="chk_trigger" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>情緒地雷檢核：</strong>今日情境演練是否避開了個別學生的近期急性地雷？</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_cooldown" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>冷靜角暢通：</strong>教室內的平靜角與指壓球、沙漏等減壓工具是否已備妥？</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_visual" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>自閉症視覺預告：</strong>是否已在白板貼上流程圖，並提前告知下課倒數時間？</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_reading" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>學障閱讀減量：</strong>活動中是否已排除長篇文字，改以圖像或口語提示引導？</span>
+            </label>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Add Briefing Modal -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 style="font-size:1.25rem; font-weight:800;">➕ 新增備課課程</h2>
+        <button class="modal-close" onclick="closeAddModal()">&times;</button>
+      </div>
+      <form onsubmit="saveCustomBriefing(event)">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label>排程日期</label>
+            <input type="date" id="newDate" required>
+          </div>
+          <div class="form-group">
+            <label>所屬單元</label>
+            <input type="text" id="newUnit" placeholder="例：第二單元：處人篇" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>課程主題標題</label>
+          <input type="text" id="newTitle" placeholder="例：學會傾聽與輪流說話" required>
+        </div>
+
+        <div class="form-group">
+          <label>特需領綱指標代號</label>
+          <input type="text" id="newCode" placeholder="例：社2-II-3">
+        </div>
+
+        <div class="form-group">
+          <label>核心目標摘要</label>
+          <textarea id="newSummary" rows="2" placeholder="簡述今日要讓學生學會的核心技巧..." required></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label style="color:#0f766e;">ASD 視覺支援</label>
+            <textarea id="newAsd" rows="2" placeholder="圖卡或句型..."></textarea>
+          </div>
+          <div class="form-group">
+            <label style="color:#6b21a8;">LD 多感官支援</label>
+            <textarea id="newLd" rows="2" placeholder="減量、口頭引導..."></textarea>
+          </div>
+          <div class="form-group">
+            <label style="color:#991b1b;">EBD 情緒防雷</label>
+            <textarea id="newEbd" rows="2" placeholder="防線、冷靜角..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>IEP 可測量目標範例</label>
+          <textarea id="newIep" rows="2" placeholder="在情境提示下，學生能……達成率 80% 以上。"></textarea>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn" onclick="closeAddModal()">取消</button>
+          <button type="submit" class="btn btn-primary">儲存並加入備課平台</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <button class="floating-calm-fab" onclick="openCalmCornerModal()" title="快速開啟特教情緒冷靜通道（4-7-8呼吸光環、視覺沙漏、五感著陸、白噪音）">
+    <span>🧘</span>
+    <span>情緒冷靜通道</span>
+  </button>
+  <script src="zhuyin.js"></script>
+  <script src="roleplay-data.js"></script>
+  <script src="app.js"></script>
+  <script src="teacher-tools.js"></script>
+</body>
+</html>

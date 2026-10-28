@@ -1,0 +1,1464 @@
+:root {
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #cffafe;
+  --secondary: #3b82f6;
+  --accent: #f59e0b;
+  --accent-light: #fef3c7;
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+  --purple: #8b5cf6;
+  --purple-light: #ede9fe;
+  --bg-main: #fefce8;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border: #fde68a;
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --shadow: 0 4px 0 #fed7aa;
+  --shadow-lg: 0 10px 0 #fde68a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Chalkboard SE", "Comic Sans MS", "PingFang TC", "Noto Sans TC", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #fffbeb 0%, #f0fdf4 50%, #eff6ff 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Header */
+.app-header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.05);
+}
+
+.header-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #0d9488 0%, #3b82f6 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 4px 10px rgb(13 148 136 / 0.25);
+}
+
+.brand-text h1 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.brand-text p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.btn-accent:hover {
+  background: #d97706;
+}
+
+/* Layout */
+.app-layout {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 24px;
+}
+
+/* Sidebar Timeline */
+.sidebar {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  height: calc(100vh - 120px);
+  position: sticky;
+  top: 88px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.sidebar-title h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  background: #f8fafc;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.pill {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  background: #f1f5f9;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  border: none;
+  font-weight: 600;
+}
+
+.pill.active {
+  background: var(--primary);
+  color: white;
+}
+
+.date-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+/* 📊 Sidebar Course Progress Panel */
+.course-progress-panel {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+
+.progress-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.progress-info-title {
+  color: #475569;
+}
+
+.progress-info-val {
+  color: #0f766e;
+  font-family: monospace, sans-serif;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.date-card {
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.date-card:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateX(2px);
+}
+
+.date-card.active {
+  border-color: var(--primary);
+  background: #f0fdfa;
+  border-left: 5px solid var(--primary);
+  box-shadow: 0 2px 4px rgb(13 148 136 / 0.1);
+}
+
+/* 📅 Date Card Completed State */
+.date-card.is-completed {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.date-card.is-completed.active {
+  background: #ecfdf5;
+  border-color: #10b981;
+  border-left: 5px solid #10b981;
+}
+
+.sidebar-date-checkbox {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: #10b981;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.completed-mini-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+  padding: 1px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* 🎯 Daily Banner Course Completion Box */
+.course-completion-box {
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  padding: 12px 18px;
+  margin: 16px 0 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.25s ease;
+}
+
+.course-completion-box.is-completed {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 2px solid #22c55e;
+  box-shadow: 0 4px 14px rgba(34, 197, 94, 0.15);
+}
+
+.completion-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+}
+
+.completion-input {
+  width: 24px;
+  height: 24px;
+  accent-color: #16a34a;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.completion-label-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.completion-main-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #334155;
+  transition: color 0.2s;
+}
+
+.course-completion-box.is-completed .completion-main-title {
+  color: #15803d;
+}
+
+.completion-sub-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.course-completion-box.is-completed .completion-sub-title {
+  color: #166534;
+}
+
+.completion-status-pill {
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  color: #64748b;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.course-completion-box.is-completed .completion-status-pill {
+  background: #22c55e;
+  border-color: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.25);
+}
+
+.date-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+}
+
+.date-tag {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.week-badge {
+  font-size: 0.7rem;
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.date-card-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.date-card-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.mini-tag {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tag-asd { background: var(--primary-light); color: var(--primary-dark); }
+.tag-ld { background: var(--purple-light); color: var(--purple); }
+.tag-ebd { background: var(--danger-light); color: var(--danger); }
+
+/* Main Content Area */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Daily Banner Card */
+.daily-banner {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.daily-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.banner-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.date-pill {
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.curriculum-code {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.banner-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+
+.banner-summary {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  max-width: 900px;
+}
+
+.banner-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Content Grid */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* 40min Lesson Timeline */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 14px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 36px;
+  top: 36px;
+  bottom: -14px;
+  width: 2px;
+  background: #e2e8f0;
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-time {
+  min-width: 72px;
+  height: 36px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.timeline-content {
+  flex: 1;
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid #e2e8f0;
+}
+
+.timeline-stage {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.timeline-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Special Needs Differential Strategies */
+.scaffold-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scaffold-item {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid;
+}
+
+.scaffold-asd {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+}
+
+.scaffold-ld {
+  background: #faf5ff;
+  border-color: #e9d5ff;
+}
+
+.scaffold-ebd {
+  background: #fff1f2;
+  border-color: #fecdd3;
+}
+
+.scaffold-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.scaffold-label {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.scaffold-body {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  line-height: 1.5;
+}
+
+/* Visual Classroom Card Display */
+.visual-card-preview {
+  background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+  border: 2px dashed #0d9488;
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.visual-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f766e;
+  margin-bottom: 12px;
+}
+
+.visual-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.visual-step {
+  background: white;
+  padding: 14px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.04);
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  background: #0d9488;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  margin: 0 auto 8px;
+  font-size: 0.85rem;
+}
+
+.step-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Checklist */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.check-item:hover {
+  background: #f1f5f9;
+}
+
+.check-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.check-item-text {
+  font-size: 0.88rem;
+  color: var(--text-main);
+  flex: 1;
+}
+
+/* IEP Goal Box */
+.iep-box {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  border-left: 5px solid #ca8a04;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  color: #713f12;
+  position: relative;
+}
+
+.copy-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  background: white;
+  border: 1px solid #fef08a;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.copy-badge:hover {
+  background: #fef08a;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(15 23 42 / 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text-main);
+}
+
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+/* Print Styles */
+@media print {
+  .app-header, .sidebar, .header-actions, .modal-overlay, .copy-badge {
+    display: none !important;
+  }
+  .app-layout {
+    display: block;
+    padding: 0;
+  }
+  .card, .daily-banner {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    height: auto;
+    max-height: 380px;
+    position: static;
+  }
+}
+
+/* 🎯 字嗨注音字型 (Bpmf Zihi Kai Std · 右側直排教育部標準楷體注音) */
+.zhuyin-mode {
+  font-family: "Bpmf Zihi Kai Std", "Bpmf Iansui", "BiauKai", "DFKai-SB", serif !important;
+  letter-spacing: 0.04em;
+  line-height: 2.4 !important;
+}
+
+.plain-text-mode {
+  font-family: inherit;
+  letter-spacing: normal;
+}
+
+/* 🏫 教師精確教學指引與手冊折疊卡片 (Teacher Instructional Guide Accordion) */
+.guide-step-card {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  transition: all 0.2s ease;
+}
+
+.guide-step-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+
+.guide-step-summary {
+  padding: 14px 18px;
+  background: #f8fafc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  user-select: none;
+  list-style: none;
+}
+
+.guide-step-summary::-webkit-details-marker {
+  display: none;
+}
+
+.guide-step-card[open] .guide-step-summary {
+  background: #f1f5f9;
+  border-bottom: 1.5px solid #e2e8f0;
+}
+
+.guide-step-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.guide-step-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.guide-step-time {
+  background: #e2e8f0;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.guide-step-title {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.guide-step-summary-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guide-toggle-icon {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #64748b;
+  transition: transform 0.2s ease;
+}
+
+.guide-step-card[open] .guide-toggle-icon {
+  transform: rotate(180deg);
+}
+
+.guide-step-body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: #ffffff;
+}
+
+.guide-box {
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.guide-box-goal {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+  color: #115e59;
+}
+
+.guide-box-ops {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+
+.guide-box-script {
+  background: #fefce8;
+  border: 1px solid #fef08a;
+  color: #854d0e;
+}
+
+.guide-box-students {
+  background: #f8fafc;
+  border: 1.5px dashed #cbd5e1;
+}
+
+.guide-box-warning {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+}
+
+/* ==========================================================================
+   全國特教教材教具比賽 · 童趣手繪插畫與生動動畫系統 (Child-Friendly Storybook Theme)
+   去 AI 機械感 · 結合特教 UDL 多感官動態互動、溫暖日系手帳與萌寵小英雄伴學
+   ========================================================================== */
+
+/* 1. 溫暖童趣背景與手繪質感 */
+body {
+  background: #fffdf5 radial-gradient(#fed7aa 0.85px, transparent 0.85px);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* 2. 生動童趣關鍵幀動畫 */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(1deg); }
+}
+
+@keyframes mascotWiggle {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.08) rotate(-4deg); }
+  75% { transform: scale(1.08) rotate(4deg); }
+}
+
+@keyframes mascotJump {
+  0% { transform: scale(1) translateY(0); }
+  35% { transform: scale(1.25, 0.8) translateY(-14px); }
+  65% { transform: scale(0.9, 1.15) translateY(4px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+@keyframes pulseSparkle {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2) rotate(15deg); }
+}
+
+@keyframes breathCircle {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.35); opacity: 1; filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.6)); }
+}
+
+@keyframes popInBounce {
+  0% { transform: scale(0.7); opacity: 0; }
+  70% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes rainbowGlow {
+  0% { filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3)); }
+  50% { filter: drop-shadow(0 4px 14px rgba(236, 72, 153, 0.45)); }
+  100% { filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.3)); }
+}
+
+/* 3. 日系手帳紙膠帶效果 (Washi Tape) */
+.washi-tape-strip {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1.2deg);
+  width: 140px;
+  height: 24px;
+  background: rgba(254, 240, 138, 0.92);
+  border: 1px dashed rgba(202, 138, 4, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  clip-path: polygon(2% 0%, 98% 2%, 99% 98%, 1% 97%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.washi-tape-pink {
+  background: rgba(251, 207, 232, 0.92);
+  border-color: rgba(219, 39, 119, 0.4);
+}
+
+.washi-tape-mint {
+  background: rgba(167, 243, 208, 0.92);
+  border-color: rgba(5, 150, 105, 0.4);
+}
+
+.washi-tape-blue {
+  background: rgba(186, 230, 253, 0.92);
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+/* 4. 手繪繪本風童趣歡迎 Hero Banner */
+.storybook-welcome-hero {
+  position: relative;
+  background: linear-gradient(135deg, #fef9c3 0%, #ecfdf5 45%, #eff6ff 100%);
+  border: 3px solid #fde68a;
+  border-radius: 28px 20px 26px 22px / 22px 26px 20px 28px;
+  box-shadow: 0 8px 0 #fed7aa, 0 16px 28px rgba(245, 158, 11, 0.15);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  overflow: visible;
+  animation: popInBounce 0.5s ease-out;
+}
+
+.hero-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.hero-title-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 2px solid #f59e0b;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #b45309;
+  box-shadow: 0 3px 0 #fde68a;
+}
+
+.hero-main-title {
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #1e3a8a;
+  letter-spacing: -0.5px;
+  text-shadow: 1px 1px 0 #ffffff;
+}
+
+.hero-subtitle {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #475569;
+  margin-top: 2px;
+}
+
+/* 5. 四位小英雄萌寵互動區 */
+.mascots-interactive-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 18px 0 14px;
+}
+
+@media (max-width: 900px) {
+  .mascots-interactive-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mascot-avatar-card {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid #fed7aa;
+  border-radius: 20px;
+  padding: 12px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 0 #fed7aa;
+  user-select: none;
+}
+
+.mascot-avatar-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 10px 0 #fdba74;
+  border-color: #f97316;
+}
+
+.mascot-avatar-card:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 2px 0 #fdba74;
+}
+
+.mascot-avatar-card.yu {
+  border-color: #fde047;
+  box-shadow: 0 4px 0 #fde047;
+}
+.mascot-avatar-card.jun {
+  border-color: #fed7aa;
+  box-shadow: 0 4px 0 #fed7aa;
+}
+.mascot-avatar-card.he {
+  border-color: #a7f3d0;
+  box-shadow: 0 4px 0 #a7f3d0;
+}
+.mascot-avatar-card.jia {
+  border-color: #fed7aa;
+  box-shadow: 0 4px 0 #fed7aa;
+}
+
+.mascot-face-anim {
+  font-size: 2.8rem;
+  display: inline-block;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+  animation: floatGentle 3.5s ease-in-out infinite;
+}
+
+.mascot-avatar-card:nth-child(2) .mascot-face-anim {
+  animation-delay: 0.6s;
+}
+.mascot-avatar-card:nth-child(3) .mascot-face-anim {
+  animation-delay: 1.2s;
+}
+.mascot-avatar-card:nth-child(4) .mascot-face-anim {
+  animation-delay: 1.8s;
+}
+
+.mascot-name-tag {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.mascot-role-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.mascot-speech-bubble-pop {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #475569;
+  background: #f8fafc;
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 6px 8px;
+  margin-top: 8px;
+  line-height: 1.4;
+  transition: all 0.2s;
+}
+
+.mascot-avatar-card:hover .mascot-speech-bubble-pop {
+  background: #fef08a;
+  border-color: #eab308;
+  color: #854d0e;
+}
+
+/* 6. 今日心情氣象站 (Emotion Weather Station) */
+.emotion-weather-station {
+  background: #ffffff;
+  border: 2.5px solid #bae6fd;
+  border-radius: 20px;
+  padding: 14px 18px;
+  margin-top: 14px;
+  box-shadow: 0 4px 0 #bae6fd;
+}
+
+.emotion-station-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.emotion-station-title {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.emotion-buttons-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.emotion-btn {
+  background: #f0f9ff;
+  border: 2px solid #e0f2fe;
+  border-radius: 16px;
+  padding: 8px 14px;
+  font-size: 0.92rem;
+  font-weight: 900;
+  color: #0369a1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.emotion-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: #e0f2fe;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 0 #7dd3fc;
+}
+
+.emotion-btn.active {
+  background: #fef08a;
+  border-color: #f59e0b;
+  color: #92400e;
+  box-shadow: 0 4px 0 #f59e0b;
+  transform: translateY(-2px);
+}
+
+.emotion-feedback-box {
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: #fdf4ff;
+  border: 2px dashed #f0abfc;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #86198f;
+  animation: popInBounce 0.3s ease-out;
+}
+
+.calming-breathing-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  display: inline-block;
+  animation: breathCircle 4s ease-in-out infinite;
+}
+
+/* 7. 超能力寶箱星星存摺 (Treasure Chest Bank) */
+.treasure-chest-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
+  border: 2px solid #fed7aa;
+  border-radius: 14px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 0 #fed7aa;
+  transition: all 0.2s;
+}
+
+.treasure-chest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #fdba74;
+  border-color: #f97316;
+}
+
+.chest-star-count {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #b45309;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.chest-btn-mini {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid #d97706;
+  background: #fef3c7;
+  color: #92400e;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.chest-btn-mini:hover {
+  background: #fde047;
+  transform: scale(1.15);
+}
+
+.chest-btn-mini:active {
+  transform: scale(0.9);
+}
+
+/* 8. 課堂卡片手繪外框與精緻裝飾 */
+.card, .daily-banner {
+  border-radius: 24px 20px 22px 26px / 22px 24px 26px 20px;
+  border: 2.5px solid #fed7aa !important;
+  box-shadow: 0 6px 0 #fed7aa, 0 12px 24px rgba(245, 158, 11, 0.1) !important;
+  background: #ffffff;
+  position: relative;
+}
+
+.daily-banner {
+  background: linear-gradient(180deg, #ffffff 0%, #fffdf5 100%) !important;
+}
+
+.card:hover {
+  box-shadow: 0 8px 0 #fed7aa, 0 16px 28px rgba(245, 158, 11, 0.14) !important;
+}
+
+/* 9. 畫布彩帶與星星全螢幕特效層 */
+#confettiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
