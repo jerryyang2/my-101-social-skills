@@ -116,8 +116,10 @@ html, body {
 }
 .toc-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5px 12px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3.5px 16px;
+  width: 100%;
+  box-sizing: border-box;
   font-size: 0.77rem;
   line-height: 1.35;
 }
@@ -125,19 +127,22 @@ html, body {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  min-width: 0;
+  overflow: hidden;
   border-bottom: 1px dotted #cbd5e1;
   padding: 1.5px 0;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   transition: background 0.15s ease;
+  box-sizing: border-box;
 }
 .toc-item:hover {
   background: #e0f2fe;
 }
-.toc-num { font-weight: 900; color: #0f766e; min-width: 52px; flex-shrink: 0; }
-.toc-text { font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; margin: 0 4px; }
-.toc-skill { font-weight: 800; color: #b45309; font-size: 0.72rem; flex-shrink: 0; }
+.toc-num { font-weight: 900; color: #0f766e; min-width: 52px; flex-shrink: 0; white-space: nowrap; }
+.toc-text { font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 0%; min-width: 0; margin: 0 4px; }
+.toc-skill { font-weight: 800; color: #b45309; font-size: 0.72rem; flex-shrink: 0; white-space: nowrap; text-align: right; }
 
 /* 課堂內頁標頭 */
 .page-header {
@@ -407,6 +412,12 @@ html, body {
     gap: 18px !important;
     justify-content: flex-start !important;
     background: #ffffff !important;
+    box-sizing: border-box !important;
+  }
+
+  .toc-page {
+    max-width: 960px !important;
+    overflow: hidden !important;
   }
 
   .page-header {
@@ -715,7 +726,8 @@ with open(lessons_html_path, "w", encoding="utf-8") as f:
     f.write(lessons_html)
 
 # 保存完整線上網頁版至備課平台/
-full_book_html = intro_html.replace("</body>\n</html>", "") + lessons_html.replace("<!doctype html>\n<html lang=\"zh-Hant\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>101堂特教故事島與超能力招式內頁</title>\n  <style>" + css + "</style>\n</head>\n<body>", "")
+lessons_body = lessons_html.split("<body>", 1)[1] if "<body>" in lessons_html else lessons_html
+full_book_html = intro_html.replace("</body>\n</html>", "") + lessons_body
 with open(os.path.join(WEB_DIR, "all_stories_and_skills_book.html"), "w", encoding="utf-8") as f:
     f.write(full_book_html)
 

@@ -680,8 +680,9 @@ with open(ws_html_path, "w", encoding="utf-8") as f:
     f.write(ws_html)
 
 # Also save full book HTML to web directory
+ws_body = ws_html.split("<body>", 1)[1] if "<body>" in ws_html else ws_html
 with open(os.path.join(WEB_DIR, "all_worksheets_book.html"), "w", encoding="utf-8") as f:
-    f.write(intro_html.replace("</body>\n</html>", "") + ws_html.replace("<!doctype html>\n<html lang=\"zh-Hant\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>101堂特教學習單內頁</title>\n  <style>" + css + "</style>\n</head>\n<body>", ""))
+    f.write(intro_html.replace("</body>\n</html>", "") + ws_body)
 
 print("HTML files generated. Printing Part A (Intro: 1 Cover + 4 TOC pages)...")
 pdf_intro = "/tmp/part_intro.pdf"
