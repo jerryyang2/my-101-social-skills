@@ -172,9 +172,9 @@ html, body {
 .toc-item:hover {
   background: #e0f2fe;
 }
-.toc-num { font-weight: 900; color: #0f766e; min-width: 52px; flex-shrink: 0; white-space: nowrap; }
+.toc-num { font-weight: 900; color: #0f766e; min-width: 50px; flex-shrink: 0; white-space: nowrap; }
 .toc-text { font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 0%; min-width: 0; margin: 0 4px; }
-.toc-skill { font-weight: 800; color: #b45309; font-size: 0.72rem; flex-shrink: 0; white-space: nowrap; text-align: right; }
+.toc-skill { font-weight: 800; color: #b45309; font-size: 0.71rem; flex-shrink: 0; max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
 
 /* 標頭樣式 */
 .page-header {
@@ -629,8 +629,8 @@ for b in weeks:
     d = b.get("date", "")
     rp = roleplays.get(b["id"], {})
     sc = rp.get("scenario", "")
-    if len(sc) > 22:
-        sc = sc[:20] + "..."
+    if len(sc) > 12:
+        sc = sc[:10] + "..."
     page_target = 3 + ln
     intro_html += f"""
       <a href="#lesson-{ln}" class="toc-item">
@@ -661,8 +661,8 @@ for b in ideas:
     t = clean_title(b)
     rp = roleplays.get(b["id"], {})
     sc = rp.get("scenario", "")
-    if len(sc) > 22:
-        sc = sc[:20] + "..."
+    if len(sc) > 12:
+        sc = sc[:10] + "..."
     page_target = 3 + ln
     intro_html += f"""
       <a href="#lesson-{ln}" class="toc-item">

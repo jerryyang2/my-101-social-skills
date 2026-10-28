@@ -140,9 +140,9 @@ html, body {
 .toc-item:hover {
   background: #e0f2fe;
 }
-.toc-num { font-weight: 900; color: #0f766e; min-width: 52px; flex-shrink: 0; white-space: nowrap; }
+.toc-num { font-weight: 900; color: #0f766e; min-width: 50px; flex-shrink: 0; white-space: nowrap; }
 .toc-text { font-weight: 700; color: #1e293b; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 0%; min-width: 0; margin: 0 4px; }
-.toc-skill { font-weight: 800; color: #b45309; font-size: 0.72rem; flex-shrink: 0; white-space: nowrap; text-align: right; }
+.toc-skill { font-weight: 800; color: #b45309; font-size: 0.71rem; flex-shrink: 0; max-width: 48%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
 
 /* 課堂內頁標頭 */
 .page-header {
