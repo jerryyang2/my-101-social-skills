@@ -8828,9 +8828,7 @@ function renderSidebar() {
     const card = document.createElement("div");
     card.className = `date-card ${b.id === activeBriefingId ? "active" : ""} ${isCompleted ? "is-completed" : ""}`;
     card.onclick = () => {
-      activeBriefingId = b.id;
-      renderSidebar();
-      renderMainContent();
+      selectBriefingById(b.id);
     };
 
     const tagsHtml = b.tags.map(t => {
@@ -8863,6 +8861,83 @@ function renderSidebar() {
   });
   updateCourseProgressBar();
 }
+
+// 乾淨格式化課堂標題（用於快速選單）
+function formatCleanTitleForDropdown(b) {
+  if (!b) return "";
+  const fest = b.festival ? `【${b.festival}】` : "";
+  let cleanTitle = (b.title || "").replace(/^【.*?】[——\-：:\s]*/, "");
+  if (b.festival && cleanTitle.startsWith(b.festival)) {
+    cleanTitle = cleanTitle.substring(b.festival.length).replace(/^[與和的大作戰——\-：:\s]+/, "");
+  }
+  return `${fest}${cleanTitle}`;
+}
+
+// 渲染快速跳轉週次與日期下拉選單
+function renderDateDropdowns() {
+  const mainSel = document.getElementById("mainDateDropdown");
+  const sideSel = document.getElementById("sidebarDateDropdown");
+  if (!mainSel && !sideSel) return;
+
+  const newWeeks = currentBriefings.filter(b => !b.legacy);
+  const legacyWeeks = currentBriefings.filter(b => b.legacy);
+
+  let html = "";
+  if (newWeeks.length > 0) {
+    html += `<optgroup label="🌟 52 週特教社交新課綱（每週一課）">`;
+    html += newWeeks.map(b => `
+      <option value="${b.id}" ${b.id === activeBriefingId ? "selected" : ""}>
+        第 ${b.lessonNumber} 週 · ${formatCleanTitleForDropdown(b)} (${b.date || ''})
+      </option>
+    `).join("");
+    html += `</optgroup>`;
+  }
+  if (legacyWeeks.length > 0) {
+    html += `<optgroup label="💡 特教備課靈感庫專題（第 53-101 課 · 共 49 堂）">`;
+    html += legacyWeeks.map(b => `
+      <option value="${b.id}" ${b.id === activeBriefingId ? "selected" : ""}>
+        第 ${b.lessonNumber} 課 · ${b.title}
+      </option>
+    `).join("");
+    html += `</optgroup>`;
+  }
+
+  [mainSel, sideSel].forEach(sel => {
+    if (!sel) return;
+    sel.innerHTML = html;
+    sel.value = activeBriefingId;
+    sel.onchange = (e) => {
+      selectBriefingById(e.target.value);
+    };
+  });
+}
+
+// 前進或後退一週/堂
+window.stepBriefing = function(delta) {
+  const idx = currentBriefings.findIndex(b => b.id === activeBriefingId);
+  if (idx === -1) return;
+  const nextIdx = idx + delta;
+  if (nextIdx >= 0 && nextIdx < currentBriefings.length) {
+    selectBriefingById(currentBriefings[nextIdx].id);
+  }
+};
+
+// 選取指定課程 ID
+window.selectBriefingById = function(id) {
+  const found = currentBriefings.find(b => b.id === id);
+  if (found) {
+    activeBriefingId = id;
+    renderSidebar();
+    renderMainContent();
+    renderDateDropdowns();
+    setTimeout(() => {
+      const activeCard = document.querySelector('.date-card.active');
+      if (activeCard) {
+        activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }, 50);
+  }
+};
 
 // 全部展開或收合教師教學指引
 window.toggleAllTeacherGuides = function(shouldOpen) {
@@ -10092,6 +10167,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMainContent();
   renderIndexStudentStars();
   updateCourseProgressBar();
+  renderDateDropdowns();
   const voiceSel = document.getElementById("indexVoiceGenderSelector");
   if (voiceSel) {
     voiceSel.value = localStorage.getItem("preferred_tts_gender") || "female";

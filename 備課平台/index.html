@@ -46,6 +46,15 @@
         <span style="font-size: 0.75rem; color: var(--text-muted);">按日期與週次排序</span>
       </div>
 
+      <!-- 快速跳轉下拉選單 -->
+      <div class="sidebar-quick-jump">
+        <label for="sidebarDateDropdown" class="sidebar-quick-jump-label">
+          <span>⚡ 快速選取週次／堂數：</span>
+          <span style="font-size:0.75rem; color:#64748b; font-weight:700;">(或點下方卡片)</span>
+        </label>
+        <select class="quick-jump-select" id="sidebarDateDropdown" title="快速切換第幾週或指定日期"></select>
+      </div>
+
       <!-- Course Completion Semester Progress Bar -->
       <div class="course-progress-panel">
         <div class="progress-info-row">
@@ -177,6 +186,26 @@
       <!-- Daily Banner -->
       <article class="daily-banner">
         <div class="washi-tape-strip washi-tape-yellow"></div>
+
+        <!-- 頂部快速切換週次／堂數工具列 (Quick Switcher Bar) -->
+        <div class="quick-course-nav-bar">
+          <div class="quick-nav-left">
+            <button type="button" class="nav-step-btn" onclick="stepBriefing(-1)" title="切換至上一週/上一堂課">
+              ◀ 上一週 / 堂
+            </button>
+            <div class="quick-select-wrapper">
+              <span class="quick-select-icon">📅</span>
+              <select class="quick-select-dropdown" id="mainDateDropdown" title="直接點擊下拉選擇第幾週、第幾堂課或日期"></select>
+            </div>
+            <button type="button" class="nav-step-btn" onclick="stepBriefing(1)" title="切換至下一週/下一堂課">
+              下一週 / 堂 ▶
+            </button>
+          </div>
+          <div class="quick-nav-right">
+            <span class="quick-nav-hint">💡 亦可直接點選左側「📅 課堂備課歷程」卡片切換</span>
+          </div>
+        </div>
+
         <div class="banner-meta">
           <span class="date-pill" id="bannerDate">📅 2026-10-26 (一)</span>
           <span class="curriculum-code" id="bannerCode">特需領綱 社2-II-1</span>
