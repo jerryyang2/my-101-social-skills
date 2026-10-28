@@ -442,7 +442,7 @@
   // 立體童趣造島造型形狀生成器 (Unique 3D Organic Beveled Shapes)
   // ==========================================
 
-  // 1. 胖胖五角大金星 (中央英雄基地，象徵最高榮譽大星光)
+  // 1. 胖胖五角大金星 (中央閃亮亮星星城堡，象徵最高榮譽大星光)
   function createStarShape(pts = 5, outerR = 6.2, innerR = 3.8) {
     const shape = new THREE.Shape();
     for (let i = 0; i < pts * 2; i++) {
@@ -696,7 +696,7 @@
 
   // 建造群島全景 (立體童話微縮模型島嶼)
   function buildArchipelago() {
-    // 1. 中央閃亮亮英雄基地 (Hero's Star Citadel)
+    // 1. 中央閃亮亮星星城堡 (Star Castle)
     const centerGroup = makeChubbySculptedIsland(createStarShape(5, 6.2, 3.8), 2.2, 0xfef08a, 0x94a3b8, 1.0);
     centerGroup.position.set(0, 0, 0);
 
@@ -707,7 +707,7 @@
     roof.rotation.y = Math.PI / 4;
     centerGroup.add(citadelTower, roof);
 
-    // 4 座小英雄色彩衛兵尖塔 (紅 🦁、橘 🐻、綠 🐼、紫 🦊)
+    // 4 座小夥伴色彩衛兵尖塔 (紅 🦁、橘 🐻、綠 🐼、紫 🦊)
     const turretColors = [0xef4444, 0xf97316, 0x10b981, 0x8b5cf6];
     const turretOffsets = [
       { x: -1.4, z: -1.4 }, { x: 1.4, z: -1.4 },
@@ -730,7 +730,7 @@
 
     scene.add(centerGroup);
     centerMesh = centerGroup;
-    add3DLabel('🏰 英雄基地', centerGroup, 8.5, true, -1);
+    add3DLabel('⭐ 星星城堡', centerGroup, 8.5, true, -1);
 
     // 2. 四大主題島嶼 (立體專屬外型：愛心、對話泡泡、四葉草、魔法齒輪)
     const islandRadius = 25;
@@ -1870,7 +1870,7 @@
   }
 
   // ==========================================
-  // 10. 中央英豪總部與數位榮譽證書
+  // 10. 中央閃亮亮星星城堡與數位榮譽證書
   // ==========================================
   function openCitadelModal() {
     document.body.classList.add('modal-open');
