@@ -1787,7 +1787,7 @@ function renderSlideReward(container) {
     <!-- Management Tools -->
     <div style="display:flex; justify-content:center; gap:16px; margin-top:20px; flex-wrap:wrap;">
       <a class="c-btn" href="worksheet.html?id=${currentBriefing.id}" target="_blank" style="background:#fef08a; border-color:#eab308; color:#854d0e; font-weight:900;">
-        📄 今日彩色圖文學習單 (可列印)
+        📄 開啟今日彩色圖文學習單
       </a>
       <button class="c-btn" style="background:#fef2f2; border-color:#fecaca; color:#991b1b;" onclick="resetStudentStars()">
         🎁 獎勵兌換完畢（星星歸零）
