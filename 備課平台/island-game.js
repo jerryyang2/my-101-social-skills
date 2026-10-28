@@ -1,94 +1,172 @@
 /**
- * 社交小超人群島大冒險 (IsleForge 3D Island Game) 核心引擎
- * 採用 Three.js + Web Audio API + Web Speech API
- * 100% 免安裝純前端、支援離線與無障礙 2D 平面切換
+ * 大埤國小學習教室 · 社交小超人群島大冒險 (IsleForge 3D 概念 特教 RPG 冒險遊戲)
+ * 核心引擎：Three.js + Web Audio API + Web Speech API + 3D 角色即時行走
+ * 100% 離線免安裝、無外部相依、支援跨載具/電子白板/平板與無障礙 2D 平面切換
  */
 
-(function () {
+(function (window) {
   'use strict';
 
-  // --- 全域狀態 ---
+  // ==========================================
+  // 1. RPG 冒險者與全域狀態管理 (State)
+  // ==========================================
+  const HERO_LOOKS = {
+    dino: { name: '新芽小綠恐龍', avatar: '🦖', bodyColor: 0x22c55e, capColor: 0x16a34a },
+    lion: { name: '勇氣紅鬃獅', avatar: '🦁', bodyColor: 0xef4444, capColor: 0xb91c1c },
+    unicorn: { name: '智慧藍海馬', avatar: '🦄', bodyColor: 0x3b82f6, capColor: 0x1d4ed8 },
+    rocket: { name: '衝鋒紫火箭', avatar: '🚀', bodyColor: 0x8b5cf6, capColor: 0x6d28d9 }
+  };
+
+  const LEVELS = [
+    { lv: 1, title: '社交見習生', reqExp: 0 },
+    { lv: 2, title: '超能力初心者', reqExp: 60 },
+    { lv: 3, title: '溝通小達人', reqExp: 150 },
+    { lv: 4, title: '情緒調適領航員', reqExp: 270 },
+    { lv: 5, title: '傳奇社交守護者', reqExp: 420 }
+  ];
+
   const state = {
     theme: 'cream', // 'cream' | 'sea' | 'night'
     soundEnabled: true,
     ttsSpeed: 0.8,
     viewMode: '3d', // '3d' | '2d'
+    cameraFollow: true,
+    
+    // 冒險者角色
+    heroName: '小宇',
+    heroLook: 'dino',
+    exp: 25,
+    stars: 0,
+    passedWeeks: new Set(),
+    islandStamps: [false, false, false, false], // 4 大島章
+    
+    // 遊戲運行中視角與位置
     activeIslandIndex: 0,
     activeWeekNumber: 1,
-    passedWeeks: new Set(),
-    studentStars: 0,
-    cameraTarget: null,
-    isTransitioning: false
+    playerPos: { x: 0, z: 0 },
+    playerTargetPos: { x: 0, z: 0 },
+    playerAngle: 0,
+    isWalking: false,
+    walkTime: 0
   };
 
-  // 讀取本地通關紀錄
-  try {
-    const saved = localStorage.getItem('social_island_progress');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed.passed)) state.passedWeeks = new Set(parsed.passed);
-      if (typeof parsed.stars === 'number') state.studentStars = parsed.stars;
-    }
-  } catch (e) { console.warn('無法讀取本機進度', e); }
-
-  function saveProgress() {
+  // 讀取本地進度
+  function loadLocalProgress() {
     try {
-      localStorage.setItem('social_island_progress', JSON.stringify({
-        passed: Array.from(state.passedWeeks),
-        stars: state.studentStars
-      }));
-    } catch (e) { }
+      const saved = localStorage.getItem('isleforge_hero_rpg_save');
+      if (saved) {
+        const d = JSON.parse(saved);
+        if (d.name) state.heroName = d.name;
+        if (d.look && HERO_LOOKS[d.look]) state.heroLook = d.look;
+        if (typeof d.exp === 'number') state.exp = d.exp;
+        if (typeof d.stars === 'number') state.stars = d.stars;
+        if (Array.isArray(d.passed)) state.passedWeeks = new Set(d.passed);
+        if (Array.isArray(d.stamps)) state.islandStamps = d.stamps;
+      }
+    } catch (e) {
+      console.warn('無法讀取本地進度', e);
+    }
   }
 
-  // --- 4 大主題島嶼與守護角色資料 ---
+  function saveLocalProgress() {
+    try {
+      const d = {
+        name: state.heroName,
+        look: state.heroLook,
+        exp: state.exp,
+        stars: state.stars,
+        passed: Array.from(state.passedWeeks),
+        stamps: state.islandStamps
+      };
+      localStorage.setItem('isleforge_hero_rpg_save', JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  loadLocalProgress();
+
+  // 計算等級與進度百分比
+  function getLevelInfo(exp) {
+    let curLv = LEVELS[0];
+    let nextLv = LEVELS[1];
+    for (let i = LEVELS.length - 1; i >= 0; i--) {
+      if (exp >= LEVELS[i].reqExp) {
+        curLv = LEVELS[i];
+        nextLv = LEVELS[i + 1] || null;
+        break;
+      }
+    }
+    const curBase = curLv.reqExp;
+    const nextBase = nextLv ? nextLv.reqExp : curLv.reqExp + 100;
+    const progress = Math.min(100, Math.max(0, Math.round(((exp - curBase) / (nextBase - curBase)) * 100)));
+    return {
+      level: curLv.lv,
+      title: curLv.title,
+      progress,
+      curBase,
+      nextBase,
+      isMax: !nextLv
+    };
+  }
+
+  // ==========================================
+  // 2. 4 大主題島嶼與 52 週課程資料定義
+  // ==========================================
   const ISLAND_THEMES = [
     {
-      id: 1,
+      id: 0,
       name: "🌋 情緒魔法島",
       subtitle: "自我察覺與情緒調適",
       color: "#ef4444",
       accent: "#f59e0b",
-      landColor: "#86efac",
+      landColor: 0x86efac,
+      cliffColor: 0xd8c39a,
       mascot: "🦁 宇獅獅",
+      mascotRole: "情緒守護長",
       mascotDesc: "自閉症特質小英雄，在島上學習感受自己的心跳、情緒溫度計與烏龜深呼吸",
       weeksRange: [1, 13],
       monster: "💥 暴怒火怪與焦慮雷雲",
       minigameType: "breathe"
     },
     {
-      id: 2,
+      id: 1,
       name: "📢 清晰溝通島",
       subtitle: "專注傾聽與我訊息表達",
       color: "#3b82f6",
       accent: "#06b6d4",
-      landColor: "#7dd3fc",
+      landColor: 0x7dd3fc,
+      cliffColor: 0xcfd8dc,
       mascot: "🐻 畯熊熊",
+      mascotRole: "溝通傳訊官",
       mascotDesc: "情緒行為特質小英雄，在島上學習拿起說話魔杖、發射我訊息火箭與調控音量",
       weeksRange: [14, 26],
       monster: "🗯️ 動手動腳小怪獸與插嘴精靈",
       minigameType: "imsg"
     },
     {
-      id: 3,
+      id: 2,
       name: "🤝 同儕友誼島",
       subtitle: "友善互動與團體合作",
       color: "#10b981",
       accent: "#ec4899",
-      landColor: "#a7f3d0",
+      landColor: 0xa7f3d0,
+      cliffColor: 0xd7ccc8,
       mascot: "🐼 和貓熊",
+      mascotRole: "友誼大信使",
       mascotDesc: "自閉症伴學障小英雄，在島上學習走過擊掌彩虹橋、輪流等待摩天輪與分享玩具",
       weeksRange: [27, 39],
       monster: "🚫 霸佔玩具大王與不理人迷霧",
       minigameType: "highfive"
     },
     {
-      id: 4,
+      id: 3,
       name: "🛡️ 彈性解決島",
       subtitle: "挫折修復與彈性應變",
       color: "#8b5cf6",
       accent: "#eab308",
-      landColor: "#c4b5fd",
+      landColor: 0xc4b5fd,
+      cliffColor: 0xd1c4e9,
       mascot: "🦊 嘉狐狸",
+      mascotRole: "思考智囊官",
       mascotDesc: "自閉症(ASD)小英雄，在島上學習轉動彈性思考齒輪、寫下道歉修復信與輸了不暴走",
       weeksRange: [40, 52],
       monster: "💢 輸不起暴走龍與死板牛角尖",
@@ -96,25 +174,26 @@
     }
   ];
 
-  // 取得 52 週課程資料
+  // 取得 52 週課程資料（從 app.js 的 defaultBriefings 動態取得）
   let allWeeks = [];
   if (typeof defaultBriefings !== 'undefined' && Array.isArray(defaultBriefings)) {
     allWeeks = defaultBriefings.filter(b => b.id && b.id.startsWith('b-week-'));
   }
-  // 若未載入 app.js 則安全預設
   if (allWeeks.length === 0) {
     for (let i = 1; i <= 52; i++) {
       allWeeks.push({
         id: `b-week-${i}`,
         lessonNumber: i,
         title: `第 ${i} 週社交超能力探索`,
-        superSkill: `第 ${i} 課超能力技能`,
+        superSkill: `第 ${i} 課超能力招式`,
         summary: `學習在日常校園中應用特教社交超能力。`
       });
     }
   }
 
-  // --- Web Audio API 柔和音效引擎 ---
+  // ==========================================
+  // 3. Web Audio 柔和合成音效引擎 (純離線)
+  // ==========================================
   let audioCtx = null;
   function getAudioContext() {
     if (!audioCtx) {
@@ -128,40 +207,21 @@
   }
 
   const sfx = {
-    playChime() {
-      if (!state.soundEnabled) return;
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-        gain.gain.setValueAtTime(0.12, now + idx * 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.4);
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start(now + idx * 0.08);
-        osc.stop(now + idx * 0.08 + 0.45);
-      });
-    },
-    playBuzz() {
+    playStep() {
       if (!state.soundEnabled) return;
       const ctx = getAudioContext();
       if (!ctx) return;
       const now = ctx.currentTime;
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(150, now);
-      osc.frequency.setValueAtTime(120, now + 0.12);
-      gain.gain.setValueAtTime(0.15, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(440, now);
+      gain.gain.setValueAtTime(0.02, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.05);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(now);
-      osc.stop(now + 0.35);
+      osc.stop(now + 0.06);
     },
     playClick() {
       if (!state.soundEnabled) return;
@@ -172,39 +232,107 @@
       const gain = ctx.createGain();
       osc.type = 'sine';
       osc.frequency.setValueAtTime(800, now);
-      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.setValueAtTime(0.06, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start(now);
       osc.stop(now + 0.09);
     },
+    playChime() {
+      if (!state.soundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+        gain.gain.setValueAtTime(0.1, now + idx * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.08);
+        osc.stop(now + idx * 0.08 + 0.4);
+      });
+    },
     playFanfare() {
       if (!state.soundEnabled) return;
       const ctx = getAudioContext();
       if (!ctx) return;
       const now = ctx.currentTime;
-      const chord = [392.00, 523.25, 659.25, 783.99, 1046.50];
-      chord.forEach((freq, idx) => {
+      [523.25, 659.25, 783.99, 1046.5, 1318.5].forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.06);
-        gain.gain.setValueAtTime(0.15, now + idx * 0.06);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + 0.8);
+        osc.frequency.setValueAtTime(freq, now + idx * 0.1);
+        gain.gain.setValueAtTime(0.14, now + idx * 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.5);
         osc.connect(gain);
         gain.connect(ctx.destination);
-        osc.start(now + idx * 0.06);
-        osc.stop(now + idx * 0.06 + 0.85);
+        osc.start(now + idx * 0.1);
+        osc.stop(now + idx * 0.1 + 0.55);
       });
+    },
+    playLevelUp() {
+      if (!state.soundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      [392.0, 523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.09);
+        gain.gain.setValueAtTime(0.16, now + idx * 0.09);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.09 + 0.6);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.09);
+        osc.stop(now + idx * 0.09 + 0.65);
+      });
+    },
+    playStamp() {
+      if (!state.soundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.exponentialRampToValueAtTime(60, now + 0.15);
+      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.22);
+    },
+    playBuzz() {
+      if (!state.soundEnabled) return;
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(180, now);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.28);
     }
   };
 
-  // --- Web Speech API 特教語音朗讀 ---
+  // Web Speech API 特教語音朗讀
   function speakText(text) {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const cleanText = text.replace(/[🦁🐻🐼🦊💥🌟⚠️👉🌱🎈🎒]/g, '').trim();
+    const cleanText = text.replace(/[🦁🐻🐼🦊💥🌟⚠️👉🌱🎈🎒🦕🦖🦄🚀]/g, '').trim();
     if (!cleanText) return;
     const ut = new SpeechSynthesisUtterance(cleanText);
     ut.lang = 'zh-TW';
@@ -213,7 +341,9 @@
     window.speechSynthesis.speak(ut);
   }
 
-  // --- Three.js 3D 群島生成引擎 ---
+  // ==========================================
+  // 4. Three.js 3D 群島與角色生成引擎
+  // ==========================================
   let scene, camera, renderer, seaMesh, hemiLight, sunLight;
   let islandMeshes = [];
   let subIslandMeshes = [];
@@ -221,16 +351,24 @@
   let rotatingDecorations = [];
   let clouds = [];
   let labels = [];
+  
+  // 3D 角色模型群組
+  let playerGroup = null;
+  let playerLegL = null;
+  let playerLegR = null;
+  let playerBodyMesh = null;
+  let playerCapMesh = null;
 
   const stage = document.getElementById('stage');
   const canvas = document.getElementById('threeCanvas');
   const labelLayer = document.getElementById('labelLayer');
 
   // 視角控制變數
-  let yaw = 0.5, pitch = 0.75, dist = 58;
+  let yaw = 0.5, pitch = 0.72, dist = 55;
   let targetYaw = yaw, targetPitch = pitch, targetDist = dist;
   let isPointerDown = false;
   let pointerStart = { x: 0, y: 0, yaw: 0, pitch: 0 };
+  let cameraTarget = new THREE.Vector3(0, 0, 0);
 
   function initThree() {
     if (!window.THREE) {
@@ -238,9 +376,8 @@
       return;
     }
 
-    // 建立場景與攝影機
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(45, stage.clientWidth / stage.clientHeight, 0.1, 500);
+    camera = new THREE.PerspectiveCamera(45, stage.clientWidth / stage.clientHeight, 0.1, 600);
     camera.position.set(0, 35, 55);
     camera.lookAt(0, 0, 0);
 
@@ -248,42 +385,47 @@
     renderer.setSize(stage.clientWidth, stage.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // 環境光與直射陽光
-    hemiLight = new THREE.HemisphereLight(0xffffff, 0x94a3b8, 0.65);
+    hemiLight = new THREE.HemisphereLight(0xffffff, 0x94a3b8, 0.7);
     scene.add(hemiLight);
 
-    sunLight = new THREE.DirectionalLight(0xffedd5, 0.85);
-    sunLight.position.set(25, 45, 30);
+    sunLight = new THREE.DirectionalLight(0xffedd5, 0.88);
+    sunLight.position.set(28, 48, 32);
     scene.add(sunLight);
 
     // 大海
-    const seaGeo = new THREE.CircleGeometry(90, 64);
+    const seaGeo = new THREE.CircleGeometry(110, 64);
     const seaMat = new THREE.MeshLambertMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.88 });
     seaMesh = new THREE.Mesh(seaGeo, seaMat);
     seaMesh.rotation.x = -Math.PI / 2;
     seaMesh.position.y = -0.2;
     scene.add(seaMesh);
 
-    // 建立群島
+    // 建造群島
     buildArchipelago();
 
-    // 建立浮雲
+    // 建造 3D 冒險者角色
+    buildPlayerCharacter();
+
+    // 建造浮雲
     buildClouds();
 
-    // 綁定視角拖曳與縮放事件
+    // 綁定操作事件
     bindControls();
 
-    // 監聽視窗尺寸改變
+    // 視窗 resize
     window.addEventListener('resize', onWindowResize);
 
     // 套用初始主題色彩
     applyThemeColors(state.theme);
 
-    // 啟動渲染動畫循環
+    // 更新頂部 HUD
+    updateHudDisplay();
+
+    // 啟動渲染迴圈
     requestAnimationFrame(renderLoop);
   }
 
-  // 輔助幾何積木
+  // 幾何輔助積木
   function makeBox(w, h, d, color, x = 0, y = 0, z = 0) {
     const geo = new THREE.BoxGeometry(w, h, d);
     const mat = new THREE.MeshLambertMaterial({ color, flatShading: true });
@@ -294,7 +436,7 @@
 
   function makeHexIsland(radius, height, topColor, cliffColor = 0xd8c39a) {
     const group = new THREE.Group();
-    // 懸崖底座 (六角柱)
+    // 懸崖底座
     const cliffGeo = new THREE.CylinderGeometry(radius * 1.05, radius * 0.85, height, 6);
     const cliffMat = new THREE.MeshLambertMaterial({ color: cliffColor, flatShading: true });
     const cliff = new THREE.Mesh(cliffGeo, cliffMat);
@@ -330,64 +472,138 @@
     return g;
   }
 
-  // 建造群島
+  // 建造 3D 低多邊形冒險者小英雄
+  function buildPlayerCharacter() {
+    playerGroup = new THREE.Group();
+    const look = HERO_LOOKS[state.heroLook] || HERO_LOOKS.dino;
+
+    // 雙腿
+    const legGeo = new THREE.CylinderGeometry(0.12, 0.12, 0.45, 6);
+    const legMat = new THREE.MeshLambertMaterial({ color: 0x334155, flatShading: true });
+    
+    playerLegL = new THREE.Mesh(legGeo, legMat);
+    playerLegL.position.set(-0.16, 0.22, 0);
+    playerGroup.add(playerLegL);
+
+    playerLegR = new THREE.Mesh(legGeo, legMat);
+    playerLegR.position.set(0.16, 0.22, 0);
+    playerGroup.add(playerLegR);
+
+    // 身體軀幹 (探險服裝)
+    const bodyGeo = new THREE.CylinderGeometry(0.28, 0.24, 0.65, 6);
+    const bodyMat = new THREE.MeshLambertMaterial({ color: look.bodyColor, flatShading: true });
+    playerBodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
+    playerBodyMesh.position.y = 0.72;
+    playerGroup.add(playerBodyMesh);
+
+    // 後背包
+    const bagGeo = new THREE.BoxGeometry(0.3, 0.38, 0.2);
+    const bagMat = new THREE.MeshLambertMaterial({ color: 0xb45309, flatShading: true });
+    const bag = new THREE.Mesh(bagGeo, bagMat);
+    bag.position.set(0, 0.75, -0.22);
+    playerGroup.add(bag);
+
+    // 頭部
+    const headGeo = new THREE.SphereGeometry(0.32, 8, 8);
+    const headMat = new THREE.MeshLambertMaterial({ color: 0xfed7aa, flatShading: true });
+    const head = new THREE.Mesh(headGeo, headMat);
+    head.position.y = 1.25;
+    playerGroup.add(head);
+
+    // 冒險探險帽 / 徽章
+    const capGeo = new THREE.ConeGeometry(0.38, 0.35, 6);
+    const capMat = new THREE.MeshLambertMaterial({ color: look.capColor, flatShading: true });
+    playerCapMesh = new THREE.Mesh(capGeo, capMat);
+    playerCapMesh.position.y = 1.52;
+    playerGroup.add(playerCapMesh);
+
+    // 腳下微縮光環陰影
+    const shadowGeo = new THREE.CircleGeometry(0.42, 12);
+    const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.25 });
+    const shadow = new THREE.Mesh(shadowGeo, shadowMat);
+    shadow.rotation.x = -Math.PI / 2;
+    shadow.position.y = 0.02;
+    playerGroup.add(shadow);
+
+    // 初始位置放置於中央總部廣場大門前
+    playerGroup.position.set(0, 2.2, 2.8);
+    playerGroup.rotation.y = Math.PI; // 面向群島
+    playerGroup.scale.set(1.35, 1.35, 1.35); // 角色視覺清晰化
+    state.playerPos = { x: 0, z: 2.8 };
+    state.playerTargetPos = { x: 0, z: 2.8 };
+
+    scene.add(playerGroup);
+  }
+
+  // 更新角色外觀造型色彩
+  function updatePlayerLook(lookKey) {
+    state.heroLook = lookKey;
+    const look = HERO_LOOKS[lookKey] || HERO_LOOKS.dino;
+    if (playerBodyMesh) playerBodyMesh.material.color.setHex(look.bodyColor);
+    if (playerCapMesh) playerCapMesh.material.color.setHex(look.capColor);
+    const avatarEl = document.getElementById('hudAvatar');
+    if (avatarEl) avatarEl.textContent = look.avatar;
+    saveLocalProgress();
+  }
+
+  // 建造群島全景
   function buildArchipelago() {
     // 1. 中央英雄總部島 (Hero's Citadel)
-    const centerGroup = makeHexIsland(5.5, 2.2, 0xe0e7ff, 0x94a3b8);
+    const centerGroup = makeHexIsland(5.8, 2.2, 0xe0e7ff, 0x94a3b8);
     centerGroup.position.set(0, 0, 0);
 
-    // 中央紀念塔與金星
-    const citadelTower = makeBox(1.8, 3.2, 1.8, 0x6366f1, 0, centerGroup.userData.topY, 0);
+    const citadelTower = makeBox(2.0, 3.5, 2.0, 0x6366f1, 0, centerGroup.userData.topY, 0);
     centerGroup.add(citadelTower);
 
-    // 漂浮旋轉金星水晶
-    const starGeo = new THREE.OctahedronGeometry(1.2, 0);
+    // 漂浮旋轉金色星星水晶
+    const starGeo = new THREE.OctahedronGeometry(1.3, 0);
     const starMat = new THREE.MeshPhongMaterial({ color: 0xfbbf24, shininess: 90, flatShading: true });
     const starMesh = new THREE.Mesh(starGeo, starMat);
-    starMesh.position.set(0, centerGroup.userData.topY + 4.2, 0);
+    starMesh.position.set(0, centerGroup.userData.topY + 4.5, 0);
     centerGroup.add(starMesh);
     rotatingDecorations.push(starMesh);
 
     scene.add(centerGroup);
     centerMesh = centerGroup;
-    add3DLabel('⭐ 英雄總部', centerGroup, 7.5, true, -1);
+    add3DLabel('⭐ 英雄總部', centerGroup, 7.8, true, -1);
 
     // 2. 四大主題島嶼 (周圍環形排列)
-    const islandRadius = 24;
+    const islandRadius = 25;
     ISLAND_THEMES.forEach((theme, idx) => {
       const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
       const posX = Math.cos(angle) * islandRadius;
       const posZ = Math.sin(angle) * islandRadius;
 
-      const mainIsland = makeHexIsland(4.5, 1.8, theme.landColor);
+      const mainIsland = makeHexIsland(4.8, 1.8, theme.landColor, theme.cliffColor);
       mainIsland.position.set(posX, 0, posZ);
       mainIsland.userData.islandIndex = idx;
+      mainIsland.userData.islandCenter = { x: posX, z: posZ };
 
-      // 專屬地標
+      // 各島特色 3D 地標
       if (idx === 0) {
-        // 情緒島：燈塔火山
-        const beacon = makeBox(1.4, 2.5, 1.4, 0xef4444, 0, mainIsland.userData.topY, 0);
-        const topFire = new THREE.Mesh(new THREE.ConeGeometry(0.8, 1.2, 6), new THREE.MeshLambertMaterial({ color: 0xf59e0b }));
-        topFire.position.set(0, mainIsland.userData.topY + 3.1, 0);
+        // 情緒島：火山燈塔
+        const beacon = makeBox(1.5, 2.8, 1.5, 0xef4444, 0, mainIsland.userData.topY, 0);
+        const topFire = new THREE.Mesh(new THREE.ConeGeometry(0.85, 1.3, 6), new THREE.MeshLambertMaterial({ color: 0xf59e0b }));
+        topFire.position.set(0, mainIsland.userData.topY + 3.4, 0);
         mainIsland.add(beacon, topFire);
       } else if (idx === 1) {
-        // 溝通島：雷達高塔
-        const pole = makeBox(0.4, 3.5, 0.4, 0x3b82f6, 0, mainIsland.userData.topY, 0);
-        const dish = new THREE.Mesh(new THREE.TorusGeometry(1.0, 0.15, 6, 16), new THREE.MeshLambertMaterial({ color: 0x06b6d4 }));
-        dish.position.set(0, mainIsland.userData.topY + 3.2, 0);
+        // 溝通島：雷達衛星高塔
+        const pole = makeBox(0.4, 3.8, 0.4, 0x3b82f6, 0, mainIsland.userData.topY, 0);
+        const dish = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.16, 6, 16), new THREE.MeshLambertMaterial({ color: 0x06b6d4 }));
+        dish.position.set(0, mainIsland.userData.topY + 3.4, 0);
         dish.rotation.x = Math.PI / 3;
         mainIsland.add(pole, dish);
         rotatingDecorations.push(dish);
       } else if (idx === 2) {
         // 友誼島：彩虹拱門
-        const arch = new THREE.Mesh(new THREE.TorusGeometry(1.6, 0.25, 8, 24, Math.PI), new THREE.MeshLambertMaterial({ color: 0xec4899 }));
-        arch.position.set(0, mainIsland.userData.topY + 1.2, 0);
+        const arch = new THREE.Mesh(new THREE.TorusGeometry(1.8, 0.28, 8, 24, Math.PI), new THREE.MeshLambertMaterial({ color: 0xec4899 }));
+        arch.position.set(0, mainIsland.userData.topY + 1.4, 0);
         mainIsland.add(arch);
       } else {
         // 彈性島：思考齒輪風車
-        const windmill = makeBox(1.2, 2.8, 1.2, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
-        const gear = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.2, 6, 12), new THREE.MeshLambertMaterial({ color: 0xeab308 }));
-        gear.position.set(0, mainIsland.userData.topY + 2.4, 0.7);
+        const windmill = makeBox(1.3, 3.0, 1.3, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
+        const gear = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.22, 6, 12), new THREE.MeshLambertMaterial({ color: 0xeab308 }));
+        gear.position.set(0, mainIsland.userData.topY + 2.6, 0.7);
         mainIsland.add(windmill, gear);
         rotatingDecorations.push(gear);
       }
@@ -396,34 +612,35 @@
       for (let t = 0; t < 3; t++) {
         const tree = makeTree(0.9);
         const tAngle = (t / 3) * Math.PI * 2;
-        tree.position.set(Math.cos(tAngle) * 2.8, mainIsland.userData.topY, Math.sin(tAngle) * 2.8);
+        tree.position.set(Math.cos(tAngle) * 3.0, mainIsland.userData.topY, Math.sin(tAngle) * 3.0);
         mainIsland.add(tree);
       }
 
       scene.add(mainIsland);
       islandMeshes.push(mainIsland);
-      add3DLabel(`${theme.name}`, mainIsland, 5.5, false, idx);
+      add3DLabel(`${theme.name}`, mainIsland, 6.0, false, idx);
 
       // 連接中央島的木橋
-      const bridgeLen = islandRadius - 9.5;
-      const bridge = makeBox(1.2, 0.18, bridgeLen, 0xb45309, 0, 0.6, 0);
+      const bridgeLen = islandRadius - 10.2;
+      const bridge = makeBox(1.3, 0.18, bridgeLen, 0xb45309, 0, 0.6, 0);
       bridge.position.set(posX / 2, 0.6, posZ / 2);
       bridge.rotation.y = -angle + Math.PI / 2;
       scene.add(bridge);
 
       // 環繞主島的 13 顆小週次階梯島 (代表該島的 13 堂課)
       const [startW, endW] = theme.weeksRange;
-      const subRadius = 7.5;
+      const subRadius = 8.0;
       for (let w = startW; w <= endW; w++) {
         const subIndex = w - startW;
         const subAngle = angle + (subIndex / 13) * Math.PI * 1.6 - Math.PI * 0.8;
         const subX = posX + Math.cos(subAngle) * subRadius;
         const subZ = posZ + Math.sin(subAngle) * subRadius;
 
-        const subIsland = makeHexIsland(1.0, 0.8, state.passedWeeks.has(w) ? 0xfbbf24 : 0xffffff);
+        const subIsland = makeHexIsland(1.1, 0.85, state.passedWeeks.has(w) ? 0xfbbf24 : 0xffffff);
         subIsland.position.set(subX, 0, subZ);
         subIsland.userData.weekNumber = w;
         subIsland.userData.parentIslandIndex = idx;
+        subIsland.userData.subCenter = { x: subX, z: subZ };
 
         // 週次小旗幟
         const flag = makeBox(0.08, 0.9, 0.08, 0x475569, 0, subIsland.userData.topY, 0);
@@ -436,23 +653,23 @@
     });
   }
 
-  // 建立低多邊形浮雲
+  // 浮雲生成
   function buildClouds() {
-    for (let c = 0; c < 6; c++) {
+    for (let c = 0; c < 7; c++) {
       const cloud = new THREE.Group();
       const numPuffs = 4 + Math.floor(Math.random() * 3);
       for (let p = 0; p < numPuffs; p++) {
         const puff = new THREE.Mesh(
-          new THREE.DodecahedronGeometry(1.2 + Math.random() * 0.8, 1),
-          new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.85, flatShading: true })
+          new THREE.DodecahedronGeometry(1.3 + Math.random() * 0.8, 1),
+          new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.88, flatShading: true })
         );
-        puff.position.set((p - 2) * 1.2, (Math.random() - 0.5) * 0.6, (Math.random() - 0.5) * 0.8);
+        puff.position.set((p - 2) * 1.3, (Math.random() - 0.5) * 0.6, (Math.random() - 0.5) * 0.8);
         cloud.add(puff);
       }
-      const cloudAngle = (c / 6) * Math.PI * 2;
-      const cloudDist = 32 + Math.random() * 12;
-      cloud.position.set(Math.cos(cloudAngle) * cloudDist, 18 + Math.random() * 6, Math.sin(cloudAngle) * cloudDist);
-      cloud.userData.speed = 0.0008 + Math.random() * 0.0006;
+      const cloudAngle = (c / 7) * Math.PI * 2;
+      const cloudDist = 34 + Math.random() * 14;
+      cloud.position.set(Math.cos(cloudAngle) * cloudDist, 20 + Math.random() * 6, Math.sin(cloudAngle) * cloudDist);
+      cloud.userData.speed = 0.0007 + Math.random() * 0.0005;
       cloud.userData.radius = cloudDist;
       cloud.userData.angle = cloudAngle;
       scene.add(cloud);
@@ -469,9 +686,12 @@
       e.stopPropagation();
       sfx.playClick();
       if (isCenter) {
-        openCitadelModal();
+        walkToAndTrigger(0, 0, () => openCitadelModal());
       } else {
-        focusIsland(islandIdx);
+        const targetIsland = islandMeshes[islandIdx];
+        if (targetIsland) {
+          walkToAndTrigger(targetIsland.position.x, targetIsland.position.z, () => focusIsland(islandIdx));
+        }
       }
     });
     labelLayer.appendChild(el);
@@ -479,6 +699,11 @@
   }
 
   function updateLabels() {
+    if (document.body.classList.contains('modal-open')) {
+      labels.forEach(item => { item.el.style.display = 'none'; });
+      return;
+    }
+
     const w = stage.clientWidth, h = stage.clientHeight;
     const tempV = new THREE.Vector3();
 
@@ -487,7 +712,6 @@
       tempV.y += item.yOffset;
       tempV.project(camera);
 
-      // 若在攝影機背面則隱藏
       if (tempV.z > 1) {
         item.el.style.display = 'none';
         return;
@@ -500,32 +724,14 @@
     });
   }
 
-  // 聚焦島嶼視角
-  function focusIsland(idx) {
-    state.activeIslandIndex = idx;
-    const targetIsland = islandMeshes[idx];
-    if (!targetIsland) return;
-
-    const [startW] = ISLAND_THEMES[idx].weeksRange;
-    openQuestDrawer(idx, startW);
-
-    // 滑順飛向島嶼
-    const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
-    targetYaw = -angle + Math.PI / 2;
-    targetPitch = 0.65;
-    targetDist = 38;
-
-    updateHudCard(idx);
+  // 3D 冒險者行走邏輯
+  function walkToAndTrigger(tx, tz, onArrive) {
+    state.playerTargetPos.x = tx;
+    state.playerTargetPos.z = tz;
+    state.onArriveCallback = onArrive;
   }
 
-  function resetArchipelagoView() {
-    targetYaw = 0.5;
-    targetPitch = 0.75;
-    targetDist = 58;
-    closeQuestDrawer();
-  }
-
-  // 綁定視角拖曳與縮放
+  // 視角控制器與 Raycaster 點擊
   function bindControls() {
     stage.addEventListener('pointerdown', e => {
       isPointerDown = true;
@@ -541,7 +747,7 @@
       const dx = e.clientX - pointerStart.x;
       const dy = e.clientY - pointerStart.y;
       targetYaw = pointerStart.yaw - dx * 0.007;
-      targetPitch = Math.min(1.3, Math.max(0.3, pointerStart.pitch + dy * 0.005));
+      targetPitch = Math.min(1.3, Math.max(0.25, pointerStart.pitch + dy * 0.005));
     });
 
     const onPointerUp = () => { isPointerDown = false; };
@@ -550,10 +756,10 @@
 
     stage.addEventListener('wheel', e => {
       e.preventDefault();
-      targetDist = Math.min(80, Math.max(22, targetDist + e.deltaY * 0.04));
+      targetDist = Math.min(85, Math.max(20, targetDist + e.deltaY * 0.04));
     }, { passive: false });
 
-    // 支援 3D 物件 Raycaster 點擊
+    // 點擊 3D 物件導航
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
@@ -570,8 +776,9 @@
         let root = islandIntersects[0].object;
         while (root.parent && root.userData.islandIndex === undefined) root = root.parent;
         if (root.userData.islandIndex !== undefined) {
+          const idx = root.userData.islandIndex;
           sfx.playClick();
-          focusIsland(root.userData.islandIndex);
+          walkToAndTrigger(root.position.x, root.position.z, () => focusIsland(idx));
           return;
         }
       }
@@ -581,7 +788,7 @@
         const centerIntersects = raycaster.intersectObject(centerMesh, true);
         if (centerIntersects.length > 0) {
           sfx.playClick();
-          openCitadelModal();
+          walkToAndTrigger(0, 2.8, () => openCitadelModal());
           return;
         }
       }
@@ -595,11 +802,43 @@
           sfx.playClick();
           const w = root.userData.weekNumber;
           const pIdx = root.userData.parentIslandIndex;
-          openQuestDrawer(pIdx, w);
+          walkToAndTrigger(root.position.x, root.position.z, () => openQuestDrawer(pIdx, w));
           return;
         }
       }
     });
+
+    // 鍵盤 WASD / 方向鍵行走控制
+    window.addEventListener('keydown', e => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      const speed = 1.4;
+      if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
+        state.playerTargetPos.z -= speed;
+      } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
+        state.playerTargetPos.z += speed;
+      } else if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
+        state.playerTargetPos.x -= speed;
+      } else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
+        state.playerTargetPos.x += speed;
+      }
+    });
+
+    // 虛擬 D-pad 控制
+    const dpad = document.getElementById('virtualDpad');
+    if (dpad) {
+      dpad.querySelectorAll('.dpad-btn').forEach(btn => {
+        const step = () => {
+          const dir = btn.dataset.dir;
+          const speed = 2.0;
+          if (dir === 'up') state.playerTargetPos.z -= speed;
+          if (dir === 'down') state.playerTargetPos.z += speed;
+          if (dir === 'left') state.playerTargetPos.x -= speed;
+          if (dir === 'right') state.playerTargetPos.x += speed;
+          if (dir === 'center') { state.playerTargetPos.x = 0; state.playerTargetPos.z = 0; }
+        };
+        btn.addEventListener('pointerdown', step);
+      });
+    }
   }
 
   function onWindowResize() {
@@ -615,95 +854,226 @@
     state.theme = themeKey;
     document.body.className = `theme-${themeKey}`;
 
+    // 更新頂部按鈕狀態
+    document.querySelectorAll('.btn-theme-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.theme === themeKey);
+    });
+
     if (!scene || !seaMesh) return;
 
     if (themeKey === 'cream') {
       scene.background = new THREE.Color(0xf6f0e4);
-      scene.fog = new THREE.Fog(0xf6f0e4, 50, 110);
+      scene.fog = new THREE.Fog(0xf6f0e4, 55, 120);
       seaMesh.material.color.setHex(0x38bdf8);
-      hemiLight.intensity = 0.65;
-      sunLight.intensity = 0.85;
+      hemiLight.intensity = 0.7;
+      sunLight.intensity = 0.88;
       sunLight.color.setHex(0xffedd5);
     } else if (themeKey === 'sea') {
       scene.background = new THREE.Color(0xdcebee);
-      scene.fog = new THREE.Fog(0xdcebee, 50, 110);
+      scene.fog = new THREE.Fog(0xdcebee, 55, 120);
       seaMesh.material.color.setHex(0x0284c7);
-      hemiLight.intensity = 0.6;
-      sunLight.intensity = 0.75;
+      hemiLight.intensity = 0.65;
+      sunLight.intensity = 0.8;
       sunLight.color.setHex(0xfef08a);
     } else if (themeKey === 'night') {
       scene.background = new THREE.Color(0x0f172a);
-      scene.fog = new THREE.Fog(0x0f172a, 40, 95);
+      scene.fog = new THREE.Fog(0x0f172a, 40, 100);
       seaMesh.material.color.setHex(0x1e293b);
-      hemiLight.intensity = 0.35;
-      sunLight.intensity = 0.45;
+      hemiLight.intensity = 0.4;
+      sunLight.intensity = 0.5;
       sunLight.color.setHex(0x93c5fd);
     }
   }
 
-  // 渲染迴圈
+  // 渲染動畫迴圈
   function renderLoop() {
     requestAnimationFrame(renderLoop);
 
-    // 視角平滑插值
+    // 1. 冒險者行走插值與步伐動畫
+    if (playerGroup) {
+      const dx = state.playerTargetPos.x - state.playerPos.x;
+      const dz = state.playerTargetPos.z - state.playerPos.z;
+      const distToTarget = Math.sqrt(dx * dx + dz * dz);
+
+      if (distToTarget > 0.15) {
+        state.isWalking = true;
+        state.walkTime += 0.18;
+        const moveSpeed = Math.min(0.22, distToTarget * 0.1);
+        state.playerPos.x += (dx / distToTarget) * moveSpeed;
+        state.playerPos.z += (dz / distToTarget) * moveSpeed;
+        state.playerAngle = Math.atan2(dx, dz);
+
+        // 步伐擺動
+        if (playerLegL && playerLegR) {
+          playerLegL.rotation.x = Math.sin(state.walkTime * 5) * 0.45;
+          playerLegR.rotation.x = -Math.sin(state.walkTime * 5) * 0.45;
+        }
+        playerGroup.position.y = 2.2 + Math.abs(Math.sin(state.walkTime * 5)) * 0.12;
+
+        if (Math.random() < 0.08) sfx.playStep();
+      } else {
+        if (state.isWalking) {
+          state.isWalking = false;
+          if (playerLegL && playerLegR) {
+            playerLegL.rotation.x = 0;
+            playerLegR.rotation.x = 0;
+          }
+          playerGroup.position.y = 2.2;
+          if (typeof state.onArriveCallback === 'function') {
+            const cb = state.onArriveCallback;
+            state.onArriveCallback = null;
+            cb();
+          }
+        }
+      }
+
+      playerGroup.position.x = state.playerPos.x;
+      playerGroup.position.z = state.playerPos.z;
+      playerGroup.rotation.y = state.playerAngle;
+    }
+
+    // 2. 視角旋轉平滑插值
     yaw += (targetYaw - yaw) * 0.08;
     pitch += (targetPitch - pitch) * 0.08;
     dist += (targetDist - dist) * 0.08;
 
-    // 自動慢速旋轉 (無使用者操作時)
-    if (!isPointerDown) {
-      targetYaw += 0.0004;
+    // 鏡頭跟隨模式 (Follow Mode)
+    if (state.cameraFollow && playerGroup) {
+      cameraTarget.x += (playerGroup.position.x - cameraTarget.x) * 0.06;
+      cameraTarget.z += (playerGroup.position.z - cameraTarget.z) * 0.06;
+    } else {
+      cameraTarget.x += (0 - cameraTarget.x) * 0.06;
+      cameraTarget.z += (0 - cameraTarget.z) * 0.06;
     }
 
-    camera.position.x = Math.sin(yaw) * Math.cos(pitch) * dist;
+    camera.position.x = cameraTarget.x + Math.sin(yaw) * Math.cos(pitch) * dist;
     camera.position.y = Math.sin(pitch) * dist;
-    camera.position.z = Math.cos(yaw) * Math.cos(pitch) * dist;
-    camera.lookAt(0, 0, 0);
+    camera.position.z = cameraTarget.z + Math.cos(yaw) * Math.cos(pitch) * dist;
+    camera.lookAt(cameraTarget.x, 1.8, cameraTarget.z);
 
-    // 裝飾旋轉
+    // 3. 裝飾地標旋轉
     rotatingDecorations.forEach(m => {
-      m.rotation.y += 0.015;
+      m.rotation.y += 0.016;
     });
 
-    // 雲朵飄移
+    // 4. 浮雲飄移
     clouds.forEach(c => {
       c.userData.angle += c.userData.speed;
       c.position.x = Math.cos(c.userData.angle) * c.userData.radius;
       c.position.z = Math.sin(c.userData.angle) * c.userData.radius;
     });
 
-    // 海浪微妙呼吸起伏
-    const time = Date.now() * 0.0015;
+    // 5. 海浪微幅起伏
+    const time = Date.now() * 0.0016;
     seaMesh.position.y = -0.2 + Math.sin(time) * 0.08;
 
     renderer.render(scene, camera);
     updateLabels();
   }
 
-  // --- HUD 卡片更新 ---
-  function updateHudCard(idx) {
-    const t = ISLAND_THEMES[idx];
-    const box = document.getElementById('hudCurrentIsland');
-    if (!box) return;
-    box.innerHTML = `
-      <div class="hud-island-title">
-        <h2>${t.name}</h2>
-        <span class="hud-mascot-pill">守護夥伴：${t.mascot}</span>
-      </div>
-      <p class="hud-island-desc">${t.mascotDesc}</p>
-      <div class="hud-actions">
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.openQuestDrawer(${idx}, ${t.weeksRange[0]})">
-          ⚔️ 登陸探險 (${t.weeksRange[0]}~${t.weeksRange[1]} 週)
-        </button>
-        <button class="c-game-btn" onclick="window.socialGame.resetArchipelagoView()">
-          🌐 群島全覽
-        </button>
-      </div>
-    `;
+  // 聚焦島嶼
+  function focusIsland(idx) {
+    state.activeIslandIndex = idx;
+    const targetIsland = islandMeshes[idx];
+    if (!targetIsland) return;
+
+    const [startW] = ISLAND_THEMES[idx].weeksRange;
+    openQuestDrawer(idx, startW);
+
+    const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
+    targetYaw = -angle + Math.PI / 2;
+    targetPitch = 0.65;
+    targetDist = 38;
+
+    updateHudCard(idx);
   }
 
-  // --- 關卡抽屜與闖關邏輯 ---
+  function resetArchipelagoView() {
+    targetYaw = 0.5;
+    targetPitch = 0.72;
+    targetDist = 55;
+    closeQuestDrawer();
+  }
+
+  // ==========================================
+  // 5. RPG 頂部 HUD 與升級狀態展示
+  // ==========================================
+  function updateHudDisplay() {
+    const lvInfo = getLevelInfo(state.exp);
+    const heroLook = HERO_LOOKS[state.heroLook] || HERO_LOOKS.dino;
+
+    const avatarEl = document.getElementById('hudAvatar');
+    const nameEl = document.getElementById('hudHeroName');
+    const lvEl = document.getElementById('hudHeroLv');
+    const expFill = document.getElementById('hudExpFill');
+    const expText = document.getElementById('hudExpText');
+    const starsEl = document.getElementById('hudTotalStars');
+    const stampEl = document.getElementById('hudStampCount');
+
+    if (avatarEl) avatarEl.textContent = heroLook.avatar;
+    if (nameEl) nameEl.textContent = state.heroName;
+    if (lvEl) lvEl.textContent = `Lv.${lvInfo.level} ${lvInfo.title}`;
+    if (expFill) expFill.style.width = `${lvInfo.progress}%`;
+    if (expText) expText.textContent = `${state.exp} / ${lvInfo.nextBase} EXP`;
+    if (starsEl) starsEl.textContent = `${state.stars} 顆`;
+    
+    // 計算島章獲取數
+    const stampCount = state.islandStamps.filter(Boolean).length;
+    if (stampEl) stampEl.textContent = `島章 ${stampCount} / 4`;
+
+    updatePassportModal();
+  }
+
+  function addExp(pts) {
+    const prevLv = getLevelInfo(state.exp).level;
+    state.exp += pts;
+    const newLvInfo = getLevelInfo(state.exp);
+    updateHudDisplay();
+    saveLocalProgress();
+
+    showToast(`✨ 獲得 +${pts} EXP！`);
+
+    // 觸發升級特效
+    if (newLvInfo.level > prevLv) {
+      triggerLevelUpBanner(newLvInfo);
+    }
+  }
+
+  function addStars(num) {
+    state.stars += num;
+    updateHudDisplay();
+    saveLocalProgress();
+  }
+
+  function triggerLevelUpBanner(lvInfo) {
+    sfx.playLevelUp();
+    triggerConfetti();
+    const banner = document.getElementById('levelupBanner');
+    const sub = document.getElementById('levelupSub');
+    if (!banner || !sub) return;
+
+    sub.textContent = `恭喜晉升為 Lv.${lvInfo.level} ${lvInfo.title}！`;
+    banner.classList.add('active');
+    setTimeout(() => {
+      banner.classList.remove('active');
+    }, 3200);
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toastMsg');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('active');
+    setTimeout(() => {
+      toast.classList.remove('active');
+    }, 2400);
+  }
+
+  // ==========================================
+  // 6. 關卡抽屜與闖關邏輯 (Quest Drawer)
+  // ==========================================
   function openQuestDrawer(islandIdx, weekNumber) {
+    document.body.classList.add('modal-open');
     state.activeIslandIndex = islandIdx;
     state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeksRange[0];
 
@@ -715,8 +1085,21 @@
   }
 
   function closeQuestDrawer() {
+    document.body.classList.remove('modal-open');
     const overlay = document.getElementById('questDrawerOverlay');
     if (overlay) overlay.classList.remove('active');
+  }
+
+  function selectWeek(wNum) {
+    state.activeWeekNumber = wNum;
+    sfx.playClick();
+    renderQuestDrawerContent();
+
+    // 讓 3D 冒險者走向該週次小島
+    const subMesh = subIslandMeshes.find(m => m.userData.weekNumber === wNum);
+    if (subMesh) {
+      walkToAndTrigger(subMesh.position.x, subMesh.position.z);
+    }
   }
 
   function renderQuestDrawerContent() {
@@ -748,19 +1131,18 @@
       carouselBox.innerHTML = chipsHtml;
     }
 
-    // 守護夥伴對白
-    const roleplay = (typeof roleplayDatabase !== 'undefined' && roleplayDatabase[weekData.id]) ? roleplayDatabase[weekData.id] : null;
-    let npcQuote = `我是${t.mascot}！今天我們來到這座島，準備迎接新的考驗！當你遇到困難時，記得施展社交超能力喔！`;
+    // NPC 守護夥伴引言
+    let npcQuote = `我是${t.mascot}（${t.mascotRole}）！今天我們來到這座島，準備迎接第 ${wNum} 週考驗！遇到困難時，記得施展【${weekData.superSkill || '冷靜超能力'}】！`;
     if (weekData.story && weekData.story.question) {
       npcQuote = weekData.story.question;
     }
 
-    // 關卡本體內容 (CBT 抉擇 + 主題小遊戲)
+    // CBT 認知抉擇題目
     const dt = weekData.decisionTree || {
       impulsive: {
         title: "💥 衝動發脾氣 / 拒絕配合",
         desc: "大聲吼叫、動手推人或生悶氣轉頭跑開",
-        consequence: "❌ 同學被嚇跑了，自己被扣除星星！衝動大腦噴火了，先踩住煞車！"
+        consequence: "❌ 同學被嚇跑了，大腦噴火啦！先踩住煞車、做三次深呼吸！"
       },
       super_skill: {
         title: `🌟 施展超能力：${weekData.superSkill || '冷靜深呼吸，好好說出來'}`,
@@ -776,7 +1158,7 @@
           <div class="npc-avatar">${t.mascot.split(' ')[0]}</div>
           <div class="npc-content">
             <div class="npc-name-tag">
-              <span>${t.mascot}</span>
+              <span>${t.mascot} · ${t.mascotRole}</span>
               <button class="tts-inline-btn" onclick="window.socialGame.speak('${npcQuote.replace(/'/g, "\\'")}')">
                 🔊 語音朗讀
               </button>
@@ -785,10 +1167,10 @@
           </div>
         </div>
 
-        <!-- 挑戰一：CBT 衝動怪獸 vs 社交超能力 -->
+        <!-- 考驗一：CBT 衝動怪獸 vs 社交超能力 -->
         <div class="cbt-choice-section">
           <div class="cbt-choice-title">
-            <span>⚔️ 第一道考驗：打倒觀念怪獸（${t.monster}）</span>
+            <span>⚔️ 考驗一：打倒觀念怪獸（${t.monster}）</span>
           </div>
           <div class="cbt-choice-grid">
             <div class="cbt-card card-impulsive" onclick="window.socialGame.handleCbtChoice('impulsive')">
@@ -803,9 +1185,9 @@
           <div id="cbtResultBox" class="cbt-result-box"></div>
         </div>
 
-        <!-- 挑戰二：主題趣味小挑戰 -->
+        <!-- 考驗二：主題趣味小挑戰 -->
         <div class="minigame-container">
-          <div class="minigame-title">🎮 第二道考驗：${getMinigameTitle(t.minigameType)}</div>
+          <div class="minigame-title">🎮 考驗二：${getMinigameTitle(t.minigameType)}</div>
           <div id="minigameDynamicArea">
             ${renderMinigameArea(t.minigameType)}
           </div>
@@ -817,7 +1199,7 @@
   function getMinigameTitle(type) {
     if (type === 'breathe') return '烏龜深呼吸冷卻儀（調適情緒）';
     if (type === 'imsg') return '我訊息火箭組裝發射台（清晰表達）';
-    if (type === 'highfive') return '擊掌默契大考驗（同儕友善）';
+    if (type === 'highfive') return '眼神接觸擊掌默契（同儕友善）';
     return '換個想法彈性齒輪（挫折應變）';
   }
 
@@ -847,7 +1229,7 @@
     } else if (type === 'highfive') {
       return `
         <div class="highfive-game-box">
-          <p style="font-size:0.85rem; color:#64748b;">看著對方的眼睛，伸出手掌擊掌！</p>
+          <p style="font-size:0.85rem; color:#64748b;">看著對方的眼睛，伸出手掌友善擊掌！</p>
           <div class="highfive-hand-btn" id="highfiveHand" onclick="window.socialGame.doHighfive()">
             ✋
           </div>
@@ -859,7 +1241,7 @@
     } else {
       return `
         <div class="gear-game-box">
-          <p style="font-size:0.85rem; color:#64748b;">轉動彈性思考齒輪，把「輸了就全毀了」換成新想法！</p>
+          <p style="font-size:0.85rem; color:#64748b;">轉動彈性思考齒輪，換個正向角度看事情！</p>
           <div class="gear-icon" id="gearIcon">⚙️</div>
           <div id="gearPrompt" style="font-size:0.95rem; font-weight:800; color:#7c3aed;">
             「轉動齒輪，換個想法！」
@@ -872,7 +1254,7 @@
     }
   }
 
-  // --- 小遊戲互動事件 ---
+  // --- 互動事件處理 ---
   function handleCbtChoice(type) {
     const resBox = document.getElementById('cbtResultBox');
     const wNum = state.activeWeekNumber;
@@ -891,6 +1273,7 @@
       resBox.className = 'cbt-result-box super-active';
       resBox.innerHTML = `🌟 <b>施展超能力成功！觀念怪獸退散！</b><br>${dt.super_skill ? dt.super_skill.consequence : '太棒了！大家都了解你的想法，順利解決問題！'}`;
       speakText('太棒了！施展社交超能力成功！');
+      addExp(15);
       markWeekPassed(wNum);
     }
   }
@@ -914,19 +1297,18 @@
         setTimeout(() => {
           prompt.textContent = '🎉 深呼吸調息完成！心跳變慢，大腦冷靜下來了！';
           sfx.playChime();
+          addExp(20);
           markWeekPassed(state.activeWeekNumber);
-        }, 3000);
-      }, 3000);
-    }, 3000);
+        }, 2800);
+      }, 2800);
+    }, 2800);
   }
 
-  let imsgProgress = 0;
   function clickImsg(slotIdx) {
     const slot = document.getElementById(`imsgSlot${slotIdx}`);
     if (!slot) return;
     sfx.playClick();
     slot.classList.toggle('selected');
-    imsgProgress++;
   }
 
   function launchImsgRocket() {
@@ -939,7 +1321,8 @@
       s3.classList.add('selected');
     }
     sfx.playFanfare();
-    alert('🚀 我訊息三節火箭點火成功！成功把溫和堅定的想法傳遞給對方！');
+    showToast('🚀 我訊息三節火箭點火發射成功！+20 EXP！');
+    addExp(20);
     markWeekPassed(state.activeWeekNumber);
   }
 
@@ -951,6 +1334,7 @@
     hand.style.transform = 'scale(1.2) rotate(15deg)';
     prompt.textContent = '🌟 啪！默契大成功！給同儕最棒的友善支持！';
     setTimeout(() => { hand.style.transform = 'scale(1)'; }, 300);
+    addExp(20);
     markWeekPassed(state.activeWeekNumber);
   }
 
@@ -968,16 +1352,20 @@
       '💡「我現在很生氣，先喝口水暫停一下再說。」'
     ];
     prompt.textContent = thoughts[Math.floor(Math.random() * thoughts.length)];
+    addExp(20);
     markWeekPassed(state.activeWeekNumber);
   }
 
-  // 通關標記與加星
+  // 通關標記、加星與島章解鎖檢查
   function markWeekPassed(wNum) {
     if (!state.passedWeeks.has(wNum)) {
       state.passedWeeks.add(wNum);
-      state.studentStars += 3;
-      saveProgress();
+      addStars(3);
       sfx.playFanfare();
+      showToast(`🎉 第 ${wNum} 週通關成功！獲得 3 顆社交星與 EXP！`);
+
+      // 檢查是否達成該島全部週次通關 -> 頒發主題島章！
+      checkIslandStampUnlocked(state.activeIslandIndex);
 
       // 更新週次標籤
       const chips = document.querySelectorAll('.week-chip');
@@ -991,27 +1379,259 @@
       if (subMesh && subMesh.children[1]) {
         subMesh.children[1].material.color.setHex(0xfbbf24);
       }
+
+      saveLocalProgress();
     }
   }
 
-  // --- 中央英豪總部與證書 Modal ---
+  function checkIslandStampUnlocked(islandIdx) {
+    const [startW, endW] = ISLAND_THEMES[islandIdx].weeksRange;
+    let allPassed = true;
+    for (let w = startW; w <= endW; w++) {
+      if (!state.passedWeeks.has(w)) {
+        allPassed = false;
+        break;
+      }
+    }
+
+    if (allPassed && !state.islandStamps[islandIdx]) {
+      state.islandStamps[islandIdx] = true;
+      sfx.playStamp();
+      triggerConfetti();
+      showToast(`🏆 恭喜集得【${ISLAND_THEMES[islandIdx].name}】專屬認證島章！`);
+      updateHudDisplay();
+      saveLocalProgress();
+    }
+  }
+
+  // 更新底部 HUD 卡片
+  function updateHudCard(idx) {
+    const t = ISLAND_THEMES[idx];
+    const box = document.getElementById('hudCurrentIsland');
+    if (!box) return;
+    box.innerHTML = `
+      <div class="hud-island-title">
+        <h2>${t.name}</h2>
+        <span class="hud-mascot-pill">守護夥伴：${t.mascot}</span>
+      </div>
+      <p class="hud-island-desc">${t.mascotDesc}</p>
+      <div class="hud-actions">
+        <button class="c-game-btn btn-primary" onclick="window.socialGame.openQuestDrawer(${idx}, ${t.weeksRange[0]})">
+          ⚔️ 登陸探險 (${t.weeksRange[0]}~${t.weeksRange[1]} 週)
+        </button>
+        <button class="c-game-btn" onclick="window.socialGame.resetArchipelagoView()">
+          🌐 群島全覽
+        </button>
+      </div>
+    `;
+  }
+
+  // ==========================================
+  // 7. 冒險者護照與四大主題島章 (Passport)
+  // ==========================================
+  function openPassportModal() {
+    document.body.classList.add('modal-open');
+    updatePassportModal();
+    sfx.playClick();
+    const modal = document.getElementById('passportModalOverlay');
+    if (modal) modal.classList.add('active');
+  }
+
+  function closePassportModal() {
+    document.body.classList.remove('modal-open');
+    const modal = document.getElementById('passportModalOverlay');
+    if (modal) modal.classList.remove('active');
+  }
+
+  function updatePassportModal() {
+    const lvInfo = getLevelInfo(state.exp);
+    const heroLook = HERO_LOOKS[state.heroLook] || HERO_LOOKS.dino;
+
+    const pAvatar = document.getElementById('passAvatar');
+    const pLevel = document.getElementById('passLevel');
+    const pName = document.getElementById('passHeroName');
+    const pTitle = document.getElementById('passHeroTitle');
+    const pExp = document.getElementById('passHeroExp');
+    const pStars = document.getElementById('passHeroStars');
+
+    if (pAvatar) pAvatar.textContent = heroLook.avatar;
+    if (pLevel) pLevel.textContent = `Lv.${lvInfo.level}`;
+    if (pName) pName.textContent = `${state.heroName} 同學`;
+    if (pTitle) pTitle.textContent = lvInfo.title;
+    if (pExp) pExp.textContent = `${state.exp} EXP`;
+    if (pStars) pStars.textContent = `${state.stars} ⭐`;
+
+    // 更新四大島章印記
+    state.islandStamps.forEach((unlocked, idx) => {
+      const seal = document.querySelector(`#stampSlot-${idx} .stamp-seal`);
+      const status = document.getElementById(`stampStatus-${idx}`);
+      if (seal && status) {
+        if (unlocked) {
+          seal.classList.add('unlocked');
+          status.textContent = '已認證 ✓';
+        } else {
+          seal.classList.remove('unlocked');
+          status.textContent = '未解鎖';
+        }
+      }
+    });
+  }
+
+  // ==========================================
+  // 8. 接關碼存檔與讀檔系統 (Save Code System)
+  // ==========================================
+  function generateSaveCode() {
+    const d = {
+      n: state.heroName,
+      l: state.heroLook,
+      e: state.exp,
+      s: state.stars,
+      p: Array.from(state.passedWeeks),
+      st: state.islandStamps
+    };
+    try {
+      const str = JSON.stringify(d);
+      return 'HERO-' + btoa(encodeURIComponent(str)).replace(/=/g, '');
+    } catch (e) {
+      return `HERO-${state.heroName}-${state.exp}`;
+    }
+  }
+
+  function openSaveCodeModal() {
+    document.body.classList.add('modal-open');
+    sfx.playClick();
+    const modal = document.getElementById('saveCodeModalOverlay');
+    const input = document.getElementById('mySaveCodeInput');
+    if (input) input.value = generateSaveCode();
+    if (modal) modal.classList.add('active');
+  }
+
+  function closeSaveCodeModal() {
+    document.body.classList.remove('modal-open');
+    const modal = document.getElementById('saveCodeModalOverlay');
+    if (modal) modal.classList.remove('active');
+  }
+
+  function copySaveCode() {
+    const input = document.getElementById('mySaveCodeInput');
+    if (!input) return;
+    navigator.clipboard.writeText(input.value).then(() => {
+      sfx.playChime();
+      showToast('📋 接關碼已成功複製到剪貼簿！');
+    }).catch(() => {
+      input.select();
+      document.execCommand('copy');
+      showToast('📋 接關碼已複製！');
+    });
+  }
+
+  function loadSaveCode() {
+    const input = document.getElementById('loadSaveCodeInput');
+    if (!input || !input.value.trim()) return;
+    let code = input.value.trim();
+    if (code.startsWith('HERO-')) code = code.slice(5);
+
+    try {
+      const jsonStr = decodeURIComponent(atob(code));
+      const d = JSON.parse(jsonStr);
+      if (d.n) state.heroName = d.n;
+      if (d.l) state.heroLook = d.l;
+      if (typeof d.e === 'number') state.exp = d.e;
+      if (typeof d.s === 'number') state.stars = d.s;
+      if (Array.isArray(d.p)) state.passedWeeks = new Set(d.p);
+      if (Array.isArray(d.st)) state.islandStamps = d.st;
+
+      updatePlayerLook(state.heroLook);
+      updateHudDisplay();
+      saveLocalProgress();
+      sfx.playFanfare();
+      showToast('🎉 接關碼讀取成功！進度已完整恢復！');
+      closeSaveCodeModal();
+    } catch (e) {
+      sfx.playBuzz();
+      alert('⚠️ 接關碼格式有誤，請確認是否完整複製！');
+    }
+  }
+
+  // ==========================================
+  // 9. 冒險者自訂與初次登入 Dialog
+  // ==========================================
+  function openStartDialog() {
+    document.body.classList.add('modal-open');
+    sfx.playClick();
+    const dlg = document.getElementById('startDialog');
+    const nameInput = document.getElementById('heroNameInput');
+    if (nameInput) nameInput.value = state.heroName;
+    if (dlg) dlg.showModal();
+  }
+
+  function closeStartDialog() {
+    document.body.classList.remove('modal-open');
+    const dlg = document.getElementById('startDialog');
+    if (dlg) dlg.close();
+  }
+
+  function setPresetHero(name, lookKey) {
+    const nameInput = document.getElementById('heroNameInput');
+    if (nameInput) nameInput.value = name;
+    selectHeroLook(lookKey);
+  }
+
+  function selectHeroLook(lookKey) {
+    document.querySelectorAll('.look-card').forEach(card => {
+      const match = card.dataset.look === lookKey;
+      card.classList.toggle('active', match);
+      const radio = card.querySelector('input');
+      if (radio) radio.checked = match;
+    });
+  }
+
+  // 綁定造型卡片點擊
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.look-card').forEach(card => {
+      card.addEventListener('click', () => {
+        selectHeroLook(card.dataset.look);
+      });
+    });
+  });
+
+  function submitStartHero() {
+    const nameInput = document.getElementById('heroNameInput');
+    const checkedRadio = document.querySelector('input[name="heroLook"]:checked');
+    if (nameInput && nameInput.value.trim()) {
+      state.heroName = nameInput.value.trim();
+    }
+    if (checkedRadio) {
+      updatePlayerLook(checkedRadio.value);
+    }
+    updateHudDisplay();
+    sfx.playFanfare();
+    showToast(`🚀 社交小超人【${state.heroName}】出發登島冒險！`);
+    closeStartDialog();
+  }
+
+  // ==========================================
+  // 10. 中央英豪總部與數位榮譽證書
+  // ==========================================
   function openCitadelModal() {
+    document.body.classList.add('modal-open');
+    sfx.playChime();
     const modal = document.getElementById('modalCitadelOverlay');
     if (!modal) return;
-    sfx.playChime();
     modal.classList.add('active');
 
-    // 更新進度數據
     const passedCount = state.passedWeeks.size;
     const progressPct = Math.round((passedCount / 52) * 100);
 
     const countEl = document.getElementById('citadelPassedCount');
     const starsEl = document.getElementById('citadelTotalStars');
     const pctEl = document.getElementById('citadelProgressPct');
+    const nameInput = document.getElementById('certStudentName');
 
     if (countEl) countEl.textContent = `${passedCount} / 52 關`;
-    if (starsEl) starsEl.textContent = `${state.studentStars} ⭐`;
+    if (starsEl) starsEl.textContent = `${state.stars} ⭐`;
     if (pctEl) pctEl.textContent = `${progressPct}%`;
+    if (nameInput) nameInput.value = `${state.heroName} 同學`;
 
     const certDate = document.getElementById('certIssueDate');
     if (certDate) {
@@ -1021,28 +1641,20 @@
   }
 
   function closeCitadelModal() {
+    document.body.classList.remove('modal-open');
     const modal = document.getElementById('modalCitadelOverlay');
     if (modal) modal.classList.remove('active');
   }
 
-  // 列印 / 匯出證書
-  function printCertificate() {
-    window.print();
+  function celebrateHero() {
+    sfx.playFanfare();
+    triggerConfetti();
+    showToast('🏆 為社交小超人歡呼！大埤國小學習教室以你為榮！');
   }
 
-  // 匯出造島工坊草稿 JSON
-  function exportIsleForgeDraft() {
-    const url = 'isleforge-project.json';
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'isleforge-social-hero.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    alert('📥 已下載造島工坊相容專案草稿包！可至 https://isleforge-tw.netlify.app 一鍵匯入！');
-  }
-
-  // 2D 平面全地圖切換
+  // ==========================================
+  // 11. 2D 平面全地圖與無障礙導覽模式
+  // ==========================================
   function toggleViewMode() {
     const map2D = document.getElementById('map2DView');
     const btn = document.getElementById('btnToggleView');
@@ -1065,7 +1677,7 @@
     let html = `
       <div style="text-align:center; margin-bottom:24px;">
         <h2 style="font-size:1.6rem; font-weight:900; color:#1e293b; margin-bottom:6px;">🗺️ 52 週社交小超人冒險全地圖</h2>
-        <p style="color:#64748b; font-size:0.9rem;">針對視覺前庭敏感之學童提供無障礙直覺導覽，點選任一週次立即開啟挑戰</p>
+        <p style="color:#64748b; font-size:0.9rem;">針對視覺前庭敏感或需要平面檢閱之學童提供無障礙直覺導覽，點選任一週次立即開啟挑戰</p>
       </div>
       <div class="islands-2d-grid">
     `;
@@ -1104,43 +1716,136 @@
     container.innerHTML = html;
   }
 
-  // --- 暴露對外 API 供 HTML 呼叫 ---
+  // 鏡頭跟隨開關
+  function toggleFollowCamera() {
+    state.cameraFollow = !state.cameraFollow;
+    const btn = document.getElementById('btnToggleFollow');
+    if (btn) {
+      btn.innerHTML = state.cameraFollow ? '🎥 跟隨：開' : '🎥 跟隨：關';
+    }
+    showToast(state.cameraFollow ? '🎥 鏡頭自動跟隨 3D 冒險者' : '🎥 鏡頭自由全景模式');
+  }
+
+  // 音效開關
+  function toggleSound() {
+    state.soundEnabled = !state.soundEnabled;
+    const btn = document.getElementById('btnToggleSound');
+    if (btn) {
+      btn.innerHTML = state.soundEnabled ? '🔊 音效：開' : '🔇 音效：關';
+    }
+    showToast(state.soundEnabled ? '🔊 柔和音效已開啟' : '🔇 音效已靜音');
+  }
+
+  // ==========================================
+  // 12. 全螢幕金彩帶慶祝特效 (Confetti Engine)
+  // ==========================================
+  function triggerConfetti() {
+    const canvas = document.getElementById('confettiCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const colors = ['#f59e0b', '#ef4444', '#10b981', '#3b82f6', '#8b5cf6', '#06b6d4'];
+
+    for (let i = 0; i < 90; i++) {
+      particles.push({
+        x: canvas.width * 0.5 + (Math.random() - 0.5) * 120,
+        y: canvas.height * 0.4 + (Math.random() - 0.5) * 60,
+        vx: (Math.random() - 0.5) * 14,
+        vy: -Math.random() * 12 - 4,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10
+      });
+    }
+
+    let frame = 0;
+    function renderConfetti() {
+      frame++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+
+      particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // 重力
+        p.rotation += p.rotSpeed;
+
+        if (p.y < canvas.height + 20) {
+          alive = true;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+        }
+      });
+
+      if (alive && frame < 180) {
+        requestAnimationFrame(renderConfetti);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    renderConfetti();
+  }
+
+  // ==========================================
+  // 13. 公開 API 導出至 window.socialGame
+  // ==========================================
   window.socialGame = {
-    init: initThree,
-    focusIsland,
-    resetArchipelagoView,
+    setTheme: applyThemeColors,
+    toggleSound,
+    toggleFollowCamera,
+    toggleViewMode,
     openQuestDrawer,
     closeQuestDrawer,
-    selectWeek(wNum) {
-      state.activeWeekNumber = wNum;
-      renderQuestDrawerContent();
-    },
+    selectWeek,
+    speak: speakText,
     handleCbtChoice,
     startBreatheGame,
     clickImsg,
     launchImsgRocket,
     doHighfive,
     spinGear,
-    speak: speakText,
-    setTtsSpeed(val) { state.ttsSpeed = parseFloat(val); },
-    toggleSound() {
-      state.soundEnabled = !state.soundEnabled;
-      const btn = document.getElementById('btnToggleSound');
-      if (btn) btn.innerHTML = state.soundEnabled ? '🔊 音效：開' : '🔇 音效：關';
-      if (state.soundEnabled) sfx.playClick();
-    },
-    setTheme: applyThemeColors,
+    openPassportModal,
+    closePassportModal,
+    openSaveCodeModal,
+    closeSaveCodeModal,
+    copySaveCode,
+    loadSaveCode,
+    openStartDialog,
+    closeStartDialog,
+    setPresetHero,
+    submitStartHero,
     openCitadelModal,
     closeCitadelModal,
-    printCertificate,
-    exportIsleForgeDraft,
-    toggleViewMode
+    celebrateHero,
+    resetArchipelagoView
   };
 
-  // 當 DOM 載入後自動啟動
-  document.addEventListener('DOMContentLoaded', () => {
+  // DOM 載入後啟動
+  window.addEventListener('DOMContentLoaded', () => {
     initThree();
-    updateHudCard(0);
+    if (window.location.hash === '#passport') {
+      openPassportModal();
+    } else if (window.location.hash === '#citadel') {
+      openCitadelModal();
+    } else if (window.location.hash === '#savecode') {
+      openSaveCodeModal();
+    } else if (window.location.hash === '#start') {
+      openStartDialog();
+    } else if (window.location.hash.startsWith('#quest')) {
+      const parts = window.location.hash.split('-');
+      const islandIdx = parseInt(parts[1], 10) || 0;
+      const weekNum = parseInt(parts[2], 10) || 1;
+      openQuestDrawer(islandIdx, weekNum);
+    }
   });
 
-})();
+})(window);

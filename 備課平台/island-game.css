@@ -1,22 +1,30 @@
 /* ==========================================================================
    社交小超人群島大冒險 (IsleForge 3D Island Game) 樣式表
-   通用學習設計 (UDL) · 特教無障礙 · 柔和低刺激配色
+   通用學習設計 (UDL) · 特教無障礙 · 柔和低刺激配色 · RPG 冒險架構
    ========================================================================== */
 
 :root {
-  --primary: #3b82f6;
-  --primary-dark: #1d4ed8;
+  --primary: #06b6d4;
+  --primary-dark: #0891b2;
+  --primary-light: #cffafe;
+  --secondary: #3b82f6;
+  --secondary-dark: #1d4ed8;
   --accent: #f59e0b;
   --accent-gold: #fbbf24;
   --success: #10b981;
   --danger: #ef4444;
+  --purple: #8b5cf6;
   --bg-cream: #f6f0e4;
   --bg-sea: #dcebee;
   --bg-night: #0f172a;
   --text-dark: #1e293b;
   --text-muted: #64748b;
   --card-bg: rgba(255, 255, 255, 0.95);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  --radius-full: 9999px;
+  --radius-xl: 24px;
   --radius-lg: 18px;
   --radius-md: 12px;
 }
@@ -29,14 +37,19 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-family: "Chalkboard SE", "Comic Sans MS", "PingFang TC", "Noto Sans TC", system-ui, -apple-system, sans-serif;
   color: var(--text-dark);
   background-color: var(--bg-cream);
   overflow: hidden;
   width: 100vw;
   height: 100vh;
   user-select: none;
+  transition: background-color 0.4s ease;
 }
+
+body.theme-cream { background-color: #f6f0e4; }
+body.theme-sea { background-color: #dcebee; }
+body.theme-night { background-color: #0f172a; color: #f8fafc; }
 
 /* 頂部導覽列 */
 .game-topbar {
@@ -45,103 +58,345 @@ body {
   left: 0;
   right: 0;
   height: 64px;
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 2px solid #fde68a;
   z-index: 50;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(245, 158, 11, 0.08);
+  gap: 12px;
+}
+
+body.theme-night .game-topbar {
+  background: rgba(15, 23, 42, 0.95);
+  border-bottom-color: #334155;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .brand-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .brand-logo {
   font-size: 1.8rem;
   line-height: 1;
+  animation: floatEmoji 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes floatEmoji {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 .brand-info h1 {
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.05rem;
+  font-weight: 900;
   color: #1e293b;
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+body.theme-night .brand-info h1 {
+  color: #f8fafc;
 }
 
 .brand-info h1 .badge-isleforge {
   font-size: 0.72rem;
-  background: #e0e7ff;
-  color: #4338ca;
+  background: #cffafe;
+  color: #0891b2;
   padding: 2px 8px;
-  border-radius: 999px;
-  font-weight: 700;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  border: 1px solid #67e8f9;
+  white-space: nowrap;
 }
 
 .brand-info p {
-  font-size: 0.8rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
+  font-weight: 600;
+  margin: 2px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.theme-night .brand-info p {
+  color: #94a3b8;
 }
 
 .top-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
+/* 晝夜主題切換鈕 */
+.theme-switch-group {
+  display: flex;
+  background: rgba(0,0,0,0.06);
+  padding: 3px;
+  border-radius: var(--radius-full);
+  gap: 2px;
+}
+
+body.theme-night .theme-switch-group {
+  background: rgba(255,255,255,0.1);
+}
+
+.btn-theme-pill {
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: transparent;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.theme-night .btn-theme-pill {
+  color: #cbd5e1;
+}
+
+.btn-theme-pill.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body.theme-night .btn-theme-pill.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+/* 遊戲通用按鈕 */
 .c-game-btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  border: 1px solid #cbd5e1;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 800;
+  border: 1.5px solid #cbd5e1;
   background: #ffffff;
   color: #334155;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 0 #cbd5e1;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .c-game-btn:hover {
-  background: #f8fafc;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 #94a3b8;
 }
 
 .c-game-btn:active {
-  transform: translateY(0);
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
-.c-game-btn.btn-accent {
+body.theme-night .c-game-btn {
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: #475569;
+  box-shadow: 0 2px 0 #334155;
+}
+
+.c-game-btn.btn-passport {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 0 #075985;
+}
+
+.c-game-btn.btn-savecode {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #ffffff;
-  border-color: #d97706;
-}
-
-.c-game-btn.btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: #ffffff;
-  border-color: #2563eb;
+  border-color: #f59e0b;
+  box-shadow: 0 2px 0 #b45309;
 }
 
 .c-game-btn.btn-citadel {
   background: linear-gradient(135deg, #8b5cf6, #6d28d9);
   color: #ffffff;
-  border-color: #6d28d9;
+  border-color: #8b5cf6;
+  box-shadow: 0 2px 0 #5b21b6;
 }
 
-/* 3D 畫布舞台 */
+.c-game-btn.btn-primary {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: #ffffff;
+  border-color: #06b6d4;
+  box-shadow: 0 2px 0 #0e7490;
+}
+
+.c-game-btn.btn-accent {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 2px 0 #047857;
+}
+
+/* ==========================================================================
+   RPG 頂部 HUD 狀態列 (HUD Bar)
+   ========================================================================== */
+.rpg-hud-bar {
+  position: absolute;
+  top: 76px;
+  left: 20px;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  padding: 8px 16px;
+  border-radius: var(--radius-xl);
+  border: 2px solid #fde68a;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);
+  pointer-events: auto;
+}
+
+body.theme-night .rpg-hud-bar {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: #334155;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.hud-hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding-right: 12px;
+  border-right: 1.5px solid #e2e8f0;
+}
+
+body.theme-night .hud-hero-badge {
+  border-right-color: #334155;
+}
+
+.hud-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #fef3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  border: 2px solid #f59e0b;
+  box-shadow: 0 3px 8px rgba(245, 158, 11, 0.25);
+}
+
+.hud-hero-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hud-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-name {
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+body.theme-night .hud-name {
+  color: #f8fafc;
+}
+
+.hud-lv-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 1px 8px;
+  border-radius: var(--radius-full);
+  background: #ede9fe;
+  color: #6d28d9;
+  border: 1px solid #c4b5fd;
+}
+
+.hud-exp-track {
+  width: 120px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+body.theme-night .hud-exp-track {
+  background: #334155;
+}
+
+.hud-exp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #06b6d4, #10b981);
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.hud-exp-text {
+  font-size: 0.68rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.hud-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f8fafc;
+  border: 1.5px solid #cbd5e1;
+  border-radius: var(--radius-full);
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #1e293b;
+  transition: transform 0.2s ease;
+}
+
+.hud-stat-pill:hover {
+  transform: scale(1.04);
+}
+
+body.theme-night .hud-stat-pill {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+/* 3D 畫布主舞台 */
 #stage {
   position: absolute;
   top: 64px;
@@ -170,6 +425,16 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 20;
+  transition: opacity 0.25s ease;
+}
+
+body.modal-open #labelLayer,
+body.modal-open #moveHint,
+body.modal-open #virtualDpad {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: none !important;
 }
 
 .island-3d-label {
@@ -177,266 +442,344 @@ body {
   transform: translate(-50%, -50%);
   pointer-events: auto;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(6px);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #1e293b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  border: 2px solid var(--primary);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: #0f172a;
+  border: 2px solid #fde68a;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.2s ease;
   white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .island-3d-label:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
-  z-index: 10;
+  transform: translate(-50%, -55%) scale(1.08);
+  border-color: #06b6d4;
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
 }
 
 .island-3d-label.center {
-  border-color: #8b5cf6;
   background: linear-gradient(135deg, #ede9fe, #ffffff);
+  border-color: #a78bfa;
   color: #5b21b6;
-  font-size: 0.95rem;
 }
 
-/* 底部互動導航條 (HUD) */
+/* 操作指示提示條 */
+.view-hints {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #334155;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  pointer-events: none;
+  z-index: 30;
+}
+
+body.theme-night .view-hints {
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd5e1;
+  border-color: #334155;
+}
+
+/* 虛擬方向鍵 (Virtual D-Pad for Mobile & Touch Screen) */
+.virtual-dpad {
+  position: absolute;
+  bottom: 30px;
+  left: 24px;
+  width: 140px;
+  height: 140px;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) {
+  .virtual-dpad {
+    display: none; /* 大螢幕桌機自動隱藏，使用 WASD / 點擊 */
+  }
+}
+
+.dpad-btn {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 2px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: all 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dpad-btn:active {
+  background: #06b6d4;
+  color: #ffffff;
+  border-color: #0891b2;
+  transform: scale(0.92);
+}
+
+.dpad-up { grid-column: 2; grid-row: 1; }
+.dpad-left { grid-column: 1; grid-row: 2; }
+.dpad-center { grid-column: 2; grid-row: 2; font-size: 0.8rem; background: #e2e8f0; }
+.dpad-right { grid-column: 3; grid-row: 2; }
+.dpad-down { grid-column: 2; grid-row: 3; }
+
+/* 底部島嶼資訊 HUD 卡片 */
 .game-hud {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 40;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 35;
   pointer-events: none;
 }
 
 .hud-card {
   pointer-events: auto;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
-  padding: 14px 20px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(255,255,255,0.6);
-  max-width: 420px;
-}
-
-.hud-island-title {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 2px solid #fde68a;
+  border-radius: var(--radius-xl);
+  padding: 16px 24px;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15);
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
+  gap: 20px;
+  animation: slideUp 0.3s ease;
+}
+
+body.theme-night .hud-card {
+  background: rgba(15, 23, 42, 0.95);
+  border-color: #334155;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .hud-island-title h2 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+body.theme-night .hud-island-title h2 {
+  color: #f8fafc;
 }
 
 .hud-mascot-pill {
-  font-size: 0.75rem;
-  background: #fef3c7;
-  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #0891b2;
+  background: #cffafe;
   padding: 2px 8px;
-  border-radius: 999px;
-  font-weight: 700;
+  border-radius: var(--radius-full);
 }
 
 .hud-island-desc {
   font-size: 0.85rem;
-  color: var(--text-muted);
-  line-height: 1.4;
-  margin-bottom: 10px;
+  color: #475569;
+  max-width: 380px;
+  line-height: 1.45;
+}
+
+body.theme-night .hud-island-desc {
+  color: #94a3b8;
 }
 
 .hud-actions {
   display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* 右下視角小提示 */
-.view-hints {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #64748b;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  pointer-events: none;
-  z-index: 40;
+  gap: 10px;
 }
 
 /* ==========================================================================
    關卡冒險抽屜 (Quest Drawer Modal)
    ========================================================================== */
 .quest-drawer-overlay {
-  position: absolute;
-  top: 64px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.45);
-  backdrop-filter: blur(4px);
-  z-index: 60;
-  display: flex;
-  justify-content: flex-end;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 200;
+  display: none;
 }
 
 .quest-drawer-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  display: block !important;
 }
 
 .quest-drawer {
-  width: 540px;
-  max-width: 92vw;
-  height: 100%;
-  background: #ffffff;
-  box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(680px, 100vw);
+  background: #ffffff !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: drawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.quest-drawer-overlay.active .quest-drawer {
-  transform: translateX(0);
+@keyframes drawerSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .drawer-header {
-  padding: 18px 24px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 24px;
+  background: #f8fafc;
+  border-bottom: 2px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f8fafc;
-}
-
-.drawer-header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .drawer-island-badge {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  color: #ffffff;
-  background: var(--primary);
-  padding: 4px 10px;
-  border-radius: 999px;
+  color: #0891b2;
+  background: #cffafe;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-bottom: 4px;
 }
 
 .drawer-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #1e293b;
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #0f172a;
 }
 
 .drawer-close-btn {
-  background: #f1f5f9;
-  border: none;
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #64748b;
+  border: none;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 1.1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .drawer-close-btn:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+  background: #ef4444;
+  color: #ffffff;
 }
 
-.drawer-body {
-  padding: 24px;
-  overflow-y: auto;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* 關卡選擇列表 */
 .weeks-carousel {
   display: flex;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 8px;
+  padding-bottom: 12px;
   scrollbar-width: thin;
 }
 
 .week-chip {
   flex-shrink: 0;
   padding: 6px 14px;
-  border-radius: 999px;
-  background: #f1f5f9;
-  border: 1px solid #cbd5e1;
-  font-size: 0.85rem;
-  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
   color: #475569;
+  font-size: 0.86rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  transition: all 0.2s ease;
 }
 
 .week-chip:hover {
-  background: #e2e8f0;
+  border-color: #06b6d4;
+  color: #0891b2;
 }
 
 .week-chip.active {
-  background: var(--primary);
+  background: #06b6d4;
   color: #ffffff;
-  border-color: var(--primary);
+  border-color: #0891b2;
+  box-shadow: 0 3px 8px rgba(6, 182, 212, 0.35);
 }
 
 .week-chip.passed::after {
-  content: "⭐";
-  font-size: 0.75rem;
+  content: " ⭐";
 }
 
-/* NPC 守護夥伴對白卡 */
+.drawer-body {
+  background: #ffffff !important;
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.drawer-footer {
+  padding: 16px 24px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quest-reward-hint {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #d97706;
+}
+
+/* NPC 對話卡 */
 .npc-dialog-card {
-  background: linear-gradient(135deg, #fef9c3, #fffbeb);
-  border: 2px solid #fde047;
+  background: linear-gradient(135deg, #fefce8 0%, #fffbeb 100%);
+  border: 2px solid #fde68a;
   border-radius: var(--radius-lg);
-  padding: 16px 20px;
+  padding: 18px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .npc-avatar {
   font-size: 2.8rem;
-  line-height: 1;
+  flex-shrink: 0;
+  background: #ffffff;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fde68a;
 }
 
 .npc-content {
@@ -444,308 +787,641 @@ body {
 }
 
 .npc-name-tag {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #854d0e;
-  margin-bottom: 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.npc-name-tag span {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #b45309;
+}
+
+.tts-inline-btn {
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tts-inline-btn:hover {
+  background: #f59e0b;
+  color: #ffffff;
 }
 
 .npc-speech {
   font-size: 1rem;
-  line-height: 1.5;
-  color: #713f12;
+  line-height: 1.7;
+  color: #334155;
   font-weight: 600;
 }
 
-.tts-inline-btn {
-  background: #fef08a;
-  border: 1px solid #facc15;
-  color: #854d0e;
-  border-radius: 999px;
-  padding: 2px 8px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-
-/* CBT 抉擇卡片容器 */
+/* CBT 抉擇卡 */
 .cbt-choice-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  padding: 20px;
 }
 
 .cbt-choice-title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #334155;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 14px;
 }
 
 .cbt-choice-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 14px;
 }
 
 .cbt-card {
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
   border-radius: var(--radius-md);
-  padding: 14px;
+  padding: 16px;
   cursor: pointer;
-  border: 2px solid transparent;
   transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.cbt-card.card-impulsive {
-  background: #fff1f2;
-  border-color: #fecdd3;
-  color: #9f1239;
+.cbt-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
 }
 
 .cbt-card.card-impulsive:hover {
-  border-color: #f43f5e;
-  transform: translateY(-2px);
-}
-
-.cbt-card.card-superskill {
-  background: #f0fdf4;
-  border-color: #bbf7d0;
-  color: #166534;
+  border-color: #ef4444;
+  background: #fef2f2;
 }
 
 .cbt-card.card-superskill:hover {
-  border-color: #22c55e;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+  border-color: #10b981;
+  background: #f0fdf4;
 }
 
 .cbt-card-header {
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 6px;
 }
 
+.card-impulsive .cbt-card-header { color: #dc2626; }
+.card-superskill .cbt-card-header { color: #059669; }
+
 .cbt-card-desc {
-  font-size: 0.8rem;
-  line-height: 1.4;
-  opacity: 0.85;
+  font-size: 0.84rem;
+  color: #64748b;
+  line-height: 1.5;
 }
 
 .cbt-result-box {
-  border-radius: var(--radius-md);
+  margin-top: 14px;
   padding: 12px 16px;
-  font-size: 0.9rem;
-  font-weight: 700;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  line-height: 1.6;
   display: none;
-  line-height: 1.4;
-  animation: fadeIn 0.3s ease;
 }
 
 .cbt-result-box.impulsive-active {
   display: block;
-  background: #ffe4e6;
-  border: 2px solid #fb7185;
-  color: #9f1239;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1.5px solid #f87171;
 }
 
 .cbt-result-box.super-active {
   display: block;
   background: #dcfce7;
-  border: 2px solid #4ade80;
-  color: #15803d;
+  color: #166534;
+  border: 1.5px solid #4ade80;
 }
 
-/* 互動小遊戲互動區 */
+/* 主題小遊戲區域 */
 .minigame-container {
-  background: #f8fafc;
-  border: 2px dashed #cbd5e1;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  padding: 18px;
-  text-align: center;
+  padding: 20px;
 }
 
 .minigame-title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #334155;
-  margin-bottom: 12px;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 14px;
 }
 
-/* 烏龜深呼吸遊戲 */
 .turtle-breathe-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 10px;
+  text-align: center;
+  padding: 24px;
+  background: #f0fdf4;
+  border-radius: var(--radius-md);
+  border: 2px solid #bbf7d0;
 }
 
 .breathe-circle {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
-  background: radial-gradient(circle, #38bdf8, #0284c7);
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 2.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
-  font-size: 2rem;
-  font-weight: 900;
-  transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
+  margin: 0 auto 16px;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  transition: transform 3s ease-in-out;
 }
 
 .breathe-circle.inhale {
-  transform: scale(1.4);
+  transform: scale(1.6);
+  background: #06b6d4;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
 }
 
 .breathe-circle.exhale {
   transform: scale(0.9);
+  background: #10b981;
 }
 
 .breathe-prompt {
   font-size: 1.05rem;
-  font-weight: 800;
-  color: #0369a1;
+  font-weight: 900;
+  color: #15803d;
+  margin-bottom: 14px;
+  min-height: 28px;
 }
 
-/* 我訊息發射架 */
 .imsg-puzzle-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: #eff6ff;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 2px solid #bfdbfe;
 }
 
 .imsg-slot {
+  padding: 10px 14px;
   background: #ffffff;
-  border: 2px solid #cbd5e1;
-  border-radius: 10px;
-  padding: 8px 12px;
+  border: 1.5px solid #93c5fd;
+  border-radius: 8px;
+  margin-bottom: 8px;
   font-size: 0.9rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-weight: 800;
+  color: #1e3a8a;
   cursor: pointer;
-  transition: all 0.2s;
-  text-align: left;
+  transition: all 0.2s ease;
 }
 
 .imsg-slot.selected {
-  border-color: #3b82f6;
-  background: #eff6ff;
+  background: #dbeafe;
+  border-color: #2563eb;
   color: #1d4ed8;
+  transform: translateX(6px);
 }
 
-/* 擊掌默契大考驗 */
 .highfive-game-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  text-align: center;
+  padding: 20px;
+  background: #fdf2f8;
+  border-radius: var(--radius-md);
+  border: 2px solid #fbcfe8;
 }
 
 .highfive-hand-btn {
-  font-size: 3.5rem;
-  background: #ffffff;
-  border: 3px solid #f59e0b;
-  border-radius: 50%;
-  width: 90px;
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 4rem;
   cursor: pointer;
-  transition: transform 0.15s ease;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.25);
+  display: inline-block;
+  margin: 12px 0;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.highfive-hand-btn:active {
-  transform: scale(0.88);
+.highfive-hand-btn:hover {
+  transform: scale(1.2) rotate(10deg);
 }
 
-/* 齒輪轉轉樂 */
 .gear-game-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  text-align: center;
+  padding: 20px;
+  background: #faf5ff;
+  border-radius: var(--radius-md);
+  border: 2px solid #e9d5ff;
 }
 
 .gear-icon {
-  font-size: 3.2rem;
+  font-size: 3.5rem;
   display: inline-block;
-  transition: transform 0.8s ease;
+  margin: 10px 0;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* 通關大慶祝底欄 */
-.drawer-footer {
-  padding: 16px 24px;
-  border-top: 1px solid #e2e8f0;
+/* ==========================================================================
+   冒險者護照 Modal (Passport Booklet)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.78);
+  z-index: 250;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex !important;
+}
+
+.passport-book-card {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  background: #ffffff !important;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.96); }
+  to { transform: scale(1); }
+}
+
+.passport-header {
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #f8fafc;
 }
 
-.quest-reward-hint {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #64748b;
+.passport-header h3 {
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.passport-header p {
+  font-size: 0.82rem;
+  opacity: 0.9;
+}
+
+.passport-body {
+  padding: 24px;
+  overflow-y: auto;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #fafaf9;
+}
+
+.passport-id-card {
+  background: #ffffff;
+  border: 2px solid #e7e5e4;
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.passport-photo-box {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 6px;
 }
 
+.passport-avatar {
+  width: 72px;
+  height: 72px;
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 18px;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(245, 158, 11, 0.25);
+}
+
+.passport-level-tag {
+  font-size: 0.78rem;
+  font-weight: 900;
+  background: #ede9fe;
+  color: #6d28d9;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.passport-info-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.75rem;
+  color: #78716c;
+  font-weight: 700;
+}
+
+.info-val {
+  font-size: 0.95rem;
+  font-weight: 900;
+  color: #1c1917;
+}
+
+.stamps-section {
+  background: #ffffff;
+  border: 2px solid #e7e5e4;
+  border-radius: var(--radius-lg);
+  padding: 18px;
+}
+
+.stamps-title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #1c1917;
+  margin-bottom: 14px;
+}
+
+.stamps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .stamps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.stamp-slot {
+  aspect-ratio: 1;
+  border: 2px dashed #d6d3d1;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f4;
+  position: relative;
+  overflow: hidden;
+}
+
+.stamp-seal {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.35;
+  transition: all 0.3s ease;
+  transform: rotate(-8deg);
+}
+
+.stamp-seal.unlocked {
+  opacity: 1;
+  border-color: #ef4444;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.2);
+  transform: rotate(-12deg) scale(1.05);
+}
+
+.stamp-seal.seal-comm.unlocked {
+  border-color: #3b82f6;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  transform: rotate(8deg) scale(1.05);
+}
+
+.stamp-seal.seal-friend.unlocked {
+  border-color: #10b981;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+  transform: rotate(-5deg) scale(1.05);
+}
+
+.stamp-seal.seal-flex.unlocked {
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.05);
+  transform: rotate(10deg) scale(1.05);
+}
+
+.seal-icon { font-size: 1.8rem; }
+.seal-name { font-size: 0.72rem; font-weight: 900; margin-top: 2px; }
+.seal-status { font-size: 0.65rem; font-weight: 800; }
+
+.passport-footer {
+  padding: 14px 24px;
+  background: #f5f5f4;
+  border-top: 1px solid #e7e5e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* ==========================================================================
-   中央英豪總部與結業證書 Modal
+   接關碼 Modal (Save Code Modal)
+   ========================================================================== */
+.savecode-card {
+  width: min(520px, 100%);
+  background: #ffffff !important;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+  animation: zoomIn 0.3s ease;
+}
+
+.savecode-header {
+  padding: 16px 20px;
+  background: #f8fafc;
+  border-bottom: 1.5px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.savecode-header h3 {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.savecode-body {
+  padding: 20px;
+}
+
+/* ==========================================================================
+   建立冒險者 Dialog (Start / Customization Dialog)
+   ========================================================================== */
+.start-dialog {
+  margin: auto;
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: 0;
+  width: min(560px, 94vw);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  background: #ffffff;
+}
+
+.start-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.start-dialog-content {
+  padding: 28px 24px;
+}
+
+.start-dialog-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.start-dialog-header h2 {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-top: 6px;
+}
+
+.start-dialog-header p {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.start-form-group {
+  margin-bottom: 20px;
+}
+
+.start-form-group label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #334155;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.preset-name-pill {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid #cbd5e1;
+  background: #f1f5f9;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-name-pill:hover {
+  background: #06b6d4;
+  color: #ffffff;
+  border-color: #06b6d4;
+}
+
+.look-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.look-card {
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.look-card:hover {
+  border-color: #06b6d4;
+  transform: translateY(-2px);
+}
+
+.look-card.active {
+  border-color: #06b6d4;
+  background: #cffafe;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+}
+
+.look-avatar { font-size: 2.2rem; margin-bottom: 4px; }
+.look-name { font-size: 0.92rem; font-weight: 900; color: #0f172a; }
+.look-desc { font-size: 0.72rem; color: #64748b; margin-top: 2px; }
+
+.start-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* ==========================================================================
+   中央英豪總部與證書 Modal
    ========================================================================== */
 .modal-citadel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
-  z-index: 100;
-  display: flex;
+  z-index: 250;
+  display: none;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
   padding: 20px;
 }
 
 .modal-citadel-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
+  display: flex !important;
 }
 
 .citadel-card {
-  width: 800px;
-  max-width: 96vw;
-  max-height: 90vh;
-  background: #ffffff;
-  border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: min(740px, 100%);
+  max-height: 92vh;
+  background: #ffffff !important;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .citadel-header {
-  padding: 20px 28px;
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  padding: 18px 24px;
+  background: linear-gradient(135deg, #7c3aed 0%, #4338ca 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -755,113 +1431,96 @@ body {
 .citadel-header h2 {
   font-size: 1.35rem;
   font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .citadel-body {
-  padding: 28px;
+  padding: 24px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  background: #ffffff;
 }
 
-/* 進度條與成就統計 */
 .citadel-stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
 .stat-box {
   background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  border: 1.5px solid #e2e8f0;
   border-radius: var(--radius-md);
-  padding: 16px;
+  padding: 14px;
   text-align: center;
 }
 
 .stat-val {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 900;
-  color: #4f46e5;
-  margin-bottom: 4px;
+  color: #6d28d9;
 }
 
 .stat-label {
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   color: #64748b;
+  margin-top: 4px;
 }
 
-/* 結業證書預覽框 */
 .certificate-preview-box {
-  border: 8px double #f59e0b;
+  border: 6px double #f59e0b;
   border-radius: 16px;
-  padding: 30px;
-  background: #fffdfa;
+  padding: 28px 24px;
+  background: #fffdf5;
   text-align: center;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);
   position: relative;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.1);
 }
 
-.cert-emblem {
-  font-size: 3rem;
-  margin-bottom: 8px;
-}
-
-.cert-title {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: #92400e;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
+.cert-emblem { font-size: 3rem; margin-bottom: 6px; }
+.cert-title { font-size: 1.5rem; font-weight: 900; color: #b45309; margin-bottom: 12px; }
 
 .cert-input-row {
-  margin: 16px 0;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  font-size: 1.15rem;
+  font-weight: 900;
+  margin-bottom: 14px;
 }
 
 .cert-name-input {
-  font-size: 1.3rem;
-  font-weight: 800;
-  text-align: center;
-  padding: 6px 16px;
   border: none;
-  border-bottom: 2px solid #d97706;
+  border-bottom: 2px solid #b45309;
   background: transparent;
-  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #78350f;
+  text-align: center;
   outline: none;
-  width: 220px;
+  padding: 2px 8px;
 }
 
 .cert-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.8;
-  color: #475569;
-  max-width: 600px;
-  margin: 0 auto;
+  color: #451a03;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .cert-footer-row {
-  margin-top: 24px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  padding: 0 20px;
   font-size: 0.85rem;
-  color: #78716c;
-  font-weight: 700;
+  font-weight: 800;
+  color: #92400e;
+  border-top: 1px dashed #fcd34d;
+  padding-top: 14px;
 }
 
 /* ==========================================================================
-   2D 平面全地圖清單模式 (Reduced Motion / 低硬體友善)
+   2D 全地圖模式
    ========================================================================== */
 #map2DView {
   position: absolute;
@@ -870,9 +1529,9 @@ body {
   right: 0;
   bottom: 0;
   background: #f8fafc;
-  z-index: 30;
+  z-index: 25;
   overflow-y: auto;
-  padding: 30px 20px;
+  padding: 32px 24px 80px;
   display: none;
 }
 
@@ -881,107 +1540,140 @@ body {
 }
 
 .islands-2d-grid {
-  max-width: 1200px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .island-2d-card {
   background: #ffffff;
+  border: 2px solid #e2e8f0;
   border-radius: var(--radius-lg);
-  border: 1px solid #e2e8f0;
-  padding: 24px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: all 0.2s;
-}
-
-.island-2d-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 .card-2d-header {
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1.5px solid #f1f5f9;
 }
 
-.card-2d-icon {
-  font-size: 2.2rem;
-}
-
-.card-2d-title h3 {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #1e293b;
-}
-
-.card-2d-title span {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-}
+.card-2d-icon { font-size: 2rem; }
+.card-2d-title h3 { font-size: 1.15rem; font-weight: 900; color: #0f172a; }
+.card-2d-title span { font-size: 0.78rem; color: #64748b; font-weight: 700; }
 
 .weeks-2d-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  max-height: 240px;
+  gap: 6px;
+  max-height: 320px;
   overflow-y: auto;
-  padding-right: 4px;
 }
 
 .week-2d-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 8px 12px;
-  background: #f8fafc;
   border-radius: 8px;
-  font-size: 0.85rem;
+  background: #f8fafc;
+  font-size: 0.86rem;
   font-weight: 700;
   color: #334155;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
 }
 
 .week-2d-item:hover {
-  background: #e2e8f0;
+  background: #06b6d4;
+  color: #ffffff;
 }
 
 .week-2d-item.passed {
-  background: #f0fdf4;
-  color: #166534;
+  border-left: 4px solid #10b981;
 }
 
-/* 列印證書專用樣式 */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .certificate-preview-box, .certificate-preview-box * {
-    visibility: visible;
-  }
-  .certificate-preview-box {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    border: 8px double #b45309 !important;
-  }
+/* ==========================================================================
+   特效圖層 (Confetti, Level Up, Toast)
+   ========================================================================== */
+.confetti-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 150;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
+.levelup-banner {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  color: #ffffff;
+  padding: 24px 44px;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 15px 40px rgba(239, 68, 68, 0.4);
+  text-align: center;
+  z-index: 140;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 3px solid #ffffff;
 }
 
-@keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+.levelup-banner.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.levelup-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.levelup-sub {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-top: 6px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: rgba(15, 23, 42, 0.95);
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 800;
+  z-index: 130;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+}
+
+.toast.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* 響應式優化 */
+@media (max-width: 900px) {
+  .game-topbar { padding: 0 12px; }
+  .brand-info h1 { font-size: 0.98rem; }
+  .brand-info p { display: none; }
+  .rpg-hud-bar { top: 70px; left: 12px; padding: 6px 12px; }
+  .hud-avatar { width: 36px; height: 36px; font-size: 1.4rem; }
+  .hud-exp-track { width: 80px; }
 }

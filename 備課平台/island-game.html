@@ -3,10 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>社交小超人群島大冒險｜3D 特教互動闖關遊戲 (IsleForge 概念)</title>
+  <title>社交小超人群島大冒險｜3D 特教互動 RPG 闖關遊戲 (IsleForge 概念)</title>
+  
+  <!-- 網站主題專屬 Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon.png">
-  <!-- 引入 字嗨注音標楷開源注音字型 -->
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="island-game.css">
 </head>
@@ -18,7 +22,7 @@
       <div class="brand-logo">🏝️</div>
       <div class="brand-info">
         <h1>
-          社交小超人群島大冒險
+          大埤國小學習教室 · 社交小超人群島大冒險
           <span class="badge-isleforge">IsleForge 3D 概念</span>
         </h1>
         <p>國小特教 52 週社交溝通與情緒調適闖關遊戲 · ASD / EBD / LD 專屬</p>
@@ -27,47 +31,73 @@
 
     <div class="top-controls">
       <!-- 光影天色切換 -->
-      <select class="c-game-btn" onchange="window.socialGame.setTheme(this.value)" title="切換島嶼晝夜天色（晴空、夕陽、星空夜海）">
-        <option value="cream">☀️ 晴空萬里</option>
-        <option value="sea">🌅 夕照海灣</option>
-        <option value="night">🌌 靜謐夜海</option>
-      </select>
+      <div class="theme-switch-group">
+        <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" title="☀️ 晨光奶茶色">☀️ 晨光</button>
+        <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" title="🌅 夕照海霧色">🌅 夕照</button>
+        <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" title="🌌 靜謐夜海色">🌌 夜海</button>
+      </div>
 
-      <!-- 特教語速切換 -->
-      <select class="c-game-btn" onchange="window.socialGame.setTtsSpeed(this.value)" title="切換特教語音朗讀速度（適合自閉症與聽知覺處理需求）">
-        <option value="0.8" selected>🐢 0.8x 慢速</option>
-        <option value="1.0">⚡ 1.0x 正常</option>
-      </select>
+      <!-- 快捷工具按鈕 -->
+      <button class="c-game-btn btn-passport" onclick="window.socialGame.openPassportModal()" title="查看冒險者護照與四大主題島章集章簿">
+        📘 冒險護照
+      </button>
 
-      <!-- 音效開關 -->
-      <button class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" title="開啟或關閉柔和無刺激音效">
+      <button class="c-game-btn btn-savecode" onclick="window.socialGame.openSaveCodeModal()" title="取得或輸入 8 碼接關碼，跨電腦隨時無縫續玩">
+        🔑 接關碼
+      </button>
+
+      <button class="c-game-btn btn-citadel" onclick="window.socialGame.openCitadelModal()" title="開啟中央英雄榮譽總部，研閱小超人結業證書">
+        ⭐ 英雄總部
+      </button>
+
+      <button class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" title="切換鏡頭是否自動跟隨 3D 冒險者">
+        🎥 跟隨：開
+      </button>
+
+      <button class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" title="開啟或關閉柔和無刺激音效與背景海浪聲">
         🔊 音效：開
       </button>
 
-      <!-- 2D / 3D 視角切換 (無障礙) -->
       <button class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" title="切換為無障礙 2D 平面全地圖（適合前庭覺敏感或低硬體規格）">
         🗺️ 2D 全地圖
       </button>
 
-      <!-- 中央英豪總部與結業證書 -->
-      <button class="c-game-btn btn-citadel" onclick="window.socialGame.openCitadelModal()" title="開啟中央英雄榮譽總部，領取特教小超人結業證書">
-        ⭐ 英雄總部與證書
-      </button>
-
-      <!-- 匯出造島工坊草稿專案 -->
-      <button class="c-game-btn btn-accent" onclick="window.socialGame.exportIsleForgeDraft()" title="下載相容於 IsleForge (isleforge-tw.netlify.app) 的 project.json 草稿包">
-        📥 匯出造島包
-      </button>
-
-      <!-- 返回課堂與備課平台 -->
+      <!-- 導航回主系統 -->
       <a class="c-game-btn btn-primary" href="classroom.html" title="前往課堂投影互動簡報模式">
         🎮 課堂教學
       </a>
-      <a class="c-game-btn" href="index.html" title="返回備課平台主控台">
+      <a class="c-game-btn" href="index.html" title="返回特教備課平台主控台">
         📋 備課平台
       </a>
     </div>
   </header>
+
+  <!-- RPG 冒險者頂部狀態 HUD 條 -->
+  <aside class="rpg-hud-bar" id="rpgHud" aria-live="polite">
+    <div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="點擊自訂冒險者名稱與造型">
+      <div class="hud-avatar" id="hudAvatar">🦖</div>
+      <div class="hud-hero-details">
+        <div class="hud-name-row">
+          <span class="hud-name" id="hudHeroName">小宇</span>
+          <span class="hud-lv-badge" id="hudHeroLv">Lv.1 見習生</span>
+        </div>
+        <div class="hud-exp-track">
+          <div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
+        </div>
+        <span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
+      </div>
+    </div>
+
+    <div class="hud-stat-pill" title="累積社交超能力金星（特教代幣）">
+      <span class="hud-pill-icon">⭐</span>
+      <span class="hud-pill-val" id="hudTotalStars">0 顆</span>
+    </div>
+
+    <div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="四大主題島嶼集章進度">
+      <span class="hud-pill-icon">🏝️</span>
+      <span class="hud-pill-val" id="hudStampCount">島章 0 / 4</span>
+    </div>
+  </aside>
 
   <!-- 3D 畫布主舞台 -->
   <main id="stage">
@@ -76,16 +106,25 @@
     <div id="labelLayer"></div>
   </main>
 
+  <!-- 操作指示提示列 -->
+  <div class="view-hints" id="moveHint">
+    💡 鍵盤 <b>WASD</b> 或 <b>方向鍵</b> 行走 · 點擊島嶼自動走過去 · 滑鼠拖曳旋轉視野 · 滾輪縮放
+  </div>
+
+  <!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+  <div class="virtual-dpad" id="virtualDpad">
+    <button class="dpad-btn dpad-up" data-dir="up">▲</button>
+    <button class="dpad-btn dpad-left" data-dir="left">◀</button>
+    <button class="dpad-btn dpad-center" data-dir="center">●</button>
+    <button class="dpad-btn dpad-right" data-dir="right">▶</button>
+    <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+  </div>
+
   <!-- 底部島嶼資訊 HUD 卡片 -->
   <div class="game-hud">
     <div class="hud-card" id="hudCurrentIsland">
       <!-- 由 island-game.js 動態渲染 -->
     </div>
-  </div>
-
-  <!-- 右下操作提示 -->
-  <div class="view-hints">
-    💡 滑鼠左鍵拖曳旋轉島嶼 · 滾輪縮放 · 點擊島嶼登陸探險
   </div>
 
   <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
@@ -115,13 +154,13 @@
 
       <!-- 抽屜主要滾動互動內容 -->
       <div class="drawer-body" id="drawerDynamicBody">
-        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲 -->
+        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
       </div>
 
       <!-- 抽屜底部獎勵資訊 -->
       <div class="drawer-footer">
         <span class="quest-reward-hint">
-          🌟 通關獎勵：獲得本週特教徽章與 3 顆社交星
+          🌟 通關獎勵：獲得 +30 EXP、3 顆社交星與專屬超能力島章
         </span>
         <button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
           ✔️ 繼續巡島
@@ -130,8 +169,210 @@
     </aside>
   </div>
 
-  <!-- 中央英雄總部與結業證書 Modal -->
-  <div class="modal-citadel-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
+  <!-- 冒險者護照與島章冊 (Passport Modal) -->
+  <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
+    <div class="passport-book-card">
+      <div class="passport-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.8rem;">📘</span>
+          <div>
+            <h3>社交小超人 · 冒險通行護照</h3>
+            <p>大埤國小學習教室 特殊需求領域（社會技巧）學習歷程檔案</p>
+          </div>
+        </div>
+        <button class="drawer-close-btn" style="background:rgba(255,255,255,0.2); color:#fff;" onclick="window.socialGame.closePassportModal()">✕</button>
+      </div>
+
+      <div class="passport-body">
+        <!-- 護照個資卡 -->
+        <div class="passport-id-card">
+          <div class="passport-photo-box">
+            <div class="passport-avatar" id="passAvatar">🦖</div>
+            <div class="passport-level-tag" id="passLevel">Lv.1</div>
+          </div>
+          <div class="passport-info-grid">
+            <div class="info-row">
+              <span class="info-label">冒險者代號：</span>
+              <span class="info-val" id="passHeroName">小宇 同學</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">目前稱號：</span>
+              <span class="info-val" id="passHeroTitle">社交冒險見習生</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">累積經驗值：</span>
+              <span class="info-val" id="passHeroExp">25 EXP</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">超能力星星：</span>
+              <span class="info-val" id="passHeroStars">0 ⭐</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">所屬特教學群：</span>
+              <span class="info-val">大埤國小學習教室 中年級資源班</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大島章印記區 -->
+        <div class="stamps-section">
+          <h4 class="stamps-title">🏆 四大主題島嶼認證島章（通關獲取印記）</h4>
+          <div class="stamps-grid">
+            <!-- Stamp 1 -->
+            <div class="stamp-slot" id="stampSlot-0">
+              <div class="stamp-seal seal-volcano">
+                <span class="seal-icon">🌋</span>
+                <span class="seal-name">情緒調適之印</span>
+                <span class="seal-status" id="stampStatus-0">未解鎖</span>
+              </div>
+            </div>
+            <!-- Stamp 2 -->
+            <div class="stamp-slot" id="stampSlot-1">
+              <div class="stamp-seal seal-comm">
+                <span class="seal-icon">📢</span>
+                <span class="seal-name">清晰溝通之印</span>
+                <span class="seal-status" id="stampStatus-1">未解鎖</span>
+              </div>
+            </div>
+            <!-- Stamp 3 -->
+            <div class="stamp-slot" id="stampSlot-2">
+              <div class="stamp-seal seal-friend">
+                <span class="seal-icon">🤝</span>
+                <span class="seal-name">同儕友誼之印</span>
+                <span class="seal-status" id="stampStatus-2">未解鎖</span>
+              </div>
+            </div>
+            <!-- Stamp 4 -->
+            <div class="stamp-slot" id="stampSlot-3">
+              <div class="stamp-seal seal-flex">
+                <span class="seal-icon">🛡️</span>
+                <span class="seal-name">彈性思考之印</span>
+                <span class="seal-status" id="stampStatus-3">未解鎖</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="passport-footer">
+        <span style="font-size:0.85rem; color:#64748b;">
+          💡 集滿四大主題島章，即可前往中央英雄總部解鎖「特教小超人榮譽結業證書」！
+        </span>
+        <button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
+          確認護照
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
+  <div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
+    <div class="savecode-card">
+      <div class="savecode-header">
+        <h3>🔑 冒險進度接關碼</h3>
+        <button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
+      </div>
+      <div class="savecode-body">
+        <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
+          本遊戲完全支援離線自動存檔！若要換到不同電腦、平板或教室電子白板繼續闖關，可複製這串接關碼無縫讀取進度：
+        </p>
+
+        <!-- 我的接關碼 -->
+        <div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
+          <div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
+            📋 我的目前進度接關碼：
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="mySaveCodeInput" readonly style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;">
+            <button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
+              複製代碼
+            </button>
+          </div>
+        </div>
+
+        <!-- 讀取接關碼 -->
+        <div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
+          <div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
+            📥 輸入其他電腦的接關碼：
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="loadSaveCodeInput" placeholder="請在此貼上 8 碼接關碼..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;">
+            <button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
+              載入進度
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 初次登入或切換冒險者 Dialog -->
+  <dialog class="start-dialog" id="startDialog">
+    <div class="start-dialog-content">
+      <div class="start-dialog-header">
+        <span style="font-size:2.2rem;">🏝️</span>
+        <h2>建立你的社交小超人</h2>
+        <p>歡迎來到大埤國小學習教室 3D 社交群島！選一個喜歡的特教小英雄造型出發吧！</p>
+      </div>
+
+      <div class="start-form-group">
+        <label>冒險者稱號／學生姓名：</label>
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input type="text" id="heroNameInput" maxlength="10" placeholder="例如：小宇、小鶴、光速超人..." value="小宇" style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;">
+        </div>
+        <!-- 大埤特教生快速填入 Chip -->
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
+          <span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">快捷設定：</span>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小宇 (ASD)', 'dino')">🦖 小宇 (ASD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小鶴 (LD)', 'unicorn')">🦄 小鶴 (LD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小嘉 (EBD)', 'lion')">🦁 小嘉 (EBD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小駿 (ADHD)', 'rocket')">🚀 小駿 (ADHD)</button>
+        </div>
+      </div>
+
+      <div class="start-form-group">
+        <label>選擇 3D 冒險英雄造型：</label>
+        <div class="look-selection-grid">
+          <label class="look-card active" data-look="dino">
+            <input type="radio" name="heroLook" value="dino" checked hidden>
+            <span class="look-avatar">🦖</span>
+            <span class="look-name">新芽小綠恐龍</span>
+            <span class="look-desc">象徵生機成長，冷靜沉穩</span>
+          </label>
+          <label class="look-card" data-look="lion">
+            <input type="radio" name="heroLook" value="lion" hidden>
+            <span class="look-avatar">🦁</span>
+            <span class="look-name">勇氣紅鬃獅</span>
+            <span class="look-desc">擊退怒火，充滿正義感</span>
+          </label>
+          <label class="look-card" data-look="unicorn">
+            <input type="radio" name="heroLook" value="unicorn" hidden>
+            <span class="look-avatar">🦄</span>
+            <span class="look-name">智慧藍海馬</span>
+            <span class="look-desc">溫和友善，善於傾聽</span>
+          </label>
+          <label class="look-card" data-look="rocket">
+            <input type="radio" name="heroLook" value="rocket" hidden>
+            <span class="look-avatar">🚀</span>
+            <span class="look-name">衝鋒紫火箭</span>
+            <span class="look-desc">彈性靈活，抗挫思考</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="start-dialog-actions">
+        <button type="button" class="c-game-btn" onclick="window.socialGame.closeStartDialog()">
+          取消
+        </button>
+        <button type="button" class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;">
+          🚀 出發登島冒險！
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 中央英雄總部與結業通關證書 Modal -->
+  <div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
     <div class="citadel-card">
       <div class="citadel-header">
         <h2>⭐ 社交小超人英豪總部 · 榮譽殿堂</h2>
@@ -157,13 +398,13 @@
           </div>
         </div>
 
-        <!-- 結業證書預覽框 (可直接列印) -->
+        <!-- 結業證書預覽框 (數位榮譽認證) -->
         <div class="certificate-preview-box">
           <div class="cert-emblem">🏆</div>
           <h3 class="cert-title">特教社交小超人 · 榮譽通關證書</h3>
           <div class="cert-input-row">
             <span>茲證明</span>
-            <input type="text" class="cert-name-input" id="certStudentName" placeholder="請輸入學生姓名" value="王小宇 同學">
+            <input type="text" class="cert-name-input" id="certStudentName" placeholder="學生姓名" value="王小宇 同學">
           </div>
           <p class="cert-text">
             在國小特教 52 週社交技巧與情緒管理課程中，勇敢登陸「情緒魔法島」、「清晰溝通島」、「同儕友誼島」與「彈性解決島」，展現無比勇氣打倒衝動怪獸，精熟自我察覺、我訊息表達、友善分享與抗挫彈性思考，特頒此狀以資表揚與鼓勵！
@@ -173,23 +414,35 @@
               <span>頒發單位：</span>大埤國小學習教室 特教教學團隊
             </div>
             <div>
-              <span>頒發日期：</span><span id="certIssueDate">2026 年 10 月 27 日</span>
+              <span>頒發日期：</span><span id="certIssueDate">2026 年 10 月 28 日</span>
             </div>
           </div>
         </div>
 
-        <!-- 證書操作列 -->
-        <div style="display:flex; justify-content:center; gap:14px; margin-top:8px;">
-          <button class="c-game-btn btn-accent" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.printCertificate()">
-            🖨️ 列印 / 儲存 PDF 證書
+        <!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
+        <div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
+          <button class="c-game-btn btn-primary" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.celebrateHero()">
+            🎉 榮譽喝采慶祝（施放金彩帶）
           </button>
-          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.exportIsleForgeDraft()">
-            📥 下載造島工坊草稿包
+          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.openPassportModal()">
+            📘 查閱冒險護照
           </button>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Level Up 橫幅特效 -->
+  <div class="levelup-banner" id="levelupBanner">
+    <div class="levelup-title">🎉 LEVEL UP!</div>
+    <div class="levelup-sub" id="levelupSub">晉升為 Lv.2 超能力初心者！</div>
+  </div>
+
+  <!-- Toast 訊息提示 -->
+  <div class="toast" id="toastMsg" role="status" aria-live="polite"></div>
 
   <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
   <script src="three.min.js"></script>
