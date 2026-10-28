@@ -37,6 +37,7 @@ load_phrases_dict(TAIWAN_PHONETIC_DICT)
 
 WEB_DIR = os.path.join(os.path.dirname(__file__), "..", "備課平台")
 ARTIFACT_DIR = "output/artifacts"
+os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
 # 1. 讀取 worksheets-data.js
 ws_file = os.path.join(WEB_DIR, "worksheets-data.js")
@@ -69,32 +70,8 @@ def get_short_domain(unit):
     return "💡 特殊專題"
 
 def add_zhuyin(text):
-    """將中文字串轉為帶正統右側直式注音的 HTML 結構"""
-    if not text:
-        return ""
-    # 確保移除老師字樣，全冊統一為老師
-    text = text.replace("老師", "老師").replace("老師", "")
-    
-    p_list = pinyin(text, style=Style.BOPOMOFO, errors='default')
-    idx = 0
-    res = []
-    for item in p_list:
-        val = item[0]
-        if idx >= len(text):
-            break
-        char = text[idx]
-        if '\u4e00' <= char <= '\u9fff':
-            bopo = val
-            # 輕聲調號˙置頂規則（在 vertical-rl 中，置於最前即位於垂直注音最頂端）
-            if bopo.endswith('˙'):
-                bopo = '˙' + bopo[:-1]
-            res.append(f'<span class="zy-block"><span class="zy-char">{char}</span><span class="zy-bopo">{bopo}</span></span>')
-            idx += 1
-        else:
-            token_len = len(val)
-            res.append(text[idx:idx+token_len])
-            idx += token_len
-    return "".join(res)
+    """使用字嗨注音標楷體原生字型注音，直接回傳純文字由字嗨字型精確渲染"""
+    return text or ""
 
 css = """
 @page {
@@ -108,10 +85,20 @@ html, body {
   margin: 0;
   padding: 0;
   background: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: #1e293b;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
+}
+
+/* 封面與目錄頁保持清晰無注音導航字型 */
+.cover-page, .toc-page {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+
+/* 101 堂注音版學習單全頁嚴格套用開源字嗨注音標楷體 (Bpmf Zihi Kai Std) */
+.worksheet-page:not(.cover-page):not(.toc-page) {
+  font-family: "Bpmf Zihi Kai Std", "BiauKai", "DFKai-SB", "PingFang TC", sans-serif;
+  letter-spacing: 0.04em;
 }
 
 .worksheet-page {
@@ -581,6 +568,7 @@ intro_html = f"""<!doctype html>
   <title>注音版學習單封面與目錄 (B4規格)</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <style>{css}</style>
 </head>
 <body>
@@ -943,6 +931,7 @@ def wrap_html(body_content):
   <title>注音版學習單 (B4規格)</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <style>{css}</style>
 </head>
 <body>
