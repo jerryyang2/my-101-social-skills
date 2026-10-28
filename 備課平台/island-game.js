@@ -354,6 +354,7 @@
   let centerMesh = null;
   let rotatingDecorations = [];
   let clouds = [];
+  let balloons = [];
   let labels = [];
   
   // 3D 角色模型群組
@@ -410,8 +411,8 @@
     // 建造 3D 冒險者角色
     buildPlayerCharacter();
 
-    // 建造浮雲
-    buildClouds();
+    // 建造空中巡航熱氣球嘉年華
+    buildBalloons();
 
     // 綁定操作事件
     bindControls();
@@ -909,27 +910,306 @@
     });
   }
 
-  // 浮雲生成
-  function buildClouds() {
-    for (let c = 0; c < 7; c++) {
-      const cloud = new THREE.Group();
-      const numPuffs = 4 + Math.floor(Math.random() * 3);
-      for (let p = 0; p < numPuffs; p++) {
-        const puff = new THREE.Mesh(
-          new THREE.DodecahedronGeometry(1.3 + Math.random() * 0.8, 1),
-          new THREE.MeshLambertMaterial({ color: 0xffffff, transparent: true, opacity: 0.88, flatShading: true })
+  // ==========================================
+  // 6. 空中巡航熱氣球嘉年華 (Whimsical Hot Air Balloons)
+  // ==========================================
+  const BALLOON_STYLES = [
+    { name: "🌈 彩虹馬卡龍球", toast: "🎈 彩虹熱氣球在微風中輕輕擺動！" },
+    { name: "🐻 暖萌小熊造型球", toast: "🐻 萌萌小熊熱氣球眨了眨眼睛！" },
+    { name: "💖 夢幻粉紅愛心球", toast: "💖 夢幻愛心熱氣球送給你一個溫暖抱抱！" },
+    { name: "🐰 萌萌長耳兔兔球", toast: "🐰 萌萌長耳兔兔熱氣球動了動長耳朵！" },
+    { name: "⭐ 璀璨幸運金星球", toast: "⭐ 閃亮金星熱氣球在空中閃閃發光！" },
+    { name: "🎪 歡樂馬戲團條紋球", toast: "🎪 馬戲團條紋熱氣球小旗子隨風飄揚！" },
+    { name: "🐱 淘氣喵喵貓耳球", toast: "🐱 淘氣喵喵熱氣球搖了搖金色小鈴鐺！" }
+  ];
+
+  function createHotAirBalloon(type) {
+    const balloonGroup = new THREE.Group();
+
+    // 1. 編織藤籃吊籃 (Wicker Basket)
+    const basketY = 0;
+    const basket = makeBox(0.8, 0.65, 0.8, 0xb45309, 0, basketY, 0);
+    const rim = makeBox(0.88, 0.1, 0.88, 0x78350f, 0, basketY + 0.3, 0);
+    balloonGroup.add(basket, rim);
+
+    // 可愛沙包配重 (Sandbags)
+    const bagMat = new THREE.MeshLambertMaterial({ color: 0xfef3c7 });
+    [
+      { x: -0.42, z: -0.25 }, { x: 0.42, z: 0.25 }
+    ].forEach(pos => {
+      const bag = new THREE.Mesh(new THREE.SphereGeometry(0.14, 6, 6), bagMat);
+      bag.position.set(pos.x, basketY + 0.1, pos.z);
+      balloonGroup.add(bag);
+    });
+
+    // 2. 懸吊細繩索 (4 Corner Rigging Cables)
+    const ropeMat = new THREE.MeshBasicMaterial({ color: 0x64748b });
+    const ropeH = 0.95;
+    const ropeR = 0.02;
+    const ropeGeo = new THREE.CylinderGeometry(ropeR, ropeR, ropeH, 4);
+    const ropeOffsets = [
+      { x: -0.34, z: -0.34 }, { x: 0.34, z: -0.34 },
+      { x: -0.34, z: 0.34 },  { x: 0.34, z: 0.34 }
+    ];
+    ropeOffsets.forEach(pt => {
+      const rope = new THREE.Mesh(ropeGeo, ropeMat);
+      rope.position.set(pt.x, basketY + 0.35 + ropeH / 2, pt.z);
+      balloonGroup.add(rope);
+    });
+
+    // 3. 暖光燃燒器 (Burner)
+    const burner = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.18, 0.18, 0.12, 8),
+      new THREE.MeshLambertMaterial({ color: 0xf59e0b, emissive: 0xd97706 })
+    );
+    burner.position.y = basketY + 0.35 + ropeH - 0.05;
+    balloonGroup.add(burner);
+
+    // 4. 氣球本體群組 (Balloon Envelope)
+    const envY = basketY + 0.35 + ropeH + 1.25;
+    const envGroup = new THREE.Group();
+    envGroup.position.y = envY;
+
+    // 頸部過渡漏斗 (Neck Funnel)
+    const neckMat = new THREE.MeshLambertMaterial({ color: 0x475569 });
+    const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.9, 0.38, 0.65, 16), neckMat);
+    neck.position.y = -0.85;
+    envGroup.add(neck);
+
+    // 依 type 打造 7 種不同造型氣球
+    if (type === 0) {
+      // 🌈 0. 彩虹馬卡龍多層條紋球 (Rainbow Macaron Balloon)
+      const colors = [0xf43f5e, 0xfb923c, 0xfacc15, 0x10b981, 0x0ea5e9, 0xa855f7];
+      const sliceH = 0.44;
+      const n = colors.length;
+      for (let i = 0; i < n; i++) {
+        const t1 = (i + 0.5) / n;
+        const t2 = (i + 1.5) / n;
+        const r1 = Math.sin(t1 * Math.PI) * 1.55;
+        const r2 = (i === n - 1) ? 0.3 : Math.sin(t2 * Math.PI) * 1.55;
+        const slice = new THREE.Mesh(
+          new THREE.CylinderGeometry(r2, r1, sliceH, 18),
+          new THREE.MeshLambertMaterial({ color: colors[i], flatShading: true })
         );
-        puff.position.set((p - 2) * 1.3, (Math.random() - 0.5) * 0.6, (Math.random() - 0.5) * 0.8);
-        cloud.add(puff);
+        slice.position.y = -0.5 + i * sliceH;
+        envGroup.add(slice);
       }
-      const cloudAngle = (c / 7) * Math.PI * 2;
-      const cloudDist = 34 + Math.random() * 14;
-      cloud.position.set(Math.cos(cloudAngle) * cloudDist, 20 + Math.random() * 6, Math.sin(cloudAngle) * cloudDist);
-      cloud.userData.speed = 0.0007 + Math.random() * 0.0005;
-      cloud.userData.radius = cloudDist;
-      cloud.userData.angle = cloudAngle;
-      scene.add(cloud);
-      clouds.push(cloud);
+      const finial = new THREE.Mesh(new THREE.SphereGeometry(0.28, 8, 8), new THREE.MeshLambertMaterial({ color: 0xfbbf24 }));
+      finial.position.y = -0.5 + n * sliceH + 0.15;
+      envGroup.add(finial);
+
+    } else if (type === 1) {
+      // 🐻 1. 暖萌小熊造型氣球 (Cozy Teddy Bear Balloon)
+      const bearColor = 0xd97706; // 焦糖棕
+      const earColor = 0xfef08a;  // 鵝黃內耳
+      const body = new THREE.Mesh(
+        new THREE.SphereGeometry(1.5, 18, 14),
+        new THREE.MeshLambertMaterial({ color: bearColor, flatShading: true })
+      );
+      envGroup.add(body);
+
+      // 兩隻圓滾滾小熊耳朵
+      [-1.15, 1.15].forEach(x => {
+        const earOuter = new THREE.Mesh(new THREE.SphereGeometry(0.52, 12, 10), new THREE.MeshLambertMaterial({ color: bearColor }));
+        earOuter.position.set(x, 1.25, 0);
+        const earInner = new THREE.Mesh(new THREE.SphereGeometry(0.33, 10, 8), new THREE.MeshLambertMaterial({ color: earColor }));
+        earInner.position.set(x, 1.25, 0.2);
+        envGroup.add(earOuter, earInner);
+      });
+
+      // 立體奶油色小熊嘴吻與黑鼻頭
+      const muzzle = new THREE.Mesh(new THREE.SphereGeometry(0.48, 12, 10), new THREE.MeshLambertMaterial({ color: 0xfef3c7 }));
+      muzzle.position.set(0, -0.15, 1.25);
+      muzzle.scale.set(1.2, 0.85, 0.8);
+      const nose = new THREE.Mesh(new THREE.SphereGeometry(0.16, 8, 8), new THREE.MeshLambertMaterial({ color: 0x1e293b }));
+      nose.position.set(0, 0.05, 1.6);
+      envGroup.add(muzzle, nose);
+
+    } else if (type === 2) {
+      // 💖 2. 夢幻粉紅愛心球 (Sweet Pastel Heart Balloon)
+      const heartShape = createHeartShape(0.11);
+      const heartExtrude = new THREE.ExtrudeGeometry(heartShape, {
+        depth: 1.3,
+        bevelEnabled: true,
+        bevelSegments: 4,
+        steps: 1,
+        bevelSize: 0.35,
+        bevelThickness: 0.35
+      });
+      heartExtrude.center();
+      const heartMesh = new THREE.Mesh(
+        heartExtrude,
+        new THREE.MeshLambertMaterial({ color: 0xf472b6, flatShading: true })
+      );
+      heartMesh.position.y = 0.2;
+      envGroup.add(heartMesh);
+
+      // 白色珍珠腰帶
+      const ribbon = new THREE.Mesh(
+        new THREE.TorusGeometry(1.3, 0.1, 8, 24),
+        new THREE.MeshLambertMaterial({ color: 0xffffff })
+      );
+      ribbon.rotation.x = Math.PI / 2;
+      ribbon.position.y = 0.0;
+      envGroup.add(ribbon);
+
+    } else if (type === 3) {
+      // 🐰 3. 萌萌長耳白兔球 (Sweet Bunny Balloon)
+      const bunnyColor = 0xf8fafc; // 雪白
+      const innerColor = 0xfb7185; // 粉嫩內耳
+      const body = new THREE.Mesh(
+        new THREE.SphereGeometry(1.48, 18, 14),
+        new THREE.MeshLambertMaterial({ color: bunnyColor, flatShading: true })
+      );
+      envGroup.add(body);
+
+      // 兩隻長長豎起兔耳朵 (向外微傾)
+      [-0.65, 0.65].forEach((x, i) => {
+        const sign = i === 0 ? -1 : 1;
+        const earGeo = new THREE.CylinderGeometry(0.18, 0.28, 1.4, 12);
+        const earMesh = new THREE.Mesh(earGeo, new THREE.MeshLambertMaterial({ color: bunnyColor }));
+        earMesh.position.set(x, 1.8, 0);
+        earMesh.rotation.z = sign * 0.18;
+        const innerGeo = new THREE.CylinderGeometry(0.09, 0.16, 1.2, 10);
+        const innerMesh = new THREE.Mesh(innerGeo, new THREE.MeshLambertMaterial({ color: innerColor }));
+        innerMesh.position.set(x, 1.8, 0.12);
+        innerMesh.rotation.z = sign * 0.18;
+        envGroup.add(earMesh, innerMesh);
+      });
+
+      // 吊籃旁懸掛的小胡蘿蔔
+      const carrot = new THREE.Mesh(
+        new THREE.ConeGeometry(0.14, 0.55, 8),
+        new THREE.MeshLambertMaterial({ color: 0xf97316 })
+      );
+      carrot.position.set(0.42, -1.8, 0.2);
+      carrot.rotation.z = -Math.PI / 4;
+      envGroup.add(carrot);
+
+    } else if (type === 4) {
+      // ⭐ 4. 璀璨幸運金星造型球 (Lucky Golden Star Balloon)
+      const starShape = createStarShape(5, 1.85, 1.05);
+      const starExtrude = new THREE.ExtrudeGeometry(starShape, {
+        depth: 1.1,
+        bevelEnabled: true,
+        bevelSegments: 3,
+        steps: 1,
+        bevelSize: 0.28,
+        bevelThickness: 0.28
+      });
+      starExtrude.center();
+      const starMesh = new THREE.Mesh(
+        starExtrude,
+        new THREE.MeshPhongMaterial({ color: 0xfbbf24, shininess: 80, flatShading: true })
+      );
+      starMesh.position.y = 0.2;
+      envGroup.add(starMesh);
+
+      // 頂部小水晶星光
+      const miniStar = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.35, 0),
+        new THREE.MeshPhongMaterial({ color: 0xfef08a, emissive: 0xf59e0b, shininess: 100 })
+      );
+      miniStar.position.y = 1.9;
+      envGroup.add(miniStar);
+
+    } else if (type === 5) {
+      // 🎪 5. 歡樂馬戲團條紋球 (Carnival Stripes Balloon)
+      const segments = 12;
+      const radius = 1.5;
+      for (let s = 0; s < segments; s++) {
+        const col = (s % 2 === 0) ? 0xef4444 : 0xffffff;
+        const phiStart = (s / segments) * Math.PI * 2;
+        const phiLength = (1 / segments) * Math.PI * 2;
+        const slice = new THREE.Mesh(
+          new THREE.SphereGeometry(radius, 8, 12, phiStart, phiLength),
+          new THREE.MeshLambertMaterial({ color: col, side: THREE.DoubleSide, flatShading: true })
+        );
+        envGroup.add(slice);
+      }
+      // 頂部旗桿與小三角旗
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.9, 6), new THREE.MeshLambertMaterial({ color: 0xf59e0b }));
+      pole.position.y = radius + 0.45;
+      const flag = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.45, 3), new THREE.MeshLambertMaterial({ color: 0x3b82f6 }));
+      flag.position.set(0.18, radius + 0.65, 0);
+      flag.rotation.z = Math.PI / 2;
+      envGroup.add(pole, flag);
+
+    } else {
+      // 🐱 6. 淘氣喵喵貓耳造型球 (Playful Kitty Balloon)
+      const catColor = 0x60a5fa; // 柔和天空藍
+      const catInner = 0xf472b6; // 粉紅內耳
+      const body = new THREE.Mesh(
+        new THREE.SphereGeometry(1.48, 18, 14),
+        new THREE.MeshLambertMaterial({ color: catColor, flatShading: true })
+      );
+      envGroup.add(body);
+
+      // 兩隻立體俏皮三角貓耳
+      [-0.85, 0.85].forEach((x, i) => {
+        const earOuter = new THREE.Mesh(new THREE.ConeGeometry(0.42, 0.68, 4), new THREE.MeshLambertMaterial({ color: catColor }));
+        earOuter.position.set(x, 1.35, 0.2);
+        earOuter.rotation.y = Math.PI / 4;
+        earOuter.rotation.z = (i === 0 ? 1 : -1) * 0.2;
+
+        const earIn = new THREE.Mesh(new THREE.ConeGeometry(0.24, 0.48, 4), new THREE.MeshLambertMaterial({ color: catInner }));
+        earIn.position.set(x, 1.35, 0.32);
+        earIn.rotation.y = Math.PI / 4;
+        earIn.rotation.z = (i === 0 ? 1 : -1) * 0.2;
+
+        envGroup.add(earOuter, earIn);
+      });
+
+      // 吊籃前的金色小鈴鐺
+      const bell = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 8, 8),
+        new THREE.MeshLambertMaterial({ color: 0xfbbf24, emissive: 0xb45309 })
+      );
+      bell.position.set(0, -0.15, 0.48);
+      envGroup.add(bell);
+    }
+
+    balloonGroup.add(envGroup);
+    balloonGroup.userData.toast = BALLOON_STYLES[type].toast;
+    balloonGroup.userData.name = BALLOON_STYLES[type].name;
+    return balloonGroup;
+  }
+
+  function buildBalloons() {
+    balloons = [];
+    const numBalloons = BALLOON_STYLES.length; // 7 顆不同造型
+    // 環繞群島四大海域廣闊空域 (半徑 31 ~ 35，高度 Y: 9 ~ 12.5，開闊錯落不遮擋島嶼)
+    const deg2rad = Math.PI / 180;
+    const configs = [
+      { radius: 32, baseY: 10.5, angle: 10 * deg2rad },    // 🌈 0. 東側海域 (愛心島與對話島之間)
+      { radius: 35, baseY: 12.0, angle: 55 * deg2rad },    // 🐻 1. 東南外海
+      { radius: 32, baseY: 9.5,  angle: 98 * deg2rad },    // 💖 2. 南側海域 (對話島與四葉草島之間)
+      { radius: 34, baseY: 12.5, angle: 152 * deg2rad },   // 🐰 3. 西南外海
+      { radius: 32, baseY: 10.0, angle: 195 * deg2rad },   // ⭐ 4. 西側海域 (四葉草島與齒輪島之間)
+      { radius: 35, baseY: 11.5, angle: 245 * deg2rad },   // 🎪 5. 西北外海
+      { radius: 31, baseY: 9.0,  angle: 290 * deg2rad }    // 🐱 6. 北側海域 (齒輪島與愛心島之間)
+    ];
+
+    for (let i = 0; i < numBalloons; i++) {
+      const balloon = createHotAirBalloon(i);
+      const cfg = configs[i];
+
+      balloon.position.set(
+        Math.cos(cfg.angle) * cfg.radius,
+        cfg.baseY,
+        Math.sin(cfg.angle) * cfg.radius
+      );
+
+      // 動畫參數
+      balloon.userData.angle = cfg.angle;
+      balloon.userData.radius = cfg.radius;
+      balloon.userData.baseY = cfg.baseY;
+      balloon.userData.speed = 0.0005 + (i % 3) * 0.00015; // 順時針徐徐巡遊
+      balloon.userData.phase = i * 1.25; // 錯開起伏週期
+      balloon.userData.rotSpeed = 0.005 + (i % 2) * 0.003; // 緩慢自轉
+
+      scene.add(balloon);
+      balloons.push(balloon);
     }
   }
 
@@ -1060,6 +1340,23 @@
           const pIdx = root.userData.parentIslandIndex;
           walkToAndTrigger(root.position.x, root.position.z, () => openQuestDrawer(pIdx, w));
           return;
+        }
+      }
+
+      // 檢查是否點擊空中熱氣球 (互動小彩蛋)
+      if (balloons && balloons.length > 0) {
+        const balloonIntersects = raycaster.intersectObjects(balloons, true);
+        if (balloonIntersects.length > 0) {
+          sfx.playChime();
+          let root = balloonIntersects[0].object;
+          while (root.parent && !balloons.includes(root)) root = root.parent;
+          if (balloons.includes(root)) {
+            const curY = root.userData.baseY;
+            root.userData.baseY += 1.8;
+            setTimeout(() => { root.userData.baseY = curY; }, 420);
+            showToast(root.userData.toast || '🎈 熱氣球向你打了個招呼！');
+            return;
+          }
         }
       }
     });
@@ -1212,15 +1509,21 @@
       m.rotation.y += 0.016;
     });
 
-    // 4. 浮雲飄移
-    clouds.forEach(c => {
-      c.userData.angle += c.userData.speed;
-      c.position.x = Math.cos(c.userData.angle) * c.userData.radius;
-      c.position.z = Math.sin(c.userData.angle) * c.userData.radius;
+    // 4. 空中巡航熱氣球軌道漫遊與微風浮沉擺動
+    const time = Date.now() * 0.0016;
+    balloons.forEach(b => {
+      b.userData.angle += b.userData.speed;
+      b.position.x = Math.cos(b.userData.angle) * b.userData.radius;
+      b.position.z = Math.sin(b.userData.angle) * b.userData.radius;
+
+      // 溫柔浮沉微風擺盪
+      b.position.y = b.userData.baseY + Math.sin(time * 1.2 + b.userData.phase) * 0.65;
+      b.rotation.z = Math.sin(time * 0.9 + b.userData.phase) * 0.04;
+      b.rotation.x = Math.cos(time * 0.8 + b.userData.phase) * 0.03;
+      b.rotation.y += b.userData.rotSpeed;
     });
 
     // 5. 海浪與小踏石浮島微幅起伏 (Bobbing Waves & Stepping Stones)
-    const time = Date.now() * 0.0016;
     seaMesh.position.y = -0.2 + Math.sin(time) * 0.08;
     subIslandMeshes.forEach((sub, i) => {
       sub.position.y = Math.sin(time * 2 + i * 0.45) * 0.06;
