@@ -9552,17 +9552,17 @@ function renderIndexStudentStars() {
   ];
   container.innerHTML = students.map(s => `
     <div class="treasure-chest-card">
-      <div style="display:flex; align-items:center; gap:6px;">
-        <span style="font-size:1.45rem; filter:drop-shadow(0 2px 4px rgba(0,0,0,0.1)); cursor:pointer;" onclick="highFiveMascot('${s.id}')" title="點擊擊掌！">${s.emoji}</span>
-        <div>
-          <div style="font-size:0.95rem; font-weight:900; color:#1e293b;">小${s.name}</div>
-          <div style="font-size:0.68rem; font-weight:800; color:#78350f; background:#fef3c7; padding:1px 5px; border-radius:4px;">${s.role}</div>
+      <div class="chest-card-top">
+        <div class="chest-card-identity">
+          <span class="chest-avatar" onclick="highFiveMascot('${s.id}')" title="點擊跟小${s.name}擊掌！">${s.emoji}</span>
+          <span class="chest-name">小${s.name}</span>
         </div>
+        <span class="chest-role">${s.role}</span>
       </div>
-      <div style="display:flex; align-items:center; gap:4px;">
+      <div class="chest-card-bottom">
         <button class="chest-btn-mini" onclick="indexMinusStar('${s.id}')" title="扣1星">−</button>
-        <span class="chest-star-count" style="min-width:34px; text-align:center;">⭐ ${stars[s.id] || 0}</span>
-        <button class="chest-btn-mini" onclick="indexAddStar('${s.id}')" style="background:#f59e0b; color:#ffffff; border-color:#d97706;" title="加1星">+</button>
+        <span class="chest-star-count">⭐ ${stars[s.id] || 0}</span>
+        <button class="chest-btn-mini chest-btn-plus" onclick="indexAddStar('${s.id}')" title="加1星">+</button>
       </div>
     </div>
   `).join("");

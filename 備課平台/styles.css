@@ -1384,46 +1384,145 @@ body {
 }
 
 /* 7. 超能力寶箱星星存摺 (Treasure Chest Bank) */
+.index-students-container {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+.index-students-header {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.index-students-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .treasure-chest-card {
   background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
-  border: 2px solid #fed7aa;
-  border-radius: 14px;
-  padding: 8px 10px;
+  border: 1.5px solid #fed7aa;
+  border-radius: 10px;
+  padding: 6px 8px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 3px 0 #fed7aa;
+  flex-direction: column;
+  gap: 5px;
+  box-shadow: 0 2px 0 #fed7aa;
   transition: all 0.2s;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .treasure-chest-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 0 #fdba74;
+  box-shadow: 0 4px 0 #fdba74;
   border-color: #f97316;
 }
 
-.chest-star-count {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: #b45309;
+.chest-card-top {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chest-card-identity {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chest-avatar {
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.chest-avatar:hover {
+  transform: scale(1.25);
+}
+
+.chest-name {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #1e293b;
+  white-space: nowrap;
+}
+
+.chest-role {
+  font-size: 0.62rem;
+  font-weight: 800;
+  color: #78350f;
+  background: #fef3c7;
+  padding: 1px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.chest-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(254, 243, 199, 0.45);
+  border-radius: 8px;
+  padding: 3px 6px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.chest-star-count {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #b45309;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 2px;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
 }
 
 .chest-btn-mini {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   border: 1.5px solid #d97706;
   background: #fef3c7;
   color: #92400e;
+  font-size: 0.85rem;
   font-weight: 900;
+  line-height: 1;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
   transition: all 0.15s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
 }
 
 .chest-btn-mini:hover {
@@ -1433,6 +1532,17 @@ body {
 
 .chest-btn-mini:active {
   transform: scale(0.9);
+}
+
+.chest-btn-plus {
+  background: #f59e0b;
+  color: #ffffff;
+  border-color: #d97706;
+}
+
+.chest-btn-plus:hover {
+  background: #ea580c;
+  color: #ffffff;
 }
 
 /* 8. 課堂卡片手繪外框與精緻裝飾 */
