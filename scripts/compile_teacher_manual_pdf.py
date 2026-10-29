@@ -888,7 +888,7 @@ intro_html = f"""<!doctype html>
       • <strong>嚴格 B4 單頁排版</strong>：一堂課一張 B4，橫向平衡儀表板，教學流程一目了然，內容零截斷！
     </div>
     <div style="border-top:2.5px solid #e2e8f0; padding-top:12px; display:flex; justify-content:space-between; align-items:center; font-size:0.86rem; font-weight:800; color:#475569;">
-      <span style="white-space:nowrap;">🏫 雲林縣大埤國民小學 · 特教學習教室</span>
+      <span style="white-space:nowrap;">🏫 雲林縣大埤國民小學 學習教室 教學團隊編製</span>
       <span style="white-space:nowrap;">📅 115 學年度全套 101 堂完整彙編（共 106 頁）</span>
       <span style="white-space:nowrap;">建議列印格式：B4 (250×353mm)</span>
     </div>

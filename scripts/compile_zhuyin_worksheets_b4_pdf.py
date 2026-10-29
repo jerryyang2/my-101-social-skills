@@ -618,7 +618,7 @@ intro_html = f"""<!doctype html>
       • <strong>親師生三方融合閉環</strong>：每張學習單同步搭載「普通班導師融合口訣便利貼」與「家庭小超人生活打卡」，落實跨情境類化。
     </div>
     <div style="border-top:2px solid #e2e8f0; padding-top:10px; display:flex; justify-content:space-between; font-size:1.02rem; font-weight:800; color:#475569;">
-      <span>🏫 雲林縣大埤國民小學 · 學習教室</span>
+      <span>🏫 雲林縣大埤國民小學 學習教室 教學團隊編製</span>
       <span>📅 115 學年度全套 101 堂完整彙編（共 106 頁）</span>
       <span>格式：B4 彩色單面精印</span>
     </div>

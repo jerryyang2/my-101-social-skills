@@ -516,7 +516,7 @@ intro_html = f"""<!doctype html>
 
     <!-- 底部單位 -->
     <div style="margin-bottom:8mm;">
-      <div style="font-size:1.15rem; font-weight:900; color:#1e3a8a;">雲林縣大埤國民小學 學習教室 團隊 編審</div>
+      <div style="font-size:1.15rem; font-weight:900; color:#1e3a8a;">雲林縣大埤國民小學 學習教室 教學團隊編製</div>
       <div style="font-size:0.88rem; color:#64748b; font-weight:800; margin-top:4px;">全套共 104 頁（封面 1 頁、目錄 2 頁、故事招式頁 101 頁）· 中華民國 115 年 10 月</div>
     </div>
   </article>
