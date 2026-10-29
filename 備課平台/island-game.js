@@ -332,15 +332,37 @@
     }
   };
 
-  // Web Speech API 特教語音朗讀
+  // Web Speech API 特教語音朗讀 (含台灣繁體中文優化與表情符號過濾)
+  let cachedTwVoice = null;
+  function getTaiwanVoice() {
+    if (cachedTwVoice) return cachedTwVoice;
+    if (!('speechSynthesis' in window) || !window.speechSynthesis.getVoices) return null;
+    const voices = window.speechSynthesis.getVoices();
+    cachedTwVoice = voices.find(v => v.lang === 'zh-TW' || v.lang === 'zh_TW' || v.lang.startsWith('zh-TW'))
+      || voices.find(v => v.lang.startsWith('zh'));
+    return cachedTwVoice;
+  }
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window && window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      cachedTwVoice = null;
+      getTaiwanVoice();
+    };
+  }
+
   function speakText(text) {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
-    const cleanText = text.replace(/[🦁🐻🐼🦊💥🌟⚠️👉🌱🎈🎒🦕🦖🦄🚀]/g, '').trim();
+    // 濾除各類 Emoji 圖示與特殊標記，保留純淨自然之特教朗讀語音
+    const cleanText = text
+      .replace(/[\p{Extended_Pictographic}\uFE0F\u200D🦁🐻🐼🦊💥🌟⚠️👉🌱🎈🎒🦕🦖🦄🚀🌈💖🐰⭐🎪🐱]/gu, '')
+      .replace(/[★☆✦✧·—]/g, '')
+      .trim();
     if (!cleanText) return;
     const ut = new SpeechSynthesisUtterance(cleanText);
     ut.lang = 'zh-TW';
-    ut.rate = state.ttsSpeed || 0.8;
+    const voice = getTaiwanVoice();
+    if (voice) ut.voice = voice;
+    ut.rate = state.ttsSpeed || 0.88;
     ut.pitch = 1.05;
     window.speechSynthesis.speak(ut);
   }
@@ -1279,11 +1301,23 @@
     });
 
     stage.addEventListener('pointermove', e => {
-      if (!isPointerDown) return;
-      const dx = e.clientX - pointerStart.x;
-      const dy = e.clientY - pointerStart.y;
-      targetYaw = pointerStart.yaw - dx * 0.007;
-      targetPitch = Math.min(1.3, Math.max(0.25, pointerStart.pitch + dy * 0.005));
+      if (isPointerDown) {
+        const dx = e.clientX - pointerStart.x;
+        const dy = e.clientY - pointerStart.y;
+        targetYaw = pointerStart.yaw - dx * 0.007;
+        targetPitch = Math.min(1.3, Math.max(0.25, pointerStart.pitch + dy * 0.005));
+        return;
+      }
+      // 懸停回饋：滑鼠移至熱氣球或可互動島嶼時切換指標光標
+      const rect = stage.getBoundingClientRect();
+      mouse.x = ((e.clientX - rect.left) / stage.clientWidth) * 2 - 1;
+      mouse.y = -((e.clientY - rect.top) / stage.clientHeight) * 2 + 1;
+      raycaster.setFromCamera(mouse, camera);
+      const isHoverBalloon = balloons && raycaster.intersectObjects(balloons, true).length > 0;
+      const isHoverCenter = centerMesh && raycaster.intersectObject(centerMesh, true).length > 0;
+      const isHoverSub = subIslandMeshes && raycaster.intersectObjects(subIslandMeshes, true).length > 0;
+      const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
+      stage.style.cursor = (isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
     });
 
     const onPointerUp = () => { isPointerDown = false; };
@@ -1343,7 +1377,7 @@
         }
       }
 
-      // 檢查是否點擊空中熱氣球 (互動小彩蛋)
+      // 檢查是否點擊空中熱氣球 (互動小彩蛋：升降彈跳＋柔和音效＋文字提示＋語音朗讀)
       if (balloons && balloons.length > 0) {
         const balloonIntersects = raycaster.intersectObjects(balloons, true);
         if (balloonIntersects.length > 0) {
@@ -1354,7 +1388,9 @@
             const curY = root.userData.baseY;
             root.userData.baseY += 1.8;
             setTimeout(() => { root.userData.baseY = curY; }, 420);
-            showToast(root.userData.toast || '🎈 熱氣球向你打了個招呼！');
+            const toastMsg = root.userData.toast || '🎈 熱氣球向你打了個招呼！';
+            showToast(toastMsg, 3200);
+            speakText(toastMsg); // 特教語音朗讀熱氣球彩蛋
             return;
           }
         }
@@ -1621,14 +1657,16 @@
     }, 3200);
   }
 
-  function showToast(msg) {
+  let toastTimer = null;
+  function showToast(msg, duration = 2800) {
     const toast = document.getElementById('toastMsg');
     if (!toast) return;
     toast.textContent = msg;
     toast.classList.add('active');
-    setTimeout(() => {
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
       toast.classList.remove('active');
-    }, 2400);
+    }, duration);
   }
 
   // ==========================================
