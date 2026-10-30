@@ -506,7 +506,7 @@
     const iepGoal = b.iepGoal || "能在視覺提示下30秒內做出相應社交行為，達成率80%以上。";
 
     // 1. LINE / 聯絡簿文字版
-    const lineText = `【大埤國小學習教室 · 本週特教社交超能力聯絡條】
+    const lineText = `【OO國小學習教室 · 本週特教社交超能力聯絡條】
 親愛的家長與班級導師您好：
 本週孩子在學習教室進行了第 ${ln} 週社交技巧課程：
 🌟 本週主題：【${cleanTitle}】
@@ -534,7 +534,7 @@
       const singleSlipHtml = `
         <div class="print-slip-card">
           <div class="slip-header">
-            <span>🌱 大埤國小特教學習教室 · 社交超能力聯絡卡</span>
+            <span>🌱 OO國小特教學習教室 · 社交超能力聯絡卡</span>
             <span class="slip-week">第 ${ln} 週</span>
           </div>
           <div class="slip-title">🎯 今日超能力：${cleanTitle}</div>

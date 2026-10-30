@@ -1,5 +1,5 @@
 /**
- * 大埤國小學習教室 · 社交小超人群島大冒險 (IsleForge 3D 概念 特教 RPG 冒險遊戲)
+ * OO國小學習教室 · 社交小超人群島大冒險 (IsleForge 3D 概念 特教 RPG 冒險遊戲)
  * 核心引擎：Three.js + Web Audio API + Web Speech API + 3D 角色即時行走
  * 100% 離線免安裝、無外部相依、支援跨載具/電子白板/平板與無障礙 2D 平面切換
  */
@@ -2249,7 +2249,7 @@
   function celebrateHero() {
     sfx.playFanfare();
     triggerConfetti();
-    showToast('🏆 為社交小超人歡呼！大埤國小學習教室以你為榮！');
+    showToast('🏆 為社交小超人歡呼！OO國小學習教室以你為榮！');
   }
 
   // ==========================================

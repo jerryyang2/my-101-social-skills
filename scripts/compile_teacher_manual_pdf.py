@@ -876,7 +876,7 @@ intro_html = f"""<!doctype html>
   <article class="cover-page">
     <div>
       <div style="font-size:1.15rem; font-weight:bold; color:#1d4ed8; background:#eff6ff; border:2.5px solid #93c5fd; padding:8px 24px; border-radius:9999px; display:inline-block;">
-        ★ 大埤國小學習教室 · 特殊需求領域（社會技巧）教師手冊全集 ★
+        ★ OO國小學習教室 · 特殊需求領域（社會技巧）教師手冊全集 ★
       </div>
     </div>
     <div style="margin:20px 0;">
@@ -917,7 +917,7 @@ intro_html = f"""<!doctype html>
       • <strong>嚴格 B4 單頁排版</strong>：一堂課一張 B4，橫向平衡儀表板，教學流程一目了然，內容零截斷！
     </div>
     <div style="border-top:2.5px solid #e2e8f0; padding-top:12px; display:flex; justify-content:space-between; align-items:center; font-size:0.86rem; font-weight:800; color:#475569;">
-      <span style="white-space:nowrap;">🏫 雲林縣大埤國民小學 學習教室 教學團隊編製</span>
+      <span style="white-space:nowrap;">🏫 雲林縣OO國小 學習教室 老師編製</span>
       <span style="white-space:nowrap;">📅 115 學年度全套 101 堂完整彙編（共 106 頁）</span>
       <span style="white-space:nowrap; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:9999px; border:1px solid #fde68a;">建議列印規格：B4 直式 (250×353mm) · 請勿選 A4</span>
     </div>

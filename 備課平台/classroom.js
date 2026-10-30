@@ -298,7 +298,7 @@ function renderTopStudentBar() {
   container.innerHTML = `
     <div class="students-bar-header">
       <div style="display:flex; align-items:center; gap:6px;">
-        <span>🏫 大埤國小學習教室</span>
+        <span>🏫 OO國小學習教室</span>
         <span class="cloud-sync-badge" id="cloudSyncBadge" title="所有裝置自動即時雲端同步">☁️ 雲端連線</span>
       </div>
       <button class="star-panel-close-btn" onclick="toggleStarBar(event)" title="收合集點面板">✕ 完成收合</button>

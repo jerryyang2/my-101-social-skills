@@ -560,7 +560,7 @@ intro_html = f"""<!doctype html>
   <article class="lesson-page cover-page">
     <div style="margin-top:12mm;">
       <div style="display:inline-block; background:#8b5cf6; color:#ffffff; padding:4px 18px; border-radius:9999px; font-size:1.05rem; font-weight:900; letter-spacing:1px; margin-bottom:12px;">
-        🌱 大埤國小學習教室 · 角色大劇場與遊樂場實戰指南
+        🌱 OO國小學習教室 · 角色大劇場與遊樂場實戰指南
       </div>
       <h1 style="font-size:2.35rem; font-weight:900; color:#1e3a8a; margin:0 0 10px 0; line-height:1.25;">
         特教社交技巧與溝通訓練<br>
@@ -609,7 +609,7 @@ intro_html = f"""<!doctype html>
 
     <!-- 底部單位 -->
     <div style="margin-bottom:8mm;">
-      <div style="font-size:1.15rem; font-weight:900; color:#1e3a8a;">雲林縣大埤國民小學 學習教室 教學團隊編製</div>
+      <div style="font-size:1.15rem; font-weight:900; color:#1e3a8a;">雲林縣OO國小 學習教室 老師編製</div>
       <div style="font-size:0.88rem; color:#64748b; font-weight:800; margin-top:4px;">全套共 104 頁（封面 1 頁、目錄 2 頁、實戰演練頁 101 頁）· 中華民國 115 年 10 月</div>
     </div>
   </article>
@@ -773,7 +773,7 @@ for idx, b in enumerate(briefings):
       <!-- 頂部資訊列 -->
       <div class="page-header">
         <div class="header-top">
-          <span class="school-badge">🏫 雲林縣大埤國小學習教室 · 特殊需求領域（社會技巧）</span>
+          <span class="school-badge">🏫 雲林縣OO國小學習教室 · 特殊需求領域（社會技巧）</span>
           <span class="unit-badge">{unit} · 課綱代碼：{code}</span>
         </div>
         <div class="header-title-row">

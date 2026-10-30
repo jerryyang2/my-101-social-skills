@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-大埤國小特教班 52 週新課綱整合構建腳本
+OO國小特教班 52 週新課綱整合構建腳本
 1. 讀取 curriculum_part1 (Weeks 1-26) 與 curriculum_part2 (Weeks 27-52)
 2. 提取既有 49 天每日教案（作為第 53 至 101 課 晨報靈感備份庫）
 3. 生成完整的 52 週新教案、情境角色劇場、彩色圖文學習單
@@ -390,7 +390,7 @@ def main():
     rp_js_path = os.path.join(web_dir, "roleplay-data.js")
     roleplays_json = json.dumps(all_roleplays, ensure_ascii=False, indent=2)
     new_rp_content = (
-        "// 大埤國小學習教室 · 每日 4 角色情境扮演小劇場專屬資料庫 (52 週新課綱 + 49 天靈感備份庫 共 101 課)\n"
+        "// OO國小學習教室 · 每日 4 角色情境扮演小劇場專屬資料庫 (52 週新課綱 + 49 天靈感備份庫 共 101 課)\n"
         "// 專為 宇 (🦁 ASD)、畯 (🐻 EBD)、和 (🐼 ASD/LD)、嘉 (🦊 ASD) 設計\n"
         "// 每個情境具備：明確動作指令、具體對話台詞（支援注音與語音朗讀）、特教引導小撇步\n\n"
         f"window.dailyRoleplays = {roleplays_json};\n"

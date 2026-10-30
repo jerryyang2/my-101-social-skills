@@ -577,7 +577,7 @@ intro_html = f"""<!doctype html>
   <article class="worksheet-page cover-page">
     <div>
       <div style="font-size:1.15rem; font-weight:bold; color:#1d4ed8; background:#eff6ff; border:2.5px solid #93c5fd; padding:8px 24px; border-radius:9999px; display:inline-block;">
-        ★ 大埤國小學習教室 · 特殊需求領域（社會技巧）注音學習單全集 ★
+        ★ OO國小學習教室 · 特殊需求領域（社會技巧）注音學習單全集 ★
       </div>
     </div>
     <div style="margin:20px 0;">
@@ -618,7 +618,7 @@ intro_html = f"""<!doctype html>
       • <strong>親師生三方融合閉環</strong>：每張學習單同步搭載「普通班導師融合口訣便利貼」與「家庭小超人生活打卡」，落實跨情境類化。
     </div>
     <div style="border-top:2px solid #e2e8f0; padding-top:10px; display:flex; justify-content:space-between; font-size:1.02rem; font-weight:800; color:#475569;">
-      <span>🏫 雲林縣大埤國民小學 學習教室 教學團隊編製</span>
+      <span>🏫 雲林縣OO國小 學習教室 老師編製</span>
       <span>📅 115 學年度全套 101 堂完整彙編（共 106 頁）</span>
       <span>格式：B4 彩色單面精印</span>
     </div>
@@ -852,7 +852,7 @@ def generate_lesson_article(k):
     <!-- Worksheet {d['id']} (Lesson {ln}) -->
     <article class="worksheet-page" id="lesson-{ln}" style="--border-color: {color};">
       <div class="sheet-header-badge">
-        <span class="school-tag">🏫 115年大埤國小學習教室 · 社交技巧與溝通訓練 成長學習單（注音版）</span>
+        <span class="school-tag">🏫 115年OO國小學習教室 · 社交技巧與溝通訓練 成長學習單（注音版）</span>
         <span class="unit-badge">{unit}</span>
       </div>
       <div class="sheet-title-row">

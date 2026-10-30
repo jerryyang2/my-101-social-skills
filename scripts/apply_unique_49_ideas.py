@@ -206,7 +206,7 @@ print(f"Total combined roleplays: {len(all_combined_roleplays)}")
 
 roleplays_json = json.dumps(all_combined_roleplays, ensure_ascii=False, indent=2)
 new_rp_file_content = (
-    "// 大埤國小學習教室 · 每日 4 角色情境扮演小劇場專屬資料庫 (52 週新課綱 + 49 課靈感備份庫 共 101 課)\n"
+    "// OO國小學習教室 · 每日 4 角色情境扮演小劇場專屬資料庫 (52 週新課綱 + 49 課靈感備份庫 共 101 課)\n"
     "// 專為 宇 (🦁 ASD)、畯 (🐻 EBD)、和 (🐼 ASD/LD)、嘉 (🦊 ASD) 設計\n"
     "// 每個情境具備：明確動作指令、具體對話台詞（支援注音與語音朗讀）、特教引導小撇步\n\n"
     f"window.dailyRoleplays = {roleplays_json};\n"
