@@ -22,7 +22,7 @@ import subprocess
 import pypdf
 
 WEB_DIR = os.path.join(os.path.dirname(__file__), "..", "備課平台")
-ARTIFACT_DIR = "output/artifacts"
+ARTIFACT_DIR = os.environ.get("TEACHER_MANUAL_ARTIFACT_DIR")
 
 # 1. 載入資料庫 (Briefings & Roleplays & Worksheets)
 node_cmd = """
@@ -865,7 +865,6 @@ intro_html = f"""<!doctype html>
       <span style="font-size:0.8rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:9999px; border:1px solid #fde68a;">📐 B4 直式 (250×353mm) · 勿選 A4</span>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <a href="教師手冊.pdf" download="教師手冊_B4直式.pdf" style="background:#eff6ff; color:#1d4ed8; border-color:#93c5fd; font-weight:900;">📥 下載 B4 PDF</a>
       <button type="button" onclick="window.print()" style="background:#f0fdf4; color:#15803d; border-color:#86efac; font-weight:900;">🖨️ 列印手冊 (B4)</button>
       <a href="#toc-1">📋 目錄</a>
       <button type="button" onclick="window.scrollTo({{top:0, behavior:'smooth'}})">⬆️ 頂部</button>
@@ -1529,13 +1528,15 @@ print(f"✅ Successfully injected {total_links_added} clickable PDF link annotat
 # 儲存最終編譯 PDF
 output_pdf_path = os.path.join(WEB_DIR, "教師手冊.pdf")
 mirror_pdf_path = os.path.join(WEB_DIR, "teacher_manual_101.pdf")
-artifact_pdf_path = os.path.join(ARTIFACT_DIR, "教師手冊.pdf")
+artifact_pdf_path = os.path.join(ARTIFACT_DIR, "教師手冊.pdf") if ARTIFACT_DIR else None
 
 with open(output_pdf_path, "wb") as f_out:
     writer.write(f_out)
 
 shutil.copyfile(output_pdf_path, mirror_pdf_path)
-shutil.copyfile(output_pdf_path, artifact_pdf_path)
+if artifact_pdf_path:
+    os.makedirs(ARTIFACT_DIR, exist_ok=True)
+    shutil.copyfile(output_pdf_path, artifact_pdf_path)
 
 # 儲存全冊完整 HTML 預覽檔
 full_html_path = os.path.join(WEB_DIR, "all_teacher_manual_book.html")
@@ -1549,7 +1550,8 @@ file_size_mb = os.path.getsize(output_pdf_path) / (1024 * 1024)
 print(f"🎉 MASTER B4 TEACHER MANUAL PDF COMPILED SUCCESSFULLY!")
 print(f"- Output File: {output_pdf_path} ({file_size_mb:.2f} MB)")
 print(f"- Mirror File: {mirror_pdf_path}")
-print(f"- Artifact File: {artifact_pdf_path}")
+if artifact_pdf_path:
+    print(f"- Artifact File: {artifact_pdf_path}")
 
 # Verify page count
 reader = pypdf.PdfReader(output_pdf_path)
