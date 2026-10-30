@@ -809,8 +809,32 @@ html, body {
 }
 
 @media print {
+  @page {
+    size: 250mm 353mm portrait; /* 嚴格 B4 直式規格 (非 A4) */
+    margin: 5.5mm 7mm;
+  }
+  html, body {
+    width: 250mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
   .reader-toolbar {
     display: none !important;
+  }
+  .lesson-page, .cover-page, .toc-page {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    width: 100% !important;
+    height: 341mm !important;
+    max-height: 341mm !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    margin: 0 !important;
   }
 }
 """
@@ -836,8 +860,13 @@ intro_html = f"""<!doctype html>
       <a href="index.html">🌱 備課平台</a>
       <a href="../index.html">🏫 網站首頁</a>
     </div>
-    <span style="font-weight:900; font-size:0.92rem; color:#1e293b;">📘 全冊特教教師備課指引教學手冊 (106頁)</span>
     <div style="display:flex; align-items:center; gap:8px;">
+      <span style="font-weight:900; font-size:0.92rem; color:#1e293b;">📘 全冊特教教師備課指引教學手冊 (106頁)</span>
+      <span style="font-size:0.8rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:9999px; border:1px solid #fde68a;">📐 B4 直式 (250×353mm) · 勿選 A4</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="教師手冊.pdf" download="教師手冊_B4直式.pdf" style="background:#eff6ff; color:#1d4ed8; border-color:#93c5fd; font-weight:900;">📥 下載 B4 PDF</a>
+      <button type="button" onclick="window.print()" style="background:#f0fdf4; color:#15803d; border-color:#86efac; font-weight:900;">🖨️ 列印手冊 (B4)</button>
       <a href="#toc-1">📋 目錄</a>
       <button type="button" onclick="window.scrollTo({{top:0, behavior:'smooth'}})">⬆️ 頂部</button>
     </div>
@@ -890,7 +919,7 @@ intro_html = f"""<!doctype html>
     <div style="border-top:2.5px solid #e2e8f0; padding-top:12px; display:flex; justify-content:space-between; align-items:center; font-size:0.86rem; font-weight:800; color:#475569;">
       <span style="white-space:nowrap;">🏫 雲林縣大埤國民小學 學習教室 教學團隊編製</span>
       <span style="white-space:nowrap;">📅 115 學年度全套 101 堂完整彙編（共 106 頁）</span>
-      <span style="white-space:nowrap;">建議列印格式：B4 (250×353mm)</span>
+      <span style="white-space:nowrap; background:#fef3c7; color:#92400e; padding:3px 10px; border-radius:9999px; border:1px solid #fde68a;">建議列印規格：B4 直式 (250×353mm) · 請勿選 A4</span>
     </div>
   </article>
 
@@ -1457,7 +1486,7 @@ for p_idx, exp_count in [(1, 26), (2, 26), (3, 25), (4, 24)]:
     
     lesson_rows = []
     for y in sorted(chunks_by_y.keys(), reverse=True):
-        if 50 < y < 915:
+        if 105 < y < 925:
             line = ' '.join([c[1] for c in sorted(chunks_by_y[y], key=lambda x: x[0])])
             m = re.search(r'第\s*(\d+)\s*(週|課)', line)
             if m:
@@ -1474,7 +1503,7 @@ for p_idx, exp_count in [(1, 26), (2, 26), (3, 25), (4, 24)]:
         else:
             top = (ys[i-1] + y) / 2
         if i == len(ys) - 1:
-            bottom = max(55.0, y - (ys[-2] - ys[-1]) / 2)
+            bottom = max(100.0, y - (ys[-2] - ys[-1]) / 2)
         else:
             bottom = (y + ys[i+1]) / 2
         
