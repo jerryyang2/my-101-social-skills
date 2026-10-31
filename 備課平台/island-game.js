@@ -30,7 +30,7 @@
     soundEnabled: true,
     ttsSpeed: 0.8,
     viewMode: '3d', // '3d' | '2d'
-    cameraFollow: true,
+    cameraFollow: false,
     
     // 冒險者角色
     heroName: '小宇',
@@ -79,6 +79,7 @@
         stamps: state.islandStamps
       };
       localStorage.setItem('isleforge_hero_rpg_save', JSON.stringify(d));
+      window.SocialIslandVisitors.save(d, state.playerPos);
     } catch (e) {}
   }
 
@@ -393,13 +394,19 @@
   // 視角控制變數
   let yaw = 0.5, pitch = 0.72, dist = 55;
   let targetYaw = yaw, targetPitch = pitch, targetDist = dist;
-  let isPointerDown = false;
-  let pointerStart = { x: 0, y: 0, yaw: 0, pitch: 0 };
-  let cameraTarget = new THREE.Vector3(0, 0, 0);
+  let cameraTarget = window.THREE ? new THREE.Vector3(0, 1.8, 0) : null;
+  let cameraGoal = cameraTarget?.clone();
+  let sceneArt = null;
+  let cameraMode = 'bird';
+  let overviewActive = true;
+  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let sceneryTime = 0;
+  let previousFrameTime = 0;
+  let webglAvailable = false;
 
   function initThree() {
     if (!window.THREE) {
-      console.error('Three.js 未載入');
+      toggleViewMode();
       return;
     }
 
@@ -408,9 +415,15 @@
     camera.position.set(0, 35, 55);
     camera.lookAt(0, 0, 0);
 
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    try {
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    } catch {
+      toggleViewMode();
+      return;
+    }
+    webglAvailable = true;
     renderer.setSize(stage.clientWidth, stage.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
 
     hemiLight = new THREE.HemisphereLight(0xffffff, 0x94a3b8, 0.7);
     scene.add(hemiLight);
@@ -420,7 +433,7 @@
     scene.add(sunLight);
 
     // 大海
-    const seaGeo = new THREE.CircleGeometry(110, 64);
+    const seaGeo = new THREE.CircleGeometry(260, 64);
     const seaMat = new THREE.MeshLambertMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.88 });
     seaMesh = new THREE.Mesh(seaGeo, seaMat);
     seaMesh.rotation.x = -Math.PI / 2;
@@ -429,6 +442,7 @@
 
     // 建造群島
     buildArchipelago();
+    sceneArt = window.SocialIslandArt.build(THREE, scene, islandMeshes, centerMesh, subIslandMeshes);
 
     // 建造 3D 冒險者角色
     buildPlayerCharacter();
@@ -447,6 +461,10 @@
 
     // 更新頂部 HUD
     updateHudDisplay();
+    resetArchipelagoView();
+    yaw = targetYaw;
+    pitch = targetPitch;
+    dist = targetDist;
 
     // 啟動渲染迴圈
     requestAnimationFrame(renderLoop);
@@ -700,8 +718,8 @@
     playerGroup.position.set(0, 2.2, 2.8);
     playerGroup.rotation.y = Math.PI; // 面向群島
     playerGroup.scale.set(1.35, 1.35, 1.35); // 角色視覺清晰化
-    state.playerPos = { x: 0, z: 2.8 };
-    state.playerTargetPos = { x: 0, z: 2.8 };
+    state.playerPos = window.SocialIslandVisitors.active().position;
+    state.playerTargetPos = { ...state.playerPos };
 
     scene.add(playerGroup);
   }
@@ -1237,7 +1255,8 @@
 
   // 3D 浮動標籤圖層
   function add3DLabel(text, obj, yOffset, isCenter, islandIdx) {
-    const el = document.createElement('div');
+    const el = document.createElement('button');
+    el.type = 'button';
     el.className = `island-3d-label ${isCenter ? 'center' : ''}`;
     el.innerHTML = text;
     el.addEventListener('click', (e) => {
@@ -1270,7 +1289,7 @@
       tempV.y += item.yOffset;
       tempV.project(camera);
 
-      if (tempV.z > 1) {
+      if (tempV.z > 1 || tempV.z < -1 || Math.abs(tempV.x) > 1.1 || Math.abs(tempV.y) > 1.1) {
         item.el.style.display = 'none';
         return;
       }
@@ -1284,6 +1303,11 @@
 
   // 3D 冒險者行走邏輯
   function walkToAndTrigger(tx, tz, onArrive) {
+    if (Math.hypot(tx - state.playerPos.x, tz - state.playerPos.z) <= 0.15) {
+      state.onArriveCallback = null;
+      if (typeof onArrive === 'function') onArrive();
+      return;
+    }
     state.playerTargetPos.x = tx;
     state.playerTargetPos.z = tz;
     state.onArriveCallback = onArrive;
@@ -1291,23 +1315,35 @@
 
   // 視角控制器與 Raycaster 點擊
   function bindControls() {
-    stage.addEventListener('pointerdown', e => {
-      isPointerDown = true;
-      pointerStart.x = e.clientX;
-      pointerStart.y = e.clientY;
-      pointerStart.yaw = targetYaw;
-      pointerStart.pitch = targetPitch;
-      stage.setPointerCapture(e.pointerId);
-    });
-
-    stage.addEventListener('pointermove', e => {
-      if (isPointerDown) {
-        const dx = e.clientX - pointerStart.x;
-        const dy = e.clientY - pointerStart.y;
-        targetYaw = pointerStart.yaw - dx * 0.007;
-        targetPitch = Math.min(1.3, Math.max(0.25, pointerStart.pitch + dy * 0.005));
-        return;
+    const gestures = window.SocialIslandExplorer.gestures({
+      start() {
+        const snapshot = camera.clone();
+        snapshot.updateMatrixWorld();
+        return { yaw: targetYaw, pitch: targetPitch, origin: cameraGoal.clone(), camera: snapshot, rotate: state.cameraFollow };
+      },
+      zoom: factor => zoomCamera(factor),
+      drag(start, delta, event) {
+        overviewActive = false;
+        if (start.context.rotate) {
+          targetYaw = start.context.yaw - delta.x * 0.007;
+          targetPitch = Math.min(Math.PI / 2 - 0.025, Math.max(0.04, start.context.pitch + delta.y * 0.005));
+          cameraMode = 'custom';
+          synchronizeCameraControls();
+        } else {
+          const rect = canvas.getBoundingClientRect();
+          const point = (clientX, clientY) => new THREE.Vector2((clientX - rect.left) / rect.width * 2 - 1, 1 - (clientY - rect.top) / rect.height * 2);
+          cameraGoal.copy(window.SocialIslandExplorer.panTarget(THREE, start.context.camera, start.context.origin, point(start.x, start.y), point(event.clientX, event.clientY)));
+        }
       }
+    });
+    canvas.addEventListener('pointerdown', event => {
+      if (gestures.down(event)) {
+        canvas.focus({ preventScroll: true });
+        canvas.setPointerCapture(event.pointerId);
+      }
+    });
+    canvas.addEventListener('pointermove', e => {
+      gestures.move(e);
       // 懸停回饋：滑鼠移至熱氣球或可互動島嶼時切換指標光標
       const rect = stage.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / stage.clientWidth) * 2 - 1;
@@ -1317,28 +1353,38 @@
       const isHoverCenter = centerMesh && raycaster.intersectObject(centerMesh, true).length > 0;
       const isHoverSub = subIslandMeshes && raycaster.intersectObjects(subIslandMeshes, true).length > 0;
       const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
-      stage.style.cursor = (isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
+      const isHoverResident = sceneArt && raycaster.intersectObjects(sceneArt.residents, true).length > 0;
+      canvas.style.cursor = (isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
     });
 
-    const onPointerUp = () => { isPointerDown = false; };
-    stage.addEventListener('pointerup', onPointerUp);
-    stage.addEventListener('pointercancel', onPointerUp);
+    canvas.addEventListener('pointercancel', event => gestures.up(event, true));
+    canvas.addEventListener('lostpointercapture', event => gestures.up(event, true));
+    window.addEventListener('blur', () => gestures.clear());
 
-    stage.addEventListener('wheel', e => {
+    canvas.addEventListener('wheel', e => {
       e.preventDefault();
-      targetDist = Math.min(85, Math.max(20, targetDist + e.deltaY * 0.04));
+      const pixels = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? stage.clientHeight : 1);
+      zoomCamera(Math.exp(Math.max(-0.5, Math.min(0.5, pixels * (e.ctrlKey ? 0.01 : 0.0015)))));
     }, { passive: false });
 
     // 點擊 3D 物件導航
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
 
-    stage.addEventListener('click', e => {
+    canvas.addEventListener('pointerup', e => {
+      if (!gestures.up(e)) return;
       const rect = stage.getBoundingClientRect();
       mouse.x = ((e.clientX - rect.left) / stage.clientWidth) * 2 - 1;
       mouse.y = -((e.clientY - rect.top) / stage.clientHeight) * 2 + 1;
 
       raycaster.setFromCamera(mouse, camera);
+      const residentHits = sceneArt ? raycaster.intersectObjects(sceneArt.residents, true) : [];
+      if (residentHits.length) {
+        let resident = residentHits[0].object;
+        while (resident.parent && resident.userData.residentIndex === undefined) resident = resident.parent;
+        meetResident(resident.userData.residentIndex);
+        return;
+      }
 
       // 檢查是否點擊主題島
       const islandIntersects = raycaster.intersectObjects(islandMeshes, true);
@@ -1399,8 +1445,7 @@
 
     // 鍵盤 WASD / 方向鍵行走控制
     window.addEventListener('keydown', e => {
-      if (e.target.closest('.mft-ui, .mft-editor')) return;
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (document.body.classList.contains('modal-open') || e.target.closest('.mft-ui, .mft-editor, button, input, textarea, select, summary, a, [contenteditable="true"]')) return;
       const speed = 1.4;
       if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
         state.playerTargetPos.z -= speed;
@@ -1411,6 +1456,7 @@
       } else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
         state.playerTargetPos.x += speed;
       }
+      if (/^(ArrowUp|ArrowDown|ArrowLeft|ArrowRight|[wasd])$/i.test(e.key)) e.preventDefault();
     });
 
     // 虛擬 D-pad 控制
@@ -1437,6 +1483,7 @@
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
+    if (overviewActive) targetDist = window.SocialIslandExplorer.overviewDistance(camera.aspect);
   }
 
   // 主題光影切換
@@ -1454,22 +1501,22 @@
     if (!scene || !seaMesh) return;
 
     if (themeKey === 'cream') {
-      scene.background = new THREE.Color(0xfaf6e9);
-      scene.fog = new THREE.Fog(0xfaf6e9, 55, 120);
-      seaMesh.material.color.setHex(0x78b9c8);
+      scene.background = new THREE.Color(0xc8e5df);
+      scene.fog = new THREE.Fog(0xc8e5df, 210, 400);
+      seaMesh.material.color.setHex(0x76b0b1);
       hemiLight.intensity = 0.7;
       sunLight.intensity = 0.88;
       sunLight.color.setHex(0xffedd5);
     } else if (themeKey === 'sea') {
       scene.background = new THREE.Color(0xdcebee);
-      scene.fog = new THREE.Fog(0xdcebee, 55, 120);
-      seaMesh.material.color.setHex(0x0284c7);
+      scene.fog = new THREE.Fog(0xdcebee, 210, 400);
+      seaMesh.material.color.setHex(0x719da8);
       hemiLight.intensity = 0.65;
       sunLight.intensity = 0.8;
       sunLight.color.setHex(0xfef08a);
     } else if (themeKey === 'night') {
       scene.background = new THREE.Color(0x0f172a);
-      scene.fog = new THREE.Fog(0x0f172a, 40, 100);
+      scene.fog = new THREE.Fog(0x0f172a, 210, 400);
       seaMesh.material.color.setHex(0x1e293b);
       hemiLight.intensity = 0.4;
       sunLight.intensity = 0.5;
@@ -1478,8 +1525,11 @@
   }
 
   // 渲染動畫迴圈
-  function renderLoop() {
+  function renderLoop(frameTime = 0) {
     requestAnimationFrame(renderLoop);
+    const elapsed = Math.max(0, Math.min(0.05, (frameTime - previousFrameTime) / 1000));
+    previousFrameTime = frameTime;
+    if (!motionPaused) sceneryTime += elapsed;
 
     // 1. 冒險者行走插值與步伐動畫
     if (playerGroup) {
@@ -1534,24 +1584,26 @@
       cameraTarget.x += (playerGroup.position.x - cameraTarget.x) * 0.06;
       cameraTarget.z += (playerGroup.position.z - cameraTarget.z) * 0.06;
     } else {
-      cameraTarget.x += (0 - cameraTarget.x) * 0.06;
-      cameraTarget.z += (0 - cameraTarget.z) * 0.06;
+      cameraTarget.x += (cameraGoal.x - cameraTarget.x) * 0.06;
+      cameraTarget.z += (cameraGoal.z - cameraTarget.z) * 0.06;
     }
+    cameraTarget.y += (cameraGoal.y - cameraTarget.y) * 0.06;
 
     camera.position.x = cameraTarget.x + Math.sin(yaw) * Math.cos(pitch) * dist;
-    camera.position.y = Math.sin(pitch) * dist;
+    camera.position.y = cameraTarget.y + Math.sin(pitch) * dist;
     camera.position.z = cameraTarget.z + Math.cos(yaw) * Math.cos(pitch) * dist;
-    camera.lookAt(cameraTarget.x, 1.8, cameraTarget.z);
+    camera.lookAt(cameraTarget);
 
     // 3. 裝飾地標旋轉
     rotatingDecorations.forEach(m => {
-      m.rotation.y += 0.016;
+      if (!motionPaused) m.rotation.y += 0.016;
     });
 
     // 4. 空中巡航熱氣球軌道漫遊與微風浮沉擺動
-    const time = Date.now() * 0.0016;
+    const time = sceneryTime * 1.6;
+    sceneArt?.animate(sceneryTime, camera.position);
     balloons.forEach(b => {
-      b.userData.angle += b.userData.speed;
+      if (!motionPaused) b.userData.angle += b.userData.speed;
       b.position.x = Math.cos(b.userData.angle) * b.userData.radius;
       b.position.z = Math.sin(b.userData.angle) * b.userData.radius;
 
@@ -1559,7 +1611,7 @@
       b.position.y = b.userData.baseY + Math.sin(time * 1.2 + b.userData.phase) * 0.65;
       b.rotation.z = Math.sin(time * 0.9 + b.userData.phase) * 0.04;
       b.rotation.x = Math.cos(time * 0.8 + b.userData.phase) * 0.03;
-      b.rotation.y += b.userData.rotSpeed;
+      if (!motionPaused) b.rotation.y += b.userData.rotSpeed;
     });
 
     // 5. 海浪與小踏石浮島微幅起伏 (Bobbing Waves & Stepping Stones)
@@ -1577,6 +1629,11 @@
     state.activeIslandIndex = idx;
     const targetIsland = islandMeshes[idx];
     if (!targetIsland) return;
+    overviewActive = false;
+    state.cameraFollow = true;
+    cameraMode = 'bird';
+    cameraGoal.y = 1.8;
+    synchronizeCameraControls();
 
     const [startW] = ISLAND_THEMES[idx].weeksRange;
     openQuestDrawer(idx, startW);
@@ -1589,9 +1646,14 @@
   }
 
   function resetArchipelagoView() {
-    targetYaw = 0.5;
-    targetPitch = 0.72;
-    targetDist = 55;
+    overviewActive = true;
+    state.cameraFollow = false;
+    cameraMode = 'bird';
+    targetYaw = 0.4;
+    targetPitch = 0.85;
+    targetDist = window.SocialIslandExplorer.overviewDistance(camera?.aspect || 1);
+    cameraGoal?.set(0, 1.8, 0);
+    synchronizeCameraControls();
     closeQuestDrawer();
   }
 
@@ -1612,6 +1674,8 @@
 
     if (avatarEl) avatarEl.textContent = heroLook.avatar;
     if (nameEl) nameEl.textContent = state.heroName;
+    const visitorName = document.getElementById('activeVisitorName');
+    if (visitorName) visitorName.textContent = state.heroName;
     if (lvEl) lvEl.textContent = `Lv.${lvInfo.level} ${lvInfo.title}`;
     if (expFill) expFill.style.width = `${lvInfo.progress}%`;
     if (expText) expText.textContent = `${state.exp} / ${lvInfo.nextBase} EXP`;
@@ -2238,6 +2302,7 @@
   function toggleViewMode() {
     const map2D = document.getElementById('map2DView');
     const btn = document.getElementById('btnToggleView');
+    if (state.viewMode === '2d' && !webglAvailable) return;
     if (state.viewMode === '3d') {
       state.viewMode = '2d';
       if (map2D) map2D.classList.add('active');
@@ -2248,6 +2313,12 @@
       if (map2D) map2D.classList.remove('active');
       if (btn) btn.textContent = '🗺️ 切換 2D 地圖';
     }
+    document.body.dataset.mapView = state.viewMode;
+    document.querySelectorAll('[data-map-toggle]').forEach(control => {
+      control.textContent = state.viewMode === '2d' ? '回到立體群島' : '平面選島';
+      control.disabled = !webglAvailable && state.viewMode === '2d';
+    });
+    if (!webglAvailable && btn) btn.disabled = true;
   }
 
   function render2DMapView() {
@@ -2269,10 +2340,10 @@
         const weekData = allWeeks.find(b => b.lessonNumber === w) || allWeeks[w - 1] || {};
         const isPass = state.passedWeeks.has(w);
         weeksListHtml += `
-          <div class="week-2d-item ${isPass ? 'passed' : ''}" onclick="window.socialGame.openQuestDrawer(${idx}, ${w})">
+          <button type="button" class="week-2d-item ${isPass ? 'passed' : ''}" onclick="window.socialGame.openQuestDrawer(${idx}, ${w})">
             <span>第 ${w} 週：${weekData.title || ''}</span>
             <span>${isPass ? '⭐' : '⚪'}</span>
-          </div>
+          </button>
         `;
       }
 
@@ -2299,12 +2370,109 @@
   // 鏡頭跟隨開關
   function toggleFollowCamera() {
     state.cameraFollow = !state.cameraFollow;
+    overviewActive = false;
+    if (state.cameraFollow) setCameraPreset(cameraMode === 'top' ? 'top' : 'bird');
+    else if (cameraTarget) cameraGoal.copy(cameraTarget);
     const btn = document.getElementById('btnToggleFollow');
     if (btn) {
       btn.textContent = state.cameraFollow ? '🎥 鏡頭跟隨：開' : '🎥 鏡頭跟隨：關';
       btn.setAttribute('aria-pressed', String(state.cameraFollow));
     }
     showToast(state.cameraFollow ? '🎥 鏡頭自動跟隨 3D 冒險者' : '🎥 鏡頭自由全景模式');
+    synchronizeCameraControls();
+  }
+
+  function synchronizeCameraControls() {
+    document.querySelectorAll('[data-camera-preset]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.cameraPreset === cameraMode)));
+    document.querySelectorAll('[data-camera-follow]').forEach(button => {
+      button.setAttribute('aria-pressed', String(state.cameraFollow));
+      button.textContent = state.cameraFollow ? '跟隨訪客：開' : '跟隨訪客：關';
+    });
+    const follow = document.getElementById('btnToggleFollow');
+    if (follow) {
+      follow.setAttribute('aria-pressed', String(state.cameraFollow));
+      follow.textContent = state.cameraFollow ? '🎥 鏡頭跟隨：開' : '🎥 鏡頭跟隨：關';
+    }
+    const hint = document.getElementById('cameraGestureHint');
+    if (hint) hint.textContent = state.cameraFollow ? '拖曳旋轉・雙指縮放' : '拖曳移動畫面・雙指縮放';
+    document.querySelectorAll('[data-motion-toggle]').forEach(button => {
+      button.setAttribute('aria-pressed', String(motionPaused));
+      button.textContent = motionPaused ? '繼續動態' : '暫停動態';
+    });
+  }
+
+  function setCameraPreset(mode) {
+    if (!camera || !['bird', 'top', 'eye'].includes(mode)) return;
+    if (mode === 'eye') { state.cameraFollow = true; overviewActive = false; }
+    const preset = window.SocialIslandExplorer.preset(mode, state.cameraFollow, camera.aspect);
+    cameraMode = mode;
+    targetYaw = preset.yaw;
+    targetPitch = preset.pitch;
+    targetDist = preset.distance;
+    cameraGoal.y = preset.height;
+    synchronizeCameraControls();
+  }
+
+  function zoomCamera(factor) {
+    overviewActive = false;
+    targetDist = window.SocialIslandExplorer.zoom(targetDist, factor);
+  }
+
+  function toggleMotion() {
+    motionPaused = !motionPaused;
+    synchronizeCameraControls();
+  }
+
+  function meetResident(index) {
+    const theme = ISLAND_THEMES[index];
+    if (!theme) return;
+    const dialog = document.getElementById('residentDialog');
+    document.getElementById('residentName').textContent = theme.mascot;
+    document.getElementById('residentPortrait').setAttribute('href', `assets/companions.svg#${['lion', 'bear', 'panda', 'fox'][index]}`);
+    document.getElementById('residentIsland').textContent = theme.name;
+    document.getElementById('residentGreeting').textContent = theme.subtitle;
+    document.getElementById('residentQuest').onclick = () => {
+      dialog.close();
+      openQuestDrawer(index, theme.weeksRange[0]);
+    };
+    document.body.classList.add('modal-open');
+    dialog.showModal();
+  }
+
+  function openVisitors() {
+    const visitors = window.SocialIslandVisitors;
+    const select = document.getElementById('visitorSelect');
+    select.replaceChildren();
+    visitors.list().forEach(visitor => {
+      const option = document.createElement('option');
+      option.value = visitor.id;
+      option.textContent = visitor.name;
+      option.selected = visitor.id === visitors.active().id;
+      select.appendChild(option);
+    });
+    document.getElementById('visitorName').value = '';
+    document.getElementById('visitorMessage').textContent = visitors.persistent() ? '' : '目前無法儲存訪客，請允許瀏覽器儲存空間後再試。';
+    document.querySelectorAll('[data-visitor-action]').forEach(button => { button.disabled = !visitors.persistent(); });
+    document.body.classList.add('modal-open');
+    document.getElementById('visitorDialog').showModal();
+  }
+
+  function changeVisitor(create) {
+    const visitors = window.SocialIslandVisitors;
+    saveLocalProgress();
+    if (!visitors.persistent()) return;
+    const result = create ? visitors.add(document.getElementById('visitorName').value) : visitors.switchTo(document.getElementById('visitorSelect').value);
+    if (!result) {
+      document.getElementById('visitorMessage').textContent = '請填寫不重複的暱稱，最多可建立 60 位訪客。';
+      return;
+    }
+    if (!visitors.persistent()) {
+      document.getElementById('visitorMessage').textContent = '目前無法儲存訪客，請允許瀏覽器儲存空間後再試。';
+      return;
+    }
+    window.removeEventListener('pagehide', saveLocalProgress);
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    window.location.reload();
   }
 
   // 音效開關
@@ -2408,12 +2576,25 @@
     openCitadelModal,
     closeCitadelModal,
     celebrateHero,
-    resetArchipelagoView
+    resetArchipelagoView,
+    setCameraPreset,
+    zoomCamera,
+    toggleMotion,
+    meetResident,
+    openVisitors,
+    changeVisitor
   };
 
   // DOM 載入後啟動
   window.addEventListener('DOMContentLoaded', () => {
     initThree();
+    document.getElementById('activeVisitorName').textContent = state.heroName;
+    document.querySelectorAll('.explorer-dialog').forEach(dialog => {
+      dialog.addEventListener('close', () => {
+        document.body.classList.toggle('modal-open', Boolean(document.querySelector('.quest-drawer-overlay.active, .modal-overlay.active, dialog[open]')));
+      });
+    });
+    window.addEventListener('pagehide', saveLocalProgress);
     if (window.location.hash === '#passport') {
       openPassportModal();
     } else if (window.location.hash === '#citadel') {

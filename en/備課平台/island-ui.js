@@ -12,6 +12,10 @@
   }
   new ResizeObserver(updateHeaderHeight).observe(header);
   updateHeaderHeight();
+  const consolePanel = document.querySelector('.explorer-console');
+  if (window.matchMedia('(max-width: 700px)').matches) consolePanel.open = false;
+  document.getElementById('explorerMovement').appendChild(document.getElementById('virtualDpad'));
+  new ResizeObserver(() => window.dispatchEvent(new Event('resize'))).observe(document.getElementById('stage'));
 
   const settings = header.querySelector('.game-settings');
   const menus = [...header.querySelectorAll('details')];

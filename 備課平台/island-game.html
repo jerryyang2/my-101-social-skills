@@ -16,12 +16,13 @@
   <link rel="stylesheet" href="island-game.css">
   <link rel="stylesheet" href="platform-theme.css?v=20261031-unified">
   <link rel="stylesheet" href="island-navigation.css?v=20261031-single-row">
-  <script src="island-ui.js?v=20261031-compact" defer></script>
+  <script src="island-ui.js?v=20261101-village" defer></script>
   <link rel="stylesheet" href="floating-tools/tools.css?v=20261101-class-tools">
   <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261101-clean-hourglass" defer></script>
+  <script src="floating-tools/drawing.js?v=20261101-class-tools" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
+  <link rel="stylesheet" href="island-explorer.css?v=20261101-village">
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
@@ -64,7 +65,7 @@
             <fieldset class="settings-section">
               <legend>地圖與鏡頭</legend>
               <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ 切換 2D 地圖</button>
-              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="true">🎥 鏡頭跟隨：開</button>
+              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="false">🎥 鏡頭跟隨：關</button>
             </fieldset>
             <fieldset class="settings-section">
               <legend>遊戲音效</legend>
@@ -97,6 +98,42 @@
     </details>
   </header>
 
+  <div class="visitor-strip">
+    <span aria-hidden="true">⚓</span><span>登島訪客</span><strong id="activeVisitorName">訪客 1</strong>
+    <button type="button" onclick="window.socialGame.openVisitors()">切換／新增訪客</button>
+  </div>
+
+  <details class="explorer-console" open>
+    <summary>巡島工具 <span aria-hidden="true">⌄</span></summary>
+    <div class="explorer-console-body">
+      <h2>看看這片群島</h2>
+      <button type="button" class="explorer-overview" onclick="window.socialGame.resetArchipelagoView()">⌂ 回到全景</button>
+      <div class="camera-presets" role="group" aria-label="視角切換">
+        <button type="button" data-camera-preset="bird" aria-pressed="true" onclick="window.socialGame.setCameraPreset('bird')">鳥瞰</button>
+        <button type="button" data-camera-preset="top" aria-pressed="false" onclick="window.socialGame.setCameraPreset('top')">俯瞰</button>
+        <button type="button" data-camera-preset="eye" aria-pressed="false" onclick="window.socialGame.setCameraPreset('eye')">平視</button>
+      </div>
+      <div class="camera-zoom" role="group" aria-label="地圖縮放">
+        <button type="button" onclick="window.socialGame.zoomCamera(0.8)">＋ 放大</button>
+        <button type="button" onclick="window.socialGame.zoomCamera(1.25)">− 縮小</button>
+      </div>
+      <button type="button" data-camera-follow aria-pressed="false" onclick="window.socialGame.toggleFollowCamera()">跟隨訪客：關</button>
+      <p id="cameraGestureHint">拖曳移動畫面・雙指縮放</p>
+      <button type="button" data-map-toggle onclick="window.socialGame.toggleViewMode()">平面選島</button>
+      <button type="button" data-motion-toggle aria-pressed="false" onclick="window.socialGame.toggleMotion()">暫停動態</button>
+      <h2>和居民打招呼</h2>
+      <div class="resident-directory" role="group" aria-label="島上居民">
+        <button type="button" onclick="window.socialGame.meetResident(0)" aria-label="和宇獅獅打招呼">🦁</button>
+        <button type="button" onclick="window.socialGame.meetResident(1)" aria-label="和畯熊熊打招呼">🐻</button>
+        <button type="button" onclick="window.socialGame.meetResident(2)" aria-label="和和貓熊打招呼">🐼</button>
+        <button type="button" onclick="window.socialGame.meetResident(3)" aria-label="和嘉狐狸打招呼">🦊</button>
+      </div>
+      <h2>帶訪客散散步</h2>
+      <div id="explorerMovement"></div>
+      <p>WASD／方向鍵行走<br>點島嶼或週次，前往原本的任務</p>
+    </div>
+  </details>
+
   <!-- RPG 冒險者頂部狀態 HUD 條 -->
   <aside class="rpg-hud-bar" id="rpgHud" aria-live="polite">
     <div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="點擊自訂冒險者名稱與造型">
@@ -126,23 +163,23 @@
 
   <!-- 3D 畫布主舞台 -->
   <main id="stage">
-    <canvas id="threeCanvas"></canvas>
+    <canvas id="threeCanvas" tabindex="0" aria-label="立體社交群島。方向鍵移動訪客；巡島工具可切換視角，平面選島可直接選擇關卡。"></canvas>
     <!-- 3D 世界空間浮動標籤圖層 -->
     <div id="labelLayer"></div>
   </main>
 
   <!-- 操作指示提示列 -->
   <div class="view-hints" id="moveHint">
-    💡 點選空中熱氣球聆聽語音彩蛋 · 鍵盤 <b>WASD</b>/<b>方向鍵</b> 或點擊島嶼行走 · 拖曳旋轉 · 滾輪縮放
+    點島嶼出發，也可以點點居民和熱氣球。
   </div>
 
   <!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
   <div class="virtual-dpad" id="virtualDpad">
-    <button class="dpad-btn dpad-up" data-dir="up">▲</button>
-    <button class="dpad-btn dpad-left" data-dir="left">◀</button>
-    <button class="dpad-btn dpad-center" data-dir="center">●</button>
-    <button class="dpad-btn dpad-right" data-dir="right">▶</button>
-    <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+    <button class="dpad-btn dpad-up" data-dir="up" aria-label="向前走">▲</button>
+    <button class="dpad-btn dpad-left" data-dir="left" aria-label="向左走">◀</button>
+    <button class="dpad-btn dpad-center" data-dir="center" aria-label="回到中央">●</button>
+    <button class="dpad-btn dpad-right" data-dir="right" aria-label="向右走">▶</button>
+    <button class="dpad-btn dpad-down" data-dir="down" aria-label="向後走">▼</button>
   </div>
 
   <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
@@ -462,10 +499,30 @@
   <!-- Toast 訊息提示 -->
   <div class="toast" id="toastMsg" role="status" aria-live="polite"></div>
 
+  <dialog id="visitorDialog" class="explorer-dialog" aria-labelledby="visitorTitle">
+    <form method="dialog"><button class="explorer-close" aria-label="關閉訪客選單">✕</button></form>
+    <h2 id="visitorTitle">一起來群島作客</h2>
+    <p>每位訪客各有自己的星星、島章和進度。資料只留在這個瀏覽器；換裝置時，使用原本的接關碼。</p>
+    <label for="visitorSelect">選一位訪客</label>
+    <div class="visitor-form-row"><select id="visitorSelect"></select><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(false)">切換訪客</button></div>
+    <label for="visitorName">新增訪客暱稱（不用真名）</label>
+    <div class="visitor-form-row"><input id="visitorName" maxlength="32" autocomplete="off" placeholder="例如：小海星"><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(true)">新增並出發</button></div>
+    <p id="visitorMessage" role="status" aria-live="polite"></p>
+  </dialog>
+  <dialog id="residentDialog" class="explorer-dialog" aria-labelledby="residentName">
+    <form method="dialog"><button class="explorer-close" aria-label="結束打招呼">✕</button></form>
+    <svg class="resident-portrait" viewBox="0 0 180 210" aria-hidden="true"><use id="residentPortrait" href="assets/companions.svg#lion"></use></svg>
+    <p class="resident-island" id="residentIsland"></p><h2 id="residentName"></h2><p id="residentGreeting"></p>
+    <button type="button" id="residentQuest">看看這座島的任務 →</button>
+  </dialog>
+
   <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
   <script src="three.min.js"></script>
   <script src="app.js?v=20261031-date-voice"></script>
   <script src="roleplay-data.js"></script>
-  <script src="island-game.js?v=20261031-compact"></script>
+  <script src="island-visitors.js?v=20261101-village"></script>
+  <script src="island-explorer.js?v=20261101-village"></script>
+  <script src="island-scene-art.js?v=20261101-village"></script>
+  <script src="island-game.js?v=20261101-village"></script>
 </body>
 </html>
