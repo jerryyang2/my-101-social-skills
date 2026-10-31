@@ -61,14 +61,159 @@
     }
     return point.x >= left - tolerance && point.x <= right + tolerance && point.y >= top - tolerance && point.y <= bottom + tolerance && Math.min(Math.abs(point.x - left), Math.abs(point.x - right), Math.abs(point.y - top), Math.abs(point.y - bottom)) <= tolerance;
   }
+  class Countdown {
+    constructor(minutes = 5) { this.setMinutes(minutes); }
+    setMinutes(minutes) {
+      if (!Number.isInteger(minutes) || minutes < 1 || minutes > 40) throw new RangeError('請輸入 1–40 的整數分鐘。');
+      this.minutes = minutes;
+      this.reset();
+    }
+    reset() { this.remainingMs = this.minutes * 60000; this.deadline = null; }
+    get running() { return this.deadline !== null; }
+    remaining(now) { return this.running ? Math.max(0, this.deadline - now) : this.remainingMs; }
+    start(now) {
+      if (this.running) return;
+      if (this.remainingMs <= 0) this.reset();
+      this.deadline = now + this.remainingMs;
+    }
+    pause(now) { this.remainingMs = this.remaining(now); this.deadline = null; }
+  }
+  function timerText(milliseconds) {
+    const seconds = Math.ceil(Math.max(0, milliseconds) / 1000);
+    return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
+  }
   if (typeof module !== 'undefined' && module.exports) module.exports = {
     DrawingHistory,
     hitsMark,
-    segmentDistance
+    segmentDistance,
+    Countdown,
+    timerText
   };
   if (typeof document === 'undefined') return;
   const handIconURL = new URL('./pointing-hand.svg?v=social-cursor-20261031', document.currentScript.src).href;
   const helperIconURL = new URL('./social-helper.svg?v=20261031-circle', document.currentScript.src).href;
+  function createCountdownWidget() {
+    const root = document.createElement('section');
+    root.id = 'mft-countdown';
+    root.className = 'mft-countdown';
+    root.setAttribute('aria-label', '浮動倒數計時器');
+    root.hidden = true;
+    root.innerHTML = `<header class="mft-countdown-header">
+      <button type="button" class="mft-countdown-drag" aria-label="移動倒數計時器" title="拖曳移動；方向鍵微調">✥ 倒數計時器</button>
+      <button type="button" data-timer-action="close" aria-label="收起並暫停倒數計時器">×</button>
+    </header>
+    <div class="mft-countdown-body">
+      <div class="mft-countdown-clock" role="timer" aria-live="off">05:00</div>
+      <label class="mft-countdown-minutes">設定 <input type="number" min="1" max="40" step="1" value="5" aria-label="倒數分鐘數，1 至 40 分鐘"> 分鐘</label>
+      <div class="mft-countdown-actions"><button type="button" data-timer-action="toggle">開始</button><button type="button" data-timer-action="reset">重設</button></div>
+      <p class="mft-countdown-status" role="status">準備開始</p>
+    </div>`;
+    document.body.append(root);
+    const clock = root.querySelector('.mft-countdown-clock');
+    const input = root.querySelector('input');
+    const toggle = root.querySelector('[data-timer-action=toggle]');
+    const status = root.querySelector('.mft-countdown-status');
+    const handle = root.querySelector('.mft-countdown-drag');
+    const countdown = new Countdown();
+    let interval = null;
+    let drag = null;
+    let previousFocus = null;
+    let position = { x: innerWidth - 360, y: 110 };
+    function clamp() {
+      const bounds = root.getBoundingClientRect();
+      position.x = Math.max(8, Math.min(position.x, innerWidth - bounds.width - 8));
+      position.y = Math.max(8, Math.min(position.y, innerHeight - bounds.height - 8));
+      root.style.left = `${position.x}px`;
+      root.style.top = `${position.y}px`;
+    }
+    function stopInterval() { clearInterval(interval); interval = null; }
+    function paint() {
+      const remaining = countdown.remaining(performance.now());
+      if (countdown.running && remaining === 0) { countdown.pause(performance.now()); stopInterval(); }
+      clock.textContent = timerText(remaining);
+      clock.setAttribute('aria-label', `剩餘 ${Math.floor(Math.ceil(remaining / 1000) / 60)} 分 ${Math.ceil(remaining / 1000) % 60} 秒`);
+      toggle.textContent = countdown.running ? '暫停' : remaining === countdown.minutes * 60000 || remaining === 0 ? '開始' : '繼續';
+      root.dataset.finished = String(remaining === 0);
+      const message = remaining === 0 ? '時間到' : countdown.running ? '計時中' : remaining === countdown.minutes * 60000 ? '準備開始' : '已暫停';
+      if (status.textContent !== message) status.textContent = message;
+    }
+    function applyMinutes() {
+      const minutes = input.valueAsNumber;
+      const valid = Number.isInteger(minutes) && minutes >= 1 && minutes <= 40;
+      input.setCustomValidity(valid ? '' : '請輸入 1–40 的整數分鐘。');
+      if (!valid) { input.reportValidity(); return false; }
+      if (minutes !== countdown.minutes) { stopInterval(); countdown.setMinutes(minutes); paint(); }
+      return true;
+    }
+    function startOrPause() {
+      if (countdown.running) { countdown.pause(performance.now()); stopInterval(); }
+      else {
+        if (!applyMinutes()) return;
+        countdown.start(performance.now()); interval = setInterval(paint, 200);
+      }
+      paint();
+    }
+    function finishDrag(event) {
+      if (drag?.pointerId !== event.pointerId) return;
+      drag = null;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+    }
+    function synchronize() {
+      const full = document.fullscreenElement;
+      const unavailable = full?.tagName === 'IFRAME' || (window.self !== window.top && !full);
+      (full && !unavailable ? full : document.body).append(root);
+      root.classList.toggle('mft-unavailable', unavailable);
+      if (!root.hidden) clamp();
+    }
+    root.addEventListener('click', event => {
+      const action = event.target.closest('[data-timer-action]')?.dataset.timerAction;
+      if (action === 'toggle') startOrPause();
+      if (action === 'reset') { stopInterval(); countdown.reset(); paint(); }
+      if (action === 'close') {
+        countdown.pause(performance.now()); stopInterval(); paint(); root.hidden = true;
+        const returnFocus = previousFocus?.getClientRects().length ? previousFocus : document.querySelector('#social-floating-tools .mft-launcher');
+        returnFocus?.focus({ preventScroll: true });
+      }
+    });
+    input.addEventListener('input', () => input.setCustomValidity(''));
+    input.addEventListener('change', applyMinutes);
+    handle.addEventListener('pointerdown', event => {
+      if (event.button !== 0 || event.isPrimary === false || drag) return;
+      event.preventDefault();
+      drag = { pointerId: event.pointerId, x: event.clientX, y: event.clientY, position: { ...position } };
+      handle.setPointerCapture(event.pointerId);
+      handle.focus({ preventScroll: true });
+    });
+    handle.addEventListener('pointermove', event => {
+      if (drag?.pointerId !== event.pointerId) return;
+      event.preventDefault();
+      position = { x: drag.position.x + event.clientX - drag.x, y: drag.position.y + event.clientY - drag.y };
+      clamp();
+    });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => handle.addEventListener(type, finishDrag));
+    root.addEventListener('keydown', event => {
+      event.stopPropagation();
+      if (event.key === 'Escape') { root.querySelector('[data-timer-action=close]').click(); event.preventDefault(); }
+      if (event.key === 'Enter' && event.target === input) { startOrPause(); event.preventDefault(); }
+      if (event.target !== handle || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
+      event.preventDefault();
+      const distance = event.shiftKey ? 20 : 5;
+      position.x += event.key === 'ArrowRight' ? distance : event.key === 'ArrowLeft' ? -distance : 0;
+      position.y += event.key === 'ArrowDown' ? distance : event.key === 'ArrowUp' ? -distance : 0;
+      clamp();
+    });
+    window.addEventListener('resize', () => { if (!root.hidden) clamp(); });
+    window.addEventListener('pagehide', stopInterval);
+    window.addEventListener('pageshow', () => {
+      if (countdown.running && interval === null) {
+        paint();
+        if (countdown.running) interval = setInterval(paint, 200);
+      }
+    });
+    document.addEventListener('visibilitychange', () => { if (countdown.running) paint(); });
+    document.addEventListener('fullscreenchange', synchronize);
+    return { open() { previousFocus = document.activeElement; root.hidden = false; synchronize(); paint(); handle.focus({ preventScroll: true }); } };
+  }
   function init() {
     if (document.getElementById('social-floating-tools')) return;
     const NS = 'http://www.w3.org/2000/svg';
@@ -117,6 +262,7 @@
         <div class="mft-body">
           <div class="mft-tool-grid" role="group" aria-label="畫記工具">
             ${tools.map(([key, label]) => `<button type="button" class="mft-tool" data-tool="${key}" aria-pressed="${key === 'cursor'}" title="${key === 'cursor' ? '操作網頁、切換單元及捲動' : label}">${icon(key)}<span>${label}</span>${key === 'number' ? '<b class="mft-next-number">1</b>' : ''}</button>`).join('')}
+            <button type="button" class="mft-tool mft-countdown-toggle" data-action="countdown" aria-label="開啟倒數計時器" aria-controls="mft-countdown"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="14" r="8" fill="#fff0bd"/><path d="M9 2h6m-3 0v4m6 1 2-2M12 9v5l3 2"/></svg><span>計時器</span></button>
           </div>
           <button type="button" class="mft-options-toggle" data-action="settings" aria-label="工具設定：顏色、粗細與放大鏡" aria-expanded="false" aria-controls="mft-options">${icon('settings')}<span>設定</span></button>
           <div class="mft-actions" role="group" aria-label="畫記管理">
@@ -168,6 +314,7 @@
     let toastTimer;
     let compactPosition = null;
     let suppressLauncherClickUntil = 0;
+    let countdownWidget = null;
     const pages = new Map();
     let history = new DrawingHistory();
     const panel = host.querySelector('.mft-panel');
@@ -591,6 +738,12 @@
         host.querySelectorAll('[data-color]').forEach(swatch => swatch.setAttribute('aria-pressed', swatch.dataset.color === color));
       }
       switch (button.dataset.action) {
+        case 'countdown':
+          setTool('cursor');
+          setOptionsOpen(false);
+          if (!countdownWidget) countdownWidget = createCountdownWidget();
+          countdownWidget.open();
+          break;
         case 'collapse':
           toggle(false);
           launcher.focus();

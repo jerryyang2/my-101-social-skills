@@ -8,6 +8,17 @@
 (function(window) {
   'use strict';
 
+  function breathingState(elapsed) {
+    const elapsedSeconds = Math.max(0, elapsed) / 1000;
+    const cycleTime = elapsedSeconds % 19;
+    const phase = cycleTime < 4 ? 0 : cycleTime < 11 ? 1 : 2;
+    const duration = [4, 7, 8][phase];
+    const progress = (cycleTime - [0, 4, 11][phase]) / duration;
+    return { phase, remaining: Math.ceil(duration * (1 - progress)), scale: phase === 0 ? .6 + .4 * progress : phase === 1 ? 1 : 1 - .4 * progress, cycles: Math.floor(elapsedSeconds / 19) };
+  }
+  if (typeof module !== 'undefined' && module.exports) module.exports = { breathingState };
+  if (typeof document === 'undefined') return;
+
   // ==================== 1. Web Audio 舒緩音訊引擎 ====================
   const CalmAudio = {
     ctx: null,
@@ -235,50 +246,49 @@
     const countEl = document.getElementById('breathingCycleCounter');
     if (!bubble || !text) return;
 
-    let phase = 0; // 0: 吸氣(4s), 1: 憋氣(7s), 2: 呼氣(8s)
-    let timeLeft = 4;
-
-    function tick() {
-      if (phase === 0) {
-        bubble.className = 'breathing-bubble inhale';
-        text.innerText = `👃 深吸氣 (${timeLeft}秒)`;
-        subText.innerText = '像是慢慢聞一朵香香的花，肚子鼓起來……';
-      } else if (phase === 1) {
-        bubble.className = 'breathing-bubble hold';
-        text.innerText = `🛑 屏住呼吸 (${timeLeft}秒)`;
-        subText.innerText = '小烏龜縮進殼裡，大腦踩住煞車……';
-      } else if (phase === 2) {
-        bubble.className = 'breathing-bubble exhale';
-        text.innerText = `💨 緩慢吐氣 (${timeLeft}秒)`;
-        subText.innerText = '像是在輕輕吹熄生日蠟燭，肩膀放輕鬆……';
-      }
-
-      timeLeft--;
-
-      if (timeLeft < 0) {
-        phase = (phase + 1) % 3;
-        if (phase === 0) {
-          timeLeft = 4;
-          breathingCycleCount++;
-          if (countEl) countEl.innerText = `已完成 ${breathingCycleCount} 次深呼吸`;
-          CalmAudio.playChime();
-        } else if (phase === 1) {
-          timeLeft = 7;
-          CalmAudio.playChime();
-        } else if (phase === 2) {
-          timeLeft = 8;
-          CalmAudio.playBowl();
+    const seconds = document.getElementById('breathingSeconds');
+    const countdown = document.getElementById('breathingCountdown');
+    const phases = [
+      { name: 'inhale', label: '慢慢吸氣', hint: '像是慢慢聞一朵香香的花，肚子鼓起來……', icon: '<path d="M24 25v19m0-7 11-6m-11 1-10-5" stroke="#287b54" stroke-width="4" fill="none"/><path d="M24 8c-12-11-18 6-9 11-8 10 5 19 12 10 11 6 19-8 10-15 1-10-10-13-13-6Z" fill="#f4abc5" stroke="#b95783" stroke-width="2"/><circle cx="25" cy="19" r="6" fill="#ffdc75" stroke="#9d7427" stroke-width="2"/>' },
+      { name: 'hold', label: '屏住呼吸', hint: '小烏龜縮進殼裡，大腦踩住煞車……', icon: '<circle cx="24" cy="24" r="20" fill="#fff0b8" stroke="#ac7d20" stroke-width="2"/><rect x="15" y="13" width="6" height="22" rx="2" fill="#89621b"/><rect x="27" y="13" width="6" height="22" rx="2" fill="#89621b"/>' },
+      { name: 'exhale', label: '慢慢吐氣', hint: '像是在輕輕吹熄生日蠟燭，肩膀放輕鬆……', icon: '<circle cx="24" cy="24" r="21" fill="#e1f1ff"/><path d="M5 18h26c10 0 9-13 1-10m-25 17h31m-29 7h20c11 0 11 13 2 10" fill="none" stroke="#2879a6" stroke-width="4" stroke-linecap="round"/>' }
+    ];
+    const startedAt = performance.now();
+    const initialCount = breathingCycleCount;
+    let previousPhase = -1;
+    let previousSeconds = -1;
+    function tick(now) {
+      const state = breathingState(now - startedAt);
+      const phaseKey = state.cycles * 3 + state.phase;
+      const phase = phases[state.phase];
+      bubble.style.transform = `scale(${state.scale})`;
+      if (phaseKey !== previousPhase) {
+        bubble.className = `breathing-bubble ${phase.name}`;
+        text.innerHTML = `<svg class="breathing-phase-icon" viewBox="0 0 48 48" aria-hidden="true">${phase.icon}</svg><span>${phase.label}</span>`;
+        subText.innerText = phase.hint;
+        if (previousPhase !== -1) {
+          if (state.phase === 2) CalmAudio.playBowl();
+          else CalmAudio.playChime();
         }
+        previousPhase = phaseKey;
       }
+      if (state.remaining !== previousSeconds) {
+        seconds.textContent = state.remaining;
+        countdown.setAttribute('aria-label', `${phase.label}，剩餘 ${state.remaining} 秒`);
+        previousSeconds = state.remaining;
+      }
+      if (breathingCycleCount !== initialCount + state.cycles) {
+        breathingCycleCount = initialCount + state.cycles;
+        if (countEl) countEl.innerText = `已完成 ${breathingCycleCount} 次深呼吸`;
+      }
+      breathingTimer = requestAnimationFrame(tick);
     }
-
-    tick();
-    breathingTimer = setInterval(tick, 1000);
+    tick(startedAt);
   }
 
   function stopBreathingCycle() {
     if (breathingTimer) {
-      clearInterval(breathingTimer);
+      cancelAnimationFrame(breathingTimer);
       breathingTimer = null;
     }
   }
@@ -419,13 +429,13 @@
           <div id="calmTabPane-breathe" class="calm-tab-pane">
             <div class="breathing-arena">
               <div class="breathing-bubble-container">
-                <div id="breathingBubble" class="breathing-bubble inhale">
+                <div id="breathingBubble" class="breathing-bubble inhale" aria-hidden="true">
                   <div class="bubble-inner-glow"></div>
-                  <span style="font-size:2.8rem; z-index:2;">🐢</span>
                 </div>
+                <div id="breathingCountdown" class="breathing-countdown" role="timer" aria-live="off"><strong id="breathingSeconds">4</strong><span>秒</span></div>
               </div>
               <div class="breathing-text-area">
-                <div id="breathingInstruction" class="breathing-main-text">👃 深吸氣 (4秒)</div>
+                <div id="breathingInstruction" class="breathing-main-text" role="status" aria-live="polite">慢慢吸氣</div>
                 <div id="breathingSubInstruction" class="breathing-sub-text">像是慢慢聞一朵香香的花，肚子鼓起來……</div>
                 <div id="breathingCycleCounter" class="breathing-cycle-pill">已完成 0 次深呼吸</div>
               </div>
@@ -893,4 +903,4 @@
     }
   });
 
-})(window);
+})(typeof window === 'undefined' ? {} : window);

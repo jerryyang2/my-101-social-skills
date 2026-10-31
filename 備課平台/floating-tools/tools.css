@@ -204,3 +204,24 @@ html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true
 .high-contrast-mode .mft-ui .mft-options-header { color: #fff; }
 .mft-ui .mft-launcher[hidden], .mft-ui .mft-panel[hidden] { display: none !important; }
 @media (max-width: 560px) { .mft-ui { right: 12px; bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); } }
+.mft-ui .mft-countdown-toggle { background: #fff1c9; color: #76531c; border-color: #cba651 !important; }
+.mft-countdown { position: fixed; z-index: 2147483003; width: 252px; max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); overflow: auto; box-sizing: border-box; border: 2px solid #bd9850; border-radius: 16px; background: #fffdf4; color: #384a49; font: 14px/1.5 "Noto Sans TC", system-ui, sans-serif; box-shadow: 0 4px 0 #ddc99e, 0 10px 30px #283e4526; }
+.mft-countdown *, .mft-countdown *::before, .mft-countdown *::after { box-sizing: border-box; }
+.mft-countdown[hidden], .mft-countdown.mft-unavailable { display: none !important; }
+.mft-countdown button, .mft-countdown input { font: inherit; color: inherit; }
+.mft-countdown button { min-height: 40px; border: 1px solid #bda770; border-radius: 8px; background: #fff; cursor: pointer; font-weight: 800; }
+.mft-countdown :is(button,input):focus-visible { outline: 3px solid #287aa3; outline-offset: 2px; }
+.mft-countdown-header { display: flex; align-items: center; gap: 6px; padding: 6px; background: #ffedbc; border-bottom: 1px solid #d4b570; }
+.mft-countdown-header .mft-countdown-drag { flex: 1; text-align: left; padding-left: 8px; border: 0; background: transparent; touch-action: none; cursor: grab; }
+.mft-countdown-header [data-timer-action=close] { width: 34px; flex-shrink: 0; font-size: 20px; }
+.mft-countdown-body { padding: 12px 14px; }
+.mft-countdown-clock { text-align: center; color: #264b5c; font-size: 52px; line-height: 1.2; font-weight: 900; font-variant-numeric: tabular-nums; letter-spacing: 1px; }
+.mft-countdown-minutes { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 10px 0; font-weight: 700; }
+.mft-countdown-minutes input { width: 70px; min-height: 40px; padding: 4px 6px; background: #fff; border: 1px solid #bca971; border-radius: 7px; font-size: 20px; text-align: center; }
+.mft-countdown-actions { display: flex; gap: 8px; }
+.mft-countdown-actions button { flex: 1; padding: 6px; }
+.mft-countdown-actions [data-timer-action=toggle] { background: #285e76; border-color: #285e76; color: #fff; }
+.mft-countdown-status { margin: 8px 0 0; text-align: center; font-size: 13px; font-weight: 700; color: #6c6042; }
+.mft-countdown[data-finished=true] { border-color: #af6b21; background: #fff3cd; }
+.mft-countdown[data-finished=true] .mft-countdown-status { color: #8c4c0e; font-size: 18px; }
+@media print { .mft-countdown { display: none !important; } }
