@@ -67,7 +67,7 @@
     segmentDistance
   };
   if (typeof document === 'undefined') return;
-  const handIconURL = new URL('./pointing-hand.svg?v=social-20261031', document.currentScript.src).href;
+  const handIconURL = new URL('./pointing-hand.svg?v=social-cursor-20261031', document.currentScript.src).href;
   const helperIconURL = new URL('./social-helper.svg?v=20261031-circle', document.currentScript.src).href;
   function init() {
     if (document.getElementById('social-floating-tools')) return;

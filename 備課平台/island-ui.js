@@ -14,14 +14,17 @@
   updateHeaderHeight();
 
   const settings = header.querySelector('.game-settings');
-  const settingsToggle = settings.querySelector('summary');
+  const menus = [...header.querySelectorAll('details')];
   document.addEventListener('click', event => {
-    if (!settings.contains(event.target)) settings.open = false;
+    menus.forEach(menu => {
+      if (!menu.contains(event.target)) menu.open = false;
+    });
   });
   header.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && settings.open) {
-      settings.open = false;
-      settingsToggle.focus();
+    const openMenu = menus.find(menu => menu.open);
+    if (event.key === 'Escape' && openMenu) {
+      openMenu.open = false;
+      openMenu.querySelector('summary').focus();
       event.preventDefault();
       event.stopPropagation();
     } else if (event.key !== 'Escape') {
@@ -30,6 +33,6 @@
   });
   document.getElementById('btnToggleView').addEventListener('click', () => {
     settings.open = false;
-    settingsToggle.focus();
+    settings.querySelector('summary').focus();
   });
 })();

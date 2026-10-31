@@ -1586,7 +1586,6 @@
     targetPitch = 0.65;
     targetDist = 38;
 
-    updateHudCard(idx);
   }
 
   function resetArchipelagoView() {
@@ -2005,28 +2004,6 @@
       updateHudDisplay();
       saveLocalProgress();
     }
-  }
-
-  // 更新底部 HUD 卡片
-  function updateHudCard(idx) {
-    const t = ISLAND_THEMES[idx];
-    const box = document.getElementById('hudCurrentIsland');
-    if (!box) return;
-    box.innerHTML = `
-      <div class="hud-island-title">
-        <h2>${t.name}</h2>
-        <span class="hud-mascot-pill">守護夥伴：${t.mascot}</span>
-      </div>
-      <p class="hud-island-desc">${t.mascotDesc}</p>
-      <div class="hud-actions">
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.openQuestDrawer(${idx}, ${t.weeksRange[0]})">
-          ⚔️ 登陸探險 (${t.weeksRange[0]}~${t.weeksRange[1]} 週)
-        </button>
-        <button class="c-game-btn" onclick="window.socialGame.resetArchipelagoView()">
-          🌐 群島全覽
-        </button>
-      </div>
-    `;
   }
 
   // ==========================================

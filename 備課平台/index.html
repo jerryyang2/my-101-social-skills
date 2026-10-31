@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
   <link rel="stylesheet" href="garden-theme.css?v=20261031-home-link">
-  <link rel="stylesheet" href="course-picker.css?v=20261031-rows">
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-circle">
-  <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261031-social-circle" defer></script>
+  <link rel="stylesheet" href="course-picker.css?v=20261031-one-scroll">
+  <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-cursor">
+  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
+  <script src="floating-tools/drawing.js?v=20261031-social-cursor" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
 </head>
@@ -79,13 +79,14 @@
       </details>
 
       <!-- Keyword Search -->
-      <label class="sidebar-field-label" for="searchInput">搜尋課程</label>
+      <div class="course-search-heading">
+        <label class="sidebar-field-label" for="searchInput">搜尋課程</label>
+        <p id="course-search-status" class="course-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
       <div class="search-box">
         <span class="search-icon">🔍</span>
         <input type="search" id="searchInput" aria-label="搜尋課程主題、關鍵字或日期" placeholder="找一堂課…">
       </div>
-
-      <p id="course-search-status" class="course-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
       <!-- Chronological Date Cards -->
       <div class="date-list" id="dateList">
@@ -481,6 +482,6 @@
   <script src="roleplay-data.js"></script>
   <script src="app.js?v=20261031-focus"></script>
   <script src="teacher-tools.js?v=20261031-focus"></script>
-  <script src="garden-ui.js?v=20261031-voice"></script>
+  <script src="garden-ui.js?v=20261031-one-scroll"></script>
 </body>
 </html>

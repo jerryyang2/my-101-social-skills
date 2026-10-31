@@ -14,11 +14,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="island-game.css">
   <link rel="stylesheet" href="platform-theme.css?v=20261031-unified">
-  <link rel="stylesheet" href="island-navigation.css?v=20261031-groups">
-  <script src="island-ui.js?v=20261031-groups" defer></script>
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-circle">
-  <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261031-social-circle" defer></script>
+  <link rel="stylesheet" href="island-navigation.css?v=20261031-compact">
+  <script src="island-ui.js?v=20261031-compact" defer></script>
+  <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-cursor">
+  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
+  <script src="floating-tools/drawing.js?v=20261031-social-cursor" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
 </head>
@@ -37,8 +37,9 @@
         <p>我的101堂社交技巧課 · 在冒險裡練習交朋友</p>
       </div>
     </div>
-    <nav class="platform-navigation" aria-label="離開遊戲，前往其他平台">
-      <span class="platform-navigation-label">離開遊戲</span>
+    <details class="platform-menu">
+      <summary>前往平台 <span aria-hidden="true">↗</span></summary>
+      <nav class="platform-navigation" aria-label="離開遊戲，前往其他平台">
       <a class="platform-link" href="classroom.html">
         <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
         <span>課堂投影</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
@@ -47,7 +48,8 @@
         <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
         <span>備課平台</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
       </a>
-    </nav>
+      </nav>
+    </details>
     </div>
 
     <div class="top-controls">
@@ -55,7 +57,7 @@
         <div class="adventure-tools-heading">
           <h2 id="adventureToolsTitle">遊戲內工具</h2>
           <details class="game-settings">
-            <summary aria-controls="gameSettingsPanel"><span aria-hidden="true">⚙️</span> 遊戲設定 <span class="settings-chevron" aria-hidden="true">⌄</span></summary>
+            <summary aria-controls="gameSettingsPanel" aria-label="遊戲設定"><span aria-hidden="true">⚙️</span><span class="settings-label">遊戲設定</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
             <div class="game-settings-panel" id="gameSettingsPanel">
               <fieldset class="settings-section">
                 <legend>地圖與鏡頭</legend>
@@ -144,13 +146,6 @@
     <button class="dpad-btn dpad-center" data-dir="center">●</button>
     <button class="dpad-btn dpad-right" data-dir="right">▶</button>
     <button class="dpad-btn dpad-down" data-dir="down">▼</button>
-  </div>
-
-  <!-- 底部島嶼資訊 HUD 卡片 -->
-  <div class="game-hud">
-    <div class="hud-card" id="hudCurrentIsland">
-      <!-- 由 island-game.js 動態渲染 -->
-    </div>
   </div>
 
   <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
@@ -474,6 +469,6 @@
   <script src="three.min.js"></script>
   <script src="app.js?v=20261031-focus"></script>
   <script src="roleplay-data.js"></script>
-  <script src="island-game.js?v=20261031-groups"></script>
+  <script src="island-game.js?v=20261031-compact"></script>
 </body>
 </html>

@@ -179,7 +179,7 @@
 
 html.mft-hand-mode,
 html.mft-hand-mode body,
-html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true'],[contenteditable='true'] *,:disabled,:disabled *,[aria-disabled='true'],[aria-disabled='true'] *,.mft-launcher,.mft-launcher *,.mft-move,.mft-move *)) { cursor: url('./pointing-hand-cursor.svg?v=social-20261031') 6 4, pointer !important; }
+html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true'],[contenteditable='true'] *,:disabled,:disabled *,[aria-disabled='true'],[aria-disabled='true'] *,.mft-launcher,.mft-launcher *,.mft-move,.mft-move *)) { cursor: url('./pointing-hand-cursor.svg?v=social-cursor-20261031') 4 3, pointer !important; }
 @media print { .mft-options { display: none !important; } }
 
 .mft-ui { bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); }

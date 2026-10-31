@@ -55,7 +55,6 @@
   });
 
   const courseList = document.getElementById('dateList');
-  document.getElementById('searchInput').addEventListener('input', () => { courseList.scrollTop = 0; });
   function labelCourses() {
     let section = 'weekly';
     [...courseList.children].forEach(card => {
