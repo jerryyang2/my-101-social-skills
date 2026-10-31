@@ -1257,8 +1257,7 @@ let currentGameTab = "decision"; // "decision" | "special"
 
 window.switchGameTab = function(tab) {
   currentGameTab = tab;
-  const contentArea = document.getElementById("slideMainContent");
-  if (contentArea) renderSlideGame(contentArea);
+  renderSlide();
 };
 
 // Slide 4: 課堂互動遊戲 (整合行為因果決策樹與主題專屬遊戲)

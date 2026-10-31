@@ -149,12 +149,13 @@
 
   // 取得當前課程資料
   function getCurrentLessonBriefing() {
+    // 課堂投影以正在播放的課程為準，避免讀到備課頁的預設選課。
+    if (typeof currentBriefing !== 'undefined' && currentBriefing) {
+      return currentBriefing;
+    }
     if (typeof window.getActiveBriefing === 'function') {
       const b = window.getActiveBriefing();
       if (b) return b;
-    }
-    if (typeof currentBriefing !== 'undefined' && currentBriefing) {
-      return currentBriefing;
     }
     if (window.currentBriefing) return window.currentBriefing;
     if (window.currentLesson) return window.currentLesson;
