@@ -37,6 +37,7 @@
       document.querySelectorAll('.pill').forEach(option => {
         option.setAttribute('aria-pressed', String(option === button));
       });
+      courseList.scrollTop = 0;
     });
   });
 
@@ -66,20 +67,41 @@
   });
 
   const courseList = document.getElementById('dateList');
+  document.getElementById('searchInput').addEventListener('input', () => { courseList.scrollTop = 0; });
   function labelCourses() {
     let section = 'weekly';
     [...courseList.children].forEach(card => {
       if (card.classList.contains('curriculum-group-header')) {
         section = card.classList.contains('legacy') ? 'inspiration' : 'weekly';
+        card.setAttribute('role', 'heading');
+        card.setAttribute('aria-level', '3');
         return;
       }
       if (!card.classList.contains('date-card')) return;
       card.dataset.courseSection = section;
-      card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'group');
-      card.setAttribute('aria-label', card.querySelector('.date-card-title').textContent);
-      card.querySelector('.sidebar-date-checkbox').setAttribute('aria-label', `標記課程完成：${card.querySelector('.date-card-title').textContent}`);
+      const title = card.querySelector('.date-card-title');
+      const courseTitle = title.querySelector('.course-link-label')?.textContent || title.textContent;
+      card.setAttribute('aria-label', courseTitle);
+      card.querySelector('.sidebar-date-checkbox').setAttribute('aria-label', `標記課程完成：${courseTitle}`);
+      if (!title.querySelector('button')) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'course-open-button';
+        button.setAttribute('aria-label', `開啟教案：${courseTitle}`);
+        const label = document.createElement('span');
+        label.className = 'course-link-label';
+        label.textContent = courseTitle;
+        const arrow = document.createElement('span');
+        arrow.setAttribute('aria-hidden', 'true');
+        arrow.textContent = '→';
+        button.append(label, arrow);
+        title.replaceChildren(button);
+      }
     });
+    const count = courseList.querySelectorAll('.date-card').length;
+    const selected = document.querySelector('.pill[aria-pressed="true"]')?.textContent.trim() || '全部課程';
+    document.getElementById('course-filter-status').textContent = `${selected} · 找到 ${count} 堂課`;
   }
   courseList.addEventListener('keydown', event => {
     if (!event.target.matches('.date-card') || !['Enter', ' '].includes(event.key)) return;

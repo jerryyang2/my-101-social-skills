@@ -1,0 +1,50 @@
+/* 收合、搜尋、單選篩選及開啟教案，各有固定的形狀和操作提示。 */
+.social-garden .course-picker-toggle {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  min-height: 48px; padding: 10px 12px; margin: 0 0 16px;
+  list-style: none; cursor: pointer; color: #244737; background: #edf1ec;
+  border: 1px solid #839b87; border-radius: 8px; font-size: 1rem; font-weight: 800;
+}
+.social-garden .course-picker-toggle::-webkit-details-marker,
+.social-garden .index-students-container > summary::-webkit-details-marker { display: none; }
+.social-garden .disclosure-action { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; font-size: .8rem; font-weight: 700; color: #345543; }
+.social-garden .disclosure-action > :is(.when-open,.when-closed) { text-decoration: underline; text-underline-offset: 3px; }
+.social-garden .disclosure-chevron { width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg) translateY(-2px); }
+.social-garden details > summary .when-open,
+.social-garden details[open] > summary .when-closed { display: none; }
+.social-garden details[open] > summary .when-open { display: inline; }
+.social-garden details[open] > summary .disclosure-chevron { transform: rotate(225deg) translate(-2px,-1px); }
+.social-garden .course-progress-panel { background: transparent; border: 0; border-radius: 0; padding: 0 2px 12px; margin-bottom: 8px; }
+.social-garden .index-students-container { border: 1px solid #af8736; border-radius: 8px; background: #fff5d7; padding: 0; overflow: hidden; }
+.social-garden .index-students-container > summary { min-height: 48px; padding: 8px 10px; gap: 8px; }
+.social-garden .index-students-container > summary > .student-bank-label { color: #5b4316; font-size: .9rem; font-weight: 800; }
+.social-garden .index-students-container > summary > .disclosure-action { color: #6a4b14; font-weight: 700; }
+.social-garden .index-students-container[open] > summary { border-bottom: 1px solid #d5bd87; }
+.social-garden .index-students-container > :not(summary) { margin-inline: 10px; }
+.social-garden .index-students-grid { padding-bottom: 10px; }
+.social-garden .sidebar-field-label, .social-garden .course-filter-set legend { display: block; color: #314a40; font-size: .85rem; font-weight: 800; margin-bottom: 6px; }
+.social-garden .search-box input { border: 2px solid #718b7e; border-radius: 7px; box-shadow: inset 0 2px 3px #193c2710; }
+.social-garden .course-filter-set { min-width: 0; padding: 0; margin: 0; border: 0; }
+.social-garden .course-filter-set legend > span { color: #53655b; font-size: .75rem; font-weight: 500; margin-left: 6px; }
+.social-garden .filter-pills { padding: 0; margin-bottom: 0; gap: 7px; }
+.social-garden .pill { min-height: 44px; padding: 7px 8px; border: 1px solid #9eafa6; border-radius: 999px; background: #fff; box-shadow: none; gap: 6px; }
+.social-garden .pill::before { content: ''; width: 15px; height: 15px; flex: 0 0 15px; border: 2px solid currentColor; border-radius: 50%; background: #fff; }
+.social-garden .pill.active, .social-garden .pill[aria-pressed='true'] { border-color: var(--filter-ink); outline: 0; background: var(--filter-tint); box-shadow: inset 0 0 0 1px var(--filter-ink); }
+.social-garden .pill[aria-pressed='true']::before { background: currentColor; box-shadow: inset 0 0 0 3px #fff; }
+.social-garden .pill.active::after { content: none; }
+.social-garden .course-filter-status { font-size: .78rem; color: #4b6156; margin: 10px 0 4px; }
+.social-garden .date-list .curriculum-group-header { background: transparent !important; border: 0 !important; border-bottom: 2px solid #a5b7bd !important; border-radius: 0 !important; padding: 8px 0 !important; margin-bottom: 2px !important; cursor: default; }
+.social-garden .date-card { cursor: default; }
+.social-garden .date-card-title { margin: 8px 0; }
+.social-garden .course-open-button { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 8px 10px; color: #fff; background: #286449; border: 2px solid #1b4934; border-bottom-width: 4px; border-radius: 8px; font: inherit; font-weight: 800; text-align: left; cursor: pointer; }
+.social-garden .course-open-button > :last-child { flex-shrink: 0; font-size: 1.1rem; }
+.social-garden .course-open-button:hover { background: #1c5038; }
+.social-garden .course-open-button:active { border-bottom-width: 2px; padding-top: 10px; }
+.social-garden .sidebar :is(button,summary,input,select):focus-visible { outline: 3px solid #145fb8; outline-offset: 3px; }
+.social-garden .sidebar :is(.course-picker-toggle,.index-students-container > summary):hover { filter: brightness(.97); }
+@media (max-width: 960px) {
+  .social-garden .course-picker-body { max-height: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .social-garden .date-card { transition: none; }
+}

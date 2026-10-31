@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
   <link rel="stylesheet" href="garden-theme.css?v=20261031-color">
+  <link rel="stylesheet" href="course-picker.css?v=20261031-controls">
 </head>
 <body class="social-garden">
   <a class="skip-link" href="#dailyLesson">跳到今天的課程</a>
@@ -42,7 +43,7 @@
     <!-- Left Sidebar: Chronological Date Timeline -->
     <aside class="sidebar">
       <details class="course-picker" open>
-        <summary class="sidebar-title"><span>課程小書架</span><span class="course-picker-hint">選課與搜尋 <span aria-hidden="true">⌄</span></span></summary>
+        <summary class="course-picker-toggle"><span>選課與搜尋</span><span class="disclosure-action"><span class="when-closed">展開</span><span class="when-open">收合</span><span class="disclosure-chevron" aria-hidden="true"></span></span></summary>
         <div class="course-picker-body">
 
       <!-- 快速跳轉下拉選單 -->
@@ -67,7 +68,7 @@
 
       <!-- 4 Student Star Bank Chips -->
       <details class="index-students-container">
-        <summary>學生星星存摺 <span>展開查看</span></summary>
+        <summary><span class="student-bank-label">⭐ 學生星星存摺</span><span class="disclosure-action"><span class="when-closed">展開</span><span class="when-open">收合</span><span class="disclosure-chevron" aria-hidden="true"></span></span></summary>
         <div class="index-students-header">
           <span>⭐ 四位學生代幣存摺：</span>
           <span style="font-size:0.7rem; color:#94a3b8; font-weight:normal;">點擊萌寵擊掌 · ±增減星星</span>
@@ -78,18 +79,23 @@
       </details>
 
       <!-- Keyword Search -->
+      <label class="sidebar-field-label" for="searchInput">搜尋課程</label>
       <div class="search-box">
         <span class="search-icon">🔍</span>
         <input type="search" id="searchInput" aria-label="搜尋課程主題、關鍵字或日期" placeholder="找一堂課…">
       </div>
 
       <!-- Quick Filter Pills -->
-      <div class="filter-pills">
-        <button class="pill active" data-filter="ALL" aria-pressed="true"><span aria-hidden="true">▦</span> 全部課程</button>
-        <button class="pill" data-filter="ASD" aria-pressed="false"><span aria-hidden="true">◆</span> 自閉症 (ASD)</button>
-        <button class="pill" data-filter="LD" aria-pressed="false"><span aria-hidden="true">●</span> 學障 (LD)</button>
-        <button class="pill" data-filter="EBD" aria-pressed="false"><span aria-hidden="true">♥</span> 情障 (EBD)</button>
-      </div>
+      <fieldset class="course-filter-set">
+        <legend>篩選支援類型 <span>單選</span></legend>
+        <div class="filter-pills">
+          <button type="button" class="pill active" data-filter="ALL" aria-pressed="true">全部課程</button>
+          <button type="button" class="pill" data-filter="ASD" aria-pressed="false">自閉症 (ASD)</button>
+          <button type="button" class="pill" data-filter="LD" aria-pressed="false">學障 (LD)</button>
+          <button type="button" class="pill" data-filter="EBD" aria-pressed="false">情障 (EBD)</button>
+        </div>
+      </fieldset>
+      <p id="course-filter-status" class="course-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
       <!-- Chronological Date Cards -->
       <div class="date-list" id="dateList">
@@ -485,6 +491,6 @@
   <script src="roleplay-data.js"></script>
   <script src="app.js"></script>
   <script src="teacher-tools.js"></script>
-  <script src="garden-ui.js?v=20261031-color"></script>
+  <script src="garden-ui.js?v=20261031-controls"></script>
 </body>
 </html>
