@@ -183,7 +183,7 @@ html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true
 @media print { .mft-options { display: none !important; } }
 
 .mft-ui { bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); }
-.mft-ui .mft-launcher { background: #285d4b; color: white; }
-.mft-ui .mft-launcher:hover { background: #194735; }
+.mft-ui .mft-launcher { background: #c43e36; color: white; }
+.mft-ui .mft-launcher:hover { background: #a82f29; }
 .mft-ui .mft-launcher[hidden], .mft-ui .mft-panel[hidden] { display: none !important; }
 @media (max-width: 560px) { .mft-ui { right: 12px; bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); } }
