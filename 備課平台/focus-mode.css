@@ -1,0 +1,46 @@
+.focus-toggle {
+  position: fixed;
+  left: max(16px, env(safe-area-inset-left));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 100020;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 2px solid #225777;
+  border-radius: 12px;
+  background: #fffdf7;
+  color: #225777;
+  box-shadow: 0 3px 0 #adc7d5;
+  font: 700 15px/1.3 "PingFang TC", "Noto Sans TC", system-ui, sans-serif;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.focus-toggle:hover { background: #e4f2ff; }
+.focus-toggle:focus-visible { outline: 3px solid #e69a16; outline-offset: 4px; }
+.lesson-focus .focus-toggle { background: #225777; color: white; }
+.focus-fallback { position: fixed; inset: 0; overflow: auto; }
+.focus-fallback body { min-height: 100dvh; }
+
+body.lesson-focus > :is(.app-header, .classroom-header, .manual-nav, .screen-toolbar, footer) { display: none !important; }
+.lesson-focus .reader-toolbar { display: none !important; }
+.lesson-focus.social-garden .sidebar,
+.lesson-focus.social-garden .storybook-welcome-hero { display: none !important; }
+.lesson-focus.social-garden .app-layout { display: block; height: auto; min-height: 100dvh; }
+.lesson-focus.social-garden .main-content { max-width: 1400px; margin: auto; padding: 24px 24px 84px; }
+body.lesson-focus.social-classroom { height: 100dvh; min-height: 0; overflow: hidden; }
+body.lesson-focus.social-classroom .slide-viewport { flex: 1; min-height: 0; height: 100dvh !important; max-height: none !important; padding: 12px 64px 68px; }
+body.lesson-focus.social-classroom .slide-canvas { width: 100%; max-width: none; height: 100%; max-height: none !important; }
+.lesson-focus .sheet-wrapper { padding: 20px 16px 84px; }
+.lesson-focus .manual-container { margin-top: 16px; padding-bottom: 84px; }
+.lesson-focus .portal-main { padding-bottom: 84px; }
+body:has(#stage) .focus-toggle { left: 50%; transform: translateX(-50%); }
+
+@media (max-width: 700px) {
+  .focus-toggle { padding: 10px 12px; font-size: 14px; }
+  body.lesson-focus.social-classroom .slide-viewport { padding: 8px 8px 68px; }
+  .lesson-focus.social-garden .main-content { padding: 16px 12px 84px; }
+}
+
+@media print {
+  .focus-toggle { display: none !important; }
+}

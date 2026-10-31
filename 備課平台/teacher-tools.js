@@ -633,7 +633,6 @@
           <div class="comm-col-right">
             <div class="comm-section-title">
               <span>🖨️ 3. A4 4合1 實體聯絡單小條（一頁印4張，裁切即用超省紙）</span>
-              <button class="btn btn-sm btn-accent" onclick="printCommSlips()">🖨️ 列印此頁小單</button>
             </div>
             <div class="slips-preview-container" id="commSlipsGrid">
               <!-- Rendered dynamically -->
@@ -811,7 +810,6 @@
         <div class="whiteboard-topbar">
           <span id="wbTopTitle" style="font-size:1.2rem; font-weight:900; color:#1e3a8a;">🏫 社交超能力視覺招式卡</span>
           <div style="display:flex; gap:10px;">
-            <button class="btn btn-sm btn-outline" onclick="printWhiteboardCard()">🖨️ 列印此大字卡</button>
             <button class="btn btn-sm btn-primary" onclick="closeWhiteboardModal()">✕ 退出大字白板</button>
           </div>
         </div>

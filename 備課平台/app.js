@@ -89,7 +89,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「👋 微笑打招呼小超人」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「開學相見歡與大聲打招呼」類似狀況時",
@@ -188,7 +188,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「👁️ 眼神眉心聚光燈」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「眼神注視與溫暖微笑」類似狀況時",
@@ -287,7 +287,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎛️ 音量儀表板神調音」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「聲音大小五級儀表板」類似狀況時",
@@ -386,7 +386,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「💌 敬師感恩小特使」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【教師節特輯 9/28】」類似狀況時",
@@ -485,7 +485,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🌕 中秋禮讓美食家」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【中秋節特輯】」類似狀況時",
@@ -584,7 +584,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚩 神氣行進小衛兵」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【雙十國慶特輯 10/10】」類似狀況時",
@@ -683,7 +683,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🧭 發現身體警報器」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「我的身體警報器」類似狀況時",
@@ -782,7 +782,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🛡️ 神奇烏龜縮殼術」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「神奇烏龜煞車術」類似狀況時",
@@ -881,7 +881,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🍬 禮貌討糖不搗蛋」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【萬聖節特輯 10/31】」類似狀況時",
@@ -980,7 +980,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「✋ 安靜舉手等點名」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「課堂舉手發言禮儀」類似狀況時",
@@ -1079,7 +1079,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「⏰ 鐘聲三十秒歸位」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「聽到鐘聲會收心」類似狀況時",
@@ -1178,7 +1178,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🔑 遊戲加入通行證」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「加入遊戲的魔法通關密語」類似狀況時",
@@ -1277,7 +1277,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「💰 友誼金幣多存入」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【感恩節特輯】」類似狀況時",
@@ -1376,7 +1376,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🧩 團隊分工合力蓋」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「團體積木大工程」類似狀況時",
@@ -1475,7 +1475,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「💖 讚美大方說謝謝」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「讚美放大鏡與落落大方」類似狀況時",
@@ -1574,7 +1574,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🍡 冬至湯圓話感恩」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【冬至特輯 12/21】」類似狀況時",
@@ -1673,7 +1673,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎄 禮貌收禮有風度」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【聖誕節特輯 12/25】」類似狀況時",
@@ -1772,7 +1772,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎋 願望樹上掛目標」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【元旦跨年特輯 12/31-1/1】」類似狀況時",
@@ -1871,7 +1871,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🔄 彈性轉念通行證」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「面對突發課表變動」類似狀況時",
@@ -1970,7 +1970,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「💪 魔法字眼我還在學」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「遇到難題想放棄」類似狀況時",
@@ -2069,7 +2069,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「📝 紅筆訂正大腦升級」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「期末考試與評量」類似狀況時",
@@ -2168,7 +2168,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🧧 雙手領紅包說吉祥話」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【農曆春節拜年特輯】」類似狀況時",
@@ -2267,7 +2267,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「📱 3C時間小管家」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【寒假生活自主篇】」類似狀況時",
@@ -2366,7 +2366,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🏮 猜燈謎遵守搶答規則」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【元宵節特輯】」類似狀況時",
@@ -2465,7 +2465,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎒 開學收心重新開機」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「開學收心大作戰」類似狀況時",
@@ -2564,7 +2564,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🛡️ 一隻手臂安全氣囊」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「我的個人身體安全氣囊」類似狀況時",
@@ -2663,7 +2663,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「✋ 堅定拒絕護衛盾」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「勇敢堅定說「不」」類似狀況時",
@@ -2762,7 +2762,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🌿 愛惜公物守護星」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【植樹節特輯 3/12】」類似狀況時",
@@ -2861,7 +2861,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚦 即刻踩煞車神反應」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「尊重別人的「不」」類似狀況時",
@@ -2960,7 +2960,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚨 秘密警報解除器」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「好秘密 vs 壞秘密」類似狀況時",
@@ -3059,7 +3059,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎫 公共禮儀小達人」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【兒童節與清明節 4/4】」類似狀況時",
@@ -3158,7 +3158,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🥢 美味光盤小食神」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「營養午餐餐桌禮儀」類似狀況時",
@@ -3257,7 +3257,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「♻️ 資源分類綠手指」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【世界地球日 4/22】」類似狀況時",
@@ -3356,7 +3356,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎯 我訊息溝通魔法箭」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「說話魔法「我訊息」」類似狀況時",
@@ -3455,7 +3455,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🩹 清楚求醫小患者」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「健康中心求助禮貌」類似狀況時",
@@ -3554,7 +3554,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「💖 愛的家事行動家」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【母親節特輯】」類似狀況時",
@@ -3653,7 +3653,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚸 轉角停看聽雷達」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「校園安全無死角」類似狀況時",
@@ -3752,7 +3752,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🙇 誠懇道歉四步法」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「踩到地雷怎麼辦？誠懇道歉四步曲」類似狀況時",
@@ -3851,7 +3851,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🗝️ 寬容原諒大心胸」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「當別人說對不起」類似狀況時",
@@ -3950,7 +3950,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🥁 節奏合拍划龍舟」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【端午節特輯】」類似狀況時",
@@ -4049,7 +4049,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「👏 運動家風度大掌聲」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「運動家風度玩得起輸得起」類似狀況時",
@@ -4148,7 +4148,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🙋 客觀冷靜申訴儀」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「覺得不公平的時候」類似狀況時",
@@ -4247,7 +4247,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎈 珍重再見祝福網」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【休業式與畢業季】」類似狀況時",
@@ -4346,7 +4346,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🎖️ 自信成長大榮光」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「學期成就大驗收」類似狀況時",
@@ -4445,7 +4445,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「📅 假期作息大管家」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【暑假起跑線】」類似狀況時",
@@ -4544,7 +4544,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🛒 社區公共禮貌王」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「社區好鄰居生活常規」類似狀況時",
@@ -4643,7 +4643,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚨 反霸凌自保三部曲」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「遇到取笑與霸凌怎麼辦？」類似狀況時",
@@ -4742,7 +4742,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🏔️ 像山一樣的愛感恩行」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【父親節 8/8】」類似狀況時",
@@ -4841,7 +4841,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🛟 戲水安全守護環」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「夏日戶外與戲水安全」類似狀況時",
@@ -4940,7 +4940,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🔍 眉宇微表情讀心術」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「同理心小偵探」類似狀況時",
@@ -5039,7 +5039,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🧊 破冰三句客氣法」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「結交新朋友的破冰魔法」類似狀況時",
@@ -5138,7 +5138,7 @@ const defaultBriefings = [
     "homeTask": {
       "title": "🏠 今日家庭生活小超人打卡任務",
       "action": "放學回家後，向爸爸媽媽展現一次「🚀 52週全能社交超能力」，並跟家人擊掌！",
-      "checkText": "家人簽章或打勾確認：［　　　　　］"
+      "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
     },
     "generalization": {
       "trigger": "當學生在普通班遇到「【新學年起飛大閱兵】」類似狀況時",

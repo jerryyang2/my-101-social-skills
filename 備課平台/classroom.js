@@ -2002,6 +2002,7 @@ function updateFullscreenBtnUI(isFs) {
 
 // 全螢幕切換主函式
 window.toggleFullscreen = function() {
+  if (window.SocialFocus) return window.SocialFocus.toggle();
   const inIframe = isEmbeddedInIframe();
   const fsEnabled = isFullscreenEnabled();
   const currentFs = getFullscreenElement() || document.body.classList.contains("simulated-fullscreen");

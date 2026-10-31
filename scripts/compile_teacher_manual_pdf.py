@@ -865,7 +865,6 @@ intro_html = f"""<!doctype html>
       <span style="font-size:0.8rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:9999px; border:1px solid #fde68a;">📐 B4 直式 (250×353mm) · 勿選 A4</span>
     </div>
     <div style="display:flex; align-items:center; gap:8px;">
-      <button type="button" onclick="window.print()" style="background:#f0fdf4; color:#15803d; border-color:#86efac; font-weight:900;">🖨️ 列印手冊 (B4)</button>
       <a href="#toc-1">📋 目錄</a>
       <button type="button" onclick="window.scrollTo({{top:0, behavior:'smooth'}})">⬆️ 頂部</button>
     </div>
@@ -1357,7 +1356,7 @@ def generate_teacher_lesson_article(b):
             </div>
             <div class="stamp-card">
               <div style="font-weight:900; color:#0f766e; margin-bottom:1px;">💮 教師省思與簽章</div>
-              <div style="font-size:0.82rem; color:#64748b;">達成率：［ ］極佳 ［ ］良好</div>
+              <div style="font-size:0.82rem; color:#64748b;">達成率：□極佳 □良好</div>
               <div style="font-size:0.82rem; font-weight:800; color:#334155; margin-top:2px;">簽章：［　　　　］</div>
             </div>
           </div>
@@ -1544,7 +1543,7 @@ intro_body_match = re.search(r"<body>([\s\S]*?)</body>", intro_html)
 intro_body = intro_body_match.group(1) if intro_body_match else ""
 full_book_content = intro_body + "\n" + b1_content + "\n" + b2_content + "\n" + b3_content + "\n" + b4_content
 with open(full_html_path, "w", encoding="utf-8") as f_html:
-    f_html.write(wrap_html(full_book_content))
+    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
 
 file_size_mb = os.path.getsize(output_pdf_path) / (1024 * 1024)
 print(f"🎉 MASTER B4 TEACHER MANUAL PDF COMPILED SUCCESSFULLY!")

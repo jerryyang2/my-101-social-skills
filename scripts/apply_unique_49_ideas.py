@@ -321,7 +321,7 @@ for idea in all_ideas:
         "section3": {
             "type": "checklist",
             "title": "任務三：今日超能力動作挑戰",
-            "prompt": f"跟著老師演練「{idea['superSkill']}」動作，做到了請在框框裡打勾勾［✓］：",
+            "prompt": f"跟著老師演練「{idea['superSkill']}」動作，做到了請在框框裡打勾勾☑：",
             "steps": [
                 {
                     "num": 1,
@@ -343,7 +343,7 @@ for idea in all_ideas:
         "homeTask": {
             "title": "🏠 今日家庭生活小超人打卡任務",
             "action": f"放學回家後，向爸爸媽媽展現一次「{idea['superSkill']}」，並跟家人擊掌！",
-            "checkText": "家人簽章或打勾確認：［　　　　　］"
+            "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
         },
         "generalization": {
             "trigger": f"當學生在普通班或生活中遇到「{short_title}」類似狀況時",

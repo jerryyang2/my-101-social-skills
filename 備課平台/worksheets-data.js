@@ -83,7 +83,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「👋 微笑打招呼小超人」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「👋 微笑打招呼小超人」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -193,7 +193,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「👁️ 眼神眉心聚光燈」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「👁️ 眼神眉心聚光燈」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -303,7 +303,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎛️ 音量儀表板神調音」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎛️ 音量儀表板神調音」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -413,7 +413,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💌 敬師感恩小特使」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💌 敬師感恩小特使」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -523,7 +523,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌕 中秋禮讓美食家」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌕 中秋禮讓美食家」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -633,7 +633,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚩 神氣行進小衛兵」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚩 神氣行進小衛兵」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -743,7 +743,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧭 發現身體警報器」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧭 發現身體警報器」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -853,7 +853,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛡️ 神奇烏龜縮殼術」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛡️ 神奇烏龜縮殼術」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -963,7 +963,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🍬 禮貌討糖不搗蛋」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🍬 禮貌討糖不搗蛋」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1073,7 +1073,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「✋ 安靜舉手等點名」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「✋ 安靜舉手等點名」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1183,7 +1183,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「⏰ 鐘聲三十秒歸位」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「⏰ 鐘聲三十秒歸位」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1293,7 +1293,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔑 遊戲加入通行證」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔑 遊戲加入通行證」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1403,7 +1403,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💰 友誼金幣多存入」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💰 友誼金幣多存入」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1513,7 +1513,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧩 團隊分工合力蓋」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧩 團隊分工合力蓋」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1623,7 +1623,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💖 讚美大方說謝謝」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💖 讚美大方說謝謝」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1733,7 +1733,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🍡 冬至湯圓話感恩」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🍡 冬至湯圓話感恩」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1843,7 +1843,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎄 禮貌收禮有風度」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎄 禮貌收禮有風度」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -1953,7 +1953,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎋 願望樹上掛目標」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎋 願望樹上掛目標」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2063,7 +2063,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔄 彈性轉念通行證」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔄 彈性轉念通行證」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2173,7 +2173,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💪 魔法字眼我還在學」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💪 魔法字眼我還在學」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2283,7 +2283,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📝 紅筆訂正大腦升級」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📝 紅筆訂正大腦升級」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2393,7 +2393,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧧 雙手領紅包說吉祥話」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧧 雙手領紅包說吉祥話」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2503,7 +2503,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📱 3C時間小管家」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📱 3C時間小管家」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2613,7 +2613,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🏮 猜燈謎遵守搶答規則」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🏮 猜燈謎遵守搶答規則」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2723,7 +2723,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎒 開學收心重新開機」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎒 開學收心重新開機」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2833,7 +2833,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛡️ 一隻手臂安全氣囊」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛡️ 一隻手臂安全氣囊」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -2943,7 +2943,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「✋ 堅定拒絕護衛盾」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「✋ 堅定拒絕護衛盾」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3053,7 +3053,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌿 愛惜公物守護星」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌿 愛惜公物守護星」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3163,7 +3163,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚦 即刻踩煞車神反應」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚦 即刻踩煞車神反應」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3273,7 +3273,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚨 秘密警報解除器」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚨 秘密警報解除器」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3383,7 +3383,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎫 公共禮儀小達人」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎫 公共禮儀小達人」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3493,7 +3493,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🥢 美味光盤小食神」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🥢 美味光盤小食神」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3603,7 +3603,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「♻️ 資源分類綠手指」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「♻️ 資源分類綠手指」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3713,7 +3713,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎯 我訊息溝通魔法箭」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎯 我訊息溝通魔法箭」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3823,7 +3823,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🩹 清楚求醫小患者」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🩹 清楚求醫小患者」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -3933,7 +3933,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💖 愛的家事行動家」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💖 愛的家事行動家」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4043,7 +4043,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚸 轉角停看聽雷達」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚸 轉角停看聽雷達」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4153,7 +4153,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🙇 誠懇道歉四步法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🙇 誠懇道歉四步法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4263,7 +4263,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🗝️ 寬容原諒大心胸」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🗝️ 寬容原諒大心胸」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4373,7 +4373,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🥁 節奏合拍划龍舟」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🥁 節奏合拍划龍舟」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4483,7 +4483,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「👏 運動家風度大掌聲」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「👏 運動家風度大掌聲」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4593,7 +4593,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🙋 客觀冷靜申訴儀」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🙋 客觀冷靜申訴儀」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4703,7 +4703,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎈 珍重再見祝福網」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎈 珍重再見祝福網」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4813,7 +4813,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎖️ 自信成長大榮光」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎖️ 自信成長大榮光」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -4923,7 +4923,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📅 假期作息大管家」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📅 假期作息大管家」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5033,7 +5033,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛒 社區公共禮貌王」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛒 社區公共禮貌王」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5143,7 +5143,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚨 反霸凌自保三部曲」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚨 反霸凌自保三部曲」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5253,7 +5253,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🏔️ 像山一樣的愛感恩行」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🏔️ 像山一樣的愛感恩行」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5363,7 +5363,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛟 戲水安全守護環」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛟 戲水安全守護環」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5473,7 +5473,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔍 眉宇微表情讀心術」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔍 眉宇微表情讀心術」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5583,7 +5583,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧊 破冰三句客氣法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧊 破冰三句客氣法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5693,7 +5693,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚀 52週全能社交超能力」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚀 52週全能社交超能力」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5803,7 +5803,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔕 降噪耳罩靜心盾」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔕 降噪耳罩靜心盾」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -5913,7 +5913,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧤 觸覺舒適自主令」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧤 觸覺舒適自主令」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6023,7 +6023,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔋 三分鐘離場充電術」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔋 三分鐘離場充電術」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6133,7 +6133,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🕶️ 柔光視覺防護網」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🕶️ 柔光視覺防護網」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6243,7 +6243,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧘 隱形舒壓指壓球」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧘 隱形舒壓指壓球」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6353,7 +6353,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🩺 白袍健檢安心咒」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🩺 白袍健檢安心咒」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6463,7 +6463,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧘 椅子核心伸展術」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧘 椅子核心伸展術」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6573,7 +6573,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎾 雙向對話拋接球」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎾 雙向對話拋接球」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6683,7 +6683,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧠 話語過濾口香糖」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧠 話語過濾口香糖」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6793,7 +6793,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔍 語音語調解碼鏡」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔍 語音語調解碼鏡」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -6903,7 +6903,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🔒 隱私界線安全鎖」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🔒 隱私界線安全鎖」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7013,7 +7013,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌫️ 班級空氣晴雨表」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌫️ 班級空氣晴雨表」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7123,7 +7123,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🙆 真誠傾聽點頭術」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🙆 真誠傾聽點頭術」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7233,7 +7233,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「✋ 步驟重述確認卡」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「✋ 步驟重述確認卡」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7343,7 +7343,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🍞 揉麵糰指尖放鬆法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🍞 揉麵糰指尖放鬆法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7453,7 +7453,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🤝 朗讀接力求助卡」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🤝 朗讀接力求助卡」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7563,7 +7563,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「⏳ 滴答時鐘慢板調息」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「⏳ 滴答時鐘慢板調息」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7673,7 +7673,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🍫 題目分段巧克力切」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🍫 題目分段巧克力切」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7783,7 +7783,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🪐 獨特星球自尊心」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🪐 獨特星球自尊心」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -7893,7 +7893,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📁 五色收納大魔法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📁 五色收納大魔法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8003,7 +8003,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🤝 團隊掉棒不埋怨」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🤝 團隊掉棒不埋怨」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8113,7 +8113,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📏 意外損壞冷靜尺」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📏 意外損壞冷靜尺」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8223,7 +8223,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌐 開放友誼大胸襟」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌐 開放友誼大胸襟」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8333,7 +8333,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛡️ 侮辱言論反彈盾」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛡️ 侮辱言論反彈盾」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8443,7 +8443,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🗳️ 意見分歧投票箱」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🗳️ 意見分歧投票箱」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8553,7 +8553,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🖍️ 彩色筆修復對話法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🖍️ 彩色筆修復對話法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8663,7 +8663,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🩹 先蹲下關心第一條」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🩹 先蹲下關心第一條」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8773,7 +8773,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「⚖️ 公正暫停查核法」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「⚖️ 公正暫停查核法」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8883,7 +8883,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧭 代課日穩健指南針」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧭 代課日穩健指南針」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -8993,7 +8993,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🪑 新座位破冰問候卡」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🪑 新座位破冰問候卡」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9103,7 +9103,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚌 遊覽車文明守則」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚌 遊覽車文明守則」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9213,7 +9213,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🫑 勇敢嘗一口小探險」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🫑 勇敢嘗一口小探險」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9323,7 +9323,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🎲 雨天備案樂趣盒」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🎲 雨天備案樂趣盒」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9433,7 +9433,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧽 大掃除勞動小英雄」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧽 大掃除勞動小英雄」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9543,7 +9543,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛑 陌生人紅線煞車器」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛑 陌生人紅線煞車器」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9653,7 +9653,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌉 普特無縫銜接橋」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌉 普特無縫銜接橋」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9763,7 +9763,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「⚡ 充電站自豪宣言」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「⚡ 充電站自豪宣言」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9873,7 +9873,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「⏱️ 手足輪流計時沙漏」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「⏱️ 手足輪流計時沙漏」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -9983,7 +9983,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🥣 奉茶端菜小幫手」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🥣 奉茶端菜小幫手」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10093,7 +10093,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🛒 超市購物自制守護員」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🛒 超市購物自制守護員」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10203,7 +10203,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌙 晚安關機舒眠操」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌙 晚安關機舒眠操」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10313,7 +10313,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「👕 生活自立小達人」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「👕 生活自立小達人」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10423,7 +10423,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💎 獨一無二發光水晶」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💎 獨一無二發光水晶」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10533,7 +10533,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「💰 超商小掌櫃算盤」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「💰 超商小掌櫃算盤」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10643,7 +10643,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🚩 舉起小黃旗安心過」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🚩 舉起小黃旗安心過」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10753,7 +10753,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🧼 清爽潔淨七步洗」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🧼 清爽潔淨七步洗」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10863,7 +10863,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🩹 外傷止血冷靜貼」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🩹 外傷止血冷靜貼」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -10973,7 +10973,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「📜 寫給未來英雄信」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「📜 寫給未來英雄信」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,
@@ -11083,7 +11083,7 @@ const dailyWorksheets = {
     "section3": {
       "type": "checklist",
       "title": "任務三：今日超能力動作挑戰",
-      "prompt": "跟著老師演練「🌟 生活掌舵小船長」動作，做到了請在框框裡打勾勾［✓］：",
+      "prompt": "跟著老師演練「🌟 生活掌舵小船長」動作，做到了請在框框裡打勾勾☑：",
       "steps": [
         {
           "num": 1,

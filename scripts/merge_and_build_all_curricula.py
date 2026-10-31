@@ -95,7 +95,7 @@ def build_new_briefings():
         home_task = {
             "title": "🏠 今日家庭生活小超人打卡任務",
             "action": f"放學回家後，向爸爸媽媽展現一次「{w['super_skill']}」，並跟家人擊掌！",
-            "checkText": "家人簽章或打勾確認：［　　　　　］"
+            "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
         }
         
         generalization = {
@@ -262,7 +262,7 @@ def build_new_worksheets():
         section3 = {
             "type": "checklist",
             "title": "任務三：今日超能力動作挑戰",
-            "prompt": f"跟著老師演練「{w['super_skill']}」動作，做到了請在框框裡打勾勾［✓］：",
+            "prompt": f"跟著老師演練「{w['super_skill']}」動作，做到了請在框框裡打勾勾☑：",
             "steps": [
                 {
                     "num": 1,
@@ -301,7 +301,7 @@ def build_new_worksheets():
             "homeTask": {
                 "title": "🏠 今日家庭生活小超人打卡任務",
                 "action": f"放學回家後，向爸爸媽媽展現一次「{w['super_skill']}」，並跟家人擊掌！",
-                "checkText": "家人簽章或打勾確認：［　　　　　］"
+                "checkText": "家人確認：□ 已完成（簽章：＿＿＿＿）"
             },
             "generalization": {
                 "trigger": f"當學生在普通班遇到「{w['title'].split('——')[0]}」類似狀況時",

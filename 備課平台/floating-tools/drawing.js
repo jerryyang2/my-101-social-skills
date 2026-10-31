@@ -427,7 +427,7 @@
       const game = document.querySelector('.game-master-wrapper > div:first-child .c-btn-accent')?.textContent.trim() || '';
       const student = document.querySelector('.student-chip.active')?.textContent.trim() || '';
       const island = document.querySelector('#drawerTitle')?.textContent.trim() || '';
-      return JSON.stringify([location.pathname, lesson, stage, game, student, island, window.innerWidth, Boolean(document.fullscreenElement)]);
+      return JSON.stringify([location.pathname, lesson, stage, game, student, island, window.innerWidth, Boolean(document.fullscreenElement), document.body.classList.contains('lesson-focus')]);
     }
     function syncContext() {
       scheduled = false;

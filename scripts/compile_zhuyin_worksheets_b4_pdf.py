@@ -867,10 +867,10 @@ def generate_lesson_article(k):
         <span>{date_str}</span>
         <div class="hero-box">
           <span>👦 挑戰小英雄：</span>
-          <span class="hero-opt">［ ］宇🦁</span>
-          <span class="hero-opt">［ ］畯🐻</span>
-          <span class="hero-opt">［ ］和🐼</span>
-          <span class="hero-opt">［ ］嘉🦊</span>
+          <span class="hero-opt">□宇🦁</span>
+          <span class="hero-opt">□畯🐻</span>
+          <span class="hero-opt">□和🐼</span>
+          <span class="hero-opt">□嘉🦊</span>
         </div>
         <span>🎖️ 徽章：<strong style="color:#b45309;">{badge_label}</strong></span>
       </div>
@@ -1101,7 +1101,7 @@ intro_body_match = re.search(r"<body>([\s\S]*?)</body>", intro_html)
 intro_body = intro_body_match.group(1) if intro_body_match else ""
 full_book_content = intro_body + "\n" + b1_content + "\n" + b2_content + "\n" + b3_content + "\n" + b4_content
 with open(full_html_path, "w", encoding="utf-8") as f_html:
-    f_html.write(wrap_html(full_book_content))
+    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
 
 file_size_mb = os.path.getsize(output_pdf_path) / (1024 * 1024)
 print(f"🎉 MASTER B4 ZHUYIN WORKSHEETS PDF COMPILED SUCCESSFULLY!")

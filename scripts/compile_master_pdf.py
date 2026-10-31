@@ -615,10 +615,10 @@ for k in all_keys:
         <span>{date_str}</span>
         <div class="hero-box">
           <span>👦 挑戰小英雄：</span>
-          <span class="hero-opt">［ ］宇🦁</span>
-          <span class="hero-opt">［ ］畯🐻</span>
-          <span class="hero-opt">［ ］和🐼</span>
-          <span class="hero-opt">［ ］嘉🦊</span>
+          <span class="hero-opt">□宇🦁</span>
+          <span class="hero-opt">□畯🐻</span>
+          <span class="hero-opt">□和🐼</span>
+          <span class="hero-opt">□嘉🦊</span>
         </div>
         <span>🎖️ 徽章：<strong style="color:#b45309;">{badge_label}</strong></span>
       </div>
@@ -684,7 +684,7 @@ with open(ws_html_path, "w", encoding="utf-8") as f:
 # Also save full book HTML to web directory
 ws_body = ws_html.split("<body>", 1)[1] if "<body>" in ws_html else ws_html
 with open(os.path.join(WEB_DIR, "all_worksheets_book.html"), "w", encoding="utf-8") as f:
-    f.write(intro_html.replace("</body>\n</html>", "") + ws_body)
+    f.write((intro_html.replace("</body>\n</html>", "") + ws_body).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
 
 print("HTML files generated. Printing Part A (Intro: 1 Cover + 4 TOC pages)...")
 pdf_intro = "/tmp/part_intro.pdf"

@@ -789,7 +789,7 @@ def build_all_unique_worksheets():
         section3 = {
             "type": "checklist",
             "title": "任務三：今日超能力動作挑戰",
-            "prompt": f"跟著老師演練「{w['super_skill']}」動作，做到了請在框框裡打勾勾［✓］：",
+            "prompt": f"跟著老師演練「{w['super_skill']}」動作，做到了請在框框裡打勾勾☑：",
             "steps": [
                 {"num": 1, "icon": "👀", "text": s1},
                 {"num": 2, "icon": "🧘", "text": s2},
@@ -886,7 +886,7 @@ def build_all_unique_worksheets():
         section3 = {
             "type": "checklist",
             "title": "任務三：今日超能力動作挑戰",
-            "prompt": f"跟著老師演練「{idea['superSkill']}」動作，做到了請在框框裡打勾勾［✓］：",
+            "prompt": f"跟著老師演練「{idea['superSkill']}」動作，做到了請在框框裡打勾勾☑：",
             "steps": [
                 {"num": 1, "icon": "👀", "text": idea.get("step1", "察覺身體與環境的不舒服訊號")},
                 {"num": 2, "icon": "🧘", "text": idea.get("step2", "大腦深呼吸踩煞車，選出最棒做法")},

@@ -835,7 +835,7 @@ with open(lessons_html_path, "w", encoding="utf-8") as f:
 lessons_body = lessons_html.split("<body>", 1)[1] if "<body>" in lessons_html else lessons_html
 full_book_html = intro_html.replace("</body>\n</html>", "") + lessons_body
 with open(os.path.join(WEB_DIR, "all_roleplay_and_games_book.html"), "w", encoding="utf-8") as f:
-    f.write(full_book_html)
+    f.write(full_book_html.replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
 
 print("📄 網頁生成完畢，開始以 Headless Chrome 列印 Part A (封面與目錄)...")
 pdf_intro = "/tmp/part_rp_intro.pdf"
