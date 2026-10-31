@@ -356,6 +356,7 @@ html, body {
 }
 .student-info-bar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background: #fffdf5;
@@ -366,8 +367,9 @@ html, body {
   font-weight: 800;
   gap: 6px;
 }
-.student-info-bar span {
-  white-space: nowrap;
+.student-info-bar > span {
+  white-space: normal;
+  max-width: 100%;
 }
 .hero-box {
   display: inline-flex;
@@ -593,22 +595,22 @@ intro_html = f"""<!doctype html>
       <div style="background:#ffffff; border:2.5px solid #93c5fd; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2.2rem; display:block; margin-bottom:4px;">🦁</span>
         <div style="font-size:1.2rem; font-weight:900;">小宇</div>
-        <span style="font-size: 0.82rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:4px;">ASD 自閉症</span>
+        <span style="font-size: 0.82rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 8px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2.5px solid #c4b5fd; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2.2rem; display:block; margin-bottom:4px;">🐻</span>
         <div style="font-size:1.2rem; font-weight:900;">小畯</div>
-        <span style="font-size: 0.82rem; font-weight:800; background:#ede9fe; color:#5b21b6; padding:2px 8px; border-radius:4px;">EBD 情緒障礙</span>
+        <span style="font-size: 0.82rem; font-weight:800; background:#ede9fe; color:#5b21b6; padding:2px 8px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2.5px solid #a7f3d0; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2.2rem; display:block; margin-bottom:4px;">🐼</span>
         <div style="font-size:1.2rem; font-weight:900;">小和</div>
-        <span style="font-size: 0.82rem; font-weight:800; background:#d1fae5; color:#065f46; padding:2px 8px; border-radius:4px;">ASD/LD 雙殊</span>
+        <span style="font-size: 0.82rem; font-weight:800; background:#d1fae5; color:#065f46; padding:2px 8px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2.5px solid #fde68a; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2.2rem; display:block; margin-bottom:4px;">🦊</span>
         <div style="font-size:1.2rem; font-weight:900;">小嘉</div>
-        <span style="font-size: 0.82rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:4px;">ASD 自閉症</span>
+        <span style="font-size: 0.82rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 8px; border-radius:4px;">示例角色</span>
       </div>
     </div>
     <div style="background:#f8fafc; border:2px dashed #94a3b8; border-radius:12px; padding:14px 18px; text-align:left; font-size:1.0rem; line-height:1.7; color:#334155;">
@@ -826,7 +828,7 @@ def generate_lesson_article(k):
     s2_prompt_zy = add_zhuyin(d["section2"]["prompt"])
     if d["section2"]["type"] == "choice":
         s2_opts = []
-        for opt in d["section2"]["options"]:
+        for opt in d["section2"]["options"][d.get("lessonNumber", 1) % len(d["section2"]["options"]):] + d["section2"]["options"][:d.get("lessonNumber", 1) % len(d["section2"]["options"])]:
             opt_zy = add_zhuyin(opt["label"])
             s2_opts.append(f'<div class="choice-card"><span class="choice-radio"></span><span style="font-size:1.2rem;">{opt["icon"]}</span><span>{opt_zy}</span></div>')
         s2_content_html = '<div class="choice-list">' + "".join(s2_opts) + '</div>'

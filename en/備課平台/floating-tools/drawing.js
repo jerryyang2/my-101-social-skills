@@ -96,6 +96,7 @@
     return {
       enable,
       async play() {
+        if (typeof window !== 'undefined' && window.LearningSupport?.quiet()) return;
         if (!await enable()) return;
         [523.25, 659.25, 783.99].forEach((frequency, index) => {
           const oscillator = audio.createOscillator();
@@ -810,7 +811,7 @@
         event.preventDefault();
         return;
       }
-      toggle(true);
+      toggle(innerWidth > 700);
     });
     host.addEventListener('click', event => {
       const button = event.target.closest('button');
@@ -1030,7 +1031,7 @@
       open: () => toggle(true),
       close: () => toggle(false)
     };
-    toggle(true);
+    toggle(innerWidth > 700);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);else init();
 })();

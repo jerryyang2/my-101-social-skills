@@ -18,22 +18,22 @@ const dailyWorksheets = {
     "badgeLabel": "Energetic Greeting Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"meeting each other at the beginning of school and saying hello loudly\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
           "icon": "🌟",
           "label": "Yu took the initiative to greet her",
-          "desc": "Raise your head and chest, look straight ahead, smile with the corners of your mouth raised, and wave your right hand to say hello. …",
+          "desc": "Choose a comfortable position toward the partner, smile if comfortable and wave to greet them.…",
           "isCorrect": true
         },
         {
           "id": "c2",
           "icon": "🛑",
-          "label": "Lower your head and hide behind the door without speaking or make faces at new classmates",
-          "desc": "Be shy and withdrawn or deliberately make trouble, so that people don't know how to be friends with you.",
-          "isCorrect": false
+          "label": "Not ready to speak; observe first and ask the teacher for support",
+          "desc": "Observe first, wave or ask the teacher to help with an introduction when more time is needed.",
+          "isCorrect": true
         },
         {
           "id": "c3",
@@ -53,36 +53,36 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"👋 Say hello to Superboy with a smile\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Feeling shy, he threw his schoolbag on the ground angrily and yelled at the new classmate who came over: \"Go away! Don't look at me!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌟",
-          "label": "Raise your head and chest, take a deep breath, look at the other person’s eyebrows and smile, wave generously and say: \"Good morning! I am Yu!\"",
+          "label": "Stand comfortably, take a breath, turn toward the partner, smile if comfortable and wave: “Good morning! I am Yu!”",
           "color": "#10b981",
           "recommended": true
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
-          "label": "He zipped his coat up to his head, hid behind the door and looked down at his sneakers, and didn't dare to talk to anyone for the entire class.",
+          "label": "Watch a classmate first, then use pointing or a wave to greet someone.",
           "color": "#f59e0b"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"👋 \"Smile and say hello to Superboy\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -98,7 +98,7 @@ const dailyWorksheets = {
         {
           "num": 3,
           "icon": "🌟",
-          "text": "Say your name and good morning clearly and loudly"
+          "text": "Greet with speech, a card or a wave"
         }
       ]
     },
@@ -121,106 +121,111 @@ const dailyWorksheets = {
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 1: Self-Awareness and Classroom Routines",
-    "title": "Friendly Looks and Warm Smiles: Communicating Without Words",
-    "superSkill": "👁️ Eyes and forehead spotlight",
+    "title": "Noticing and Responding Comfortably",
+    "superSkill": "Respond in a comfortable way",
     "themeColor": "#6366f1",
     "badgeEmoji": "✨",
-    "badgeLabel": "Focused Gaze",
+    "badgeLabel": "Responding Comfortably",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the \"eye gaze and warm smile\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "✨",
-          "label": "Yu focusing on the space between the eyebrows",
-          "desc": "Focus your eyes on the middle of the other person's eyebrows, lean forward slightly, and nod seriously. …",
+          "icon": "💬",
+          "label": "Respond with a nod, a wave, a communication card or speech",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "Staring at the floor or turning away from classmates when speaking",
-          "desc": "Wandering and avoidant eyes will make the other person feel that you don't want to pay attention to him at all.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "A young man who feels respected",
-          "desc": "Put down the toy ball in your hand, face Yu, put your hands flat, and respond with a smile.…",
+          "icon": "👀",
+          "label": "Ask for a repeat or take a break when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Little He with a gentle gaze",
-          "desc": "The corners of his mouth were slightly raised, his eyes looked at his peers warmly, and he clapped his hands gently. …",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"👁️ Eyes and brows spotlight\"?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "What comfortable ways can you use to show a partner you are listening?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "When others are talking to me, I deliberately turn my head to look at the ceiling, turn my pen, or even block my ears to refuse to listen.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "✨",
-          "label": "Start the eyebrow spotlight, look gently at the middle of the other person's eyebrows for three seconds, nod and smile naturally to express that you are listening.",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Respond with a nod, a wave, a communication card or speech",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "Afraid of eye contact, talking in a low voice while staring at the floor and counting tiles. The more he talks, the more he feels guilty and dare not look at people.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"👁️ \"eyes and eyebrows spotlight\" action, please tick the box if you have done it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Respond in a comfortable way” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Project your gaze gently to the opponent's \"eyebrow triangle\""
+          "text": "Choose a comfortable position and attend to your partner or a shared object"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "Relax your facial muscles and reveal a natural and sincere smile"
+          "icon": "💬",
+          "text": "Respond with a nod, a wave, a communication card or speech"
         },
         {
           "num": 3,
-          "icon": "✨",
-          "text": "Keep your gaze for three seconds and nod slightly to indicate that you are listening."
+          "icon": "🤝",
+          "text": "Ask for a repeat or take a break when needed"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "During dinner, look at your family’s eyebrows, smile and talk for three seconds, and ask your family to give a like on the worksheet!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Respond with a nod, a wave, a communication card or speech. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Respond with a nod, a wave, a communication card or speech"
     }
   },
   "b-week-3": {
@@ -238,7 +243,7 @@ const dailyWorksheets = {
     "badgeLabel": "The Volume Magician",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"sound level five level dashboard\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -273,19 +278,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎛️ Volume Dashboard God Tuning\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I was so excited during the group discussion that I directly turned the volume to the loudest quarter volume in the playground, which gave the whole class earaches.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎙️",
           "label": "Touch your throat to feel the vibration, adjust the volume to two groups and whisper softly to express clearly and keep the class quiet.",
           "color": "#10b981",
@@ -293,7 +298,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Afraid of being scolded for speaking too loudly, I simply shut up and stopped speaking at all, giving up participating in group discussions.",
           "color": "#f59e0b"
@@ -302,7 +307,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎛️ \"Volume Dashboard God Tuning\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -348,7 +353,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little Role Models of Respecting Teachers",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Teacher's Day Special 9/28]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -383,19 +388,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💌 \"Special envoy of gratitude\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I found it annoying when the teacher told me to correct, so I rolled my eyes at the teacher and kicked the chair hard in protest.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🍎",
           "label": "Present the hand-painted love card with both hands straight, stand at attention and bow and say: \"Thank you, teacher, for teaching me hard every day!\"",
           "color": "#10b981",
@@ -403,7 +408,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Although I was very grateful to the teacher, I was too shy to speak, so I secretly stuffed the written card at the bottom of my school bag.",
           "color": "#f59e0b"
@@ -412,7 +417,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💌 \"Special envoy of gratitude to teachers\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -458,7 +463,7 @@ const dailyWorksheets = {
     "badgeLabel": "Sharing Little Fairy",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Mid-Autumn Festival Special]\" situation, what are the correct and polite actions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -493,19 +498,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌕 Mid-Autumn Festival courtesy to gourmets\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I saw the grapefruits and mooncakes from the ceilidh, I carried the whole plate away with my hands, stuffed my mouth full and yelled, \"They're all mine!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🥮",
           "label": "Observe taking turns to line up, take your own portion with both hands, and generously say to the classmates next to you: \"Please use it slowly and eat together!\"",
           "color": "#10b981",
@@ -513,7 +518,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I wanted to eat snacks but I didn’t dare to go forward to get them. I stood alone in the corner of the classroom and watched everyone eat. I was hungry and sulky.",
           "color": "#f59e0b"
@@ -522,7 +527,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌕 Mid-Autumn Festival Courtesy to Gourmets\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -568,7 +573,7 @@ const dailyWorksheets = {
     "badgeLabel": "Order Squad Leader",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Double Ten National Day Special 10/10]\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -603,19 +608,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚩 \"Small marching guard\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "The rally whistle sounded, and in order to get to the front, he used his elbow to push away Xiaowa who was in front.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎖️",
           "label": "Put your hands naturally on your sides, keep a safe distance from the classmates in front, and keep up with the team in high spirits.",
           "color": "#10b981",
@@ -623,7 +628,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When queuing, they look around and wander around, deviate from the neat line, and when urged, they sit on the ground in anger and refuse to move forward.",
           "color": "#f59e0b"
@@ -632,7 +637,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚩 \"Arrogant Marching Little Guard\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -678,7 +683,7 @@ const dailyWorksheets = {
     "badgeLabel": "Body Detective",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "What is the correct and polite thing to do in a My Body Alarm situation? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -713,19 +718,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧭 Found the body alarm?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "My chest felt hot and my fists became hard. I immediately threw my schoolbag around like a little dinosaur and kicked over the trash can.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌡️",
           "label": "Be keenly aware of the body signal of \"heartbeat beating like a drum\", and immediately extend your index finger in front of your chest to sign \"pause and brake\"!",
           "color": "#10b981",
@@ -733,7 +738,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "My body was obviously very uncomfortable and my stomach hurt so much that I broke into a cold sweat, but I insisted on not talking about it. In the end, I was so sad that I lay on the table and cried.",
           "color": "#f59e0b"
@@ -742,7 +747,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧭 If you find the \"Body Alarm\" action, please tick the box.☑：",
       "steps": [
         {
@@ -788,7 +793,7 @@ const dailyWorksheets = {
     "badgeLabel": "Braking Master",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"Magic Turtle Braking Technique\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -823,19 +828,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛡️ The magical turtle shell shrinking technique\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I was very unwilling to lose the game. I tore up the game cards and yelled at the referee teacher: \"This is not fair!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🐢",
           "label": "Imagine that you are a calm little turtle, hold your head in your hands and shrink into the safety shell, take three deep breaths and count from one to ten.",
           "color": "#10b981",
@@ -843,7 +848,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "He suppressed his anger, his face turned red while holding his anger, and he secretly gritted his teeth and resented his classmates all day long.",
           "color": "#f59e0b"
@@ -852,7 +857,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛡️ \"Magical Turtle Shell Shrinking Technique\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -898,7 +903,7 @@ const dailyWorksheets = {
     "badgeLabel": "Halloween Gentleman Elf",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Halloween Special 10/31]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -933,19 +938,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🍬 Be polite and don’t trick-or-treat”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I asked for candy, others only gave me one. If I thought it was too little, I immediately spit the candy on the ground, and even took away other people's masks.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎃",
           "label": "Politely hold the bag with both hands and say, \"Trick or treat, can you give me candy?\" Say thank you when you get it!",
           "color": "#10b981",
@@ -953,7 +958,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I feel scared when I see others dressing up as monsters. I hide in the bathroom and refuse to come out to participate in the party, missing out on fun activities.",
           "color": "#f59e0b"
@@ -962,7 +967,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🍬 Be polite and don’t trick-or-treat. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -1008,7 +1013,7 @@ const dailyWorksheets = {
     "badgeLabel": "Polite and Courteous Speech",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"classroom etiquette of raising hands to speak\", what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1043,19 +1048,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"✋ Quietly raise your hands and wait for roll call\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I thought of the answer, I yelled excitedly. I jumped up from my seat and waved my hands to talk, covering up other people's speeches.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🙋",
           "label": "Raise your right hand straight up close to your ear, close your mouth and wait quietly until the teacher calls your name before standing up to speak.",
           "color": "#10b981",
@@ -1063,7 +1068,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I knew the answer clearly, but because I was afraid of being laughed at if I made a mistake, I lowered my head and hid my hand in the drawer, not daring to raise my hand at all.",
           "color": "#f59e0b"
@@ -1072,7 +1077,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"✋ \"Quietly raise your hands and wait for the roll call\" action, please tick the box if you do it.☑：",
       "steps": [
         {
@@ -1118,7 +1123,7 @@ const dailyWorksheets = {
     "badgeLabel": "Getting Back into the swing of things team",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"you will calm down when you hear the bell\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1153,19 +1158,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which method can use \"⏰ the bell returns to its original position in thirty seconds\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "The bell rang, but he still insisted on kicking the ball into the goal, screaming in the playground and refusing to go back to the classroom.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔔",
           "label": "As soon as he heard the bell, he immediately counted thirty seconds silently in his heart, returned the toys to their original places, and quickly walked back to the classroom to tidy up the desktop.",
           "color": "#10b981",
@@ -1173,7 +1178,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When the bell rang, I dragged my feet slowly, and only wandered back to the classroom after five minutes of class. I was angry and dazed when the teacher corrected me.",
           "color": "#f59e0b"
@@ -1182,7 +1187,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Follow the teacher to practice the \"⏰ bell returns to position after thirty seconds\" action. If you do it, please tick the box.☑：",
       "steps": [
         {
@@ -1222,13 +1227,13 @@ const dailyWorksheets = {
     "festival": "",
     "unit": "Unit 5: Friendship, Cooperation and Sharing",
     "title": "Joining a Game: May I Play Too?",
-    "superSkill": "🔑 Add to game pass",
+    "superSkill": "🔑 Asking to Join a Game",
     "themeColor": "#ec4899",
     "badgeEmoji": "🤝",
     "badgeLabel": "Friendship Little Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"adding a magical passcode to the game\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1263,19 +1268,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔑 Game Add Pass\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Wanted to join everyone in playing football, so he rushed up and kicked the ball away, yelling at the goalkeeper: \"Now it's my turn to be the captain!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🤝",
           "label": "Walked to the game circle, stopped and stared, raised his hand gently and asked: \"Can I play together? I can be a passer!\"",
           "color": "#10b981",
@@ -1283,16 +1288,16 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
-          "label": "I want to join the game but stand ten meters away and watch from a distance. I feel envious and self-pitying, feeling that others are ostracizing me.",
+          "label": "Wanting to join but standing far away, unsure how to start and worried about being excluded.",
           "color": "#f59e0b"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔑 \"Add pass\" action to the game, please tick the box if you have done so.☑：",
       "steps": [
         {
@@ -1314,7 +1319,7 @@ const dailyWorksheets = {
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "When you go to the park and playground to play, politely say \"Can I play with you\" to other children and successfully make a partner!"
+      "action": "At a playground, practise asking another child, “May I join you?” Express the wish to play together; the other child may suggest another time."
     },
     "stars": {
       "title": "Self-outcome assessment",
@@ -1338,7 +1343,7 @@ const dailyWorksheets = {
     "badgeLabel": "Friendship Monopoly",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Thanksgiving Special]\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1373,19 +1378,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💰 Deposit more friendship gold coins\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "A classmate borrowed an eraser and accidentally dropped it on the ground. Jia lost his temper and called the other person a fool, and kicked the classmate's stationery away.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🪙",
           "label": "When you see a classmate in need of help, take the initiative to lend a hand and deposit a sparkling friendly gold coin into the friendship piggy bank in your heart!",
           "color": "#10b981",
@@ -1393,7 +1398,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When I see a classmate encountering difficulties, I pretend not to notice and run away quickly out of fear of getting into trouble. I feel very sorry afterwards.",
           "color": "#f59e0b"
@@ -1402,7 +1407,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💰 \"Deposit more friendship gold coins\" action, please tick the box if you do it☑：",
       "steps": [
         {
@@ -1448,7 +1453,7 @@ const dailyWorksheets = {
     "badgeLabel": "Collaborating Architect",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"Group Block Project\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1483,19 +1488,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧩 Team division of labor and joint efforts\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When his teammates took the long red blocks they wanted, they were so angry that they knocked down the entire castle and shouted: \"Everyone, stop playing!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚀",
           "label": "Take the initiative to discuss the division of labor: \"You are responsible for building the city wall, and I will build the bridge!\" When parts are insufficient, exchange them instead of fighting for them.",
           "color": "#10b981",
@@ -1503,7 +1508,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling that his teammates are not doing as well as he expected, he puts his hands in his pockets angrily, sits aside and watches indifferently, refusing to cooperate.",
           "color": "#f59e0b"
@@ -1512,7 +1517,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧩 The team divides the work and works together to build the action. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -1558,7 +1563,7 @@ const dailyWorksheets = {
     "badgeLabel": "Praise the Little Sun",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"praising the magnifying glass and being generous\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1593,19 +1598,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💖 Praise generously and say thank you”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "A classmate kindly praised his beautiful painting. Yu felt shy and overwhelmed, and angrily scolded him: \"It's so noisy!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔍",
           "label": "Looking at the friend who praised him, he raised the corners of his mouth slightly and said generously and gently: \"Thank you, I also think yours is beautiful!\"",
           "color": "#10b981",
@@ -1613,7 +1618,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When he hears others complimenting himself, his face turns red and he buries his head in his arms and pretends to sleep, not daring to say a word in response.",
           "color": "#f59e0b"
@@ -1622,7 +1627,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💖 \"Praise generously and say thank you\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -1633,7 +1638,7 @@ const dailyWorksheets = {
         {
           "num": 2,
           "icon": "🧘",
-          "text": "Look at the other person’s eyebrows and raise a sincere smile at the corner of your mouth"
+          "text": "Attend to the partner and offer a comfortable, sincere response"
         },
         {
           "num": 3,
@@ -1668,7 +1673,7 @@ const dailyWorksheets = {
     "badgeLabel": "Heartwarming Filial Piety Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Winter Solstice Special 12/21]\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1703,19 +1708,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🍡 Winter Solstice Tangyuan means \"Thanksgiving\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "The elders worked hard to cook glutinous rice balls and served them to the table. I only wanted to eat the red ones, so I scooped out all the white ones with a spoon and threw them on the table.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🥣",
           "label": "Hold the rice dumpling bowl respectfully with both hands, say happy winter solstice and thank you to the elders first, blow it to cool down and then chew slowly to taste the warm deliciousness.",
           "color": "#10b981",
@@ -1723,7 +1728,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "The elders asked themselves to eat glutinous rice balls, but they kept staring at the tablet and refused to go to the dining table. They didn't care until the glutinous rice balls became cold and mushy.",
           "color": "#f59e0b"
@@ -1732,7 +1737,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🍡 Winter Solstice Tangyuan \"Thanksgiving\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -1778,7 +1783,7 @@ const dailyWorksheets = {
     "badgeLabel": "A Gentleman's Demeanor",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Christmas Special 12/25]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1813,19 +1818,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎄 Accept gifts politely and gracefully”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I opened my Christmas gift and found that it was a notebook instead of a beyblade, I rolled on the ground crying and swearing.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎁",
           "label": "Take the gift with both hands and say thank you with a smile, appreciate the packaging and card, show your grace and say: \"This notebook can be used for drawing!\"",
           "color": "#10b981",
@@ -1833,7 +1838,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When I get a gift that I don’t like, I immediately throw the gift to the ground with a bad face, lie on the table and refuse to talk to anyone all day long.",
           "color": "#f59e0b"
@@ -1842,7 +1847,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎄 \"Receive gifts politely and gracefully\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -1888,7 +1893,7 @@ const dailyWorksheets = {
     "badgeLabel": "New Year's Hope Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[New Year's Eve Special 12/31-1/1]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -1923,19 +1928,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎋 Hanging goals on the wish tree\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "During the New Year's review, I recalled that my shortcomings had been noted, and I was so angry that I tore the entire annual review worksheet into pieces.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎆",
           "label": "Write down the most proud progress of this year on the wish tree, and set a feasible new goal for the new year, and stride forward bravely!",
           "color": "#10b981",
@@ -1943,7 +1948,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I feel that New Year’s goals are too difficult to achieve, so I just scribble or leave them blank, feeling that I will never succeed.",
           "color": "#f59e0b"
@@ -1952,7 +1957,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎋 \"Hang a target on the wish tree\" action, please tick the box if you do it☑：",
       "steps": [
         {
@@ -1998,7 +2003,7 @@ const dailyWorksheets = {
     "badgeLabel": "Elastic Strain Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"facing sudden changes in class schedule\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2033,19 +2038,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔄 Flexible Thought Pass\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Because it rained, the physical education class was changed to self-study in the classroom. Jia was so angry that he scribbled on the blackboard, slapped the table loudly and refused to go back to his seat.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎫",
           "label": "Take out the green \"Change Pass\", take a deep breath and say to yourself: \"It doesn't matter if the class schedule has changed, indoor activities are also fun!\"",
           "color": "#10b981",
@@ -2053,7 +2058,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "The arranged schedule suddenly changed, and my brain couldn't turn around. I sat frozen on the corridor floor, unable to move.",
           "color": "#f59e0b"
@@ -2062,7 +2067,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔄 \"Flexible Thought Pass\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -2108,7 +2113,7 @@ const dailyWorksheets = {
     "badgeLabel": "Perseverance Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"I want to give up when encountering difficulties\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2143,19 +2148,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💪 I’m still learning the magic words”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I encounter a math question that I can’t write, I immediately break the pencil and yell angrily: “I’m a big idiot, I don’t want to write anymore!”",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🦋",
           "label": "Put down the pencil, take a deep breath, and say the magic words to yourself: \"It's not that I don't know it, I'm just 'still learning'! I can ask the teacher for help!\"",
           "color": "#10b981",
@@ -2163,7 +2168,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When I encounter a slightly more difficult puzzle, I take one look at it and push it away, lying on the table in a daze and giving up trying.",
           "color": "#f59e0b"
@@ -2172,7 +2177,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💪 I'm still learning the magic words. If you do it, please tick the box.☑：",
       "steps": [
         {
@@ -2218,7 +2223,7 @@ const dailyWorksheets = {
     "badgeLabel": "Smart Upgrade Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"final exam and assessment\" situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2253,19 +2258,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📝 Red pen correction brain upgrade\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I was giving the Mandarin assessment and I saw a cross with a red pen, I went crazy on the spot and tore the entire test paper into pieces, stuffed it into my mouth and swallowed it.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🆙",
           "label": "Pick up the blue pen and carefully recalculate the red-crossed questions, and say to yourself in your heart: \"Every revision is a brain level improvement!\"",
           "color": "#10b981",
@@ -2273,7 +2278,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "After getting the test paper with unsatisfactory results, I secretly stuffed the test paper in the shoe cabinet at the bottom, went home and lied to my parents that I didn't give out the test paper.",
           "color": "#f59e0b"
@@ -2282,7 +2287,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📝 Red pen corrects the action \"Brain Upgrade\", please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -2328,7 +2333,7 @@ const dailyWorksheets = {
     "badgeLabel": "Auspicious New Year's Greeting Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Lunar New Year Special]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2363,19 +2368,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧧 Receive red envelopes with both hands and say auspicious words\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When an elder wanted to give a red envelope, he couldn't wait for the other person to finish saying his blessings, so he reached out and snatched it away. He also counted the money loudly and said, \"That's it?\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🧧",
           "label": "Stand at attention with your feet together, bow your hands and say auspicious words \"I wish you a happy new year and good health\", take the red envelope respectfully with both hands and put it into your pocket.",
           "color": "#10b981",
@@ -2383,7 +2388,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I always hide behind my parents when I go to relatives’ houses to pay New Year greetings. I refuse to take the red envelopes given by my elders, and I don’t say a word of good luck with a bad face.",
           "color": "#f59e0b"
@@ -2392,7 +2397,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧧 Take the red envelope with both hands and say auspicious words\" action, please tick the box if you do it☑：",
       "steps": [
         {
@@ -2438,7 +2443,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little master of time",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Winter Vacation Life Autonomy]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2473,19 +2478,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📱 3C Time Butler\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Mom stipulated that mobile phones must be put away when the time is up. Xiaojiu was so angry that he rolled around on the ground and smashed the TV remote control with all his strength.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⏳",
           "label": "When the alarm clock on your phone rings, take the initiative to press it to turn it off, hand the tablet to your parents, put on your sneakers and ride a bicycle in the outdoor park to enjoy the breeze!",
           "color": "#10b981",
@@ -2493,7 +2498,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "My winter vacation routine is completely reversed. I stay awake at night and peek at my phone. I sleep on the sofa all day long. I feel dizzy and miserable.",
           "color": "#f59e0b"
@@ -2502,7 +2507,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📱 3C Time Butler\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -2548,7 +2553,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little Riddle Master",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Lantern Festival Special]\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -2583,19 +2588,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🏮 When guessing lantern riddles, follow the answering rules?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I saw another group guessing the lantern riddle and getting the prize, I was so angry that I rushed forward and snatched away other people's small lanterns, and even cursed the host teacher for being biased.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏮",
           "label": "Comply with the rules of ringing the bell and accepting the prize with a smile when you guess right. If you guess wrong or miss, you can also warmly applaud other winning students!",
           "color": "#10b981",
@@ -2603,7 +2608,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "As soon as the question came out and I felt it was too difficult to guess, I would lie on the table with my head in my hands and get sulky, giving up the fun of solving the puzzle.",
           "color": "#f59e0b"
@@ -2612,7 +2617,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🏮 Guess lantern riddles and follow the rules for answering questions. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -2658,7 +2663,7 @@ const dailyWorksheets = {
     "badgeLabel": "Vitality boot star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"the battle to win back the students at the beginning of school\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2693,19 +2698,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎒 School starts, calm down and restart”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I was woken up, I was so angry that I threw all the textbooks and stationery in my schoolbag into the trash can. I grabbed the bedrail and refused to go out.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⏰",
           "label": "I packed my schoolbags and uniforms the night before, took a deep breath and did morning stretching exercises in the morning, and walked into the school gate full of energy to say hello to the guards!",
           "color": "#10b981",
@@ -2713,7 +2718,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Although I walked into the classroom, I lay on the table all day with my eyes dazed and refused to respond when the teacher called my name.",
           "color": "#f59e0b"
@@ -2722,7 +2727,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎒 Please check the box if you have done it.☑：",
       "steps": [
         {
@@ -2768,7 +2773,7 @@ const dailyWorksheets = {
     "badgeLabel": "Boundary Guardian",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "What is the correct and polite thing to do in a \"my personal body airbag\" situation? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2803,19 +2808,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛡️ One arm airbag\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I saw my classmate wearing a cute headband, I reached out and pulled it off hard and put it on my head. I also pushed my classmate to the corner.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎈",
           "label": "Extend an arm to confirm social distance and politely ask for permission before touching other people's belongings.",
           "color": "#10b981",
@@ -2823,7 +2828,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I feel very uncomfortable when others are too close to me, but I don't dare to express myself. I endure it until my whole body is shaking and I huddle in the corner.",
           "color": "#f59e0b"
@@ -2832,7 +2837,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛡️ \"One Arm Airbag\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -2878,7 +2883,7 @@ const dailyWorksheets = {
     "badgeLabel": "Body Defense Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"saying \"no\" bravely and firmly\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -2913,19 +2918,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"✋ Firmly reject the shield”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I encounter senior classmates who force me to hand over snacks, I obediently hand them over for fear of being excluded, and even help steal other people's money.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🛡️",
           "label": "Look directly at the other party firmly, extend your right palm forward to sign \"stop\", and say clearly and firmly: \"No! I don't agree!\"",
           "color": "#10b981",
@@ -2933,7 +2938,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I desperately don’t want to do something, but I don’t dare to say no. I cry while aggrievedly complying with other people’s unreasonable demands.",
           "color": "#f59e0b"
@@ -2942,7 +2947,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"✋ Firmly refuse the \"Guard Shield\" action, please tick the box if you do it☑：",
       "steps": [
         {
@@ -2988,7 +2993,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little Green Hero's Favorite Items",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Arbor Day Special 3/12]\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -3023,19 +3028,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌿 \"Guardian Star of Cherishing Public Property\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I was trying to borrow a popular comic book from the library, if I couldn't get it, I pushed down the whole row of bookshelves and scattered the books all over the floor.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌱",
           "label": "Gently flip through the pages of the book without folding the corners. After reading, put the books back to the original sorting shelf with both hands, walking as lightly as a cat walking.",
           "color": "#10b981",
@@ -3043,7 +3048,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I accidentally tore a corner of the picture book, and because I was afraid of being scolded, I quietly stuffed the torn book under the sofa, hid it and ran away.",
           "color": "#f59e0b"
@@ -3052,7 +3057,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌿 \"Cherish public property and protect the star\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -3098,14 +3103,14 @@ const dailyWorksheets = {
     "badgeLabel": "Equal Brake Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the context of \"respecting other people's \"no\"\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
           "icon": "🛑",
           "label": "Yu's calm and composed expression",
-          "desc": "Look the other person in the eyes, shake your head calmly but firmly, and place your hands on the table without touching them.…",
+          "desc": "Attend to the partner in a comfortable way, speak calmly and firmly, shake your head if useful and keep your hands clear.…",
           "isCorrect": true
         },
         {
@@ -3133,19 +3138,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚦 Immediate braking reaction\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Yu was invited to play chess together but was rejected. Yu became furious and scolded Yu for his lack of loyalty. He turned over the table and swept the chess pieces off the ground.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🛑",
           "label": "When you hear someone say \"no\", you immediately step on the emotional brake, take a deep breath, nod and say: \"It's okay, we can play again when you are free next time!\"",
           "color": "#10b981",
@@ -3153,7 +3158,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "After being rejected by a classmate once, I felt that the whole world hated me. I hid in the toilet cubicle crying and refused to come out to class.",
           "color": "#f59e0b"
@@ -3162,7 +3167,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚦 \"Immediately step on the brakes to react\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -3208,7 +3213,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little Truth Detective",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In a \"good secret vs. bad secret\" situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -3243,19 +3248,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚨 \"Secret alarm disarm\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "You saw a classmate stealing class fees, and he threatened to beat you up if you went out. He lied because he was afraid to help hide his wallet.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔍",
           "label": "Distinguish between good secrets and bad secrets, and if you notice the \"bad secrets\" that make you feel stomachache and fearful, report it to a trusted teacher for help immediately!",
           "color": "#10b981",
@@ -3263,7 +3268,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I was bullied and threatened by others to keep it secret, I was in fear every day and had nightmares at night, I suppressed my anger and did not dare to say anything even if I got sick.",
           "color": "#f59e0b"
@@ -3272,7 +3277,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚨 \"Secret Alarm Canceler\" action, please tick the box if you have achieved it.☑：",
       "steps": [
         {
@@ -3318,7 +3323,7 @@ const dailyWorksheets = {
     "badgeLabel": "Polite Little Gentleman",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Children's Day and Qingming Festival 4/4]\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -3353,19 +3358,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎫 \"Little master of public etiquette\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When taking the bus, in order to grab the window seat, I pushed the old lady who was getting on the bus away and occupied two seats to lie down.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚌",
           "label": "Queue up and swipe your card to say thank you, hold the handrails with both hands in the carriage, lower your voice and sit quietly, and take the initiative to offer your seat to the elders.",
           "color": "#10b981",
@@ -3373,7 +3378,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I kept walking around and groping around in the MRT carriage. When my parents stopped me, I would get angry and cry and kick the back of the seat in front of me.",
           "color": "#f59e0b"
@@ -3382,7 +3387,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎫 \"Public Etiquette Master\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -3421,106 +3426,111 @@ const dailyWorksheets = {
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 10: Self-Care and Healthy Habits",
-    "title": "Lunch Manners: Chewing Quietly and Reducing Food Waste",
-    "superSkill": "🥢 Little Food God Who Finishes Every Dish!",
+    "title": "Lunchtime Manners and Communicating Food Needs",
+    "superSkill": "Express my lunchtime needs",
     "themeColor": "#eab308",
     "badgeEmoji": "🍱",
-    "badgeLabel": "Dining Table Expert",
+    "badgeLabel": "Expressing Mealtime Needs",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the context of \"nutritious lunch table manners\", what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🍱",
-          "label": "Yu chewing with his mouth closed",
-          "desc": "After putting the food into your mouth, press your lips tightly together, chew your jaw regularly for twenty times, and swallow quietly...",
+          "icon": "💬",
+          "label": "Use speech or a communication card to request a smaller portion, an alternative or help",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "If you are a picky eater, put the whole plate of vegetables you don’t like on the table and knock the bowl with chopsticks.",
-          "desc": "It wastes the food that farmers have worked hard to grow, and creates mess and noise on the table.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "Little Jun only spoke after swallowing the",
-          "desc": "Pat your chest with your right hand to confirm that the soup in your mouth has been completely swallowed, and gently press the corners of your mouth with a tissue before turning your head...",
+          "icon": "👀",
+          "label": "Eat safely and comfortably, then tidy the utensils",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Cherishing food, He",
-          "desc": "Use a spoon to scrape off the last grain of rice at the bottom of the bowl and eat it. The plate will be as bright as a mirror. …",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🥢 Delicious CD \"Small Food God\"?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "How can you let the teacher know about a food preference or dietary need?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "When I saw carrots in my lunch, I was so angry that I smashed the entire stainless steel lunch box on the floor, spraying vegetable juice everywhere.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🍱",
-          "label": "Sit upright, close your mouth, and chew carefully without dropping the rice grains on the table. Take in balanced nutrition and successfully complete the delicious CD!",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Use speech or a communication card to request a smaller portion, an alternative or help",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "I thought the food was not delicious, so I kept poking at the rice grains with my chopsticks. I didn't eat a bite for forty minutes, so I went to class hungry.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🥢 Delicious CD \"Small Food God\" action, please tick the box if you have done it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Express my lunchtime needs” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Sit in an upright posture, holding a bowl in one hand and a spoon or chopsticks in the other"
+          "text": "Check the portion and any known dietary requirements"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "When there is food in your mouth, close your lips and chew quietly without opening your mouth to speak."
+          "icon": "💬",
+          "text": "Use speech or a communication card to request a smaller portion, an alternative or help"
         },
         {
           "num": 3,
-          "icon": "🍱",
-          "text": "Eat the food on the plate cleanly, sort the dishes and kitchen waste and put them away neatly"
+          "icon": "🤝",
+          "text": "Eat safely and comfortably, then tidy the utensils"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "During dinner, he showed off his \"Small Food God\" skills, not being picky about eating all the vegetables, and taking the initiative to carry his own bowls and chopsticks to the sink after the meal!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech or a communication card to request a smaller portion, an alternative or help. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Use speech or a communication card to request a smaller portion, an alternative or help"
     }
   },
   "b-week-33": {
@@ -3538,7 +3548,7 @@ const dailyWorksheets = {
     "badgeLabel": "Earth Little Guardian",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[World Earth Day 4/22]\" situation, what are the correct and polite actions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -3573,19 +3583,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"♻️ Resource classification green finger?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "After drinking the drink, he crushed the Tetra Pak bag and kicked it into the flower garden, and also laughed at the environmental volunteers who picked up garbage as fools.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌍",
           "label": "Turn off the light switch that no one is using, rinse the carton and flatten it after drinking the milk, and definitely throw it into the recycling bin!",
           "color": "#10b981",
@@ -3593,7 +3603,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When I saw that the faucet at the sink was leaking, I thought to myself, \"I didn't turn it on anyway\" and turned away indifferently.",
           "color": "#f59e0b"
@@ -3602,7 +3612,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"♻️ Resource Classification Green Finger\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -3648,7 +3658,7 @@ const dailyWorksheets = {
     "badgeLabel": "My message to Master",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"Speak Magic \"I Message\"\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -3683,19 +3693,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎯 \"My message communicates with the magic arrow\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When a classmate accidentally touched his arm, he immediately punched the other person in the stomach and yelled ugly and dirty words to insult the classmate and his family.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "💬",
           "label": "Use the \"I message\" communication method: \"I feel a lot of pain because you bumped into me. I hope you will be more careful next time you walk.\"",
           "color": "#10b981",
@@ -3703,7 +3713,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I was obviously very angry at the other person's behavior, but I kept it in my heart and didn't say anything. I graffitied my classmates' names in the textbook to vent my anger.",
           "color": "#f59e0b"
@@ -3712,7 +3722,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎯 \"I communicate with the Magic Arrow\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -3758,7 +3768,7 @@ const dailyWorksheets = {
     "badgeLabel": "Health Help Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"health center politeness\" situation, what are the correct and polite actions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -3793,19 +3803,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🩹 \"Clearly seek medical treatment for young patients\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "My knee was bruised and bleeding. When I entered the health center, I cried and threw the chair. I refused the nurse to apply the medicine, and even knocked the betadine medicine to the ground.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🩺",
           "label": "He walked in politely and said hello to the nurse. He calmly pointed to the injured area and said, \"My right knee was bruised and bleeding when I fell in gym class.\"",
           "color": "#10b981",
@@ -3813,7 +3823,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "My stomach hurt so much that my face turned pale. I went into the health center but lowered my head and didn't say a word, leaving the nurse guessing that she couldn't handle it for a long time.",
           "color": "#f59e0b"
@@ -3822,7 +3832,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🩹 Clearly understand the action of \"seeking medical treatment for young patients\", please tick the box if you have done so.☑：",
       "steps": [
         {
@@ -3868,7 +3878,7 @@ const dailyWorksheets = {
     "badgeLabel": "A Filial and Warm-hearted Little Boy",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Mother's Day Special]\" situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -3903,19 +3913,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💖 \"Love's housework activist\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Mom reminded herself that it was time to take a bath, threw the toys on the spot and shouted: \"Today is Mother's Day, please leave me alone!\" This made her sad and shed tears.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌹",
           "label": "Present hand-painted carnation cards, hug mom and say Happy Mother's Day, and take the initiative to help mom pat her back and share the chores of washing dishes!",
           "color": "#10b981",
@@ -3923,7 +3933,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Although I drew a thank you card at school, I shyly hid it in my schoolbag when I got home and didn’t say a word of thanks to my mother all day long.",
           "color": "#f59e0b"
@@ -3932,7 +3942,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💖 \"Love Domestic Actor\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -3978,7 +3988,7 @@ const dailyWorksheets = {
     "badgeLabel": "Safety Navigator",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"campus safety has no blind spots\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4013,19 +4023,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚸 Stop around the corner and watch the radar”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "In order to rush to the stadium after class, I ran wildly in the corridor and knocked away the squad leader who was holding a stack of homework books. His homework was scattered on the ground and he refused to apologize.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚶",
           "label": "Walk slowly and lightly in the corridor, go up and down the stairs close to the railing on the right side one step at a time, and activate the \"stop, watch, listen\" radar at the corner!",
           "color": "#10b981",
@@ -4033,7 +4043,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I was almost late for class and I panicked. I lowered my head and rushed forward regardless of whether there was anyone around me. I almost fell down the stairs.",
           "color": "#f59e0b"
@@ -4042,7 +4052,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚸 \"Stop around the corner to watch and listen to the radar\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -4088,7 +4098,7 @@ const dailyWorksheets = {
     "badgeLabel": "Sincere Apology Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"What should I do if I step on a landmine? Four steps to a sincere apology\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4109,7 +4119,7 @@ const dailyWorksheets = {
           "id": "c3",
           "icon": "✨",
           "label": "Yu, having calmed down and accepted the situation.",
-          "desc": "Take three deep breaths to release the tightness in your chest, look into the other person's eyes, and relax your shoulders.…",
+          "desc": "Take a comfortable breath, attend to the partner in a way that suits you and relax your shoulders.…",
           "isCorrect": true
         },
         {
@@ -4123,19 +4133,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🙇 Four steps to sincerely apologize\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I accidentally broke He's colored pen. Not only did I not apologize, but I also complained to him and scolded He for buying a bad colored pen.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🤝",
           "label": "The four steps of a sincere apology: look the other person in the eye, say sorry, explain the reason, and proactively ask how to help make amends!",
           "color": "#10b981",
@@ -4143,7 +4153,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Knowing that he has done something wrong, he refuses to apologize because of face issues. He freezes in place and stares at the other person, making the relationship even more tense.",
           "color": "#f59e0b"
@@ -4152,13 +4162,13 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🙇 \"Four Steps to Sincerely Apologize\", please tick the box if you have done it.☑：",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Look at the other person's eyebrows and say sincerely: \"I'm sorry, I was wrong.\""
+          "text": "Turn toward the partner and offer a sincere apology: “I am sorry.”"
         },
         {
           "num": 2,
@@ -4191,106 +4201,111 @@ const dailyWorksheets = {
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 12: Apologies, Forgiveness and Repairing Relationships",
-    "title": "Accepting an Apology and Rebuilding Friendship",
-    "superSkill": "🗝️ Forgiveness and a magnanimous heart",
+    "title": "After an Apology Sharing Feelings and Choosing How to Repair",
+    "superSkill": "There are choices after an apology",
     "themeColor": "#0ea5e9",
     "badgeEmoji": "🕊️",
-    "badgeLabel": "Tolerance Decoding Officer",
+    "badgeLabel": "Choosing How to Repair",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the situation of \"when others say sorry\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🕊️",
-          "label": "Yu shows tolerance",
-          "desc": "Turn around to face your peer, look at the other person with gentle eyes, stretch out your right hand and pat the other person on the shoulder, the corner of your mouth is slightly...",
+          "icon": "💬",
+          "label": "Share a feeling or say that you need more time",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "Others have already bowed and apologized, but they still yelled \"I will never forgive you!\" and hit them.",
-          "desc": "Lack of tolerance and tolerance allows conflicts to spread endlessly, and eventually friends are lost.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "Little Jun, relieved of his heavy burden",
-          "desc": "He breathed a long sigh of relief, relaxed his whole body, and carefully held the tape with both hands to help repair. …",
+          "icon": "👀",
+          "label": "Discuss repair and future boundaries with a trusted adult",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "He",
-          "desc": "Tear off a piece of transparent tape and stick it flatly on the torn paper cracks to smooth out the marks.…",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🗝️ Tolerance, forgiveness and big heart”?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "What could you say if you hear an apology but are not ready to respond?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "The classmate sincerely apologized to himself and repaired the toy, but Jia still refused to let him go. He grabbed the toy and threw it on his head.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🕊️",
-          "label": "Seeing the other party's sincere apology, he took a deep breath and let go of the anger in his heart. He magnanimously extended his hand and said, \"It's okay. Just pay attention next time!\"",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Share a feeling or say that you need more time",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "He said he was forgiven, but he always held a grudge in his heart, roping in other students behind his back to isolate and exclude the student who apologized.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🗝️ \"Tolerance, forgiveness, big heart\" action, please tick the box if you do it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “There are choices after an apology” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "After listening to the other party’s apology, feel the sincerity in the other party’s eyes"
+          "text": "Check that you feel safe and willing to talk"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "Let go of the burden of anger in your brain and take a deep breath to calm down."
+          "icon": "💬",
+          "text": "Share a feeling or say that you need more time"
         },
         {
           "num": 3,
-          "icon": "🕊️",
-          "text": "Smiled and nodded, extending his friendly right hand: \"It doesn't matter, we are still good friends.\""
+          "icon": "🤝",
+          "text": "Discuss repair and future boundaries with a trusted adult"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "When your family apologizes to you (for example, you forgot to buy stationery), respond generously with \"It's okay, I know you are busy\", showing your tolerance and openness!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Share a feeling or say that you need more time. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Share a feeling or say that you need more time"
     }
   },
   "b-week-40": {
@@ -4308,7 +4323,7 @@ const dailyWorksheets = {
     "badgeLabel": "Dragon Boat Drummer Star",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Dragon Boat Festival Special]\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4343,19 +4358,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🥁 \"Dragon boat racing in time with the rhythm\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "After losing a round of tug-of-war, he immediately threw the hemp rope to the ground, pointed at his teammate's nose and yelled, \"It's all because you are too weak!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚣",
           "label": "Row the oars neatly to the rhythm of the big drum, shout slogans loudly to cheer each other up even if they fall behind, and keep fighting until the last second!",
           "color": "#10b981",
@@ -4363,7 +4378,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Seeing that the other team was faster, I felt that they would definitely not be able to win, so I just let go of the wooden paddle and sat on the boat in a daze, giving up my efforts.",
           "color": "#f59e0b"
@@ -4372,7 +4387,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🥁 \"Dragon boat rowing in time with the rhythm\", please tick the box if you can do it.☑：",
       "steps": [
         {
@@ -4418,7 +4433,7 @@ const dailyWorksheets = {
     "badgeLabel": "Style Champion",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"sportsmanlike manner, you can afford to play and you can lose\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4453,19 +4468,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"👏 Big applause for sportsmanship”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "After losing to Yu in chess, he was so angry that he overturned the entire chessboard and smashed the chess pieces all over the floor. He also pointed at Yu and scolded him for cheating.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏆",
           "label": "After the game, regardless of winning or losing, walk towards your opponent, take off your hat, shake hands and say sincerely: \"This was a wonderful game, you were great!\"",
           "color": "#10b981",
@@ -4473,7 +4488,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "After losing the game, he sat on the grass and cried and refused to stand up. He refused to attend the closing award ceremony, embarrassing the whole class.",
           "color": "#f59e0b"
@@ -4482,7 +4497,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"👏 \"Sportsman style, big applause\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -4528,7 +4543,7 @@ const dailyWorksheets = {
     "badgeLabel": "Fairness Ombudsman",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "What are the correct and polite things to do in the situation \"when you feel it is unfair\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4563,19 +4578,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🙋 Objective and calm appeal instrument\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I felt that the teacher had given out one more sticker to someone else than me, so I immediately slapped the table and yelled, rushed to the podium, snatched the whole pack of stickers and scattered them on the ground.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⚖️",
           "label": "Raise your hands and calmly wait for the teacher to call your name, and express in an objective and gentle tone: \"Teacher, my group is missing one card, can it be reissued?\"",
           "color": "#10b981",
@@ -4583,7 +4598,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely unfair, he lay on the table sulking and secretly broke his classmate's pencil in revenge.",
           "color": "#f59e0b"
@@ -4592,7 +4607,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🙋 \"Objective Calm Appeal Instrument\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -4638,7 +4653,7 @@ const dailyWorksheets = {
     "badgeLabel": "Farewell to the little seeds",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Graduation Ceremony and Graduation Season]\" situation, what are the correct and polite actions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -4673,19 +4688,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎈 Cherish Goodbye Blessing Network\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Knowing that He and He would be assigned to a different class next semester, he grabbed He's clothes and wouldn't let go. He cried and made a fuss and forced the teacher not to put him in a different class.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎓",
           "label": "Write down many blessings neatly in the memory book, give your good friends a warm hug, and meet to play together in the corridor after class!",
           "color": "#10b981",
@@ -4693,7 +4708,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Afraid of the sad emotions of separation, I closed myself off all day and refused to talk to anyone, and refused to write a souvenir in my graduation album.",
           "color": "#f59e0b"
@@ -4702,7 +4717,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎈 \"Cherish Goodbye Blessing Network\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -4748,7 +4763,7 @@ const dailyWorksheets = {
     "badgeLabel": "Honor Little Doctor",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"Grand Acceptance of Semester Achievements\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -4761,7 +4776,7 @@ const dailyWorksheets = {
         {
           "id": "c2",
           "icon": "🛑",
-          "label": "Feeling sorry for yourself and saying \"I can't learn anything, I'm a waste!\" Lying on the ground and giving up",
+          "label": "Not knowing how to begin, saying “I cannot learn anything” and giving up on the floor",
           "desc": "Completely negating one’s efforts throughout the year, destroying self-confidence and motivation.",
           "isCorrect": false
         },
@@ -4783,19 +4798,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎖️ Confidence grows with great glory”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "At the end of the semester, I saw my peers getting the big gold trophy, but I only had the silver medal. I was so jealous that I grabbed my peers' trophy and broke it in half.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "💮",
           "label": "Count down all the social superpowers you have learned this year, proudly wear three honorary red flowers on your chest, and affirm your self-transformation!",
           "color": "#10b981",
@@ -4803,7 +4818,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "When he went on stage to receive the Progress Award, he was so shy that he hid his entire face in his coat, huddled up and slipped off the stage without saying a word.",
           "color": "#f59e0b"
@@ -4812,7 +4827,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎖️ \"Confident Growth and Great Glory\" action, please tick the box if you achieve it☑：",
       "steps": [
         {
@@ -4858,7 +4873,7 @@ const dailyWorksheets = {
     "badgeLabel": "Clock Butler",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"[Summer Starting Line]\" situation, what are the correct and polite actions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
@@ -4893,19 +4908,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📅 \"Holiday schedule manager\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "The parents reminded him that he should do his homework on time during the summer vacation. He was so angry that he grabbed the electric fan and smashed it on the ground, threatening the parents not to allow him to have a holiday.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⏰",
           "label": "Personally formulate the \"Golden Manual for Independent Summer Vacation Schedule\": read and exercise in the morning, explore and relax in the afternoon, and go to bed on time in the evening!",
           "color": "#10b981",
@@ -4913,7 +4928,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "There is no plan at all for the summer vacation. I lie on the bed with nothing to do every day and scroll through my mobile phone. I am wasting my time listlessly.",
           "color": "#f59e0b"
@@ -4922,7 +4937,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📅 \"Holiday Housekeeper\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -4968,7 +4983,7 @@ const dailyWorksheets = {
     "badgeLabel": "Community Little Gentleman",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the context of \"routine life as a good neighbor in the community\", what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5003,19 +5018,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛒 \"The king of public courtesy in the community\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "I wanted to eat ice cream at a convenience store. I couldn't wait for the checkout, so I tore open the package and ran around the store to eat it. The store clerk stopped me and spit on me.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏪",
           "label": "When you go into the supermarket, push the cart quietly and slowly, wait patiently in line at the checkout to say thank you, and obey the rules of taking turns in the park and playground without fighting!",
           "color": "#10b981",
@@ -5023,7 +5038,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Yelling and screaming in libraries or public places, and when others take a look at it, they will be so angry that they kick over the trash can to vent their anger.",
           "color": "#f59e0b"
@@ -5032,7 +5047,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛒 Community Public Courtesy King\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5078,7 +5093,7 @@ const dailyWorksheets = {
     "badgeLabel": "Anti-Domination Counterattack Shield",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"What should I do if I encounter teasing and bullying?\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5113,19 +5128,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚨 Anti-bullying and self-protection trilogy\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Being teased with a nickname by a senior classmate, he immediately lost control, grabbed a rock and threw it into his eyes, almost causing severe blindness.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🛡️",
           "label": "Start the trilogy of anti-bullying and self-protection: say no with firm eyes, quickly leave the dangerous scene to find peer allies, and report to the teacher immediately!",
           "color": "#10b981",
@@ -5133,7 +5148,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "He was ridiculed and intimidated by his classmates, and he did not dare to tell anyone for fear of retaliation. He secretly hid under the quilt and cut his wrists to commit suicide.",
           "color": "#f59e0b"
@@ -5142,7 +5157,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚨 Anti-bullying and self-protection trilogy\" actions, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5188,7 +5203,7 @@ const dailyWorksheets = {
     "badgeLabel": "Little Filial Piety Warrior",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[Father's Day 8/8]\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5223,19 +5238,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🏔️ Love and gratitude like a mountain\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "My father reminded himself to abide by the agreement, broke the Father's Day cake on the spot, and cursed his father for only working and ignoring him all day long.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "👔",
           "label": "I personally presented a thank you card \"as great as a mountain\", gave my father a firm hug with both hands and said, \"I love you, Dad!\"",
           "color": "#10b981",
@@ -5243,7 +5258,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I know in my heart that my father loves me very much, but on Father's Day I was too shy to speak, so I went back to my room and locked the door without saying a word.",
           "color": "#f59e0b"
@@ -5252,7 +5267,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🏔️ \"Love and Gratitude Like a Mountain\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5298,7 +5313,7 @@ const dailyWorksheets = {
     "badgeLabel": "Water Drowning Prevention Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"summer outdoor and water safety\" situation, what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5333,19 +5348,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛟 Water safety guard ring\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Peers made bets on who dared to jump into the reservoir. He ignored the warning and jumped down. When he got cramps, he struggled in panic and almost drowned.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏊",
           "label": "Keep in mind the ten tips to prevent drowning: only go to safe swimming pools with qualified lifeguards, do adequate warm-up exercises, wear life jackets, and do not push people around!",
           "color": "#10b981",
@@ -5353,7 +5368,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Seeing his companions convulsing and struggling in the depths of the water, he panicked and blindly jumped into the water to save others. As a result, he was pulled tightly and they both sank.",
           "color": "#f59e0b"
@@ -5362,7 +5377,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛟 \"Water Safety Guard Ring\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5408,7 +5423,7 @@ const dailyWorksheets = {
     "badgeLabel": "Mind-Reading Little Detective",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the \"Empathy Detective\" situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5443,19 +5458,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔍 Eyebrow micro-expression mind reading\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Seeing He crying because the teacher didn't finish his homework, Xiaojiu rushed forward and pointed at He's nose and laughed: \"Shame on you crybaby!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🕵️",
           "label": "Start micro-expression mind reading: observe the drooping corners of the mouth and red eye sockets of your peers, hand over a piece of toilet paper and ask gently: \"Are you okay?\"",
           "color": "#10b981",
@@ -5463,7 +5478,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I saw my classmates sitting in a corner feeling depressed and didn't know what to do, so I pretended not to see them and stayed away, making my classmates feel lonely.",
           "color": "#f59e0b"
@@ -5472,7 +5487,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔍 Eyebrow micro-expression mind reading\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5518,7 +5533,7 @@ const dailyWorksheets = {
     "badgeLabel": "Icebreaker Magician",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "What are the correct and polite things to do in the \"Icebreaker Magic for Making New Friends\" situation? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5553,19 +5568,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧊 \"Three polite sentences to break the ice\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When I saw my newly transferred classmate reading comics, I snatched it away and tore it in half, shouting, \"Look at me! Play with me!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🪄",
           "label": "Use three polite words to break the ice: \"Hi, hello! My name is Yu, what are you drawing? This drawing is so cool!\" Start friendship generously!",
           "color": "#10b981",
@@ -5573,7 +5588,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I want to get to know my new classmates but I don’t dare to get close. I stalk them five meters behind them all day long, scaring them so much that they dare not go to the toilet.",
           "color": "#f59e0b"
@@ -5582,7 +5597,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧊 \"Three polite sentences to break the ice\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5628,7 +5643,7 @@ const dailyWorksheets = {
     "badgeLabel": "The All-Powerful Superhero",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"[New School Takeoff Parade]\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5663,19 +5678,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚀 52 weeks of almighty social superpower\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Faced with the more difficult subjects of advancing to the upper grades, he was so angry that he kicked over the desks and chairs and shouted: \"I just want to be a baby, I don't want to grow up!\"",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🦸",
           "label": "Wearing the cloak of courage accumulated over the past fifty-two weeks, we proudly took the oath of growth for the new grade: \"I have mastered a full set of social superpowers, and I am ready!\"",
           "color": "#10b981",
@@ -5683,7 +5698,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "I felt extremely fearful and anxious about upgrading. I spent the entire day of the opening ceremony huddled in the corner of the classroom, shaking, not daring to look at my new classmates.",
           "color": "#f59e0b"
@@ -5692,7 +5707,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚀 52 weeks of \"all-around social super power\" actions, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -5731,106 +5746,111 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
-    "title": "Loud Alarm Drills: Ear Defenders and Safe Evacuation",
-    "superSkill": "🔕 Noise-canceling earmuffs for a calming experience",
+    "title": "Preparing for an Emergency Drill with Sensory Support",
+    "superSkill": "Use support during a safety drill",
     "themeColor": "#ef4444",
     "badgeEmoji": "🔕",
-    "badgeLabel": "Little Heroes of Air Raid Shelter",
+    "badgeLabel": "Supported Safety Practice",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the situation of \"disaster prevention drill and air defense sirens sounding\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🌟",
-          "label": "Yu quickly put on earmuffs and covered his head",
-          "desc": "Retract the body under the table, protect the back of the head and neck with both hands, close the mouth and keep quiet.",
+          "icon": "💬",
+          "label": "Use speech or a card to request ear defenders or adult support if uncomfortable",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "Screaming, crying and running around in the hallways",
-          "desc": "It is easy to cause pushing and stamping, resulting in the risk of serious injury.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "A small boy who obeys discipline and squats quietly",
-          "desc": "Restrain the urge to joke and make fun, and make sure to take sheltering postures.",
+          "icon": "👀",
+          "label": "Follow the adult’s on-site safety instructions to the designated location",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Patting peers gives a sense of security",
-          "desc": "Gentlely accompany nervous peers to achieve safety protection together.",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🔕 Noise reduction earmuffs and meditation shield\"?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "What would you like to know before a drill, and how could you ask for support?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "As soon as the alarm sounded, he was so frightened that he screamed, cried and rushed around in the corridor, accidentally knocking down and pushing his classmates.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🔕",
-          "label": "Quickly put on noise-reducing earmuffs or cover your ears with both hands, calmly hide under the table and take refuge with your head in your hands!",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Use speech or a card to request ear defenders or adult support if uncomfortable",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "My ears were tingling and uncomfortable, but I was sitting stiffly in my chair, not daring to move. I was frightened by the sharp siren and my whole body was shaking.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🔕 Noise reduction earmuffs and meditation shield\" action, please tick the box if you have done it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Use support during a safety drill” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Wear noise-canceling earmuffs or cover your ears with your hands."
+          "text": "Preview the drill sequence and the route specified by the teacher"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "Quickly hide under the sturdy table"
+          "icon": "💬",
+          "text": "Use speech or a card to request ear defenders or adult support if uncomfortable"
         },
         {
           "num": 3,
-          "icon": "🔕",
-          "text": "Put your hands behind your head, close your mouth and stay quiet."
+          "icon": "🤝",
+          "text": "Follow the adult’s on-site safety instructions to the designated location"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "Go home and practice the \"air raid siren head-holding evacuation drill\" with your family to make sure you know which table to hide under at home!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech or a card to request ear defenders or adult support if uncomfortable. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Use speech or a card to request ear defenders or adult support if uncomfortable"
     }
   },
   "b-idea-54": {
@@ -5848,7 +5868,7 @@ const dailyWorksheets = {
     "badgeLabel": "Tactile Adjustment Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the situation of \"prickly clothes tags and sticky clay\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -5883,19 +5903,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧤 Tactile comfort autonomy order\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When clothes feel itchy, I get so angry that I roll on the floor, tear my new sports clothes, and get angry and yell at my parents.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "👕",
           "label": "Raise your hands to express your feelings gently, ask the teacher to help cut off the prickly tags or wear thin gloves to pinch the clay safely!",
           "color": "#10b981",
@@ -5903,7 +5923,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "The pricks on my neck were red and even skinned, but I didn’t dare to tell the teacher. I frowned and sulked on the table all day long.",
           "color": "#f59e0b"
@@ -5912,7 +5932,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧤 \"Tactile comfort, autonomous command\" action, please tick the box if you achieve it☑：",
       "steps": [
         {
@@ -5958,8 +5978,8 @@ const dailyWorksheets = {
     "badgeLabel": "Sensory Recharge Assistant",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🍲 In the noisy cooperative and central kitchen situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🍲 In the noisy cooperative and central kitchen situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -5993,19 +6013,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔋 Three-minute exit charging technique\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Screaming anxiously in the crowded and noisy crowd, pushing away the classmates around me and pushing forward.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔋",
           "label": "Show the teacher the \"T-shaped pause gesture\" and retreat to the quiet corridor accompanied by someone to take a deep breath for three minutes to recharge!",
           "color": "#10b981",
@@ -6013,7 +6033,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "My brain was overloaded, I felt dizzy and felt like vomiting, but I resisted and did not dare to leave. In the end, my vision turned black and I fainted in the assembly line.",
           "color": "#f59e0b"
@@ -6022,7 +6042,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔋 \"Three Minutes Leaving the Field Charging Technique\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -6068,8 +6088,8 @@ const dailyWorksheets = {
     "badgeLabel": "Soft Light Adjustment Guardian",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🔦 What are the correct and polite things to do in a classroom with \"dazzling fluorescent lights or western sunlight\"? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🔦 What are the correct and polite things to do in a classroom with \"dazzling fluorescent lights or western sunlight\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6103,19 +6123,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🕶️ Soft light visual protection net\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. He is so angry that he slams the table and throws pens, or lies on the table and refuses to read the blackboard, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🕶️",
           "label": "Calm down and take a deep breath to start \"🕶️ Soft light visual protection net\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6123,7 +6143,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6132,7 +6152,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🕶️ Soft light visual protection net\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -6171,106 +6191,111 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
-    "title": "💨 Movement and Stimming: Choosing Helpful Sensory Tools",
-    "superSkill": "🧘 Invisible Stress-Relieving Acupressure Ball",
+    "title": "Comfortable and Safe Self Regulation",
+    "superSkill": "Find a comfortable way to regulate",
     "themeColor": "#6366f1",
     "badgeEmoji": "🧘",
-    "badgeLabel": "Focused on Stress Relief Experts",
+    "badgeLabel": "Comfortable Self-Regulation",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"💨 Can't help shaking my body, turning my pen or pacing\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🌟",
-          "label": "Yu who makes good use of pocket acupressure balls to quietly relieve stress",
-          "desc": "Meet your own physiological adjustment needs while maintaining quiet in the classroom.",
+          "icon": "💬",
+          "label": "Keep movements that do not harm yourself or others, or choose a suitable object or break",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "I was protested by my classmates for pressing the ball pen wildly and kicking the table to make noise.",
-          "desc": "Disturbing the concentration of the whole class can easily lead to interpersonal rejection among peers.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "A small pocket that neatly stores the pen that makes the sound",
-          "desc": "Be considerate of the needs of others and demonstrate a high degree of self-discipline.",
+          "icon": "👀",
+          "label": "Tell the teacher when you need space, movement or support",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Jia is steady and focused on studying while stepping on the elastic band on the chair legs.",
-          "desc": "Effectively release excess kinetic energy, taking into account sitting posture and learning absorption.",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🧘 Invisible Stress Relief Acupressure Ball\"?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "Which way helps you feel comfortable, and how could you ask for support?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "When encountering a situation, his brain loses control. He presses the ball pen wildly and kicks the table to make noise, which is protested by his classmates, causing chaos and danger.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🧘",
-          "label": "Calm down and take a deep breath to start \"🧘 Invisible pressure-relieving acupressure ball\", follow the steps to deal with it properly step by step!",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Keep movements that do not harm yourself or others, or choose a suitable object or break",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🧘 \"Invisible Stress Relief Acupressure Ball\" action, please tick the box if you have done it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Find a comfortable way to regulate” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Feeling an urge to itch your hands, shake your pen, or make strange noises when pressing it."
+          "text": "Notice body sensations and current needs"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "Take out the foam acupressure ball, put it in your coat pocket, and gently squeeze it."
+          "icon": "💬",
+          "text": "Keep movements that do not harm yourself or others, or choose a suitable object or break"
         },
         {
           "num": 3,
-          "icon": "🧘",
-          "text": "Gently press down on the elastic bands of the chair legs with both feet to release energy."
+          "icon": "🤝",
+          "text": "Tell the teacher when you need space, movement or support"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "After returning home from school, show your parents how to🧘 Invisible pressure-relieving acupressure ball\" and give warm high-fives to your family!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Keep movements that do not harm yourself or others, or choose a suitable object or break. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Keep movements that do not harm yourself or others, or choose a suitable object or break"
     }
   },
   "b-idea-58": {
@@ -6288,8 +6313,8 @@ const dailyWorksheets = {
     "badgeLabel": "Health Check Little Warriors",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🦷 What is the correct and polite thing to do in the situation of \"Dental check-up and vision check coming\"? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🦷 What is the correct and polite thing to do in the situation of \"Dental check-up and vision check coming\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6323,19 +6348,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🩺 White Robe Health Checkup and Reassuring Spell\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, crying and biting the doctor's finger or kicking over the medical equipment tray, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🩺",
           "label": "Calm down and take a deep breath to start \"🩺 \"White Robe Health Check-up Reassuring Mantra\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6343,7 +6368,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6352,7 +6377,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🩺 \"White Robe Health Check-up and Reassuring Mantra\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -6398,8 +6423,8 @@ const dailyWorksheets = {
     "badgeLabel": "Rainy Day Vitality Stretch Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🌧️ What are the correct and polite things to do in the situation of \"rescheduling physical education classes to indoor classrooms on rainy days\"? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🌧️ What are the correct and polite things to do in the situation of \"rescheduling physical education classes to indoor classrooms on rainy days\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6433,19 +6458,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧘 Chair Core Stretch\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. He yells and runs in the rain in the corridor, slips and falls, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌧️",
           "label": "Calm down and take a deep breath to start \"🧘 Chair Core Stretch\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6453,7 +6478,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6462,7 +6487,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧘 \"Chair Core Stretch\" movement, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -6508,8 +6533,8 @@ const dailyWorksheets = {
     "badgeLabel": "Chatting Masters (Throwing and Catching Balls)",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🦖 In the situation \"I really want to keep talking about my favorite Pokémon\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🦖 In the situation \"I really want to keep talking about my favorite Pokémon\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6543,19 +6568,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎾 Two-way dialogue \"throwing and catching the ball\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "He caught a classmate and lectured about Pokémon moves for ten minutes. When the classmate wanted to leave, he held on to his clothes to prevent him from leaving.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎾",
           "label": "After speaking three sentences, he immediately put on the brakes in his brain and threw the topic ball to the other party: \"What about you?\"what do you like?”",
           "color": "#10b981",
@@ -6563,7 +6588,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "After being reminded too many times, I get angry and lose my temper. I think, \"You all don't understand me anyway,\" and close yourself off and ignore others.",
           "color": "#f59e0b"
@@ -6572,7 +6597,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎾 \"Two-way dialogue, throwing and catching the ball\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -6618,8 +6643,8 @@ const dailyWorksheets = {
     "badgeLabel": "Guardian of Thoughtful Communication",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🤐 In the situation \"Tell the truth vs. Tell the truth\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🤐 In the situation \"Tell the truth vs. Tell the truth\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6653,19 +6678,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧠 Discourse filter gum\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. He points at his classmates in public and laughs, \"It's so ugly and got eaten by a dog.\"This causes confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🧠",
           "label": "Calm down and take a deep breath to start \"🧠 Word Filter Chewing Gum\", follow the action steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6673,7 +6698,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6682,7 +6707,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧠 \"Discourse Filtering Gum\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -6728,8 +6753,8 @@ const dailyWorksheets = {
     "badgeLabel": "Mind Decoding Detective",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🎭 Is he laughing at me or joking?\"What are the correct and polite actions in this situation?\"Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🎭 Is he laughing at me or joking?\"What are the correct and polite actions in this situation?\"Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6763,19 +6788,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔍 Voice and intonation decoding mirror\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control and punches people and grabs the ball regardless of the situation, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔍",
           "label": "Calm down and take a deep breath to start \"🔍 Voice and Intonation Decoding Mirror\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6783,7 +6808,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6792,7 +6817,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔍 \"Voice and Intonation Decoding Mirror\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -6838,8 +6863,8 @@ const dailyWorksheets = {
     "badgeLabel": "Guardian of Personal Privacy",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"📱 In the situation of \"peeping into other people's contact books or private schoolbags\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “📱 In the situation of \"peeping into other people's contact books or private schoolbags\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6873,19 +6898,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🔒 Privacy Boundary Security Lock\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control. He secretly unzips his school bag and reads his private diary while his classmates are away, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🔒",
           "label": "Calm down and take a deep breath to start \"🔒 Privacy Boundary Security Lock\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -6893,7 +6918,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -6902,7 +6927,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🔒 \"Privacy Boundary Security Lock\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -6941,15 +6966,15 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "🤫 Reading the Room: Noticing When Others Need Quiet",
+    "title": "🤫 Noticing the Setting and Communicating a Need for a Break or Quiet Self Regulation",
     "superSkill": "🌫️ Classroom Weather Barometer",
     "themeColor": "#0284c7",
     "badgeEmoji": "🌫️",
     "badgeLabel": "Air Quality Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🤫 What is \"reading the air\"? \"What are the correct and polite actions in this situation?\" Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🤫 What is \"reading the air\"? \"What are the correct and polite actions in this situation?\" Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -6983,19 +7008,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌫️ Class Air Barometer\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain goes out of control and he imitates Superman's dubbing loudly during lunch break to wake up the whole class, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌫️",
           "label": "Calm down and take a deep breath to start \"🌫️ Class Air Barometer\", follow the steps to properly deal with it step by step!",
           "color": "#10b981",
@@ -7003,7 +7028,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7012,7 +7037,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌫️ Class Air Barometer\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -7058,8 +7083,8 @@ const dailyWorksheets = {
     "badgeLabel": "Big Ears Listening Ambassador",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"👂 In the \"Body Language When Listening\" situation, what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “👂 In the \"Body Language When Listening\" situation, what are the correct and polite practices? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7078,7 +7103,7 @@ const dailyWorksheets = {
         {
           "id": "c3",
           "icon": "✨",
-          "label": "Yu put down the blocks in his hand and looked at the other person’s eyebrows to respond.",
+          "label": "Yu puts the blocks down and turns toward the partner to respond",
           "desc": "Break through the limitations of the senses and show a sincere and sincere social gesture.",
           "isCorrect": true
         },
@@ -7093,19 +7118,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🙆 Sincere listening and nodding technique”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, the body turns away from the classmates, the head is lowered and the face is expressionless while playing with the eraser, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🙆",
           "label": "Calm down and take a deep breath to start \"🙆 \"True Listening and Nodding Technique\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7113,7 +7138,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7122,7 +7147,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🙆 Listen sincerely and nod\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -7133,7 +7158,7 @@ const dailyWorksheets = {
         {
           "num": 2,
           "icon": "🧘",
-          "text": "Look at the other person's forehead or the bridge of their nose to show focus."
+          "text": "Attend to the speaker or a shared object in a comfortable way"
         },
         {
           "num": 3,
@@ -7161,15 +7186,15 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "❓ When Instructions Are Confusing: Ask for the Next Step Again",
+    "title": "❓ When a Long Instruction Is Unclear - Ask the Teacher to Repeat the Second Step",
     "superSkill": "✋ Step-by-step confirmation card",
     "themeColor": "#f59e0b",
     "badgeEmoji": "❓",
     "badgeLabel": "Dare to Ask the Little Scholar",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"❓ What are the correct and polite things to do in a situation where you cannot understand the teacher’s long and complex instructions? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “❓ What are the correct and polite things to do in a situation where you cannot understand the teacher’s long and complex instructions? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7203,19 +7228,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"✋ Steps Restatement Confirmation Card\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. I don't understand at all but dare not ask. I sit in a daze and bite my fingers, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "❓",
           "label": "Calm down and take a deep breath to start \"✋ Steps Restatement Confirmation Card\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7223,7 +7248,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7232,7 +7257,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"✋ Restate the steps to confirm the card action. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -7278,8 +7303,8 @@ const dailyWorksheets = {
     "badgeLabel": "Resilient Writing Prodigy",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"✏️ In the situation of \"writing Chinese characters outside the grid, erasing the notebook with an eraser\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “✏️ In the situation of \"writing Chinese characters outside the grid, erasing the notebook with an eraser\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7313,19 +7338,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🍞 Fingertip relaxation method for kneading dough\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. He is so angry that he tears up the homework book, breaks the pencil and throws it on the ground, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "✏️",
           "label": "Calm down and take a deep breath to start \"🍞 Fingertip Relaxation Method for Kneading Dough\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7333,7 +7358,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7342,7 +7367,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🍞 Knead the dough with your fingertips and relax. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -7388,8 +7413,8 @@ const dailyWorksheets = {
     "badgeLabel": "Confident Reading Little Warriors",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"📖 In the situation where I got stuck reading a text on stage and was laughed at by my classmates, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “📖 In the situation where I got stuck reading a text on stage and was laughed at by my classmates, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7423,19 +7448,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🤝 Read the relay help card\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. When a classmate laughs, he smashes the textbook on the ground and runs out of the classroom crying, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "📖",
           "label": "Calm down and take a deep breath to start \"🤝 Read the \"Relay Help Card\" and follow the steps to properly deal with it step by step!",
           "color": "#10b981",
@@ -7443,7 +7468,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7452,7 +7477,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🤝 Read the \"Relay Help Card\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -7498,7 +7523,7 @@ const dailyWorksheets = {
     "badgeLabel": "Calm Timekeeping Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
+      "title": "Task 1: Circle Helpful Actions",
       "prompt": "In the scenario test of \"⏱️ What are the correct and polite things to do in a situation like \"The timer is ticking and I'm so nervous in class\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
@@ -7533,19 +7558,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which method can bring out the \"⏳ ticking clock adagio pranayama\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. When he sees the timer, he yells, mashes the test paper and stomps it on the ground, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⏱️",
           "label": "Take a calm and deep breath to activate \"⏳ Tick-Tock Clock Adagio Pranayama\", and follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7553,7 +7578,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7562,7 +7587,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Follow the teacher to practice the \"⏳ ticking clock slow and slow breath adjustment\" action. If you can do it, please tick the box.☑：",
       "steps": [
         {
@@ -7608,8 +7633,8 @@ const dailyWorksheets = {
     "badgeLabel": "Problem Breakdown Master",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"📐 What are the correct and polite things to do in the situation of \"The application questions are so long and it's dazzling to see\"? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “📐 What are the correct and polite things to do in the situation of \"The application questions are so long and it's dazzling to see\"? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7643,19 +7668,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🍫 The question is \"Segmented chocolate cutting\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. If the question is too long, it will give up and scribble in the answer column, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🍫",
           "label": "Calm down and take a deep breath to start \"🍫 The question \"Segmented Chocolate Cutting\", follow the steps to properly solve it step by step!",
           "color": "#10b981",
@@ -7663,7 +7688,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7672,7 +7697,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🍫 The question is \"Segmented Chocolate Cutting\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -7718,8 +7743,8 @@ const dailyWorksheets = {
     "badgeLabel": "Creative and Confident Little Painters",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🎨 In the situation where the art class works are done differently than the demonstrations, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🎨 In the situation where the art class works are done differently than the demonstrations, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7753,19 +7778,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🪐 Unique Planet Self-Esteem\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. Because it does not look like the template, the work will be thrown to the ground and crushed, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎨",
           "label": "Calm down and take a deep breath to start \"🪐 \"Unique Planet Self-Esteem\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7773,7 +7798,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7782,7 +7807,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🪐 \"Unique Planet Self-Esteem\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -7828,8 +7853,8 @@ const dailyWorksheets = {
     "badgeLabel": "Organizing and Storage Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🎒 In the situation of “stuffing schoolbags into big trash cans and unable to find homework”, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🎒 In the situation of “stuffing schoolbags into big trash cans and unable to find homework”, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7863,19 +7888,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📁 Five-color storage magic\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control. He stuffs his schoolbag into a trash can, dumps all the debris in the corridor and yells, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🎒",
           "label": "Calm down and take a deep breath to start \"📁 \"Five Color Storage Magic\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -7883,7 +7908,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -7892,7 +7917,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📁 \"Five Color Storage Magic\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -7938,8 +7963,8 @@ const dailyWorksheets = {
     "badgeLabel": "Best Teammates",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🏃 In the situation where the baton accidentally dropped during the relay of the physical education team, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🏃 In the situation where the baton accidentally dropped during the relay of the physical education team, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -7973,19 +7998,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🤝 Don’t complain if the team loses the stick”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain lost control. He pointed at his teammates and yelled, \"You are the loser who caused us to lose.\" This caused confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏃",
           "label": "Calm down and take a deep breath to start \"🤝 Don’t complain when the team loses the baton”, follow the action steps to properly deal with it step by step!",
           "color": "#10b981",
@@ -7993,7 +8018,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8002,7 +8027,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🤝 If the team fails to complain, please tick the box.☑：",
       "steps": [
         {
@@ -8048,8 +8073,8 @@ const dailyWorksheets = {
     "badgeLabel": "Calm Mediation Judge",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"😡 In the situation \"He accidentally stepped on my new ruler\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “😡 In the situation \"He accidentally stepped on my new ruler\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8083,19 +8108,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📏 Accidental damage to the cooling ruler?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control and he beats the opponent until his nose bleeds and smashes the desk, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "📏",
           "label": "Calm down and take a deep breath to start \"📏 Accidental damage to the calming ruler\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8103,7 +8128,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8112,7 +8137,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📏 \"Accidental damage to the calming ruler\" action, please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -8158,8 +8183,8 @@ const dailyWorksheets = {
     "badgeLabel": "A Broad-minded Friend",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"👥 In the situation \"A good friend is going to play with someone else today\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “👥 In the situation \"A good friend is going to play with someone else today\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8193,19 +8218,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌐 Open to friendship and be open-minded”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control and he is so angry that he yells \"I will never be with you again\" in the corridor and turns his face on the spot, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "👥",
           "label": "Calm down and take a deep breath to start \"🌐 Be open to friendship and have a big mind\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8213,7 +8238,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8222,7 +8247,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌐 \"Open Friendship with a Big Mind\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -8268,8 +8293,8 @@ const dailyWorksheets = {
     "badgeLabel": "Guardian of Confidence and Dignity",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🗣️ What is the correct and polite thing to do in the situation \"I heard someone call me an unpleasant nickname in private\"? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🗣️ What is the correct and polite thing to do in the situation \"I heard someone call me an unpleasant nickname in private\"? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8303,19 +8328,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛡️ Insulting remarks backlash shield\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control. He grabs a metal bucket and slams the opponent's head in anger, causing severe bleeding and serious injuries, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🛡️",
           "label": "Calm down and take a deep breath to start \"🛡️ Insulting remarks backlash shield\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8323,7 +8348,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8332,7 +8357,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛡️ Insult speech backlash shield\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -8378,8 +8403,8 @@ const dailyWorksheets = {
     "badgeLabel": "Little Gentlemen of Democratic Cooperation",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🤝 In a group discussion where everyone is deadlocked, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🤝 In a group discussion where everyone is deadlocked, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8413,19 +8438,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🗳️ \"Divided Opinion Ballot Box\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. If they disagree, they throw down the blackboard eraser, quit in anger and shout \"I won't draw anymore\", causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🤝",
           "label": "Calm down and take a deep breath to start \"🗳️ \"Ballot box for differences of opinion\", follow the steps to properly handle and resolve it step by step!",
           "color": "#10b981",
@@ -8433,7 +8458,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8442,7 +8467,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🗳️ \"Ballot box for differences of opinion\" action, please tick the box if you have done so☑：",
       "steps": [
         {
@@ -8488,8 +8513,8 @@ const dailyWorksheets = {
     "badgeLabel": "Gentle Communication Role Model",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"💔 The colored pen I lent to my classmate was dried without the cap on.\" In this situation, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “💔 The colored pen I lent to my classmate was dried without the cap on.\" In this situation, what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8523,19 +8548,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🖍️ Colored pen repair dialogue method\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When faced with a situation, his brain lost control. He was so angry that he smashed and trampled the entire box of pens of his classmates, and cursed in public, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🖍️",
           "label": "Calm down and take a deep breath to start \"🖍️ \"Colored pen repair dialogue method\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8543,7 +8568,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8552,7 +8577,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🖍️ Color Pen Repair Dialogue Method\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -8591,15 +8616,15 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 4: Peer Friction and Conflict Resolution Advanced",
-    "title": "🏃 After a Collision: Check on the Other Person First",
+    "title": "🏃 After Bumping into a Younger Child - Stop and Ask an Adult to Check for Injury",
     "superSkill": "🩹 First, crouch down and show concern for the first message.",
     "themeColor": "#ef4444",
     "badgeEmoji": "🏃",
     "badgeLabel": "Loving and Caring Big Brother",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🏃 In the situation of \"running into the younger brother while running in the corridor\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🏃 In the situation of \"running into the younger brother while running in the corridor\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8633,19 +8658,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🩹 Squat down and care about the first item first”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, knocking over someone and seeing the other person bleeding and crying, running away and pretending not to see it, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏃",
           "label": "Calm down and take a deep breath to start \"🩹 \"Squat down and pay attention to the first item first\" and follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8653,7 +8678,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8662,7 +8687,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🩹 Squat down and pay attention to the first action. If you do it, please tick the box.☑：",
       "steps": [
         {
@@ -8708,8 +8733,8 @@ const dailyWorksheets = {
     "badgeLabel": "Grand Demeanor, Little Referee",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"⚖️ In the situation of \"playing board games and catching others cheating and driving them crazy\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “⚖️ In the situation of \"playing board games and catching others cheating and driving them crazy\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8743,19 +8768,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"⚖️ \"Just Suspension Verification Law\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Realizing that he was lagging behind and about to lose, he knocked over the entire chessboard and shouted: \"It doesn't count!\" Start over!”",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⚖️",
           "label": "Take a deep breath to suppress your frustration, keep playing until the end, and generously reach out to praise your winning opponent!",
           "color": "#10b981",
@@ -8763,7 +8788,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "As soon as I fell a little behind at the start, I felt like I was finished. I buried my head between my knees and sulked, giving up all subsequent moves.",
           "color": "#f59e0b"
@@ -8772,7 +8797,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"⚖️ \"Fair Suspension Verification Act\" action, please tick the box if you have done so☑：",
       "steps": [
         {
@@ -8818,8 +8843,8 @@ const dailyWorksheets = {
     "badgeLabel": "A Competent Navigator and Guide",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"👩‍🏫 In the situation \"the substitute teacher is coming to class today\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “👩‍🏫 In the situation \"the substitute teacher is coming to class today\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8853,19 +8878,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧭 A Steady Compass for Substitute Days\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. When the teacher is unfamiliar, he yells and throws paper airplanes in the classroom, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "👩‍🏫",
           "label": "Calm down and take a deep breath to start \"🧭 A Steady Compass on Substitute Day\", follow the steps to properly deal with it step by step!",
           "color": "#10b981",
@@ -8873,7 +8898,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8882,7 +8907,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧭 \"Steady Compass on Substitute Day\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -8928,8 +8953,8 @@ const dailyWorksheets = {
     "badgeLabel": "Little Expert at Adapting to New Environments",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"💺 In the situation \"The class is changing seats\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “💺 In the situation \"The class is changing seats\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -8963,19 +8988,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🪑 New Seat Ice Breaking Greeting Card\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, clinging to the old desk, crying and kicking, lying on the ground and refusing to move, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "💺",
           "label": "Calm down and take a deep breath to start \"🪑 New Seat Ice Breaking Greeting Card\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -8983,7 +9008,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -8992,7 +9017,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🪑 New Seat Ice Breaking Greeting Card\" action, please tick the box if you have done so☑：",
       "steps": [
         {
@@ -9038,8 +9063,8 @@ const dailyWorksheets = {
     "badgeLabel": "The Elegant Gentleman's Car Ride",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🚌 In the situation where the whole school’s off-campus teaching takes a tour bus, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🚌 In the situation where the whole school’s off-campus teaching takes a tour bus, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9073,19 +9098,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚌 \"Code of Civility for Tour Buses\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, running wildly and chasing in the aisle of the traveling tour bus, grabbing the microphone and shouting, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚌",
           "label": "Calm down and take a deep breath to start \"🚌 Tour Bus Civilization Code\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9093,7 +9118,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9102,7 +9127,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚌 \"Civility Code for Tour Buses\" action, please tick the box if you have done so☑：",
       "steps": [
         {
@@ -9141,106 +9166,111 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
-    "title": "🍽️ Foods I Dislike: Polite Choices at Lunch",
-    "superSkill": "🫑 Bravely take a bite of a little adventure",
+    "title": "Food Preferences Sensory Needs and Asking for Support",
+    "superSkill": "Explain my food and sensory needs",
     "themeColor": "#10b981",
     "badgeEmoji": "🍽️",
-    "badgeLabel": "Nutritionally Balanced Little Food God",
+    "badgeLabel": "Expressing Food Needs",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🍽️ What are the correct and polite things to do in a nutritious lunch with pesky green peppers or onions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🌟",
-          "label": "Yu restrained his disgusting remarks and bravely tried to bite a small piece of green pepper",
-          "desc": "Demonstrate the courage to overcome sensory defenses while maintaining public dining etiquette.",
+          "icon": "💬",
+          "label": "Tell a caregiver about smaller portions, alternatives or other needs",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "Spitting in public, yelling \"It's so disgusting and poisonous\" and knocking over the plate",
-          "desc": "Seriously trampling on the hard work of the cook, creating a mess and causing resentment and rejection by peers.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "Sit the plate politely and ask for a small spoonful to taste.",
-          "desc": "Use civilized communication to avoid wasting leftover food and demonstrate good table manners.",
+          "icon": "👀",
+          "label": "Agree on suitable mealtime arrangements with an adult",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Take the lead in eating vegetables and encourage everyone to have balanced nutrition",
-          "desc": "Show healthy and sunny vitality and become a model student in class diet.",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🫑 Bravely try a little adventure”?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "If a food makes you uncomfortable, what help could you ask for?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "When encountering a situation, the brain loses control, spitting in public, yelling \"so disgusting and poisonous\" and knocking over the dinner plate, causing chaos and danger.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🍽️",
-          "label": "Calm down and take a deep breath to start \"🫑 Be brave and have a little adventure\" and follow the steps to deal with it properly step by step!",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Tell a caregiver about smaller portions, alternatives or other needs",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🫑 Bravely take a bite of a little adventure\" action, please tick the box if you do it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Explain my food and sensory needs” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Upon realizing the aversion to unpleasant food, I immediately swallowed the word \"disgusting.\""
+          "text": "Notice discomfort from a smell, texture or body sensation"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "When serving food, hold the plate with both hands and politely say, 'Please just give me a little bit, thank you!'"
+          "icon": "💬",
+          "text": "Tell a caregiver about smaller portions, alternatives or other needs"
         },
         {
           "num": 3,
-          "icon": "🍽️",
-          "text": "Give yourself the courage to take a small bite, and even if you don't like it, quietly leave it in the corner of your plate without spitting it out."
+          "icon": "🤝",
+          "text": "Agree on suitable mealtime arrangements with an adult"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "After returning home from school, show your parents how to🫑 Be brave and have a little adventure\" and give a warm high-five to your family!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Tell a caregiver about smaller portions, alternatives or other needs. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Tell a caregiver about smaller portions, alternatives or other needs"
     }
   },
   "b-idea-85": {
@@ -9258,8 +9288,8 @@ const dailyWorksheets = {
     "badgeLabel": "Rainy Day Self-Guided Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🌧️ In the situation of \"the playground is closed after heavy rain after class\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🌧️ In the situation of \"the playground is closed after heavy rain after class\", what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9293,19 +9323,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🎲 Rainy day filing fun box\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "Realizing that he was lagging behind and about to lose, he knocked over the entire chessboard and shouted: \"It doesn't count!\" Start over!”",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌧️",
           "label": "Take a deep breath to suppress your frustration, keep playing until the end, and generously reach out to praise your winning opponent!",
           "color": "#10b981",
@@ -9313,7 +9343,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "As soon as I fell a little behind at the start, I felt like I was finished. I buried my head between my knees and sulked, giving up all subsequent moves.",
           "color": "#f59e0b"
@@ -9322,7 +9352,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🎲 \"Rainy Day Registration Fun Box\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9361,15 +9391,15 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
-    "title": "🧹 Cleanup Teamwork: Helping Safely and Taking Pride in Our Work",
+    "title": "🧹 Cleaning Tasks - Use Tools within an Agreed Safe Role and Avoid Splashing Others",
     "superSkill": "🧽 Little hero of spring cleaning",
     "themeColor": "#eab308",
     "badgeEmoji": "🧹",
     "badgeLabel": "Cleanliness and Environmental Protection Little Guardian",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🧹 In the context of \"cleaning toilets and gutters during general cleaning time\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🧹 In the context of \"cleaning toilets and gutters during general cleaning time\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9403,19 +9433,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧽 \"Little hero of cleaning labor\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control. He takes a water pipe and sprays water everywhere, soaking his classmates and corridors, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🧹",
           "label": "Calm down and take a deep breath to start \"🧽 \"Little Hero of Cleaning Labor\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9423,7 +9453,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9432,7 +9462,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧽 \"Little Hero of Cleaning Labor\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9478,8 +9508,8 @@ const dailyWorksheets = {
     "badgeLabel": "Self-Protection Little Guardian",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🚶 What are the correct and polite things to do in the situation of meeting a stranger on the way out of school and asking for directions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🚶 What are the correct and polite things to do in the situation of meeting a stranger on the way out of school and asking for directions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9513,19 +9543,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛑 \"Stranger red line brake\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control and is attracted by free toys and candies. Unsuspectingly, it opens the door and gets in the car, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚶",
           "label": "Calm down and take a deep breath to start \"🛑 \"Stranger Red Line Brake\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9533,7 +9563,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9542,7 +9572,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛑 \"Stranger Red Line Brake\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9588,8 +9618,8 @@ const dailyWorksheets = {
     "badgeLabel": "Fusion and Adaptation Pioneers",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🏫 What are the correct and polite things to do in the situation of returning from the study classroom to regular classes? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🏫 What are the correct and polite things to do in the situation of returning from the study classroom to regular classes? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9623,19 +9653,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌉 \"Put Seamless Bridge\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, and the child shrinks in fear at the door of the corridor, shouts, and refuses to enter the classroom, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏫",
           "label": "Calm down and take a deep breath to start \"🌉 \"Put Seamless Connection Bridge\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9643,7 +9673,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9652,7 +9682,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌉 \"Put Seamless Bridge\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9698,8 +9728,8 @@ const dailyWorksheets = {
     "badgeLabel": "Confident and Radiant Little Angels",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"👦 A classmate in a regular class asked: \"Why do you go to the study classroom?\" In this situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “👦 A classmate in a regular class asked: \"Why do you go to the study classroom?\" In this situation, what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9733,19 +9763,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"⚡ Charging Station Proud Declaration\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. When asked by classmates, he cries in shame, lies on the table and does not dare to raise his head to see others, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "⚡",
           "label": "Calm down and take a deep breath to start \"⚡ \"Charging Station Proud Declaration\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9753,7 +9783,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9762,7 +9792,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"⚡ Charge Station Proud Declaration\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9808,8 +9838,8 @@ const dailyWorksheets = {
     "badgeLabel": "Guardians of Family Peace",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🏠 What are the correct and polite things to do in the situation of grabbing a TV remote control or tablet with a sibling at home? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🏠 What are the correct and polite things to do in the situation of grabbing a TV remote control or tablet with a sibling at home? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9843,19 +9873,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which method can exert \"⏱️ Siblings take turns timing the hourglass\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. In order to grab the remote control, he beats his younger siblings and scratches each other's cheeks, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🏠",
           "label": "Calm and deep breathing starts \"⏱️ Hands and feet take turns timing the hourglass\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9863,7 +9893,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9872,7 +9902,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Follow the teacher to practice \"⏱️ Hands and feet take turns timing the hourglass movement, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -9911,15 +9941,15 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 6: Putian Fusion and Family Life",
-    "title": "👵 Visiting Grandparents: Greetings and Helping at Mealtimes",
+    "title": "👵 Visiting Grandparents - Greeting Comfortably and Helping with the Meal",
     "superSkill": "🥣 Helper for serving tea and dishes",
     "themeColor": "#f97316",
     "badgeEmoji": "👵",
     "badgeLabel": "Filial and Thoughtful Little Angels",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"👵 In the situation of \"going back to grandpa and grandma's house for the holidays\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “👵 In the situation of \"going back to grandpa and grandma's house for the holidays\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -9953,19 +9983,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🥣 \"A little helper who serves tea and dishes\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. As soon as he enters the door, he slams the door and hides in the room to play video games and tells the elders to \"go away and don't bother\", causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "👵",
           "label": "Calm down and take a deep breath to start \"🥣 \"Little Helper for Serving Tea and Serving Food\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -9973,7 +10003,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -9982,7 +10012,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🥣 \"Serving tea and serving dishes as a little helper\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -10028,8 +10058,8 @@ const dailyWorksheets = {
     "badgeLabel": "Store Compliance Assistant",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🛒 In the situation of \"accompanying your family to go shopping at Quanlian Hypermarket\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🛒 In the situation of \"accompanying your family to go shopping at Quanlian Hypermarket\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10063,19 +10093,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🛒 Supermarket Shopping Homemade Guardian\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, his brain loses control. He runs wildly in the supermarket corridor, knocks down the cookie rack, and lies on the ground rolling and screaming, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🛒",
           "label": "Calm down and take a deep breath to start \"🛒 \"Make your own guardian for supermarket shopping\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10083,7 +10113,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10092,7 +10122,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🛒 Make your own \"Guardian\" action for supermarket shopping. Please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -10138,8 +10168,8 @@ const dailyWorksheets = {
     "badgeLabel": "Model of Quality Sleep",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"💤 In the situation \"I still want to read comics when it's time to go to bed at night\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “💤 In the situation \"I still want to read comics when it's time to go to bed at night\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10173,19 +10203,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌙 Good night, shut down and sleep\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. When urged to sleep, the person throws a pillow and cries, stays up until the early morning and dozes off, causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "💤",
           "label": "Calm down and take a deep breath to start \"🌙 \"Good Night Shut Down and Sleep Exercise\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10193,7 +10223,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10202,7 +10232,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌙 \"Good Night Shut Down and Sleep Exercise\", please tick the box if you have done it.☑：",
       "steps": [
         {
@@ -10248,8 +10278,8 @@ const dailyWorksheets = {
     "badgeLabel": "Your Self-Reliant Life Assistant",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🧺 In the situation of \"folding your own clothes and putting away your own toys\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🧺 In the situation of \"folding your own clothes and putting away your own toys\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10283,19 +10313,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"👕 \"Little master of independent living\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. Clothes and socks are randomly thrown on the sofa, waiting for parents to help collect them like servants, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🧺",
           "label": "Calm down and take a deep breath to start \"👕 \"Little master of independent living\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10303,7 +10333,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10312,7 +10342,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"👕 \"Little master of independent living\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -10358,8 +10388,8 @@ const dailyWorksheets = {
     "badgeLabel": "Confident and Shining Heroes",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🪞 In the situation \"I look different in the mirror\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🪞 In the situation \"I look different in the mirror\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10371,7 +10401,7 @@ const dailyWorksheets = {
         {
           "id": "c2",
           "icon": "🛑",
-          "label": "Looking in the mirror and feeling sorry for myself, crying, \"I'm stupid, I'm ugly, and the whole world hates me.\"",
+          "label": "Not knowing how to begin and saying “I feel bad about myself” to the mirror",
           "desc": "Being stuck in self-denial hinders the healthy development of mental health and potential.",
           "isCorrect": false
         },
@@ -10393,19 +10423,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💎 Unique luminous crystal\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
-          "label": "When encountering a situation, the brain loses control and looks in the mirror, pitying itself and crying, \"I'm stupid, I'm ugly and the whole world hates me\", causing chaos and danger.",
+          "label": "In a difficult situation, feeling overwhelmed and saying hurtful things about oneself to a mirror rather than asking for help.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🪞",
           "label": "Calm down and take a deep breath to start \"💎 Unique Luminous Crystal\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10413,7 +10443,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10422,7 +10452,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💎 Unique Luminous Crystal\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -10468,8 +10498,8 @@ const dailyWorksheets = {
     "badgeLabel": "Financial Self-Reliance Expert",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🪙 In the situation of \"Learning to count and check the change when buying bread at the supermarket\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🪙 In the situation of \"Learning to count and check the change when buying bread at the supermarket\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10503,19 +10533,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"💰 Supermarket shopkeeper's abacus\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. After grabbing something, I want to run out of the store without knowing that I have to queue up to pay, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🪙",
           "label": "Calm down and take a deep breath to start \"💰 \"Supermarket shopkeeper's abacus\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10523,7 +10553,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10532,7 +10562,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"💰 \"Supermarket shopkeeper's abacus\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -10578,8 +10608,8 @@ const dailyWorksheets = {
     "badgeLabel": "Traffic Safety Junior Patrol Officer",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🚦 In the context of \"Safety Code for Crossing the Street Independently\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🚦 In the context of \"Safety Code for Crossing the Street Independently\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10613,19 +10643,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🚩 Raise the little yellow flag and feel at ease”?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control. As soon as the light turns green, he lowers his head, screams and runs wildly, but is hit by a large turning truck, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚦",
           "label": "Calm down and take a deep breath to start \"🚩 Raise the little yellow flag and feel at ease\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10633,7 +10663,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10642,7 +10672,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🚩 Raise the little yellow flag and feel at ease\" action, please tick the box if you do it☑：",
       "steps": [
         {
@@ -10688,8 +10718,8 @@ const dailyWorksheets = {
     "badgeLabel": "Clean and Neat Little Gentleman",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🚿 In the context of “cleaning habits after sweating profusely in physical education class”, what are the correct and polite practices? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🚿 In the context of “cleaning habits after sweating profusely in physical education class”, what are the correct and polite practices? Please circle the correct pattern! (can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10723,19 +10753,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🧼 Refreshing and cleansing in seven steps\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, letting the wet clothes stick to the back and smelling, and gets angry and hits others when pointed out by classmates, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🚿",
           "label": "Calm down and take a deep breath to start \"🧼 \"Refreshing and cleansing in seven steps\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10743,7 +10773,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10752,7 +10782,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🧼 \"Refreshing and cleansing in seven steps\", please tick the box if you have done it☑：",
       "steps": [
         {
@@ -10791,106 +10821,111 @@ const dailyWorksheets = {
     "dayOfWeek": "",
     "festival": "",
     "unit": "Inspiration Library Topic 7: Building self-esteem and living independently",
-    "title": "🩹 A Scraped Knee: Stay Calm and Ask the School Nurse for Help",
-    "superSkill": "🩹 External Wound Hemostasis and Calming Patch",
+    "title": "Asking an Adult for Help When Hurt",
+    "superSkill": "Find a trusted adult when hurt",
     "themeColor": "#ef4444",
     "badgeEmoji": "🩹",
-    "badgeLabel": "Calm and Self-Protective Little Warriors",
+    "badgeLabel": "Asking for Help",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🩹 In the situation \"I fell down and bruised my knee and it started to bleed\", what are the correct and polite things to do? Please circle the correct pattern! (can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "Which choices can support you and respect your partner? Choose more than one and discuss the reasons.",
       "items": [
         {
           "id": "c1",
-          "icon": "🌟",
-          "label": "Calm and brave He",
-          "desc": "Don’t panic if you fall, press the wound with clean tissue, and go to the health center bravely.",
+          "icon": "💬",
+          "label": "Use speech, pointing or gestures to indicate discomfort",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c2",
-          "icon": "🛑",
-          "label": "When he saw the scraped skin, he would lie on the dirt floor crying and kicking wildly, refusing to seek medical treatment and apply medicine.",
-          "desc": "The wound is seriously infected and suppurated by sediment bacteria, which delays the opportunity for debridement.",
-          "isCorrect": false
+          "icon": "🤝",
+          "label": "Observe first, take a break or ask for help when needed",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": true
         },
         {
           "id": "c3",
-          "icon": "✨",
-          "label": "A small crutch that acts as a human crutch to gently support an injured partner for medical treatment.",
-          "desc": "Show an extremely warm and friendly mind and become a trustworthy teammate.",
+          "icon": "👀",
+          "label": "Ask an adult to accompany you and follow the school’s health-room procedure",
+          "desc": "Discuss using speech, pointing or gestures.",
           "isCorrect": true
         },
         {
           "id": "c4",
-          "icon": "🤝",
-          "label": "Jia and Yu calmly assist in stopping the bleeding and guiding the movement line",
-          "desc": "Give full play to excellent on-site response skills to promote perfect handling of accidents.",
-          "isCorrect": true
+          "icon": "🛑",
+          "label": "Requiring someone to comply before checking their willingness",
+          "desc": "Discuss using speech, pointing or gestures.",
+          "isCorrect": false
         }
       ]
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
-      "prompt": "When encountering this situation, which approach can play a role in \"🩹 Trauma Hemostasis Calming Patch\"?",
+      "title": "Task 2: Choose an Approach",
+      "prompt": "How can you get adult help if you or a classmate is hurt?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
-          "icon": "⚡",
-          "label": "I accidentally fell down while running and broke my skin. I pounded the floor and cried loudly. I pushed down the classmates who came to help.",
-          "color": "#ef4444"
+          "icon": "💭",
+          "label": "Requiring everyone to do the same thing immediately without checking their needs.",
+          "score": "Discuss together",
+          "color": "#52745c"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
-          "icon": "🩹",
-          "label": "Take a deep breath to check the wound, get up and dust yourself off, and gently ask your classmates to accompany you to the health center!",
-          "color": "#10b981",
-          "recommended": true
+          "icon": "💬",
+          "label": "Use speech, pointing or gestures to indicate discomfort",
+          "recommended": true,
+          "score": "An approach to practise",
+          "color": "#52745c"
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
-          "icon": "🌧️",
-          "label": "After falling down, I felt extremely embarrassed in front of everyone. I lay down on the playground and covered my face with my hands, refusing to let anyone get close to me.",
-          "color": "#f59e0b"
+          "icon": "🌿",
+          "label": "Tell the teacher you need more time, and observe first or ask for support.",
+          "recommended": true,
+          "score": "Another acceptable way to participate",
+          "color": "#52745c"
         }
       ]
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
-      "prompt": "Practice with the teacher \"🩹 Trauma Hemostasis and Calm Patch\" action, please tick the box if you have done it☑：",
+      "title": "Task 3: Practise the Steps",
+      "prompt": "Practise “Find a trusted adult when hurt” in your own way through speech, pictures or actions. Tick after practice; the teacher records prompt levels separately.",
       "steps": [
         {
           "num": 1,
           "icon": "👀",
-          "text": "Upon noticing pain and bleeding, sit on the ground and take deep breaths, without kicking or crying out loudly."
+          "text": "Stop in a safe place and tell a trusted adult"
         },
         {
           "num": 2,
-          "icon": "🧘",
-          "text": "Take a clean tissue and gently press it onto the wound to stop the bleeding."
+          "icon": "💬",
+          "text": "Use speech, pointing or gestures to indicate discomfort"
         },
         {
           "num": 3,
-          "icon": "🩹",
-          "text": "With the help of classmates or teachers, they slowly walked step by step to the health center to apply the medicine."
+          "icon": "🤝",
+          "text": "Ask an adult to accompany you and follow the school’s health-room procedure"
         }
       ]
     },
     "homeTask": {
       "title": "Family Life Superman Student Check-in",
-      "action": "After returning home from school, show your parents how to🩹 Trauma Hemostasis Calming Patch\" and a warm high-five to the family!"
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech, pointing or gestures to indicate discomfort. Report no opportunity or any support needed too."
     },
     "stars": {
       "title": "Self-outcome assessment",
       "prompt": "How did I perform on today's small task?(Please paint beautiful star colors):",
       "max": 5,
       "default": 3
+    },
+    "generalization": {
+      "trigger": "When a natural practice opportunity occurs, check safety and willingness first",
+      "promptWord": "Use speech, pointing or gestures to indicate discomfort"
     }
   },
   "b-idea-100": {
@@ -10908,8 +10943,8 @@ const dailyWorksheets = {
     "badgeLabel": "Future Time Navigator",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"📮 In the context of \"write a thank you letter to your future self\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “📮 In the context of \"write a thank you letter to your future self\", what are the correct and polite things to do? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -10943,19 +10978,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"📜 A letter to future heroes\"?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, thinking that one is worthless, crumpling the letter and throwing it on the ground, saying \"I have no future\", causing confusion and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "📮",
           "label": "Calm down and take a deep breath to start \"📜 \"Letter to Future Heroes\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -10963,7 +10998,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -10972,7 +11007,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"📜 \"Write a letter to the future hero\" action, please tick the box if you have done it☑：",
       "steps": [
         {
@@ -11018,8 +11053,8 @@ const dailyWorksheets = {
     "badgeLabel": "The All-Round Independent Little Captain",
     "section1": {
       "type": "circle",
-      "title": "Task 1: Good habits to look around",
-      "prompt": "In the scenario of \"🌟 In the \"Ultimate Special Education Super Power Summary\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
+      "title": "Task 1: Circle Helpful Actions",
+      "prompt": "In the situation “🌟 In the \"Ultimate Special Education Super Power Summary\" situation, what are the correct and polite actions? Please circle the correct pattern!(can circle more than one)",
       "items": [
         {
           "id": "c1",
@@ -11053,19 +11088,19 @@ const dailyWorksheets = {
     },
     "section2": {
       "type": "choice",
-      "title": "Task 2: My super power multiple choice question",
+      "title": "Task 2: Choose an Approach",
       "prompt": "When encountering this situation, which approach can play a role in \"🌟 \"Little Captain\" at the helm of life?",
       "options": [
         {
           "id": "t1",
-          "score": "Negative impulse",
+          "score": "An approach to discuss further",
           "icon": "⚡",
           "label": "When encountering a situation, the brain loses control, retreats and gives up before difficulties, and regards failure as an unchangeable fate, causing chaos and danger.",
           "color": "#ef4444"
         },
         {
           "id": "t2",
-          "score": "Best Super Power",
+          "score": "The method practised in this lesson",
           "icon": "🌟",
           "label": "Calm down and take a deep breath to start \"🌟 \"Little Captain at the helm of life\", follow the steps to deal with it properly step by step!",
           "color": "#10b981",
@@ -11073,7 +11108,7 @@ const dailyWorksheets = {
         },
         {
           "id": "t3",
-          "score": "Negative withdrawal",
+          "score": "More support needed",
           "icon": "🌧️",
           "label": "Feeling extremely frightened and frustrated, I endured silently and did not dare to ask for help. I huddled in the corner and shivered in pain and frustration.",
           "color": "#f59e0b"
@@ -11082,7 +11117,7 @@ const dailyWorksheets = {
     },
     "section3": {
       "type": "checklist",
-      "title": "Task three: Today’s super power action challenge",
+      "title": "Task 3: Practise the Steps",
       "prompt": "Practice with the teacher \"🌟 Take charge of your life as a little captain. Please tick the box if you have done it.☑：",
       "steps": [
         {

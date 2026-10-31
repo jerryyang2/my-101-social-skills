@@ -25,13 +25,13 @@ const defaultBriefings = [
     "story": {
       "title": "🎒 The little bear in the magic backpack and the first \"Good morning\"!",
       "content": "On September 1st, the first day of school, colorful welcome balloons hung outside the special education classroom. Four little heroes, carrying their new schoolbags, walked into the classroom, their hearts filled with both anticipation and nervousness. Yu clutched his backpack strap tightly, head down; Jun looked around restlessly; He shyly hid behind the door; and Jia curiously peered around. The teacher smiled and approached with a teddy bear puppet: \"Good morning, everyone! Welcome to our warm learning castle!\" The teddy bear puppet extended its hand to each person, its eyes gazing gently at them. Yu took a deep breath, raised his head, and shouted loudly, \"Good morning, teacher! I'm Yu!\" This resounding greeting, like sunshine, illuminated the entire classroom, and everyone smiled happily!",
-      "question": "When you first meet a new teacher or classmate, if you keep your head down and don't speak, will they be able to recognize you? What kind of magic will it bring if you look them in the eye and say good morning loudly?"
+      "question": "On meeting new classmates, how could you introduce yourself using speech, pointing or a wave, and notice the other person comfortably?"
     },
     "timeline": [
       {
         "time": "00–08 min",
         "stage": "Cause motivation",
-        "desc": "Introduction story \"🎒 The little bear in the magic schoolbag and the first \"Good morning\"!”, using puppet show illustrations to guide students to be aware of emotions and interpersonal situations: When you meet a new teacher and classmates for the first time, if you keep your head down and don’t speak, will others recognize you? What magic can come from looking someone in the eye and saying good morning out loud?"
+        "desc": "Introduction story \"🎒 The bear in the school bag and the first greeting: Use the story to explore how to greet new classmates with speech, pointing or a wave and attend to others comfortably."
       },
       {
         "time": "08–20 min",
@@ -59,36 +59,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stand firm on both feet, raise your head and chest, and take a deep breath"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Wave your right hand and raise the corners of your mouth to show a smile"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Greet with speech, a card or a wave"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"greeting each other happily on the first day of school versus greeting loudly\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Saying Hello: Meeting Classmates and Feeling Safe”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Feeling shy, he threw his schoolbag on the ground angrily and yelled at the new classmate who came over: \"Go away! Don't look at me!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:👋 Smiling and Greeting Superman",
-        "desc": "Take a deep breath and apply the brakes, using the \"👋 Smiling Greeting Superman\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Stand comfortably, take a breath, turn toward the partner, smile if comfortable and wave: “Good morning! I am Yu!”",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"👋 Say hello to Superboy with a smile and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Wave your right hand and raise the corners of your mouth to show a smile. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -96,8 +96,9 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【👋 Say hello to Superboy with a smile]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [👋 Say hello to Superboy with a smile], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"👋 The corresponding behavior of \"Smile and say hello to Superboy\" has an achievement rate of over 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"meeting each other at the beginning of school and saying hello loudly\" in the ordinary class, please prompt the formula: \"Start [👋 Say hello to Superboy with a smile]! \";publicly affirm his progress in class: \"Look, your classmate just did it [👋 Say hello to Superboy with a smile], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Wave your right hand and raise the corners of your mouth to show a smile. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Wave your right hand and raise the corners of your mouth to show a smile. Wait for a response, demonstrate if needed, and recognise effort without public comparisons.",
+    "useBrowserSpeech": true
   },
   {
     "id": "b-week-2",
@@ -107,13 +108,13 @@ const defaultBriefings = [
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 1: Self-Awareness and Classroom Routines",
-    "title": "Friendly Looks and Warm Smiles: Communicating Without Words",
+    "title": "Noticing and Responding Comfortably",
     "code": "特社1-II-2",
     "themeColor": "#6366f1",
     "badgeEmoji": "✨",
-    "badgeLabel": "Focused Gaze",
-    "superSkill": "👁️ Eyes and forehead spotlight",
-    "summary": "Learn nonverbal social signals: Look at the other person's \"triangle between their eyebrows\" for two to three seconds and give them a genuine smile to overcome shifty and avoidant eye contact.",
+    "badgeLabel": "Responding Comfortably",
+    "superSkill": "Respond in a comfortable way",
+    "summary": "Practise respond in a comfortable way using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "Special education social",
       "Communication training",
@@ -122,72 +123,77 @@ const defaultBriefings = [
       "LD"
     ],
     "story": {
-      "title": "🦉 Grandpa Owl's \"Magic Triangle Between the Eyebrows\"!",
-      "content": "In the elementary school classroom at OO, Yu always looked at the floor or the fan when talking to people. His classmates often asked him, \"Yu, are you even listening to me?\" Yu felt wronged. He was definitely listening, but looking into other people's eyes made his heart race and made him very uncomfortable. Principal Owl gave him a small transparent card with an inverted triangle drawn on it: \"Child, you don't need to stare into the other person's eyes. Just look at the 'triangle between their eyebrows,' and they will feel your focus and respect!\" Yu practiced, smiling at He's brow. He happily said, \"Yu, you look so handsome when you smile at me!\"",
-      "question": "If you're talking to someone and your eyes are constantly looking at the ground, how will the other person feel? What is the \"magic triangle between the eyebrows\" referring to?"
+      "title": "Respond in a comfortable way",
+      "content": "Yu does not feel comfortable looking into someone’s eyes for a long time. Jun points to the blocks and asks, “Would you like to build with me?” Yu looks at the blocks, nods and says yes. The teacher notices that he heard and responded to the invitation. Listening can look different for different people.",
+      "question": "What comfortable ways can you use to show a partner you are listening?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🦉 Grandpa Owl's \"Magic Triangle Between the Eyebrows\"!”, guiding students to be aware of emotions and interpersonal situations through puppet show illustrations: If you keep looking at the ground when talking to others, how will the other person feel? Where do you look at the \"Magic Triangle between the Eyebrows\"?"
+        "stage": "Story and feelings",
+        "desc": "Read “Respond in a comfortable way”. What comfortable ways can you use to show a partner you are listening? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Demonstration \"👁️ The core technique of \"Eye Eyes and Eyebrow Spotlight\" is a three-step process of dismantling body movements and voice tone, combined with the brain braking visual chart for skillful practice."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Choose a comfortable position and attend to your partner or a shared object → Respond with a nod, a wave, a communication card or speech → Ask for a repeat or take a break when needed"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "Four little heroes (Yu🦁, Jun🐻, He🐼, Jia🦊) Conducted a practical drill in the character theater \"If the other party looks around when speaking, it will make people feel disrespected. Four partners practiced \"eyebrow gaze + smile for three seconds\"! ”, proficient in non-verbal body movements and lines."
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "After completing the self-examination check-box and colored worksheet, you will be awarded the \"Focus Gazing Officer\" medal of honor and rewarded with classroom star tokens!"
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Provide \"👁️ \"Eye and Eyebrow Spotlight\" structured visual reminder chart, marking the eye focus point and body distance to reduce anxiety in unfamiliar social situations.",
-      "ld": "There is no need for cumbersome text copying. The whole process uses color picture and text circle selection, body movement drills and oral repetition as the main learning evaluation methods.",
-      "ebd": "Before the drill, clearly agree on the safety boundary and token rewards. If you are emotionally excited, you are allowed to go to the calm corner to take a deep breath, and then conduct the role drill after your emotions stabilize."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "🎯 👁️ Eyes and forehead spotlight",
+      "title": "Respond in a comfortable way",
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Choose a comfortable position and attend to your partner or a shared object"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Respond with a nod, a wave, a communication card or speech"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Ask for a repeat or take a break when needed"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the situational test of \"eye contact and warm smile\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "What comfortable ways can you use to show a partner you are listening?",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
       },
       "super_skill": {
-        "title": "🌟 Superpower:👁️ Eyes and forehead spotlight",
-        "desc": "Take a deep breath and apply the brakes, using the \"👁️ Eyes, eyebrows, spotlight\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Respond with a nod, a wave, a communication card or speech",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"👁️ Eyes and brows are in the spotlight\" and high-fives are given to family members!",
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Respond with a nod, a wave, a communication card or speech. Report no opportunity or any support needed too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -195,8 +201,9 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【👁️ Eyes and eyebrows spotlight]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [👁️ Eyes, eyebrows, spotlight], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"👁️ The corresponding behavior is \"Eye Eyes, Eyebrow Spotlight\", the achievement rate is over 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a similar situation of \"eye gaze and warm smile\" in the ordinary class, please prompt the formula: \"Start [👁️ Eyes and eyebrows spotlight]! \";publicly affirm his progress in class: \"Look, your classmate just did it [👁️ Eyes, eyebrows, spotlight], very polite! ”"
+    "iepGoal": "In this lesson’s context, observe whether the learner can respond with a nod, a wave, a communication card or speech. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Respond with a nod, a wave, a communication card or speech. Accept speech, pointing or gestures without public comparisons.",
+    "useBrowserSpeech": true
   },
   {
     "id": "b-week-3",
@@ -257,36 +264,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Observe the place you are in (classroom/library/study room)"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Place your palm lightly against your throat to feel the vibration intensity during pronunciation"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Turn the knob to one to two volume and speak softly and gently"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of the \"Voice Volume Five-Level Dashboard\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “The Five-Level Voice Meter: Choosing the Right Volume”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I was so excited during the group discussion that I directly turned the volume to the loudest quarter volume in the playground, which gave the whole class earaches.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎛️ Magical volume control on the dashboard",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎛️ volume dashboard\" to adjust your tone politely in your speech and actions.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Touch your throat to feel the vibration, adjust the volume to two groups and whisper softly to express clearly and keep the class quiet.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎛️ The volume dashboard is tuned by God” and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Place your palm lightly against your throat to feel the vibration intensity during pronunciation. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -294,8 +301,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎛️ Volume dashboard divine tuning]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎛️ Volume Dashboard Divine Tuning], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎛️ The corresponding behavior of \"Volume Dashboard God Tuning\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a similar situation of \"Sound Level Five Level Dashboard\" in the ordinary class, please prompt the tip: \"Start [🎛️ Volume dashboard divine tuning]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🎛️ Volume Dashboard Divine Tuning], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Place your palm lightly against your throat to feel the vibration intensity during pronunciation. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Place your palm lightly against your throat to feel the vibration intensity during pronunciation. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-4",
@@ -356,36 +363,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stand at attention and hold the card or warm water steadily with both hands."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Bend the waist naturally at 45 degrees and bow to the teacher."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Say sincerely: \"Thank you, teacher, for your hard work!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Teacher's Day Special 9/28】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Saying Thank You to Our Teachers”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I found it annoying when the teacher told me to correct, so I rolled my eyes at the teacher and kicked the chair hard in protest.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:💌 Little Ambassador of Respect and Gratitude to Teachers",
-        "desc": "Take a deep breath and apply the brakes, using the \"💌 Little Ambassador of Respect for Teachers and Gratitude\" to express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Present the hand-painted love card with both hands straight, stand at attention and bow and say: \"Thank you, teacher, for teaching me hard every day!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"💌 A special envoy of gratitude to my teachers” and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Bend the waist naturally at 45 degrees and bow to the teacher.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -393,8 +400,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【💌 A special envoy of gratitude to teachers]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [💌 A special envoy of respect and gratitude], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"💌 The corresponding behavior of \"Little Special Envoy of Respecting Teachers and Gratitude\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a similar situation like \"[Teacher's Day Special 9/28]\" in the ordinary class, please prompt the tip: \"Start [💌 A special envoy of gratitude to teachers]! \";publicly affirm his progress in class: \"Look, your classmate just did it [💌 A special envoy of respect and gratitude], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Bend the waist naturally at 45 degrees and bow to the teacher.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Bend the waist naturally at 45 degrees and bow to the teacher.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-5",
@@ -455,36 +462,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stop in front of the food, put your hands in front of your belly and wait"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "When everyone is seated, politely ask: \"Can I get one?\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Take one with both hands and say please to the classmates next to you with a smile"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of the \"Mid-Autumn Festival Special\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Mooncakes and Pomelos: Sharing and Taking Turns”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I saw the grapefruits and mooncakes from the ceilidh, I carried the whole plate away with my hands, stuffed my mouth full and yelled, \"They're all mine!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🌕 Mid-Autumn Festival Treats to Foodies",
-        "desc": "Take a deep breath and apply the brakes, using the \"🌕 Mid-Autumn Festival Courtesy to Foodies\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Observe taking turns to line up, take your own portion with both hands, and generously say to the classmates next to you: \"Please use it slowly and eat together!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🌕 Mid-Autumn Festival courtesy to gourmets\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: When everyone is seated, politely ask: \"Can I get one?\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -492,8 +499,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🌕 Mid-Autumn Festival courtesy to gourmets]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🌕 Mid-Autumn Festival courtesy to gourmets], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🌕 The corresponding behavior of \"Mid-Autumn Festival courtesy to gourmets\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Mid-Autumn Festival Special]\" in the ordinary class, please prompt the formula: \"Start [🌕 Mid-Autumn Festival courtesy to gourmets]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🌕 Mid-Autumn Festival courtesy to gourmets], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: When everyone is seated, politely ask: \"Can I get one?\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: When everyone is seated, politely ask: \"Can I get one?\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-6",
@@ -554,36 +561,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you hear the command to assemble, stand at attention with your feet together and your hands on your sides."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Look at the back of the head of the classmate in front of you and keep an arm’s length distance"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Keep your steps in line with the rhythm of the team and march quietly without leaving the team."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Double Ten National Day Special 10/10】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Lining Up Safely: Hands at Your Sides, Eyes Ahead”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "The rally whistle sounded, and in order to get to the front, he used his elbow to push away Xiaowa who was in front.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚩 The Mighty Little Guardian",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚩 Spirited Little Guardian\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Put your hands naturally on your sides, keep a safe distance from the classmates in front, and keep up with the team in high spirits.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚩 Marching with dignity, little guard\" and giving high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Look at the back of the head of the classmate in front of you and keep an arm’s length distance. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -591,8 +598,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚩 The little guard marching with dignity]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚩 The little guard marching with dignity], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚩 The corresponding behavior of \"Arrogant Marching Little Guard\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to \"[Double Ten National Day Special 10/10]\" in the ordinary class, please prompt the tip: \"Start [🚩 The little guard marching with dignity]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🚩 The little guard marching with dignity], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Look at the back of the head of the classmate in front of you and keep an arm’s length distance. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Look at the back of the head of the classmate in front of you and keep an arm’s length distance. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-7",
@@ -653,36 +660,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Place your palm on your left chest and feel if your heartbeat is running fast"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Self-check with open palms: Are the fists of both hands clenched too tightly?"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Talk about your physical feelings: \"My body alarm is going off.\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"My Body Alarm\" scenario test, if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “My Body's Alarm: Noticing Signs of Anger”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "My chest felt hot and my fists became hard. I immediately threw my schoolbag around like a little dinosaur and kicked over the trash can.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🧭 Detecting body alarms",
-        "desc": "Take a deep breath and apply the brakes, using the \"🧭 \" to detect your body's alarm signals to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Be keenly aware of the body signal of \"heartbeat beating like a drum\", and immediately extend your index finger in front of your chest to sign \"pause and brake\"!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🧭 Discover the body alarm\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Self-check with open palms: Are the fists of both hands clenched too tightly?. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -690,8 +697,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🧭 Body alarm found]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🧭 Found the body alarm], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🧭 Discover the corresponding behavior of \"Body Alarm\", with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"My Body Alarm\" in a regular class, please prompt the tip: \"Start [🧭 Body alarm found]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🧭 Found the body alarm], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Self-check with open palms: Are the fists of both hands clenched too tightly?. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Self-check with open palms: Are the fists of both hands clenched too tightly?. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-8",
@@ -752,36 +759,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Hold your hands around your chest, like a little turtle retracting into its solid shell"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Close your eyes and take three deep breaths, feeling your belly bulge"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Count the numbers slowly in your mind: one, two, three...count to ten"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"Amazing Turtle Braking Technique\" scenario test, if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “The Turtle Pause: Breathe Three Times and Count to Ten”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I was very unwilling to lose the game. I tore up the game cards and yelled at the referee teacher: \"This is not fair!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🛡️ The amazing turtle shell-shrinking technique",
-        "desc": "Take a deep breath and apply the brakes, using the \"🛡️ Magical Turtle Shell-Retracting Technique\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Imagine that you are a calm little turtle, hold your head in your hands and shrink into the safety shell, take three deep breaths and count from one to ten.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🛡️ Magical Turtle Shell Shrinking Technique\" and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Close your eyes and take three deep breaths, feeling your belly bulge. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -789,8 +796,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🛡️ Magical Turtle Shell Shrinking Technique]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🛡️ Magical Turtle Shell Shrinking Technique], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🛡️ The corresponding behavior of \"Magical Turtle Shrinking Technique\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"Magic Turtle Braking Technique\" in the ordinary class, please prompt the formula: \"Start [🛡️ Magical Turtle Shell Shrinking Technique]! \"; publicly affirm his progress in class: \"Look, your classmate just did it [🛡️ Magical Turtle Shell Shrinking Technique], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Close your eyes and take three deep breaths, feeling your belly bulge. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Close your eyes and take three deep breaths, feeling your belly bulge. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-9",
@@ -851,36 +858,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stand up straight, hold the bag in both hands and smile politely"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Speak the secret word gently and clearly: \"Trick or Treat\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When you get the candy, catch it with both hands and say loudly: \"Thank you!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Halloween Special 10/31】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Halloween Manners: Asking Politely and Respecting Boundaries”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I asked for candy, others only gave me one. If I thought it was too little, I immediately spit the candy on the ground, and even took away other people's masks.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🍬 Politely ask for candy without causing trouble",
-        "desc": "Take a deep breath and apply the brakes, using the \"🍬 Polite Asking for Candy, Not Tricks\" approach to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Politely hold the bag with both hands and say, \"Trick or treat, can you give me candy?\" Say thank you when you get it!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🍬 Be polite and trick-or-treat\" and high-five your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Speak the secret word gently and clearly: \"Trick or Treat\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -888,8 +895,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🍬 Be polite and don’t trick or treat]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🍬 Be polite and don’t trick-or-treat], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🍬 The corresponding behavior of \"be polite and don't make trouble\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to \"[Halloween Special 10/31]\" in the ordinary class, please prompt the tip: \"Start [🍬 Be polite and don’t trick or treat]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🍬 Be polite and don’t trick-or-treat], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Speak the secret word gently and clearly: \"Trick or Treat\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Speak the secret word gently and clearly: \"Trick or Treat\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-10",
@@ -950,36 +957,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Raise your right hand upward steadily, with your arm close to your ear"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Close your mouth like zipper and look at the teacher quietly"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When you hear the teacher calling your name, stand up and speak generously"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In a situational test of \"classroom etiquette for raising your hand to speak\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Raising a Hand: Waiting for Your Turn to Speak”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I thought of the answer, I yelled excitedly. I jumped up from my seat and waved my hands to talk, covering up other people's speeches.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:✋ Quietly raise your hand and wait to be called on.",
-        "desc": "Take a deep breath and apply the brakes, using the \"✋ Quietly raise your hand and wait for the call to be called\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Raise your right hand straight up close to your ear, close your mouth and wait quietly until the teacher calls your name before standing up to speak.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"✋ Quietly raise your hands and wait for your name to be called\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Close your mouth like zipper and look at the teacher quietly. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -987,8 +994,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【✋ Quietly raise your hands and wait for roll call]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [✋ Quietly raise your hand and wait for roll call], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"✋ The corresponding behavior of \"Quietly raising hands and waiting for roll call\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter similar situations like \"classroom raising of hands to speak etiquette\" in ordinary classes, please prompt the formula: \"Start [✋ Quietly raise your hands and wait for roll call]! \";publicly affirm his progress in class: \"Look, your classmate just did it [✋ Quietly raise your hand and wait for roll call], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Close your mouth like zipper and look at the teacher quietly. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Close your mouth like zipper and look at the teacher quietly. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-11",
@@ -1049,36 +1056,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "As soon as you hear the school bell ringing, put down the game at hand immediately"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Walk quickly instead of running, and return to your seat within thirty seconds"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Take out the textbook and pencil case for the next period, sit upright and take a deep breath"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"hearing the bell will calm your mind\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Back to Class: Getting Ready When the Bell Rings”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "The bell rang, but he still insisted on kicking the ball into the goal, screaming in the playground and refusing to go back to the classroom.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower: ⏰ The bell returns to its place after thirty seconds.",
-        "desc": "Take a deep breath and apply the brakes, using the \"⏰ 30-second chime to return to the starting position\" technique to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "As soon as he heard the bell, he immediately counted thirty seconds silently in his heart, returned the toys to their original places, and quickly walked back to the classroom to tidy up the desktop.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"⏰ The bell returns in thirty seconds\" and give high-fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Walk quickly instead of running, and return to your seat within thirty seconds. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1086,8 +1093,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start [⏰ The bell will return in thirty seconds]!”",
       "praise": "Publicly affirm his progress in class: \"Look, my classmate just did [⏰ Return to position after the bell rings in thirty seconds], very polite!\" ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can perform the corresponding behavior of \"⏰ bell sounds for thirty seconds\" within 30 seconds under visual prompts, with an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Formula] When students encounter a similar situation in the ordinary class that \"the bell will calm down when hearing the bell\", please prompt the formula: \"Start [⏰ Bell Returns in Thirty Seconds]!\" \";Publicly affirm his progress in class: \"Look, my classmate just did [⏰ Return to position after the bell rings for thirty seconds], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Walk quickly instead of running, and return to your seat within thirty seconds. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Walk quickly instead of running, and return to your seat within thirty seconds. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-12",
@@ -1102,7 +1109,7 @@ const defaultBriefings = [
     "themeColor": "#ec4899",
     "badgeEmoji": "🤝",
     "badgeLabel": "Friendship Little Expert",
-    "superSkill": "🔑 Add to game pass",
+    "superSkill": "🔑 Asking to Join a Game",
     "summary": "Master the strategy of integrating into peer games: First, observe from the side for three seconds, wait for the game to pause, make eye contact and ask, \"May I join?\", and calmly accept if rejected.",
     "tags": [
       "Special education social",
@@ -1144,40 +1151,40 @@ const defaultBriefings = [
       "ebd": "Before the drill, clearly agree on the safety boundary and token rewards. If you are emotionally excited, you are allowed to go to the calm corner to take a deep breath, and then conduct the role drill after your emotions stabilize."
     },
     "visualCard": {
-      "title": "🎯 🔑 Add to game pass",
+      "title": "🎯 🔑 Asking to Join a Game",
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stop two steps away from your game partner and keep smiling"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Say the secret word to pass the level: \"Can I play together?\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Take the initiative to explain the role you can play or wait patiently for the next round"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Entering the Magic Password to Clear the Game\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Joining a Game: May I Play Too?”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Wanted to join everyone in playing football, so he rushed up and kicked the ball away, yelling at the goalkeeper: \"Now it's my turn to be the captain!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🔑 Add to game pass",
-        "desc": "Take a deep breath and apply the brakes, using the \"🔑 game access pass\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Walked to the game circle, stopped and stared, raised his hand gently and asked: \"Can I play together? I can be a passer!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🔑 Game Add Pass\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Say the secret word to pass the level: \"Can I play together?\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1185,8 +1192,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🔑 Game added to pass]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🔑 Game Add Pass], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🔑 The corresponding behavior of \"adding pass\" to the game has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a similar situation as \"joining the game's magic pass code\" in the ordinary class, please prompt the tip: \"Start [🔑 Game added to pass]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🔑 Game Add Pass], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Say the secret word to pass the level: \"Can I play together?\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Say the secret word to pass the level: \"Can I play together?\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-13",
@@ -1247,36 +1254,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Use your eyes to find students in the classroom who are working hard or need help."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Walk up and stretch out your right hand to comfort or praise"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Say silently in your heart: \"I have deposited another warm friendship gold coin\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of the \"【Thanksgiving Special】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “The Friendship Bank: Noticing Kindness Around Us”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "A classmate borrowed an eraser and accidentally dropped it on the ground. Jia lost his temper and called the other person a fool, and kicked the classmate's stationery away.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:💰 More Friendship Coins deposited",
-        "desc": "Take a deep breath and apply the brakes, using the \"💰 Friendship Coins\" to politely express yourself and take action.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "When you see a classmate in need of help, take the initiative to lend a hand and deposit a sparkling friendly gold coin into the friendship piggy bank in your heart!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"💰 Deposit more friendship gold coins\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Walk up and stretch out your right hand to comfort or praise. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1284,8 +1291,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【💰 Deposit more friendship gold coins]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [💰 Deposit more friendship gold coins], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"💰 The corresponding behavior of \"deposit more friendship gold coins\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Formula] When students encounter a situation similar to \"[Thanksgiving Special]\" in the ordinary class, please prompt the formula: \"Start [💰 Deposit more friendship gold coins]! \";publicly affirm his progress in class: \"Look, your classmate just did it [💰 Deposit more friendship gold coins], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Walk up and stretch out your right hand to comfort or praise. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Walk up and stretch out your right hand to comfort or praise. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-14",
@@ -1346,36 +1353,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Place the building blocks in the center of the table and everyone looks at the design drawings together"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Discuss the division of roles: \"I build the foundation, you build the roof.\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When taking the blocks, take them one at a time and thank and encourage each other."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Group Building Block Project\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Building Together: Taking Turns and Sharing Jobs”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When his teammates took the long red blocks they wanted, they were so angry that they knocked down the entire castle and shouted: \"Everyone, stop playing!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🧩 Teamwork and Collaboration to Cover",
-        "desc": "Take a deep breath and apply the brakes, using the \"🧩 teamwork and collaborative approach\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Take the initiative to discuss the division of labor: \"You are responsible for building the city wall, and I will build the bridge!\" When parts are insufficient, exchange them instead of fighting for them.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🧩 The team divided the work and worked together to build it\" and gave high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Discuss the division of roles: \"I build the foundation, you build the roof.\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1383,8 +1390,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🧩 Team division of labor and joint efforts]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🧩 The team divides the work and works together to cover], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🧩 The team divides labor and works together to implement corresponding behaviors, with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a similar situation in the \"Group Building Block Project\" in the ordinary class, please prompt the formula: \"Start [🧩 Team division of labor and joint efforts]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🧩 The team divides the work and works together to cover], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Discuss the division of roles: \"I build the foundation, you build the roof.\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Discuss the division of roles: \"I build the foundation, you build the roof.\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-15",
@@ -1410,7 +1417,7 @@ const defaultBriefings = [
     ],
     "story": {
       "title": "🔍 A colorful magnifying glass for praise in a gloomy little forest!",
-      "content": "Little hedgehog Api wore a brand new sky-blue hooded jacket today, with a fire-breathing dinosaur printed on the chest, looking very proud. But as soon as he entered the classroom, Jia, with sharp eyes, exclaimed, \"Wow! Api, your dinosaur jacket is so cool! The color is so pretty!\" Api's face flushed red to his ears, and he shyly buried his face in the jacket's hood, shrinking into a ball, too embarrassed to look at anyone. Teacher Owl smiled and handed Api a \"praise magnifying glass\" with gold trim: \"Api, when others praise us, it's like giving us a sparkling gem. We don't need to hide; just stand tall, look them in the eyes, smile, and say, 'Thank you, I like this jacket too,' and that's the perfect gift!\" Api pulled down the hood, looked at Jia, and smiled, saying, \"Thank you, Jia, this is a gift from my dad! I also think your red bow tie is so cute today!\" The two best friends clasped hands, and the classroom was filled with sweet laughter!",
+      "content": "Api the hedgehog arrives in a new blue dinosaur hoodie. Jia compliments its colours. Api blushes and hides in the hood. The owl teacher offers a “compliment magnifier” and explains that a compliment can be received like a gift. Api can attend to the speaker in a comfortable way and say thanks. Api lowers the hood, thanks Jia and explains that the hoodie was a present from Dad, then compliments Jia’s red bow. The friends share a happy moment.",
       "question": "When someone compliments your clothes or your handwriting, is it okay to hide and lower your head? How should you respond to compliments confidently?"
     },
     "timeline": [
@@ -1445,36 +1452,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you hear a compliment, stop what you are doing and face the person who complimented you."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Attend to the partner and offer a comfortable, sincere response"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Luo Luo generously said three words clearly: \"Thank you!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the situational test of \"praise magnifying glass and poise\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Giving Compliments and Saying Thank You”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "A classmate kindly praised his beautiful painting. Yu felt shy and overwhelmed, and angrily scolded him: \"It's so noisy!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:💖 Praise generously and say thank you.",
-        "desc": "Take a deep breath and apply the brakes, using the \"💖 praise generously and say thank you\".",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Looking at the friend who praised him, he raised the corners of his mouth slightly and said generously and gently: \"Thank you, I also think yours is beautiful!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"💖 Praise generously and say thank you\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Attend to the partner and offer a comfortable, sincere response. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1482,8 +1489,9 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【💖 Praise generously and say thank you]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [💖 Praise generously and say thank you], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"💖 Praise generously and say thank you\" corresponding behavior, the achievement rate is over 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a similar situation of \"praising a magnifying glass and being generous\" in a regular class, please prompt the formula: \"Start [💖 Praise generously and say thank you]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [💖 Praise generously and say thank you], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Attend to the partner and offer a comfortable, sincere response. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Attend to the partner and offer a comfortable, sincere response. Wait for a response, demonstrate if needed, and recognise effort without public comparisons.",
+    "useBrowserSpeech": true
   },
   {
     "id": "b-week-16",
@@ -1544,36 +1552,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Holding the rim of the bowl with both hands, sit upright at the dining table"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Nod deeply and say thank you to the elders who served you the glutinous rice balls."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Gently blow the cool and hot air, chew slowly and taste the delicious food quietly"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Winter Solstice Special 12/21】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Winter Solstice: Sharing Tangyuan and Showing Gratitude”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "The elders worked hard to cook glutinous rice balls and served them to the table. I only wanted to eat the red ones, so I scooped out all the white ones with a spoon and threw them on the table.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🍡 Celebrating Winter Solstice with Tangyuan (Sweet Rice Balls) and Expressing Gratitude",
-        "desc": "Take a deep breath and apply the brakes, using the \"🍡 Winter Solstice Tangyuan (sweet rice balls) to express gratitude\" to politely express and act.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Hold the rice dumpling bowl respectfully with both hands, say happy winter solstice and thank you to the elders first, blow it to cool down and then chew slowly to taste the warm deliciousness.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🍡 Winter Solstice Tangyuan means \"Thanksgiving\" and high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Nod deeply and say thank you to the elders who served you the glutinous rice balls.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1581,8 +1589,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🍡 Winter Solstice Tangyuan Words of Gratitude]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🍡 Winter Solstice Tangyuan Words of Gratitude], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🍡 The corresponding behavior of \"Winter Solstice Tangyuan Words of Gratitude\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"[Winter Solstice Special 12/21]\" in the ordinary class, please prompt the tip: \"Start [🍡 Winter Solstice Tangyuan Words of Gratitude]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🍡 Winter Solstice Tangyuan Words of Gratitude], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Nod deeply and say thank you to the elders who served you the glutinous rice balls.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Nod deeply and say thank you to the elders who served you the glutinous rice balls.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-17",
@@ -1643,36 +1651,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Take the gift with both hands and say thank you first no matter what is inside"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Smile as you unwrap and find one good thing about this gift"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Look into the eyes of the classmate who gave the gift and say: \"Thank you for your careful preparation!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Christmas Special 12/25】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Gift Exchange: Responding Kindly to Every Gift”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I opened my Christmas gift and found that it was a notebook instead of a beyblade, I rolled on the ground crying and swearing.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎄 Politely accepting gifts with good manners",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎄 Accept gifts politely and gracefully\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Take the gift with both hands and say thank you with a smile, appreciate the packaging and card, show your grace and say: \"This notebook can be used for drawing!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎄 Accept gifts politely and gracefully” and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Smile as you unwrap and find one good thing about this gift. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1680,8 +1688,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎄 Accept gifts politely and gracefully]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎄 Accept gifts politely and gracefully], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎄 The corresponding behavior of \"receiving gifts politely and gracefully\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Christmas Special 12/25]\" in the ordinary class, please prompt the formula: \"Start [🎄 Accept gifts politely and gracefully]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🎄 Accept gifts politely and gracefully], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Smile as you unwrap and find one good thing about this gift. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Smile as you unwrap and find one good thing about this gift. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-18",
@@ -1742,36 +1750,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Close your eyes and think about a new superpower you learned this year"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Carefully write down a small goal for progress in the new year on the wish card"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Place the wish card squarely on the wish tree, make a fist and say to yourself, come on"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【New Year's Eve Special 12/31-1/1】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Looking Back: Celebrating Progress and Setting Goals”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "During the New Year's review, I recalled that my shortcomings had been noted, and I was so angry that I tore the entire annual review worksheet into pieces.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎋 Hang your goals on the wishing tree",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎋 wish tree\" analogy to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Write down the most proud progress of this year on the wish tree, and set a feasible new goal for the new year, and stride forward bravely!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎋 Hang a goal on the wish tree\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Carefully write down a small goal for progress in the new year on the wish card. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1779,8 +1787,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎋 Hang a target on the wish tree]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎋 Hanging goals on the wish tree], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎋 Hang the target on the wish tree\" corresponding behavior, with an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to \"[New Year's Day Special 12/31-1/1]\" in the ordinary class, please prompt the tip: \"Start [🎋 Hang a target on the wish tree]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🎋 Hanging goals on the wish tree], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Carefully write down a small goal for progress in the new year on the wish card. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Carefully write down a small goal for progress in the new year on the wish card. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-19",
@@ -1841,36 +1849,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you hear the stroke change, make a fist with your right hand and tap the heart of your left hand to remind yourself"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Take three deep breaths and turn the pass in your brain: \"Elastic changes are no problem.\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Quickly cooperate with the teacher’s instructions and bring your stationery to the new activity location"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario of \"facing a sudden change in the class schedule\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “When Plans Change: Using a Change Pass”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Because it rained, the physical education class was changed to self-study in the classroom. Jia was so angry that he scribbled on the blackboard, slapped the table loudly and refused to go back to his seat.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🔄 Flexible Mind Transfer Pass",
-        "desc": "Take a deep breath and apply the brakes, using the \"🔄 Flexible Mindset Pass\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Take out the green \"Change Pass\", take a deep breath and say to yourself: \"It doesn't matter if the class schedule has changed, indoor activities are also fun!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🔄 Flexible Thought Pass\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Take three deep breaths and turn the pass in your brain: \"Elastic changes are no problem.\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1878,8 +1886,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🔄 Flexible Thought Pass]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🔄 Flexible Change of Thought Pass], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🔄 The corresponding behavior of \"Flexible Thought Pass\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a similar situation of \"facing sudden changes in class schedule\" in ordinary classes, please prompt the tip: \"Start [🔄 Flexible Thought Pass]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🔄 Flexible Change of Thought Pass], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Take three deep breaths and turn the pass in your brain: \"Elastic changes are no problem.\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Take three deep breaths and turn the pass in your brain: \"Elastic changes are no problem.\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-20",
@@ -1940,36 +1948,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you feel frustrated or stuck, put down your pen and take a deep breath."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Cross your arms and say the magic spell out loud to yourself: \"I'm just still learning.\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Raise your hand and politely ask the teacher or classmates for help: \"Can you teach me this question?\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In a situation where you \"encounter a problem and want to give up,\" which behavioral path would you choose?",
+      "prompt": "In the situation “When Work Feels Hard: I Am Still Learning”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I encounter a math question that I can’t write, I immediately break the pencil and yell angrily: “I’m a big idiot, I don’t want to write anymore!”",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:💪 I'm still learning the magic words.",
-        "desc": "Take a deep breath and apply the brakes, using the \"💪 magic words 'I'm still learning'\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Put down the pencil, take a deep breath, and say the magic words to yourself: \"It's not that I don't know it, I'm just 'still learning'! I can ask the teacher for help!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"💪 I’m still learning the magic words” and high-fiving my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Cross your arms and say the magic spell out loud to yourself: \"I'm just still learning.\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -1977,8 +1985,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【💪 I’m still learning the magic words]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [💪 I’m still learning the magic words], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"💪 \"I'm still learning the magic words\" and corresponding behaviors, with an achievement rate of over 80%.",
-    "regularClassTip": "[Putt Cooperation Formula] When students encounter a similar situation of \"encountering difficulties and want to give up\" in the ordinary class, please prompt the formula: \"Start [💪 I’m still learning the magic words]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [💪 I’m still learning the magic words], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Cross your arms and say the magic spell out loud to yourself: \"I'm just still learning.\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Cross your arms and say the magic spell out loud to yourself: \"I'm just still learning.\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-21",
@@ -2039,36 +2047,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Calmly took the evaluation paper, neither covering it up nor tearing it up impulsively"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Take out the correction pen and carefully see which step you wrote incorrectly"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Write the correct answer neatly in the correction column and ask the teacher for confirmation."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Final Exam and Assessment\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Learning from Corrections: Helping My Brain Grow”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I was giving the Mandarin assessment and I saw a cross with a red pen, I went crazy on the spot and tore the entire test paper into pieces, stuffed it into my mouth and swallowed it.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:📝 Red pen corrections upgrade your brain",
-        "desc": "Take a deep breath and apply the brakes, using the \"📝 Red Pen Correction Brain Upgrade\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Pick up the blue pen and carefully recalculate the red-crossed questions, and say to yourself in your heart: \"Every revision is a brain level improvement!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"📝 Red Pen Correction Brain Upgrade\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Take out the correction pen and carefully see which step you wrote incorrectly. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2076,8 +2084,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【📝 Red pen correction brain upgrade]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [📝 Red pen correction brain upgrade], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"📝 Red pen corrects the corresponding behavior of \"Brain Upgrade\", with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter similar situations like \"Final Examination and Assessment\" in ordinary classes, please prompt the tip: \"Start [📝 Red pen correction brain upgrade]! \";publicly affirm his progress in class: \"Look, your classmate just did it [📝 Red pen correction brain upgrade], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Take out the correction pen and carefully see which step you wrote incorrectly. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Take out the correction pen and carefully see which step you wrote incorrectly. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-22",
@@ -2138,36 +2146,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Stand up straight with your feet together and your hands in front of your chest."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Look at the eyebrows of the elders and say auspicious words loudly: \"Happy New Year and all the best\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Respectfully take the red envelope bag with both hands, put it straightly into your coat pocket and say thank you"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Lunar New Year Greetings Special】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Lunar New Year: Greetings and Red Envelope Manners”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When an elder wanted to give a red envelope, he couldn't wait for the other person to finish saying his blessings, so he reached out and snatched it away. He also counted the money loudly and said, \"That's it?\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🧧 Receiving red envelopes with both hands while saying auspicious words",
-        "desc": "Take a deep breath and apply the brakes, using the \"🧧 Receive red envelopes with both hands and say auspicious words\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Stand at attention with your feet together, bow your hands and say auspicious words \"I wish you a happy new year and good health\", take the red envelope respectfully with both hands and put it into your pocket.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🧧 Receive the red envelope with both hands, say auspicious words\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Look at the eyebrows of the elders and say auspicious words loudly: \"Happy New Year and all the best\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2175,8 +2183,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🧧 Receive the red envelope with both hands and say auspicious words]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🧧 Receive red envelopes with both hands and say auspicious words], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🧧 The corresponding behavior of \"holding red envelopes with both hands and saying auspicious words\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Lunar New Year Special Edition]\" in the ordinary class, please prompt the formula: \"Start [🧧 Receive the red envelope with both hands and say auspicious words]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🧧 Receive red envelopes with both hands and say auspicious words], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Look at the eyebrows of the elders and say auspicious words loudly: \"Happy New Year and all the best\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Look at the eyebrows of the elders and say auspicious words loudly: \"Happy New Year and all the best\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-23",
@@ -2237,36 +2245,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Before starting to use 3C, set a thirty-minute countdown with an alarm clock."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Turn off the screen as soon as the alarm goes off and put the device back into the charging base with both hands."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Go to the window and look at the green trees in the distance for three minutes, do stretching exercises and jump"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Winter Break Self-Reliance】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Screen-Time Balance: Making Time for Rest and Play”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Mom stipulated that mobile phones must be put away when the time is up. Xiaojiu was so angry that he rolled around on the ground and smashed the TV remote control with all his strength.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:📱 Your 3C Time Manager",
-        "desc": "Take a deep breath and apply the brakes, using the \"📱 3C Time Manager\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "When the alarm clock on your phone rings, take the initiative to press it to turn it off, hand the tablet to your parents, put on your sneakers and ride a bicycle in the outdoor park to enjoy the breeze!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"📱 3C Time Butler\" and gave high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Turn off the screen as soon as the alarm goes off and put the device back into the charging base with both hands.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2274,8 +2282,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【📱 3C Time Butler]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [📱 3C Time Butler], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"📱 The corresponding behavior of \"3C Time Butler\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Winter Vacation Life Autonomy]\" in the ordinary class, please prompt the formula: \"Start [📱 3C Time Butler]!\"; publicly acknowledge his progress in class: \"Look, your classmate just did it [📱 3C Time Butler], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Turn off the screen as soon as the alarm goes off and put the device back into the charging base with both hands.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Turn off the screen as soon as the alarm goes off and put the device back into the charging base with both hands.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-24",
@@ -2336,36 +2344,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Put your hands on the table and wait for the host to finish reading the puzzle questions"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Comply with the competition rules of \"raise your hand first and then stand up to answer\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When you guess wrong, smile to yourself and say it’s okay, and applaud the students who got the answer right."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of the \"Lantern Festival Special\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Lantern Riddles: Following Rules and Trying Again”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I saw another group guessing the lantern riddle and getting the prize, I was so angry that I rushed forward and snatched away other people's small lanterns, and even cursed the host teacher for being biased.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🏮 Guess the riddles while following the rules for answering quickly.",
-        "desc": "Take a deep breath and apply the brakes, using the \"🏮 Guess lantern riddles and follow the rules for answering questions. Express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Comply with the rules of ringing the bell and accepting the prize with a smile when you guess right. If you guess wrong or miss, you can also warmly applaud other winning students!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🏮 Guess lantern riddles and follow the rules for answering questions\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Comply with the competition rules of \"raise your hand first and then stand up to answer\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2373,8 +2381,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🏮 Guess the lantern riddles and follow the answering rules]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🏮 When guessing lantern riddles, follow the answering rules], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🏮 Guessing lantern riddles and complying with the answering rules, the achievement rate is over 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Lantern Festival Special]\" in the ordinary class, please prompt the formula: \"Start [🏮 Guess the lantern riddles and follow the answering rules]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🏮 When guessing lantern riddles, follow the answering rules], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Comply with the competition rules of \"raise your hand first and then stand up to answer\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Comply with the competition rules of \"raise your hand first and then stand up to answer\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-25",
@@ -2435,36 +2443,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Get up in the morning, drink a cup of warm water, and do chest expansion and stretching exercises three times."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Check whether the water bottle, contact book and colored pens in the schoolbag are complete according to the class schedule"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Walk into the classroom with your head held high and say hello to the first friend you see with a smile"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"Back to School Refocusing Battle\" scenario test, if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “A Fresh Start: Returning to School Routines”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I was woken up, I was so angry that I threw all the textbooks and stationery in my schoolbag into the trash can. I grabbed the bedrail and refused to go out.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎒 Back to school, get back into the swing of things and start fresh again.",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎒 School starts, calm down and restart again\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "I packed my schoolbags and uniforms the night before, took a deep breath and did morning stretching exercises in the morning, and walked into the school gate full of energy to say hello to the guards!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎒 School starts, calm down and restart”, and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Check whether the water bottle, contact book and colored pens in the schoolbag are complete according to the class schedule. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2472,8 +2480,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎒 School starts, calm down and restart]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎒 School starts, calm down and restart], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎒 According to the corresponding behavior of “Restarting School and Restarting School”, the achievement rate is over 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to the \"Start-up War\" in ordinary classes, please prompt the tip: \"Start [🎒 School starts, calm down and restart]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🎒 School starts, calm down and restart], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Check whether the water bottle, contact book and colored pens in the schoolbag are complete according to the class schedule. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Check whether the water bottle, contact book and colored pens in the schoolbag are complete according to the class schedule. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-26",
@@ -2534,36 +2542,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Raise one arm forward and measure the safe boundary with peers"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Use your palms facing outward to make a friendly braking gesture: \"Please give me an arm's length distance.\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Before you want to hug or shake hands, always ask: \"Can I hug you?\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"My Personal Body Airbag\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Personal Space: Learning About Body Boundaries”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I saw my classmate wearing a cute headband, I reached out and pulled it off hard and put it on my head. I also pushed my classmate to the corner.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🛡️ An arm-sized airbag",
-        "desc": "Take a deep breath and apply the brakes, using the \"🛡️ one-arm airbag\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Extend an arm to confirm social distance and politely ask for permission before touching other people's belongings.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🛡️ An airbag for one arm\" and high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Use your palms facing outward to make a friendly braking gesture: \"Please give me an arm's length distance.\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2571,8 +2579,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🛡️ One arm airbag]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🛡️ One arm airbag], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🛡️ \"One arm airbag\" corresponding behavior, the achievement rate is more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"My Personal Body Airbag\" in a regular class, please prompt the tip: \"Start [🛡️ One arm airbag]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🛡️ One arm airbag], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Use your palms facing outward to make a friendly braking gesture: \"Please give me an arm's length distance.\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Use your palms facing outward to make a friendly braking gesture: \"Please give me an arm's length distance.\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-27",
@@ -2633,36 +2641,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Put your feet firmly on the floor and stand as straight as a pine tree"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Raise your right hand forward to show the \"Palm Red Light Stop\" sign"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "The secret word for clearance was spoken firmly in a loud voice: \"No! Please stop!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In a situational test of \"bravely and firmly saying 'no'\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “A Firm No: My Body, My Choice”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I encounter senior classmates who force me to hand over snacks, I obediently hand them over for fear of being excluded, and even help steal other people's money.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:✋ Firmly Reject Protective Shield",
-        "desc": "Take a deep breath and apply the brakes, using the \"✋ Firm Rejection Shield\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Look directly at the other party firmly, extend your right palm forward to sign \"stop\", and say clearly and firmly: \"No! I don't agree!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"✋ Firmly reject the shield” and high-five the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Raise your right hand forward to show the \"Palm Red Light Stop\" sign. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2670,8 +2678,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【✋ Firmly refuse the shield]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [✋ Firmly refuse the shield], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"✋ Firmly reject the protective shield\" corresponding behavior, with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a similar situation of \"bravely and firmly saying \"no\"\" in the ordinary class, please prompt the formula: \"Start [✋ Firmly refuse the shield]! \";publicly affirm his progress in class: \"Look, your classmate just did it [✋ Firmly refuse the shield], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Raise your right hand forward to show the \"Palm Red Light Stop\" sign. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Raise your right hand forward to show the \"Palm Red Light Stop\" sign. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-28",
@@ -2732,36 +2740,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Before entering the library, first adjust the throat knob to a whisper."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Read the book with both hands and turn it gently, without folding the corners or using a pen to draw."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "After reading, turn the spine of the book outward and insert it neatly back into the original numbered shelf."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Arbor Day Special 3/12】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Caring for Shared Things and Using a Library Voice”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I was trying to borrow a popular comic book from the library, if I couldn't get it, I pushed down the whole row of bookshelves and scattered the books all over the floor.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🌿 Guardian Star of Public Property Protection",
-        "desc": "Take a deep breath and apply the brakes, using the \"🌿 Guardian Star of Public Property\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Gently flip through the pages of the book without folding the corners. After reading, put the books back to the original sorting shelf with both hands, walking as lightly as a cat walking.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🌿 \"Guardian Star of Cherishing Public Property\" and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Read the book with both hands and turn it gently, without folding the corners or using a pen to draw.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2769,8 +2777,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🌿 Guardian Star of Cherishing Public Property]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🌿 Guardian Star of Cherishing Public Property], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🌿 The corresponding behavior of \"Cherishing Public Property and Guardian Star\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to \"[Arbor Day Special 3/12]\" in the ordinary class, please prompt the tip: \"Start [🌿 Guardian Star of Cherishing Public Property]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🌿 Guardian Star of Cherishing Public Property], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Read the book with both hands and turn it gently, without folding the corners or using a pen to draw.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Read the book with both hands and turn it gently, without folding the corners or using a pen to draw.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-29",
@@ -2831,36 +2839,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you hear the other party say \"no\", your ears immediately receive the signal and stop."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Count silently for three seconds in your mind: \"Others have the right to reject me, this is normal.\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "With a smile on his face, he responded generously: \"Okay, it's okay, we'll make an appointment next time.\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In a situation where you have to \"respect others' 'no'\", which behavioral path would you choose?",
+      "prompt": "In the situation “Respecting No: Accepting Other People's Boundaries”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Yu was invited to play chess together but was rejected. Yu became furious and scolded Yu for his lack of loyalty. He turned over the table and swept the chess pieces off the ground.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚦 Instant brake-striking reflexes",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚦 Instant Braking Response\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "When you hear someone say \"no\", you immediately step on the emotional brake, take a deep breath, nod and say: \"It's okay, we can play again when you are free next time!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚦 Immediately step on the brakes to react” and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Count silently for three seconds in your mind: \"Others have the right to reject me, this is normal.\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2868,8 +2876,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚦 Immediate braking reaction]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚦 Immediate braking reaction], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚦 The corresponding behavior of \"immediate braking response\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter similar situations of \"respecting others' \"no\"\" in ordinary classes, please prompt the formula: \"Start [🚦 Immediate braking reaction]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🚦 Immediate braking reaction], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Count silently for three seconds in your mind: \"Others have the right to reject me, this is normal.\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Count silently for three seconds in your mind: \"Others have the right to reject me, this is normal.\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-30",
@@ -2930,36 +2938,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Ask yourself: \"Will this secret make me scared or have a stomachache?\""
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "If it is a dangerous or bad secret, activate the help alarm immediately"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Go to the special education teacher and tell the truth quietly but firmly to seek protection"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"Good Secret vs. Bad Secret\" scenario test, if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Safe and Unsafe Secrets: Speaking Up and Getting Help”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "You saw a classmate stealing class fees, and he threatened to beat you up if you went out. He lied because he was afraid to help hide his wallet.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚨 Secret Alarm Deactivator",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚨 Secret Alarm Relief Device\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Distinguish between good secrets and bad secrets, and if you notice the \"bad secrets\" that make you feel stomachache and fearful, report it to a trusted teacher for help immediately!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚨 Secret Alarm Silencer\" and high-five your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: If it is a dangerous or bad secret, activate the help alarm immediately. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -2967,8 +2975,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚨 Secret alarm canceller]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚨 Secret alarm canceller], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚨 The corresponding behavior of \"Secret Alarm Canceler\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put cooperation formula] When students encounter a similar situation of \"good secrets vs bad secrets\" in the ordinary class, please prompt the formula: \"Start [🚨 Secret alarm canceller]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🚨 Secret alarm canceller], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: If it is a dangerous or bad secret, activate the help alarm immediately. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: If it is a dangerous or bad secret, activate the help alarm immediately. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-31",
@@ -3029,36 +3037,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Queue up in order before getting on the bus, don’t run, don’t rush"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "After taking a seat, sit with a straight posture and keep your feet flat on the ground without kicking the front seat"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Use one minute of voice volume throughout the whole process, and see the elderly and weak take the initiative to give up their seats"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Children's Day and Qingming Festival 4/4\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Public Manners: Riding Safely and Waiting in Line”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When taking the bus, in order to grab the window seat, I pushed the old lady who was getting on the bus away and occupied two seats to lie down.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎫 Little expert in public etiquette",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎫 Public Etiquette Little Expert\" to express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Queue up and swipe your card to say thank you, hold the handrails with both hands in the carriage, lower your voice and sit quietly, and take the initiative to offer your seat to the elders.",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎫 A little master of public etiquette\" and high-fived his family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: After taking a seat, sit with a straight posture and keep your feet flat on the ground without kicking the front seat. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3066,8 +3074,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎫 A little master of public etiquette]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎫 A little master of public etiquette], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎫 The corresponding behavior of \"Public Etiquette Master\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter similar situations like \"[Children's Day and Qingming Festival 4/4]\" in ordinary classes, please prompt the tip: \"Start [🎫 A little master of public etiquette]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🎫 A little master of public etiquette], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: After taking a seat, sit with a straight posture and keep your feet flat on the ground without kicking the front seat. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: After taking a seat, sit with a straight posture and keep your feet flat on the ground without kicking the front seat. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-32",
@@ -3077,13 +3085,13 @@ const defaultBriefings = [
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 10: Self-Care and Healthy Habits",
-    "title": "Lunch Manners: Chewing Quietly and Reducing Food Waste",
+    "title": "Lunchtime Manners and Communicating Food Needs",
     "code": "特社1-II-17",
     "themeColor": "#eab308",
     "badgeEmoji": "🍱",
-    "badgeLabel": "Dining Table Expert",
-    "superSkill": "🥢 Little Food God Who Finishes Every Dish!",
-    "summary": "Master the etiquette and rules of group dining: sit upright, keep your mouth closed while eating and do not make chewing noises, do not spit or talk while eating, cherish food and do not be picky about food, and keep tableware neatly sorted and recycled.",
+    "badgeLabel": "Expressing Mealtime Needs",
+    "superSkill": "Express my lunchtime needs",
+    "summary": "Practise express my lunchtime needs using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "Special education social",
       "Communication training",
@@ -3092,72 +3100,77 @@ const defaultBriefings = [
       "LD"
     ],
     "story": {
-      "title": "🥣 A mouthful of rice grains spouting nonsense versus a spotless plate!",
-      "content": "At lunchtime, the kitchen staff prepared fragrant corn chowder and fried pork chops. Jun's stomach was rumbling with hunger. He grabbed a huge mouthful of rice and stuffed it into his mouth, shouting before he'd even finished chewing, \"Yu, look! This piece of meat is huge… Pfft!\" Rice grains sprayed all over the table like snowflakes. Yu quickly grabbed a tissue to wipe it up. The teacher came over and showed Jun a \"Little Gentleman's Table Manner Card\": \"First, don't talk with food in your mouth; second, close your lips and chew carefully; third, make sure your bowl is sparkling clean after you finish!\" Jun wiped his mouth sheepishly, then sat up straight like He, chewing each bite slowly and carefully before speaking. At the end of the meal, all four plates were spotless, much to the delight of the kitchen staff!",
-      "question": "What terrible things happen when you speak with your mouth full of food? What should you do first when you want to speak?"
+      "title": "Express my lunchtime needs",
+      "content": "At lunch, He finds a food smell uncomfortable. He points to a needs card and asks for a smaller portion and help. The teacher checks the agreed dietary arrangements before making changes. Everyone practises respecting different needs without comparing how much people eat.",
+      "question": "How can you let the teacher know about a food preference or dietary need?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🥣 Talking nonsense with a mouthful of rice grains and a clean plate!”, using puppet show illustrations to guide students to be aware of emotions and interpersonal situations: What terrible things will happen if you talk when your mouth is full of food? What should you do first when you want to talk?"
+        "stage": "Story and feelings",
+        "desc": "Read “Express my lunchtime needs”. How can you let the teacher know about a food preference or dietary need? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Demonstration \"🥢 The core technique of \"Delicious CD Little Food God\" is to break down the three steps of body movements and voice tones, and combine it with the brain braking visual chart for skillful practice."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Check the portion and any known dietary requirements → Use speech or a communication card to request a smaller portion, an alternative or help → Eat safely and comfortably, then tidy the utensils"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "Four little heroes (Yu🦁, Jun🐻, He🐼, Jia🦊) Conducted a practical drill in the character theater \"At the lunch table, everyone practiced chewing with their lips tightly closed without making a sound, speaking only after swallowing, and cleaning and sorting the plates after the meal!\", and became proficient in non-verbal body movements and lines."
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "Complete the self-examination check-box and color worksheet, and you will be awarded the \"Table Master\" medal of honor and receive classroom star tokens!"
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Provide \"🥢 \"Delicious CD Food God\" structured visual reminder chart, marking eye focus and body distance to reduce anxiety in unfamiliar social situations.",
-      "ld": "There is no need for cumbersome text copying. The whole process uses color picture and text circle selection, body movement drills and oral repetition as the main learning evaluation methods.",
-      "ebd": "Before the drill, clearly agree on the safety boundary and token rewards. If you are emotionally excited, you are allowed to go to the calm corner to take a deep breath, and then conduct the role drill after your emotions stabilize."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "🎯 🥢 Little Food God Who Finishes Every Dish!",
+      "title": "Express my lunchtime needs",
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Check the portion and any known dietary requirements"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Use speech or a communication card to request a smaller portion, an alternative or help"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Eat safely and comfortably, then tidy the utensils"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Nutritional Lunch Table Manners\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "How can you let the teacher know about a food preference or dietary need?",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🥢 Little Food God Who Finishes Every Dish!",
-        "desc": "Take a deep breath and apply the brakes, using the \"🥢 Tasty CD God of Food\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Use speech or a communication card to request a smaller portion, an alternative or help",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🥢 Delicious CD \"Small Food God\" and give high fives to the family!",
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech or a communication card to request a smaller portion, an alternative or help. Report no opportunity or any support needed too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3165,8 +3178,9 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🥢 Delicious CD Food God]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🥢 Delicious CD Food God], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🥢 The corresponding behavior of \"Delicious CD Little Food God\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a similar situation of \"Nutritious Lunch Table Etiquette\" in a regular class, please prompt the tip: \"Start [🥢 Delicious CD Food God]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🥢 Delicious CD Food God], very polite!”"
+    "iepGoal": "In this lesson’s context, observe whether the learner can use speech or a communication card to request a smaller portion, an alternative or help. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Use speech or a communication card to request a smaller portion, an alternative or help. Accept speech, pointing or gestures without public comparisons.",
+    "useBrowserSpeech": true
   },
   {
     "id": "b-week-33",
@@ -3227,36 +3241,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When the last one leaves the classroom, turn off the light switch clockwise"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "After washing your hands, turn the faucet firmly and lock it tightly to avoid wasting water drops."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Rinse lunch boxes and plastic bottles and put them into recycling bins by category"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test for \"World Earth Day 4/22\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Green Guardians: Saving Energy and Recycling”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "After drinking the drink, he crushed the Tetra Pak bag and kicked it into the flower garden, and also laughed at the environmental volunteers who picked up garbage as fools.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:♻️ Resource categorization green finger",
-        "desc": "Take a deep breath and apply the brakes, using the \"♻️ green finger for resource categorization\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Turn off the light switch that no one is using, rinse the carton and flatten it after drinking the milk, and definitely throw it into the recycling bin!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"♻️ Resource Classification Green Finger\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: After washing your hands, turn the faucet firmly and lock it tightly to avoid wasting water drops.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3264,8 +3278,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【♻️ Resource classification green finger]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [♻️ Resource classification green finger], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"♻️ The corresponding behavior of \"Resource Classification Green Finger\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a similar situation like \"[World Earth Day 4/22]\" in ordinary classes, please prompt the tip: \"Start [♻️ Resource classification green finger]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [♻️ Resource classification green finger], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: After washing your hands, turn the faucet firmly and lock it tightly to avoid wasting water drops.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: After washing your hands, turn the faucet firmly and lock it tightly to avoid wasting water drops.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-34",
@@ -3326,36 +3340,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Take a deep breath and put back the curse words you originally wanted to say."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Say the first sentence: \"I feel... (state your feelings)\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Say the second and third sentences: \"Because... I hope...\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"Speaking Magic 'I Message'\" situational test, if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “I-Messages: Sharing Feelings Without Blaming”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When a classmate accidentally touched his arm, he immediately punched the other person in the stomach and yelled ugly and dirty words to insult the classmate and his family.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎯 I communicate with magic arrows",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎯 I Message Communication Magic Arrow\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Use the \"I message\" communication method: \"I feel a lot of pain because you bumped into me. I hope you will be more careful next time you walk.\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎯 I communicate with the magic arrow\" and give high fives to my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Say the first sentence: \"I feel... (state your feelings)\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3363,8 +3377,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎯 I communicate with the magic arrow]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎯 My message communication magic arrow], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎯 The corresponding behavior of \"My Message Communication Magic Arrow\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"Talking Magic \"I Message\"\" in the ordinary class, please prompt the formula: \"Start [🎯 I communicate with the magic arrow]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🎯 My message communication magic arrow], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Say the first sentence: \"I feel... (state your feelings)\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Say the first sentence: \"I feel... (state your feelings)\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-35",
@@ -3425,36 +3439,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When entering the health center, first nod politely and say hello: \"Hello, nurse\""
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Point to the specific parts of your body that feel uncomfortable (head/stomach/hands and feet)"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Clearly state the reason why it happened: \"I fell and hit while running after class.\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"seeking help politely at a health center\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Asking the School Nurse for Help”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "My knee was bruised and bleeding. When I entered the health center, I cried and threw the chair. I refused the nurse to apply the medicine, and even knocked the betadine medicine to the ground.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🩹 Clearly identifying young patients seeking medical help",
-        "desc": "Take a deep breath and apply the brakes, using the \"🩹 Clearly Seeking Medical Help from Young Patients\" approach to polite expression and actions.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "He walked in politely and said hello to the nurse. He calmly pointed to the injured area and said, \"My right knee was bruised and bleeding when I fell in gym class.\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🩹 \"Clearly seek medical treatment for young patients\" and give high-fives to family members!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Point to the specific parts of your body that feel uncomfortable (head/stomach/hands and feet). Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3462,8 +3476,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🩹 Seek medical treatment clearly for young patients]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🩹 Seek medical treatment clearly for young patients], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🩹 Clarify the corresponding behaviors for \"young patients seeking medical treatment\", with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"Health Center Helping Politeness\" in a regular class, please prompt the tip: \"Start [🩹 Seek medical treatment clearly for young patients]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🩹 Seek medical treatment clearly for young patients], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Point to the specific parts of your body that feel uncomfortable (head/stomach/hands and feet). Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Point to the specific parts of your body that feel uncomfortable (head/stomach/hands and feet). Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-36",
@@ -3524,36 +3538,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Handwrite a Mother’s Day card full of gratitude"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Go to mom and give her a big warm hug"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Take the initiative to complete a household chore (such as folding clothes or sweeping the floor) and use actions to relieve worries"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Mother's Day Special】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Showing Care: A Thank-You Card and a Helpful Chore”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Mom reminded herself that it was time to take a bath, threw the toys on the spot and shouted: \"Today is Mother's Day, please leave me alone!\" This made her sad and shed tears.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:💖 Loving Household Chores Taker",
-        "desc": "Take a deep breath and apply the brakes, using the \"💖 Loving Household Actionist\" approach to express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Present hand-painted carnation cards, hug mom and say Happy Mother's Day, and take the initiative to help mom pat her back and share the chores of washing dishes!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"💖 A loving family activist\" and high-fives his family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Go to mom and give her a big warm hug. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3561,8 +3575,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【💖 Loving housework activist]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [💖 Loving housework activist], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"💖 The corresponding behavior of \"Love Domestic Activist\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a similar situation as \"[Mother's Day Special]\" in the ordinary class, please prompt the formula: \"Start [💖 Loving housework activist]! \";publicly affirm his progress in class: \"Look, your classmate just did it [💖 Loving housework activist], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Go to mom and give her a big warm hug. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Go to mom and give her a big warm hug. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-37",
@@ -3623,36 +3637,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "As soon as you walk into the corridor, start the slow gear, walk slowly and don’t run."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Go up and down the stairs with your feet one step at a time, hold the safety handrail with your right hand and walk to the right"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Walk to the blind corner of the corridor, stop for a second and turn your head to confirm that no one is around before turning."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"no blind spots in campus safety\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “School Safety: Walking in Hallways and on Stairs”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "In order to rush to the stadium after class, I ran wildly in the corridor and knocked away the squad leader who was holding a stack of homework books. His homework was scattered on the ground and he refused to apologize.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚸 Turn corners, stop, look, and listen like a radar",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚸 Stop around the corner, look and listen to the radar\" express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Walk slowly and lightly in the corridor, go up and down the stairs close to the railing on the right side one step at a time, and activate the \"stop, watch, listen\" radar at the corner!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚸 Stop around the corner to watch and listen to the radar\" and give high-fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Go up and down the stairs with your feet one step at a time, hold the safety handrail with your right hand and walk to the right. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3660,8 +3674,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚸 Stop around the corner and listen to the radar]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚸 Stop around the corner to watch and listen to the radar], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚸 The corresponding behavior is \"stop around the corner, watch and listen to the radar\", with an achievement rate of over 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a similar situation of \"campus safety has no dead ends\" in ordinary classes, please prompt the tip: \"Start [🚸 Stop around the corner and listen to the radar]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🚸 Stop around the corner to watch and listen to the radar], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Go up and down the stairs with your feet one step at a time, hold the safety handrail with your right hand and walk to the right. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Go up and down the stairs with your feet one step at a time, hold the safety handrail with your right hand and walk to the right. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-38",
@@ -3722,36 +3736,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Turn toward the partner and offer a sincere apology: “I am sorry.”"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Explain what happened specifically: \"I accidentally knocked over your pen holder\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Offer a remedy: \"I'll help you pick up the pen and put it away together.\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"What to do if you step on a landmine? The four steps to a sincere apology\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “A Sincere Apology: Four Steps to Make Things Right”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I accidentally broke He's colored pen. Not only did I not apologize, but I also complained to him and scolded He for buying a bad colored pen.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🙇 The Four-Step Method for Sincere Apology",
-        "desc": "Take a deep breath and apply the brakes, using the \"🙇 Four Steps to Sincerely Apologize\" Express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "The four steps of a sincere apology: look the other person in the eye, say sorry, explain the reason, and proactively ask how to help make amends!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🙇 Four steps to sincerely apologize\" and high-five your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Explain what happened specifically: \"I accidentally knocked over your pen holder\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3759,8 +3773,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🙇 Four steps to sincerely apologize! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🙇 Four steps to sincerely apologize], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🙇 Corresponding behavior to the \"Four Steps of Sincere Apology\", the achievement rate is over 80%.",
-    "regularClassTip": "[Putt Cooperation Formula] When students encounter a situation similar to \"What should I do if I step on a landmine? Four steps to sincerely apologize\" in the ordinary class, please prompt the formula: \"Start [🙇 Four steps to sincerely apologize]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🙇 Four steps to sincerely apologize], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Explain what happened specifically: \"I accidentally knocked over your pen holder\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Explain what happened specifically: \"I accidentally knocked over your pen holder\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-39",
@@ -3770,13 +3784,13 @@ const defaultBriefings = [
     "dayOfWeek": "Tuesday",
     "festival": "",
     "unit": "Unit 12: Apologies, Forgiveness and Repairing Relationships",
-    "title": "Accepting an Apology and Rebuilding Friendship",
+    "title": "After an Apology Sharing Feelings and Choosing How to Repair",
     "code": "特社1-II-22",
     "themeColor": "#0ea5e9",
     "badgeEmoji": "🕊️",
-    "badgeLabel": "Tolerance Decoding Officer",
-    "superSkill": "🗝️ Forgiveness and a magnanimous heart",
-    "summary": "Master the ability to accept apologies and let go: When the other party sincerely apologizes, be able to restrain the vengeful mentality of \"holding a grudge, being relentless, and speaking ill of others,\" and say \"It's okay, I forgive you,\" and agree together on how to do better next time.",
+    "badgeLabel": "Choosing How to Repair",
+    "superSkill": "There are choices after an apology",
+    "summary": "Practise there are choices after an apology using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "Special education social",
       "Communication training",
@@ -3785,72 +3799,77 @@ const defaultBriefings = [
       "LD"
     ],
     "story": {
-      "title": "💔 A torn dinosaur sticker and two little hands clasped together!",
-      "content": "When borrowing stickers after class, Jun accidentally tore Yu's favorite Thunder Dragon sticker in half. Jun immediately apologized nervously: \"Yu, I'm so sorry! I really didn't mean to, I'll get you a new one!\" Yu was initially very angry and turned away, thinking, \"I never want to be friends with Jun again!\" The teacher sat down next to Yu and said gently, \"Yu, Jun has sincerely apologized and is willing to try to make amends. If we hold onto anger, our hearts will be filled with black stones; but if we choose to forgive, beautiful flowers will bloom in our hearts!\" Looking at Jun's guilty face, almost crying, Yu turned around, walked over, and patted Jun's shoulder: \"It's okay, we'll use clear tape to stick it back together, it'll still be a pretty dinosaur!\" The two little hands clasped together again, and the ship of friendship set sail once more!",
-      "question": "When someone has sincerely apologized and is willing to compensate, what will happen if we keep scolding them and ignoring them? What are the benefits of \"choosing to forgive\"?"
+      "title": "There are choices after an apology",
+      "content": "Jun accidentally knocks over Jia’s work and offers to help repair it. Jia is still upset and asks for more time. The teacher helps everyone make the area safe and discuss repairs. Hearing an apology does not mean having to forgive immediately, hug or keep playing together.",
+      "question": "What could you say if you hear an apology but are not ready to respond?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"💔 Torn dinosaur sticker with two little hands holding each other!”, using puppet show illustrations to guide students to be aware of emotions and interpersonal situations: When someone has sincerely apologized and was willing to compensate, what will happen in the end if we keep scolding him and ignoring him? What benefits does \"choosing to forgive\" have for yourself?"
+        "stage": "Story and feelings",
+        "desc": "Read “There are choices after an apology”. What could you say if you hear an apology but are not ready to respond? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Demonstration \"🗝️ The core technique of \"Tolerance, Forgiveness and Big Heart\" is a three-step process of dismantling body movements and voice tones, combined with the brain braking visual chart for skillful practice."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Check that you feel safe and willing to talk → Share a feeling or say that you need more time → Discuss repair and future boundaries with a trusted adult"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "Four little heroes (Yu🦁, Jun🐻, He🐼, Jia🦊) Conducting a practical exercise in the character theater \"Faced with sincere apologies from peers, four partners practiced opening their hearts, accepting apologies, saying \"It's okay\" and repairing items together! ”, proficient in non-verbal body movements and lines."
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "After completing the self-examination check-box and color worksheet, you will be awarded the \"Tolerance Decoder\" medal of honor and rewarded with classroom star tokens!"
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Provide \"🗝️ Tolerance, Forgiveness, Big Heart\" structured visual reminder chart, marking eye focus and body distance to reduce anxiety in unfamiliar social situations.",
-      "ld": "There is no need for cumbersome text copying. The whole process uses color picture and text circle selection, body movement drills and oral repetition as the main learning evaluation methods.",
-      "ebd": "Before the drill, clearly agree on the safety boundary and token rewards. If you are emotionally excited, you are allowed to go to the calm corner to take a deep breath, and then conduct the role drill after your emotions stabilize."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "🎯 🗝️ Forgiveness and a magnanimous heart",
+      "title": "There are choices after an apology",
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Check that you feel safe and willing to talk"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Share a feeling or say that you need more time"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Discuss repair and future boundaries with a trusted adult"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the situational test of \"when someone says sorry\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "What could you say if you hear an apology but are not ready to respond?",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🗝️ Forgiveness and a magnanimous heart",
-        "desc": "Take a deep breath and apply the brakes, using the \"🗝️ tolerance and forgiveness\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Share a feeling or say that you need more time",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🗝️ Tolerant, forgiving and big-hearted”, and high-fived my family!",
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Share a feeling or say that you need more time. Report no opportunity or any support needed too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3858,8 +3877,9 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🗝️ Tolerance, forgiveness and a big heart]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🗝️ Tolerant and forgiving, big-hearted], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🗝️ The corresponding behavior of \"Tolerance, Forgiveness and Big Mind\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter similar situations like \"when others say sorry\" in ordinary classes, please prompt the formula: \"Start [🗝️ Tolerance, forgiveness and a big heart]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🗝️ Tolerant and forgiving, big-hearted], very polite! ”"
+    "iepGoal": "In this lesson’s context, observe whether the learner can share a feeling or say that you need more time. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Share a feeling or say that you need more time. Accept speech, pointing or gestures without public comparisons.",
+    "useBrowserSpeech": true
   },
   {
     "id": "b-week-40",
@@ -3920,36 +3940,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Listen intently to the captain's drum chant: \"One, two! One, two!\""
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "The movements of both hands match the speed of teammates, neither rushing forward nor lagging behind"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When falling behind, shout cheering slogans loudly to cheer each other up without blaming others."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Dragon Boat Festival Special】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Dragon Boat Teamwork: Moving Together”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "After losing a round of tug-of-war, he immediately threw the hemp rope to the ground, pointed at his teammate's nose and yelled, \"It's all because you are too weak!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🥁 Row a dragon boat in perfect rhythm",
-        "desc": "Take a deep breath and apply the brakes, using the \"🥁 \"Dragon Boating in Rhythm\" Express and act politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Row the oars neatly to the rhythm of the big drum, shout slogans loudly to cheer each other up even if they fall behind, and keep fighting until the last second!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🥁 Rowing dragon boats in time with the rhythm\" and giving high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: The movements of both hands match the speed of teammates, neither rushing forward nor lagging behind. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -3957,8 +3977,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🥁 Dragon boat racing in time with the rhythm]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🥁 Rowing dragon boats in time with the rhythm], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🥁 The corresponding behavior is \"Rhythm and Dragon Boat Racing\", with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Dragon Boat Festival Special]\" in the ordinary class, please prompt the formula: \"Start [🥁 Dragon boat racing in time with the rhythm]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🥁 Rowing dragon boats in time with the rhythm], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: The movements of both hands match the speed of teammates, neither rushing forward nor lagging behind. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: The movements of both hands match the speed of teammates, neither rushing forward nor lagging behind. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-41",
@@ -4019,36 +4039,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "The referee blows the whistle and immediately stops moving and stands at attention."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Take a deep breath to calm down the excitement of victory and defeat, and walk towards the opponent's team"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Stretch out your right hand and shake hands with your opponent warmly: \"Thank you for the advice, you performed really well!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"sportsmanship: being able to play hard and lose hard\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Good Sportsmanship: Winning and Losing Kindly”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "After losing to Yu in chess, he was so angry that he overturned the entire chessboard and smashed the chess pieces all over the floor. He also pointed at Yu and scolded him for cheating.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:👏 Sportsmanship - Big applause!",
-        "desc": "Take a deep breath and apply the brakes, using the \"👏 sportsmanship applause\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "After the game, regardless of winning or losing, walk towards your opponent, take off your hat, shake hands and say sincerely: \"This was a wonderful game, you were great!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"👏 Big applause for the sportsmanlike demeanor” and high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Take a deep breath to calm down the excitement of victory and defeat, and walk towards the opponent's team. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4056,8 +4076,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【👏 Big applause for sportsmanship]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [👏 Sportsman style, big applause], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"👏 The corresponding behavior is “Sportsman’s Style and Big Applause”, with an achievement rate of over 80%.",
-    "regularClassTip": "[Putt Cooperation Formula] When students encounter a similar situation in the ordinary class, \"A sportsman can afford to play but can afford to lose\", please prompt the formula: \"Start [👏 Big applause for sportsmanship]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [👏 Sportsman style, big applause], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Take a deep breath to calm down the excitement of victory and defeat, and walk towards the opponent's team. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Take a deep breath to calm down the excitement of victory and defeat, and walk towards the opponent's team. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-42",
@@ -4118,36 +4138,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "When you feel excited and want to protest, immediately count down five, four, three, two, one in your mind"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Raise your right hand and wait quietly for the teacher to call your name. Do not knock on the table to interrupt."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "State specific facts in objective and calm sentences without offensive words"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In a situation where you feel something is unfair, which behavioral path would you choose?",
+      "prompt": "In the situation “When Things Feel Unfair: Speaking Up Calmly”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I felt that the teacher had given out one more sticker to someone else than me, so I immediately slapped the table and yelled, rushed to the podium, snatched the whole pack of stickers and scattered them on the ground.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🙋 Objective and Calm Appeal Device",
-        "desc": "Take a deep breath and apply the brakes, using the \"🙋 Objective and Calm Appeal Technique\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Raise your hands and calmly wait for the teacher to call your name, and express in an objective and gentle tone: \"Teacher, my group is missing one card, can it be reissued?\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🙋 Objective and Calm Complaint Instrument\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Raise your right hand and wait quietly for the teacher to call your name. Do not knock on the table to interrupt.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4155,8 +4175,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🙋 Objective and calm appeal instrument]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🙋 Objective and calm appeal instrument], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🙋 The corresponding behavior of \"Objective Calm Appeal Instrument\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter similar situations like \"when they feel unfair\" in ordinary classes, please prompt the tip: \"Start [🙋 Objective and calm appeal instrument]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🙋 Objective and calm appeal instrument], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Raise your right hand and wait quietly for the teacher to call your name. Do not knock on the table to interrupt.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Raise your right hand and wait quietly for the teacher to call your name. Do not knock on the table to interrupt.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-43",
@@ -4217,36 +4237,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Write the most sincere thanks and advantages for your friends in the memorial book"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Look into your friend’s eyes and give them a strong smile and hug"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Make a firm promise: \"Even if we are in different classes, we can still play together after class!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Closing Ceremony and Graduation Season】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Saying Goodbye: Preparing for a New Class”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Knowing that He and He would be assigned to a different class next semester, he grabbed He's clothes and wouldn't let go. He cried and made a fuss and forced the teacher not to put him in a different class.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎈 Take care, goodbye, and blessings from the website.",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎈 Farewell Blessing Network\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Write down many blessings neatly in the memory book, give your good friends a warm hug, and meet to play together in the corridor after class!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎈 Cherish the Goodbye Wishes Network\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Look into your friend’s eyes and give them a strong smile and hug. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4254,8 +4274,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎈 Cherish Goodbye Blessing Network]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎈 Cherish Goodbye Blessing Network], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎈 The corresponding behavior of \"Cherish Goodbye Blessing Network\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter situations similar to \"[Recess Ceremony and Graduation Season]\" in regular classes, please prompt the tip: \"Start [🎈 Cherish Goodbye Blessing Network]! \"; publicly affirm his progress in class: \"Look, your classmate just did it [🎈 Cherish Goodbye Blessing Network], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Look into your friend’s eyes and give them a strong smile and hug. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Look into your friend’s eyes and give them a strong smile and hug. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-44",
@@ -4316,36 +4336,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Take out this semester’s growth history file and look through your own progress."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Place a golden badge of \"Self-Breakthrough Glory\" on your chest."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Put your hands on your hips, raise your head and straighten your chest, and say to the mirror: \"Yu/Xiaojiu, you are really great!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Grand Assessment of Semester Achievements\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Celebrating My Progress This Term”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "At the end of the semester, I saw my peers getting the big gold trophy, but I only had the silver medal. I was so jealous that I grabbed my peers' trophy and broke it in half.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🎖️ Confident growth and great glory",
-        "desc": "Take a deep breath and apply the brakes, using the \"🎖️ Confidence, Growth, and Great Glory\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Count down all the social superpowers you have learned this year, proudly wear three honorary red flowers on your chest, and affirm your self-transformation!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🎖️ Confidence grows with great glory\" and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Place a golden badge of \"Self-Breakthrough Glory\" on your chest.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4353,8 +4373,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🎖️ Confident growth and great glory]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🎖️ Confidence grows with great glory], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🎖️ The corresponding behavior of \"Confident Growth and Great Glory\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a situation similar to \"Semester Achievement Acceptance\" in a regular class, please prompt the tip: \"Start [🎖️ Confident growth and great glory]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🎖️ Confidence grows with great glory], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Place a golden badge of \"Self-Breakthrough Glory\" on your chest.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Place a golden badge of \"Self-Breakthrough Glory\" on your chest.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-45",
@@ -4415,36 +4435,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Draw the morning, afternoon and evening time grids for each day on a large piece of white paper."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Plan a fixed daily \"one hour of reading and one hour of outdoor exercise\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Take the initiative to turn off the TV and mobile phone at 9:30 in the evening, listen to light music and go to bed on time"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test \"[Summer Vacation Starting Line]\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Summer Routines: Planning a Balanced Day”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "The parents reminded him that he should do his homework on time during the summer vacation. He was so angry that he grabbed the electric fan and smashed it on the ground, threatening the parents not to allow him to have a holiday.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:📅 Holiday schedule manager",
-        "desc": "Take a deep breath and apply the brakes, using the \"📅 \"Holiday Housekeeper\" expresses and acts politely",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Personally formulate the \"Golden Manual for Independent Summer Vacation Schedule\": read and exercise in the morning, explore and relax in the afternoon, and go to bed on time in the evening!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"📅 \"Holiday manager\" and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Plan a fixed daily \"one hour of reading and one hour of outdoor exercise\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4452,8 +4472,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【📅 Holiday schedule butler]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [📅 Holiday Schedule Manager], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"📅 The corresponding behavior of \"Holiday Housekeeper\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[Summer Start Line]\" in a regular class, please prompt the formula: \"Start [📅 Holiday schedule butler]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [📅 Holiday Schedule Manager], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Plan a fixed daily \"one hour of reading and one hour of outdoor exercise\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Plan a fixed daily \"one hour of reading and one hour of outdoor exercise\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-46",
@@ -4514,36 +4534,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Entering a public place in the community automatically switches to \"Public Gentleman Mode\""
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Handle items with both hands with care, and proactively notify compensation for damaged items."
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When receiving the invoice and change at the cashier, smile generously to the clerk and say thank you."
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Good Neighbor Life Routine\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Being a Good Neighbor: Manners in the Community”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "I wanted to eat ice cream at a convenience store. I couldn't wait for the checkout, so I tore open the package and ran around the store to eat it. The store clerk stopped me and spit on me.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🛒 Community Courtesy King",
-        "desc": "Take a deep breath and apply the brakes, using the \"🛒 Community Public Courtesy King\" to express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "When you go into the supermarket, push the cart quietly and slowly, wait patiently in line at the checkout to say thank you, and obey the rules of taking turns in the park and playground without fighting!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🛒 \"The King of Public Courtesy in the Community\" and high-fived his family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Handle items with both hands with care, and proactively notify compensation for damaged items.. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4551,8 +4571,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🛒 Community Public Courtesy King]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🛒 The king of public courtesy in the community], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🛒 The corresponding behavior of \"King of Public Courtesy in the Community\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"Routine Life of a Good Neighbor in the Community\" in a regular class, please prompt the tip: \"Start [🛒 Community Public Courtesy King]! \"; publicly affirm his progress in class: \"Look, your classmate just did it [🛒 The king of public courtesy in the community], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Handle items with both hands with care, and proactively notify compensation for damaged items.. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Handle items with both hands with care, and proactively notify compensation for damaged items.. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-47",
@@ -4613,36 +4633,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Scream loudly and firmly to the bully: \"Please stop! What you're doing is against the rules!\""
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Turn around immediately and walk quickly to a crowded teacher's office or health center"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Find a trusted mentor or special education teacher and tell the complete time, place and process"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"What to do when faced with ridicule and bullying?\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Dealing with Teasing and Bullying: Leave Safely and Get Help”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Being teased with a nickname by a senior classmate, he immediately lost control, grabbed a rock and threw it into his eyes, almost causing severe blindness.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚨 The Three-Step Anti-Bullying Self-Protection Strategy",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚨 Anti-Bullying Self-Protection Three-Step Approach\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Start the trilogy of anti-bullying and self-protection: say no with firm eyes, quickly leave the dangerous scene to find peer allies, and report to the teacher immediately!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚨 Anti-bullying and self-protection trilogy\" and high-fived my family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Turn around immediately and walk quickly to a crowded teacher's office or health center. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4650,8 +4670,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚨 Anti-bullying and self-protection trilogy]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚨 Anti-bullying and self-protection trilogy], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚨 The corresponding behavior of \"anti-bullying and self-protection trilogy\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter similar situations like \"What should I do if I encounter teasing and bullying?\" in the ordinary class, please prompt the tip: \"Start [🚨 Anti-bullying and self-protection trilogy]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🚨 Anti-bullying and self-protection trilogy], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Turn around immediately and walk quickly to a crowded teacher's office or health center. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Turn around immediately and walk quickly to a crowded teacher's office or health center. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-48",
@@ -4712,36 +4732,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Observing the calluses and traces of hard work on my father’s hands, I feel grateful in my heart"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Pour a cup of hot tea for your father with your own hands and hold it in front of him with both hands"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Look into father's eyes and say clearly and loudly: \"Dad, you have worked hard, thank you!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【Father's Day 8/8】\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Showing Gratitude to Dad”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "My father reminded himself to abide by the agreement, broke the Father's Day cake on the spot, and cursed his father for only working and ignoring him all day long.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🏔️ A Mountain-like Journey of Love and Gratitude",
-        "desc": "Take a deep breath and apply the brakes, using the \"🏔️ Mountain-like Love and Gratitude Practice\" to express and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "I personally presented a thank you card \"as great as a mountain\", gave my father a firm hug with both hands and said, \"I love you, Dad!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🏔️ \"Love and Gratitude Like a Mountain\" and give high fives to your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Pour a cup of hot tea for your father with your own hands and hold it in front of him with both hands. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4749,8 +4769,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🏔️ Love and gratitude like a mountain]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🏔️ A mountain of love and gratitude], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🏔️ The corresponding behavior of \"Love and Gratitude Like a Mountain\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Putt Cooperation Tips] When students encounter a similar situation like \"[Father's Day 8/8]\" in the ordinary class, please prompt the tip: \"Start [🏔️ Love and gratitude like a mountain]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🏔️ A mountain of love and gratitude], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Pour a cup of hot tea for your father with your own hands and hold it in front of him with both hands. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Pour a cup of hot tea for your father with your own hands and hold it in front of him with both hands. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-49",
@@ -4811,36 +4831,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Do full body joint warm-up exercises for ten minutes before entering the water."
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Strictly confirm that there are qualified lifeguards on duty in the lifesaving chairs at the scene"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "When encountering a drowning accident, shout for help, throw a lifebuoy or bamboo pole, and never enter the water with bare hands"
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"Summer Outdoor and Water Safety\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “Summer Water Safety: Staying Away from Dangerous Water”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Peers made bets on who dared to jump into the reservoir. He ignored the warning and jumped down. When he got cramps, he struggled in panic and almost drowned.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🛟 Water Safety Ring",
-        "desc": "Take a deep breath and apply the brakes, using the \"🛟 Water Safety Ring\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Keep in mind the ten tips to prevent drowning: only go to safe swimming pools with qualified lifeguards, do adequate warm-up exercises, wear life jackets, and do not push people around!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🛟 Water safety guard ring\" and high fives to the family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Strictly confirm that there are qualified lifeguards on duty in the lifesaving chairs at the scene. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4848,8 +4868,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🛟 Water safety guard ring]!”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🛟 Water safety guard ring], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🛟 The corresponding behavior of \"Water Safety Guard Ring\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter similar situations of \"summer outdoor and water play safety\" in ordinary classes, please prompt the tip: \"Start [🛟 Water safety guard ring]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🛟 Water safety guard ring], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Strictly confirm that there are qualified lifeguards on duty in the lifesaving chairs at the scene. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Strictly confirm that there are qualified lifeguards on duty in the lifesaving chairs at the scene. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-50",
@@ -4910,36 +4930,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Eyes carefully watching peers' facial signals: whether eyebrows are furrowed, flat or raised"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Observe the direction of the corners of the mouth: Is the corner of the mouth raised for a smile, or drooped for sadness?"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Gently hand over a piece of tissue and say a gentle greeting: \"Do you want me to sit with you for a while?\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the \"Empathy Detective\" scenario test, if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Empathy Detectives: Noticing Other People's Feelings”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Seeing He crying because the teacher didn't finish his homework, Xiaojiu rushed forward and pointed at He's nose and laughed: \"Shame on you crybaby!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🔍 Mind reading through micro-expressions in your eyebrows",
-        "desc": "Take a deep breath and apply the brakes, using the \"🔍 Eyebrow Micro-expression Mind Reading\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Start micro-expression mind reading: observe the drooping corners of the mouth and red eye sockets of your peers, hand over a piece of toilet paper and ask gently: \"Are you okay?\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🔍 Eyebrow micro-expression mind reading\" and giving high fives to family members!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Observe the direction of the corners of the mouth: Is the corner of the mouth raised for a smile, or drooped for sadness?. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -4947,8 +4967,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🔍 Eyebrow micro-expression mind reading]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🔍 Eyebrow micro-expression mind reading], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🔍 The corresponding behavior of \"Brow micro-expression mind reading\" has an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to the \"Empathy Little Detective\" in the ordinary class, please prompt the formula: \"Start [🔍 Eyebrow micro-expression mind reading]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🔍 Eyebrow micro-expression mind reading], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Observe the direction of the corners of the mouth: Is the corner of the mouth raised for a smile, or drooped for sadness?. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Observe the direction of the corners of the mouth: Is the corner of the mouth raised for a smile, or drooped for sadness?. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-51",
@@ -5009,36 +5029,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Walk two steps in front of your new classmates and stand firm, with a warm smile on your lips"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Introduce your name generously: \"Hi! Hello, I am Yu\""
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Sincerely looking for a common topic: \"Do you also like to play with building blocks? We can build them together!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"breaking the ice with new friends\", if it were you, which behavioral path would you choose?",
+      "prompt": "In the situation “Making New Friends: Starting a Conversation”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "When I saw my newly transferred classmate reading comics, I snatched it away and tore it in half, shouting, \"Look at me! Play with me!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🧊 The Three-Phrase Politeness Breaking Method",
-        "desc": "Take a deep breath and apply the brakes, using the \"🧊 Three Polite Icebreakers\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Use three polite words to break the ice: \"Hi, hello! My name is Yu, what are you drawing? This drawing is so cool!\" Start friendship generously!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🧊 \"Three polite words to break the ice\" and high-five your family!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Introduce your name generously: \"Hi! Hello, I am Yu\". Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -5046,8 +5066,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🧊 Three polite words to break the ice]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🧊 Three polite sentences to break the ice], very polite!”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🧊 According to the \"Three Polite Sentences to Break the Ice\", the achievement rate is over 80%.",
-    "regularClassTip": "[Put Cooperation Tips] When students encounter a situation similar to \"Icebreaking Magic for Making New Friends\" in a regular class, please prompt the tip: \"Start [🧊 Three polite words to break the ice]!\"; publicly affirm his progress in class: \"Look, your classmate just did it [🧊 Three polite sentences to break the ice], very polite!”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Introduce your name generously: \"Hi! Hello, I am Yu\". Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Introduce your name generously: \"Hi! Hello, I am Yu\". Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-week-52",
@@ -5108,36 +5128,36 @@ const defaultBriefings = [
       "steps": [
         {
           "num": 1,
-          "text": "Noticeable signals: Clenching your fist, a rapid heartbeat, or stopping when you see someone in need."
+          "text": "Close your eyes and review all the superpowers you have learned in fifty-two weeks of the year"
         },
         {
           "num": 2,
-          "text": "Press the brake: Take three deep breaths and think about the best course of action."
+          "text": "Hold your head high, your chest straight, your back straight, take a deep breath and feel the powerful power in your heart"
         },
         {
           "num": 3,
-          "text": "Take decisive action: Look at the other person's forehead and express your thoughts in an appropriate volume."
+          "text": "Raise your right hand and swear loudly: \"I have superpowers, and I will definitely be able to meet all challenges!\""
         }
       ]
     },
     "decisionTree": {
-      "prompt": "In the scenario test of \"【New School Year Take-Off Grand Parade】\", if you were in this situation, which behavioral path would you choose?",
+      "prompt": "In the situation “My Courage Cape: Moving Up to a New Grade”, consider what could happen with different choices.",
       "impulsive": {
-        "title": "💥 Impulsive temper tantrums / Refusal to cooperate",
-        "desc": "Shouting loudly, pushing people, or sulking and running away.",
-        "consequence": "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-        "feedback": "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
+        "title": "Consider this approach",
+        "desc": "Faced with the more difficult subjects of advancing to the upper grades, he was so angry that he kicked over the desks and chairs and shouted: \"I just want to be a baby, I don't want to grow up!\"",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
       },
       "super_skill": {
-        "title": "🌟 Superpower:🚀 52 Weeks of All-Around Social Superpowers",
-        "desc": "Take a deep breath and apply the brakes, using the \"🚀 52-Week All-Round Social Superpower\" to express yourself and act politely.",
-        "consequence": "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-        "feedback": "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
+        "title": "Try the method from this lesson",
+        "desc": "Wearing the cloak of courage accumulated over the past fifty-two weeks, we proudly took the oath of growth for the new grade: \"I have mastered a full set of social superpowers, and I am ready!\"",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
       }
     },
     "homeTask": {
       "title": "🏠 Today’s family life little superman check-in task",
-      "action": "After returning home from school, show your parents \"🚀 52 weeks of almighty social superpower\" and high fives with family members!",
+      "action": "When willing and an opportunity arises, practise this with a familiar adult: Hold your head high, your chest straight, your back straight, take a deep breath and feel the powerful power in your heart. Use speech, pointing or gestures; report no opportunity too.",
       "checkText": "Family member confirmation: □ Completed (Signature: ＿＿＿＿)"
     },
     "generalization": {
@@ -5145,8 +5165,8 @@ const defaultBriefings = [
       "promptWord": "Please prompt the formula: \"Start【🚀 52 weeks of almighty social super power]! ”",
       "praise": "Publicly affirm his progress in class: \"Look, the classmate just did it [🚀 52 Weeks Almighty Social Super Power], very polite! ”"
     },
-    "iepGoal": "When encountering relevant social or emotional situations, students can make \"🚀 52 weeks of \"all-around social superpower\" corresponding behaviors, with an achievement rate of more than 80%.",
-    "regularClassTip": "[Put Cooperation Formula] When students encounter a situation similar to \"[New School Takeoff Parade]\" in the ordinary class, please prompt the formula: \"Start [🚀 52 weeks of almighty social super power]! \";publicly affirm his progress in class: \"Look, your classmate just did it [🚀 52 Weeks Almighty Social Super Power], very polite! ”"
+    "iepGoal": "In this lesson’s context, practise the following using speech, pointing or AAC: Hold your head high, your chest straight, your back straight, take a deep breath and feel the powerful power in your heart. Set prompts and opportunities from baseline data, and distinguish independent from supported performance. Stars do not establish mastery.",
+    "regularClassTip": "At a suitable moment, prompt: Hold your head high, your chest straight, your back straight, take a deep breath and feel the powerful power in your heart. Wait for a response, demonstrate if needed, and recognise effort without public comparisons."
   },
   {
     "id": "b-idea-53",
@@ -5156,69 +5176,93 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
-    "title": "Loud Alarm Drills: Ear Defenders and Safe Evacuation",
+    "title": "Preparing for an Emergency Drill with Sensory Support",
     "code": "特自1-II-2",
     "themeColor": "#ef4444",
     "badgeEmoji": "🔕",
-    "badgeLabel": "Little Heroes of Air Raid Shelter",
-    "superSkill": "🔕 Noise-canceling earmuffs for a calming experience",
-    "summary": "The sudden, sharp air raid siren during drills often causes auditory overload and panic in autistic children. Guide children to recognize the drill warning, quickly put on noise-canceling earmuffs, and adopt the safety protection posture of \"crouching down with their heads covered, mouths closed, and ears covered\".",
+    "badgeLabel": "Supported Safety Practice",
+    "superSkill": "Use support during a safety drill",
+    "summary": "Practise use support during a safety drill using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "ASD",
       "LD",
       "EBD"
     ],
     "story": {
-      "title": "🚨 Big buzzing alarm and magically silent earmuffs!",
-      "content": "At 10:00 AM on Thursday, a piercing and deafening air raid siren suddenly blared over the school's loudspeaker! The sharp whine echoed throughout the corridor. Yu, terrified, cowered under his desk, his hands tightly covering his ears, his body trembling violently. A teacher gently crouched down and carefully placed a pair of navy blue noise-canceling earmuffs on Yu's head. Instantly, the piercing screams transformed into the distant sound of a gentle breeze! Jia and Jun, following their usual practice mantra—\"No pushing, no talking, cover your head and crouch low\"—calmly hid behind their desks. He walked over and gave Yu a thumbs-up. Yu took a deep breath, his heart slowly calming down: \"With these earmuffs, the monster's roar during the drill won't scare me anymore!\"",
-      "question": "What dangers might occur if you run around when a loud alarm suddenly sounds on campus? Why can wearing earmuffs and crouching under a table protect you?"
+      "title": "Use support during a safety drill",
+      "content": "Before a drill, the teacher previews the possible alarm and the route using a sequence card. Yu requests ear defenders. The teacher checks that he can still receive safety instructions and arranges adult support. Everyone follows the actual drill instructions. Success is about safe movement and asking for help, not enduring discomfort.",
+      "question": "What would you like to know before a drill, and how could you ask for support?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🚨 Big buzzing alarm and magically silent earmuffs!”, guided through puppet show situations: When a loud siren suddenly sounds on campus, what dangers will occur if you run around? Why would wearing earmuffs and crouching under a desk protect yourself?"
+        "stage": "Story and feelings",
+        "desc": "Read “Use support during a safety drill”. What would you like to know before a drill, and how could you ask for support? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Dismantling [Three Steps for Air Defense Evacuation]: 1. Put on noise-reducing earmuffs or cover your ears with your hands; 2. Quickly hide under a solid table;3. Hold your head with your hands, close your mouth and keep quiet."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Preview the drill sequence and the route specified by the teacher → Use speech or a card to request ear defenders or adult support if uncomfortable → Follow the adult’s on-site safety instructions to the designated location"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "4 role situation play theater (Yu🦁, Jun🐻, He🐼, Jia🦊 Task for all members): The alarm sounded for the whole school’s unwarranted air defense evacuation drill. The four little heroes practiced quickly putting on earmuffs, covering their heads and not screaming!"
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "Award the \"Little Air Defense Evacuation Hero\" medal of honor, complete the colorful picture and text worksheet and distribute the family life check-in task."
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Show the visual warning card for the alarm drill at dawn time in advance, and assist in wearing noise-cancelling earmuffs 5 minutes before the drill.",
-      "ld": "The evacuation formula is simplified into three intuitive picture cards of \"Get Down, Cover, Hold On\", with phonetic reading.",
-      "ebd": "Provide gripping acupressure balls to guide the transformation of screaming panic into the physical release of clenching the acupressure balls."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "⭐ Three Steps to Air Raid Shelter",
+      "title": "Use support during a safety drill",
       "steps": [
         {
           "num": 1,
-          "text": "Wear noise-canceling earmuffs or cover your ears with your hands."
+          "text": "Preview the drill sequence and the route specified by the teacher"
         },
         {
           "num": 2,
-          "text": "Quickly hide under the sturdy table"
+          "text": "Use speech or a card to request ear defenders or adult support if uncomfortable"
         },
         {
           "num": 3,
-          "text": "Put your hands behind your head, close your mouth and stay quiet."
+          "text": "Follow the adult’s on-site safety instructions to the designated location"
         }
       ]
     },
-    "iepGoal": "When the disaster prevention drill broadcast is sounded, the students can put on earmuffs and cover their heads within 10 seconds when prompted, and do not rush out of the classroom. The achievement rate is above 85%.",
-    "regularClassTip": "Regular class instructors are requested to inform students privately about the time before the whole school drill, and allow them to wear noise-reducing earmuffs to participate in the evacuation."
+    "iepGoal": "In this lesson’s context, observe whether the learner can use speech or a card to request ear defenders or adult support if uncomfortable. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Use speech or a card to request ear defenders or adult support if uncomfortable. Accept speech, pointing or gestures without public comparisons.",
+    "decisionTree": {
+      "prompt": "What would you like to know before a drill, and how could you ask for support?",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Use speech or a card to request ear defenders or adult support if uncomfortable",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
+      }
+    },
+    "useBrowserSpeech": true,
+    "homeTask": {
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech or a card to request ear defenders or adult support if uncomfortable. Report no opportunity or any support needed too."
+    }
   },
   {
     "id": "b-idea-54",
@@ -5290,7 +5334,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When encountering tactile discomfort (labels, clay), the child can use spoken language or picture cards to express needs to adults without aggressive or destructive behavior, with an achievement rate of more than 80%.",
-    "regularClassTip": "Parents are reminded to cut off all the back collars and side labels of their children's new school uniforms before the start of school, or to purchase seamless and skin-friendly clothing."
+    "regularClassTip": "Parents are reminded to cut off all the back collars and side labels of their children's new school uniforms before the start of school, or to purchase seamless and skin-friendly clothing.",
+    "decisionTree": {
+      "prompt": "In the situation “Scratchy Labels and Sticky Clay: Explaining Sensory Needs”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When clothes feel itchy, I get so angry that I roll on the floor, tear my new sports clothes, and get angry and yell at my parents.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Raise your hands to express your feelings gently, ask the teacher to help cut off the prickly tags or wear thin gloves to pinch the clay safely!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-55",
@@ -5362,7 +5421,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When a sensory overload warning occurs in a noisy crowd situation, the patient can autonomously retreat to a quiet and safe zone within 1 minute to adjust without emotional collapse, with an achievement rate of over 85%.",
-    "regularClassTip": "Allow sensory-sensitive students to avoid peak crowd periods in the cooperative, or have their peer angels assist in purchasing the necessary stationery."
+    "regularClassTip": "Allow sensory-sensitive students to avoid peak crowd periods in the cooperative, or have their peer angels assist in purchasing the necessary stationery.",
+    "decisionTree": {
+      "prompt": "In the situation “🍲 Noisy Places: Asking for a Quiet Recharge Break”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Screaming anxiously in the crowded and noisy crowd, pushing away the classmates around me and pushing forward.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Show the teacher the \"T-shaped pause gesture\" and retreat to the quiet corridor accompanied by someone to take a deep breath for three minutes to recharge!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-56",
@@ -5434,7 +5508,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When faced with the interference of strong light or visual stimulation, the person can make specific environment adjustment requests (pull the curtains/turn off the lights) through spoken language without leaving the seat restlessly, with an achievement rate of more than 85%.",
-    "regularClassTip": "Regularly check classroom lamps for high-frequency flickers that are difficult to detect with the naked eye, and allow sensitive students to wear sun visors or filter glasses."
+    "regularClassTip": "Regularly check classroom lamps for high-frequency flickers that are difficult to detect with the naked eye, and allow sensitive students to wear sun visors or filter glasses.",
+    "decisionTree": {
+      "prompt": "In the situation “🔦 Bright Lights: Asking for Help and Adjusting the Room”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. He is so angry that he slams the table and throws pens, or lies on the table and refuses to read the blackboard, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🕶️ Soft light visual protection net\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-57",
@@ -5444,69 +5533,93 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
-    "title": "💨 Movement and Stimming: Choosing Helpful Sensory Tools",
+    "title": "Comfortable and Safe Self Regulation",
     "code": "特自1-II-1",
     "themeColor": "#6366f1",
     "badgeEmoji": "🧘",
-    "badgeLabel": "Focused on Stress Relief Experts",
-    "superSkill": "🧘 Invisible Stress-Relieving Acupressure Ball",
-    "summary": "Children with autism and ADHD often regulate their inner anxiety by shaking their bodies, making noise by flicking pens, or repeatedly stomping their feet. Teaching children to recognize their need for self-stimulation and to use invisible educational tools that do not disturb others (such as pressure points, silent elastic bands, and tactile rings) to achieve self-soothing.",
+    "badgeLabel": "Comfortable Self-Regulation",
+    "superSkill": "Find a comfortable way to regulate",
+    "summary": "Practise find a comfortable way to regulate using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "ASD",
       "LD",
       "EBD"
     ],
     "story": {
-      "title": "🌀 A spinning top and a soft ball in your pocket!",
-      "content": "During Chinese class, Yu's body seemed to be powered by an electric motor; he couldn't help but rock his chair back and forth violently, his pen clicking incessantly, and his toes stomping on the floor. The classmate next to him couldn't help but turn around: \"Yu, you're so noisy pressing your pen! I can't hear the teacher!\" Yu lowered his head, feeling wronged: \"I didn't mean to disturb everyone, but if I don't press my pen, my stomach feels so tight and anxious...\" The teacher smiled and walked over, taking a green, textured \"silent acupressure ball\" from a magic box and placing it in Yu's hand. A soft \"silent elastic band\" was then placed under the front leg of Yu's chair. Yu put the ball in his pocket, squeezed it gently, and swayed his feet lightly on the elastic band. The classroom became completely silent, and Yu's heart calmed down like a still lake.",
-      "question": "When you're tense and anxious and want to move around a lot, who will be affected if you make a lot of noise? What quiet methods can relieve stress without disturbing others?"
+      "title": "Find a comfortable way to regulate",
+      "content": "Jun gently rocks while thinking. When the movement is safe and does not harm anyone, the teacher does not require him to sit completely still. He needs to move for a while and uses a break card. Everyone practises communicating needs and arranging a suitable space.",
+      "question": "Which way helps you feel comfortable, and how could you ask for support?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🌀 A spinning top and a soft ball in your pocket!”, guided through the puppet show situation: When you are nervous and anxious and want to move around, who will be affected if you make a loud noise? What are some quiet ways to relieve stress without disturbing others?"
+        "stage": "Story and feelings",
+        "desc": "Read “Find a comfortable way to regulate”. Which way helps you feel comfortable, and how could you ask for support? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Dismantling [Three Tips for Quiet Self-Adjustment]: 1. Detect itchy hands and the urge to shake or press the pen to make strange noises; 2. Take out the foam acupressure ball and put it in your coat pocket and squeeze it quietly; 3. Step on the elastic band of the chair leg with both feet and gently step up and down to release energy."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Notice body sensations and current needs → Keep movements that do not harm yourself or others, or choose a suitable object or break → Tell the teacher when you need space, movement or support"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "4 role situation play theater (Yu🦁, Jun🐻, He🐼, Jia🦊 Task for all members): Feeling anxious in class and wanting to knock on the table to make noise, the four little heroes practice using small silent teaching aids to soothe themselves!"
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "Award the honorary medal of \"Little Master of Focusing on Stress Relief\", complete the colorful picture and text worksheet and distribute the family life check-in task."
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Respecting the self-stimulation needs of school children, we do not force a complete ban, but guide the replacement with \"silent safe alternatives\".",
-      "ld": "Make 3 graphic cards of \"pocket ball/step on elastic band/deep breath\" and stick them on the corner of the table.",
-      "ebd": "Guide to identify body anxiety signals and learn to turn destructive pen-throwing into squeezing balls with palms."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "⭐ Three tips for quiet self-regulation",
+      "title": "Find a comfortable way to regulate",
       "steps": [
         {
           "num": 1,
-          "text": "Feeling an urge to itch your hands, shake your pen, or make strange noises when pressing it."
+          "text": "Notice body sensations and current needs"
         },
         {
           "num": 2,
-          "text": "Take out the foam acupressure ball, put it in your coat pocket, and gently squeeze it."
+          "text": "Keep movements that do not harm yourself or others, or choose a suitable object or break"
         },
         {
           "num": 3,
-          "text": "Gently press down on the elastic bands of the chair legs with both feet to release energy."
+          "text": "Tell the teacher when you need space, movement or support"
         }
       ]
     },
-    "iepGoal": "When concentration is required in class, the student can use sensory alternative teaching aids (acupressure balls, elastic bands) that do not interfere with others to replace noisy self-stimulation behaviors for more than 20 minutes, with an achievement rate of more than 80%.",
-    "regularClassTip": "Ordinary office desks and chairs can be equipped with tennis foot covers or chair leg elastic bands to provide concealed and unobtrusive dynamic sitting support."
+    "iepGoal": "In this lesson’s context, observe whether the learner can keep movements that do not harm yourself or others, or choose a suitable object or break. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Keep movements that do not harm yourself or others, or choose a suitable object or break. Accept speech, pointing or gestures without public comparisons.",
+    "decisionTree": {
+      "prompt": "Which way helps you feel comfortable, and how could you ask for support?",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Keep movements that do not harm yourself or others, or choose a suitable object or break",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
+      }
+    },
+    "useBrowserSpeech": true,
+    "homeTask": {
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Keep movements that do not harm yourself or others, or choose a suitable object or break. Report no opportunity or any support needed too."
+    }
   },
   {
     "id": "b-idea-58",
@@ -5578,7 +5691,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "During the school health examination (dental, vision, height, etc.), the child can be accompanied by an adult and cooperate with the instructions of the medical staff to complete the examination items without aggression or strong resistance, and the achievement rate is more than 85%.",
-    "regularClassTip": "Before the school health examination, special education children can be given priority or arranged to be examined during a period with less crowds to reduce the anxiety of waiting in line."
+    "regularClassTip": "Before the school health examination, special education children can be given priority or arranged to be examined during a period with less crowds to reduce the anxiety of waiting in line.",
+    "decisionTree": {
+      "prompt": "In the situation “🦷 Health Checkups: Preparing for New People and Equipment”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, crying and biting the doctor's finger or kicking over the medical equipment tray, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🩺 \"White Robe Health Check-up Reassuring Mantra\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-59",
@@ -5650,7 +5778,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When outdoor activities are canceled due to weather and are moved indoors, they can cooperate with indoor alternative physical stretching for 15 minutes without damaging public property or rushing out of the classroom. The achievement rate is above 85%.",
-    "regularClassTip": "After class on rainy days, ordinary classes can plan a \"static stretching area\" or an \"indoor board game corner\" in the classroom to avoid slipping due to chasing in the corridor."
+    "regularClassTip": "After class on rainy days, ordinary classes can plan a \"static stretching area\" or an \"indoor board game corner\" in the classroom to avoid slipping due to chasing in the corridor.",
+    "decisionTree": {
+      "prompt": "In the situation “🌧️ Rainy-Day PE: Stretching Indoors”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. He yells and runs in the rain in the corridor, slips and falls, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🧘 Chair Core Stretch\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-60",
@@ -5722,7 +5865,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In a free dialogue situation, be able to restrain continuous monologues and actively ask open-ended questions to guide peers to speak within 3 sentences, with an achievement rate of more than 80%.",
-    "regularClassTip": "A timing hourglass can be given during group chats in ordinary classes (each person takes a turn for 1 minute) to help autistic students visualize the length of their speeches."
+    "regularClassTip": "A timing hourglass can be given during group chats in ordinary classes (each person takes a turn for 1 minute) to help autistic students visualize the length of their speeches.",
+    "decisionTree": {
+      "prompt": "In the situation “🦖 Sharing My Favorite Topic: Taking Turns in Conversation”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "He caught a classmate and lectured about Pokémon moves for ten minutes. When the classmate wanted to leave, he held on to his clothes to prevent him from leaving.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "After speaking three sentences, he immediately put on the brakes in his brain and threw the topic ball to the other party: \"What about you?\"what do you like?”",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-61",
@@ -5794,7 +5952,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When faced with peers' appearance, works or personal characteristics, they can restrain themselves from making inappropriate direct comments, use neutral or positive language to interact, and do not make fun of them in public. The achievement rate is above 85%.",
-    "regularClassTip": "Regular class tutors should establish the routine of \"zero appearance teasing in class\" to guide children to see the uniqueness and dignity of each person."
+    "regularClassTip": "Regular class tutors should establish the routine of \"zero appearance teasing in class\" to guide children to see the uniqueness and dignity of each person.",
+    "decisionTree": {
+      "prompt": "In the situation “🤐 Honest and Kind: Thinking Before Speaking”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. He points at his classmates in public and laughs, \"It's so ugly and got eaten by a dog.\"This causes confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🧠 Word Filter Chewing Gum\", follow the action steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-62",
@@ -5866,7 +6039,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When peers engage in verbal humor or joking, they can observe non-verbal clues (expressions, eyes) and correctly interpret intentions without misjudgment of aggressive behavior. The achievement rate is above 85%.",
-    "regularClassTip": "Students in regular classes are reminded to keep their spoken language as direct and clear as possible when interacting with children with autism, and avoid excessive metaphors or irony."
+    "regularClassTip": "Students in regular classes are reminded to keep their spoken language as direct and clear as possible when interacting with children with autism, and avoid excessive metaphors or irony.",
+    "decisionTree": {
+      "prompt": "In the situation “🎭 Joking or Teasing? Listening for Tone and Intent”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control and punches people and grabs the ball regardless of the situation, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🔍 Voice and Intonation Decoding Mirror\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-63",
@@ -5938,7 +6126,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "Do not turn over, pry into, or take your peers’ personal belongings (schoolbags, drawers, contact books) without permission, and the achievement rate is over 90%.",
-    "regularClassTip": "Students in regular classes and special education classes should be taught to guard their personal space in the classroom, and it is strictly forbidden to peek into other people's mobile phones or private letters without consent."
+    "regularClassTip": "Students in regular classes and special education classes should be taught to guard their personal space in the classroom, and it is strictly forbidden to peek into other people's mobile phones or private letters without consent.",
+    "decisionTree": {
+      "prompt": "In the situation “📱 Respecting Privacy: Ask Before Looking”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control. He secretly unzips his school bag and reads his private diary while his classmates are away, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🔒 Privacy Boundary Security Lock\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-64",
@@ -5948,13 +6151,13 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "🤫 Reading the Room: Noticing When Others Need Quiet",
+    "title": "🤫 Noticing the Setting and Communicating a Need for a Break or Quiet Self Regulation",
     "code": "特自2-II-4",
     "themeColor": "#0284c7",
     "badgeEmoji": "🌫️",
     "badgeLabel": "Air Quality Expert",
     "superSkill": "🌫️ Classroom Weather Barometer",
-    "summary": "Children with autism often lack \"situational sensitivity\" and suddenly talk to themselves loudly, imitate lines from TV commercials, or make strange noises when reading quietly in class or during lunch breaks. Guide the children to look up and observe the expressions of everyone present, and lock the sound into the little drawer of their brains.",
+    "summary": "During a quiet reading period or rest time, a learner may use sounds or repeated speech to regulate. Preview the setting and offer ways to communicate a need for movement, a quieter activity or a break.",
     "tags": [
       "ASD",
       "LD",
@@ -5963,13 +6166,13 @@ const defaultBriefings = [
     "story": {
       "title": "📺 The big TV in your mouth and the quiet lunch break bell!",
       "content": "At 12:30 noon, the soft lunch break bell rang on the campus. The whole class lay down on the table and closed their eyes to sleep. The whole classroom was so quiet that you could hear a pin drop. Yu was lying on the table, but his head was like a movie projector, constantly replaying the Superman cartoon he watched last night!\n\nYu couldn't help but make a sharp dubbing sound with his mouth: \"Boom——!\"Light wave emission! pound! pound! Defeat the bad guys!\"The classmates lying next to them were woken up one by one, holding their heads in annoyance: \"Yu is so noisy! Do you want to sleep or not?\"The teacher walked gently to Yu, took out a \"Quiet Kitty Lying Card\" and placed it on the corner of the table: \"Yu, look up and look around - what is the color of the air in the class now? Everyone is closing their eyes to rest. At this time, we have to turn off the big TV in our mouths and switch to brain silent mode to think about Superman!\"When Yu saw everyone's tired faces, he quickly shut his mouth. He closed his eyes and watched Superman quietly in his head, and everyone fell asleep comfortably!",
-      "question": "When the whole class is sleeping or reading quietly, if you suddenly make a strange noise, what will break it? To \"read the air\", you need to first look at what the people around you are doing?"
+      "question": "When people nearby are resting or reading, what can you notice about the setting and how could you ask for support?"
     },
     "timeline": [
       {
         "time": "00–08 min",
         "stage": "Cause motivation",
-        "desc": "Introduction story \"📺 The big TV in your mouth and the quiet lunch break bell!\", guidance through puppet show situations: When the whole class is sleeping or reading quietly, if you suddenly make a strange noise, what will break it? To \"read the air\", you need to first look at what the people around you are doing?"
+        "desc": "Introduction story \"📺 The noisy television and the quiet lunch break: Use a short scene to discuss what people nearby are doing and how to request a quieter way to regulate."
       },
       {
         "time": "08–20 min",
@@ -6010,7 +6213,23 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In situations where quiet is required in class (lunch breaks, silent reading, individual tests), students can restrain themselves from talking to themselves and making strange noises for more than 25 minutes, and do not engage in behaviors that disturb the peace of peers. The achievement rate is more than 85%.",
-    "regularClassTip": "Low-decibel white noise (such as the sound of waves and rain) can be played during lunch break to help children with sensitive hearing block subtle environmental interference."
+    "regularClassTip": "Low-decibel white noise (such as the sound of waves and rain) can be played during lunch break to help children with sensitive hearing block subtle environmental interference.",
+    "decisionTree": {
+      "prompt": "In the situation “🤫 Noticing the Setting and Communicating a Need for a Break or Quiet Self Regulation”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain goes out of control and he imitates Superman's dubbing loudly during lunch break to wake up the whole class, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🌫️ Class Air Barometer\", follow the steps to properly deal with it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    },
+    "useBrowserSpeech": true
   },
   {
     "id": "b-idea-65",
@@ -6046,7 +6265,7 @@ const defaultBriefings = [
       {
         "time": "08–20 min",
         "stage": "Skill Demonstration",
-        "desc": "Dismantle [Three Treasures of Listening to the Body]: 1. Turn the chair or shoulders, and face the front of the body towards the classmate who is speaking; 2. Look at the other person's eyebrows or the bridge of the nose with both eyes, showing concentration; 3. Every time you understand a paragraph, nod your head slightly downwards, and smile at the corner of your mouth."
+        "desc": "Model ways to listen: turn toward the speaker or a shared object, attend in a comfortable way, and use a nod or another response to show understanding."
       },
       {
         "time": "20–35 min",
@@ -6073,7 +6292,7 @@ const defaultBriefings = [
         },
         {
           "num": 2,
-          "text": "Look at the other person's forehead or the bridge of their nose to show focus."
+          "text": "Attend to the speaker or a shared object in a comfortable way"
         },
         {
           "num": 3,
@@ -6082,7 +6301,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When listening to a peer's individual speech for 1 minute, be able to maintain the body facing the other person and have a listening response of nodding or directional gaze, without turning away or ineffective distraction, and the achievement rate is above 85%.",
-    "regularClassTip": "The \"Best Audience Award\" can be set up when the general class reports in groups, specifically to praise the group members who can use body language to affirm the speaker."
+    "regularClassTip": "The \"Best Audience Award\" can be set up when the general class reports in groups, specifically to praise the group members who can use body language to affirm the speaker.",
+    "decisionTree": {
+      "prompt": "In the situation “👂 Showing I Am Listening: Attention and Body Language”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, the body turns away from the classmates, the head is lowered and the face is expressionless while playing with the eraser, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🙆 \"True Listening and Nodding Technique\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-66",
@@ -6092,7 +6326,7 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "❓ When Instructions Are Confusing: Ask for the Next Step Again",
+    "title": "❓ When a Long Instruction Is Unclear - Ask the Teacher to Repeat the Second Step",
     "code": "特溝2-II-3",
     "themeColor": "#f59e0b",
     "badgeEmoji": "❓",
@@ -6154,7 +6388,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When faced with difficulty in listening and understanding complex oral instructions of more than three steps, the person can actively raise his hand to make a specific restatement request within 1 minute without evasive behavior, and the achievement rate is more than 85%.",
-    "regularClassTip": "When the regular class teacher explains the homework and tasks, he should simultaneously write the step entries on the blackboard, and ask the special education children to repeat the key steps to confirm their understanding."
+    "regularClassTip": "When the regular class teacher explains the homework and tasks, he should simultaneously write the step entries on the blackboard, and ask the special education children to repeat the key steps to confirm their understanding.",
+    "decisionTree": {
+      "prompt": "In the situation “❓ When a Long Instruction Is Unclear - Ask the Teacher to Repeat the Second Step”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. I don't understand at all but dare not ask. I sit in a daze and bite my fingers, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"✋ Steps Restatement Confirmation Card\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-67",
@@ -6226,7 +6475,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When a writing assignment encounters a clerical error or the paper is damaged, the person can stop the destructive behavior under adult prompts, use repair tools to regroup and continue writing, with an achievement rate of more than 85%.",
-    "regularClassTip": "For students with difficulty in coordinating small muscles, ordinary class teachers should pay attention to the structure of strokes instead of rigidly following the order of strokes, and provide flexible space for answers."
+    "regularClassTip": "For students with difficulty in coordinating small muscles, ordinary class teachers should pay attention to the structure of strokes instead of rigidly following the order of strokes, and provide flexible space for answers.",
+    "decisionTree": {
+      "prompt": "In the situation “✏️ Writing Frustration: Put Down the Pencil and Take a Break”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. He is so angry that he tears up the homework book, breaks the pencil and throws it on the ground, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🍞 Fingertip Relaxation Method for Kneading Dough\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-68",
@@ -6298,7 +6562,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When encountering reading difficulty in oral reading in class or public speaking, he can use help signals (relay cards or eye prompts) to guide peers to support him in completing the task without giving up and crying, and the achievement rate is above 85%.",
-    "regularClassTip": "Ordinary class teachers should strictly refrain from publicly mocking students with dyslexia, and confirm the designated reading passages with students in private before class."
+    "regularClassTip": "Ordinary class teachers should strictly refrain from publicly mocking students with dyslexia, and confirm the designated reading passages with students in private before class.",
+    "decisionTree": {
+      "prompt": "In the situation “📖 Reading Aloud: Asking a Partner for Help”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. When a classmate laughs, he smashes the textbook on the ground and runs out of the classroom crying, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🤝 Read the \"Relay Help Card\" and follow the steps to properly deal with it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-69",
@@ -6370,7 +6649,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When faced with in-class tests or time-limited activities, students can use self-regulation strategies to maintain a stable answering state without tearing up test papers or leaving their seats anxiously. The achievement rate is above 85%.",
-    "regularClassTip": "During school section examinations or assessments, students with special needs should be given reasonable adjustments to extend the answering time by 20 minutes based on the special education assessment."
+    "regularClassTip": "During school section examinations or assessments, students with special needs should be given reasonable adjustments to extend the answering time by 20 minutes based on the special education assessment.",
+    "decisionTree": {
+      "prompt": "In the scenario test of \"⏱️ In a situation involving classroom timer pressure, consider what might happen with different approaches.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. When he sees the timer, he yells, mashes the test paper and stomps it on the ground, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Take a calm and deep breath to activate \"⏳ Tick-Tock Clock Adagio Pranayama\", and follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-70",
@@ -6442,7 +6736,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When facing situational application questions with more than three lines, they can use visual marking strategies (circling key figures, drawing question sentences) to complete the disassembly of the problem-solving steps, and the correct answer rate is increased by more than 75%.",
-    "regularClassTip": "The fonts of the regular assessment papers for regular classes should be appropriately enlarged (it is recommended to use italics for grades 14 and above) and the line spacing should be increased to reduce the visual burden on children with learning disabilities."
+    "regularClassTip": "The fonts of the regular assessment papers for regular classes should be appropriately enlarged (it is recommended to use italics for grades 14 and above) and the line spacing should be increased to reduce the visual burden on children with learning disabilities.",
+    "decisionTree": {
+      "prompt": "In the situation “📐 Long Word Problems: Breaking Information into Small Parts”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. If the question is too long, it will give up and scribble in the answer column, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🍫 The question \"Segmented Chocolate Cutting\", follow the steps to properly solve it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-71",
@@ -6514,7 +6823,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When conducting open art and handicraft creations, when faced with unexpected results or flaws, they can accept differences in individual works under prompts and do not engage in vandalism or tearing. The achievement rate is above 85%.",
-    "regularClassTip": "The art work scoring for regular classes should focus on the diversity of creativity and investment in the creative process, and avoid using \"whether the template is copied\" as the single scoring criterion."
+    "regularClassTip": "The art work scoring for regular classes should focus on the diversity of creativity and investment in the creative process, and avoid using \"whether the template is copied\" as the single scoring criterion.",
+    "decisionTree": {
+      "prompt": "In the situation “🎨 Art Is Unique: Letting Go of Perfection”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. Because it does not look like the template, the work will be thrown to the ground and crushed, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🪐 \"Unique Planet Self-Esteem\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-72",
@@ -6586,7 +6910,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "Before school or in the early morning hours, students can complete the classification of personal school bag items and waste cleaning independently or under the prompts of the checklist, and no more homework will be lost or forgotten, with an achievement rate of more than 80%.",
-    "regularClassTip": "Regular class teachers can set up a \"daily homework submission color box\" on the right side of the blackboard to help children with executive dysfunction establish a collection routine."
+    "regularClassTip": "Regular class teachers can set up a \"daily homework submission color box\" on the right side of the blackboard to help children with executive dysfunction establish a collection routine.",
+    "decisionTree": {
+      "prompt": "In the situation “🎒 An Organized School Bag: Color Folders and a Daily Check”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control. He stuffs his schoolbag into a trash can, dumps all the debris in the corridor and yells, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"📁 \"Five Color Storage Magic\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-73",
@@ -6658,7 +6997,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When participating in group competitive activities, when peers make mistakes or are at a disadvantage in the competition, they do not abuse, push or blame peers, and can give verbal encouragement, with an achievement rate of more than 85%.",
-    "regularClassTip": "After the physical education class, the teacher should specifically praise the team that \"shows peer tolerance when making mistakes\", downplay the championship ranking, and demonstrate the spirit of sportsmanship."
+    "regularClassTip": "After the physical education class, the teacher should specifically praise the team that \"shows peer tolerance when making mistakes\", downplay the championship ranking, and demonstrate the spirit of sportsmanship.",
+    "decisionTree": {
+      "prompt": "In the situation “🏃 A Dropped Relay Baton: Supporting a Teammate”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain lost control. He pointed at his teammates and yelled, \"You are the loser who caused us to lose.\" This caused confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🤝 Don’t complain when the team loses the baton”, follow the action steps to properly deal with it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-74",
@@ -6730,7 +7084,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When personal belongings are accidentally damaged by peers, they can restrain the urge to physically attack and express protest through words or seek mediation from teachers, with an achievement rate of over 85%.",
-    "regularClassTip": "Ordinary class tutors should intervene in damage incidents as soon as possible, clarify the attribution of responsibility and reasonable compensation, and prevent the victimized students from turning to lynching violence due to the damage to their rights and interests."
+    "regularClassTip": "Ordinary class tutors should intervene in damage incidents as soon as possible, clarify the attribution of responsibility and reasonable compensation, and prevent the victimized students from turning to lynching violence due to the damage to their rights and interests.",
+    "decisionTree": {
+      "prompt": "In the situation “😡 Accident or Intent? Responding Calmly to Broken Things”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control and he beats the opponent until his nose bleeds and smashes the desk, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"📏 Accidental damage to the calming ruler\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-75",
@@ -6802,7 +7171,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When peers interact or group with other people, there will be no strong jealousy protests, forced restrictions on peers, or behavior of breaking up with others out of spite, and the achievement rate is above 80%.",
-    "regularClassTip": "When regular classes are grouped, group members should be randomly rotated regularly to prevent special education children from over-relying on a single specific peer and causing exclusion anxiety."
+    "regularClassTip": "When regular classes are grouped, group members should be randomly rotated regularly to prevent special education children from over-relying on a single specific peer and causing exclusion anxiety.",
+    "decisionTree": {
+      "prompt": "In the situation “👥 Sharing Friends: Making Room for Other Friendships”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control and he is so angry that he yells \"I will never be with you again\" in the corridor and turns his face on the spot, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🌐 Be open to friendship and have a big mind\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-76",
@@ -6874,7 +7258,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When encountering verbal provocations such as being teased by peers or using unpleasant nicknames, they can restrain the impulse to violently fight back, use firm self-affirming language and seek help from adults, with an achievement rate of over 85%.",
-    "regularClassTip": "If verbal insults occur in schools, the Academic Affairs Office and tutors should initiate bullying prevention reporting procedures, strictly coach the teasers, and protect the personal dignity of special education children."
+    "regularClassTip": "If verbal insults occur in schools, the Academic Affairs Office and tutors should initiate bullying prevention reporting procedures, strictly coach the teasers, and protect the personal dignity of special education children.",
+    "decisionTree": {
+      "prompt": "In the situation “🗣️ Hurtful Nicknames: Speak Firmly and Ask a Teacher for Help”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control. He grabs a metal bucket and slams the opponent's head in anger, causing severe bleeding and serious injuries, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🛡️ Insulting remarks backlash shield\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-77",
@@ -6946,7 +7345,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When participating in group discussions and encountering differences of opinion, they can cooperate with the group majority decision or negotiate a compromise without shrinking from the meeting or strongly resisting, with an achievement rate of more than 85%.",
-    "regularClassTip": "When ordinary classes are divided into groups, teachers should strengthen inspections and guide group leaders to implement democratic voting and idea integration to prevent a single strong student from being arbitrary and dictatorial."
+    "regularClassTip": "When ordinary classes are divided into groups, teachers should strengthen inspections and guide group leaders to implement democratic voting and idea integration to prevent a single strong student from being arbitrary and dictatorial.",
+    "decisionTree": {
+      "prompt": "In the situation “🤝 Group Decisions: Voting and Respecting Everyone”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. If they disagree, they throw down the blackboard eraser, quit in anger and shout \"I won't draw anymore\", causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🗳️ \"Ballot box for differences of opinion\", follow the steps to properly handle and resolve it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-78",
@@ -7018,7 +7432,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When loaned items are damaged by peer negligence, they can restrain attacks and retaliation, use gentle and non-aggressive oral language to express their demands and reach a consensus on reasonable repairs, with an achievement rate of more than 85%.",
-    "regularClassTip": "The class should establish a property rights education that says \"If you borrow something from someone, you must return it in perfect condition.\"When the lender discovers damage, the instructor will coordinate and make reasonable compensation."
+    "regularClassTip": "The class should establish a property rights education that says \"If you borrow something from someone, you must return it in perfect condition.\"When the lender discovers damage, the instructor will coordinate and make reasonable compensation.",
+    "decisionTree": {
+      "prompt": "In the situation “💔 A Dried-Out Marker: Asking Kindly to Make Things Right”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When faced with a situation, his brain lost control. He was so angry that he smashed and trampled the entire box of pens of his classmates, and cursed in public, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🖍️ \"Colored pen repair dialogue method\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-79",
@@ -7028,7 +7457,7 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 4: Peer Friction and Conflict Resolution Advanced",
-    "title": "🏃 After a Collision: Check on the Other Person First",
+    "title": "🏃 After Bumping into a Younger Child - Stop and Ask an Adult to Check for Injury",
     "code": "特自2-II-3",
     "themeColor": "#ef4444",
     "badgeEmoji": "🏃",
@@ -7090,7 +7519,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When inadvertently colliding with peers in campus activities, they can stop evading or quibbling, take the initiative to give oral care and notify teachers for handling, and the achievement rate is more than 85%.",
-    "regularClassTip": "Convex reflectors should be installed in dead corners of school corridors, and pickets should reinforce the reminder of \"walk slowly and lightly\" after class to ensure the safety of lower grade students."
+    "regularClassTip": "Convex reflectors should be installed in dead corners of school corridors, and pickets should reinforce the reminder of \"walk slowly and lightly\" after class to ensure the safety of lower grade students.",
+    "decisionTree": {
+      "prompt": "In the situation “🏃 After Bumping into a Younger Child - Stop and Ask an Adult to Check for Injury”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, knocking over someone and seeing the other person bleeding and crying, running away and pretending not to see it, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🩹 \"Squat down and pay attention to the first item first\" and follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-80",
@@ -7162,7 +7606,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When participating in regular board games or competitions and encountering disputes or suspected violations, they can restrain the urge to overturn props or physically attack, and use time-out and rule review procedures to resolve differences, with an achievement rate of more than 85%.",
-    "regularClassTip": "Before board game activities in ordinary classes, the \"table captain/chief referee of each group\" should be clearly designated, and the rule of \"if there is a dispute, ask the table captain to suspend the game, and those who flip the table will be directly disqualified\"."
+    "regularClassTip": "Before board game activities in ordinary classes, the \"table captain/chief referee of each group\" should be clearly designated, and the rule of \"if there is a dispute, ask the table captain to suspend the game, and those who flip the table will be directly disqualified\".",
+    "decisionTree": {
+      "prompt": "In the situation “⚖️ Fair Play: Ask a Neutral Person to Check the Rules”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Realizing that he was lagging behind and about to lose, he knocked over the entire chessboard and shouted: \"It doesn't count!\" Start over!”",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Take a deep breath to suppress your frustration, keep playing until the end, and generously reach out to praise your winning opponent!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-81",
@@ -7234,7 +7693,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When the main teacher is absent and the substitute teacher teaches, the student can maintain normal routines and classroom routines for 40 minutes without serious stubborn resistance or intentional violations, and the achievement rate is above 85%.",
-    "regularClassTip": "Before taking leave, the original teacher should write detailed support guidelines for special education children and remind substitute teachers to maintain structured routines and positive oral language enhancement."
+    "regularClassTip": "Before taking leave, the original teacher should write detailed support guidelines for special education children and remind substitute teachers to maintain structured routines and positive oral language enhancement.",
+    "decisionTree": {
+      "prompt": "In the situation “👩‍🏫 A Substitute Teacher: Keeping Routines and Being Helpful”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. When the teacher is unfamiliar, he yells and throws paper airplanes in the classroom, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🧭 A Steady Compass on Substitute Day\", follow the steps to properly deal with it step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-82",
@@ -7306,7 +7780,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When class seats are changed regularly or in response to needs, personal belongings can be moved into place within 15 minutes under adult prompts without recalcitrant refusal behavior, and the achievement rate is above 85%.",
-    "regularClassTip": "When regular class teachers arrange seats for special education children, they should avoid arranging them in areas exposed to strong light, air-conditioning outlets or behind high-interference door moving lines."
+    "regularClassTip": "When regular class teachers arrange seats for special education children, they should avoid arranging them in areas exposed to strong light, air-conditioning outlets or behind high-interference door moving lines.",
+    "decisionTree": {
+      "prompt": "In the situation “💺 New Seats: Three Ways to Get to Know a Classmate”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, clinging to the old desk, crying and kicking, lying on the ground and refusing to move, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🪑 New Seat Ice Breaking Greeting Card\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-83",
@@ -7378,7 +7867,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When participating in off-campus teaching and taking a large tour bus, the person can fasten the seat belt throughout the whole process and maintain quiet riding manners, without wandering in the aisles or dangerous probe behaviors, and the achievement rate is more than 90%.",
-    "regularClassTip": "The history of motion sickness of special education children should be confirmed before off-campus teaching in schools, and the car attendant or parents should help take motion sickness medicine half an hour before getting on the bus."
+    "regularClassTip": "The history of motion sickness of special education children should be confirmed before off-campus teaching in schools, and the car attendant or parents should help take motion sickness medicine half an hour before getting on the bus.",
+    "decisionTree": {
+      "prompt": "In the situation “🚌 Field-Trip Bus Safety: Stay Seated and Ask for Help”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, running wildly and chasing in the aisle of the traveling tour bus, grabbing the microphone and shouting, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🚌 Tour Bus Civilization Code\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-84",
@@ -7388,69 +7892,93 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
-    "title": "🍽️ Foods I Dislike: Polite Choices at Lunch",
+    "title": "Food Preferences Sensory Needs and Asking for Support",
     "code": "特自1-II-1",
     "themeColor": "#10b981",
     "badgeEmoji": "🍽️",
-    "badgeLabel": "Nutritionally Balanced Little Food God",
-    "superSkill": "🫑 Bravely take a bite of a little adventure",
-    "summary": "Children with autism often exhibit extremely severe selective eating based on food texture and smell. When faced with green peppers, eggplants, or onions, they may slam their fists on the table, vomit, yell \"Disgusting!\", or even overturn their plates. They should be taught to politely ask for a smaller portion, bravely take a bite, and refrain from expressing disgust.",
+    "badgeLabel": "Expressing Food Needs",
+    "superSkill": "Explain my food and sensory needs",
+    "summary": "Practise explain my food and sensory needs using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "ASD",
       "LD",
       "EBD"
     ],
     "story": {
-      "title": "🫑 The little green hat and a brave little adventure!",
-      "content": "The third dish for lunch today was \"Stir-fried Pork with Bell Peppers.\" When serving the food, the student in charge gave Yu a large spoonful of green and red bell peppers. Upon smelling the distinctive bitter, grassy aroma of the bell peppers, Yu's brow furrowed, his stomach churned, and he nearly knocked his lunchbox over, yelling, \"It stinks! It's disgusting! It's poisonous! I absolutely don't want to eat it!\" The student serving the food nearby looked displeased: \"This was cooked with great effort by the cooks, why are you calling their food disgusting!\" The teacher came over and gently patted Yu's back: \"Yu, food is like people; everyone has different tastes. You may not like bell peppers, but yelling 'It's disgusting' in front of everyone will make the cook and those who like it feel bad. Our dining superpower is—'politely ask a classmate for just a small piece,' and give yourself the chance to 'bravely take a small bite'!\" The teacher helped Yu remove most of the bell pepper, leaving only a small piece of red bell pepper. Yu took a deep breath, closed his eyes, and took a small bite. After chewing for a while, he exclaimed, \"Huh? It's sweet and crunchy, and it doesn't seem as bitter as I imagined!\" After Yu finished that small piece, the whole class applauded his courage!",
-      "question": "What are the negative consequences of yelling \"Disgusting!\" in front of everyone when there's a dish you don't like in your lunchbox? How can you politely tell the student serving the food without wasting food?"
+      "title": "Explain my food and sensory needs",
+      "content": "A food smell makes Jia uncomfortable. Jia puts the utensils down safely and asks the teacher for help. Together they check the agreed dietary arrangements. The lesson practises expressing needs. Tasting food is not forced, and tolerating discomfort is not a condition for a reward.",
+      "question": "If a food makes you uncomfortable, what help could you ask for?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🫑 A little green hat and a brave little adventure!”, guided through the puppet show situation: When there are dishes in the lunch box that you don’t like, what are the negative effects of shouting “It’s disgusting” in public? How can I talk to my classmates about my talents without being wasteful and polite?"
+        "stage": "Story and feelings",
+        "desc": "Read “Explain my food and sensory needs”. If a food makes you uncomfortable, what help could you ask for? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Dismantling [Trilogy of Picky Eating Politeness]: 1. When you feel disgusted by the food you hate, immediately swallow the word \"disgusting\" back into your stomach; 2. When serving food, hold the plate with both hands and politely say: \"Please help me serve a little, thank you!\"”; 3. Give yourself the courage to take a small bite, and even if you don’t like it, stay quietly in the corner of the plate and don’t vomit."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Notice discomfort from a smell, texture or body sensation → Tell a caregiver about smaller portions, alternatives or other needs → Agree on suitable mealtime arrangements with an adult"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "4 role situation play theater (Yu🦁, Jun🐻, He🐼, Jia🦊 Task for all members): When encountering an objectionable green pepper dish during a nutritious lunch, the four little heroes practice restraining their disgusting remarks, politely reducing their intake, and trying bravely!"
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "Award the honorary medal of \"Nutritional Balanced Food God\", complete the colorful picture and text worksheet and distribute the family life check-in task."
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Show \"eating etiquette traffic light\": prohibit saying \"disgusting, poisonous, make you want to vomit\"; instead say: \"please give me a small amount, thank you!\"”",
-      "ld": "Utilize \"micro-dose desensitization method\": from licking, taking a small bite to eating a piece, gradually expand the eating experience.",
-      "ebd": "Before you want to overturn your plate in protest, put your chopsticks down, put your hands flat on the table and take three deep breaths."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "⭐ The Three Steps to Picky Eating Etiquette",
+      "title": "Explain my food and sensory needs",
       "steps": [
         {
           "num": 1,
-          "text": "Upon realizing the aversion to unpleasant food, I immediately swallowed the word \"disgusting.\""
+          "text": "Notice discomfort from a smell, texture or body sensation"
         },
         {
           "num": 2,
-          "text": "When serving food, hold the plate with both hands and politely say, 'Please just give me a little bit, thank you!'"
+          "text": "Tell a caregiver about smaller portions, alternatives or other needs"
         },
         {
           "num": 3,
-          "text": "Give yourself the courage to take a small bite, and even if you don't like it, quietly leave it in the corner of your plate without spitting it out."
+          "text": "Agree on suitable mealtime arrangements with an adult"
         }
       ]
     },
-    "iepGoal": "When faced with rejected foods during school nutritious lunches, they can restrain themselves from complaining about insulting food or throwing plates, and use polite spoken language to ask for food reduction and keep the plates clean, with an achievement rate of more than 85%.",
-    "regularClassTip": "Lunch guidance for regular classes should respect the sensory characteristics of students, avoid using high-pressure force-feeding methods, and replace forced eating with progressive micro-intake."
+    "iepGoal": "In this lesson’s context, observe whether the learner can tell a caregiver about smaller portions, alternatives or other needs. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Tell a caregiver about smaller portions, alternatives or other needs. Accept speech, pointing or gestures without public comparisons.",
+    "decisionTree": {
+      "prompt": "If a food makes you uncomfortable, what help could you ask for?",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Tell a caregiver about smaller portions, alternatives or other needs",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
+      }
+    },
+    "useBrowserSpeech": true,
+    "homeTask": {
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Tell a caregiver about smaller portions, alternatives or other needs. Report no opportunity or any support needed too."
+    }
   },
   {
     "id": "b-idea-85",
@@ -7522,7 +8050,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When outdoor activities are limited on rainy days, students can independently choose and participate in static activities in the classroom (reading, educational board games, and painting) for more than 20 minutes without playing ball or collision in the corridor. The achievement rate is more than 85%.",
-    "regularClassTip": "Schools should open the library and indoor building block corner after class on rainy days, and assign senior service teams to patrol the corridors to maintain slow walking order."
+    "regularClassTip": "Schools should open the library and indoor building block corner after class on rainy days, and assign senior service teams to patrol the corridors to maintain slow walking order.",
+    "decisionTree": {
+      "prompt": "In the situation “🌧️ Heavy Rain: Choosing a Quiet Indoor Activity”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Realizing that he was lagging behind and about to lose, he knocked over the entire chessboard and shouted: \"It doesn't count!\" Start over!”",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Take a deep breath to suppress your frustration, keep playing until the end, and generously reach out to praise your winning opponent!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-86",
@@ -7532,7 +8075,7 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
-    "title": "🧹 Cleanup Teamwork: Helping Safely and Taking Pride in Our Work",
+    "title": "🧹 Cleaning Tasks - Use Tools within an Agreed Safe Role and Avoid Splashing Others",
     "code": "特自2-II-3",
     "themeColor": "#eab308",
     "badgeEmoji": "🧹",
@@ -7593,8 +8136,23 @@ const defaultBriefings = [
         }
       ]
     },
-    "iepGoal": "When participating in school-wide or class cleaning activities, be able to wear safety protection equipment under the guidance of adults, continue to engage in designated cleaning tasks for 25 minutes, and do not appear to be lazy and run away or use tools to make fun of water, and the achievement rate is more than 85%.",
-    "regularClassTip": "School cleaning guidance should focus on anti-skid and fall prevention safety, and give positive praise and rewards to the whole class for their hard work after cleaning."
+    "iepGoal": "During a school cleaning activity, use agreed safety equipment with adult guidance, participate in the assigned task for up to 25 minutes, and ask for help or a break when needed. The draft target is 85%; adapt it to baseline data.",
+    "regularClassTip": "School cleaning guidance should focus on anti-skid and fall prevention safety, and give positive praise and rewards to the whole class for their hard work after cleaning.",
+    "decisionTree": {
+      "prompt": "In the situation “🧹 Cleaning Tasks - Use Tools within an Agreed Safe Role and Avoid Splashing Others”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control. He takes a water pipe and sprays water everywhere, soaking his classmates and corridors, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🧽 \"Little Hero of Cleaning Labor\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-87",
@@ -7666,7 +8224,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When encountering strangers in situation simulation or real life to strike up a conversation, give gifts or ask for companionship, they can refuse the temptation and perform the three steps of safe evacuation protection (step back, shout, ask for help), with an achievement rate of more than 95%.",
-    "regularClassTip": "The certification of \"Love and Safe Guidance Store\" should be implemented around the school, and anti-abduction scenarios should be practiced regularly at gatherings to strengthen children's awareness of self-protection in crisis."
+    "regularClassTip": "The certification of \"Love and Safe Guidance Store\" should be implemented around the school, and anti-abduction scenarios should be practiced regularly at gatherings to strengthen children's awareness of self-protection in crisis.",
+    "decisionTree": {
+      "prompt": "In the situation “🚶 Stranger Safety: Do Not Go Along or Get into a Car”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control and is attracted by free toys and candies. Unsuspectingly, it opens the door and gets in the car, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🛑 \"Stranger Red Line Brake\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-88",
@@ -7738,7 +8311,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When returning from the special education class to the ordinary class classroom, the student can independently complete the seating process within 2 minutes and take out the corresponding school supplies to study without being stuck at the door or refusing to take a seat. The achievement rate is above 85%.",
-    "regularClassTip": "Regular class teachers should greet special education children with a brief and gentle nod when they return to class, and guide members of the same group to provide acceptance and support."
+    "regularClassTip": "Regular class teachers should greet special education children with a brief and gentle nod when they return to class, and guide members of the same group to provide acceptance and support.",
+    "decisionTree": {
+      "prompt": "In the situation “🏫 Returning to the General Classroom: Finding My Group and Joining In”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, and the child shrinks in fear at the door of the corridor, shouts, and refuses to enter the classroom, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🌉 \"Put Seamless Connection Bridge\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-89",
@@ -7810,7 +8398,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When faced with inquiries from peers about special education status or separation courses, they can use positive and confident oral responses without shy withdrawal or aggressive behavior, with an achievement rate of more than 90%.",
-    "regularClassTip": "Schools and tutors should promote school-wide awareness-raising activities for people with disabilities, eliminate labeling bias, and establish a friendly campus culture that respects individual differences."
+    "regularClassTip": "Schools and tutors should promote school-wide awareness-raising activities for people with disabilities, eliminate labeling bias, and establish a friendly campus culture that respects individual differences.",
+    "decisionTree": {
+      "prompt": "In the situation “👦 My Learning Support Classroom: A Place to Recharge My Strengths”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. When asked by classmates, he cries in shame, lies on the table and does not dare to raise his head to see others, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"⚡ \"Charging Station Proud Declaration\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-90",
@@ -7882,7 +8485,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In family life situations, when faced with siblings sharing limited leisure resources (TV, tablets, toys), they can restrain violent snatching and abide by the turn-taking time agreement, with an achievement rate of more than 85%.",
-    "regularClassTip": "Special education teachers should establish consistent family tokens and timing rotation standards with parents through parent contact books to strengthen family normalization effects."
+    "regularClassTip": "Special education teachers should establish consistent family tokens and timing rotation standards with parents through parent contact books to strengthen family normalization effects.",
+    "decisionTree": {
+      "prompt": "In the situation “🏠 Taking Turns with Siblings: Sharing Screens Fairly”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. In order to grab the remote control, he beats his younger siblings and scratches each other's cheeks, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm and deep breathing starts \"⏱️ Hands and feet take turns timing the hourglass\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-91",
@@ -7892,7 +8510,7 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 6: Putian Fusion and Family Life",
-    "title": "👵 Visiting Grandparents: Greetings and Helping at Mealtimes",
+    "title": "👵 Visiting Grandparents - Greeting Comfortably and Helping with the Meal",
     "code": "特社1-II-1",
     "themeColor": "#f97316",
     "badgeEmoji": "👵",
@@ -7954,7 +8572,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When participating in family festivals or visiting elders, be able to proactively give spoken greetings and participate in table service (serving tea, setting out bowls and chopsticks) without hiding, resisting or rudely contradicting, with an achievement rate of more than 85%.",
-    "regularClassTip": "Before going on a long vacation, you can ask special education children to draw or record a \"filial piety to elders check-in task\" in the contact book to promote substantial family interaction."
+    "regularClassTip": "Before going on a long vacation, you can ask special education children to draw or record a \"filial piety to elders check-in task\" in the contact book to promote substantial family interaction.",
+    "decisionTree": {
+      "prompt": "In the situation “👵 Visiting Grandparents - Greeting Comfortably and Helping with the Meal”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. As soon as he enters the door, he slams the door and hides in the room to play video games and tells the elders to \"go away and don't bother\", causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🥣 \"Little Helper for Serving Tea and Serving Food\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-92",
@@ -8026,7 +8659,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When following parents for shopping activities in public stores, they can abide by store routines and cooperate with the purchase list, without having to lie down and cry or have the urge to get lost, with an achievement rate of more than 85%.",
-    "regularClassTip": "The family contact assignment \"Practice Diary of a Little Supermarket Buyer\" can be designed, and parents are asked to guide their children to complete a task-oriented shopping experience during holidays."
+    "regularClassTip": "The family contact assignment \"Practice Diary of a Little Supermarket Buyer\" can be designed, and parents are asked to guide their children to complete a task-oriented shopping experience during holidays.",
+    "decisionTree": {
+      "prompt": "In the situation “🛒 Shopping with Family: Stay Together and Ask Staff for Help”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, his brain loses control. He runs wildly in the supermarket corridor, knocks down the cookie rack, and lies on the ground rolling and screaming, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🛒 \"Make your own guardian for supermarket shopping\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-93",
@@ -8098,7 +8746,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In the family nighttime bedtime situation, the person can actively end leisure activities and prepare for bedtime within the warning time without throwing things or violent procrastination, and the achievement rate is above 85%.",
-    "regularClassTip": "Special education teachers should regularly track the sleep quality of students at night through sleep records to help parents improve their bedtime environment and bedtime routine."
+    "regularClassTip": "Special education teachers should regularly track the sleep quality of students at night through sleep records to help parents improve their bedtime environment and bedtime routine.",
+    "decisionTree": {
+      "prompt": "In the situation “💤 Bedtime Routines: Putting Books Away and Settling Down”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. When urged to sleep, the person throws a pillow and cries, stays up until the early morning and dozes off, causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🌙 \"Good Night Shut Down and Sleep Exercise\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-94",
@@ -8170,7 +8833,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In the family life self-care check, the child can independently complete the folding of personal clothes, the return of shoes and socks, and the storage of toys without the need for adults to do it for them, with an achievement rate of more than 85%.",
-    "regularClassTip": "School classrooms should implement environmental self-care training such as hanging coats and returning sweeping tools, and check-in should be implemented simultaneously at home through parent-teacher manuals."
+    "regularClassTip": "School classrooms should implement environmental self-care training such as hanging coats and returning sweeping tools, and check-in should be implemented simultaneously at home through parent-teacher manuals.",
+    "decisionTree": {
+      "prompt": "In the situation “🧺 I Can Help at Home: Folding Clothes and Tidying Toys”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. Clothes and socks are randomly thrown on the sofa, waiting for parents to help collect them like servants, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"👕 \"Little master of independent living\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-95",
@@ -8242,7 +8920,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In self-concept exploration activities, be able to proactively identify and verbally express 3 specific personal traits and strengths, and demonstrate a positive self-acceptance attitude, with an achievement rate of over 90%.",
-    "regularClassTip": "Regular class teachers should guide children to see the multiple intelligences of each special education child in class management, and create an inclusive and respectful group self-esteem ecology."
+    "regularClassTip": "Regular class teachers should guide children to see the multiple intelligences of each special education child in class management, and create an inclusive and respectful group self-esteem ecology.",
+    "decisionTree": {
+      "prompt": "In the situation “🪞 My Unique Strengths: Three Things That Make Me Shine”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "In a difficult situation, feeling overwhelmed and saying hurtful things about oneself to a mirror rather than asking for help.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"💎 Unique Luminous Crystal\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-96",
@@ -8314,7 +9007,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "When making small purchases in community stores or convenience supermarkets, be able to understand prices, complete cash payments, and check the change amount in the palm of your hand, with an achievement rate of over 85%.",
-    "regularClassTip": "Life mathematics teaching should focus on real situation operations, and implement physical purchasing teaching in combination with school party or community supermarket."
+    "regularClassTip": "Life mathematics teaching should focus on real situation operations, and implement physical purchasing teaching in combination with school party or community supermarket.",
+    "decisionTree": {
+      "prompt": "In the situation “🪙 Buying Bread: Counting Money and Checking Change”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. After grabbing something, I want to run out of the store without knowing that I have to queue up to pay, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"💰 \"Supermarket shopkeeper's abacus\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-97",
@@ -8386,7 +9094,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In the situation of crossing the road or crossing an intersection, the person can look left and right independently or under prompts, raise his hands to warn and walk across steadily without running or lowering his head to collide. The achievement rate is more than 95%.",
-    "regularClassTip": "Volunteer guides should regularly conduct intersection traffic safety promotions around the school, and small reflective yellow flags should be distributed to lower grade and special education children to enhance daytime visibility."
+    "regularClassTip": "Volunteer guides should regularly conduct intersection traffic safety promotions around the school, and small reflective yellow flags should be distributed to lower grade and special education children to enhance daytime visibility.",
+    "decisionTree": {
+      "prompt": "In the situation “🚦 Crossing Safely: Wait for Green, Look Both Ways and Walk Carefully”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control. As soon as the light turns green, he lowers his head, screams and runs wildly, but is hit by a large turning truck, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🚩 Raise the little yellow flag and feel at ease\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-98",
@@ -8458,7 +9181,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "After participating in sports activities or sweating profusely, the person can complete wiping sweat, changing tops, and cleaning hands and face independently or under prompts, and maintains personal hygiene and tidiness, with an achievement rate of more than 85%.",
-    "regularClassTip": "Schools should educate students in general classes to be considerate of the physical changes of their peers during puberty, prohibit personal attacks based on body odor, and provide friendly changing spaces."
+    "regularClassTip": "Schools should educate students in general classes to be considerate of the physical changes of their peers during puberty, prohibit personal attacks based on body odor, and provide friendly changing spaces.",
+    "decisionTree": {
+      "prompt": "In the situation “🚿 Fresh After PE: Clean Clothes, Handwashing and Personal Care”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, letting the wet clothes stick to the back and smelling, and gets angry and hits others when pointed out by classmates, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🧼 \"Refreshing and cleansing in seven steps\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-99",
@@ -8468,69 +9206,93 @@ const defaultBriefings = [
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 7: Building self-esteem and living independently",
-    "title": "🩹 A Scraped Knee: Stay Calm and Ask the School Nurse for Help",
+    "title": "Asking an Adult for Help When Hurt",
     "code": "特自2-II-3",
     "themeColor": "#ef4444",
     "badgeEmoji": "🩹",
-    "badgeLabel": "Calm and Self-Protective Little Warriors",
-    "superSkill": "🩹 External Wound Hemostasis and Calming Patch",
-    "summary": "When special education students fall and scrape their knees on the playground, causing bleeding, they often roll violently on the ground and cry loudly due to fear of blood or pain, refusing to stand up or be touched by others. We teach them self-care techniques for trauma, such as \"taking deep breaths to stay calm, applying pressure with a clean tissue to stop the bleeding, and walking step by step to the health center to apply iodine.\"",
+    "badgeLabel": "Asking for Help",
+    "superSkill": "Find a trusted adult when hurt",
+    "summary": "Practise find a trusted adult when hurt using speech, cards or gestures. Adjust support to the learner’s current needs.",
     "tags": [
       "ASD",
       "LD",
       "EBD"
     ],
     "story": {
-      "title": "🩸 Tiny red blood droplets and brave steps towards the health center!",
-      "content": "While playing hide-and-seek on the playground after class, He ran too fast and kicked the protruding ditch cover at the edge of the playground. \"Thump!\" He fell heavily forward onto the rough, muddy ground! His right knee was badly scraped, and bright red blood seeped out, the sand mixed in with the wound stinging painfully. Seeing the blood, He was terrified. He lay on the ground, wailing loudly, kicking his legs wildly, tears and snot streaming down his face: \"It's bleeding! My leg is going to break! Help!\" Several classmates around him panicked at the sight of the blood. Just then, Jia and Jun rushed over. Jia pulled a pack of clean, sterile tissues from her pocket and gently covered He's knee, pressing lightly: \"He, don't panic! Take a deep breath! Look, the bone isn't broken, it's just a scraped area! We have platelet protectors in our brains helping to repair your wound!\" Jun crouched down and held He's arm: \"He, hold onto my shoulder tightly, I'll be your crutch, let's walk slowly together to the health center to see the nurse apply the medicine!\" Looking at the determined eyes of his two friends, He stopped crying, pressed a tissue against his skin, and bravely walked step by step into the health center. The nurse gently disinfected He and applied a breathable gauze, praising everyone: \"You handled it so professionally! He is such a calm and brave little warrior!\"",
-      "question": "When you fall and scrape your skin, seeing blood, will lying on the ground crying and screaming stop the bleeding? Why is pressing the wound with a clean tissue and bravely going to the health center the best way to protect yourself?"
+      "title": "Find a trusted adult when hurt",
+      "content": "Yu falls and cries because his knee hurts. He stays nearby and asks the teacher for help. The teacher listens to where it hurts and follows the school’s procedure to accompany Yu to the health room. Crying does not remove the right to help. An appropriate adult handles injury care.",
+      "question": "How can you get adult help if you or a classmate is hurt?"
     },
     "timeline": [
       {
         "time": "00–08 min",
-        "stage": "Cause motivation",
-        "desc": "Introduction story \"🩸 The small red blood beads and the big steps bravely walking to the health center!”, guidance through puppet show situations: When you fall and scratch your skin and see bleeding, can lying on the ground and crying wildly stop the bleeding? Why is it best to protect yourself by applying pressure with a clean tissue and bravely walking to the health center?"
+        "stage": "Story and feelings",
+        "desc": "Read “Find a trusted adult when hurt”. How can you get adult help if you or a classmate is hurt? Accept speech, pointing or gestures."
       },
       {
-        "time": "08–20 min",
-        "stage": "Skill Demonstration",
-        "desc": "Dismantle [Three Steps of Self-Care for Bruises]: 1. Feel the pain and bleeding, sit on the ground and take a deep breath without kicking or crying; 2. Take out a clean tissue and gently cover it and press it on the wound to stop bleeding; 3. With the support of classmates or teachers, slowly walk to the health center step by step to apply medicine."
+        "time": "08–16 min",
+        "stage": "Modelling and prompts",
+        "desc": "Model this lesson’s three steps: Stop in a safe place and tell a trusted adult → Use speech, pointing or gestures to indicate discomfort → Ask an adult to accompany you and follow the school’s health-room procedure"
       },
       {
-        "time": "20–35 min",
-        "stage": "Role play",
-        "desc": "4 role situation play theater (Yu🦁, Jun🐻, He🐼, Jia🦊 Mission for all members): After falling on the playground and scratching his knee and bleeding, the four little heroes practiced restraining themselves from crying due to fear of blood, applying pressure to stop the bleeding and seeking medical treatment calmly!"
+        "time": "16–26 min",
+        "stage": "Rotate roles",
+        "desc": "Rotate expressing, responding, supporting and observing roles. Watching first is welcome; do not require eye contact, touch or an immediate response."
       },
       {
-        "time": "35–40 min",
-        "stage": "Positive feedback",
-        "desc": "Award the \"Calm and Self-Protected Little Warrior\" medal of honor, complete the colorful picture and text worksheet and distribute the family life check-in task."
+        "time": "26–36 min",
+        "stage": "Scenario practice",
+        "desc": "Discuss different choices, then rehearse the actions. Other approaches, breaks and asking for help are welcome."
+      },
+      {
+        "time": "36–40 min",
+        "stage": "Review and daily-life follow-up",
+        "desc": "Record actual support and opportunities, then agree on a daily-life practice the learner chooses. Stars do not show mastery."
       }
     ],
     "scaffolds": {
-      "asd": "Provide \"Injury Treatment Three-Gate Picture Card\": Sit up and view ➡️ Apply light pressure to stop bleeding ➡️ Go to the infirmary and eliminate the unknown fear of blood.",
-      "ld": "Use the anthropomorphic scientific fairy tale to explain: \"Platelets are like small bricks. Take a deep breath and press them to build a wall to stop bleeding.\"",
-      "ebd": "Before you feel so painful that you want to kick someone to vent, hold the soothing acupressure ball handed to you by your peers, and take a deep breath to divert your attention."
+      "asd": "Offer the lesson’s three-step cards and preview the situation. Accept speech, pointing and a comfortable direction of attention.",
+      "ld": "Give one message at a time. Accept models, pointing and gestures without requiring extensive copying.",
+      "ebd": "Check emotional and sensory needs first. Allow rest, refusal and help; agree on participation when the learner is ready."
     },
     "visualCard": {
-      "title": "⭐ Three steps to protect yourself from abrasions",
+      "title": "Find a trusted adult when hurt",
       "steps": [
         {
           "num": 1,
-          "text": "Upon noticing pain and bleeding, sit on the ground and take deep breaths, without kicking or crying out loudly."
+          "text": "Stop in a safe place and tell a trusted adult"
         },
         {
           "num": 2,
-          "text": "Take a clean tissue and gently press it onto the wound to stop the bleeding."
+          "text": "Use speech, pointing or gestures to indicate discomfort"
         },
         {
           "num": 3,
-          "text": "With the help of classmates or teachers, they slowly walked step by step to the health center to apply the medicine."
+          "text": "Ask an adult to accompany you and follow the school’s health-room procedure"
         }
       ]
     },
-    "iepGoal": "When encountering minor falls, scratches or sports injuries, they can restrain extreme panic and crying, cooperate with basic compressions to stop bleeding, and actively go to the health center for medical treatment, with an achievement rate of more than 85%.",
-    "regularClassTip": "The perimeter of the school playground should be ensured to be smooth and free of exposed steel bar protrusions, and the class should always have first aid sterilized gauze and physiological saline for emergencies."
+    "iepGoal": "In this lesson’s context, observe whether the learner can use speech, pointing or gestures to indicate discomfort. Set opportunities and support from baseline observations, recording independent and supported responses separately.",
+    "regularClassTip": "Check safety and willingness, then prompt: Use speech, pointing or gestures to indicate discomfort. Accept speech, pointing or gestures without public comparisons.",
+    "decisionTree": {
+      "prompt": "How can you get adult help if you or a classmate is hurt?",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "Requiring everyone to do the same thing immediately without checking their needs.",
+        "consequence": "People’s situations and needs can differ. Check safety and willingness before making adjustments together.",
+        "feedback": "Choose again or ask the teacher to demonstrate."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Use speech, pointing or gestures to indicate discomfort",
+        "consequence": "A need has been expressed. Listen to the response and check what support is available.",
+        "feedback": "Use speech, pointing, gestures or watching first. The teacher records actual performance."
+      }
+    },
+    "useBrowserSpeech": true,
+    "homeTask": {
+      "action": "Let the learner choose a suitable moment to try this with a familiar adult: Use speech, pointing or gestures to indicate discomfort. Report no opportunity or any support needed too."
+    }
   },
   {
     "id": "b-idea-100",
@@ -8602,7 +9364,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In self-review and career outlook activities, be able to express personal growth and transformation in detail through writing, painting or oral expression and set future self-expected goals, with an achievement rate of more than 90%.",
-    "regularClassTip": "The school can establish a campus ritual activity of \"opening the space-time mailbox before graduation\", so that the growth process of special education can be turned into lifelong psychological capital that can be seen and touched."
+    "regularClassTip": "The school can establish a campus ritual activity of \"opening the space-time mailbox before graduation\", so that the growth process of special education can be turned into lifelong psychological capital that can be seen and touched.",
+    "decisionTree": {
+      "prompt": "In the situation “📮 A Letter to My Future Self: Keep Learning and Keep Trying”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, thinking that one is worthless, crumpling the letter and throwing it on the ground, saying \"I have no future\", causing confusion and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"📜 \"Letter to Future Heroes\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   },
   {
     "id": "b-idea-101",
@@ -8674,7 +9451,22 @@ const defaultBriefings = [
       ]
     },
     "iepGoal": "In the final evaluation of the full set of special education courses, students can integrate social and adaptive skills in various fields, demonstrate a high sense of self-efficacy and flexibility in adapting to the environment, and achieve an achievement rate of more than 95%.",
-    "regularClassTip": "The school should create a digital growth file of the all-round graduation process of special education children and share it with all Putonghua teachers and parents to jointly witness the miracle of life education."
+    "regularClassTip": "The school should create a digital growth file of the all-round graduation process of special education children and share it with all Putonghua teachers and parents to jointly witness the miracle of life education.",
+    "decisionTree": {
+      "prompt": "In the situation “🌟 My Social Skills Journey: I Am the Captain of My Life”, consider what could happen with different choices.",
+      "impulsive": {
+        "title": "Consider this approach",
+        "desc": "When encountering a situation, the brain loses control, retreats and gives up before difficulties, and regards failure as an unchangeable fate, causing chaos and danger.",
+        "consequence": "This approach may interrupt the interaction or affect safety. Check the need and consider another approach together.",
+        "feedback": "Choices can be changed. Ask for a demonstration or communicate a need for a break."
+      },
+      "super_skill": {
+        "title": "Try the method from this lesson",
+        "desc": "Calm down and take a deep breath to start \"🌟 \"Little Captain at the helm of life\", follow the steps to deal with it properly step by step!",
+        "consequence": "This is an approach to practise. Others have their own views; keep checking, negotiating or seeking help.",
+        "feedback": "Rehearse once with speech, pointing or gestures, then have the teacher record the prompts and outcome."
+      }
+    }
   }
 ];
 // 初始化資料庫
@@ -8755,12 +9547,12 @@ function updateBannerCompletionUI() {
   if (isDone) {
     box.classList.add("is-completed");
     if (title) title.innerText = "🎉 Today’s course has been successfully completed!";
-    if (sub) sub.innerText = `Already recorded in the teaching process·The record has been synchronized to the cloud passbook and sidebar progress bar`;
+    if (sub) sub.innerText = `Recorded in this browser. Teaching progress does not show learner mastery.`;
     if (pill) pill.innerText = "✅ Lesson completed";
   } else {
     box.classList.remove("is-completed");
     if (title) title.innerText = "Today's lesson: Not completed";
-    if (sub) sub.innerText = "Click to directly check to complete, record the teaching progress and automatically synchronize to the cloud passbook and sidebar progress bar";
+    if (sub) sub.innerText = "Records teaching delivered only. Record learner prompts and performance separately in Teaching Observations.";
     if (pill) pill.innerText = "⬜ Not taught yet";
   }
 }
@@ -8895,7 +9687,7 @@ function renderDateDropdowns() {
 
   let html = "";
   if (newWeeks.length > 0) {
-    html += `<optgroup label="🌟 52 週特教社交新課綱（每週一課）">`;
+    html += `<optgroup label="🌟 52 Weekly Social Skills Lessons">`;
     html += newWeeks.map(b => `
       <option value="${b.id}" ${b.id === activeBriefingId ? "selected" : ""}>
         Week ${b.lessonNumber} · ${formatCleanTitleForDropdown(b)} (${b.date || ''})
@@ -8904,7 +9696,7 @@ function renderDateDropdowns() {
     html += `</optgroup>`;
   }
   if (legacyWeeks.length > 0) {
-    html += `<optgroup label="💡 特教備課靈感庫專題（第 53-101 課 · 共 49 堂）">`;
+    html += `<optgroup label="💡 Special Education Lesson Preparation Inspiration Library Special Topic (Lessons 53-101 · 49 lessons in total)">`;
     html += legacyWeeks.map(b => `
       <option value="${b.id}" ${b.id === activeBriefingId ? "selected" : ""}>
         Lesson ${b.lessonNumber} · ${b.title}
@@ -9386,148 +10178,78 @@ function setupFilters() {
 }
 
 // Modal 新增晨報事件
+let addModalReturnFocus=null;
 function openAddModal() {
+  addModalReturnFocus=document.activeElement;
+  document.body.classList.add("teacher-dialog-open");
   document.getElementById("addModal").classList.add("open");
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date(Date.now() - new Date().getTimezoneOffset()*60000).toISOString().split("T")[0];
   document.getElementById("newDate").value = today;
+  document.getElementById("newTitle").focus();
 }
 
 function closeAddModal() {
   document.getElementById("addModal").classList.remove("open");
+  document.body.classList.remove("teacher-dialog-open");
+  addModalReturnFocus?.focus();
+}
+
+function handleAddModalKeys(e) {
+  if(e.key==='Escape'){e.preventDefault();closeAddModal();}
+  if(e.key!=='Tab')return;
+  const nodes=[...document.querySelectorAll('#addModal button, #addModal input, #addModal textarea')].filter(x=>!x.disabled);
+  const first=nodes[0],last=nodes[nodes.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
 }
 
 function saveCustomBriefing(e) {
   e.preventDefault();
-  const newDate = document.getElementById("newDate").value;
-  const newTitle = document.getElementById("newTitle").value;
-  const newUnit = document.getElementById("newUnit").value;
-  const newCode = document.getElementById("newCode").value;
-  const newSummary = document.getElementById("newSummary").value;
-  const newAsd = document.getElementById("newAsd").value;
-  const newLd = document.getElementById("newLd").value;
-  const newEbd = document.getElementById("newEbd").value;
-  const newIep = document.getElementById("newIep").value;
-
-  const newEntry = {
-    id: "b-" + Date.now(),
-    date: newDate,
-    dayOfWeek: "Custom schedule",
-    unit: newUnit,
-    title: newTitle,
-    code: newCode || "Society 2-II-3",
-    summary: newSummary,
-    tags: ["ASD", "LD", "EBD"],
-    timeline: [
-      { time: "00–08 min", stage: "Cause motivation", desc: "Situational display and concept entry" },
-      { time: "08–20 min", stage: "Skill Demonstration", desc: "Teacher demonstration and step breakdown" },
-      { time: "20–35 min", stage: "Role play", desc: "Student double practice simulation operation" },
-      { time: "35–40 min", stage: "Positive feedback", desc: "Review confirmation and stamp reward" }
+  const field=id=>document.getElementById(id).value.trim().replace(/[<>]/g, '');
+  const title=field('newTitle'), summary=field('newSummary');
+  const steps=['newStep1','newStep2','newStep3'].map((id,i)=>({num:i+1,text:field(id)}));
+  const newEntry={
+    id:'b-'+Date.now(), custom:true, date:field('newDate'), dayOfWeek:"Custom schedule",
+    unit:field('newUnit'),title,code:field('newCode')||"Not specified; teacher should check the curriculum code",summary,tags:[],
+    timeline:[
+      {time:"00–08 min",stage:"Cause motivation",desc:"Check the learner’s state and participation choice; discuss the situation."},
+      {time:"08–16 min",stage:"Skill Demonstration",desc:"Model the three lesson steps using speech or picture pointing."},
+      {time:"16–26 min",stage:"Role play",desc:"Take turns practising the three steps; watching first is welcome."},
+      {time:"26–36 min",stage:"Apply in a new situation",desc:"Practise with a new partner or setting and record the prompts actually used."},
+      {time:"36–40 min",stage:"Review and follow-up",desc:"Check the learner’s needs and plan who and where to practise with in daily life."}
     ],
-    scaffolds: {
-      asd: newAsd || "Provide visual card guidance",
-      ld: newLd || "Multi-sensory imagery and verbal guidance",
-      ebd: newEbd || "Pay attention to the emotional baseline and provide calm evacuation strategies"
-    },
-    visualCard: {
-      title: `⭐ ${newTitle} key card`,
-      steps: [
-        { num: 1, text: "Take a look" },
-        { num: 2, text: "Think about it" },
-        { num: 3, text: "Do it and see" }
-      ]
-    },
-    iepGoal: newIep || "Able to complete designated social communication skills under situational prompts, with an achievement rate of more than 80%.",
-    regularClassTip: "Regular class instructors are requested to cooperate in providing immediate verbal reinforcement during class time."
+    scaffolds:{asd:field('newAsd')||"Offer step cards and allow pointing or watching first.",ld:field('newLd')||"Give one message at a time; model before practising.",ebd:field('newEbd')||"Check sensory and emotional needs first; keep rest and help available."},
+    visualCard:{title:`⭐ ${title} key card`,steps},
+    story:{title,content:field('newStory')||summary,question:"What help would you like in this situation? Which step could you practise first?"},
+    useBrowserSpeech:true,
+    iepGoal:field('newIep')||`Observe “${steps[1].text}” under teacher-defined conditions and prompts; set opportunities and an individual criterion from the baseline.`,
+    regularClassTip:`When a natural opportunity occurs, prompt “${steps[1].text}” and record the support given. Do not force participation.`,
+    homeTask:"Teacher and family choose a suitable daily-life situation together. Record honestly if no opportunity occurs."
   };
-
-  // 儲存至 LocalStorage
-  const existingCustom = JSON.parse(localStorage.getItem("custom_briefings") || "[]");
-  existingCustom.unshift(newEntry);
-  localStorage.setItem("custom_briefings", JSON.stringify(existingCustom));
-
-  currentBriefings.unshift(newEntry);
-  activeBriefingId = newEntry.id;
-  closeAddModal();
-  renderSidebar();
-  renderMainContent();
-  alert("🎉 New lesson preparation course successfully added! Saved in your browser.");
-}
-
-// 雲端跨裝置即時同步設定 (Netlify Blobs Cloud Storage)
-const INDEX_CLOUD_STARS_API = "https://sage-faloodeh-6874cf.netlify.app/api/stars";
-let indexPushDebounceTimer = null;
-
-async function syncIndexFetchCloudStars() {
   try {
-    const res = await fetch(`${INDEX_CLOUD_STARS_API}?_t=${Date.now()}`, {
-      cache: "no-store",
-      headers: { "Cache-Control": "no-cache" }
-    });
-    if (!res.ok) return;
-    const remote = await res.json();
-    if (!remote || typeof remote !== "object") return;
+    const existing=JSON.parse(localStorage.getItem('custom_briefings')||'[]');
+    if(!Array.isArray(existing))throw new Error('invalid');
+    localStorage.setItem('custom_briefings',JSON.stringify([newEntry,...existing]));
+  } catch(err) {document.getElementById('customSaveStatus').textContent="Not saved: Browser storage is unavailable. Save a separate copy of the lesson content first.";return;}
+  currentBriefings.unshift(newEntry);activeBriefingId=newEntry.id;
+  closeAddModal();renderSidebar();renderMainContent();
+  const notice=document.createElement('p');notice.setAttribute('role','status');notice.textContent="🎉 Lesson added. Its presentation and custom practice template are linked and stored only in this browser.";document.getElementById('dailyLesson').prepend(notice);
+}
 
-    // 1. 同步星星代幣
-    const current = JSON.parse(localStorage.getItem("student_stars") || '{"yu":0,"he":0,"jia":0,"jun":0}');
-    let hasDiff = false;
-    ["yu", "he", "jia", "jun"].forEach(id => {
-      const val = Math.max(0, parseInt(remote[id], 10) || 0);
-      if (current[id] !== val) {
-        current[id] = val;
-        hasDiff = true;
-      }
-    });
-    if (hasDiff) {
-      localStorage.setItem("student_stars", JSON.stringify(current));
-      renderIndexStudentStars();
-    }
-
-    // 2. 同步課程完成狀態
-    if (remote.completedCourses && typeof remote.completedCourses === "object") {
-      const remoteKeys = Object.keys(remote.completedCourses);
-      const localKeys = Object.keys(completedCourses);
-      let diff = remoteKeys.length !== localKeys.length;
-      if (!diff) {
-        diff = remoteKeys.some(k => !!remote.completedCourses[k] !== !!completedCourses[k]);
-      }
-      if (diff) {
-        completedCourses = { ...remote.completedCourses };
-        localStorage.setItem("completed_courses", JSON.stringify(completedCourses));
-        renderSidebar();
-        updateBannerCompletionUI();
-        updateCourseProgressBar();
-      }
-    }
-  } catch (e) {
-    console.warn("Index cloud stars sync error:", e);
+// Records remain on this browser; synchronize only same-origin tabs.
+function syncIndexFetchCloudStars() {
+  completedCourses = JSON.parse(localStorage.getItem("completed_courses") || "{}");
+  renderIndexStudentStars();
+  updateCourseProgressBar();
+  updateBannerCompletionUI();
+}
+function syncIndexPushCloudStars() { /* Already saved locally by the caller. */ }
+window.addEventListener("storage", event => {
+  if (["student_stars", "completed_courses"].includes(event.key)) {
+    syncIndexFetchCloudStars();
+    renderSidebar();
   }
-}
-
-function syncIndexPushCloudStars(stars) {
-  clearTimeout(indexPushDebounceTimer);
-  indexPushDebounceTimer = setTimeout(async () => {
-    try {
-      const payload = {
-        yu: stars.yu || 0,
-        he: stars.he || 0,
-        jia: stars.jia || 0,
-        jun: stars.jun || 0,
-        completedCourses: completedCourses
-      };
-      await fetch(INDEX_CLOUD_STARS_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-    } catch (e) {
-      console.warn("Index push error:", e);
-    }
-  }, 250);
-}
-
-// 每 5 秒自動背景同步雲端星星
-setInterval(syncIndexFetchCloudStars, 5000);
-window.addEventListener("focus", syncIndexFetchCloudStars);
+});
 
 // 備課網頁端四位學生星星增減
 window.indexAddStar = function(id) {
@@ -9592,6 +10314,7 @@ const AudioEffects = {
     }
   },
   playDing() {
+    if (window.LearningSupport?.quiet()) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -9610,6 +10333,7 @@ const AudioEffects = {
     } catch(e) {}
   },
   playPop() {
+    if (window.LearningSupport?.quiet()) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -9628,6 +10352,7 @@ const AudioEffects = {
     } catch(e) {}
   },
   playCelebration() {
+    if (window.LearningSupport?.quiet()) return;
     try {
       this.init();
       if (!this.ctx) return;
@@ -9862,7 +10587,7 @@ window.playIndexUniversalSpeech = async function(text, mode) {
   const audioKey = b ? b.id : "";
 
   // 1. 優先播放預錄廣播級配音員音檔
-  if (false && audioKey && (mode === "story" || mode === "question")) {
+  if (false && audioKey && !getActiveBriefing()?.useBrowserSpeech && (mode === "story" || mode === "question")) {
     const staticAudioUrl = `audio/${mode}_${preferredGender}_${audioKey}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {

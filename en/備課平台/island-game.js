@@ -27,7 +27,7 @@
 
   const state = {
     theme: 'cream', // 'cream' | 'sea' | 'night'
-    soundEnabled: true,
+    soundEnabled: false,
     ttsSpeed: 0.8,
     viewMode: '3d', // '3d' | '2d'
     cameraFollow: false,
@@ -125,7 +125,7 @@
       mascot: "🦁 Yushishi",
       mascotRole: "Exploration team leader",
       mascotDesc: "A little hero with autism (ASD) learns to feel the body alarm, heartbeat thermometer and turtle deep breathing on the three-dimensional love island",
-      weeksRange: [1, 13],
+      weeks: [7, 8, 18, 19, 20, 21, 24, 39, 41, 42, 43, 44, 50],
       monster: "💥 Angry Fire Monster and Anxious Thundercloud",
       minigameType: "breathe"
     },
@@ -133,15 +133,15 @@
       id: 1,
       name: "💬 Let's Talk Island",
       shortName: "Let's Talk Island",
-      subtitle: "Eyes on you! Launch my message super power rocket, the sound is just right 🚀",
+      subtitle: "Express yourself with speech, cards or gestures and take turns hearing the other person 🚀",
       color: "#3b82f6",
       accent: "#06b6d4",
       landColor: 0x7dd3fc,
       cliffColor: 0xcfd8dc,
       mascot: "🐻 Bear bear",
       mascotRole: "Vibrant little hero",
-      mascotDesc: "The little hero with emotional behavior (EBD) traits learns to pick up the talking wand, launch my message rocket and adjust the volume on the three-dimensional dialogue bubble island",
-      weeksRange: [14, 26],
+      mascotDesc: "A fictional partner whose role can be rotated, practising turn-taking, I-messages and volume on the conversation island",
+      weeks: [1, 2, 3, 4, 9, 10, 11, 15, 22, 25, 34, 35, 51, 52],
       monster: "🗯️ Handy little monsters and interfering elves",
       minigameType: "imsg"
     },
@@ -156,25 +156,25 @@
       cliffColor: 0xd7ccc8,
       mascot: "🐼 And panda",
       mascotRole: "Gentle pilot",
-      mascotDesc: "Little heroes with autism and learning disabilities (ASD/LD) walked across the high-five rainbow bridge on the three-dimensional lucky four-leaf clover island, taking turns waiting and sharing toys",
-      weeksRange: [27, 39],
+      mascotDesc: "A fictional partner whose role can be rotated, practising willingness, turn-taking and sharing on the friendship island",
+      weeks: [5, 12, 13, 14, 16, 17, 28, 29, 33, 36, 38, 40, 46, 48],
       monster: "🚫 The toy king who dominates and the mist that ignores people",
       minigameType: "highfive"
     },
     {
       id: 3,
-      name: "⚙️ Try-Again Island",
-      shortName: "Never mind the island",
-      subtitle: "Don’t go berserk if you lose! My brain turns around and changes my tactics. It’s okay to say I’m sorry. 🧩",
+      name: "⚙️ Daily Life and Change Island",
+      shortName: "Daily Life and Change Island",
+      subtitle: "Practise staying safe and expressing needs; work through changes together 🧩",
       color: "#8b5cf6",
       accent: "#eab308",
       landColor: 0xd8b4fe,
       cliffColor: 0xd1c4e9,
       mascot: "🦊 Chia Fox",
       mascotRole: "Thinking Think Tank Officer",
-      mascotDesc: "The little hero with autism (ASD) turns the elastic thinking gear on the three-dimensional childlike gear island, writes a letter of apology and repair, and does not run away when he loses",
-      weeksRange: [40, 52],
-      monster: "💢 I can’t afford to lose to the violent dragon and the rigid horn.",
+      mascotDesc: "A fictional partner whose role can be rotated, practising flexible thinking, repair and coping with changes",
+      weeks: [6, 23, 26, 27, 30, 31, 32, 37, 45, 47, 49],
+      monster: "🧩 Find a more suitable approach together",
       minigameType: "gear"
     }
   ];
@@ -401,7 +401,7 @@
   let sceneArt = null;
   let cameraMode = 'bird';
   let overviewActive = true;
-  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches || localStorage.getItem('social_quiet_mode') !== 'false';
   let sceneryTime = 0;
   let previousFrameTime = 0;
   let webglAvailable = false;
@@ -554,7 +554,7 @@
     return shape;
   }
 
-  // 5. 童趣魔術齒輪 (⚙️ 輸了沒關係島，象徵大腦轉彎彈性變通)
+  // 5. 童趣魔術齒輪 (⚙️ 生活應變島，象徵大腦轉彎彈性變通)
   function createGearShape(teeth = 6, outerR = 4.8, innerR = 3.6) {
     const shape = new THREE.Shape();
     const n = teeth * 4;
@@ -885,7 +885,7 @@
         mainIsland.add(treeA, treeB);
 
       } else {
-        // ⚙️ 輸了沒關係島：魔術積木風車 + 彈性拼圖積木
+        // ⚙️ 生活應變島：魔術積木風車 + 彈性拼圖積木
         const windmill = makeBox(1.3, 3.0, 1.3, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
         const bladesGroup = new THREE.Group();
         for (let b = 0; b < 4; b++) {
@@ -914,11 +914,10 @@
       add3DLabel(`${theme.name}`, mainIsland, false, idx);
 
       // 環繞主島的 13 顆小週次圓潤布丁踏石島 (代表該島的 13 堂課)
-      const [startW, endW] = theme.weeksRange;
+      const islandWeeks = theme.weeks;
       const subRadius = 8.5;
-      for (let w = startW; w <= endW; w++) {
-        const subIndex = w - startW;
-        const subAngle = angle + (subIndex / 13) * Math.PI * 1.6 - Math.PI * 0.8;
+      for (const [subIndex, w] of islandWeeks.entries()) {
+        const subAngle = angle + (subIndex / islandWeeks.length) * Math.PI * 1.6 - Math.PI * 0.8;
         const subX = posX + Math.cos(subAngle) * subRadius;
         const subZ = posZ + Math.sin(subAngle) * subRadius;
 
@@ -1654,8 +1653,7 @@
     cameraGoal.y = 1.8;
     synchronizeCameraControls();
 
-    const [startW] = ISLAND_THEMES[idx].weeksRange;
-    openQuestDrawer(idx, startW);
+    openQuestDrawer(idx, ISLAND_THEMES[idx].weeks[0]);
 
     const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
     targetYaw = -angle + Math.PI / 2;
@@ -1760,7 +1758,7 @@
   function openQuestDrawer(islandIdx, weekNumber) {
     document.body.classList.add('modal-open');
     state.activeIslandIndex = islandIdx;
-    state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeksRange[0];
+    state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeks[0];
 
     const overlay = document.getElementById('questDrawerOverlay');
     if (!overlay) return;
@@ -1803,8 +1801,7 @@
     // 週次切換標籤條 (Carousel)
     if (carouselBox) {
       let chipsHtml = '';
-      const [startW, endW] = t.weeksRange;
-      for (let i = startW; i <= endW; i++) {
+      for (const i of t.weeks) {
         const isAct = i === wNum;
         const isPass = state.passedWeeks.has(i);
         chipsHtml += `
@@ -1836,6 +1833,7 @@
       }
     };
 
+    questChoiceDiscussed = false;
     if (bodyBox) {
       bodyBox.innerHTML = `
         <!-- NPC 守護夥伴引言 -->
@@ -1855,36 +1853,54 @@
         <!-- 考驗一：CBT 衝動怪獸 vs 社交超能力 -->
         <div class="cbt-choice-section">
           <div class="cbt-choice-title">
-            <span>⚔️ Test 1: Defeat the concept monster (${t.monster})</span>
+            <span>💬 First discuss what different choices might lead to.</span>
           </div>
           <div class="cbt-choice-grid">
-            <div class="cbt-card card-impulsive" onclick="window.socialGame.handleCbtChoice('impulsive')">
+            <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" class="cbt-card card-impulsive" onclick="window.socialGame.handleCbtChoice('impulsive')">
               <div class="cbt-card-header">${dt.impulsive.title}</div>
               <div class="cbt-card-desc">${dt.impulsive.desc}</div>
             </div>
-            <div class="cbt-card card-superskill" onclick="window.socialGame.handleCbtChoice('super')">
+            <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" class="cbt-card card-superskill" onclick="window.socialGame.handleCbtChoice('super')">
               <div class="cbt-card-header">${dt.super_skill.title}</div>
               <div class="cbt-card-desc">${dt.super_skill.desc}</div>
             </div>
           </div>
-          <div id="cbtResultBox" class="cbt-result-box"></div>
+          <div id="cbtResultBox" class="cbt-result-box" role="status"></div>
         </div>
 
         <!-- 考驗二：主題趣味小挑戰 -->
         <div class="minigame-container">
-          <div class="minigame-title">🎮 Test 2: ${getMinigameTitle(t.minigameType)}</div>
+          <div class="minigame-title">🤝 This Lesson’s Action Practice</div>
+          <p>Use speech, pointing, gestures or watch first. Tick each step after trying it together. This records game participation, not IEP mastery.</p>
+          ${(weekData.visualCard?.steps || []).map(step=>`<button type="button" class="quest-practice-step" aria-pressed="false" data-practice-step="${step.num}">${step.num}. ${step.text}</button>`).join('')}
+          <button type="button" id="completeLessonPractice" disabled>We practised together - add to adventure record</button>
+          <p id="questPracticeStatus" role="status">Discuss a choice, then view or rehearse all three steps together.</p>
+          <details><summary>Optional warm-up game: ${getMinigameTitle(t.minigameType)}</summary>
           <div id="minigameDynamicArea">
             ${renderMinigameArea(t.minigameType)}
-          </div>
+          </div></details>
         </div>
       `;
+      bodyBox.querySelectorAll('[data-practice-step]').forEach(button=>button.onclick=()=>{button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'));updateQuestPractice();});
+      bodyBox.querySelector('#completeLessonPractice').onclick=()=>{
+        if(!questChoiceDiscussed)return;
+        if(!state.passedWeeks.has(state.activeWeekNumber)) addExp(30);
+        markWeekPassed(state.activeWeekNumber);
+        document.getElementById('questPracticeStatus').textContent="Added to the adventure record. Use in daily life still needs teacher observation.";
+      };
     }
+  }
+  let questChoiceDiscussed = false;
+  function updateQuestPractice(){
+    const buttons=[...document.querySelectorAll('[data-practice-step]')];
+    const ready=questChoiceDiscussed && buttons.length===3 && buttons.every(b=>b.getAttribute('aria-pressed')==='true');
+    const done=document.getElementById('completeLessonPractice');if(done)done.disabled=!ready;
   }
 
   function getMinigameTitle(type) {
     if (type === 'breathe') return "Turtle Deep Breathing Cooling Device (Adjusting Emotions)";
     if (type === 'imsg') return "My message rocket assembly launch pad (clear expression)";
-    if (type === 'highfive') return "Eye contact and high fives (peer friendliness)";
+    if (type === 'highfive') return "Checking Willingness and Friendly Greetings";
     return "Another Thought Elastic Gear (Frustration Strain)";
   }
 
@@ -1914,7 +1930,7 @@
     } else if (type === 'highfive') {
       return `
         <div class="highfive-game-box">
-          <p style="font-size:0.85rem; color:#64748b;">Look the other person in the eye, extend your palm and give them a friendly high five!</p>
+          <p style="font-size:0.85rem; color:#64748b;">Ask whether the partner is willing. Waving, nodding or a high five are all options.</p>
           <div class="highfive-hand-btn" id="highfiveHand" onclick="window.socialGame.doHighfive()">
             ✋
           </div>
@@ -1948,18 +1964,18 @@
 
     if (!resBox) return;
 
+    questChoiceDiscussed = true;
+    updateQuestPractice();
     if (type === 'impulsive') {
-      sfx.playBuzz();
+      sfx.playClick();
       resBox.className = 'cbt-result-box impulsive-active';
-      resBox.innerHTML = `⚠️ <b>Concept monster appears!</b><br>${dt.impulsive ? dt.impulsive.consequence : "Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"}`;
-      speakText("If your impulsive brain is on fire, first step on the brakes and take three deep breaths!");
+      resBox.innerHTML = `💭 <b>Consider another approach together</b><br>${dt.impulsive ? dt.impulsive.consequence : "Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"}`;
+
     } else {
       sfx.playChime();
       resBox.className = 'cbt-result-box super-active';
-      resBox.innerHTML = `🌟 <b>Successful use of superpower! The concept monster retreats!</b><br>${dt.super_skill ? dt.super_skill.consequence : "Great! Everyone understands your thoughts and solves the problem smoothly!"}`;
-      speakText("Great! Successfully display your social superpower!");
-      addExp(15);
-      markWeekPassed(wNum);
+      resBox.innerHTML = `💬 <b>Next, rehearse the method once</b><br>${dt.super_skill ? dt.super_skill.consequence : "Great! Everyone understands your thoughts and solves the problem smoothly!"}`;
+
     }
   }
 
@@ -1983,7 +1999,7 @@
           prompt.textContent = "🎉 Deep breathing and breath adjustment completed! The heartbeat slows down and the brain calms down!";
           sfx.playChime();
           addExp(20);
-          markWeekPassed(state.activeWeekNumber);
+          showToast("Warm-up complete. Return to the lesson’s action practice.");
         }, 2800);
       }, 2800);
     }, 2800);
@@ -2008,7 +2024,7 @@
     sfx.playFanfare();
     showToast("🚀 My message is that the three-stage rocket was ignited and launched successfully!+20 EXP!");
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast("Warm-up complete. Return to the lesson’s action practice.");
   }
 
   function doHighfive() {
@@ -2020,7 +2036,7 @@
     prompt.textContent = "🌟 Bang! Great success! Give your peers the best friendly support!";
     setTimeout(() => { hand.style.transform = 'scale(1)'; }, 300);
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast("Warm-up complete. Return to the lesson’s action practice.");
   }
 
   let gearDeg = 0;
@@ -2038,7 +2054,7 @@
     ];
     prompt.textContent = thoughts[Math.floor(Math.random() * thoughts.length)];
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast("Warm-up complete. Return to the lesson’s action practice.");
   }
 
   // 通關標記、加星與島章解鎖檢查
@@ -2055,8 +2071,7 @@
       // 更新週次標籤
       const chips = document.querySelectorAll('.week-chip');
       chips.forEach((c, idx) => {
-        const [startW] = ISLAND_THEMES[state.activeIslandIndex].weeksRange;
-        if (startW + idx === wNum) c.classList.add('passed');
+        if (ISLAND_THEMES[state.activeIslandIndex].weeks[idx] === wNum) c.classList.add('passed');
       });
 
       // 更新 3D 週次小島外觀 (翻成金色)
@@ -2070,9 +2085,9 @@
   }
 
   function checkIslandStampUnlocked(islandIdx) {
-    const [startW, endW] = ISLAND_THEMES[islandIdx].weeksRange;
+    const islandWeeks = ISLAND_THEMES[islandIdx].weeks;
     let allPassed = true;
-    for (let w = startW; w <= endW; w++) {
+    for (const w of islandWeeks) {
       if (!state.passedWeeks.has(w)) {
         allPassed = false;
         break;
@@ -2353,9 +2368,9 @@
     `;
 
     ISLAND_THEMES.forEach((t, idx) => {
-      const [startW, endW] = t.weeksRange;
+      const islandWeeks = t.weeks;
       let weeksListHtml = '';
-      for (let w = startW; w <= endW; w++) {
+      for (const w of islandWeeks) {
         const weekData = allWeeks.find(b => b.lessonNumber === w) || allWeeks[w - 1] || {};
         const isPass = state.passedWeeks.has(w);
         weeksListHtml += `
@@ -2452,7 +2467,7 @@
       button.append(number, title);
       button.addEventListener('click', () => {
         document.getElementById(`${kind}Dialog`).close();
-        const index = ISLAND_THEMES.findIndex(theme => week >= theme.weeksRange[0] && week <= theme.weeksRange[1]);
+        const index = ISLAND_THEMES.findIndex(theme => theme.weeks.includes(week));
         openQuestDrawer(index, week);
       });
       list.appendChild(button);
@@ -2528,7 +2543,7 @@
     document.getElementById('residentGreeting').textContent = theme.subtitle;
     document.getElementById('residentQuest').onclick = () => {
       dialog.close();
-      openQuestDrawer(index, theme.weeksRange[0]);
+      openQuestDrawer(index, theme.weeks[0]);
     };
     document.body.classList.add('modal-open');
     dialog.showModal();
@@ -2686,6 +2701,8 @@
 
   // DOM 載入後啟動
   window.addEventListener('DOMContentLoaded', () => {
+    const requestedWeek=Number(new URLSearchParams(location.search).get('week'));
+    if(Number.isInteger(requestedWeek) && requestedWeek>=1 && requestedWeek<=52){const index=ISLAND_THEMES.findIndex(t=>t.weeks.includes(requestedWeek));setTimeout(()=>openQuestDrawer(index,requestedWeek),300);}
     initThree();
     document.getElementById('activeVisitorName').textContent = state.heroName;
     document.querySelectorAll('.explorer-dialog').forEach(dialog => {

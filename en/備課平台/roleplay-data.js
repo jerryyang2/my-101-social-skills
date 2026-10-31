@@ -20,7 +20,7 @@ window.dailyRoleplays = {
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
         "name": "Yu took the initiative to greet her",
-        "action": "Stand tall with your head held high and chest out, look straight ahead, smile with the corners of your mouth turned up, and wave your right hand to greet others.",
+        "action": "Choose a comfortable position toward the partner, smile if comfortable and wave to greet them.",
         "dialogue": "Good morning everyone! My name is Yu. Please give me your advice in the new semester!",
         "tip": "Guide Yu to overcome anxiety in unfamiliar situations and practice active spoken greetings."
       },
@@ -65,47 +65,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Unit 1: Self-Awareness and Classroom Routines",
     "title": "Friendly Looks and Warm Smiles: Communicating Without Words",
-    "scenario": "If the other person looks around while you are speaking, it will make you feel disrespected. The four partners practice \"looking at each other between the eyebrows + smiling for three seconds\"!",
+    "scenario": "Yu does not feel comfortable looking into someone’s eyes for a long time. Jun points to the blocks and asks, “Would you like to build with me?” Yu looks at the blocks, nods and says yes. The teacher notices that he heard and responded to the invitation. Listening can look different for different people.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Yu focusing on the space between the eyebrows",
-        "action": "Focus your eyes on the space between the other person's eyebrows, lean forward slightly, and nod earnestly.",
-        "dialogue": "Jia, look! I am looking at your eyebrows now, I am listening to you attentively!",
-        "tip": "Guide Yu to use the visual fixation point between the eyebrows instead of looking directly at the eyeballs to reduce social anxiety."
+        "name": "Partner expressing a need",
+        "action": "Choose a comfortable position and attend to your partner or a shared object",
+        "dialogue": "I would like to practise: respond with a nod, a wave, a communication card or speech.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "A young man who feels respected",
-        "action": "Put down the toy ball in your hand, face Yu, place your hands flat, and smile in response.",
-        "dialogue": "Yu, you look at me talking, I feel so comfortable, I know you are listening!",
-        "tip": "The guide experiences the positive feedback of being listened to with respect."
+        "name": "Partner listening and responding",
+        "action": "Respond with a nod, a wave, a communication card or speech",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Little He with a gentle gaze",
-        "action": "Slightly raise the corners of your mouth, look warmly at your peers, and gently clap your hands.",
-        "dialogue": "Everyone looks at each other and smiles when they talk. The atmosphere when we talk is so warm!",
-        "tip": "Help He strengthen the consistency of eyes and facial expressions."
+        "name": "Partner offering support",
+        "action": "Ask for a repeat or take a break when needed",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Watching the timekeeper, Jia",
-        "action": "Extend three fingers to show a \"three-second countdown\" and confirm that both parties are looking at each other.",
-        "dialogue": "Stare for three seconds and smile! Eye Spotlight was a great success, everyone cleared the level!",
-        "tip": "Guide Jia to master the quantitative standards of non-verbal communication."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -1504,7 +1504,7 @@ window.dailyRoleplays = {
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
         "name": "Yu's calm and composed expression",
-        "action": "Look into the other person's eyes, shake your head in a calm but firm tone, and keep your hands on the table without touching it.",
+        "action": "Attend to the partner in a comfortable way, speak calmly and firmly, shake your head if useful and keep your hands clear.",
         "dialogue": "I need to rest quietly now, please don't push my chair, thank you for your understanding!",
         "tip": "Guide Yu to express needs in clear and calm spoken language without causing confrontation."
       },
@@ -1655,47 +1655,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Unit 10: Self-Care and Healthy Habits",
     "title": "Lunch Manners: Chewing Quietly and Reducing Food Waste",
-    "scenario": "At the lunch table, everyone practiced chewing with their lips tightly closed and without making a sound, speaking only after swallowing, and cleaning up their plates neatly after the meal!",
+    "scenario": "At lunch, He finds a food smell uncomfortable. He points to a needs card and asks for a smaller portion and help. The teacher checks the agreed dietary arrangements before making changes. Everyone practises respecting different needs without comparing how much people eat.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Yu chewing with his mouth closed",
-        "action": "After putting the food in your mouth, close your lips tightly, chew your jaw rhythmically twenty times, and swallow quietly.",
-        "dialogue": "Close your lips and chew slowly without making any sound or dropping rice grains. Your stomach will be comfortable and healthy!",
-        "tip": "Guide Yu to improve table etiquette through oral control through closed lips and chewing."
+        "name": "Partner expressing a need",
+        "action": "Check the portion and any known dietary requirements",
+        "dialogue": "I would like to practise: use speech or a communication card to request a smaller portion, an alternative or help.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "Little Jun only spoke after swallowing the",
-        "action": "Gently pat your chest with your right hand to confirm that you have swallowed all the soup in your mouth. Then gently press the corners of your mouth with a tissue before turning your head to speak.",
-        "dialogue": "Phew ~ I swallowed all the food! Now I can share with you that today’s corn chowder is delicious!",
-        "tip": "Guide the patient to establish an impulse suppression chain of \"swallowing → wiping mouth → speaking\"."
+        "name": "Partner listening and responding",
+        "action": "Use speech or a communication card to request a smaller portion, an alternative or help",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Cherishing food, He",
-        "action": "Use a spoon to scrape the last grain of rice off the bottom of the bowl and eat it, leaving the plate shiny like a mirror.",
-        "dialogue": "Farming is very hard for the farmer uncle. I ate all the vegetables and white rice. It’s full of nutrition!",
-        "tip": "Help He develop a healthy attitude of being grateful for food and not picky about food."
+        "name": "Partner offering support",
+        "action": "Eat safely and comfortably, then tidy the utensils",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Post-meal cleanup officer - Jia",
-        "action": "Put the spoon and chopsticks into the designated recycling bin, stack the lunch boxes neatly in order, and wipe the table clean with a cloth.",
-        "dialogue": "The tableware is in its place and the tabletop is smooth! All members of the OO Lunch CD Operation have cleared the level and achieved healthy growth and reached the first place!",
-        "tip": "Guide Jia to implement the ability to take care of the environment and tidy up after meals."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -1991,7 +1991,7 @@ window.dailyRoleplays = {
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
         "name": "Yu, having calmed down and accepted the situation.",
-        "action": "Take three deep breaths to expel the pent-up air from your chest, look into the other person's eyes, and relax your shoulders.",
+        "action": "Take a comfortable breath, attend to the partner in a way that suits you and relax your shoulders.",
         "dialogue": "Although I was heartbroken just now, seeing you apologize so sincerely, I know you didn’t mean it, and I forgive you!",
         "tip": "Guide Yu to let go of her emotions in a timely manner and release forgiveness and kindness after receiving a complete apology."
       },
@@ -2026,47 +2026,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Unit 12: Apologies, Forgiveness and Repairing Relationships",
     "title": "Accepting an Apology and Rebuilding Friendship",
-    "scenario": "Faced with a sincere apology from a peer, four partners practice opening their hearts, accepting the apology, saying \"It's okay,\" and repairing items together!",
+    "scenario": "Jun accidentally knocks over Jia’s work and offers to help repair it. Jia is still upset and asks for more time. The teacher helps everyone make the area safe and discuss repairs. Hearing an apology does not mean having to forgive immediately, hug or keep playing together.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Yu shows tolerance",
-        "action": "Turn to face your peer, look at them with gentle eyes, extend your right hand to gently pat their shoulder, and slightly raise the corners of your mouth.",
-        "dialogue": "It doesn't matter! I see your sincerity, I'm not angry anymore, let's find a way to fix it together!",
-        "tip": "Guide Yu to break through the stubborn thinking of black and white and learn to be flexible, tolerant and relieved."
+        "name": "Partner expressing a need",
+        "action": "Check that you feel safe and willing to talk",
+        "dialogue": "I would like to practise: share a feeling or say that you need more time.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "Little Jun, relieved of his heavy burden",
-        "action": "Let out a long sigh of relief, relax completely, and carefully use the tape in both hands to help with the repair.",
-        "dialogue": "Yu, thank you for forgiving me! You are so kind. I will be more careful when I borrow something from you in the future!",
-        "tip": "Guide the child to feel the redemptive sense of being forgiven and inspire more cautious peer respect."
+        "name": "Partner listening and responding",
+        "action": "Share a feeling or say that you need more time",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Gentle Tape Little Angel - He",
-        "action": "Tear off a piece of transparent tape and stick it flat on the torn crack in the paper, smoothing out the marks.",
-        "dialogue": "Put on the transparent tape, the cracks are invisible, and the hearts of the two good friends are stuck together again!",
-        "tip": "Help He use objects as metaphors to deepen the meaning of cooperative restoration."
+        "name": "Partner offering support",
+        "action": "Discuss repair and future boundaries with a trusted adult",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Witness for the Rebirth of Friendship - Jia",
-        "action": "Lead the whole class to clap together and award the \"Open-mindedness Gold Medal\" to the peers who showed tolerance.",
-        "dialogue": "The most courageous person is to know how to forgive, and the magnanimous person can tolerate everything in the world! OO Learning Classroom is full of friendship and sunshine every day!",
-        "tip": "Guidance strengthens the positive group motivational effect of the virtue of tolerance."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -2768,47 +2768,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
     "title": "Loud Alarm Drills: Ear Defenders and Safe Evacuation",
-    "scenario": "The air raid evacuation drill was conducted without warning. The alarm sounded throughout the school. Four little heroes practiced quickly putting on earmuffs, covering their heads for protection, and not screaming!",
+    "scenario": "Before a drill, the teacher previews the possible alarm and the route using a sequence card. Yu requests ear defenders. The teacher checks that he can still receive safety instructions and arranges adult support. Everyone follows the actual drill instructions. Success is about safe movement and asking for help, not enduring discomfort.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Calm and self-disciplined Yu",
-        "action": "Quickly take out the noise-canceling earmuffs from the side pocket of your backpack and put them on. Shrink your body under the table and hug the back of your neck with both hands.",
-        "dialogue": "Phew ~ Put on the big silent earmuffs, the alarm sound becomes quieter! I'm safe under the table!",
-        "tip": "Guide Yu to overcome sensory overload caused by sudden sharp and loud noises and establish a sense of self-protection."
+        "name": "Partner expressing a need",
+        "action": "Preview the drill sequence and the route specified by the teacher",
+        "dialogue": "I would like to practise: use speech or a card to request ear defenders or adult support if uncomfortable.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "A courageous and responsible young man",
-        "action": "Resist the urge to run around, kneel down with both knees on the ground, put your hands behind your head, and keep your mouth tightly closed without playing around.",
-        "dialogue": "Everyone, squat down! It’s evacuation time, we need to stay quiet and protect our heads!",
-        "tip": "Guidance is given to convert excess physical energy into self-disciplined behavior that abides by evacuation disciplines."
+        "name": "Partner listening and responding",
+        "action": "Use speech or a card to request ear defenders or adult support if uncomfortable",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Gentle and considerate little He",
-        "action": "Gently hide behind the table, look at Yu with concern in your eyes, and pat Yu's shoulder to comfort him.",
-        "dialogue": "Don't be afraid, Yu, we are together, the drill will be over in three minutes!",
-        "tip": "Help He use gentle companionship qualities to build a sense of peer support."
+        "name": "Partner offering support",
+        "action": "Follow the adult’s on-site safety instructions to the designated location",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Enthusiastic and rule-abiding Jia",
-        "action": "Hold the classroom escape and refuge map card, keep your body close to the table legs, and confirm that everyone is in position.",
-        "dialogue": "Report to the teacher! All members of our group got into position with their heads held in their hands, no one spoke or pushed!",
-        "tip": "Guidance Jia gave full play to ASD's insistence on rules and structures and became the leader of the class order team."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -2980,47 +2980,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Inspiration Library Special Topic 1: Sensory Regulation and Sensory Adaptation",
     "title": "💨 Movement and Stimming: Choosing Helpful Sensory Tools",
-    "scenario": "Feeling anxious in class and wanting to bang on the table to make noise, the four little heroes practice using a silent teaching aid to calm themselves down!",
+    "scenario": "Jun gently rocks while thinking. When the movement is safe and does not harm anyone, the teacher does not require him to sit completely still. He needs to move for a while and uses a break card. Everyone practises communicating needs and arranging a suitable space.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Calm and self-disciplined Yu",
-        "action": "Slowly squeeze the green acupressure ball with both hands in your pockets, step on the elastic band with both feet, and focus your eyes on the teacher.",
-        "dialogue": "I gently squeeze the ball in my pocket, squeeze it, and release it, and my body will no longer want to shake!",
-        "tip": "Guide Yu to meet proprioceptive adjustment needs with hidden and quiet sensory input."
+        "name": "Partner expressing a need",
+        "action": "Notice body sensations and current needs",
+        "dialogue": "I would like to practise: keep movements that do not harm yourself or others, or choose a suitable object or break.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "A courageous and responsible young man",
-        "action": "Gently place the ballpoint pen that is about to pop out into the pencil case, zip it up, and then use both hands to hold the eraser firmly.",
-        "dialogue": "I don’t click the clicking pen anymore! I hold the eraser tightly so that the whole class can listen quietly!",
-        "tip": "Guide the child to resist the urge to create auditory stimulation and to be considerate of peers around him."
+        "name": "Partner listening and responding",
+        "action": "Keep movements that do not harm yourself or others, or choose a suitable object or break",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Gentle and considerate little He",
-        "action": "Hold a soft ball of yarn under the table, move gently, and wear a reassuring smile.",
-        "dialogue": "Touching the soft fur of the wool ball, I feel very warm in my heart and I am not nervous at all!",
-        "tip": "Help He make good use of tactile comfort to establish a sense of security in learning."
+        "name": "Partner offering support",
+        "action": "Tell the teacher when you need space, movement or support",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Enthusiastic and rule-abiding Jia",
-        "action": "Sit upright and stamp a small stamp on your notebook after listening to each passage, using structured hand gestures.",
-        "dialogue": "Use your hands to write and stamp. If you have something to do, your brain will not run away to think about other things!",
-        "tip": "The guide locks action intentions through highly structured writing operations."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -3350,7 +3350,7 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "🤫 Reading the Room: Noticing When Others Need Quiet",
+    "title": "🤫 Noticing the Setting and Communicating a Need for a Break or Quiet Self Regulation",
     "scenario": "During lunch break and self-study, in a quiet environment, the four little heroes practiced recognizing the group atmosphere and switching to mental silence mode!",
     "roles": [
       {
@@ -3456,7 +3456,7 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 2: Pragmatic Communication and Implicit Social Codes",
-    "title": "❓ When Instructions Are Confusing: Ask for the Next Step Again",
+    "title": "❓ When a Long Instruction Is Unclear - Ask the Teacher to Repeat the Second Step",
     "scenario": "When a multi-step task was explained in class and the student didn't understand, the four little heroes practiced raising their hands to confirm the steps without panicking!",
     "roles": [
       {
@@ -4145,7 +4145,7 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 4: Peer Friction and Conflict Resolution Advanced",
-    "title": "🏃 After a Collision: Check on the Other Person First",
+    "title": "🏃 After Bumping into a Younger Child - Stop and Ask an Adult to Check for Injury",
     "scenario": "While running around a corner, the four little heroes accidentally bumped into a younger student. They practiced overcoming their instinct to run away, crouching down to check on him, and taking responsibility for his care!",
     "roles": [
       {
@@ -4411,47 +4411,47 @@ window.dailyRoleplays = {
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
     "title": "🍽️ Foods I Dislike: Polite Choices at Lunch",
-    "scenario": "The four little heroes encountered green peppers as a dish they disliked during their school lunch. They practiced restraining their disgusted expressions, politely reducing their portion size, and bravely trying it!",
+    "scenario": "A food smell makes Jia uncomfortable. Jia puts the utensils down safely and asks the teacher for help. Together they check the agreed dietary arrangements. The lesson practises expressing needs. Tasting food is not forced, and tolerating discomfort is not a condition for a reward.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Calm and self-disciplined Yu",
-        "action": "Resist the urge to scream and feel nauseous, close your eyes, take a small bite of the bell pepper, chew it, and swallow it.",
-        "dialogue": "I don’t say bad words, I take a small bite and my brain is upgraded!",
-        "tip": "Guide Yu to break through food texture defenses and take small steps towards success in trying new things."
+        "name": "Partner expressing a need",
+        "action": "Notice discomfort from a smell, texture or body sensation",
+        "dialogue": "I would like to practise: tell a caregiver about smaller portions, alternatives or other needs.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "A courageous and responsible young man",
-        "action": "Eat all the vegetables in the bento box with big bites and enthusiastically encourage the picky eaters next to you.",
-        "dialogue": "The fried shredded pork with green pepper is delicious! Eat more vegetables and you will grow as tall and strong as me!",
-        "tip": "Guide the class to use the power of positive role models to promote a healthy eating atmosphere in the class."
+        "name": "Partner listening and responding",
+        "action": "Tell a caregiver about smaller portions, alternatives or other needs",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Gentle and considerate little He",
-        "action": "Put your hands together and bow politely to the student serving the food, clearly expressing your request for a smaller portion.",
-        "dialogue": "Thank you for helping me pick up the food. Please give me a small slice to taste. Thank you!",
-        "tip": "Help He use elegant spoken language and politeness to maintain personal dietary boundaries."
+        "name": "Partner offering support",
+        "action": "Agree on suitable mealtime arrangements with an adult",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Enthusiastic and rule-abiding Jia",
-        "action": "Keep the tabletop clean and remind everyone to put bones and scraps into the recycling bin after eating.",
-        "dialogue": "Whether you like it or not, the tabletop must be wiped clean. Thank you to the kitchen worker for her hard work!",
-        "tip": "Guide Jia to maintain table hygiene routines and show gratitude and cherish blessings."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },
@@ -4516,7 +4516,7 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 5: Special Situations and Environmental Adaptation",
-    "title": "🧹 Cleanup Teamwork: Helping Safely and Taking Pride in Our Work",
+    "title": "🧹 Cleaning Tasks - Use Tools within an Agreed Safe Role and Avoid Splashing Others",
     "scenario": "The whole school is cleaning and washing the handwashing stations and public areas. Four little heroes practice dividing tasks and cooperating, using water safely and not playing around!",
     "roles": [
       {
@@ -4781,7 +4781,7 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 6: Putian Fusion and Family Life",
-    "title": "👵 Visiting Grandparents: Greetings and Helping at Mealtimes",
+    "title": "👵 Visiting Grandparents - Greeting Comfortably and Helping with the Meal",
     "scenario": "A family reunion to visit grandparents. The four little heroes practice looking at the elders, greeting them, and taking the initiative to serve tea and set the table!",
     "roles": [
       {
@@ -5205,48 +5205,48 @@ window.dailyRoleplays = {
     "dayOfWeek": "Flexible Topic",
     "festival": "",
     "unit": "Inspiration Library Topic 7: Building self-esteem and living independently",
-    "title": "🩹 A Scraped Knee: Stay Calm and Ask the School Nurse for Help",
-    "scenario": "A child falls on the playground, scrapes and bleeds their knee. The four little heroes practice overcoming their fear of blood and crying, applying pressure to stop the bleeding, and calmly seeking medical attention!",
+    "title": "🩹 When Hurt - Express Pain and Ask an Adult to Accompany You",
+    "scenario": "Yu falls and cries because his knee hurts. He stays nearby and asks the teacher for help. The teacher listens to where it hurts and follows the school’s procedure to accompany Yu to the health room. Crying does not remove the right to help. An appropriate adult handles injury care.",
     "roles": [
       {
         "roleId": 1,
         "studentName": "Yu",
         "studentEmoji": "🦁",
         "studentColor": "#3b82f6",
-        "name": "Calm and self-disciplined Yu",
-        "action": "Calmly pick up the water bottle and hat that He dropped, and quickly lead the way to guide them toward the health center.",
-        "dialogue": "Don't be afraid, He, the health center is right in front, and the nurse aunt has magical cooling ointment!",
-        "tip": "Guiding Yu shows calm assistance and guidance support functions at the accident scene."
+        "name": "Partner expressing a need",
+        "action": "Stop in a safe place and tell a trusted adult",
+        "dialogue": "I would like to practise: use speech, pointing or gestures to indicate discomfort.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 2,
         "studentName": "Jun",
         "studentEmoji": "🐻",
         "studentColor": "#8b5cf6",
-        "name": "A courageous and responsible young man",
-        "action": "Squat down to act as a strong crutch, carefully support He's arm, and move forward in coordination with He's slow pace.",
-        "dialogue": "Hold my shoulders! Walk slowly and don't be in a hurry. With big brother here, you will never fall again!",
-        "tip": "The guide transforms body strength into strong arms that tenderly care for his injured peers."
+        "name": "Partner listening and responding",
+        "action": "Use speech, pointing or gestures to indicate discomfort",
+        "dialogue": "I can listen to what you need and help you find the teacher.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 3,
         "studentName": "He",
         "studentEmoji": "🐼",
         "studentColor": "#10b981",
-        "name": "Gentle and considerate little He",
-        "action": "Press a clean tissue against the wound on your knee to stop your tears, grit your teeth and bravely take a step toward the infirmary.",
-        "dialogue": "I took a deep breath and stopped crying! The platelets were pressing on the wound to help me repair it, and I was able to walk and apply the medicine on my own!",
-        "tip": "Help He overcome physical pain panic and build strong mental toughness against frustration."
+        "name": "Partner offering support",
+        "action": "Ask an adult to accompany you and follow the school’s health-room procedure",
+        "dialogue": "We can watch a demonstration first or use a communication card.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       },
       {
         "roleId": 4,
         "studentName": "Jia",
         "studentEmoji": "🦊",
         "studentColor": "#f59e0b",
-        "name": "Enthusiastic and rule-abiding Jia",
-        "action": "Carefully use a clean tissue to gently press the edges of the wound while gently comforting your companion.",
-        "dialogue": "Take a deep breath ~ inhale ~ exhale, the blood has become less, He, you are so brave!",
-        "tip": "Guide Jia to skillfully use primary first aid knowledge to stabilize the patient's emotions."
+        "name": "Partner noticing and giving feedback",
+        "action": "Observe in a comfortable way and describe the effort you noticed.",
+        "dialogue": "Our needs can differ. Let’s check safety and find suitable support together.",
+        "tip": "Rotate roles, observe first or use communication cards. Do not require eye contact, touch or a fixed posture."
       }
     ]
   },

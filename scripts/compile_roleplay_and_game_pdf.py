@@ -575,7 +575,7 @@ intro_html = f"""<!doctype html>
       <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
         <span style="background:#e0f2fe; color:#0369a1; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">📚 108 課綱特殊需求領域：社會技巧</span>
         <span style="background:#f3e8ff; color:#6b21a8; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">🎭 差異化分工台詞演練（宇🦁、畯🐻、和🐼、嘉🦊）</span>
-        <span style="background:#fef3c7; color:#b45309; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">🧭 CBT 行為因果抉擇模擬器 (Choice & Consequence)</span>
+        <span style="background:#fef3c7; color:#b45309; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">🧭 情境選擇與行動討論</span>
         <span style="background:#ecfdf5; color:#047857; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">📄 一堂課一頁 A4 · 課堂投影分組演練專用</span>
       </div>
     </div>
@@ -583,28 +583,28 @@ intro_html = f"""<!doctype html>
     <!-- 四大代表角色卡片 -->
     <div style="background:#ffffff; border:2.5px solid #cbd5e1; border-radius:16px; padding:12px 16px; max-width:880px; margin:0 auto 16px auto; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
       <div style="font-size:0.95rem; font-weight:900; color:#1e293b; margin-bottom:10px;">
-        🌟 課堂大劇場：四位特教學童代表角色（Persona）演練分工與鷹架引導
+        🌟 角色演練：依需要選擇參與，輪流嘗試不同分工
       </div>
       <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; text-align:left;">
         <div style="background:#eff6ff; border:2px solid #bfdbfe; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#1d4ed8;">🦁 小宇 (ASD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">主角挑戰者 · 克服開口焦慮</div>
-          <div style="font-size:0.75rem; color:#1e3a8a; line-height:1.35;">安排第一順位台詞，搭配直視眉心與肢體動作明確指示。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#1d4ed8;">🦁 小宇（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">練習提出需求與選擇參與</div>
+          <div style="font-size:0.75rem; color:#1e3a8a; line-height:1.35;">以說話、指圖或動作練習，可先看示範。</div>
         </div>
         <div style="background:#f5f3ff; border:2px solid #ddd6fe; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#6d28d9;">🐻 小畯 (EBD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">合作互動者 · 練習耐心傾聽</div>
-          <div style="font-size:0.75rem; color:#5b21b6; line-height:1.35;">克制急躁搶話，練習溫和體面回應與輸得起運動家風度。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#6d28d9;">🐻 小畯（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">回應不同需要與共同協商</div>
+          <div style="font-size:0.75rem; color:#5b21b6; line-height:1.35;">先聽完彼此需要，保留等待和不同意見。</div>
         </div>
         <div style="background:#ecfdf5; border:2px solid #a7f3d0; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#047857;">🐼 小和 (ASD/LD)</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#047857;">🐼 小和（示例角色）</div>
           <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">暖心支持者 · 建立成功經驗</div>
           <div style="font-size:0.75rem; color:#065f46; line-height:1.35;">給予同儕肯定與提供道具支援，在安全團體中大方發言。</div>
         </div>
         <div style="background:#fffbeb; border:2px solid #fde68a; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#b45309;">🦊 小嘉 (ASD)</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#b45309;">🦊 小嘉（示例角色）</div>
           <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">秩序引導者 · 正向班級領導</div>
-          <div style="font-size:0.75rem; color:#78350f; line-height:1.35;">主持規則宣達、帶領鼓掌喝采，將規則執著化為組織力。</div>
+          <div style="font-size:0.75rem; color:#78350f; line-height:1.35;">說明規則前先詢問，輪流擔任不同角色。</div>
         </div>
       </div>
     </div>
@@ -800,7 +800,7 @@ for idx, b in enumerate(briefings):
       <div class="game-section">
         <div class="game-top-bar">
           <span class="section-tag-game">🎮 遊樂場實戰 · 行為抉擇因果模擬分岔路</span>
-          <span style="font-size:0.75rem; color:#0369a1; font-weight:800;">CBT 認知行為治療 · PBS 正向行為支持</span>
+          <span style="font-size:0.75rem; color:#0369a1; font-weight:800;">情境選擇與行動討論</span>
         </div>
         <div class="game-prompt"><strong>🧭 行為抉擇考驗：</strong>{dt.get('prompt')}</div>
         {dt_html}

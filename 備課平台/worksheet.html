@@ -9,7 +9,7 @@
   <link rel="alternate icon" type="image/png" href="favicon.png">
   <!-- 字嗨注音字型 CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="classroom.css">
+  <link rel="stylesheet" href="classroom.css?v=3c3a5a077c38">
   <style>
     :root {
       --sheet-bg: #ffffff;
@@ -600,11 +600,13 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261101-class-tools">
-  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261101-clean-hourglass" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
-  <script defer src="focus-mode.js?v=20261031-font"></script>
+  <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=7e1f24ee788c" defer></script>
+  <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
+  <script defer src="focus-mode.js?v=18654f750e1c"></script>
+  <link rel="stylesheet" href="learning-support.css?v=dd1f88174fe3">
+  <script src="learning-support.js?v=becf9c04e089" defer></script>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body>
@@ -638,16 +640,17 @@
   </aside>
 
   <!-- Printable A4 Worksheet Area -->
-  <main class="sheet-wrapper">
+  <p class="sheet-save-status" id="sheetSaveStatus" role="status">作答依學生與課程保存在本機；勾選代表練習，不代表獨立學會。</p><main class="sheet-wrapper">
     <article class="worksheet-page" id="worksheetContainer">
       <!-- Dynamic Content Rendered by JavaScript -->
     </article>
   </main>
 
-  <script src="worksheets-data.js?v=20261031-focus"></script>
-  <script src="zhuyin.js"></script>
+  <script src="worksheets-data.js?v=5e0a1b7f0198"></script>
+  <script src="zhuyin.js?v=4990f60d3828"></script>
   <script>
     let currentSheetId = "b-week-1";
+    const worksheetLearners = [{id:'yu',name:'宇'},{id:'he',name:'和'},{id:'jia',name:'嘉'},{id:'jun',name:'畯'}];
     let selectedStudent = "宇";
     let isZhuyinOn = true;
 
@@ -656,7 +659,7 @@
       circled: {},
       choice: null,
       checked: {},
-      stars: 3
+      stars: 0
     };
 
     // 乾淨格式化學習單標題
@@ -665,14 +668,31 @@
       const fest = item.festival ? `【${item.festival}】` : "";
       let cleanTitle = (item.title || "").replace(/^【.*?】[——\-：:\s]*/, "");
       if (item.festival && cleanTitle.startsWith(item.festival)) {
-        cleanTitle = cleanTitle.substring(item.festival.length).replace(/^[與和的大作戰——\-：:\s]+/, "");
+        cleanTitle = cleanTitle.substring(item.festival.length).replace(/^[與和的——\-：:\s]+/, "");
       }
       return `${fest}${cleanTitle}`;
     }
 
+    function installCustomWorksheets() {
+      try {
+        const custom=JSON.parse(localStorage.getItem('custom_briefings')||'[]');
+        if(!Array.isArray(custom))return;
+        const safe=value=>String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        custom.filter(b=>typeof b.id==='string'&&/^b-\d+$/.test(b.id)&&!dailyWorksheets[b.id]).forEach(b=>{
+          const steps=(b.visualCard?.steps||[]).slice(0,3).map((x,i)=>({num:i+1,text:safe(x.text)}));
+          dailyWorksheets[b.id]={id:b.id,custom:true,date:safe(b.date),dayOfWeek:'自訂排程',title:safe(b.title),unit:safe(b.unit),themeColor:'#0f766e',badgeEmoji:'📝',badgeLabel:'自訂練習',superSkill:safe(b.summary),
+            section1:{title:'先說說情境',prompt:safe(b.story?.content||b.summary),items:[{id:'custom-situation',icon:'💬',label:'我說了、指出或演出了情境',desc:'可以先觀察'}]},
+            section2:{title:'我可以怎麼做',prompt:'這是自訂練習範本，請教師依學生需要補充提問與示範；可以說、指圖或用動作回答。',items:[{id:'custom-support',icon:'🤝',label:'我表達了自己的需要',desc:'需要幫忙、再示範或休息都可以'}]},
+            section3:{title:'我們一起演練',prompt:'逐步練習。勾選表示做過練習，提示程度請由教師另記。',steps},
+            generalization:{trigger:'教師選定自然情境後，提供適合的提示',promptWord:steps[1]?.text||safe(b.title)},
+            homeTask:{action:'與家人選擇一個適合的生活情境試試看；沒有機會也可以記錄。'}};
+        });
+      }catch(e){}
+    }
     function initWorksheet() {
       // 讀取網址參數
       const params = new URLSearchParams(window.location.search);
+      installCustomWorksheets();
       const keys = Object.keys(dailyWorksheets);
       if (!dailyWorksheets[currentSheetId] && keys.length > 0) {
         currentSheetId = keys[0];
@@ -682,12 +702,14 @@
         currentSheetId = urlId;
       }
       const studentParam = params.get("student");
-      if (studentParam) selectedStudent = studentParam;
+      const requestedLearner=worksheetLearners.find(x=>x.id===params.get('learner')||x.name===studentParam);
+      if(requestedLearner)selectedStudent=requestedLearner.name;
 
       // 填充日期下拉選單（分類呈現：52 週新課綱 vs 晨報靈感備份庫）
       const select = document.getElementById("sheetDateSelector");
       const ids = Object.keys(dailyWorksheets);
-      const newIds = ids.filter(id => !dailyWorksheets[id].legacy);
+      const newIds = ids.filter(id => !dailyWorksheets[id].legacy && !dailyWorksheets[id].custom);
+      const customIds = ids.filter(id => dailyWorksheets[id].custom);
       const legacyIds = ids.filter(id => dailyWorksheets[id].legacy);
 
       let html = "";
@@ -711,29 +733,54 @@
         }).join("");
         html += `</optgroup>`;
       }
+      if(customIds.length)html+=`<optgroup label="📝 本機自訂練習範本">${customIds.map(id=>`<option value="${id}" ${id===currentSheetId?'selected':''}>${dailyWorksheets[id].title}</option>`).join('')}</optgroup>`;
       select.innerHTML = html;
+      if(urlId && !dailyWorksheets[urlId]) {
+        document.getElementById('worksheetContainer').innerHTML='<h1>找不到這份課程</h1><p>自訂課程只存在原本的瀏覽器。請回到建立課程的裝置，或從上方選擇一堂可用課程。</p>';
+        return;
+      }
 
       // 更新課堂簡報連結
       document.getElementById("launchClassroomLink").href = `classroom.html?id=${currentSheetId}`;
 
+      loadSheetAnswers();
+      document.querySelectorAll('.student-chip').forEach(btn=>btn.classList.toggle('active',btn.innerText.includes(selectedStudent)));
       renderCurrentWorksheet();
     }
 
     function switchWorksheetDate(newId) {
       currentSheetId = newId;
       document.getElementById("launchClassroomLink").href = `classroom.html?id=${currentSheetId}`;
-      sheetAnswers = { circled: {}, choice: null, checked: {}, stars: 3 };
+      loadSheetAnswers();
+      const url = new URL(location.href); url.searchParams.set("id", currentSheetId); history.replaceState(null,"",url);
       renderCurrentWorksheet();
     }
 
+    function worksheetOptions(options) {
+      const offset=((parseInt(currentSheetId.replace(/\D/g,''),10)||1)+['宇','和','嘉','畯'].indexOf(selectedStudent))%options.length;
+      return options.slice(offset).concat(options.slice(0,offset));
+    }
+    function sheetAnswerKey() { return 'social_worksheet_v1_' + currentSheetId + '_' + (worksheetLearners.find(x=>x.name===selectedStudent)?.id || 'yu'); }
+    function loadSheetAnswers() {
+      try { sheetAnswers = JSON.parse(localStorage.getItem(sheetAnswerKey()) || 'null') || {circled:{},choice:null,checked:{},stars:0};
+        if(!sheetAnswers.circled || typeof sheetAnswers.circled!=='object'||!sheetAnswers.checked||typeof sheetAnswers.checked!=='object')throw new Error('invalid'); }
+      catch(e) { sheetAnswers = {circled:{},choice:null,checked:{},stars:0}; }
+    }
+    function saveSheetAnswers() {
+      const message = document.getElementById('sheetSaveStatus');
+      try { localStorage.setItem(sheetAnswerKey(), JSON.stringify(sheetAnswers)); if(message)message.textContent='已保存在此瀏覽器；各學生與課程分開保存。'; }
+      catch(e) { if(message)message.textContent='無法儲存，請列印或另外記錄；重新整理可能遺失。'; }
+    }
     function pickStudent(name) {
       selectedStudent = name;
-      document.querySelectorAll(".student-chip").forEach(btn => {
-        btn.classList.toggle("active", btn.innerText.includes(name));
-      });
-      const nameEl = document.getElementById("studentNameDisplay");
-      if (nameEl) nameEl.innerText = name;
+      document.querySelectorAll('.student-chip').forEach(btn=>{ const chosen=btn.innerText.includes(name);btn.classList.toggle('active',chosen);btn.setAttribute('aria-pressed',String(chosen)); });
+      loadSheetAnswers(); renderCurrentWorksheet();
+      const url = new URL(location.href);url.searchParams.set('learner',worksheetLearners.find(x=>x.name===name).id);url.searchParams.delete('student');history.replaceState(null,'',url);
     }
+    document.addEventListener('keydown',e=>{
+      const control=e.target.closest('[data-sheet-control]');
+      if(control && (e.key===' '||e.key==='Enter')){e.preventDefault();e.stopPropagation();control.click();}
+    });
 
     function toggleWorksheetZhuyin() {
       isZhuyinOn = !isZhuyinOn;
@@ -748,6 +795,9 @@
       renderCurrentWorksheet();
     }
 
+    function escapeSheetAttribute(text) {
+      return String(text??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
     function formatText(text) {
       if (!text) return "";
       if (isZhuyinOn) {
@@ -782,8 +832,8 @@
         <!-- Student Info -->
         <div class="student-info-bar">
           <div class="info-item">
-            <span>${data.legacy ? '💡 專題：' : '📅 課堂進度：'}</span>
-            <span>${data.legacy ? `第 ${data.lessonNumber} 課（靈感庫無日期限制）` : `第 ${data.lessonNumber} 週 · ${data.date} (${data.dayOfWeek})`}</span>
+            <span>${data.custom ? '📝 本機自訂：' : data.legacy ? '💡 專題：' : '📅 課堂進度：'}</span>
+            <span>${data.custom ? data.date : data.legacy ? `第 ${data.lessonNumber} 課（靈感庫無日期限制）` : `第 ${data.lessonNumber} 週 · ${data.date} (${data.dayOfWeek})`}</span>
           </div>
           <div class="info-item">
             <span>👦 挑戰小英雄：</span>
@@ -804,7 +854,7 @@
           <p class="task-prompt">${formatText(data.section1.prompt)}</p>
           <div class="circle-grid">
             ${data.section1.items.map(it => `
-              <div class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
+              <div role="checkbox" tabindex="0" data-sheet-control aria-checked="${!!sheetAnswers.circled[it.id]}" aria-label="${escapeSheetAttribute(it.label)}" class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
                 <div class="circle-icon">${it.icon}</div>
                 <div class="circle-label">${formatText(it.label)}</div>
                 <div class="circle-desc">${it.desc}</div>
@@ -823,8 +873,8 @@
           
           ${data.section2.type === "choice" ? `
             <div class="choice-list">
-              ${data.section2.options.map(opt => `
-                <div class="choice-card ${sheetAnswers.choice === opt.id ? "selected" : ""}" onclick="selectChoice('${opt.id}')">
+              ${worksheetOptions(data.section2.options).map(opt => `
+                <div role="button" tabindex="0" data-sheet-control aria-pressed="${sheetAnswers.choice === opt.id}" aria-label="${escapeSheetAttribute(opt.label)}" class="choice-card ${sheetAnswers.choice === opt.id ? "selected" : ""}" onclick="selectChoice('${opt.id}')">
                   <span class="choice-radio">${sheetAnswers.choice === opt.id ? "✓" : ""}</span>
                   <span class="choice-icon">${opt.icon}</span>
                   <span class="choice-text">${formatText(opt.label)}</span>
@@ -834,7 +884,7 @@
           ` : `
             <div class="circle-grid">
               ${data.section2.items.map(it => `
-                <div class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
+                <div role="checkbox" tabindex="0" data-sheet-control aria-checked="${!!sheetAnswers.circled[it.id]}" aria-label="${escapeSheetAttribute(it.label)}" class="circle-item ${sheetAnswers.circled[it.id] ? "circled" : ""}" onclick="toggleCircleItem('${it.id}')">
                   <div class="circle-icon">${it.icon}</div>
                   <div class="circle-label">${formatText(it.label)}</div>
                   <div class="circle-desc">${it.desc}</div>
@@ -853,7 +903,7 @@
           <p class="task-prompt">${formatText(data.section3.prompt)}</p>
           <div class="checklist-rows">
             ${data.section3.steps.map(st => `
-              <div class="checklist-row ${sheetAnswers.checked[st.num] ? "checked" : ""}" onclick="toggleCheckStep(${st.num})">
+              <div role="checkbox" tabindex="0" data-sheet-control aria-checked="${!!sheetAnswers.checked[st.num]}" aria-label="${escapeSheetAttribute(st.text)}" class="checklist-row ${sheetAnswers.checked[st.num] ? "checked" : ""}" onclick="toggleCheckStep(${st.num})">
                 <div class="checklist-box">${sheetAnswers.checked[st.num] ? "✓" : ""}</div>
                 <span style="font-size:1.3rem;">${st.icon}</span>
                 <span class="checklist-text">${formatText(st.text)}</span>
@@ -867,9 +917,9 @@
           <div class="self-stars-box">
             <div class="self-stars-title">🌟 我的今日超能力成果評量（點擊塗滿星星）</div>
             <div class="stars-group">
-              <span class="star-btn ${sheetAnswers.stars >= 1 ? "earned" : ""}" onclick="rateStars(1)">⭐</span>
-              <span class="star-btn ${sheetAnswers.stars >= 2 ? "earned" : ""}" onclick="rateStars(2)">⭐</span>
-              <span class="star-btn ${sheetAnswers.stars >= 3 ? "earned" : ""}" onclick="rateStars(3)">⭐</span>
+              <span role="button" tabindex="0" data-sheet-control aria-label="自評 1 顆星" aria-pressed="${sheetAnswers.stars === 1}" class="star-btn ${sheetAnswers.stars >= 1 ? "earned" : ""}" onclick="rateStars(1)">⭐</span>
+              <span role="button" tabindex="0" data-sheet-control aria-label="自評 2 顆星" aria-pressed="${sheetAnswers.stars === 2}" class="star-btn ${sheetAnswers.stars >= 2 ? "earned" : ""}" onclick="rateStars(2)">⭐</span>
+              <span role="button" tabindex="0" data-sheet-control aria-label="自評 3 顆星" aria-pressed="${sheetAnswers.stars === 3}" class="star-btn ${sheetAnswers.stars >= 3 ? "earned" : ""}" onclick="rateStars(3)">⭐</span>
             </div>
           </div>
 
@@ -902,45 +952,17 @@
       `;
     }
 
-    // 互動點選函式 (結合童趣正向回饋音效與彩帶)
-    function toggleCircleItem(id) {
-      sheetAnswers.circled[id] = !sheetAnswers.circled[id];
-      renderCurrentWorksheet();
-      if (sheetAnswers.circled[id]) {
-        AudioEffects.playDing();
-        triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.45, 20);
-      } else {
-        AudioEffects.playPop();
-      }
+    function recordWorksheetAnswer(action) {
+      const focused=document.activeElement;
+      const label=focused?.getAttribute('aria-label');
+      action(); renderCurrentWorksheet(); saveSheetAnswers();
+      if(label) [...document.querySelectorAll('[data-sheet-control]')].find(x=>x.getAttribute('aria-label')===label)?.focus();
     }
-
-    function selectChoice(id) {
-      sheetAnswers.choice = id;
-      renderCurrentWorksheet();
-      if (id === 't2') {
-        AudioEffects.playCelebration();
-        triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.55, 45);
-      } else {
-        AudioEffects.playDing();
-      }
-    }
-
-    function toggleCheckStep(num) {
-      sheetAnswers.checked[num] = !sheetAnswers.checked[num];
-      renderCurrentWorksheet();
-      if (sheetAnswers.checked[num]) {
-        AudioEffects.playDing();
-      } else {
-        AudioEffects.playPop();
-      }
-    }
-
-    function rateStars(count) {
-      sheetAnswers.stars = count;
-      renderCurrentWorksheet();
-      AudioEffects.playCelebration();
-      triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.75, count * 8);
-    }
+    // Interactive answers are practice, not an assessment of independent performance.
+    function toggleCircleItem(id) { recordWorksheetAnswer(()=>{sheetAnswers.circled[id]=!sheetAnswers.circled[id];}); }
+    function selectChoice(id) { recordWorksheetAnswer(()=>{sheetAnswers.choice=id;}); }
+    function toggleCheckStep(num) { recordWorksheetAnswer(()=>{sheetAnswers.checked[num]=!sheetAnswers.checked[num];}); }
+    function rateStars(count) { recordWorksheetAnswer(()=>{sheetAnswers.stars=count;}); }
 
     // Web Audio 音效與 Confetti
     const AudioEffects = {

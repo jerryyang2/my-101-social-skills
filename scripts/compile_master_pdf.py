@@ -344,22 +344,22 @@ intro_html = f"""<!doctype html>
       <div style="background:#ffffff; border:2px solid #93c5fd; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2rem; display:block; margin-bottom:4px;">🦁</span>
         <div style="font-size:1.1rem; font-weight:900;">小宇</div>
-        <span style="font-size:0.75rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">ASD 自閉症</span>
+        <span style="font-size:0.75rem; font-weight:800; background:#dbeafe; color:#1e40af; padding:2px 6px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2px solid #c4b5fd; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2rem; display:block; margin-bottom:4px;">🐻</span>
         <div style="font-size:1.1rem; font-weight:900;">小畯</div>
-        <span style="font-size:0.75rem; font-weight:800; background:#ede9fe; color:#5b21b6; padding:2px 6px; border-radius:4px;">EBD 情緒障礙</span>
+        <span style="font-size:0.75rem; font-weight:800; background:#ede9fe; color:#5b21b6; padding:2px 6px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2px solid #a7f3d0; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2rem; display:block; margin-bottom:4px;">🐼</span>
         <div style="font-size:1.1rem; font-weight:900;">小和</div>
-        <span style="font-size:0.75rem; font-weight:800; background:#d1fae5; color:#065f46; padding:2px 6px; border-radius:4px;">ASD/LD 雙殊</span>
+        <span style="font-size:0.75rem; font-weight:800; background:#d1fae5; color:#065f46; padding:2px 6px; border-radius:4px;">示例角色</span>
       </div>
       <div style="background:#ffffff; border:2px solid #fde68a; border-radius:12px; padding:10px; text-align:center;">
         <span style="font-size:2rem; display:block; margin-bottom:4px;">🦊</span>
         <div style="font-size:1.1rem; font-weight:900;">小嘉</div>
-        <span style="font-size:0.75rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px;">ASD 自閉症</span>
+        <span style="font-size:0.75rem; font-weight:800; background:#fef3c7; color:#92400e; padding:2px 6px; border-radius:4px;">示例角色</span>
       </div>
     </div>
     <div style="background:#f8fafc; border:2px dashed #94a3b8; border-radius:12px; padding:12px 16px; text-align:left; font-size:0.9rem; line-height:1.65; color:#334155;">
@@ -581,7 +581,7 @@ for k in all_keys:
     c_items = "".join([f'<div class="circle-item"><div class="circle-icon">{it["icon"]}</div><div class="circle-label">{it["label"]}</div><div class="circle-desc">{it["desc"]}</div></div>' for it in d["section1"]["items"]])
 
     if d["section2"]["type"] == "choice":
-        s2_content = '<div class="choice-list">' + "".join([f'<div class="choice-card"><span class="choice-radio"></span><span>{opt["icon"]}</span><span>{opt["label"]}</span></div>' for opt in d["section2"]["options"]]) + '</div>'
+        s2_content = '<div class="choice-list">' + "".join([f'<div class="choice-card"><span class="choice-radio"></span><span>{opt["icon"]}</span><span>{opt["label"]}</span></div>' for opt in d["section2"]["options"][d.get("lessonNumber", 1) % len(d["section2"]["options"]):] + d["section2"]["options"][:d.get("lessonNumber", 1) % len(d["section2"]["options"])]]) + '</div>'
     else:
         s2_content = '<div class="circle-grid">' + "".join([f'<div class="circle-item"><div class="circle-icon">{it["icon"]}</div><div class="circle-label">{it["label"]}</div><div class="circle-desc">{it["desc"]}</div></div>' for it in d["section2"]["items"]]) + '</div>'
 

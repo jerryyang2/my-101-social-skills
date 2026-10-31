@@ -1677,3 +1677,6 @@ body.theme-night .hud-island-desc {
   .hud-avatar { width: 36px; height: 36px; font-size: 1.4rem; }
   .hud-exp-track { width: 80px; }
 }
+
+.quest-practice-step{display:block;width:100%;text-align:left;white-space:normal;background:#fffdf5;color:#254a3a;border:2px solid #adc29b;border-radius:10px;padding:12px;margin:8px 0;font:inherit;line-height:1.6;cursor:pointer}.quest-practice-step[aria-pressed=true]{background:#deefd2;border-color:#49823a}.minigame-container details{margin-top:16px}#completeLessonPractice{font:inherit;background:#326346;color:white;border:0;border-radius:10px;padding:12px;cursor:pointer;line-height:1.5}#completeLessonPractice:disabled{background:#d7ded1;color:#56604f;cursor:default}#questPracticeStatus{font-size:.9rem;line-height:1.6}
+body.island-dialog-open{overflow:hidden}

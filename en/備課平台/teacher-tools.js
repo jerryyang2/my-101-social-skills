@@ -8,16 +8,43 @@
 (function(window) {
   'use strict';
 
-  function breathingState(elapsed) {
+  function breathingState(elapsed, mode = "478") {
     const elapsedSeconds = Math.max(0, elapsed) / 1000;
-    const cycleTime = elapsedSeconds % 19;
-    const phase = cycleTime < 4 ? 0 : cycleTime < 11 ? 1 : 2;
-    const duration = [4, 7, 8][phase];
-    const progress = (cycleTime - [0, 4, 11][phase]) / duration;
-    return { phase, remaining: Math.ceil(duration * (1 - progress)), scale: phase === 0 ? .6 + .4 * progress : phase === 1 ? 1 : 1 - .4 * progress, cycles: Math.floor(elapsedSeconds / 19) };
+    const natural = mode === "natural";
+    const cycleTime = elapsedSeconds % (natural ? 7 : 19);
+    const phase = natural ? (cycleTime < 3 ? 0 : 2) : cycleTime < 4 ? 0 : cycleTime < 11 ? 1 : 2;
+    const duration = (natural ? [3, 0, 4] : [4, 7, 8])[phase];
+    const progress = (cycleTime - (natural ? [0, 3, 3] : [0, 4, 11])[phase]) / duration;
+    return { phase, remaining: Math.ceil(duration * (1 - progress)), scale: phase === 0 ? .6 + .4 * progress : phase === 1 ? 1 : 1 - .4 * progress, cycles: Math.floor(elapsedSeconds / (natural ? 7 : 19)) };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { breathingState };
   if (typeof document === 'undefined') return;
+
+  const teacherFocus = new WeakMap();
+  function focusTeacherDialog(modal) {
+    if (!teacherFocus.has(modal)) teacherFocus.set(modal, document.activeElement);
+    const content = modal.querySelector('.teacher-modal-content,.whiteboard-modal-fullscreen') || modal;
+    content.setAttribute('role','dialog'); content.setAttribute('aria-modal','true');
+    const heading = content.querySelector('h2,#wbTopTitle');
+    if(heading){heading.id ||= modal.id+'Title';content.setAttribute('aria-labelledby',heading.id);}
+    document.body.classList.add('teacher-dialog-open');
+    content.querySelector('button,input,select,textarea')?.focus();
+  }
+  function restoreTeacherFocus(modal) {
+    document.body.classList.remove('teacher-dialog-open');
+    teacherFocus.get(modal)?.focus(); teacherFocus.delete(modal);
+  }
+  document.addEventListener('keydown', e => {
+    const modal = [...document.querySelectorAll('.teacher-modal-overlay')].find(x=>x.style.display==='flex');
+    if(!modal || modal.id==='calmCornerModal') return;
+    if(e.key==='Escape'){e.preventDefault();modal.querySelector('.modal-close-btn,button[onclick="closeWhiteboardModal()"]')?.click();}
+    if(e.key==='Tab'){
+      const controls=[...modal.querySelectorAll('button,input,select,textarea,a[href]')].filter(x=>!x.disabled && x.getClientRects().length);
+      const first=controls[0],last=controls.at(-1);
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}
+    }
+  });
 
   // ==================== 1. Web Audio 舒緩音訊引擎 ====================
   const CalmAudio = {
@@ -69,6 +96,7 @@
 
     // 播放溫柔換氣提示音
     playChime() {
+      if (window.LearningSupport?.quiet()) return;
       try {
         this.init();
         if (!this.ctx) return;
@@ -152,6 +180,7 @@
 
   // ==================== 2. 冷靜通道核心邏輯 (Calm Corner Logic) ====================
   let breathingTimer = null;
+  let breathingMode = "natural";
   let sensoryInterval = null;
   let sensorySecondsLeft = 180;
   let sensoryTotalSeconds = 180;
@@ -197,13 +226,14 @@
     calmReturnFocus = document.activeElement;
     document.body.classList.add('calm-corner-open');
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
     switchCalmTab('breathe');
     document.getElementById('calmTabBtn-breathe').focus();
   };
 
   window.closeCalmCornerModal = function() {
     const modal = document.getElementById('calmCornerModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
     document.body.classList.remove('calm-corner-open');
     calmReturnFocus?.focus();
     stopBreathingCycle();
@@ -258,16 +288,16 @@
     let previousPhase = -1;
     let previousSeconds = -1;
     function tick(now) {
-      const state = breathingState(now - startedAt);
+      const state = breathingState(now - startedAt, breathingMode);
       const phaseKey = state.cycles * 3 + state.phase;
       const phase = phases[state.phase];
       bubble.style.transform = `scale(${state.scale})`;
       if (phaseKey !== previousPhase) {
         bubble.className = `breathing-bubble ${phase.name}`;
         text.innerHTML = `<svg class="breathing-phase-icon" viewBox="0 0 48 48" aria-hidden="true">${phase.icon}</svg><span>${phase.label}</span>`;
-        subText.innerText = phase.hint;
+        subText.innerText = breathingMode === "natural" ? "Follow your own comfortable breathing. Matching the seconds is optional; stop whenever needed." : phase.hint;
         if (previousPhase !== -1) {
-          if (state.phase === 2) CalmAudio.playBowl();
+          if (state.phase === 2 && !window.LearningSupport?.quiet()) CalmAudio.playBowl();
           else CalmAudio.playChime();
         }
         previousPhase = phaseKey;
@@ -292,6 +322,18 @@
       breathingTimer = null;
     }
   }
+
+  window.setBreathingMode = function(mode) {
+    breathingMode = mode === '478' ? '478' : 'natural';
+    document.getElementById('naturalBreathBtn').setAttribute('aria-pressed', String(breathingMode === 'natural'));
+    document.getElementById('timedBreathBtn').setAttribute('aria-pressed', String(breathingMode === '478'));
+    document.getElementById('pauseBreathBtn').textContent = "Pause halo";
+    startBreathingCycle();
+  };
+  window.toggleBreathingPractice = function() {
+    if(breathingTimer) { stopBreathingCycle(); document.getElementById('pauseBreathBtn').textContent = "Resume halo"; }
+    else { startBreathingCycle(); document.getElementById('pauseBreathBtn').textContent = "Pause halo"; }
+  };
 
   // 視覺沙漏計時器控制 (1 / 3 / 5 分鐘)
   window.setSensoryTimerDuration = function(minutes) {
@@ -328,8 +370,7 @@
         updateSensoryTimerDisplay();
       } else {
         pauseSensoryTimer();
-        CalmAudio.playBowl();
-        alert("🕊️ Cooling off time reached! You have successfully calmed your brain, take three deep breaths and prepare to return to class!");
+        document.getElementById('sensoryTimerText').textContent = "Time is up. You can continue resting.";
       }
     }, 1000);
   }
@@ -379,7 +420,7 @@
     if (statusText) {
       statusText.innerText = `Progress: ${checkedCount} / 5`;
     }
-    if (checkedCount === 5) {
+    if (checkedCount === 5 && !window.LearningSupport?.quiet()) {
       CalmAudio.playBowl();
       if (typeof window.triggerConfetti === 'function') {
         window.triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.4, 30);
@@ -410,15 +451,15 @@
           <div class="calm-heading">
             <span class="calm-heading-icon" aria-hidden="true">🧘</span>
             <div>
-              <h2 id="calmCornerTitle">Calm Corner · Sensory Support</h2>
-              <p class="calm-heading-subtitle">Breathing · Visual timer · Grounding · Gentle rain sounds</p>
+              <h2 id="calmCornerTitle">Calm Corner - Rest and Expressing Needs</h2>
+              <p class="calm-heading-subtitle">Choose a suitable practice or simply rest. Completing everything is not required.</p>
             </div>
           </div>
           <button class="modal-close-btn" onclick="closeCalmCornerModal()" title="Close">✕</button>
         </div>
 
         <div class="calm-tabs-nav" role="group" aria-label="Select calming exercises and background sounds">
-          <button id="calmTabBtn-breathe" class="calm-tab-btn active" aria-pressed="true" onclick="switchCalmTab('breathe')"><span aria-hidden="true">🌊</span><span class="calm-button-label">4-7-8 Breathing</span></button>
+          <button id="calmTabBtn-breathe" class="calm-tab-btn active" aria-pressed="true" onclick="switchCalmTab('breathe')"><span aria-hidden="true">🌊</span><span class="calm-button-label">Breathing and rest</span></button>
           <button id="calmTabBtn-timer" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('timer')"><span aria-hidden="true">⏳</span><span class="calm-button-label">Visual Timer</span></button>
           <button id="calmTabBtn-grounding" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('grounding')"><span aria-hidden="true">🖐️</span><span class="calm-button-label">5-4-3-2-1 Grounding</span></button>
           <button id="calmRainToggleBtn" class="calm-tab-btn rain-btn" aria-pressed="false" onclick="toggleCalmRain()"><span aria-hidden="true">🌧️</span><span class="calm-button-label">Play Rain Sounds</span></button>
@@ -427,7 +468,11 @@
         <div class="calm-modal-body">
           <!-- Tab 1: 4-7-8 呼吸光環 -->
           <div id="calmTabPane-breathe" class="calm-tab-pane">
-            <div class="breathing-arena">
+            <div class="calm-breath-controls">
+              <button type="button" id="naturalBreathBtn" aria-pressed="true" onclick="setBreathingMode('natural')">Natural breathing</button>
+              <button type="button" id="timedBreathBtn" aria-pressed="false" onclick="setBreathingMode('478')">4-7-8 (optional)</button>
+              <button type="button" id="pauseBreathBtn" onclick="toggleBreathingPractice()">Pause halo</button>
+            </div><div class="breathing-arena">
               <div class="breathing-bubble-container">
                 <div id="breathingBubble" class="breathing-bubble inhale" aria-hidden="true">
                   <div class="bubble-inner-glow"></div>
@@ -444,7 +489,7 @@
               </div>
             </div>
             <div class="calm-tip-bar">
-              💡 <strong>Turtle Pause:</strong>Fast heartbeat or tight fists? Pause, breathe, count to ten, then speak calmly.
+              🌿 You may watch the halo or simply rest. Do not force breath holding; stop and tell the teacher if uncomfortable.
             </div>
           </div>
 
@@ -471,7 +516,7 @@
           <!-- Tab 3: 5-4-3-2-1 著陸法 -->
           <div id="calmTabPane-grounding" class="calm-tab-pane" style="display:none;">
             <div class="grounding-heading">
-              <span>🖐️ Grounding: Notice what's around you.</span>
+              <span>🖐️ Choose comfortable sensory practices. You can skip any you dislike.</span>
               <span id="groundingStatusText" style="color:#0284c7;">Progress: 0 / 5</span>
             </div>
             <div class="grounding-list">
@@ -531,91 +576,57 @@
       createCommunicationModalDOM();
       modal = document.getElementById('communicationModal');
     }
+    document.getElementById('commDate').value = new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().split('T')[0];
     updateCommunicationContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeCommunicationModal = function() {
     const modal = document.getElementById('communicationModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
+  function escapeText(value) { return String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
   function updateCommunicationContent() {
     const b = getCurrentLessonBriefing();
-    const ln = b.lessonNumber || 1;
-    const title = b.title || "";
-    const cleanTitle = title.replace(/^【.*?】[——\-：:\s]*/, '');
-    const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || cleanTitle;
-    const regTip = b.regularClassTip || "Prompt formulas and publicly acknowledge student progress.";
-    const homeAction = (b.homeTask && b.homeTask.action) || "Demonstrate today’s superpower to your family!";
-    const iepGoal = b.iepGoal || "Able to make corresponding social behaviors within 30 seconds under visual prompts, with an achievement rate of more than 80%.";
-
-    // 1. LINE / 聯絡簿文字版
-    const lineText = `[OO Elementary School Learning Classroom · This week’s special education social superpower contact note]
-Dear parents and class tutors:
-This week the children were in the learning classroom for Week ${ln} Social Skills Lesson:
-🌟 This week’s theme: [${cleanTitle}]
-🎯 Core superpower: ${superSkill}
-🏫 Ordinary class teacher integration formula: ${regTip}
-🏠 This week’s family life check-in: ${homeAction}
-💡 Parent-teacher reminder: Special education children need repeated practice and specific praise across situations. If the child takes the initiative to use this super power in class or at home, parents are asked to stamp their approval in the contact book. The child can return to the special education class next week to exchange for honorary stars! Thank you for your attentive company!`;
-
-    const textEl = document.getElementById('commLineText');
-    if (textEl) textEl.value = lineText;
-
-    // 2. IEP 質性評量記錄草稿
-    const iepRecord = `[Special Education Individualized Education Plan (IEP) Learning Goal Achievement Record]
-• Assessment Unit: Week ${ln} · ${b.unit || "Social skills"} (${cleanTitle})
-• Expected goal: ${iepGoal}
-• Classroom implementation: Through 40 minutes of 5-step structured teaching, social story introduction, 3-step action formula drills and four-character live theater, students can understand the cause and effect of situations and try to make positive corresponding behaviors under visual prompts.
-• Generalized assessment: General class tutors have been provided with key tips (${regTip}) for class reminders, and shared learning tasks for family life (${homeAction}) have been distributed for parents to sign to confirm the effectiveness of life practice, and continuous tracking of behavioral maintenance.`;
-
-    const iepEl = document.getElementById('commIepText');
-    if (iepEl) iepEl.value = iepRecord;
-
-    // 3. 4合1 列印小條容器
-    const slipsContainer = document.getElementById('commSlipsGrid');
-    if (slipsContainer) {
-      const singleSlipHtml = `
-        <div class="print-slip-card">
-          <div class="slip-header">
-            <span>🌱 OO Elementary School Special Education Learning Classroom · Social Super Power Contact Card</span>
-            <span class="slip-week">Week ${ln}</span>
-          </div>
-          <div class="slip-title">🎯 Today’s superpower: ${cleanTitle}</div>
-          <div class="slip-body">
-            <div><strong>🌟 Core moves formula:</strong>${superSkill}</div>
-            <div><strong>🏫 The instructor’s original class reminds:</strong>${regTip}</div>
-            <div class="slip-home-box">
-              <strong>🏠 Family life check-in:</strong>${homeAction}
-              <div class="slip-parent-sign">Parent’s seal/signature: [　　]</div>
-            </div>
-          </div>
-          <div class="slip-footer">
-            <span>✨ Complete the check-in next week to redeem special education honorary stars!</span>
-            <span>💮 Teacher signature: [ ]</span>
-          </div>
-        </div>
-      `;
-      slipsContainer.innerHTML = singleSlipHtml.repeat(4);
-    }
+    const learner = document.getElementById('commLearner').value;
+    const date = document.getElementById('commDate').value;
+    const records = (window.LearningSupport?.getRecords(b.id, learner) || []).filter(r => r.date === date);
+    const levelNames = { independent:"Completed independently", visual:"Completed after a visual prompt", verbal:"Completed after a verbal prompt", model:"Completed after modelling / together", notyet:"Not completed yet", no_opportunity:"No opportunity / chose a break" };
+    const contexts = { rehearsal:"Classroom rehearsal", class:"General classroom / school", home:"Home feedback" };
+    const observations = records.length ? records.map(r => `• ${contexts[r.context]}：${r.target}；${levelNames[r.level]}。${r.note}`).join('\n') : "No observations have been entered for today. Add what actually happened; mastery is not determined yet.";
+    const home = b.homeTask?.action || "Agree on a daily-life practice the learner wants to try. Report no opportunity too.";
+    document.getElementById('commLineText').value = `[Social skills family communication draft]
+Date: ${date}   Learner code: ${learner}
+Lesson: ${b.title}
+Practice focus: ${b.visualCard?.steps?.map(x=>x.text).join(' → ') || b.summary || ''}
+Observations today:
+${observations}
+Suggested daily-life practice: ${home}
+Please report: opportunity to try / no opportunity yet / support needed. Speech, pointing, gestures, observing first and taking a break are all welcome.`;
+    document.getElementById('commIepText').value = `[IEP teaching observation draft - teacher review required before official use]
+Date: ${date}   Learner code: ${learner}
+Lesson: ${b.title}
+Draft goal: ${b.iepGoal || b.superSkill || b.title}
+Teaching plan: Stories, modelling, role play and worksheets may be used. The teacher should enter what actually took place.
+Actual observations today:
+${observations}
+Generalization: Include only feedback actually received from school or home. If none has been received, record follow-up needed rather than assuming mastery.
+Next adjustments: ______ (prompts, activities or environmental support)`;
+    const slips = document.getElementById('commSlipsGrid');
+    slips.innerHTML = `<div class="print-slip-card"><div class="slip-header">Social Skills Daily Life Practice Suggestion</div><div class="slip-title">${escapeText(b.title)}</div><div class="slip-body"><p>${escapeText(home)}</p><p>Feedback: □ Had an opportunity □ No opportunity yet □ More support requested</p><p>The learner’s response or needs: ________</p></div><div class="slip-footer">A signature does not establish mastery. The teacher can follow up on prompts and actual performance.</div></div>`.repeat(4);
+    document.querySelectorAll('[onclick^="copyComm"]').forEach(button=>button.disabled=false);
+    document.getElementById('commCopyStatus').textContent = records.length ? "Observations for the selected date and learner are included. Please review the wording." : "If no observations are available, leave the draft to be completed. Do not automatically describe teaching or mastery as established.";
   }
-
-  window.copyCommLineText = function() {
-    const el = document.getElementById('commLineText');
-    if (!el) return;
-    navigator.clipboard.writeText(el.value).then(() => {
-      alert("📋 The parent/tutor contact book text has been copied successfully! You can post it directly to the LINE tutor group or contact book!");
-    });
-  };
-
-  window.copyCommIepText = function() {
-    const el = document.getElementById('commIepText');
-    if (!el) return;
-    navigator.clipboard.writeText(el.value).then(() => {
-      alert("📋 The draft IEP qualitative assessment record has been copied! It can be posted directly into the special education bulletin website or semester IEP meeting minutes!");
-    });
-  };
+  window.refreshCommunicationDraft = updateCommunicationContent;
+  async function copyCommText(id) {
+    const el = document.getElementById(id);
+    try { await navigator.clipboard.writeText(el.value); document.getElementById('commCopyStatus').textContent = "Draft copied. Review it before adding it to an official record."; }
+    catch(e) { el.focus(); el.select(); document.getElementById('commCopyStatus').textContent = "Automatic copying is unavailable. The text is selected for manual copying."; }
+  }
+  window.copyCommLineText = () => copyCommText('commLineText');
+  window.copyCommIepText = () => copyCommText('commIepText');
 
   window.printCommSlips = function() {
     document.body.classList.add('printing-slips-only');
@@ -651,13 +662,19 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
           <div style="display:flex; align-items:center; gap:10px;">
             <span style="font-size:1.8rem;">📝</span>
             <div>
-              <h2 style="margin:0; font-size:1.35rem; color:#ffffff;">Family Notes & IEP Drafts</h2>
-              <p style="margin:2px 0 0 0; font-size:0.85rem; color:#e0e7ff;">LINE/Contact Book Good Reading Edition · 4-in-1 paper-saving printing order · IEP Special Education Reporting Network Evaluation Draft</p>
+              <h2 style="margin:0; font-size:1.35rem; color:#ffffff;">Family Communication and IEP Observation Drafts</h2>
+              <p style="margin:2px 0 0 0; font-size:0.85rem; color:#e0e7ff;">Based on actual observations. Teachers can edit and review before use.</p>
             </div>
           </div>
           <button class="modal-close-btn" onclick="closeCommunicationModal()" title="Close">✕</button>
         </div>
 
+        <div class="comm-draft-controls">
+          <label>Learner code<select id="commLearner"><option value="yu">Yu 🦁</option><option value="he">He 🐼</option><option value="jia">Jia 🦊</option><option value="jun">Jun 🐻</option></select></label>
+          <label>Observation date<input id="commDate" type="date"></label>
+          <button type="button" onclick="refreshCommunicationDraft()">Regenerate from the selected records</button>
+          <button type="button" onclick="closeCommunicationModal(); LearningSupport.openObservations()">Enter teaching observations</button>
+        </div><p id="commCopyStatus" role="status"></p>
         <div class="comm-modal-body">
           <!-- 左欄：LINE文字與IEP草稿 -->
           <div class="comm-col-left">
@@ -665,13 +682,13 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
               <span>💬 1. Contact book/LINE teacher notification text (one-click copy)</span>
               <button class="btn btn-sm btn-primary" onclick="copyCommLineText()">📋 Copy Text</button>
             </div>
-            <textarea id="commLineText" class="comm-textarea" rows="8" readonly></textarea>
+            <textarea id="commLineText" aria-label="Editable family communication draft" class="comm-textarea" rows="8"></textarea>
 
             <div class="comm-section-title" style="margin-top:16px;">
-              <span>📋 2. IEP final qualitative assessment record draft (Special Education Reporting Network format)</span>
+              <span>📋 2. IEP observation draft for today (teacher review required)</span>
               <button class="btn btn-sm btn-outline" onclick="copyCommIepText()">📋 Copy Record</button>
             </div>
-            <textarea id="commIepText" class="comm-textarea" rows="7" readonly></textarea>
+            <textarea id="commIepText" aria-label="Editable IEP observation draft" class="comm-textarea" rows="7"></textarea>
           </div>
 
           <!-- 右欄：4合1 列印小單預覽 -->
@@ -686,12 +703,16 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
         </div>
 
         <div class="teacher-modal-footer">
-          <span style="font-size:0.85rem; color:#64748b;">💡 Practical Tips: When special education students return to their original classes, they most need consistent instructions from their instructors and affirmation from their families. The 4-in-1 small order can be directly posted on the last page of the student’s contact book!</span>
-          <button class="btn btn-outline" onclick="closeCommunicationModal()">Done</button>
+          <span style="font-size:0.85rem; color:#64748b;">Check the learner code, date, prompts and actual observations before copying.</span>
+          <button class="btn btn-outline" onclick="printCommSlips()">Print four family slips per page</button><button class="btn btn-outline" onclick="closeCommunicationModal()">Done</button>
         </div>
       </div>
     `;
     document.body.appendChild(div);
+    div.querySelectorAll('#commLearner,#commDate').forEach(control=>control.addEventListener('change',()=>{
+      document.getElementById('commCopyStatus').textContent="The selection has changed. Regenerate the draft before copying.";
+      div.querySelectorAll('[onclick^="copyComm"]').forEach(button=>button.disabled=true);
+    }));
   }
 
 
@@ -704,21 +725,24 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
     }
     updateQuickBriefingContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeQuickBriefingModal = function() {
     const modal = document.getElementById('quickBriefingModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
   function updateQuickBriefingContent() {
     const b = getCurrentLessonBriefing();
     const ln = b.lessonNumber || 1;
+    const checklist=document.getElementById('quickBriefingModal');
+    if(checklist.dataset.lesson!==b.id){checklist.querySelectorAll('.qb-check-item input').forEach(x=>x.checked=false);checklist.dataset.lesson=b.id;}
     const title = (b.title || "").replace(/^【.*?】[——\-：:\s]*/, '');
     const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || title;
     const steps = (b.visualCard && b.visualCard.steps) || [];
 
-    document.getElementById('qbLessonTitle').innerText = `Week ${ln} · ${title}`;
+    document.getElementById('qbLessonTitle').innerText = b.custom?title:b.legacy?`Lesson ${ln} · ${title}`:`Week ${ln} · ${title}`;
     document.getElementById('qbSkillTitle').innerText = superSkill;
 
     const stepsEl = document.getElementById('qbStepsList');
@@ -768,28 +792,28 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
           <div class="qb-section">
             <div class="qb-sec-title">🎒 Check the necessary teaching aids and props in the classroom (check before the bell rings):</div>
             <div class="qb-check-grid">
-              <label class="qb-check-item"><input type="checkbox" checked> 4 character headgear/bracelet (Shiyu/Xiong Fei/Maohe/Hujia)</label>
-              <label class="qb-check-item"><input type="checkbox" checked> Colored worksheets (1 A4/B4 per student)</label>
-              <label class="qb-check-item"><input type="checkbox" checked> Calm corner visual hourglass and deep breathing chart in place</label>
-              <label class="qb-check-item"><input type="checkbox" checked> Reward Star Token Seal and Ink Pad</label>
-              <label class="qb-check-item"><input type="checkbox" checked> Large screen projection is turned on / electronic whiteboard is ready</label>
+              <label class="qb-check-item"><input type="checkbox"> 4 character headgear/bracelet (Shiyu/Xiong Fei/Maohe/Hujia)</label>
+              <label class="qb-check-item"><input type="checkbox"> Colored worksheets (1 A4/B4 per student)</label>
+              <label class="qb-check-item"><input type="checkbox"> Calm corner visual hourglass and deep breathing chart in place</label>
+              <label class="qb-check-item"><input type="checkbox"> Reward Star Token Seal and Ink Pad</label>
+              <label class="qb-check-item"><input type="checkbox"> Large screen projection is turned on / electronic whiteboard is ready</label>
             </div>
           </div>
 
           <!-- 特教三大障礙防雷預警 -->
           <div class="qb-section">
-            <div class="qb-sec-title">🛡️ Three special education obstacle classroom support guides (classroom pit avoidance):</div>
+            <div class="qb-sec-title">🛡️ Choose Supports to Match the Learner’s Needs:</div>
             <div class="qb-scaffold-row">
               <div class="qb-sc-box asd">
-                <div class="qb-sc-title">🔹 Autism (ASD) Yu/Jia</div>
+                <div class="qb-sc-title">🔹 Visual and communication support</div>
                 <div class="qb-sc-desc" id="qbAsdTip">Forecast link switching in advance, do not suddenly change the order of activities; give a fixed location.</div>
               </div>
               <div class="qb-sc-box ebd">
-                <div class="qb-sc-title">🔹 Emotional Disorders (EBD)</div>
+                <div class="qb-sc-title">🔹 Emotional and sensory support</div>
                 <div class="qb-sc-desc" id="qbEbdTip">Get vaccinated before losing the competition, and be prepared to brake and calm down at any time.</div>
               </div>
               <div class="qb-sc-box ld">
-                <div class="qb-sc-title">🔹 Learning Disability (LD) Kowa</div>
+                <div class="qb-sc-title">🔹 Understanding and practical support</div>
                 <div class="qb-sc-desc" id="qbLdTip">No need for paper and pen to copy, the whole process is mainly based on oral language and intuitive action answers.</div>
               </div>
             </div>
@@ -817,11 +841,12 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
     }
     updateWhiteboardContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeWhiteboardModal = function() {
     const modal = document.getElementById('whiteboardModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
   function updateWhiteboardContent() {
@@ -831,7 +856,7 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
     const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || title;
     const steps = (b.visualCard && b.visualCard.steps) || [];
 
-    document.getElementById('wbTopTitle').innerText = `🏫 Social Skills · Week ${ln}`;
+    document.getElementById('wbTopTitle').innerText = b.custom?title:b.legacy?`🏫 Social Skills Visual Step Card · Lesson ${ln}`:`🏫 Social Skills · Week ${ln}`;
     document.getElementById('wbSkillName').innerText = superSkill;
 
     const grid = document.getElementById('wbStepsGrid');
@@ -865,7 +890,7 @@ This week the children were in the learning classroom for Week ${ln} Social Skil
           </div>
         </div>
         <div class="whiteboard-bottom-reminder">
-          👀 Students look up at the blackboard! Do the action formula correctly and you will get 1 super power star for every correct action!⭐
+          👀 Speak, point to pictures or watch a model first. Practise together, then receive specific teacher feedback.
         </div>
       </div>
     `;

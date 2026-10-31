@@ -13,16 +13,16 @@
 
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="island-game.css">
-  <link rel="stylesheet" href="platform-theme.css?v=20261031-unified">
-  <link rel="stylesheet" href="island-navigation.css?v=20261031-single-row">
-  <script src="island-ui.js?v=20261101-village" defer></script>
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261101-class-tools">
-  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261101-class-tools" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
-  <script defer src="focus-mode.js?v=20261031-font"></script>
-  <link rel="stylesheet" href="island-explorer.css?v=20261101-paths-teamwork">
+  <link rel="stylesheet" href="island-game.css?v=c76fec47104c">
+  <link rel="stylesheet" href="platform-theme.css?v=62f196360296">
+  <link rel="stylesheet" href="island-navigation.css?v=e35856585879">
+  <script src="island-ui.js?v=a8bfe09be002" defer></script>
+  <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=7e1f24ee788c" defer></script>
+  <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
+  <script defer src="focus-mode.js?v=18654f750e1c"></script>
+  <link rel="stylesheet" href="island-explorer.css?v=ada226e53b18">
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
@@ -69,7 +69,7 @@
             </fieldset>
             <fieldset class="settings-section">
               <legend>遊戲音效</legend>
-              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="true">🔊 音效：開</button>
+              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="false">🔇 音效：關</button>
             </fieldset>
             <fieldset class="settings-section">
               <legend>背景天色</legend>
@@ -273,7 +273,7 @@
 
         <!-- 四大島章印記區 -->
         <div class="stamps-section">
-          <h4 class="stamps-title">🏆 四大主題島嶼認證島章（通關獲取印記）</h4>
+          <h4 class="stamps-title">🏆 四大主題冒險島章（練習歷程）</h4>
           <div class="stamps-grid">
             <!-- Stamp 1 -->
             <div class="stamp-slot" id="stampSlot-0">
@@ -303,7 +303,7 @@
             <div class="stamp-slot" id="stampSlot-3">
               <div class="stamp-seal seal-flex">
                 <span class="seal-icon">⚙️</span>
-                <span class="seal-name">輸了沒關係之印</span>
+                <span class="seal-name">生活應變之印</span>
                 <span class="seal-status" id="stampStatus-3">未解鎖</span>
               </div>
             </div>
@@ -331,7 +331,7 @@
       </div>
       <div class="savecode-body">
         <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
-          本遊戲完全支援離線自動存檔！若要換到不同電腦、平板或教室電子白板繼續闖關，可複製這串接關碼無縫讀取進度：
+          進度會自動保存在這個瀏覽器。更換電腦、平板或教室白板前，請先複製接關碼；在新裝置載入後再核對角色與進度。
         </p>
 
         <!-- 我的接關碼 -->
@@ -464,7 +464,7 @@
             <input type="text" class="cert-name-input" id="certStudentName" placeholder="學生姓名" value="王小宇 同學">
           </div>
           <p class="cert-text">
-            在國小特教 52 週社交技巧與情緒管理課程中，勇敢登陸「氣噗噗降溫島」、「我想跟你說島」、「我們一起玩島」與「輸了沒關係島」，並成功抵達中央「閃亮亮星星城堡」，展現無比勇氣打倒衝動怪獸，精熟自我察覺、我訊息表達、友善分享與抗挫彈性思考，特頒此狀以資表揚與鼓勵！
+            在社交群島活動中，願意探索情境、討論不同做法，並嘗試把方法演練出來。此證書肯定參與與努力；生活中的運用，仍由教師與照顧者持續觀察。
           </p>
           <div class="cert-footer-row">
             <div>
@@ -535,13 +535,13 @@
   </dialog>
 
   <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
-  <script src="three.min.js"></script>
-  <script src="app.js?v=20261031-date-voice"></script>
-  <script src="roleplay-data.js"></script>
-  <script src="island-visitors.js?v=20261101-village"></script>
-  <script src="island-explorer.js?v=20261101-paths-teamwork"></script>
-  <script src="island-paths.js?v=20261101-paths-teamwork"></script>
-  <script src="island-scene-art.js?v=20261101-paths-teamwork"></script>
-  <script src="island-game.js?v=20261101-paths-teamwork"></script>
+  <script src="three.min.js?v=9274bbcec8d9"></script>
+  <script src="app.js?v=30f6d1ae2b9f"></script>
+  <script src="roleplay-data.js?v=540e57e39bb9"></script>
+  <script src="island-visitors.js?v=32e95e9dc67a"></script>
+  <script src="island-explorer.js?v=58f80beb7065"></script>
+  <script src="island-paths.js?v=e5e7e347b44a"></script>
+  <script src="island-scene-art.js?v=a251d44e33ea"></script>
+  <script src="island-game.js?v=319b306b3d98"></script>
 </body>
 </html>

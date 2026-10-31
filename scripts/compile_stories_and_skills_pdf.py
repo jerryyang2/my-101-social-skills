@@ -481,8 +481,8 @@ intro_html = f"""<!doctype html>
       </p>
       <div style="display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin-bottom:24px;">
         <span style="background:#e0f2fe; color:#0369a1; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">📚 108 課綱特殊需求領域：社會技巧</span>
-        <span style="background:#fef3c7; color:#b45309; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">💡 通用學習設計 (UDL) · 社會故事法 10.2</span>
-        <span style="background:#ecfdf5; color:#047857; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">🧠 CBT 認知行為重構 · PBS 正向行為支持</span>
+        <span style="background:#fef3c7; color:#b45309; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">💡 多元表達與參與選擇</span>
+        <span style="background:#ecfdf5; color:#047857; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">🧠 視覺步驟與演練</span>
         <span style="background:#fce7f3; color:#be185d; padding:4px 12px; border-radius:8px; font-weight:800; font-size:0.9rem;">📄 一堂課一頁 A4 · 隨印隨教即開即用</span>
       </div>
     </div>
@@ -490,28 +490,28 @@ intro_html = f"""<!doctype html>
     <!-- 四大代表角色卡片 -->
     <div style="background:#ffffff; border:2.5px solid #cbd5e1; border-radius:16px; padding:12px 16px; max-width:880px; margin:0 auto 16px auto; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
       <div style="font-size:0.95rem; font-weight:900; color:#1e293b; margin-bottom:10px;">
-        🌟 四位特教學童代表角色（Persona）差異化教學鷹架矩陣
+        🌟 示例角色與可選支持（可輪流，不對應診斷）
       </div>
       <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; text-align:left;">
         <div style="background:#eff6ff; border:2px solid #bfdbfe; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#1d4ed8;">🦁 小宇 (ASD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">自閉症光譜 · 眼神接觸焦慮</div>
-          <div style="font-size:0.75rem; color:#1e3a8a; line-height:1.35;">眉心倒三角聚光練習、定點結構化台詞、30秒預告。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#1d4ed8;">🦁 小宇（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">視覺提示與舒服的溝通方式</div>
+          <div style="font-size:0.75rem; color:#1e3a8a; line-height:1.35;">看圖、指圖或說話；先預告活動切換。</div>
         </div>
         <div style="background:#f5f3ff; border:2px solid #ddd6fe; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#6d28d9;">🐻 小畯 (EBD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">情緒行為障礙 · 衝動輸不起</div>
-          <div style="font-size:0.75rem; color:#5b21b6; line-height:1.35;">大腦煞車冷靜角、因果決策模擬、四步誠懇道歉SOP。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#6d28d9;">🐻 小畯（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">情緒與感官需要的表達</div>
+          <div style="font-size:0.75rem; color:#5b21b6; line-height:1.35;">可選休息、自然呼吸與求助；不強迫屏息。</div>
         </div>
         <div style="background:#ecfdf5; border:2px solid #a7f3d0; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#047857;">🐼 小和 (ASD/LD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">伴隨學障 · 讀寫落後害羞</div>
-          <div style="font-size:0.75rem; color:#065f46; line-height:1.35;">注音標楷對齊、真人語音導讀、暖心小幫手成功經驗。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#047857;">🐼 小和（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">圖文理解與多元表達</div>
+          <div style="font-size:0.75rem; color:#065f46; line-height:1.35;">圖文朗讀、減少抄寫，接受指認與動作。</div>
         </div>
         <div style="background:#fffbeb; border:2px solid #fde68a; border-radius:10px; padding:8px 10px;">
-          <div style="font-size:1.15rem; font-weight:900; color:#b45309;">🦊 小嘉 (ASD)</div>
-          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">自閉症探索者 · 執著於規則</div>
-          <div style="font-size:0.75rem; color:#78350f; line-height:1.35;">轉化為秩序小隊長領導力、步驟條目化打勾、觸控互動。</div>
+          <div style="font-size:1.15rem; font-weight:900; color:#b45309;">🦊 小嘉（示例角色）</div>
+          <div style="font-size:0.75rem; color:#64748b; font-weight:800; margin:2px 0 4px 0;">規則討論與彈性參與</div>
+          <div style="font-size:0.75rem; color:#78350f; line-height:1.35;">逐步說明規則，允許先觀察與提出想法。</div>
         </div>
       </div>
     </div>
@@ -671,7 +671,7 @@ for idx, b in enumerate(briefings):
       <div class="story-section">
         <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="section-tag">📖 故事島冒險 · 校園情境社交故事</span>
-          <span style="font-size:0.75rem; color:#b45309; font-weight:800;">Carol Gray 社會故事 10.2 標準</span>
+          <span style="font-size:0.75rem; color:#b45309; font-weight:800;">情境閱讀與討論</span>
         </div>
         <div class="story-title">{s_title}</div>
         <div class="story-content">{s_content}</div>
@@ -691,7 +691,7 @@ for idx, b in enumerate(briefings):
             <span class="skill-name-badge" style="background:{theme_c};">🎯 {skill_title}</span>
             <span class="skill-subtitle">記住這三個超能力動作，你就是社交小超人！</span>
           </div>
-          <span style="font-size:0.75rem; color:#64748b; font-weight:800;">CBT / PBS 行為重構</span>
+          <span style="font-size:0.75rem; color:#64748b; font-weight:800;">視覺步驟與演練</span>
         </div>
         <div class="steps-grid">
           {steps_html}

@@ -19,7 +19,7 @@ ROOT = HERE.parent
 EN = ROOT / 'en'
 CJK = re.compile(r'[\u3400-\u9fff]')
 PROTECTED = re.compile(r'(特社\d+-[IVX]+-\d+|[\U0001f000-\U0001faff\u2600-\u27bf\ufe0f\u200d]+)')
-ATTRS = {'title', 'alt', 'placeholder', 'aria-label', 'aria-description', 'data-tooltip', 'value', 'content'}
+ATTRS = {'title', 'alt', 'placeholder', 'aria-label', 'aria-description', 'data-tooltip', 'value', 'content', 'label'}
 catalog = set()
 translations = {}
 collecting = False
@@ -202,6 +202,7 @@ def english_speech(source, name):
         marker='speakSentenceQueue(fullSpeech, "role_sequence", onNext);\n    };'
         if marker not in source: raise ValueError('English role speech integration needs review')
         source=source.replace(marker,marker+'\n    fallbackToWebSpeech();\n    return;')
+    source=source.replace('if (audioKey &&', 'if (false && audioKey &&')
     source+='\n// The English edition uses English browser voices, never Mandarin recordings.\ngetBestTextbookVoice = preferredGender => window.SiteLanguage.englishVoice(preferredGender);\n'
     return source
 
@@ -219,6 +220,21 @@ def inject_language(content,path):
     if match:return content[:match.end()]+assets+content[match.end():]
     return content.replace('<head>','<head>'+assets,1)
 
+def refresh_assets(path, content):
+    def replace(match):
+        attr, value = match.groups()
+        split = urlsplit(unescape(value))
+        if split.scheme or split.netloc or not split.path:
+            return match.group()
+        asset = (path.parent / unquote(split.path)).resolve()
+        if asset.suffix not in ('.js', '.css') or not asset.is_file():
+            return match.group()
+        try: asset.relative_to(ROOT)
+        except ValueError: return match.group()
+        version = hashlib.sha256(asset.read_bytes()).hexdigest()[:12]
+        return attr + '="' + escape(urlunsplit(('', '', split.path, 'v='+version, split.fragment)), quote=True) + '"'
+    return re.sub(r'(src|href)="([^"<>]+)"', replace, content)
+
 def main():
     global collecting, translations
     parser=argparse.ArgumentParser();parser.add_argument('--catalog',action='store_true');parser.add_argument('--install',action='store_true');args=parser.parse_args()
@@ -230,7 +246,7 @@ def main():
     html_files, js_files, svg_files=sources()
     if args.install and not collecting:
         for source in html_files:
-            old=source.read_text();new=inject_language(old,source)
+            old=source.read_text();new=inject_language(refresh_assets(source,old),source)
             if old!=new:source.write_text(new)
     for source in js_files:
         target=EN/source.relative_to(ROOT)

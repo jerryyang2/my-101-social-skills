@@ -27,7 +27,7 @@
 
   const state = {
     theme: 'cream', // 'cream' | 'sea' | 'night'
-    soundEnabled: true,
+    soundEnabled: false,
     ttsSpeed: 0.8,
     viewMode: '3d', // '3d' | '2d'
     cameraFollow: false,
@@ -125,7 +125,7 @@
       mascot: "🦁 宇獅獅",
       mascotRole: "探索小隊長",
       mascotDesc: "自閉症(ASD)特質小英雄，在立體愛心島上學習感受身體警報器、心跳溫度計與烏龜深呼吸",
-      weeksRange: [1, 13],
+      weeks: [7, 8, 18, 19, 20, 21, 24, 39, 41, 42, 43, 44, 50],
       monster: "💥 暴怒火怪與焦慮雷雲",
       minigameType: "breathe"
     },
@@ -133,15 +133,15 @@
       id: 1,
       name: "💬 我想跟你說島",
       shortName: "跟你說島",
-      subtitle: "眼睛看著你！發射我訊息超能力火箭，聲音剛剛好 🚀",
+      subtitle: "用口語、圖卡或動作表達，輪流聽聽對方的想法 🚀",
       color: "#3b82f6",
       accent: "#06b6d4",
       landColor: 0x7dd3fc,
       cliffColor: 0xcfd8dc,
       mascot: "🐻 畯熊熊",
       mascotRole: "活力小英雄",
-      mascotDesc: "情緒行為(EBD)特質小英雄，在立體對話泡泡島上學習拿起說話魔杖、發射我訊息火箭與調控音量",
-      weeksRange: [14, 26],
+      mascotDesc: "可以輪替扮演的示例夥伴，在立體對話泡泡島上學習拿起說話魔杖、發射我訊息火箭與調控音量",
+      weeks: [1, 2, 3, 4, 9, 10, 11, 15, 22, 25, 34, 35, 51, 52],
       monster: "🗯️ 動手動腳小怪獸與插嘴精靈",
       minigameType: "imsg"
     },
@@ -156,25 +156,25 @@
       cliffColor: 0xd7ccc8,
       mascot: "🐼 和貓熊",
       mascotRole: "溫柔引航員",
-      mascotDesc: "自閉症伴學障(ASD/LD)小英雄，在立體幸運四葉草島上走過擊掌彩虹橋、輪流等待與分享玩具",
-      weeksRange: [27, 39],
+      mascotDesc: "可以輪替扮演的示例夥伴，在立體幸運四葉草島上走過擊掌彩虹橋、輪流等待與分享玩具",
+      weeks: [5, 12, 13, 14, 16, 17, 28, 29, 33, 36, 38, 40, 46, 48],
       monster: "🚫 霸佔玩具大王與不理人迷霧",
       minigameType: "highfive"
     },
     {
       id: 3,
-      name: "⚙️ 輸了沒關係島",
-      shortName: "沒關係島",
-      subtitle: "輸了不暴走！大腦轉個彎換招式，說聲對不起沒關係 🧩",
+      name: "⚙️ 生活應變島",
+      shortName: "生活應變島",
+      subtitle: "練習保護自己、說出需要，遇到改變一起想辦法 🧩",
       color: "#8b5cf6",
       accent: "#eab308",
       landColor: 0xd8b4fe,
       cliffColor: 0xd1c4e9,
       mascot: "🦊 嘉狐狸",
       mascotRole: "思考智囊官",
-      mascotDesc: "自閉症(ASD)小英雄，在立體童趣齒輪島上轉動彈性思考齒輪、寫下道歉修復信與輸了不暴走",
-      weeksRange: [40, 52],
-      monster: "💢 輸不起暴走龍與死板牛角尖",
+      mascotDesc: "可以輪替扮演的示例夥伴，在立體童趣齒輪島上轉動彈性思考齒輪、寫下道歉修復信與輸了不暴走",
+      weeks: [6, 23, 26, 27, 30, 31, 32, 37, 45, 47, 49],
+      monster: "🧩 一起找更合適的方法",
       minigameType: "gear"
     }
   ];
@@ -400,7 +400,7 @@
   let sceneArt = null;
   let cameraMode = 'bird';
   let overviewActive = true;
-  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches || localStorage.getItem('social_quiet_mode') !== 'false';
   let sceneryTime = 0;
   let previousFrameTime = 0;
   let webglAvailable = false;
@@ -553,7 +553,7 @@
     return shape;
   }
 
-  // 5. 童趣魔術齒輪 (⚙️ 輸了沒關係島，象徵大腦轉彎彈性變通)
+  // 5. 童趣魔術齒輪 (⚙️ 生活應變島，象徵大腦轉彎彈性變通)
   function createGearShape(teeth = 6, outerR = 4.8, innerR = 3.6) {
     const shape = new THREE.Shape();
     const n = teeth * 4;
@@ -884,7 +884,7 @@
         mainIsland.add(treeA, treeB);
 
       } else {
-        // ⚙️ 輸了沒關係島：魔術積木風車 + 彈性拼圖積木
+        // ⚙️ 生活應變島：魔術積木風車 + 彈性拼圖積木
         const windmill = makeBox(1.3, 3.0, 1.3, 0x8b5cf6, 0, mainIsland.userData.topY, 0);
         const bladesGroup = new THREE.Group();
         for (let b = 0; b < 4; b++) {
@@ -913,11 +913,10 @@
       add3DLabel(`${theme.name}`, mainIsland, false, idx);
 
       // 環繞主島的 13 顆小週次圓潤布丁踏石島 (代表該島的 13 堂課)
-      const [startW, endW] = theme.weeksRange;
+      const islandWeeks = theme.weeks;
       const subRadius = 8.5;
-      for (let w = startW; w <= endW; w++) {
-        const subIndex = w - startW;
-        const subAngle = angle + (subIndex / 13) * Math.PI * 1.6 - Math.PI * 0.8;
+      for (const [subIndex, w] of islandWeeks.entries()) {
+        const subAngle = angle + (subIndex / islandWeeks.length) * Math.PI * 1.6 - Math.PI * 0.8;
         const subX = posX + Math.cos(subAngle) * subRadius;
         const subZ = posZ + Math.sin(subAngle) * subRadius;
 
@@ -1653,8 +1652,7 @@
     cameraGoal.y = 1.8;
     synchronizeCameraControls();
 
-    const [startW] = ISLAND_THEMES[idx].weeksRange;
-    openQuestDrawer(idx, startW);
+    openQuestDrawer(idx, ISLAND_THEMES[idx].weeks[0]);
 
     const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
     targetYaw = -angle + Math.PI / 2;
@@ -1759,7 +1757,7 @@
   function openQuestDrawer(islandIdx, weekNumber) {
     document.body.classList.add('modal-open');
     state.activeIslandIndex = islandIdx;
-    state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeksRange[0];
+    state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeks[0];
 
     const overlay = document.getElementById('questDrawerOverlay');
     if (!overlay) return;
@@ -1802,8 +1800,7 @@
     // 週次切換標籤條 (Carousel)
     if (carouselBox) {
       let chipsHtml = '';
-      const [startW, endW] = t.weeksRange;
-      for (let i = startW; i <= endW; i++) {
+      for (const i of t.weeks) {
         const isAct = i === wNum;
         const isPass = state.passedWeeks.has(i);
         chipsHtml += `
@@ -1835,6 +1832,7 @@
       }
     };
 
+    questChoiceDiscussed = false;
     if (bodyBox) {
       bodyBox.innerHTML = `
         <!-- NPC 守護夥伴引言 -->
@@ -1854,36 +1852,54 @@
         <!-- 考驗一：CBT 衝動怪獸 vs 社交超能力 -->
         <div class="cbt-choice-section">
           <div class="cbt-choice-title">
-            <span>⚔️ 考驗一：打倒觀念怪獸（${t.monster}）</span>
+            <span>💬 先討論：不同做法可能怎麼樣？</span>
           </div>
           <div class="cbt-choice-grid">
-            <div class="cbt-card card-impulsive" onclick="window.socialGame.handleCbtChoice('impulsive')">
+            <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" class="cbt-card card-impulsive" onclick="window.socialGame.handleCbtChoice('impulsive')">
               <div class="cbt-card-header">${dt.impulsive.title}</div>
               <div class="cbt-card-desc">${dt.impulsive.desc}</div>
             </div>
-            <div class="cbt-card card-superskill" onclick="window.socialGame.handleCbtChoice('super')">
+            <div role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click()}" class="cbt-card card-superskill" onclick="window.socialGame.handleCbtChoice('super')">
               <div class="cbt-card-header">${dt.super_skill.title}</div>
               <div class="cbt-card-desc">${dt.super_skill.desc}</div>
             </div>
           </div>
-          <div id="cbtResultBox" class="cbt-result-box"></div>
+          <div id="cbtResultBox" class="cbt-result-box" role="status"></div>
         </div>
 
         <!-- 考驗二：主題趣味小挑戰 -->
         <div class="minigame-container">
-          <div class="minigame-title">🎮 考驗二：${getMinigameTitle(t.minigameType)}</div>
+          <div class="minigame-title">🤝 本課行動練習</div>
+          <p>可口說、指圖、動作演練或先觀察。每項一起試過後再勾選；這是遊戲歷程，不是 IEP 達成紀錄。</p>
+          ${(weekData.visualCard?.steps || []).map(step=>`<button type="button" class="quest-practice-step" aria-pressed="false" data-practice-step="${step.num}">${step.num}. ${step.text}</button>`).join('')}
+          <button type="button" id="completeLessonPractice" disabled>本次已一起練習，記入冒險歷程</button>
+          <p id="questPracticeStatus" role="status">先討論一個選擇，再一起看過或練習三個步驟。</p>
+          <details><summary>選用暖身遊戲：${getMinigameTitle(t.minigameType)}</summary>
           <div id="minigameDynamicArea">
             ${renderMinigameArea(t.minigameType)}
-          </div>
+          </div></details>
         </div>
       `;
+      bodyBox.querySelectorAll('[data-practice-step]').forEach(button=>button.onclick=()=>{button.setAttribute('aria-pressed',String(button.getAttribute('aria-pressed')!=='true'));updateQuestPractice();});
+      bodyBox.querySelector('#completeLessonPractice').onclick=()=>{
+        if(!questChoiceDiscussed)return;
+        if(!state.passedWeeks.has(state.activeWeekNumber)) addExp(30);
+        markWeekPassed(state.activeWeekNumber);
+        document.getElementById('questPracticeStatus').textContent='已記入冒險歷程；是否能在生活運用，仍需教師觀察。';
+      };
     }
+  }
+  let questChoiceDiscussed = false;
+  function updateQuestPractice(){
+    const buttons=[...document.querySelectorAll('[data-practice-step]')];
+    const ready=questChoiceDiscussed && buttons.length===3 && buttons.every(b=>b.getAttribute('aria-pressed')==='true');
+    const done=document.getElementById('completeLessonPractice');if(done)done.disabled=!ready;
   }
 
   function getMinigameTitle(type) {
     if (type === 'breathe') return '烏龜深呼吸冷卻儀（調適情緒）';
     if (type === 'imsg') return '我訊息火箭組裝發射台（清晰表達）';
-    if (type === 'highfive') return '眼神接觸擊掌默契（同儕友善）';
+    if (type === 'highfive') return '詢問意願與友善招呼（同儕互動）';
     return '換個想法彈性齒輪（挫折應變）';
   }
 
@@ -1913,7 +1929,7 @@
     } else if (type === 'highfive') {
       return `
         <div class="highfive-game-box">
-          <p style="font-size:0.85rem; color:#64748b;">看著對方的眼睛，伸出手掌友善擊掌！</p>
+          <p style="font-size:0.85rem; color:#64748b;">先問對方是否願意，揮手、點頭或擊掌都可以。</p>
           <div class="highfive-hand-btn" id="highfiveHand" onclick="window.socialGame.doHighfive()">
             ✋
           </div>
@@ -1947,18 +1963,18 @@
 
     if (!resBox) return;
 
+    questChoiceDiscussed = true;
+    updateQuestPractice();
     if (type === 'impulsive') {
-      sfx.playBuzz();
+      sfx.playClick();
       resBox.className = 'cbt-result-box impulsive-active';
-      resBox.innerHTML = `⚠️ <b>觀念怪獸出現了！</b><br>${dt.impulsive ? dt.impulsive.consequence : '衝動大腦噴火了！下次請試著踩住煞車、做三次深呼吸！'}`;
-      speakText('衝動大腦噴火了，先踩住煞車，做三次深呼吸！');
+      resBox.innerHTML = `💭 <b>一起想想別的方法</b><br>${dt.impulsive ? dt.impulsive.consequence : '衝動大腦噴火了！下次請試著踩住煞車、做三次深呼吸！'}`;
+
     } else {
       sfx.playChime();
       resBox.className = 'cbt-result-box super-active';
-      resBox.innerHTML = `🌟 <b>施展超能力成功！觀念怪獸退散！</b><br>${dt.super_skill ? dt.super_skill.consequence : '太棒了！大家都了解你的想法，順利解決問題！'}`;
-      speakText('太棒了！施展社交超能力成功！');
-      addExp(15);
-      markWeekPassed(wNum);
+      resBox.innerHTML = `💬 <b>接著把方法演練一次</b><br>${dt.super_skill ? dt.super_skill.consequence : '太棒了！大家都了解你的想法，順利解決問題！'}`;
+
     }
   }
 
@@ -1982,7 +1998,7 @@
           prompt.textContent = '🎉 深呼吸調息完成！心跳變慢，大腦冷靜下來了！';
           sfx.playChime();
           addExp(20);
-          markWeekPassed(state.activeWeekNumber);
+          showToast('暖身完成，可以回到本課行動練習。');
         }, 2800);
       }, 2800);
     }, 2800);
@@ -2007,7 +2023,7 @@
     sfx.playFanfare();
     showToast('🚀 我訊息三節火箭點火發射成功！+20 EXP！');
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast('暖身完成，可以回到本課行動練習。');
   }
 
   function doHighfive() {
@@ -2019,7 +2035,7 @@
     prompt.textContent = '🌟 啪！默契大成功！給同儕最棒的友善支持！';
     setTimeout(() => { hand.style.transform = 'scale(1)'; }, 300);
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast('暖身完成，可以回到本課行動練習。');
   }
 
   let gearDeg = 0;
@@ -2037,7 +2053,7 @@
     ];
     prompt.textContent = thoughts[Math.floor(Math.random() * thoughts.length)];
     addExp(20);
-    markWeekPassed(state.activeWeekNumber);
+    showToast('暖身完成，可以回到本課行動練習。');
   }
 
   // 通關標記、加星與島章解鎖檢查
@@ -2054,8 +2070,7 @@
       // 更新週次標籤
       const chips = document.querySelectorAll('.week-chip');
       chips.forEach((c, idx) => {
-        const [startW] = ISLAND_THEMES[state.activeIslandIndex].weeksRange;
-        if (startW + idx === wNum) c.classList.add('passed');
+        if (ISLAND_THEMES[state.activeIslandIndex].weeks[idx] === wNum) c.classList.add('passed');
       });
 
       // 更新 3D 週次小島外觀 (翻成金色)
@@ -2069,9 +2084,9 @@
   }
 
   function checkIslandStampUnlocked(islandIdx) {
-    const [startW, endW] = ISLAND_THEMES[islandIdx].weeksRange;
+    const islandWeeks = ISLAND_THEMES[islandIdx].weeks;
     let allPassed = true;
-    for (let w = startW; w <= endW; w++) {
+    for (const w of islandWeeks) {
       if (!state.passedWeeks.has(w)) {
         allPassed = false;
         break;
@@ -2352,9 +2367,9 @@
     `;
 
     ISLAND_THEMES.forEach((t, idx) => {
-      const [startW, endW] = t.weeksRange;
+      const islandWeeks = t.weeks;
       let weeksListHtml = '';
-      for (let w = startW; w <= endW; w++) {
+      for (const w of islandWeeks) {
         const weekData = allWeeks.find(b => b.lessonNumber === w) || allWeeks[w - 1] || {};
         const isPass = state.passedWeeks.has(w);
         weeksListHtml += `
@@ -2451,7 +2466,7 @@
       button.append(number, title);
       button.addEventListener('click', () => {
         document.getElementById(`${kind}Dialog`).close();
-        const index = ISLAND_THEMES.findIndex(theme => week >= theme.weeksRange[0] && week <= theme.weeksRange[1]);
+        const index = ISLAND_THEMES.findIndex(theme => theme.weeks.includes(week));
         openQuestDrawer(index, week);
       });
       list.appendChild(button);
@@ -2527,7 +2542,7 @@
     document.getElementById('residentGreeting').textContent = theme.subtitle;
     document.getElementById('residentQuest').onclick = () => {
       dialog.close();
-      openQuestDrawer(index, theme.weeksRange[0]);
+      openQuestDrawer(index, theme.weeks[0]);
     };
     document.body.classList.add('modal-open');
     dialog.showModal();
@@ -2685,6 +2700,8 @@
 
   // DOM 載入後啟動
   window.addEventListener('DOMContentLoaded', () => {
+    const requestedWeek=Number(new URLSearchParams(location.search).get('week'));
+    if(Number.isInteger(requestedWeek) && requestedWeek>=1 && requestedWeek<=52){const index=ISLAND_THEMES.findIndex(t=>t.weeks.includes(requestedWeek));setTimeout(()=>openQuestDrawer(index,requestedWeek),300);}
     initThree();
     document.getElementById('activeVisitorName').textContent = state.heroName;
     document.querySelectorAll('.explorer-dialog').forEach(dialog => {

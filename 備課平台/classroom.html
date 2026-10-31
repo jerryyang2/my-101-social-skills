@@ -9,14 +9,16 @@
   <link rel="alternate icon" type="image/png" href="favicon.png">
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="classroom.css">
-  <link rel="stylesheet" href="teacher-tools.css?v=20261101-steady-breathing">
-  <link rel="stylesheet" href="classroom-theme.css?v=20261031-teaching-toolbar">
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261101-class-tools">
-  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261101-clean-hourglass" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
-  <script defer src="focus-mode.js?v=20261031-font"></script>
+  <link rel="stylesheet" href="classroom.css?v=3c3a5a077c38">
+  <link rel="stylesheet" href="teacher-tools.css?v=3e34e5e24a89">
+  <link rel="stylesheet" href="classroom-theme.css?v=11ee62b4c866">
+  <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=7e1f24ee788c" defer></script>
+  <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
+  <script defer src="focus-mode.js?v=18654f750e1c"></script>
+  <link rel="stylesheet" href="learning-support.css?v=dd1f88174fe3">
+  <script src="learning-support.js?v=becf9c04e089" defer></script>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="social-classroom">
@@ -35,7 +37,8 @@
 
     <label class="classroom-course-picker" for="dateDropdown"><span>換一堂課</span><select class="date-selector-select" id="dateDropdown" title="切換教學日期"></select></label>
 
-    <div class="classroom-controls" role="toolbar" aria-label="依上課流程排列的教學工具">
+    <div class="mobile-class-actions"><button type="button" id="mobileToolsToggle" aria-expanded="false" aria-controls="classroomTeachingTools">教學工具與觀察</button><button type="button" id="mobileCalm" onclick="openCalmCornerModal()">冷靜通道</button></div>
+    <div class="classroom-controls" id="classroomTeachingTools" role="toolbar" aria-label="依上課流程排列的教學工具">
       <div class="classroom-tool-group tools-present" role="group" aria-label="① 上課呈現">
         <span class="tool-group-label">① 上課呈現</span>
         <div class="tool-group-actions">
@@ -154,10 +157,10 @@
 
   <!-- Import Data and Controller Scripts -->
   <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;"></canvas>
-  <script src="app.js?v=20261031-date-voice"></script>
-  <script src="zhuyin.js"></script>
-  <script src="roleplay-data.js"></script>
-  <script src="classroom.js?v=20261031-guide"></script>
-  <script src="teacher-tools.js?v=20261101-steady-breathing"></script>
+  <script src="app.js?v=30f6d1ae2b9f"></script>
+  <script src="zhuyin.js?v=4990f60d3828"></script>
+  <script src="roleplay-data.js?v=540e57e39bb9"></script>
+  <script src="classroom.js?v=4c4e0ec7558b"></script>
+  <script src="teacher-tools.js?v=ba4704915d4e"></script>
 </body>
 </html>

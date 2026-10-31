@@ -13,16 +13,16 @@
 
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="../../備課平台/island-game.css">
-  <link rel="stylesheet" href="../../備課平台/platform-theme.css?v=20261031-unified">
-  <link rel="stylesheet" href="../../備課平台/island-navigation.css?v=20261031-single-row">
-  <script src="island-ui.js?v=0bf6c3ff81b9" defer></script>
-  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=20261101-class-tools">
+  <link rel="stylesheet" href="../../備課平台/island-game.css?v=c76fec47104c">
+  <link rel="stylesheet" href="../../備課平台/platform-theme.css?v=62f196360296">
+  <link rel="stylesheet" href="../../備課平台/island-navigation.css?v=e35856585879">
+  <script src="island-ui.js?v=a8bfe09be002" defer></script>
+  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=2dcf7d249058">
   <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
-  <script src="floating-tools/drawing.js?v=62cd9373ace9" defer></script>
-  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script src="floating-tools/drawing.js?v=15d25e2bec44" defer></script>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=fd03ea1944fc">
   <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
-  <link rel="stylesheet" href="../../備課平台/island-explorer.css?v=20261101-paths-teamwork">
+  <link rel="stylesheet" href="../../備課平台/island-explorer.css?v=ada226e53b18">
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
@@ -69,7 +69,7 @@
             </fieldset>
             <fieldset class="settings-section">
               <legend>Game sound effects</legend>
-              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="true">🔊 Sound Effect: On</button>
+              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="false">🔇 Sound Effect: Off</button>
             </fieldset>
             <fieldset class="settings-section">
               <legend>Background sky color</legend>
@@ -273,7 +273,7 @@
 
         <!-- 四大島章印記區 -->
         <div class="stamps-section">
-          <h4 class="stamps-title">🏆 Four theme island certification island stamps (obtain stamps through customs clearance)</h4>
+          <h4 class="stamps-title">🏆 Four Themed Adventure Stamps (Practice History)</h4>
           <div class="stamps-grid">
             <!-- Stamp 1 -->
             <div class="stamp-slot" id="stampSlot-0">
@@ -303,7 +303,7 @@
             <div class="stamp-slot" id="stampSlot-3">
               <div class="stamp-seal seal-flex">
                 <span class="seal-icon">⚙️</span>
-                <span class="seal-name">It doesn’t matter if you lose.</span>
+                <span class="seal-name">Daily Life and Change Stamp</span>
                 <span class="seal-status" id="stampStatus-3">Not unlocked</span>
               </div>
             </div>
@@ -331,7 +331,7 @@
       </div>
       <div class="savecode-body">
         <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
-          This game fully supports offline automatic archiving! If you want to switch to a different computer, tablet or classroom electronic whiteboard and continue to pass the level, you can copy this series of level codes to seamlessly read the progress:
+          Progress is saved automatically in this browser. Before changing computers, tablets or classroom boards, copy the save code. Check the character and progress after loading it on the new device.
         </p>
 
         <!-- 我的接關碼 -->
@@ -464,7 +464,7 @@
             <input type="text" class="cert-name-input" id="certStudentName" placeholder="Student name" value="Example student">
           </div>
           <p class="cert-text">
-            In the 52-week social skills and emotion management course of elementary school special education, he bravely landed on the "Puffy Cooling Island", "I Want to Tell You Island", "Let's Play Island" and "It's Okay to Lose Island", and successfully arrived at the central "Shining Star Castle". He showed great courage to defeat the impulsive monster, and became proficient in self-awareness, self-expression, friendly sharing and resilience to frustration. This certificate is specially awarded for praise and encouragement!
+            During the social island activities, the learner explored situations, discussed different approaches and tried rehearsing the methods. This certificate recognises participation and effort. Use in daily life still requires observation by teachers and caregivers.
           </p>
           <div class="cert-footer-row">
             <div>
@@ -535,13 +535,13 @@
   </dialog>
 
   <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
-  <script src="../../備課平台/three.min.js"></script>
-  <script src="app.js?v=d9437ed7375f"></script>
-  <script src="roleplay-data.js?v=78242e7a95d3"></script>
+  <script src="../../備課平台/three.min.js?v=9274bbcec8d9"></script>
+  <script src="app.js?v=504371d173ce"></script>
+  <script src="roleplay-data.js?v=5cdc52b6e6f7"></script>
   <script src="island-visitors.js?v=d2f819b35c84"></script>
   <script src="island-explorer.js?v=58f80beb7065"></script>
   <script src="island-paths.js?v=e5e7e347b44a"></script>
   <script src="island-scene-art.js?v=a251d44e33ea"></script>
-  <script src="island-game.js?v=81a345ebf174"></script>
+  <script src="island-game.js?v=0aac46d88811"></script>
 </body>
 </html>

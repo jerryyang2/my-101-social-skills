@@ -9,15 +9,17 @@
   <link rel="alternate icon" type="image/png" href="favicon.png">
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="teacher-tools.css?v=20261101-steady-breathing">
-  <link rel="stylesheet" href="garden-theme.css?v=20261101-title">
-  <link rel="stylesheet" href="course-picker.css?v=20261031-one-scroll">
-  <link rel="stylesheet" href="floating-tools/tools.css?v=20261101-class-tools">
-  <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261101-clean-hourglass" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
-  <script defer src="focus-mode.js?v=20261031-font"></script>
+  <link rel="stylesheet" href="styles.css?v=26b8907b10e2">
+  <link rel="stylesheet" href="teacher-tools.css?v=3e34e5e24a89">
+  <link rel="stylesheet" href="garden-theme.css?v=c97390aee69d">
+  <link rel="stylesheet" href="course-picker.css?v=1400d2af7c50">
+  <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=7e1f24ee788c" defer></script>
+  <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
+  <script defer src="focus-mode.js?v=18654f750e1c"></script>
+  <link rel="stylesheet" href="learning-support.css?v=dd1f88174fe3">
+  <script src="learning-support.js?v=becf9c04e089" defer></script>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="social-garden">
@@ -413,59 +415,67 @@
   </main>
 
   <!-- Add Briefing Modal -->
-  <div class="modal-overlay" id="addModal">
+  <div class="modal-overlay" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addLessonTitle" onkeydown="handleAddModalKeys(event)">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 style="font-size:1.25rem; font-weight:800;">➕ 新增備課課程</h2>
-        <button class="modal-close" onclick="closeAddModal()">&times;</button>
+        <h2 id="addLessonTitle" style="font-size:1.25rem; font-weight:800;">➕ 新增備課課程</h2>
+        <button class="modal-close" aria-label="關閉視窗" onclick="closeAddModal()">&times;</button>
       </div>
       <form onsubmit="saveCustomBriefing(event)">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div class="form-group">
-            <label>排程日期</label>
+            <label for="newDate">排程日期</label>
             <input type="date" id="newDate" required>
           </div>
           <div class="form-group">
-            <label>所屬單元</label>
+            <label for="newUnit">所屬單元</label>
             <input type="text" id="newUnit" placeholder="例：第二單元：處人篇" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label>課程主題標題</label>
+          <label for="newTitle">課程主題標題</label>
           <input type="text" id="newTitle" placeholder="例：學會傾聽與輪流說話" required>
         </div>
 
         <div class="form-group">
-          <label>特需領綱指標代號</label>
+          <label for="newCode">特需領綱指標代號</label>
           <input type="text" id="newCode" placeholder="例：社2-II-3">
         </div>
 
         <div class="form-group">
-          <label>核心目標摘要</label>
+          <label for="newSummary">核心目標摘要</label>
           <textarea id="newSummary" rows="2" placeholder="簡述今日要讓學生學會的核心技巧..." required></textarea>
         </div>
 
+        <fieldset class="form-group"><legend>本課可實際演練的三個步驟</legend>
+          <p>填入看得見、做得到的行動，會同步用在投影與自訂學習單。</p>
+          <label for="newStep1">步驟一</label><input id="newStep1" maxlength="100" required placeholder="例：先站在遊戲旁看看規則">
+          <label for="newStep2">步驟二</label><input id="newStep2" maxlength="100" required placeholder="例：說出或指出『我可以一起玩嗎？』">
+          <label for="newStep3">步驟三</label><input id="newStep3" maxlength="100" required placeholder="例：等回應；還不能加入時選擇另一個活動">
+        </fieldset>
+        <div class="form-group"><label for="newStory">課堂情境（選填）</label><textarea id="newStory" rows="3" maxlength="2000" placeholder="描述學生可能遇到的人、地點與困難；留白時以核心目標摘要作為討論起點。"></textarea></div>
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
           <div class="form-group">
-            <label style="color:#0f766e;">ASD 視覺支援</label>
+            <label for="newAsd" style="color:#0f766e;">視覺與溝通支援</label>
             <textarea id="newAsd" rows="2" placeholder="圖卡或句型..."></textarea>
           </div>
           <div class="form-group">
-            <label style="color:#6b21a8;">LD 多感官支援</label>
+            <label for="newLd" style="color:#6b21a8;">理解與操作支援</label>
             <textarea id="newLd" rows="2" placeholder="減量、口頭引導..."></textarea>
           </div>
           <div class="form-group">
-            <label style="color:#991b1b;">EBD 情緒防雷</label>
+            <label for="newEbd" style="color:#991b1b;">情緒與感官支援</label>
             <textarea id="newEbd" rows="2" placeholder="防線、冷靜角..."></textarea>
           </div>
         </div>
 
         <div class="form-group">
-          <label>IEP 可測量目標範例</label>
-          <textarea id="newIep" rows="2" placeholder="在情境提示下，學生能……達成率 80% 以上。"></textarea>
+          <label for="newIep">IEP 可測量目標範例</label>
+          <textarea id="newIep" rows="2" placeholder="依學生起點填入：情境、行動、提示條件、觀察機會與個別標準。"></textarea>
         </div>
 
+        <p id="customSaveStatus" role="status"></p>
         <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
           <button type="button" class="btn" onclick="closeAddModal()">取消</button>
           <button type="submit" class="btn btn-primary">儲存並加入備課平台</button>
@@ -479,10 +489,10 @@
     <span>🧘</span>
     <span>情緒冷靜通道</span>
   </button>
-  <script src="zhuyin.js"></script>
-  <script src="roleplay-data.js"></script>
-  <script src="app.js?v=20261031-date-voice"></script>
-  <script src="teacher-tools.js?v=20261101-steady-breathing"></script>
-  <script src="garden-ui.js?v=20261031-one-scroll"></script>
+  <script src="zhuyin.js?v=4990f60d3828"></script>
+  <script src="roleplay-data.js?v=540e57e39bb9"></script>
+  <script src="app.js?v=30f6d1ae2b9f"></script>
+  <script src="teacher-tools.js?v=ba4704915d4e"></script>
+  <script src="garden-ui.js?v=7bc19c569e6e"></script>
 </body>
 </html>

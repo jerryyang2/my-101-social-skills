@@ -9,6 +9,7 @@ class SoundFX {
     }
   }
   playPop() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
@@ -23,6 +24,7 @@ class SoundFX {
     osc.stop(this.ctx.currentTime + 0.08);
   }
   playChime() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
     notes.forEach((freq, i) => {
@@ -39,6 +41,7 @@ class SoundFX {
     });
   }
   playFanfare() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const notes = [440, 554.37, 659.25, 880];
     notes.forEach((freq, idx) => {
@@ -55,6 +58,7 @@ class SoundFX {
     });
   }
   playDeduct() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
@@ -191,99 +195,13 @@ function saveStudentStars() {
   syncPushCloudStars();
 }
 
-// 雲端跨裝置即時同步設定 (Netlify Blobs Cloud Storage)
-const CLOUD_STARS_API = "https://sage-faloodeh-6874cf.netlify.app/api/stars";
-let pushDebounceTimer = null;
-
-// 背景抓取雲端最新星星分數
-async function fetchCloudStars(silent = true) {
-  try {
-    const res = await fetch(`${CLOUD_STARS_API}?_t=${Date.now()}`, {
-      cache: "no-store",
-      headers: { "Cache-Control": "no-cache" }
-    });
-    if (!res.ok) return;
-    const remote = await res.json();
-    if (!remote || typeof remote !== "object") return;
-
-    let hasDiff = false;
-    targetStudents.forEach(s => {
-      const remoteVal = Math.max(0, parseInt(remote[s.id], 10) || 0);
-      if (studentStars[s.id] !== remoteVal) {
-        studentStars[s.id] = remoteVal;
-        hasDiff = true;
-      }
-    });
-
-    if (hasDiff) {
-      localStorage.setItem("student_stars", JSON.stringify(studentStars));
-      updateTopStudentBarValues();
-      if (!silent) {
-        showClassroomToast("☁️ 已即時同步最新學生星星分數！");
-      }
-    }
-    updateCloudStatusBadge("☁️ 雲端已連線");
-  } catch (err) {
-    console.warn("Cloud stars sync error:", err);
-    updateCloudStatusBadge("⚠️ 離線暫存");
-  }
+// Local-only stars: do not send shared classroom scores to an unauthenticated endpoint.
+function fetchCloudStars() {
+  studentStars = JSON.parse(localStorage.getItem("student_stars") || '{"yu":0,"he":0,"jia":0,"jun":0}');
+  updateTopStudentBarValues();
 }
-
-// 推送最新星星分數至雲端資料庫
-function syncPushCloudStars() {
-  clearTimeout(pushDebounceTimer);
-  updateCloudStatusBadge("☁️ 同步中...");
-  pushDebounceTimer = setTimeout(async () => {
-    try {
-      const payload = {
-        yu: studentStars.yu || 0,
-        he: studentStars.he || 0,
-        jia: studentStars.jia || 0,
-        jun: studentStars.jun || 0
-      };
-      const res = await fetch(CLOUD_STARS_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (res.ok) {
-        updateCloudStatusBadge("☁️ 雲端已連線");
-      }
-    } catch (e) {
-      console.warn("Cloud push error, cached locally:", e);
-      updateCloudStatusBadge("⚠️ 離線暫存");
-    }
-  }, 250);
-}
-
-// 更新雲端狀態標籤顯示
-function updateCloudStatusBadge(text) {
-  const badge = document.getElementById("cloudSyncBadge");
-  if (!badge) return;
-  badge.innerText = text;
-  if (text.includes("離線")) {
-    badge.style.background = "#fff1f2";
-    badge.style.color = "#9f1239";
-    badge.style.borderColor = "#fecdd3";
-  } else if (text.includes("同步中")) {
-    badge.style.background = "#eff6ff";
-    badge.style.color = "#1e40af";
-    badge.style.borderColor = "#bfdbfe";
-  } else {
-    badge.style.background = "#ecfdf5";
-    badge.style.color = "#065f46";
-    badge.style.borderColor = "#a7f3d0";
-  }
-}
-
-// 每 4 秒自動背景輪詢雲端最新星星（跨裝置無縫同步）
-setInterval(() => fetchCloudStars(true), 4000);
-
-// 當視窗重新獲得焦點或由背景切回時立即同步
-window.addEventListener("focus", () => fetchCloudStars(true));
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) fetchCloudStars(true);
-});
+function syncPushCloudStars() {}
+window.addEventListener("storage", event => { if(event.key === "student_stars") fetchCloudStars(); });
 
 function renderTopStudentBar() {
   const container = document.getElementById("topStudentsBar");
@@ -296,7 +214,7 @@ function renderTopStudentBar() {
         <span class="pill-name-tag">${s.name}</span>
       </div>
       <div class="student-pill-right">
-        <button class="pill-btn pill-btn-minus" onclick="minusStudentStar('${s.id}')" title="為【${s.name}】扣除 1 顆星星">−</button>
+        <button class="pill-btn pill-btn-minus" onclick="minusStudentStar('${s.id}')" title="為【${s.name}】更正誤加的 1 顆星星">−</button>
         <span class="pill-stars" id="pillStars_${s.id}">⭐ ${studentStars[s.id] || 0}</span>
         <button class="pill-btn pill-btn-plus" onclick="addStudentStar('${s.id}')" title="為【${s.name}】增加 1 顆星星">+</button>
       </div>
@@ -307,7 +225,7 @@ function renderTopStudentBar() {
     <div class="students-bar-header">
       <div style="display:flex; align-items:center; gap:6px;">
         <span>🏫 OO國小學習教室</span>
-        <span class="cloud-sync-badge" id="cloudSyncBadge" title="所有裝置自動即時雲端同步">☁️ 雲端連線</span>
+        <span class="cloud-sync-badge" id="cloudSyncBadge" title="星星只保存在這個瀏覽器，不會上傳">💾 本機保存</span>
       </div>
       <button class="star-panel-close-btn" onclick="toggleStarBar(event)" title="收合集點面板">✕ 完成收合</button>
     </div>
@@ -324,6 +242,7 @@ function renderTopStudentBar() {
 
 // 更新外部連結（獨立全頁視窗與今日學習單）
 function updateActionLinks() {
+  document.querySelectorAll('a[href^="island-game.html"]').forEach(link=>{link.href=currentBriefing?.lessonNumber<=52?`island-game.html?week=${currentBriefing.lessonNumber}`:"island-game.html";});
   if (!currentBriefing) return;
   document.querySelectorAll("#classPrepLink, #classroomBrandLink, [data-return-to-prep]").forEach(link => {
     link.href = `index.html?id=${encodeURIComponent(currentBriefing.id)}`;
@@ -441,9 +360,13 @@ function renderSlide() {
   } else if (currentSlideIndex === 4) {
     // Slide 5: 榮譽榜與集點
     renderSlideReward(contentArea);
-    if (typeof AudioEffects !== 'undefined') AudioEffects.playCelebration();
-    if (typeof triggerConfetti === 'function') triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.4, 75);
+
   }
+
+  const currentUrl = new URL(location.href);
+  currentUrl.searchParams.set("id", currentBriefing.id);
+  currentUrl.searchParams.set("slide", currentSlideIndex);
+  history.replaceState(null, "", currentUrl);
 
   // 更新前後按鈕狀態
   document.getElementById("prevBtn").style.opacity = currentSlideIndex === 0 ? "0.3" : "1";
@@ -516,7 +439,7 @@ async function playUniversalSpeech(text, mode, onComplete) {
 
   // 1. 第一優先：播放預先錄製之頂級神經網路真人廣播配音（雲哲男孩 / 曉臻女聲）
   //    零延遲、不佔伺服器運算、保證在所有裝置（包含任何版本的 Chrome）皆能 100% 播放純正男聲與女聲
-  if (audioKey && (mode === "story" || mode === "question")) {
+  if (audioKey && !currentBriefing?.useBrowserSpeech && (mode === "story" || mode === "question")) {
     const staticAudioUrl = `audio/${mode}_${preferredGender}_${audioKey}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {
@@ -987,17 +910,13 @@ function getDailyRoleplayData(briefing) {
   if (typeof dailyRoleplays !== "undefined" && dailyRoleplays[briefing.id]) {
     return dailyRoleplays[briefing.id];
   }
-  // 備援方案
-  return {
-    id: briefing.id,
-    scenario: `在「${briefing.title}」的情境中，四位同學合作完成挑戰！`,
-    roles: [
-      { roleId: 1, name: "主角挑戰者", studentName: "宇", studentEmoji: "🦁", studentColor: "#3b82f6", action: "雙手自然垂放，看著對方的眼睛，深呼吸並清楚說出想法。", dialogue: "大家請看我！我有做好深呼吸，並且好好說出想法！", tip: "給予宇明確的視覺指令，肯定其開口表達的勇氣。" },
-      { roleId: 2, name: "合作互動者", studentName: "畯", studentEmoji: "🐻", studentColor: "#8b5cf6", action: "克制急躁衝動，耐心聽完對方的陳述，給予溫和友善的具體回應。", dialogue: "我會配合大家的步調，一起遵守規則，不推擠不生氣！", tip: "引導畯練習傾聽與等待，以正向語言代替衝動。" },
-      { roleId: 3, name: "暖心支持夥伴", studentName: "和", studentEmoji: "🐼", studentColor: "#10b981", action: "站在一旁提供所需圖卡或道具，點頭微笑，給予夥伴眼神打氣。", dialogue: "你們兩個配合得真好！有不懂的地方我隨時幫忙，我們一起完成！", tip: "引導和發揮安定同儕的後盾力量。" },
-      { roleId: 4, name: "秩序引導者", studentName: "嘉", studentEmoji: "🦊", studentColor: "#f59e0b", action: "高舉今日挑戰達標牌，帶領全體同學大聲拍手三次，並在榮譽榜貼上金星。", dialogue: "太棒了！今天大家都有做到超能力動作，全員挑戰成功！", tip: "引導嘉練習正向肯定與主持回饋，凝聚向心力。" }
-    ]
-  };
+  const step=briefing.visualCard?.steps?.[1]?.text||briefing.title;
+  return {id:briefing.id,scenario:briefing.story?.content||briefing.summary,roles:[
+    {roleId:1,name:'練習者',studentName:'宇',studentEmoji:'🦁',studentColor:'#3b82f6',action:step,dialogue:'我想試試這個步驟，也可以請你示範。',tip:'依學生選擇，接受說話、指圖、動作或先觀察。'},
+    {roleId:2,name:'回應者',studentName:'畯',studentEmoji:'🐻',studentColor:'#8b5cf6',action:'聽完或看完夥伴的表達，說出自己的回應。',dialogue:'我聽到你的想法了，我們可以一起討論。',tip:'不要求固定回答；先確認雙方需要。'},
+    {roleId:3,name:'支持者',studentName:'和',studentEmoji:'🐼',studentColor:'#10b981',action:'先詢問是否需要幫忙，再提供圖卡或示範。',dialogue:'你需要我幫忙，還是想先看一次？',tip:'協助要經過同意，保留等待時間。'},
+    {roleId:4,name:'觀察者',studentName:'嘉',studentEmoji:'🦊',studentColor:'#f59e0b',action:'指出一個看見的行動，再問下一次需要什麼支持。',dialogue:'我看見你有試一個步驟，下次需要什麼幫忙？',tip:'這是自訂示範範本，請教師補充符合情境的台詞。'}
+  ]};
 }
 
 // Slide 3: 角色大劇場（專為 4 位特教學童量身打造之實戰情境劇本，明確動作與台詞）
@@ -1010,6 +929,7 @@ function renderSlideRolePlay(container) {
   container.innerHTML = `
     <div class="roleplay-theater-wrapper">
       
+      <details class="role-scene-more"><summary>情境與整組示範（選用）</summary>
       <!-- Top Theater Action Banner -->
       <div class="rp-header-banner">
         <div style="flex:1;">
@@ -1033,6 +953,7 @@ function renderSlideRolePlay(container) {
         </div>
       </div>
 
+      </details>
       <!-- 4 Role Cards Grid -->
       <div class="rp-grid">
         ${rp.roles.map(r => `
@@ -1064,7 +985,7 @@ function renderSlideRolePlay(container) {
               <!-- Dialogue Box -->
               <div class="rp-section-box rp-dialogue-box">
                 <div class="rp-label rp-dialogue-label">
-                  💬 對話台詞（請大聲唸出）：
+                  💬 對話台詞（可說、指圖或先觀察）：
                 </div>
                 <div class="rp-speech-bubble" onclick="speakSingleRoleDialogue('${r.dialogue.replace(/'/g, "\\'")}', this)" style="cursor:pointer;" title="點擊這段文字也可以直接朗讀喔！">
                   ${typeof toZhuyinHtml === "function" ? toZhuyinHtml(r.dialogue) : r.dialogue}
@@ -1096,6 +1017,22 @@ function renderSlideRolePlay(container) {
 
     </div>
   `;
+  mountRolePractice(container);
+}
+
+let focusedRole = 0;
+let selectRoleForDemonstration = () => {};
+function mountRolePractice(container) {
+  const grid=container.querySelector('.rp-grid');if(!grid)return;
+  const cards=[...grid.querySelectorAll('.rp-card')];
+  const controls=document.createElement('div');controls.className='role-turn-controls';
+  controls.innerHTML='<span>角色是示例，可輪流扮演；可先觀察，不勉強直視或觸碰。</span><button type="button" id="roleFocusToggle" aria-expanded="false" aria-controls="rolePracticeCards">一次看一個角色</button>'+cards.map((_,i)=>`<button type="button" data-role-turn="${i}">角色 ${i+1}</button>`).join('');
+  grid.id='rolePracticeCards';grid.before(controls);let focus=true;
+  function apply(){grid.classList.toggle('role-focus',focus);cards.forEach((c,i)=>{c.hidden=focus && i!==focusedRole;});controls.querySelector('#roleFocusToggle').setAttribute('aria-expanded',String(!focus));controls.querySelector('#roleFocusToggle').textContent=focus?'顯示全部角色':'一次看一個角色';controls.querySelectorAll('[data-role-turn]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.roleTurn)===focusedRole)));}
+  controls.querySelector('#roleFocusToggle').onclick=()=>{focus=!focus;apply();};
+  controls.querySelectorAll('[data-role-turn]').forEach(b=>b.onclick=()=>{stopSpeech();focusedRole=Number(b.dataset.roleTurn);focus=true;apply();});
+  selectRoleForDemonstration = index => {focusedRole=index;focus=true;apply();};
+  apply();
 }
 
 // 角色扮演單一角色台詞朗讀
@@ -1119,7 +1056,7 @@ async function speakSingleRoleDialogue(text, btnElement, roleId = 1) {
 
   const audioKey = currentBriefing ? currentBriefing.id : "";
 
-  if (audioKey && roleId) {
+  if (audioKey && roleId && !currentBriefing?.useBrowserSpeech) {
     const audioUrl = `audio/role_${audioKey}_${roleId}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {
@@ -1189,6 +1126,7 @@ function speakAllRolesDialogue() {
     }
 
     const role = rp.roles[currentRoleIdx];
+    selectRoleForDemonstration(currentRoleIdx);
     document.querySelectorAll(".rp-card").forEach((c, idx) => {
       if (idx === currentRoleIdx) {
         c.classList.add("rp-card-speaking");
@@ -1269,7 +1207,7 @@ function renderSlideGame(container) {
   wrapper.innerHTML = `
     <div style="display:flex; justify-content:center; gap:12px; margin-bottom:18px; flex-wrap:wrap;">
       <button class="c-btn ${currentGameTab === 'decision' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('decision')">
-        🧭 社交情境行為抉擇分岔路 (CBT 決策樹)
+        🧭 想一想不同做法
       </button>
       <button class="c-btn ${currentGameTab === 'special' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('special')">
         🎮 主題技能專屬互動遊戲
@@ -1293,20 +1231,11 @@ function renderSlideGame(container) {
 
 // 決策樹遊戲：行為因果抉擇模擬 (CBT / PBS 正向行為支持)
 function buildDecisionTreeGame(box) {
+  box.classList.toggle("custom-choice-practice",!!currentBriefing.custom);
   const dt = currentBriefing.decisionTree || {
-    prompt: `在「${currentBriefing.title}」的情境考驗中，如果是你，你會選擇哪一條行為路線？`,
-    impulsive: {
-      title: "💥 衝動發脾氣 / 拒絕配合",
-      desc: "直接大聲吼叫、動手推人或生悶氣轉頭跑開",
-      consequence: "❌ 行為後果：同學被嚇哭了、活動被迫暫停，大家心情都很糟，自己被扣除星星……好懊悔！",
-      feedback: "⚠️ 衝動大腦噴火了！下次請試著踩住煞車、做三次深呼吸！"
-    },
-    super_skill: {
-      title: `🌟 施展超能力：${currentBriefing.superSkill || '冷靜深呼吸，好好說出來'}`,
-      desc: `大腦深呼吸踩煞車，運用「${currentBriefing.superSkill || '超能力'}」有禮貌地表達與行動`,
-      consequence: "🎉 圓滿大成功！同儕看見你的成熟與尊重，全班熱烈為你拍手歡呼，全員獲得 1 顆金色榮譽星星！",
-      feedback: "🏆 太棒了！理性大腦大獲全勝，成功掌握社交超能力！"
-    }
+    prompt:`討論「${currentBriefing.title}」：哪一種支持方式適合現在的你？選擇後再一起演練。`,
+    impulsive:{title:'先看一次或請人示範',desc:'先看老師示範，再決定要怎麼參與。',consequence:'先觀察也是一種參與。請告訴老師需要的提示。',feedback:'一起選一個可以開始的小步驟。'},
+    super_skill:{title:'我想試一個步驟',desc:currentBriefing.visualCard?.steps?.[1]?.text||currentBriefing.summary,consequence:'請實際演練，再由老師記錄需要的協助。',feedback:'選過答案不表示已經學會；練習後再到生活情境試試。'}
   };
 
   box.innerHTML = `
@@ -1320,7 +1249,7 @@ function buildDecisionTreeGame(box) {
       <!-- Option A: Impulsive -->
       <div id="decisionCardImpulsive" role="button" tabindex="0" onclick="triggerDecision('impulsive')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); this.click(); }" style="border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(239,68,68,0.08); text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <span style="font-size:1.8rem;">💥</span>
+          <span style="font-size:1.8rem;">${currentBriefing.custom?'👀':'💥'}</span>
           <strong style="font-size:1.15rem; color:#b91c1c;">${dt.impulsive.title}</strong>
         </div>
         <p style="font-size:0.95rem; color:#475569; margin:0 0 12px 0;">${dt.impulsive.desc}</p>
@@ -1351,7 +1280,7 @@ function buildDecisionTreeGame(box) {
 }
 
 window.triggerDecision = function(type) {
-  const dt = currentBriefing.decisionTree || {};
+  const dt = currentBriefing.decisionTree || {impulsive:{consequence:'先觀察也是一種參與。',feedback:'一起選一個可以開始的小步驟。'},super_skill:{consequence:'請實際演練，再記錄需要的協助。',feedback:'選過答案不表示已經學會。'}};
   const fb = document.getElementById("decisionFeedbackBox");
   const cImp = document.getElementById("decisionCardImpulsive");
   const cSup = document.getElementById("decisionCardSuper");
@@ -1393,7 +1322,7 @@ window.triggerDecision = function(type) {
         <div style="font-size:1rem; opacity:0.9;">${dt.super_skill ? dt.super_skill.feedback : "🏆 成功踩住煞車，全員獲得 1 顆星星！"}</div>
       </div>
     `;
-    awardAllRoleplayStars();
+    // Discussion choices do not award stars or count as an observed skill.
   }
 };
 
@@ -1780,15 +1709,19 @@ function renderSlideReward(container) {
         <span id="score_${s.id}">${studentStars[s.id] || 0}</span>
       </div>
       <div class="card-actions">
-        <button class="btn-minus-star" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:800;" onclick="minusStudentStar('${s.id}')" title="扣除 1 顆星星">−1 扣點</button>
+        <button class="btn-minus-star" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:800;" onclick="minusStudentStar('${s.id}')" title="更正誤加的 1 顆星星">更正 −1</button>
         <button class="btn-add-star" onclick="addStudentStar('${s.id}')" title="獎勵 1 顆星星">+1 加點</button>
       </div>
     </div>
   `).join("");
 
   container.innerHTML = `
-    <h2 class="slide-title" style="color:#ca8a04;">🏆 課堂榮譽榜·星星集點板</h2>
-    <p class="slide-subtitle">只要做到今天的超能力動作，老師就能幫【宇、和、嘉、畯】蓋星星章！</p>
+    <section class="lesson-reflection"><h2>今天想把哪個方法帶回生活？</h2>
+      <p>${currentBriefing.visualCard?.steps?.[1]?.text || currentBriefing.title}</p>
+      <p>和誰、在哪裡試試看？可以口說、指圖或請老師幫忙記下。</p>
+      <button type="button" class="c-btn" onclick="LearningSupport.openObservations()">記錄提示與生活追蹤</button>
+    </section><h2 class="slide-title" style="color:#ca8a04;">🏆 課堂鼓勵與星星紀錄</h2>
+    <p class="slide-subtitle">教師可依約定肯定參與、求助與嘗試；星星不代表學習目標已達成。</p>
     
     <!-- 4 Student Scoreboard -->
     <div class="student-scoreboard">

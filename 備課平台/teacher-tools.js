@@ -8,16 +8,43 @@
 (function(window) {
   'use strict';
 
-  function breathingState(elapsed) {
+  function breathingState(elapsed, mode = "478") {
     const elapsedSeconds = Math.max(0, elapsed) / 1000;
-    const cycleTime = elapsedSeconds % 19;
-    const phase = cycleTime < 4 ? 0 : cycleTime < 11 ? 1 : 2;
-    const duration = [4, 7, 8][phase];
-    const progress = (cycleTime - [0, 4, 11][phase]) / duration;
-    return { phase, remaining: Math.ceil(duration * (1 - progress)), scale: phase === 0 ? .6 + .4 * progress : phase === 1 ? 1 : 1 - .4 * progress, cycles: Math.floor(elapsedSeconds / 19) };
+    const natural = mode === "natural";
+    const cycleTime = elapsedSeconds % (natural ? 7 : 19);
+    const phase = natural ? (cycleTime < 3 ? 0 : 2) : cycleTime < 4 ? 0 : cycleTime < 11 ? 1 : 2;
+    const duration = (natural ? [3, 0, 4] : [4, 7, 8])[phase];
+    const progress = (cycleTime - (natural ? [0, 3, 3] : [0, 4, 11])[phase]) / duration;
+    return { phase, remaining: Math.ceil(duration * (1 - progress)), scale: phase === 0 ? .6 + .4 * progress : phase === 1 ? 1 : 1 - .4 * progress, cycles: Math.floor(elapsedSeconds / (natural ? 7 : 19)) };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { breathingState };
   if (typeof document === 'undefined') return;
+
+  const teacherFocus = new WeakMap();
+  function focusTeacherDialog(modal) {
+    if (!teacherFocus.has(modal)) teacherFocus.set(modal, document.activeElement);
+    const content = modal.querySelector('.teacher-modal-content,.whiteboard-modal-fullscreen') || modal;
+    content.setAttribute('role','dialog'); content.setAttribute('aria-modal','true');
+    const heading = content.querySelector('h2,#wbTopTitle');
+    if(heading){heading.id ||= modal.id+'Title';content.setAttribute('aria-labelledby',heading.id);}
+    document.body.classList.add('teacher-dialog-open');
+    content.querySelector('button,input,select,textarea')?.focus();
+  }
+  function restoreTeacherFocus(modal) {
+    document.body.classList.remove('teacher-dialog-open');
+    teacherFocus.get(modal)?.focus(); teacherFocus.delete(modal);
+  }
+  document.addEventListener('keydown', e => {
+    const modal = [...document.querySelectorAll('.teacher-modal-overlay')].find(x=>x.style.display==='flex');
+    if(!modal || modal.id==='calmCornerModal') return;
+    if(e.key==='Escape'){e.preventDefault();modal.querySelector('.modal-close-btn,button[onclick="closeWhiteboardModal()"]')?.click();}
+    if(e.key==='Tab'){
+      const controls=[...modal.querySelectorAll('button,input,select,textarea,a[href]')].filter(x=>!x.disabled && x.getClientRects().length);
+      const first=controls[0],last=controls.at(-1);
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last?.focus();}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first?.focus();}
+    }
+  });
 
   // ==================== 1. Web Audio 舒緩音訊引擎 ====================
   const CalmAudio = {
@@ -69,6 +96,7 @@
 
     // 播放溫柔換氣提示音
     playChime() {
+      if (window.LearningSupport?.quiet()) return;
       try {
         this.init();
         if (!this.ctx) return;
@@ -152,6 +180,7 @@
 
   // ==================== 2. 冷靜通道核心邏輯 (Calm Corner Logic) ====================
   let breathingTimer = null;
+  let breathingMode = "natural";
   let sensoryInterval = null;
   let sensorySecondsLeft = 180;
   let sensoryTotalSeconds = 180;
@@ -197,13 +226,14 @@
     calmReturnFocus = document.activeElement;
     document.body.classList.add('calm-corner-open');
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
     switchCalmTab('breathe');
     document.getElementById('calmTabBtn-breathe').focus();
   };
 
   window.closeCalmCornerModal = function() {
     const modal = document.getElementById('calmCornerModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
     document.body.classList.remove('calm-corner-open');
     calmReturnFocus?.focus();
     stopBreathingCycle();
@@ -258,16 +288,16 @@
     let previousPhase = -1;
     let previousSeconds = -1;
     function tick(now) {
-      const state = breathingState(now - startedAt);
+      const state = breathingState(now - startedAt, breathingMode);
       const phaseKey = state.cycles * 3 + state.phase;
       const phase = phases[state.phase];
       bubble.style.transform = `scale(${state.scale})`;
       if (phaseKey !== previousPhase) {
         bubble.className = `breathing-bubble ${phase.name}`;
         text.innerHTML = `<svg class="breathing-phase-icon" viewBox="0 0 48 48" aria-hidden="true">${phase.icon}</svg><span>${phase.label}</span>`;
-        subText.innerText = phase.hint;
+        subText.innerText = breathingMode === "natural" ? "照自己舒服的節奏，不必配合秒數，想停就停。" : phase.hint;
         if (previousPhase !== -1) {
-          if (state.phase === 2) CalmAudio.playBowl();
+          if (state.phase === 2 && !window.LearningSupport?.quiet()) CalmAudio.playBowl();
           else CalmAudio.playChime();
         }
         previousPhase = phaseKey;
@@ -292,6 +322,18 @@
       breathingTimer = null;
     }
   }
+
+  window.setBreathingMode = function(mode) {
+    breathingMode = mode === '478' ? '478' : 'natural';
+    document.getElementById('naturalBreathBtn').setAttribute('aria-pressed', String(breathingMode === 'natural'));
+    document.getElementById('timedBreathBtn').setAttribute('aria-pressed', String(breathingMode === '478'));
+    document.getElementById('pauseBreathBtn').textContent = '暫停光環';
+    startBreathingCycle();
+  };
+  window.toggleBreathingPractice = function() {
+    if(breathingTimer) { stopBreathingCycle(); document.getElementById('pauseBreathBtn').textContent = '繼續光環'; }
+    else { startBreathingCycle(); document.getElementById('pauseBreathBtn').textContent = '暫停光環'; }
+  };
 
   // 視覺沙漏計時器控制 (1 / 3 / 5 分鐘)
   window.setSensoryTimerDuration = function(minutes) {
@@ -328,8 +370,7 @@
         updateSensoryTimerDisplay();
       } else {
         pauseSensoryTimer();
-        CalmAudio.playBowl();
-        alert('🕊️ 冷靜時間達成！你已經成功讓大腦沉靜下來，深呼吸三次準備回到課堂！');
+        document.getElementById('sensoryTimerText').textContent = '時間到了，可繼續休息';
       }
     }, 1000);
   }
@@ -379,7 +420,7 @@
     if (statusText) {
       statusText.innerText = `完成進度：${checkedCount} / 5 項著陸挑戰`;
     }
-    if (checkedCount === 5) {
+    if (checkedCount === 5 && !window.LearningSupport?.quiet()) {
       CalmAudio.playBowl();
       if (typeof window.triggerConfetti === 'function') {
         window.triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.4, 30);
@@ -410,15 +451,15 @@
           <div class="calm-heading">
             <span class="calm-heading-icon" aria-hidden="true">🧘</span>
             <div>
-              <h2 id="calmCornerTitle">特教即時冷靜通道 · 感官舒緩與情緒急救</h2>
-              <p class="calm-heading-subtitle">4-7-8 調息光環 · 沉浸視覺沙漏 · 5-4-3-2-1 著陸法 · 零刺激白噪音</p>
+              <h2 id="calmCornerTitle">冷靜通道 · 休息與表達需要</h2>
+              <p class="calm-heading-subtitle">可選擇適合的練習或只休息；不需要全部完成</p>
             </div>
           </div>
           <button class="modal-close-btn" onclick="closeCalmCornerModal()" title="關閉">✕</button>
         </div>
 
         <div class="calm-tabs-nav" role="group" aria-label="選擇冷靜練習與背景聲音">
-          <button id="calmTabBtn-breathe" class="calm-tab-btn active" aria-pressed="true" onclick="switchCalmTab('breathe')"><span aria-hidden="true">🌊</span><span class="calm-button-label">4-7-8 調息光環</span></button>
+          <button id="calmTabBtn-breathe" class="calm-tab-btn active" aria-pressed="true" onclick="switchCalmTab('breathe')"><span aria-hidden="true">🌊</span><span class="calm-button-label">呼吸與休息</span></button>
           <button id="calmTabBtn-timer" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('timer')"><span aria-hidden="true">⏳</span><span class="calm-button-label">沉浸視覺沙漏</span></button>
           <button id="calmTabBtn-grounding" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('grounding')"><span aria-hidden="true">🖐️</span><span class="calm-button-label">5-4-3-2-1 著陸法</span></button>
           <button id="calmRainToggleBtn" class="calm-tab-btn rain-btn" aria-pressed="false" onclick="toggleCalmRain()"><span aria-hidden="true">🌧️</span><span class="calm-button-label">播放細雨白噪音</span></button>
@@ -427,7 +468,11 @@
         <div class="calm-modal-body">
           <!-- Tab 1: 4-7-8 呼吸光環 -->
           <div id="calmTabPane-breathe" class="calm-tab-pane">
-            <div class="breathing-arena">
+            <div class="calm-breath-controls">
+              <button type="button" id="naturalBreathBtn" aria-pressed="true" onclick="setBreathingMode('natural')">自然呼吸</button>
+              <button type="button" id="timedBreathBtn" aria-pressed="false" onclick="setBreathingMode('478')">4-7-8（選用）</button>
+              <button type="button" id="pauseBreathBtn" onclick="toggleBreathingPractice()">暫停光環</button>
+            </div><div class="breathing-arena">
               <div class="breathing-bubble-container">
                 <div id="breathingBubble" class="breathing-bubble inhale" aria-hidden="true">
                   <div class="bubble-inner-glow"></div>
@@ -444,7 +489,7 @@
               </div>
             </div>
             <div class="calm-tip-bar">
-              💡 <strong>大腦烏龜煞車口訣：</strong>「心跳快、握拳頭，縮進殼裡深呼吸，數到十，大腦冷靜慢慢說！」
+              🌿 可只看光環或休息，不勉強屏息；不舒服就停止並告訴老師。
             </div>
           </div>
 
@@ -471,7 +516,7 @@
           <!-- Tab 3: 5-4-3-2-1 著陸法 -->
           <div id="calmTabPane-grounding" class="calm-tab-pane" style="display:none;">
             <div class="grounding-heading">
-              <span>🖐️ 五感著陸急救術（幫助學童從急性恐慌/失控回歸當下現實）：</span>
+              <span>🖐️ 選擇舒服的感官練習；不喜歡的可以跳過：</span>
               <span id="groundingStatusText" style="color:#0284c7;">完成進度：0 / 5 項</span>
             </div>
             <div class="grounding-list">
@@ -531,91 +576,57 @@
       createCommunicationModalDOM();
       modal = document.getElementById('communicationModal');
     }
+    document.getElementById('commDate').value = new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().split('T')[0];
     updateCommunicationContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeCommunicationModal = function() {
     const modal = document.getElementById('communicationModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
+  function escapeText(value) { return String(value || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
   function updateCommunicationContent() {
     const b = getCurrentLessonBriefing();
-    const ln = b.lessonNumber || 1;
-    const title = b.title || "";
-    const cleanTitle = title.replace(/^【.*?】[——\-：:\s]*/, '');
-    const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || cleanTitle;
-    const regTip = b.regularClassTip || "提示口訣並公開肯定學生進步。";
-    const homeAction = (b.homeTask && b.homeTask.action) || "向家人示範今日超能力！";
-    const iepGoal = b.iepGoal || "能在視覺提示下30秒內做出相應社交行為，達成率80%以上。";
-
-    // 1. LINE / 聯絡簿文字版
-    const lineText = `【OO國小學習教室 · 本週特教社交超能力聯絡條】
-親愛的家長與班級導師您好：
-本週孩子在學習教室進行了第 ${ln} 週社交技巧課程：
-🌟 本週主題：【${cleanTitle}】
-🎯 核心超能力：${superSkill}
-🏫 普通班導師融合口訣：${regTip}
-🏠 本週家庭生活小打卡：${homeAction}
-💡 親師同心提醒：特教學童需要跨情境反覆演練與具體讚美，若孩子在班級或家中主動使用這項超能力，請家長在聯絡簿蓋章肯定，孩子下週可回特教班兌換榮譽星星喔！感謝您的用心陪伴！`;
-
-    const textEl = document.getElementById('commLineText');
-    if (textEl) textEl.value = lineText;
-
-    // 2. IEP 質性評量記錄草稿
-    const iepRecord = `【特殊教育個別化教育計畫 (IEP) 學習目標達成紀錄】
-• 評量單元：第 ${ln} 週 · ${b.unit || '社交技巧'}（${cleanTitle}）
-• 預期目標：${iepGoal}
-• 課堂實施：透過 40 分鐘 5 步走結構化教學、社會故事導讀、3步驟動作口訣演練及四角色實景劇場，學生能在視覺提示下理解情境因果並嘗試做出正向對應行為。
-• 類化評估：已提供普通班導師關鍵口訣（${regTip}）進行班級提示，並派發家庭生活共學任務（${homeAction}）由家長簽章確認生活實踐成效，持續追蹤行為維持度。`;
-
-    const iepEl = document.getElementById('commIepText');
-    if (iepEl) iepEl.value = iepRecord;
-
-    // 3. 4合1 列印小條容器
-    const slipsContainer = document.getElementById('commSlipsGrid');
-    if (slipsContainer) {
-      const singleSlipHtml = `
-        <div class="print-slip-card">
-          <div class="slip-header">
-            <span>🌱 OO國小特教學習教室 · 社交超能力聯絡卡</span>
-            <span class="slip-week">第 ${ln} 週</span>
-          </div>
-          <div class="slip-title">🎯 今日超能力：${cleanTitle}</div>
-          <div class="slip-body">
-            <div><strong>🌟 核心招式口訣：</strong>${superSkill}</div>
-            <div><strong>🏫 導師原班提醒：</strong>${regTip}</div>
-            <div class="slip-home-box">
-              <strong>🏠 家庭生活共學打卡：</strong>${homeAction}
-              <div class="slip-parent-sign">家長蓋章/簽名：［　　　　　］</div>
-            </div>
-          </div>
-          <div class="slip-footer">
-            <span>✨ 完成打卡下週可兌換特教榮譽星星！</span>
-            <span>💮 教師簽章：［　　　］</span>
-          </div>
-        </div>
-      `;
-      slipsContainer.innerHTML = singleSlipHtml.repeat(4);
-    }
+    const learner = document.getElementById('commLearner').value;
+    const date = document.getElementById('commDate').value;
+    const records = (window.LearningSupport?.getRecords(b.id, learner) || []).filter(r => r.date === date);
+    const levelNames = { independent:'獨立完成', visual:'圖卡提示後完成', verbal:'口語提示後完成', model:'示範／共同完成', notyet:'尚未完成', no_opportunity:'沒有機會／選擇休息' };
+    const contexts = { rehearsal:'課堂演練', class:'普通班／校園', home:'家庭回饋' };
+    const observations = records.length ? records.map(r => `• ${contexts[r.context]}：${r.target}；${levelNames[r.level]}。${r.note}`).join('\n') : '尚未填寫本日觀察，請依實際授課情形補寫；目前不判定已達標。';
+    const home = b.homeTask?.action || '和孩子約定一個願意嘗試的生活練習；沒有機會也可回報。';
+    document.getElementById('commLineText').value = `【社交技巧親師聯絡草稿】
+日期：${date}　學生代號：${learner}
+課程主題：${b.title}
+練習重點：${b.visualCard?.steps?.map(x=>x.text).join(' → ') || b.summary || ''}
+本日觀察：
+${observations}
+生活練習建議：${home}
+請回饋：有機會嘗試／尚無機會／需要哪些協助。可用口語、指圖或動作表達，也可先觀察或休息。`;
+    document.getElementById('commIepText').value = `【IEP 教學觀察草稿，送入正式紀錄前請教師覆核】
+日期：${date}　學生代號：${learner}
+課程：${b.title}
+目標草稿：${b.iepGoal || b.superSkill || b.title}
+教學規劃：可選用故事、技巧示範、角色演練及學習單；實際實施項目請教師補寫。
+本日實際紀錄：
+${observations}
+生活類化：只列已收回的普通班／家庭回饋；沒有回饋時記為待追蹤，不推定已學會。
+後續調整：＿＿＿＿（提示、活動或環境支持）`;
+    const slips = document.getElementById('commSlipsGrid');
+    slips.innerHTML = `<div class="print-slip-card"><div class="slip-header">社交技巧生活練習建議</div><div class="slip-title">${escapeText(b.title)}</div><div class="slip-body"><p>${escapeText(home)}</p><p>回饋：□ 有機會嘗試　□ 尚無機會　□ 希望再協助</p><p>孩子的回應或需要：＿＿＿＿＿＿＿＿</p></div><div class="slip-footer">不以簽章判定學生達標；教師可再追蹤提示與實際表現。</div></div>`.repeat(4);
+    document.querySelectorAll('[onclick^="copyComm"]').forEach(button=>button.disabled=false);
+    document.getElementById('commCopyStatus').textContent = records.length ? '已帶入所選日期與學生代號的觀察；請再覆核文字。' : '沒有觀察時保留待填，不自動寫成已實施或已達標。';
   }
-
-  window.copyCommLineText = function() {
-    const el = document.getElementById('commLineText');
-    if (!el) return;
-    navigator.clipboard.writeText(el.value).then(() => {
-      alert('📋 家長/導師聯絡簿文字已成功複製！可直接貼至 LINE 親師群組或聯絡簿！');
-    });
-  };
-
-  window.copyCommIepText = function() {
-    const el = document.getElementById('commIepText');
-    if (!el) return;
-    navigator.clipboard.writeText(el.value).then(() => {
-      alert('📋 IEP 質性評量記錄草稿已複製！可直接貼入特教通報網或學期 IEP 會議紀錄！');
-    });
-  };
+  window.refreshCommunicationDraft = updateCommunicationContent;
+  async function copyCommText(id) {
+    const el = document.getElementById(id);
+    try { await navigator.clipboard.writeText(el.value); document.getElementById('commCopyStatus').textContent = '已複製草稿，貼入正式紀錄前請再覆核。'; }
+    catch(e) { el.focus(); el.select(); document.getElementById('commCopyStatus').textContent = '無法自動複製，文字已選取，請手動複製。'; }
+  }
+  window.copyCommLineText = () => copyCommText('commLineText');
+  window.copyCommIepText = () => copyCommText('commIepText');
 
   window.printCommSlips = function() {
     document.body.classList.add('printing-slips-only');
@@ -651,13 +662,19 @@
           <div style="display:flex; align-items:center; gap:10px;">
             <span style="font-size:1.8rem;">📝</span>
             <div>
-              <h2 style="margin:0; font-size:1.35rem; color:#ffffff;">親師聯絡小條 & IEP 評量紀錄 一鍵生成</h2>
-              <p style="margin:2px 0 0 0; font-size:0.85rem; color:#e0e7ff;">LINE/聯絡簿好讀版 · 4合1省紙列印小單 · IEP 特教通報網評量草稿</p>
+              <h2 style="margin:0; font-size:1.35rem; color:#ffffff;">親師聯絡與 IEP 觀察草稿</h2>
+              <p style="margin:2px 0 0 0; font-size:0.85rem; color:#e0e7ff;">依實際觀察整理；教師可編輯並覆核後使用</p>
             </div>
           </div>
           <button class="modal-close-btn" onclick="closeCommunicationModal()" title="關閉">✕</button>
         </div>
 
+        <div class="comm-draft-controls">
+          <label>學生代號<select id="commLearner"><option value="yu">宇 🦁</option><option value="he">和 🐼</option><option value="jia">嘉 🦊</option><option value="jun">畯 🐻</option></select></label>
+          <label>觀察日期<input id="commDate" type="date"></label>
+          <button type="button" onclick="refreshCommunicationDraft()">依所選資料重新產生草稿</button>
+          <button type="button" onclick="closeCommunicationModal(); LearningSupport.openObservations()">填寫教學觀察</button>
+        </div><p id="commCopyStatus" role="status"></p>
         <div class="comm-modal-body">
           <!-- 左欄：LINE文字與IEP草稿 -->
           <div class="comm-col-left">
@@ -665,13 +682,13 @@
               <span>💬 1. 聯絡簿 / LINE 親師通知文字（一鍵複製）</span>
               <button class="btn btn-sm btn-primary" onclick="copyCommLineText()">📋 複製文字</button>
             </div>
-            <textarea id="commLineText" class="comm-textarea" rows="8" readonly></textarea>
+            <textarea id="commLineText" aria-label="可編輯的親師聯絡草稿" class="comm-textarea" rows="8"></textarea>
 
             <div class="comm-section-title" style="margin-top:16px;">
-              <span>📋 2. IEP 期末質性評量記錄草稿（特教通報網格式）</span>
+              <span>📋 2. IEP 本日觀察草稿（教師覆核後使用）</span>
               <button class="btn btn-sm btn-outline" onclick="copyCommIepText()">📋 複製紀錄</button>
             </div>
-            <textarea id="commIepText" class="comm-textarea" rows="7" readonly></textarea>
+            <textarea id="commIepText" aria-label="可編輯的 IEP 觀察草稿" class="comm-textarea" rows="7"></textarea>
           </div>
 
           <!-- 右欄：4合1 列印小單預覽 -->
@@ -686,12 +703,16 @@
         </div>
 
         <div class="teacher-modal-footer">
-          <span style="font-size:0.85rem; color:#64748b;">💡 實務技巧：特教生回原班最需要導師的一致口訣與家庭肯定，4合1小單可直接貼在學生聯絡簿末頁！</span>
-          <button class="btn btn-outline" onclick="closeCommunicationModal()">完成</button>
+          <span style="font-size:0.85rem; color:#64748b;">請先核對學生代號、日期、提示程度與實際觀察，再複製使用。</span>
+          <button class="btn btn-outline" onclick="printCommSlips()">列印4合1聯絡單</button><button class="btn btn-outline" onclick="closeCommunicationModal()">完成</button>
         </div>
       </div>
     `;
     document.body.appendChild(div);
+    div.querySelectorAll('#commLearner,#commDate').forEach(control=>control.addEventListener('change',()=>{
+      document.getElementById('commCopyStatus').textContent='所選資料已變更，請重新產生草稿後再複製。';
+      div.querySelectorAll('[onclick^="copyComm"]').forEach(button=>button.disabled=true);
+    }));
   }
 
 
@@ -704,21 +725,24 @@
     }
     updateQuickBriefingContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeQuickBriefingModal = function() {
     const modal = document.getElementById('quickBriefingModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
   function updateQuickBriefingContent() {
     const b = getCurrentLessonBriefing();
     const ln = b.lessonNumber || 1;
+    const checklist=document.getElementById('quickBriefingModal');
+    if(checklist.dataset.lesson!==b.id){checklist.querySelectorAll('.qb-check-item input').forEach(x=>x.checked=false);checklist.dataset.lesson=b.id;}
     const title = (b.title || "").replace(/^【.*?】[——\-：:\s]*/, '');
     const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || title;
     const steps = (b.visualCard && b.visualCard.steps) || [];
 
-    document.getElementById('qbLessonTitle').innerText = `第 ${ln} 週 · ${title}`;
+    document.getElementById('qbLessonTitle').innerText = b.custom?title:b.legacy?`第 ${ln} 課 · ${title}`:`第 ${ln} 週 · ${title}`;
     document.getElementById('qbSkillTitle').innerText = superSkill;
 
     const stepsEl = document.getElementById('qbStepsList');
@@ -768,28 +792,28 @@
           <div class="qb-section">
             <div class="qb-sec-title">🎒 課堂必備教具道具檢核（上課鐘響前勾選）：</div>
             <div class="qb-check-grid">
-              <label class="qb-check-item"><input type="checkbox" checked> 4 角色頭飾/手環 (獅宇/熊畯/貓和/狐嘉)</label>
-              <label class="qb-check-item"><input type="checkbox" checked> 彩色學習單 (每生 1 張 A4/B4)</label>
-              <label class="qb-check-item"><input type="checkbox" checked> 冷靜角視覺沙漏與深呼吸圖卡就位</label>
-              <label class="qb-check-item"><input type="checkbox" checked> 獎勵星星代幣印章與印台</label>
-              <label class="qb-check-item"><input type="checkbox" checked> 大螢幕已開啟投影 / 電子白板就緒</label>
+              <label class="qb-check-item"><input type="checkbox"> 4 角色頭飾/手環 (獅宇/熊畯/貓和/狐嘉)</label>
+              <label class="qb-check-item"><input type="checkbox"> 彩色學習單 (每生 1 張 A4/B4)</label>
+              <label class="qb-check-item"><input type="checkbox"> 冷靜角視覺沙漏與深呼吸圖卡就位</label>
+              <label class="qb-check-item"><input type="checkbox"> 獎勵星星代幣印章與印台</label>
+              <label class="qb-check-item"><input type="checkbox"> 大螢幕已開啟投影 / 電子白板就緒</label>
             </div>
           </div>
 
           <!-- 特教三大障礙防雷預警 -->
           <div class="qb-section">
-            <div class="qb-sec-title">🛡️ 三大特教障礙防雷指南（課堂避坑）：</div>
+            <div class="qb-sec-title">🛡️ 依學生需要選用的教學支援：</div>
             <div class="qb-scaffold-row">
               <div class="qb-sc-box asd">
-                <div class="qb-sc-title">🔹 自閉症 (ASD) 小宇/小嘉</div>
+                <div class="qb-sc-title">🔹 視覺與溝通支援</div>
                 <div class="qb-sc-desc" id="qbAsdTip">提前預告環節切換，勿突然更改活動順序；給予定點位置。</div>
               </div>
               <div class="qb-sc-box ebd">
-                <div class="qb-sc-title">🔹 情緒障礙 (EBD) 小畯</div>
+                <div class="qb-sc-title">🔹 情緒與感官支援</div>
                 <div class="qb-sc-desc" id="qbEbdTip">競賽失利前先打預防針，隨時準備大腦煞車冷靜角。</div>
               </div>
               <div class="qb-sc-box ld">
-                <div class="qb-sc-title">🔹 學習障礙 (LD) 小和</div>
+                <div class="qb-sc-title">🔹 理解與操作支援</div>
                 <div class="qb-sc-desc" id="qbLdTip">免紙筆抄寫，全流程以口語和動作直覺作答為主。</div>
               </div>
             </div>
@@ -817,11 +841,12 @@
     }
     updateWhiteboardContent();
     modal.style.display = 'flex';
+    focusTeacherDialog(modal);
   };
 
   window.closeWhiteboardModal = function() {
     const modal = document.getElementById('whiteboardModal');
-    if (modal) modal.style.display = 'none';
+    if (modal) { modal.style.display = 'none'; restoreTeacherFocus(modal); }
   };
 
   function updateWhiteboardContent() {
@@ -831,7 +856,7 @@
     const superSkill = (b.visualCard && b.visualCard.title) || b.superSkill || title;
     const steps = (b.visualCard && b.visualCard.steps) || [];
 
-    document.getElementById('wbTopTitle').innerText = `🏫 社交超能力視覺招式卡 · 第 ${ln} 週`;
+    document.getElementById('wbTopTitle').innerText = b.custom?title:b.legacy?`🏫 社交超能力視覺招式卡 · 第 ${ln} 課`:`🏫 社交超能力視覺招式卡 · 第 ${ln} 週`;
     document.getElementById('wbSkillName').innerText = superSkill;
 
     const grid = document.getElementById('wbStepsGrid');
@@ -865,7 +890,7 @@
           </div>
         </div>
         <div class="whiteboard-bottom-reminder">
-          👀 同學們抬頭看黑板！把動作口訣做正確，每做對一次可獲得 1 顆超能力星星！⭐
+          👀 可以說、指圖或先看示範。一起練習，再由老師給具體回饋。
         </div>
       </div>
     `;

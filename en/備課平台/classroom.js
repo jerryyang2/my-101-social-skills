@@ -9,6 +9,7 @@ class SoundFX {
     }
   }
   playPop() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
@@ -23,6 +24,7 @@ class SoundFX {
     osc.stop(this.ctx.currentTime + 0.08);
   }
   playChime() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
     notes.forEach((freq, i) => {
@@ -39,6 +41,7 @@ class SoundFX {
     });
   }
   playFanfare() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const notes = [440, 554.37, 659.25, 880];
     notes.forEach((freq, idx) => {
@@ -55,6 +58,7 @@ class SoundFX {
     });
   }
   playDeduct() {
+    if (window.LearningSupport?.quiet()) return;
     this.init();
     const osc = this.ctx.createOscillator();
     const gain = this.ctx.createGain();
@@ -191,99 +195,13 @@ function saveStudentStars() {
   syncPushCloudStars();
 }
 
-// 雲端跨裝置即時同步設定 (Netlify Blobs Cloud Storage)
-const CLOUD_STARS_API = "https://sage-faloodeh-6874cf.netlify.app/api/stars";
-let pushDebounceTimer = null;
-
-// 背景抓取雲端最新星星分數
-async function fetchCloudStars(silent = true) {
-  try {
-    const res = await fetch(`${CLOUD_STARS_API}?_t=${Date.now()}`, {
-      cache: "no-store",
-      headers: { "Cache-Control": "no-cache" }
-    });
-    if (!res.ok) return;
-    const remote = await res.json();
-    if (!remote || typeof remote !== "object") return;
-
-    let hasDiff = false;
-    targetStudents.forEach(s => {
-      const remoteVal = Math.max(0, parseInt(remote[s.id], 10) || 0);
-      if (studentStars[s.id] !== remoteVal) {
-        studentStars[s.id] = remoteVal;
-        hasDiff = true;
-      }
-    });
-
-    if (hasDiff) {
-      localStorage.setItem("student_stars", JSON.stringify(studentStars));
-      updateTopStudentBarValues();
-      if (!silent) {
-        showClassroomToast("☁️ The latest student star scores have been synchronized instantly!");
-      }
-    }
-    updateCloudStatusBadge("☁️ Cloud is connected");
-  } catch (err) {
-    console.warn("Cloud stars sync error:", err);
-    updateCloudStatusBadge("⚠️ Offline temporary storage");
-  }
+// Local-only stars: do not send shared classroom scores to an unauthenticated endpoint.
+function fetchCloudStars() {
+  studentStars = JSON.parse(localStorage.getItem("student_stars") || '{"yu":0,"he":0,"jia":0,"jun":0}');
+  updateTopStudentBarValues();
 }
-
-// 推送最新星星分數至雲端資料庫
-function syncPushCloudStars() {
-  clearTimeout(pushDebounceTimer);
-  updateCloudStatusBadge("☁️ Synchronizing...");
-  pushDebounceTimer = setTimeout(async () => {
-    try {
-      const payload = {
-        yu: studentStars.yu || 0,
-        he: studentStars.he || 0,
-        jia: studentStars.jia || 0,
-        jun: studentStars.jun || 0
-      };
-      const res = await fetch(CLOUD_STARS_API, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (res.ok) {
-        updateCloudStatusBadge("☁️ Cloud is connected");
-      }
-    } catch (e) {
-      console.warn("Cloud push error, cached locally:", e);
-      updateCloudStatusBadge("⚠️ Offline temporary storage");
-    }
-  }, 250);
-}
-
-// 更新雲端狀態標籤顯示
-function updateCloudStatusBadge(text) {
-  const badge = document.getElementById("cloudSyncBadge");
-  if (!badge) return;
-  badge.innerText = text;
-  if (text.includes("Offline")) {
-    badge.style.background = "#fff1f2";
-    badge.style.color = "#9f1239";
-    badge.style.borderColor = "#fecdd3";
-  } else if (text.includes("Synchronizing")) {
-    badge.style.background = "#eff6ff";
-    badge.style.color = "#1e40af";
-    badge.style.borderColor = "#bfdbfe";
-  } else {
-    badge.style.background = "#ecfdf5";
-    badge.style.color = "#065f46";
-    badge.style.borderColor = "#a7f3d0";
-  }
-}
-
-// 每 4 秒自動背景輪詢雲端最新星星（跨裝置無縫同步）
-setInterval(() => fetchCloudStars(true), 4000);
-
-// 當視窗重新獲得焦點或由背景切回時立即同步
-window.addEventListener("focus", () => fetchCloudStars(true));
-document.addEventListener("visibilitychange", () => {
-  if (!document.hidden) fetchCloudStars(true);
-});
+function syncPushCloudStars() {}
+window.addEventListener("storage", event => { if(event.key === "student_stars") fetchCloudStars(); });
 
 function renderTopStudentBar() {
   const container = document.getElementById("topStudentsBar");
@@ -296,7 +214,7 @@ function renderTopStudentBar() {
         <span class="pill-name-tag">${s.name}</span>
       </div>
       <div class="student-pill-right">
-        <button class="pill-btn pill-btn-minus" onclick="minusStudentStar('${s.id}')" title="Deduct 1 star for [${s.name}]">−</button>
+        <button class="pill-btn pill-btn-minus" onclick="minusStudentStar('${s.id}')" title="Correct one star accidentally added for ${s.name}">−</button>
         <span class="pill-stars" id="pillStars_${s.id}">⭐ ${studentStars[s.id] || 0}</span>
         <button class="pill-btn pill-btn-plus" onclick="addStudentStar('${s.id}')" title="Add 1 star to [${s.name}]">+</button>
       </div>
@@ -307,7 +225,7 @@ function renderTopStudentBar() {
     <div class="students-bar-header">
       <div style="display:flex; align-items:center; gap:6px;">
         <span>🏫 OO Elementary School · Learning Support Classroom</span>
-        <span class="cloud-sync-badge" id="cloudSyncBadge" title="Automatic instant cloud synchronization of all devices">☁️ Cloud connection</span>
+        <span class="cloud-sync-badge" id="cloudSyncBadge" title="Stars are saved in this browser and are not uploaded">💾 Saved locally</span>
       </div>
       <button class="star-panel-close-btn" onclick="toggleStarBar(event)" title="Collect collection point panel">✕ Completion of collapse</button>
     </div>
@@ -324,6 +242,7 @@ function renderTopStudentBar() {
 
 // 更新外部連結（獨立全頁視窗與今日學習單）
 function updateActionLinks() {
+  document.querySelectorAll('a[href^="island-game.html"]').forEach(link=>{link.href=currentBriefing?.lessonNumber<=52?`island-game.html?week=${currentBriefing.lessonNumber}`:"island-game.html";});
   if (!currentBriefing) return;
   document.querySelectorAll("#classPrepLink, #classroomBrandLink, [data-return-to-prep]").forEach(link => {
     link.href = `index.html?id=${encodeURIComponent(currentBriefing.id)}`;
@@ -358,7 +277,7 @@ function setupHeader() {
 
   let html = "";
   if (newWeeks.length > 0) {
-    html += `<optgroup label="🌟 52 週社交技巧與溝通訓練新課綱（每週一課）">`;
+    html += `<optgroup label="🌟 52 Weekly Social Skills and Communication Lessons">`;
     html += newWeeks.map(b => `
       <option value="${b.id}" ${b.id === currentBriefing.id ? "selected" : ""}>
         Week ${b.lessonNumber} · ${formatCleanLessonTitle(b)} (${b.date})
@@ -367,7 +286,7 @@ function setupHeader() {
     html += `</optgroup>`;
   }
   if (legacyWeeks.length > 0) {
-    html += `<optgroup label="💡 特教備課靈感庫專題（第 53-101 課 · 共 49 堂）">`;
+    html += `<optgroup label="💡 Special Education Lesson Preparation Inspiration Library Special Topic (Lessons 53-101 · 49 lessons in total)">`;
     html += legacyWeeks.map(b => `
       <option value="${b.id}" ${b.id === currentBriefing.id ? "selected" : ""}>
         Lesson ${b.lessonNumber} [Inspiration Library] · ${b.title}
@@ -441,9 +360,13 @@ function renderSlide() {
   } else if (currentSlideIndex === 4) {
     // Slide 5: 榮譽榜與集點
     renderSlideReward(contentArea);
-    if (typeof AudioEffects !== 'undefined') AudioEffects.playCelebration();
-    if (typeof triggerConfetti === 'function') triggerConfetti(window.innerWidth / 2, window.innerHeight * 0.4, 75);
+
   }
+
+  const currentUrl = new URL(location.href);
+  currentUrl.searchParams.set("id", currentBriefing.id);
+  currentUrl.searchParams.set("slide", currentSlideIndex);
+  history.replaceState(null, "", currentUrl);
 
   // 更新前後按鈕狀態
   document.getElementById("prevBtn").style.opacity = currentSlideIndex === 0 ? "0.3" : "1";
@@ -516,7 +439,7 @@ async function playUniversalSpeech(text, mode, onComplete) {
 
   // 1. 第一優先：播放預先錄製之頂級神經網路真人廣播配音（雲哲男孩 / 曉臻女聲）
   //    零延遲、不佔伺服器運算、保證在所有裝置（包含任何版本的 Chrome）皆能 100% 播放純正男聲與女聲
-  if (false && audioKey && (mode === "story" || mode === "question")) {
+  if (false && audioKey && !currentBriefing?.useBrowserSpeech && (mode === "story" || mode === "question")) {
     const staticAudioUrl = `audio/${mode}_${preferredGender}_${audioKey}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {
@@ -987,17 +910,13 @@ function getDailyRoleplayData(briefing) {
   if (typeof dailyRoleplays !== "undefined" && dailyRoleplays[briefing.id]) {
     return dailyRoleplays[briefing.id];
   }
-  // 備援方案
-  return {
-    id: briefing.id,
-    scenario: `In the "${briefing.title}" situation, four students cooperated to complete the challenge!`,
-    roles: [
-      { roleId: 1, name: "Protagonist Challenger", studentName: "Yu", studentEmoji: "🦁", studentColor: "#3b82f6", action: "Let your hands hang naturally, look into the other person's eyes, take a deep breath and express your thoughts clearly.", dialogue: "Everyone please look at me! I took a deep breath and spoke my mind!", tip: "Give Yu clear visual instructions and affirm his courage to speak out." },
-      { roleId: 2, name: "Collaborative Interactors", studentName: "Jun", studentEmoji: "🐻", studentColor: "#8b5cf6", action: "Restrain impatience, listen patiently to the other party's statement, and give a gentle and friendly concrete response.", dialogue: "I will cooperate with everyone and abide by the rules together. I will not push or get angry!", tip: "Guide people to practice listening and waiting, and replace impulse with positive words." },
-      { roleId: 3, name: "Warm and supportive partners", studentName: "He", studentEmoji: "🐼", studentColor: "#10b981", action: "Stand aside and provide the required pictures or props, nod and smile, and give encouragement to your partners.", dialogue: "You two work together so well! If there is anything you don’t understand, I’ll help you anytime and we’ll finish it together!", tip: "Help He exert the backing force to stabilize peers." },
-      { roleId: 4, name: "Order leader", studentName: "Jia", studentEmoji: "🦊", studentColor: "#f59e0b", action: "Hold high the today's challenge sign, lead all the students to clap loudly three times, and put a gold star on the honor roll.", dialogue: "Great! Everyone has done some superpower moves today, and everyone has successfully challenged!", tip: "Guide Jia to practice positive affirmation and host feedback to gather centripetal force." }
-    ]
-  };
+  const step=briefing.visualCard?.steps?.[1]?.text||briefing.title;
+  return {id:briefing.id,scenario:briefing.story?.content||briefing.summary,roles:[
+    {roleId:1,name:"Practising learner",studentName:"Yu",studentEmoji:'🦁',studentColor:'#3b82f6',action:step,dialogue:"I would like to try this step. You can also show me first.",tip:"Accept speech, pointing, gestures or watching first, according to the learner’s choice."},
+    {roleId:2,name:"Responding partner",studentName:"Jun",studentEmoji:'🐻',studentColor:'#8b5cf6',action:"Listen to or watch your partner’s message, then give your own response.",dialogue:"I heard your idea. We can talk about it together.",tip:"There is no required reply; check both learners’ needs first."},
+    {roleId:3,name:"Supporting partner",studentName:"He",studentEmoji:'🐼',studentColor:'#10b981',action:"Ask whether help is wanted before offering a picture card or model.",dialogue:"Would you like help, or would you like to watch once first?",tip:"Ask before helping and allow waiting time."},
+    {roleId:4,name:"Observer",studentName:"Jia",studentEmoji:'🦊',studentColor:'#f59e0b',action:"Name one action you noticed, then ask what support would help next time.",dialogue:"I saw you try a step. What help would you like next time?",tip:"This is a custom demonstration template. Teachers should adapt the lines to the situation."}
+  ]};
 }
 
 // Slide 3: 角色大劇場（專為 4 位特教學童量身打造之實戰情境劇本，明確動作與台詞）
@@ -1010,6 +929,7 @@ function renderSlideRolePlay(container) {
   container.innerHTML = `
     <div class="roleplay-theater-wrapper">
 
+      <details class="role-scene-more"><summary>Scenario and Group Demonstration (optional)</summary>
       <!-- Top Theater Action Banner -->
       <div class="rp-header-banner">
         <div style="flex:1;">
@@ -1033,6 +953,7 @@ function renderSlideRolePlay(container) {
         </div>
       </div>
 
+      </details>
       <!-- 4 Role Cards Grid -->
       <div class="rp-grid">
         ${rp.roles.map(r => `
@@ -1064,7 +985,7 @@ function renderSlideRolePlay(container) {
               <!-- Dialogue Box -->
               <div class="rp-section-box rp-dialogue-box">
                 <div class="rp-label rp-dialogue-label">
-                  💬 Dialogue lines (please read them out loud):
+                  💬 Dialogue (speak, point or observe first):
                 </div>
                 <div class="rp-speech-bubble" onclick="speakSingleRoleDialogue('${r.dialogue.replace(/'/g, "\\'")}', this)" style="cursor:pointer;" title="Click this text to read it directly!">
                   ${typeof toZhuyinHtml === "function" ? toZhuyinHtml(r.dialogue) : r.dialogue}
@@ -1096,6 +1017,22 @@ function renderSlideRolePlay(container) {
 
     </div>
   `;
+  mountRolePractice(container);
+}
+
+let focusedRole = 0;
+let selectRoleForDemonstration = () => {};
+function mountRolePractice(container) {
+  const grid=container.querySelector('.rp-grid');if(!grid)return;
+  const cards=[...grid.querySelectorAll('.rp-card')];
+  const controls=document.createElement('div');controls.className='role-turn-controls';
+  controls.innerHTML="<span>Roles are examples and can be rotated. Watching first is welcome; do not require eye contact or touch.</span><button type=\"button\" id=\"roleFocusToggle\" aria-expanded=\"false\" aria-controls=\"rolePracticeCards\">One role at a time</button>"+cards.map((_,i)=>`<button type="button" data-role-turn="${i}">Role ${i+1}</button>`).join('');
+  grid.id='rolePracticeCards';grid.before(controls);let focus=true;
+  function apply(){grid.classList.toggle('role-focus',focus);cards.forEach((c,i)=>{c.hidden=focus && i!==focusedRole;});controls.querySelector('#roleFocusToggle').setAttribute('aria-expanded',String(!focus));controls.querySelector('#roleFocusToggle').textContent=focus?"Show all roles":"One role at a time";controls.querySelectorAll('[data-role-turn]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.roleTurn)===focusedRole)));}
+  controls.querySelector('#roleFocusToggle').onclick=()=>{focus=!focus;apply();};
+  controls.querySelectorAll('[data-role-turn]').forEach(b=>b.onclick=()=>{stopSpeech();focusedRole=Number(b.dataset.roleTurn);focus=true;apply();});
+  selectRoleForDemonstration = index => {focusedRole=index;focus=true;apply();};
+  apply();
 }
 
 // 角色扮演單一角色台詞朗讀
@@ -1119,7 +1056,7 @@ async function speakSingleRoleDialogue(text, btnElement, roleId = 1) {
 
   const audioKey = currentBriefing ? currentBriefing.id : "";
 
-  if (false && audioKey && roleId) {
+  if (false && audioKey && roleId && !currentBriefing?.useBrowserSpeech) {
     const audioUrl = `audio/role_${audioKey}_${roleId}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {
@@ -1189,6 +1126,7 @@ function speakAllRolesDialogue() {
     }
 
     const role = rp.roles[currentRoleIdx];
+    selectRoleForDemonstration(currentRoleIdx);
     document.querySelectorAll(".rp-card").forEach((c, idx) => {
       if (idx === currentRoleIdx) {
         c.classList.add("rp-card-speaking");
@@ -1271,7 +1209,7 @@ function renderSlideGame(container) {
   wrapper.innerHTML = `
     <div style="display:flex; justify-content:center; gap:12px; margin-bottom:18px; flex-wrap:wrap;">
       <button class="c-btn ${currentGameTab === 'decision' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('decision')">
-        🧭 Social Situation Behavioral Decision Bifurcation Road (CBT Decision Tree)
+        🧭 Consider different choices
       </button>
       <button class="c-btn ${currentGameTab === 'special' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('special')">
         🎮 Theme skill exclusive interactive game
@@ -1295,20 +1233,11 @@ function renderSlideGame(container) {
 
 // 決策樹遊戲：行為因果抉擇模擬 (CBT / PBS 正向行為支持)
 function buildDecisionTreeGame(box) {
+  box.classList.toggle("custom-choice-practice",!!currentBriefing.custom);
   const dt = currentBriefing.decisionTree || {
-    prompt: `In the situational test of "${currentBriefing.title}", if it were you, which behavioral route would you choose?`,
-    impulsive: {
-      title: "💥 Impulsive temper tantrums / Refusal to cooperate",
-      desc: "Shouting loudly, pushing people, or sulking and running away.",
-      consequence: "❌ Consequences of the behavior: The classmate was frightened to tears, the activity was forced to stop, everyone was in a bad mood, and I lost a star... I feel so regretful!",
-      feedback: "⚠️ Your impulsive brain is on fire! Next time, try stepping on the brakes and taking three deep breaths!"
-    },
-    super_skill: {
-      title: `🌟 Use superpowers: ${currentBriefing.superSkill || "Take a deep breath calmly and say it carefully"}`,
-      desc: `The brain takes a deep breath and applies the brakes, and uses "${currentBriefing.superSkill || "Super powers"}" to express and act politely`,
-      consequence: "🎉 A resounding success! Your peers witnessed your maturity and respect, and the whole class applauded and cheered for you. Every student received a gold star of honor!",
-      feedback: "🏆 Fantastic! The rational mind triumphs, successfully mastering social superpowers!"
-    }
+    prompt:`Discuss “${currentBriefing.title}”: Which support suits you right now? Choose, then practise together.`,
+    impulsive:{title:"Watch first or ask for a model",desc:"Watch the teacher model, then choose how to participate.",consequence:"Watching first is also participation. Tell the teacher what prompts you need.",feedback:"Choose one small step to start with together."},
+    super_skill:{title:"I would like to try one step",desc:currentBriefing.visualCard?.steps?.[1]?.text||currentBriefing.summary,consequence:"Practise the action, then let the teacher record the help needed.",feedback:"Choosing an answer does not show that the skill has been learned. Try it in daily life after practice."}
   };
 
   box.innerHTML = `
@@ -1322,7 +1251,7 @@ function buildDecisionTreeGame(box) {
       <!-- Option A: Impulsive -->
       <div id="decisionCardImpulsive" role="button" tabindex="0" onclick="triggerDecision('impulsive')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); this.click(); }" style="border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(239,68,68,0.08); text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <span style="font-size:1.8rem;">💥</span>
+          <span style="font-size:1.8rem;">${currentBriefing.custom?'👀':'💥'}</span>
           <strong style="font-size:1.15rem; color:#b91c1c;">${dt.impulsive.title}</strong>
         </div>
         <p style="font-size:0.95rem; color:#475569; margin:0 0 12px 0;">${dt.impulsive.desc}</p>
@@ -1353,7 +1282,7 @@ function buildDecisionTreeGame(box) {
 }
 
 window.triggerDecision = function(type) {
-  const dt = currentBriefing.decisionTree || {};
+  const dt = currentBriefing.decisionTree || {impulsive:{consequence:"Watching first is also participation.",feedback:"Choose one small step to start with together."},super_skill:{consequence:"Practise the action, then record the help needed.",feedback:"Choosing an answer does not show that the skill has been learned."}};
   const fb = document.getElementById("decisionFeedbackBox");
   const cImp = document.getElementById("decisionCardImpulsive");
   const cSup = document.getElementById("decisionCardSuper");
@@ -1395,7 +1324,7 @@ window.triggerDecision = function(type) {
         <div style="font-size:1rem; opacity:0.9;">${dt.super_skill ? dt.super_skill.feedback : "🏆 Successfully apply the brake, and everyone will receive 1 star!"}</div>
       </div>
     `;
-    awardAllRoleplayStars();
+    // Discussion choices do not award stars or count as an observed skill.
   }
 };
 
@@ -1785,15 +1714,19 @@ function renderSlideReward(container) {
         <span id="score_${s.id}">${studentStars[s.id] || 0}</span>
       </div>
       <div class="card-actions">
-        <button class="btn-minus-star" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:800;" onclick="minusStudentStar('${s.id}')" title="Deduct 1 star">−1 deduction point</button>
+        <button class="btn-minus-star" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:800;" onclick="minusStudentStar('${s.id}')" title="Correct one accidentally added star">Correct -1</button>
         <button class="btn-add-star" onclick="addStudentStar('${s.id}')" title="Award 1 star">+1 to add points</button>
       </div>
     </div>
   `).join("");
 
   container.innerHTML = `
-    <h2 class="slide-title" style="color:#ca8a04;">🏆 Classroom Honor Roll·Star Points Board</h2>
-    <p class="slide-subtitle">As long as you do today's superpower action, the teacher can give [Yu, He, Jia, and Zhen] a star stamp!</p>
+    <section class="lesson-reflection"><h2>Which method would you like to try in daily life?</h2>
+      <p>${currentBriefing.visualCard?.steps?.[1]?.text || currentBriefing.title}</p>
+      <p>With whom and where could you try it? Speak, point or ask the teacher to help record it.</p>
+      <button type="button" class="c-btn" onclick="LearningSupport.openObservations()">Record prompts and daily-life follow-up</button>
+    </section><h2 class="slide-title" style="color:#ca8a04;">🏆 Classroom Encouragement and Star Records</h2>
+    <p class="slide-subtitle">Teachers can recognise participation, help-seeking and effort under agreed rules. Stars do not establish mastery.</p>
 
     <!-- 4 Student Scoreboard -->
     <div class="student-scoreboard">

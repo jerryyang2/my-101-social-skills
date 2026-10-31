@@ -9,15 +9,17 @@
   <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="../../備課平台/styles.css">
-  <link rel="stylesheet" href="../../備課平台/teacher-tools.css?v=20261101-steady-breathing">
-  <link rel="stylesheet" href="../../備課平台/garden-theme.css?v=20261101-title">
-  <link rel="stylesheet" href="../../備課平台/course-picker.css?v=20261031-one-scroll">
-  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=20261101-class-tools">
+  <link rel="stylesheet" href="../../備課平台/styles.css?v=26b8907b10e2">
+  <link rel="stylesheet" href="../../備課平台/teacher-tools.css?v=3e34e5e24a89">
+  <link rel="stylesheet" href="../../備課平台/garden-theme.css?v=c97390aee69d">
+  <link rel="stylesheet" href="../../備課平台/course-picker.css?v=1400d2af7c50">
+  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=2dcf7d249058">
   <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
-  <script src="floating-tools/drawing.js?v=62cd9373ace9" defer></script>
-  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script src="floating-tools/drawing.js?v=15d25e2bec44" defer></script>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=fd03ea1944fc">
   <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
+  <link rel="stylesheet" href="../../備課平台/learning-support.css?v=dd1f88174fe3">
+  <script src="learning-support.js?v=d10aaa4946b2" defer></script>
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="social-garden">
@@ -413,60 +415,68 @@
   </main>
 
   <!-- Add Briefing Modal -->
-  <div class="modal-overlay" id="addModal">
+  <div class="modal-overlay" id="addModal" role="dialog" aria-modal="true" aria-labelledby="addLessonTitle" onkeydown="handleAddModalKeys(event)">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 style="font-size:1.25rem; font-weight:800;">➕ Add a Lesson</h2>
-        <button class="modal-close" onclick="closeAddModal()">&times;</button>
+        <h2 id="addLessonTitle" style="font-size:1.25rem; font-weight:800;">➕ Add a Lesson</h2>
+        <button class="modal-close" aria-label="Close window" onclick="closeAddModal()">&times;</button>
       </div>
       <form onsubmit="saveCustomBriefing(event)">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <div class="form-group">
-            <label>Lesson date</label>
+            <label for="newDate">Lesson date</label>
             <input type="date" id="newDate" required>
           </div>
           <div class="form-group">
-            <label>Unit</label>
+            <label for="newUnit">Unit</label>
             <input type="text" id="newUnit" placeholder="Example: The second unit: dealing with people" required>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Lesson title</label>
+          <label for="newTitle">Lesson title</label>
           <input type="text" id="newTitle" placeholder="Example: Learn to listen and take turns speaking
 Example: Society 2-II-3" required>
         </div>
 
         <div class="form-group">
-          <label>Curriculum code</label>
+          <label for="newCode">Curriculum code</label>
           <input type="text" id="newCode" placeholder="Example: Social 2-II-3">
         </div>
 
         <div class="form-group">
-          <label>Learning goal summary</label>
+          <label for="newSummary">Learning goal summary</label>
           <textarea id="newSummary" rows="2" placeholder="Briefly describe the core skills that students need to learn today..." required></textarea>
         </div>
 
+        <fieldset class="form-group"><legend>Three practical steps for this lesson</legend>
+          <p>Enter visible, practical actions. They will appear in the presentation and custom worksheet.</p>
+          <label for="newStep1">Step one</label><input id="newStep1" maxlength="100" required placeholder="Example: Stand beside the game and watch how it works.">
+          <label for="newStep2">Step two</label><input id="newStep2" maxlength="100" required placeholder="Example: Say or point to “May I play too?”">
+          <label for="newStep3">Step three</label><input id="newStep3" maxlength="100" required placeholder="Example: Wait for a reply; choose another activity if you cannot join yet.">
+        </fieldset>
+        <div class="form-group"><label for="newStory">Classroom situation (optional)</label><textarea id="newStory" rows="3" maxlength="2000" placeholder="Describe the people, place and difficulty. If left blank, the goal summary starts the discussion."></textarea></div>
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
           <div class="form-group">
-            <label style="color:#0f766e;">ASD visual support</label>
+            <label for="newAsd" style="color:#0f766e;">Visual and communication support</label>
             <textarea id="newAsd" rows="2" placeholder="Picture card or sentence pattern..."></textarea>
           </div>
           <div class="form-group">
-            <label style="color:#6b21a8;">Learning support</label>
+            <label for="newLd" style="color:#6b21a8;">Understanding and practical support</label>
             <textarea id="newLd" rows="2" placeholder="Reduction, verbal guidance..."></textarea>
           </div>
           <div class="form-group">
-            <label style="color:#991b1b;">Emotional support</label>
+            <label for="newEbd" style="color:#991b1b;">Emotional and sensory support</label>
             <textarea id="newEbd" rows="2" placeholder="Defense line, calm corner..."></textarea>
           </div>
         </div>
 
         <div class="form-group">
-          <label>Example Measurable IEP Goal</label>
-          <textarea id="newIep" rows="2" placeholder="Under situational prompts, students can achieve an achievement rate of more than 80%."></textarea>
+          <label for="newIep">Example Measurable IEP Goal</label>
+          <textarea id="newIep" rows="2" placeholder="Use the learner’s baseline to specify the context, action, prompts, opportunities and individual criterion."></textarea>
         </div>
 
+        <p id="customSaveStatus" role="status"></p>
         <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
           <button type="button" class="btn" onclick="closeAddModal()">Cancel</button>
           <button type="submit" class="btn btn-primary">Save Lesson</button>
@@ -481,9 +491,9 @@ Example: Society 2-II-3" required>
     <span>Calm Corner</span>
   </button>
   <script src="zhuyin.js?v=38bf7b846cc8"></script>
-  <script src="roleplay-data.js?v=78242e7a95d3"></script>
-  <script src="app.js?v=d9437ed7375f"></script>
-  <script src="teacher-tools.js?v=9f352d9e8b04"></script>
+  <script src="roleplay-data.js?v=5cdc52b6e6f7"></script>
+  <script src="app.js?v=504371d173ce"></script>
+  <script src="teacher-tools.js?v=c5692d656982"></script>
   <script src="garden-ui.js?v=0715f19dd9c3"></script>
 </body>
 </html>
