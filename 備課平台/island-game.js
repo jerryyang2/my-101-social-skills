@@ -2264,12 +2264,12 @@
     if (state.viewMode === '3d') {
       state.viewMode = '2d';
       if (map2D) map2D.classList.add('active');
-      if (btn) btn.innerHTML = '🌐 3D 視角';
+      if (btn) btn.textContent = '🌐 回到 3D 探索';
       render2DMapView();
     } else {
       state.viewMode = '3d';
       if (map2D) map2D.classList.remove('active');
-      if (btn) btn.innerHTML = '🗺️ 2D 全地圖';
+      if (btn) btn.textContent = '🗺️ 切換 2D 地圖';
     }
   }
 
@@ -2324,7 +2324,8 @@
     state.cameraFollow = !state.cameraFollow;
     const btn = document.getElementById('btnToggleFollow');
     if (btn) {
-      btn.innerHTML = state.cameraFollow ? '🎥 跟隨：開' : '🎥 跟隨：關';
+      btn.textContent = state.cameraFollow ? '🎥 鏡頭跟隨：開' : '🎥 鏡頭跟隨：關';
+      btn.setAttribute('aria-pressed', String(state.cameraFollow));
     }
     showToast(state.cameraFollow ? '🎥 鏡頭自動跟隨 3D 冒險者' : '🎥 鏡頭自由全景模式');
   }
@@ -2334,7 +2335,8 @@
     state.soundEnabled = !state.soundEnabled;
     const btn = document.getElementById('btnToggleSound');
     if (btn) {
-      btn.innerHTML = state.soundEnabled ? '🔊 音效：開' : '🔇 音效：關';
+      btn.textContent = state.soundEnabled ? '🔊 音效：開' : '🔇 音效：關';
+      btn.setAttribute('aria-pressed', String(state.soundEnabled));
     }
     showToast(state.soundEnabled ? '🔊 柔和音效已開啟' : '🔇 音效已靜音');
   }
