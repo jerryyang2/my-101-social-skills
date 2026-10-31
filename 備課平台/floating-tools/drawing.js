@@ -77,6 +77,43 @@
       this.deadline = now + this.remainingMs;
     }
     pause(now) { this.remainingMs = this.remaining(now); this.deadline = null; }
+    complete(now) {
+      if (!this.running || this.remaining(now) > 0) return false;
+      this.pause(now);
+      return true;
+    }
+  }
+  function createCountdownChime(AudioContextType) {
+    let audio = null;
+    async function enable() {
+      if (!AudioContextType) return false;
+      try {
+        if (!audio || audio.state === 'closed') audio = new AudioContextType();
+        if (audio.state !== 'running') await audio.resume();
+        return audio.state === 'running';
+      } catch { return false; }
+    }
+    return {
+      enable,
+      async play() {
+        if (!await enable()) return;
+        [523.25, 659.25, 783.99].forEach((frequency, index) => {
+          const oscillator = audio.createOscillator();
+          const gain = audio.createGain();
+          const start = audio.currentTime + index * .22;
+          oscillator.type = 'sine';
+          oscillator.frequency.setValueAtTime(frequency, start);
+          gain.gain.setValueAtTime(0, start);
+          gain.gain.linearRampToValueAtTime(.18, start + .02);
+          gain.gain.exponentialRampToValueAtTime(.001, start + .65);
+          oscillator.connect(gain);
+          gain.connect(audio.destination);
+          oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+          oscillator.start(start);
+          oscillator.stop(start + .7);
+        });
+      }
+    };
   }
   function timerText(milliseconds) {
     const seconds = Math.ceil(Math.max(0, milliseconds) / 1000);
@@ -98,6 +135,7 @@
     hitsMark,
     segmentDistance,
     Countdown,
+    createCountdownChime,
     timerText,
     hourglassSand
   };
@@ -131,7 +169,13 @@
       <label class="mft-countdown-minutes">設定 <input type="number" min="1" max="40" step="1" value="5" aria-label="倒數分鐘數，1 至 40 分鐘"> 分鐘</label>
       <div class="mft-countdown-actions"><button type="button" data-timer-action="toggle">開始</button><button type="button" data-timer-action="reset">重設</button></div>
       <p class="mft-countdown-status" role="status">準備開始</p>
-    </div>`;
+    </div>
+    <dialog class="mft-countdown-finish" role="alertdialog" aria-labelledby="mft-time-up-title" aria-describedby="mft-time-up-description">
+      <span class="mft-time-up-icon" aria-hidden="true">⏳</span>
+      <h2 id="mft-time-up-title">時間到！</h2>
+      <p id="mft-time-up-description">這一段時間結束囉！</p>
+      <button type="button" data-timer-action="dismiss" autofocus>知道了</button>
+    </dialog>`;
     document.body.append(root);
     const clock = root.querySelector('.mft-countdown-clock');
     const upperSand = root.querySelector('.mft-hourglass-upper');
@@ -142,6 +186,8 @@
     const status = root.querySelector('.mft-countdown-status');
     const handle = root.querySelector('.mft-countdown-drag');
     const countdown = new Countdown();
+    const chime = createCountdownChime(window.AudioContext || window.webkitAudioContext);
+    const finishNotice = root.querySelector('.mft-countdown-finish');
     let interval = null;
     let drag = null;
     let previousFocus = null;
@@ -155,8 +201,13 @@
     }
     function stopInterval() { clearInterval(interval); interval = null; }
     function paint() {
-      const remaining = countdown.remaining(performance.now());
-      if (countdown.running && remaining === 0) { countdown.pause(performance.now()); stopInterval(); }
+      const now = performance.now();
+      const remaining = countdown.remaining(now);
+      if (countdown.complete(now)) {
+        stopInterval();
+        finishNotice.showModal();
+        chime.play();
+      }
       clock.textContent = timerText(remaining);
       const sand = hourglassSand(remaining, countdown.minutes * 60000);
       upperSand.setAttribute('points', sand.topPoints);
@@ -181,6 +232,7 @@
       if (countdown.running) { countdown.pause(performance.now()); stopInterval(); }
       else {
         if (!applyMinutes()) return;
+        chime.enable();
         countdown.start(performance.now()); interval = setInterval(paint, 200);
       }
       paint();
@@ -200,6 +252,7 @@
     root.addEventListener('click', event => {
       const action = event.target.closest('[data-timer-action]')?.dataset.timerAction;
       if (action === 'toggle') startOrPause();
+      if (action === 'dismiss') finishNotice.close();
       if (action === 'reset') { stopInterval(); countdown.reset(); paint(); }
       if (action === 'close') {
         countdown.pause(performance.now()); stopInterval(); paint(); root.hidden = true;
@@ -225,6 +278,10 @@
     ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(type => handle.addEventListener(type, finishDrag));
     root.addEventListener('keydown', event => {
       event.stopPropagation();
+      if (finishNotice.open) {
+        if (event.key === 'Escape') { finishNotice.close(); event.preventDefault(); }
+        return;
+      }
       if (event.key === 'Escape') { root.querySelector('[data-timer-action=close]').click(); event.preventDefault(); }
       if (event.key === 'Enter' && event.target === input) { startOrPause(); event.preventDefault(); }
       if (event.target !== handle || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) return;
@@ -258,7 +315,6 @@
       ellipse: '<ellipse cx="12" cy="12" rx="9" ry="8"/>',
       arrow: '<path d="M3 20 20 3M9 3h11v11"/>',
       number: '<circle cx="12" cy="12" r="9"/><path d="m10 9 2-2v10M9 17h6"/>',
-      move: '<path d="M12 2v20M2 12h20M8 6l4-4 4 4M8 18l4 4 4-4M6 8l-4 4 4 4M18 8l4 4-4 4"/>',
       undo: '<path d="m8 4-5 5 5 5M3 9h10a7 7 0 0 1 0 14"/>',
       redo: '<path d="m16 4 5 5-5 5M21 9H11a7 7 0 0 0 0 14"/>',
       eraser: '<path d="m10 3 11 11-7 7H7L1 15zM5 11l10 10M14 21h8"/>',
@@ -287,8 +343,7 @@
       </button>
       <section id="mft-panel" class="mft-panel" aria-label="課堂畫記工具列" hidden>
         <header class="mft-header">
-          <span class="mft-brand-mark" title="社交課小幫手"><img src="${helperIconURL}" alt="" draggable="false" width="26" height="26"><span>社交課</span></span>
-          <button type="button" class="mft-move" data-action="move" aria-label="移動畫記工具列" title="拖曳移動；方向鍵微調位置，Home 回到右下角">${icon('move')}</button>
+          <button type="button" class="mft-brand-mark" aria-label="拖移社交課小幫手" title="拖曳社交課圖示移動；方向鍵微調，Home 回到右下角"><img src="${helperIconURL}" alt="" draggable="false" width="26" height="26"><span>社交課</span></button>
           <button type="button" class="mft-orientation" data-action="orientation"></button>
         </header>
         <div class="mft-body">
@@ -352,7 +407,7 @@
     const panel = host.querySelector('.mft-panel');
     const launcher = host.querySelector('.mft-launcher');
     const modeLabel = host.querySelector('.mft-mode');
-    const moveButton = host.querySelector('.mft-move');
+    const dragHandle = host.querySelector('.mft-brand-mark');
     const orientationButton = host.querySelector('.mft-orientation');
     const options = host.querySelector('.mft-options');
     const optionsButton = host.querySelector('.mft-options-toggle');
@@ -903,7 +958,7 @@
       });
     }
     bindDrag(launcher, true);
-    bindDrag(moveButton, false);
+    bindDrag(dragHandle, false);
     document.addEventListener('keydown', event => {
       if (!opened || event.isComposing) return;
       if (event.key === 'Escape' && (tool !== 'cursor' || editor)) {

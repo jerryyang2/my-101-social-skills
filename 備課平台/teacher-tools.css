@@ -169,7 +169,8 @@ body.calm-corner-open { overflow: hidden; }
 
 /* 4-7-8 呼吸光環 */
 .breathing-arena {
-  display: flex;
+  display: grid;
+  grid-template-columns: clamp(130px, 24dvh, 180px) minmax(0, 480px);
   height: 100%;
   align-items: center;
   justify-content: center;
@@ -233,6 +234,8 @@ body.calm-corner-open { overflow: hidden; }
 
 .breathing-text-area {
   text-align: center;
+  width: 100%;
+  min-width: 0;
 }
 
 .breathing-main-text {
@@ -247,6 +250,8 @@ body.calm-corner-open { overflow: hidden; }
 }
 
 .breathing-sub-text {
+  min-height: 3.2em;
+  line-height: 1.6;
   font-size: 1.05rem;
   color: #475569;
   margin-bottom: 14px;
@@ -404,7 +409,7 @@ body.calm-corner-open { overflow: hidden; }
   .calm-tabs-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 8px; gap: 6px; }
   .calm-tab-btn { min-height: 44px; padding: 6px; font-size: .85rem; border-radius: 10px; }
   .calm-modal-body { padding: 12px; }
-  .breathing-arena { flex-direction: column; gap: 10px; padding: 4px 0; }
+  .breathing-arena { grid-template-columns: minmax(0, 1fr); align-content: center; justify-items: center; gap: 10px; padding: 4px 0; }
   .breathing-main-text { font-size: 1.5rem; }
   .breathing-instruction-row { gap: 12px; }
   .breathing-sub-text { font-size: .9rem; margin-bottom: 8px; }

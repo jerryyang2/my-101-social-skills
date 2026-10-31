@@ -60,9 +60,9 @@
 .mft-heading { flex: 1; }
 .mft-heading strong { display: block; color: #272557; font-size: 17px; font-weight: 800; }
 .mft-heading span { color: #7b859a; font-size: 12px; }
-.mft-move, .mft-icon-button { display: grid; place-items: center; min-width: 44px; height: 44px; border-radius: 12px; background: #eaeef8; color: #67748e; }
-.mft-move { cursor: grab !important; touch-action: none; }
-.mft-dragging .mft-move { cursor: grabbing !important; background: #dfe5fc; }
+.mft-brand-mark, .mft-icon-button { display: grid; place-items: center; min-width: 44px; height: 44px; border-radius: 12px; background: #eaeef8; color: #67748e; }
+.mft-brand-mark { cursor: grab !important; touch-action: none; }
+.mft-dragging .mft-brand-mark { cursor: grabbing !important; background: #dfe5fc; }
 .mft-icon-button { background: #fff; border-color: #e4e8f4 !important; }
 .mft-body { padding: 14px 15px 10px; }
 .mft-tool-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
@@ -140,7 +140,7 @@
 .mft-ui[data-orientation] .mft-body { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; align-items: center; gap: 6px; padding: 0; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #789582 #edf5e5; }
 .mft-ui[data-orientation] .mft-tool-grid { display: flex; flex: 0 0 auto; gap: 4px; }
 .mft-ui[data-orientation] :is(.mft-tool,.mft-options-toggle,.mft-orientation,.mft-actions button) { display: flex; flex: 0 0 54px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 54px; min-width: 54px; height: 50px; min-height: 50px; padding: 4px 2px; border-radius: 9px; font-size: 14px; line-height: 1.2; white-space: nowrap; }
-.mft-ui[data-orientation] :is(.mft-move,.mft-collapse) { flex: 0 0 44px; width: 44px; min-width: 44px; height: 50px; min-height: 50px; }
+.mft-ui[data-orientation] :is(.mft-brand-mark,.mft-collapse) { flex: 0 0 44px; width: 44px; min-width: 44px; height: 50px; min-height: 50px; }
 .mft-ui[data-orientation] .mft-tool svg, .mft-ui[data-orientation] .mft-actions button svg { width: 20px; height: 20px; }
 .mft-ui[data-orientation] .mft-orientation { color: #31535d; background: #e5f2f5; border-color: #a0bac1; }
 .mft-ui[data-orientation] .mft-options-toggle { color: #3a4d2c; background: #edf4df; border-color: #a1b58a; }
@@ -155,7 +155,7 @@
 .mft-ui[data-orientation='vertical'] :is(.mft-header,.mft-body,.mft-tool-grid,.mft-actions) { flex-direction: column; }
 .mft-ui[data-orientation='vertical'] .mft-body { flex-basis: auto; overflow-x: hidden; }
 .mft-ui[data-orientation='vertical'] .mft-actions { padding: 6px 0 0; border-left: 0; border-top: 1px solid #b5c5b5; }
-.mft-ui[data-orientation='vertical'] :is(.mft-move,.mft-collapse) { flex-basis: 44px; width: 54px; height: 44px; min-height: 44px; }
+.mft-ui[data-orientation='vertical'] :is(.mft-brand-mark,.mft-collapse) { flex-basis: 44px; width: 54px; height: 44px; min-height: 44px; }
 
 .mft-options { position: fixed; width: 288px; max-width: calc(100vw - 16px); max-height: calc(100dvh - 16px); overflow: auto; padding: 12px; border: 2px solid #789582; border-radius: 14px; background: #fffef9; color: #243d30; box-shadow: 0 8px 28px #18372430; }
 .mft-options-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 16px; }
@@ -179,7 +179,7 @@
 
 html.mft-hand-mode,
 html.mft-hand-mode body,
-html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true'],[contenteditable='true'] *,:disabled,:disabled *,[aria-disabled='true'],[aria-disabled='true'] *,.mft-launcher,.mft-launcher *,.mft-move,.mft-move *)) { cursor: url('./pointing-hand-cursor.svg?v=social-cursor-20261031') 4 3, pointer !important; }
+html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true'],[contenteditable='true'] *,:disabled,:disabled *,[aria-disabled='true'],[aria-disabled='true'] *,.mft-launcher,.mft-launcher *,.mft-brand-mark,.mft-brand-mark *)) { cursor: url('./pointing-hand-cursor.svg?v=social-cursor-20261031') 4 3, pointer !important; }
 @media print { .mft-options { display: none !important; } }
 
 .mft-ui { bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); }
@@ -187,11 +187,11 @@ html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true
 .mft-ui .mft-launcher:hover { background: #225777; }
 .mft-ui .mft-helper-icon { display: block; width: 40px; height: 40px; pointer-events: none; }
 .mft-ui[data-orientation] .mft-panel { border-color: #96b3c1; border-radius: 18px; background: #fffdf7; box-shadow: 0 4px 0 #c3d5db, 0 10px 30px #174c6426; }
-.mft-ui[data-orientation] .mft-brand-mark { display: flex; flex: 0 0 50px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 50px; height: 50px; color: #225777; font-size: 11px; font-weight: 700; line-height: 1.2; }
+.mft-ui[data-orientation] .mft-brand-mark { display: flex; background: transparent; border: 0; touch-action: none; user-select: none; cursor: grab !important; flex: 0 0 50px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 50px; height: 50px; color: #225777; font-size: 11px; font-weight: 700; line-height: 1.2; }
 .mft-ui .mft-brand-mark img { display: block; pointer-events: none; }
 .mft-ui[data-orientation='vertical'] .mft-brand-mark { flex-basis: 50px; }
 .mft-ui[data-orientation] .mft-body { scrollbar-color: #82a6b8 #eef5f7; }
-.mft-ui[data-orientation] :is(.mft-move, .mft-collapse) { color: #225777; background: #e6f1f5; border-color: #b7ced8 !important; }
+.mft-ui[data-orientation] :is(.mft-brand-mark, .mft-collapse) { color: #225777; background: #e6f1f5; border-color: #b7ced8 !important; }
 .mft-ui[data-orientation] .mft-options-toggle { color: #68491d; background: #fff0c9; border-color: #c8a365; }
 .mft-ui[data-orientation] .mft-options-toggle[aria-expanded='true'] { background: #8c632b; color: #fff; }
 .mft-ui[data-orientation] .mft-tool[aria-pressed='true'], .mft-ui[data-orientation] .mft-actions [aria-pressed='true'] { background: #225777; color: white; border-color: #225777 !important; box-shadow: 0 2px 0 #163e56; }
@@ -227,4 +227,11 @@ html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true
 .mft-countdown-status { margin: 8px 0 0; text-align: center; font-size: 13px; font-weight: 700; color: #6c6042; }
 .mft-countdown[data-finished=true] { border-color: #af6b21; background: #fff3cd; }
 .mft-countdown[data-finished=true] .mft-countdown-status { color: #8c4c0e; font-size: 18px; }
+.mft-countdown-finish { width: min(420px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 28px; border: 3px solid #bd9850; border-radius: 24px; background: #fff7d9; color: #264b5c; text-align: center; box-shadow: 0 10px 40px #183b4b44; }
+.mft-countdown-finish[open] { display: grid; justify-items: center; gap: 12px; }
+.mft-countdown-finish::backdrop { background: #193c4c88; }
+.mft-time-up-icon { font-size: 64px; line-height: 1.2; }
+.mft-countdown-finish h2 { margin: 0; font: 900 44px/1.3 system-ui, sans-serif; }
+.mft-countdown-finish p { margin: 0; font-size: 18px; }
+.mft-countdown-finish button { min-width: 160px; padding: 10px 24px; background: #285e76; border-color: #285e76; color: #fff; font-size: 18px; }
 @media print { .mft-countdown { display: none !important; } }
