@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en" data-site-language="en">
+<head>
+  <meta charset="utf-8">
+  <script src="../../site-language.js?v=bf6816bcce93"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Island Adventure · My 101 Social Skills Lessons</title>
+
+  <!-- 網站主題專屬 Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
+  <link rel="apple-touch-icon" href="../../備課平台/favicon.png">
+
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="../../備課平台/island-game.css">
+  <link rel="stylesheet" href="../../備課平台/platform-theme.css?v=20261031-unified">
+  <link rel="stylesheet" href="../../備課平台/island-navigation.css?v=20261031-single-row">
+  <script src="island-ui.js?v=e7569c07ab0d" defer></script>
+  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=20261101-class-tools">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=4c97d518ad72" defer></script>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
+  <link rel="stylesheet" href="../../site-language.css?v=298652311479">
+</head>
+<body class="theme-cream" data-platform="island">
+
+  <!-- 頂部遊戲導覽列 (Topbar) -->
+  <header class="game-topbar">
+    <div class="brand-section">
+      <a class="brand-logo" href="index.html" aria-label="Back to Lesson Planner"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg></a>
+      <div class="brand-info">
+        <h1>
+          Social Skills Heroes · Island Adventure
+          <span class="badge-isleforge">Let's explore</span>
+        </h1>
+        <p>My 101 Social Skills Lessons · Practice friendship through adventure</p>
+      </div>
+    </div>
+    <div class="top-controls">
+      <section class="adventure-tools" aria-labelledby="adventureToolsTitle">
+        <h2 id="adventureToolsTitle">Adventure Tools</h2>
+        <div class="adventure-actions">
+          <button type="button" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" aria-controls="passportModalOverlay">
+            <span class="adventure-button-icon" aria-hidden="true">📘</span>
+            <span class="adventure-button-copy"><strong>My Passport</strong><small>View stamps and progress</small></span>
+            <span class="adventure-button-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="c-game-btn btn-savecode adventure-action" onclick="window.socialGame.openSaveCodeModal()" aria-controls="saveCodeModalOverlay">
+            <span class="adventure-button-icon" aria-hidden="true">🔑</span>
+            <span class="adventure-button-copy"><strong>Save &amp; Continue</strong><small>Continue on another device</small></span>
+            <span class="adventure-button-arrow" aria-hidden="true">›</span>
+          </button>
+          <button type="button" class="c-game-btn btn-citadel adventure-action" onclick="window.socialGame.openCitadelModal()" aria-controls="modalCitadelOverlay">
+            <span class="adventure-button-icon" aria-hidden="true">⭐</span>
+            <span class="adventure-button-copy"><strong>Star Castle</strong><small>View achievements and certificates</small></span>
+            <span class="adventure-button-arrow" aria-hidden="true">›</span>
+          </button>
+        </div>
+        <details class="game-settings">
+          <summary aria-controls="gameSettingsPanel" aria-label="Game Settings"><span aria-hidden="true">⚙️</span><span class="settings-label">Game Settings</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="game-settings-panel" id="gameSettingsPanel">
+            <fieldset class="settings-section">
+              <legend>Maps and Lenses</legend>
+              <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ Switch 2D map</button>
+              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="true">🎥 Camera following: on</button>
+            </fieldset>
+            <fieldset class="settings-section">
+              <legend>Game sound effects</legend>
+              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="true">🔊 Sound Effect: On</button>
+            </fieldset>
+            <fieldset class="settings-section">
+              <legend>Background sky color</legend>
+              <div class="theme-switch-group">
+                <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" aria-pressed="true">☀️ Morning light</button>
+                <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" aria-pressed="false">🌅 Sunset</button>
+                <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" aria-pressed="false">🌌 Night sea</button>
+              </div>
+            </fieldset>
+          </div>
+        </details>
+      </section>
+    </div>
+    <details class="platform-menu">
+      <summary>Go to platform <span aria-hidden="true">↗</span></summary>
+      <nav class="platform-navigation" aria-label="Leave the game and go to other platforms">
+        <a class="platform-link" href="classroom.html">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
+          <span>Classroom projection</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="platform-link" href="index.html">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
+          <span>Lesson Planner</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </details>
+  </header>
+
+  <!-- RPG 冒險者頂部狀態 HUD 條 -->
+  <aside class="rpg-hud-bar" id="rpgHud" aria-live="polite">
+    <div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="Click to customize the name and appearance of the adventurer">
+      <div class="hud-avatar" id="hudAvatar">🦖</div>
+      <div class="hud-hero-details">
+        <div class="hud-name-row">
+          <span class="hud-name" id="hudHeroName">Yu</span>
+          <span class="hud-lv-badge" id="hudHeroLv">Lv.1 trainee</span>
+        </div>
+        <div class="hud-exp-track">
+          <div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
+        </div>
+        <span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
+      </div>
+    </div>
+
+    <div class="hud-stat-pill" title="Accumulate social super power gold stars (special education tokens)">
+      <span class="hud-pill-icon">⭐</span>
+      <span class="hud-pill-val" id="hudTotalStars">0 pieces</span>
+    </div>
+
+    <div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="Stamp collection progress of the four major themed islands">
+      <span class="hud-pill-icon">🏝️</span>
+      <span class="hud-pill-val" id="hudStampCount">Island Chapter 0 / 4</span>
+    </div>
+  </aside>
+
+  <!-- 3D 畫布主舞台 -->
+  <main id="stage">
+    <canvas id="threeCanvas"></canvas>
+    <!-- 3D 世界空間浮動標籤圖層 -->
+    <div id="labelLayer"></div>
+  </main>
+
+  <!-- 操作指示提示列 -->
+  <div class="view-hints" id="moveHint">
+    💡 Click on the hot air balloon to listen to the voice easter egg · Keyboard <b>WASD</b>/<b>Arrow keys</b> Or click on the island to walk·drag to rotate·scroll wheel to zoom
+  </div>
+
+  <!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+  <div class="virtual-dpad" id="virtualDpad">
+    <button class="dpad-btn dpad-up" data-dir="up">▲</button>
+    <button class="dpad-btn dpad-left" data-dir="left">◀</button>
+    <button class="dpad-btn dpad-center" data-dir="center">●</button>
+    <button class="dpad-btn dpad-right" data-dir="right">▶</button>
+    <button class="dpad-btn dpad-down" data-dir="down">▼</button>
+  </div>
+
+  <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+  <div id="map2DView">
+    <!-- 由 island-game.js 動態渲染 -->
+  </div>
+
+  <!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
+  <div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
+    <aside class="quest-drawer">
+      <div class="drawer-header">
+        <div class="drawer-header-left">
+          <span class="drawer-island-badge" id="drawerIslandBadge">Theme Island</span>
+          <h2 class="drawer-title" id="drawerTitle">Level test</h2>
+        </div>
+        <button class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="Close drawer" aria-label="Close">
+          ✕
+        </button>
+      </div>
+
+      <!-- 週次快速切換橫列 (Carousel) -->
+      <div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+        <div class="weeks-carousel" id="weeksCarousel">
+          <!-- 由 JS 動態生成 -->
+        </div>
+      </div>
+
+      <!-- 抽屜主要滾動互動內容 -->
+      <div class="drawer-body" id="drawerDynamicBody">
+        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
+      </div>
+
+      <!-- 抽屜底部獎勵資訊 -->
+      <div class="drawer-footer">
+        <span class="quest-reward-hint">
+          🌟 Clearance reward: get +30 EXP, 3 social stars and exclusive Super Power Island Chapter
+        </span>
+        <button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
+          ✔️ Continue to patrol the island
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 冒險者護照與島章冊 (Passport Modal) -->
+  <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
+    <div class="passport-book-card">
+      <div class="passport-header">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.8rem;">📘</span>
+          <div>
+            <h3>Social Superboy·Adventure Passport</h3>
+            <p>OO Elementary School Learning Classroom Special Needs Area (Social Skills) Learning History Archives</p>
+          </div>
+        </div>
+        <button class="drawer-close-btn" style="background:rgba(255,255,255,0.2); color:#fff;" onclick="window.socialGame.closePassportModal()">✕</button>
+      </div>
+
+      <div class="passport-body">
+        <!-- 護照個資卡 -->
+        <div class="passport-id-card">
+          <div class="passport-photo-box">
+            <div class="passport-avatar" id="passAvatar">🦖</div>
+            <div class="passport-level-tag" id="passLevel">Lv.1</div>
+          </div>
+          <div class="passport-info-grid">
+            <div class="info-row">
+              <span class="info-label">Adventurer codename:</span>
+              <span class="info-val" id="passHeroName">Yu classmate</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Current title:</span>
+              <span class="info-val" id="passHeroTitle">Social Adventure Trainee</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Accumulated experience value:</span>
+              <span class="info-val" id="passHeroExp">25 EXP</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Super power star:</span>
+              <span class="info-val" id="passHeroStars">0 ⭐</span>
+            </div>
+            <div class="info-row">
+              <span class="info-label">Affiliated special education group:</span>
+              <span class="info-val">OO elementary school learning classroom middle grade resource class</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 四大島章印記區 -->
+        <div class="stamps-section">
+          <h4 class="stamps-title">🏆 Four theme island certification island stamps (obtain stamps through customs clearance)</h4>
+          <div class="stamps-grid">
+            <!-- Stamp 1 -->
+            <div class="stamp-slot" id="stampSlot-0">
+              <div class="stamp-seal seal-volcano">
+                <span class="seal-icon">❤️</span>
+                <span class="seal-name">The seal of air puff and cooling</span>
+                <span class="seal-status" id="stampStatus-0">Not unlocked</span>
+              </div>
+            </div>
+            <!-- Stamp 2 -->
+            <div class="stamp-slot" id="stampSlot-1">
+              <div class="stamp-seal seal-comm">
+                <span class="seal-icon">💬</span>
+                <span class="seal-name">I want to tell you the seal</span>
+                <span class="seal-status" id="stampStatus-1">Not unlocked</span>
+              </div>
+            </div>
+            <!-- Stamp 3 -->
+            <div class="stamp-slot" id="stampSlot-2">
+              <div class="stamp-seal seal-friend">
+                <span class="seal-icon">🍀</span>
+                <span class="seal-name">Let’s play together</span>
+                <span class="seal-status" id="stampStatus-2">Not unlocked</span>
+              </div>
+            </div>
+            <!-- Stamp 4 -->
+            <div class="stamp-slot" id="stampSlot-3">
+              <div class="stamp-seal seal-flex">
+                <span class="seal-icon">⚙️</span>
+                <span class="seal-name">It doesn’t matter if you lose.</span>
+                <span class="seal-status" id="stampStatus-3">Not unlocked</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="passport-footer">
+        <span style="font-size:0.85rem; color:#64748b;">
+          💡 After collecting the four themed island stamps, you can go to the central "Shining Star Castle" to unlock the "Special Education Superboy Honorary Pass Certificate"!
+        </span>
+        <button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
+          Confirm Passport
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
+  <div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
+    <div class="savecode-card">
+      <div class="savecode-header">
+        <h3>🔑 Adventure progress connection code</h3>
+        <button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
+      </div>
+      <div class="savecode-body">
+        <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
+          This game fully supports offline automatic archiving! If you want to switch to a different computer, tablet or classroom electronic whiteboard and continue to pass the level, you can copy this series of level codes to seamlessly read the progress:
+        </p>
+
+        <!-- 我的接關碼 -->
+        <div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
+          <div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
+            📋 My current progress code:
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="mySaveCodeInput" readonly style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;">
+            <button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
+              Copy code
+            </button>
+          </div>
+        </div>
+
+        <!-- 讀取接關碼 -->
+        <div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
+          <div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
+            📥 Enter the connection code for other computers:
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="loadSaveCodeInput" placeholder="Please paste the 8-digit connection code here..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;">
+            <button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
+              Loading progress
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 初次登入或切換冒險者 Dialog -->
+  <dialog class="start-dialog" id="startDialog">
+    <div class="start-dialog-content">
+      <div class="start-dialog-header">
+        <svg class="island-welcome-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>
+        <h2>Build your social superman</h2>
+        <p>Choose a look you like and start practicing making friends together!</p>
+      </div>
+
+      <div class="start-form-group">
+        <label>Adventurer title/student name:</label>
+        <div style="display:flex; gap:8px; margin-bottom:10px;">
+          <input type="text" id="heroNameInput" maxlength="10" placeholder="For example: Yu, He, Light Speed Superman..." value="Yu" style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;">
+        </div>
+        <!-- OO特教生快速填入 Chip -->
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
+          <span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">Quick settings:</span>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Yu (ASD)&quot;, &#x27;dino&#x27;)">🦖 Yu (ASD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;He (LD)&quot;, &#x27;unicorn&#x27;)">🦄 He (LD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jia (EBD)&quot;, &#x27;lion&#x27;)">🦁 Jia (EBD)</button>
+          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jun (ADHD)&quot;, &#x27;rocket&#x27;)">🚀 Jun (ADHD)</button>
+        </div>
+      </div>
+
+      <div class="start-form-group">
+        <label>Select a 3D adventure hero look:</label>
+        <div class="look-selection-grid">
+          <label class="look-card active" data-look="dino">
+            <input type="radio" name="heroLook" value="dino" checked hidden>
+            <span class="look-avatar">🦖</span>
+            <span class="look-name">Sprout little green dinosaur</span>
+            <span class="look-desc">Symbolizes vitality and growth, calmness and stability</span>
+          </label>
+          <label class="look-card" data-look="lion">
+            <input type="radio" name="heroLook" value="lion" hidden>
+            <span class="look-avatar">🦁</span>
+            <span class="look-name">Courage Red Mane Lion</span>
+            <span class="look-desc">Fight back anger and be filled with a sense of justice</span>
+          </label>
+          <label class="look-card" data-look="unicorn">
+            <input type="radio" name="heroLook" value="unicorn" hidden>
+            <span class="look-avatar">🦄</span>
+            <span class="look-name">Smart Blue Seahorse</span>
+            <span class="look-desc">Gentle, friendly, and good at listening</span>
+          </label>
+          <label class="look-card" data-look="rocket">
+            <input type="radio" name="heroLook" value="rocket" hidden>
+            <span class="look-avatar">🚀</span>
+            <span class="look-name">Charge Purple Rocket</span>
+            <span class="look-desc">Flexible and flexible, anti-frustration thinking</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="start-dialog-actions">
+        <button type="button" class="c-game-btn" onclick="window.socialGame.closeStartDialog()">
+          Cancel
+        </button>
+        <button type="button" class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;">
+          🚀 Let’s go on an island adventure!
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- 中央閃亮亮星星城堡與結業通關證書 Modal -->
+  <div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
+    <div class="citadel-card">
+      <div class="citadel-header">
+        <h2>⭐ Social Superboy · Shining Star Castle Hall of Honor</h2>
+        <button class="drawer-close-btn" style="color:#ffffff; background:rgba(255,255,255,0.2);" onclick="window.socialGame.closeCitadelModal()">
+          ✕
+        </button>
+      </div>
+
+      <div class="citadel-body">
+        <!-- 數據統計 -->
+        <div class="citadel-stats-grid">
+          <div class="stat-box">
+            <div class="stat-val" id="citadelPassedCount">0 / 52 off</div>
+            <div class="stat-label">Full semester clearance progress</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="citadelTotalStars">0 ⭐</div>
+            <div class="stat-label">Accumulated social super stars</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" id="citadelProgressPct">0%</div>
+            <div class="stat-label">Mastery achievement rate</div>
+          </div>
+        </div>
+
+        <!-- 結業證書預覽框 (數位榮譽認證) -->
+        <div class="certificate-preview-box">
+          <div class="cert-emblem">🏆</div>
+          <h3 class="cert-title">Special Education Social Superman · Honorary Pass Certificate</h3>
+          <div class="cert-input-row">
+            <span>This is to prove</span>
+            <input type="text" class="cert-name-input" id="certStudentName" placeholder="Student name" value="Example student">
+          </div>
+          <p class="cert-text">
+            In the 52-week social skills and emotion management course of elementary school special education, he bravely landed on the "Puffy Cooling Island", "I Want to Tell You Island", "Let's Play Island" and "It's Okay to Lose Island", and successfully arrived at the central "Shining Star Castle". He showed great courage to defeat the impulsive monster, and became proficient in self-awareness, self-expression, friendly sharing and resilience to frustration. This certificate is specially awarded for praise and encouragement!
+          </p>
+          <div class="cert-footer-row">
+            <div>
+              <span>Issuing unit:</span>OO Elementary School Learning Classroom·Teacher
+            </div>
+            <div>
+              <span>Issue date:</span><span id="certIssueDate">October 28, 2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
+        <div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
+          <button class="c-game-btn btn-primary" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.celebrateHero()">
+            🎉 Honorary Applause Celebration (Cast Golden Ribbon)
+          </button>
+          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.openPassportModal()">
+            📘 View Adventure Passport
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- Level Up 橫幅特效 -->
+  <div class="levelup-banner" id="levelupBanner">
+    <div class="levelup-title">🎉 LEVEL UP!</div>
+    <div class="levelup-sub" id="levelupSub">Promoted to Lv.2 Super Power Beginner!</div>
+  </div>
+
+  <!-- Toast 訊息提示 -->
+  <div class="toast" id="toastMsg" role="status" aria-live="polite"></div>
+
+  <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
+  <script src="../../備課平台/three.min.js"></script>
+  <script src="app.js?v=d9437ed7375f"></script>
+  <script src="roleplay-data.js?v=78242e7a95d3"></script>
+  <script src="island-game.js?v=a4daa9382a25"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-site-language="en">
+<head>
+  <meta charset="utf-8">
+  <script src="../../site-language.js?v=bf6816bcce93"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroom &amp; Games · My 101 Social Skills Lessons</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="../../備課平台/classroom.css">
+  <link rel="stylesheet" href="../../備課平台/teacher-tools.css?v=20261101-steady-breathing">
+  <link rel="stylesheet" href="../../備課平台/classroom-theme.css?v=20261031-teaching-toolbar">
+  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=20261101-class-tools">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=4c97d518ad72" defer></script>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
+  <link rel="stylesheet" href="../../site-language.css?v=298652311479">
+</head>
+<body class="social-classroom">
+  <a class="classroom-skip-link" href="#slideMainContent">Skip to class content</a>
+
+  <!-- Top Classroom Control Header -->
+  <header class="classroom-header">
+    <a class="classroom-brand" href="index.html" id="classroomBrandLink" aria-label="Back to Lesson Planner">
+      <img src="favicon.svg" width="38" height="38" alt="">
+      <span><strong>My 101 Social Skills Lessons</strong><small>Lesson Planner <span aria-hidden="true">／</span> <b>Classroom &amp; Games</b></small></span>
+    </a>
+    <div class="lesson-info">
+      <span class="lesson-day-badge" id="lessonDayBadge">Loading...</span>
+      <h1 class="lesson-title-text" id="lessonTitleText">Classroom interactive teaching</h1>
+    </div>
+
+    <label class="classroom-course-picker" for="dateDropdown"><span>Choose a lesson</span><select class="date-selector-select" id="dateDropdown" title="Switch teaching date"></select></label>
+
+    <div class="classroom-controls" role="toolbar" aria-label="Teaching tools arranged according to class flow">
+      <div class="classroom-tool-group tools-present" role="group" aria-label="1 · Present">
+        <span class="tool-group-label">1 · Present</span>
+        <div class="tool-group-actions">
+<button class="c-btn c-icon-btn" onclick="toggleFullscreen()" title="Toggle full-screen presentation" aria-label="Full screen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+        </svg>
+      </button>
+<button class="c-btn classroom-tool tool-whiteboard" onclick="openWhiteboardModal()" title="Turn on large font move projection card">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>Skill Card
+      </button>
+<details class="classroom-reading-menu">
+            <summary class="c-btn">Read-Aloud <span aria-hidden="true">⌄</span></summary>
+            <div class="classroom-reading-panel">
+              <span class="reading-panel-title">Adjust reading support</span>
+<button class="c-btn c-btn-accent" id="zhuyinToggleBtn" onclick="toggleZhuyin()" title="Click to turn on or off the Chinese phonetic symbols">
+        Chinese phonetic support: On
+      </button>
+<label class="reading-speed-label" for="ttsSpeedSelector">Speech speed</label>
+<select class="c-btn" id="ttsSpeedSelector" onchange="changeTtsSpeed(this.value)" style="font-weight:800; background:#f0fdf4; border-color:#86efac; color:#166534;" title="Choose a comfortable reading speed">
+        <option value="0.8">🐢 0.8× Slow</option>
+        <option value="1.0" selected>⚡ 1.0× Normal</option>
+        <option value="1.2">🐇 1.2× Fast</option>
+      </select>
+<button class="c-btn" onclick="toggleSlideFontSize()" title="Enlarge or restore slides to text level (Universal Design UDL Accessibility)" style="font-weight:900; padding:6px 10px;">
+        🔤 Text size
+      </button>
+<a class="c-btn" id="openExternalBtn" href="classroom.html" target="_blank" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="Open in a new independent tab (large screen projection is most recommended, full page without frame)">
+        ↗️ Open Full Page
+      </a>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-practice" role="group" aria-label="2 · Practice">
+        <span class="tool-group-label">2 · Practice</span>
+        <div class="tool-group-actions">
+<a class="c-btn classroom-tool tool-worksheet" id="classWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener" title="Open today’s color graphic worksheet">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#copy"></use></svg>Today's Worksheet
+      </a>
+<a class="c-btn classroom-tool tool-island" href="island-game.html" target="_blank" rel="noopener" title="Start the 3D Social Adventure Islands Game">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>Island Adventure
+      </a>
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-feedback" role="group" aria-label="3 · Feedback &amp; Notes">
+        <span class="tool-group-label">3 · Feedback &amp; Notes</span>
+        <div class="tool-group-actions">
+<div class="students-star-widget" id="starWidget">
+        <button class="c-btn star-toggle-btn" id="starToggleBtn" onclick="toggleStarBar(event)" title="Collapse or expand the student star column (expand vertically up and down, does not affect the left toolbar button)">
+          <span>⭐ stars</span>
+          <span class="star-total-badge" id="classStarTotalBadge">0 in total</span>
+          <span class="toggle-icon" id="starToggleIcon">▼ Expand</span>
+        </button>
+        <div class="students-bar" id="topStudentsBar">
+            <!-- Rendered by classroom.js -->
+          </div>
+        </div>
+<button class="c-btn classroom-tool tool-communication" onclick="openCommunicationModal()" title="Open parent-teacher contact and IEP evaluation draft">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg>Family Notes
+      </button>
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-support" role="group" aria-label="Support">
+        <span class="tool-group-label">Support</span>
+        <div class="tool-group-actions">
+<button class="c-btn classroom-tool tool-calm" onclick="openCalmCornerModal()" title="Turn on breathing exercises, hourglass timing and five-sense landing">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg>Calm Corner
+      </button>
+<a class="c-btn classroom-tool tool-prep" href="index.html" id="classPrepLink">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>Back to Planner
+      </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Slide Viewport -->
+  <main class="slide-viewport">
+
+    <!-- Previous Slide Arrow -->
+    <button class="slide-nav-btn slide-prev" id="prevBtn" onclick="prevSlide()" title="Previous page (←)">
+      ‹
+    </button>
+
+    <!-- Center Slide Canvas -->
+    <article class="slide-canvas">
+      <div class="washi-tape-strip washi-tape-yellow"></div>
+
+      <!-- Slide Top Bar -->
+      <div class="slide-top">
+        <nav class="slide-step-indicator" id="slideDots" aria-label="Five steps in class">
+          <!-- Rendered by classroom.js -->
+        </nav>
+        <div class="slide-time-tag" id="slideTimeTag">00–08 min</div>
+      </div>
+
+      <!-- Slide Main Interactive Content -->
+      <div class="slide-content" id="slideMainContent" tabindex="-1">
+        <!-- Rendered by classroom.js (Stories, Flashcards, Games, Rewards) -->
+      </div>
+
+      <!-- Slide Bottom Bar -->
+      <div class="slide-bottom">
+        <span class="nav-hint">💡 Support clicking ‹ › buttons on both sides of the screen, keyboard ← → arrow keys or space bar to switch slides</span>
+      </div>
+
+    </article>
+
+    <!-- Next Slide Arrow -->
+    <button class="slide-nav-btn slide-next" id="nextBtn" onclick="nextSlide()" title="Next page (→)">
+      ›
+    </button>
+
+  </main>
+
+  <!-- Import Data and Controller Scripts -->
+  <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999;"></canvas>
+  <script src="app.js?v=d9437ed7375f"></script>
+  <script src="zhuyin.js?v=38bf7b846cc8"></script>
+  <script src="roleplay-data.js?v=78242e7a95d3"></script>
+  <script src="classroom.js?v=e171c122f3dd"></script>
+  <script src="teacher-tools.js?v=9f352d9e8b04"></script>
+</body>
+</html>

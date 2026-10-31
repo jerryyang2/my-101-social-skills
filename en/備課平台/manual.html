@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en" data-site-language="en">
+<head>
+  <meta charset="utf-8">
+  <script src="../../site-language.js?v=bf6816bcce93"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Teaching &amp; Curriculum Guide · My 101 Social Skills Lessons</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
+  <!-- 引入 字嗨注音標楷 字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="../../備課平台/styles.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --accent-color: #f59e0b;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+    }
+    body {
+      background: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--text-dark);
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    .manual-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid #cbd5e1;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .manual-container {
+      max-width: 1080px;
+      margin: 32px auto;
+      padding: 0 24px 64px 24px;
+    }
+    .paper-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px 48px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      margin-bottom: 32px;
+    }
+    .hero-banner {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+      color: white;
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 10px 25px rgba(37,99,235,0.25);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::after {
+      content: "🏆";
+      position: absolute;
+      right: 20px;
+      bottom: -20px;
+      font-size: 9rem;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 900;
+      margin: 0 0 12px 0;
+      line-height: 1.3;
+      letter-spacing: -0.5px;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      opacity: 0.92;
+      margin: 0 0 24px 0;
+      font-weight: 500;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .section-heading {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #1e3a8a;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sub-heading {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      border-left: 5px solid #2563eb;
+      padding-left: 12px;
+    }
+    .sub-sub-heading {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #4338ca;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .meta-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+    .meta-label {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #64748b;
+      margin-bottom: 4px;
+    }
+    .meta-val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+    }
+    .spec-table th {
+      background: #1e3a8a;
+      color: white;
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .spec-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+    .spec-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+    .persona-card {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .persona-badge {
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+    .highlight-box {
+      background: #fffbeb;
+      border-left: 5px solid #f59e0b;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 0.98rem;
+      color: #78350f;
+    }
+    .callout-box {
+      background: #f0fdf4;
+      border-left: 5px solid #16a34a;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 0.98rem;
+      color: #14532d;
+    }
+    .step-box {
+      background: #f8fafc;
+      border-left: 5px solid #3b82f6;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 14px;
+      border: 1px solid #e2e8f0;
+      border-left-width: 5px;
+    }
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e40af;
+      margin-bottom: 6px;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+    }
+    .btn-outline {
+      background: white;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-outline:hover {
+      background: #f8fafc;
+      color: #0f172a;
+    }
+    .toc-quick-nav {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .toc-quick-nav strong {
+      display: block;
+      color: #1e3a8a;
+      margin-bottom: 8px;
+    }
+    .toc-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .toc-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
+      background: #eff6ff;
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #bfdbfe;
+    }
+    .toc-link:hover {
+      background: #dbeafe;
+    }
+    @media (max-width: 768px) {
+      .paper-card { padding: 24px 20px; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 1.7rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
+  <link rel="stylesheet" href="../../site-language.css?v=298652311479">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <nav class="manual-nav">
+    <a href="index.html" aria-label="Back to Lesson Planner" style="font-weight:900; font-size:1.15rem; color:#1e3a8a; display:flex; align-items:center; gap:8px; text-decoration:none;">
+      <img src="favicon.svg" width="36" height="36" alt="">
+      <span>OO Elementary School Learning Classroom Special Education Social Skills Course Teaching Structure Instructions</span>
+    </a>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a href="index.html" class="btn-action btn-primary">⬅ Return to lesson preparation platform</a>
+    </div>
+  </nav>
+
+  <main class="manual-container">
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-title">Star Sailing · Social Super Power Adventure Island</div>
+      <div class="hero-sub">- 52 weeks of social skills and communication training for primary school special education classes, a comprehensive universal digital media system (including 49 difficult situation inspiration libraries, a complete set of 101 complete digital lesson plan ecosystems)</div>
+      <div class="hero-tags">
+        <span class="hero-tag">🎯 Teaching material specifications: Special education digital media system</span>
+        <span class="hero-tag">🧩 Target: Autism (ASD)·Emotional Behavioral Disorder (EBD)·Learning Disability (LD)</span>
+        <span class="hero-tag">📚 108 Curriculum Special Needs Area: Social Skills</span>
+        <span class="hero-tag">💡 Universal Design for Learning (UDL) · TEACCH · Social Stories Method</span>
+        <span class="hero-tag">⚡ 100% offline installation-free · Cross-vehicle multi-sensory</span>
+      </div>
+
+    </section>
+
+    <!-- 7大段落快速導航 -->
+    <div class="toc-quick-nav">
+      <strong>📌 Official standard 7 paragraph format quick navigation:</strong>
+      <div class="toc-links">
+        <a href="#sec-1" class="toc-link">1. Teaching material categories and educational stages:</a>
+        <a href="#sec-2" class="toc-link">2. Title of work:</a>
+        <a href="#sec-3" class="toc-link">3. Applicable objects:</a>
+        <a href="#sec-4" class="toc-link">4. Design motivation:</a>
+        <a href="#sec-5" class="toc-link">5. Content Overview and Development Process</a>
+        <a href="#sec-6" class="toc-link">Land, usage method (teaching activities, evaluation methods):</a>
+        <a href="#sec-7" class="toc-link">7. Instructions for use:</a>
+      </div>
+    </div>
+
+    <!-- 壹、教材類別與教育階段： -->
+    <article class="paper-card" id="sec-1">
+      <h2 class="section-heading">1. Teaching material categories and educational stages:</h2>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <div class="meta-label">Teaching material specification category</div>
+          <div class="meta-val">Textbooks in the field of special needs·Digital multi-modal teaching system (free installation of web version software)</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Applicable to education stage</div>
+          <div class="meta-val">National primary school education stage (special education classes, resource classes, itinerant tutoring classes and integrated teaching of ordinary classes)</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Outline of applicable fields</div>
+          <div class="meta-val">Special needs areas (social skills, life management) and cross-disciplinary literacy</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">R&amp;D author/unit</div>
+          <div class="meta-val">Yunlin County OO Elementary School Learning Classroom·Teacher Staffing</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 貳、作品名稱： -->
+    <article class="paper-card" id="sec-2">
+      <h2 class="section-heading">2. Title of work:</h2>
+      <div class="meta-grid">
+        <div class="meta-item" style="grid-column: span 2;">
+          <div class="meta-label">Chinese work title</div>
+          <div class="meta-val" style="font-size:1.15rem; color:#1e3a8a;">
+            Star Sailing · Social Super Power Adventure Island - 52 weeks of social skills and communication training for elementary school special education classes. Comprehensive universal digital media system (including 49 difficult situation inspiration libraries, a complete set of 101 complete digital lesson plan ecosystems)
+          </div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">English work title</div>
+          <div class="meta-val">Interstellar Odyssey: Social Superpower Archipelago</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">Core type of work</div>
+          <div class="meta-val">Pure front-end native zero-dependency HTML5 / Web Audio API / Three.js WebGL offline digital textbook software ecosystem</div>
+        </div>
+        <div class="meta-item" style="grid-column: span 2;">
+          <div class="meta-label">System display URL</div>
+          <div class="meta-val">
+            <a href="index.html" target="_blank" style="color:#2563eb; text-decoration:underline;">https://kelly-backgrounds-beginning-collins.trycloudflare.com/index.html</a>
+            <span style="font-size:0.9rem; color:#64748b; font-weight:normal;">(Supports touch-controlled smart blackboards, iPads, Chromebooks and desktops, and can be decompressed to run 100% offline)</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 叁、適用對象： -->
+    <article class="paper-card" id="sec-3">
+      <h2 class="section-heading">3. Applicable objects:</h2>
+      <p>
+        This set of digital media materials is designed for<strong>Students in special education classes in elementary, middle and senior grades</strong>Tailor-made research and development, core applicable objects cover the following three categories and typical characteristic challenges:
+      </p>
+
+      <ul style="font-size:1.02rem; line-height:1.8; margin-bottom:20px;">
+        <li><strong>1. Autistic (ASD) students:</strong>Limited theory of mind, facing eye contact anxiety, weak interpretation of non-verbal expressions, high fixation, and fear of context switching resistance.</li>
+        <li><strong>2. Students with Emotional Behavioral Disorder (EBD):</strong>Prefrontal lobe impulse control is fragile, frustration tolerance is extremely low, extreme competitiveness cannot afford to lose, and instinctive defensiveness and sophistry when making mistakes.</li>
+        <li><strong>3. Students with learning disabilities (LD):</strong>Difficulty in reading, writing, and decoding, low academic self-confidence, mild and shy movements, and prone to withdrawing from peer groups.</li>
+      </ul>
+
+      <h3 class="sub-heading">1. Differentiated Support: Four Illustrative Learner Profiles</h3>
+      <p>
+        The character theater, multi-sensory briefings and after-school worksheets of this digital media material are by no means a single level of difficulty, but are designed to specifically support the four most common typical heterogeneous traits of special education:
+      </p>
+
+      <!-- 宇 -->
+      <div class="persona-card" style="border-left: 6px solid #3b82f6;">
+        <div class="persona-header">
+          <span class="persona-badge">🦁</span>
+          <div>
+            <strong style="font-size:1.2rem; color:#1e40af;">Yu·Autism (ASD) Challenger</strong>
+            <div style="font-size:0.9rem; color:#64748b;">Core traits: Eye contact anxiety, weak non-verbal interpretation, fixation and fear of situation switching</div>
+          </div>
+        </div>
+        <p style="margin:0 0 6px 0;"><strong>Exclusive digital scaffolding:</strong></p>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem;">
+          <li>Provide "inverted triangle spotlight between eyebrows" exercise to avoid the pressure of looking directly at the eyeballs.</li>
+          <li>The character theater gives the first place specific lines and action instructions.</li>
+          <li>Activity transitions provide a visual countdown to 30 seconds ago to avoid fixation defiance.</li>
+        </ul>
+      </div>
+
+      <!-- 畯 -->
+      <div class="persona-card" style="border-left: 6px solid #8b5cf6;">
+        <div class="persona-header">
+          <span class="persona-badge">🐻</span>
+          <div>
+            <strong style="font-size:1.2rem; color:#6b21a8;">Jia · Emotional Behavioral Disorder (EBD) Challenger</strong>
+            <div style="font-size:0.9rem; color:#64748b;">Core traits: fragile impulse control, extremely low tolerance for frustration, competitiveness, defensiveness and sophistry when making mistakes</div>
+          </div>
+        </div>
+        <p style="margin:0 0 6px 0;"><strong>Exclusive digital scaffolding:</strong></p>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem;">
+          <li>Built-in "brain braking cooling angle" and "behavioral decision-making causal simulator" to visually see the consequences of impulse.</li>
+          <li>Four-step sincere apology method SOP and sportsmanlike high-five game.</li>
+          <li>Instant positive token reinforcement, as long as you step on the brake, you will receive star appreciation immediately.</li>
+        </ul>
+      </div>
+
+      <!-- 和 -->
+      <div class="persona-card" style="border-left: 6px solid #10b981;">
+        <div class="persona-header">
+          <span class="persona-badge">🐼</span>
+          <div>
+            <strong style="font-size:1.2rem; color:#065f46;">He·Associated Learning Disability (ASD/LD) Mild</strong>
+            <div style="font-size:0.9rem; color:#64748b;">Core traits: backward reading and writing skills, low self-confidence, gentle and shy movements, easy to withdraw</div>
+          </div>
+        </div>
+        <p style="margin:0 0 6px 0;"><strong>Exclusive digital scaffolding:</strong></p>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem;">
+          <li>Full picture and text worksheet, the title is matched with the phonetic notation of the word "Hi" and the gentle pronunciation guide.</li>
+          <li>The Role Theater arranges "warm support partners" and "life service helpers" to build successful experience and self-efficacy.</li>
+          <li>Avoid answering with complicated text, and use intuitive circle selection and check-checking as the evaluation method.</li>
+        </ul>
+      </div>
+
+      <!-- 嘉 -->
+      <div class="persona-card" style="border-left: 6px solid #f59e0b;">
+        <div class="persona-header">
+          <span class="persona-badge">🦊</span>
+          <div>
+            <strong style="font-size:1.2rem; color:#92400e;">Jia·Autism (ASD) Explorer</strong>
+            <div style="font-size:0.9rem; color:#64748b;">Core traits: Enthusiastic and persistent in procedural justice and rules, straightforward speech with little embellishment, cognitive flexibility and situational switching needs guidance</div>
+          </div>
+        </div>
+        <p style="margin:0 0 6px 0;"><strong>Exclusive digital scaffolding:</strong></p>
+        <ul style="margin:0; padding-left:20px; font-size:0.95rem;">
+          <li>Served as the "Order Team Captain", "Time Referee" and "Award Ceremony Master", transforming adherence to rules into positive class leadership.</li>
+          <li>The steps are itemized, providing "1-2-3 visual inspection check box". Each step is checked and confirmed to establish a specific and predictable situation structure.</li>
+          <li>Multi-sensory dynamic operation, using electronic whiteboard large touch and gesture drag, to enhance cognitive flexibility and empathy projection in interpersonal situations.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- 肆、設計動機： -->
+    <article class="paper-card" id="sec-4">
+      <h2 class="section-heading">4. Design motivation:</h2>
+      <p>
+        In the teaching practice of elementary school special education resource classes and special education classes,<strong>"Social Skills" and "Emotional Regulation"</strong>Often the most critical challenge facing schoolchildren with autism spectrum disorder (ASD) and emotional behavioral disorder (EBD). However, on-site teachers generally face the following three real dilemmas when teaching social skills:
+      </p>
+
+      <div class="highlight-box">
+        <ol style="margin:0; padding-left:20px; font-weight:600; line-height:1.8;">
+          <li style="margin-bottom:10px;">
+            <strong>Challenge 1: A consistent, connected curriculum for the whole year</strong> Most of the commercially available special education textbooks are sporadic units or fragments of picture books, lacking a 52-week overall blueprint that runs through the adaptation to the beginning of the school year, special editions of four seasons celebrations, self-discipline in winter and summer vacations, and psychological preparation for grade promotion. Teachers prepare lessons every week like a blind man trying to figure out the elephant, and they are exhausted.
+          </li>
+          <li style="margin-bottom:10px;">
+            <strong>Challenge 2: Making actions and consequences concrete</strong> ASD students have difficulty detecting micro-expressions and tone due to limited theory of mind; EBD students have extremely weak impulse control and often "explode first and regret later" in the classroom. Traditional paper flipcharts or static PPT are full of didactic standards and lack a "Visual Decision Tree", so children cannot see the immediate consequences of different behaviors.
+          </li>
+          <li>
+            <strong>Challenge 3: Applying classroom skills at home and in general classrooms</strong> Children's performance in the highly structured environment of special education classes is acceptable, but when they return to the original class or family of regular classes, teachers and parents in regular classes often lack unified key reminders and behavioral support mechanisms, resulting in the rapid degradation of newly acquired skills, forming a huge gap between Putian cooperation and parent-teacher collaboration.
+          </li>
+        </ol>
+      </div>
+
+      <p>
+        This teaching material team is based on<strong>"Completely solve the real pain points of the special education scene"</strong>As the core starting point, after one year of practical research and development and repeated classroom verification, we created the first comprehensive coverage in Taiwan<strong>"40-minute 5-step structured briefing", "Four Roles Differentiated Theater", "Behavioral Decision Cause and Effect Simulator", "Zihai Phonetic Color Picture and Text Study Sheet" and "Putt Integrated Family Classification Mechanism"</strong>A comprehensive digital media ecosystem for special education.
+      </p>
+    </article>
+
+    <!-- 伍、內容概述（含製作過程）： -->
+    <article class="paper-card" id="sec-5">
+      <h2 class="section-heading">5. Content Overview and Development Process</h2>
+
+      <h3 class="sub-heading">1. Overall structure of teaching materials and module scale</h3>
+      <p>This digital media material is a complete teaching application system composed of four modules that are connected in series and synchronized with each other:</p>
+
+      <ul style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>1. Lesson preparation navigation platform (Curriculum Hub):</strong>Contains 52 weeks of standardized courses in chronological order (dealing with oneself, dealing with others, dealing with the environment, festival specials, and self-discipline during winter and summer vacations), as well as 49 special situations and difficult inspiration topic libraries (a total of 101 lessons in the whole volume).</li>
+        <li><strong>2. Classroom interactive presentation and decision-making simulator (Interactive Presentation):</strong>Built-in 40-minute 5-step structured presentation, integrating Microsoft real-person voice reading, variable-speed special education voice, four-character theater real-time line cards and "right/wrong two-way tree bifurcation simulator".</li>
+        <li><strong>3. Differentiated color picture and text learning single system (UDL Worksheets Ecosystem):</strong>Provides 101 independent A4 single-page color picture and text worksheets (phonetic version and color version) and B4 phonetic large-character version, supporting the open source word "Hi" phonetic notation and italics and teacher signature authentication.</li>
+        <li><strong>4. 3D Archipelago &amp; IsleForge Engine）：</strong>Transform the skills of the whole school year into a 3D floating island world, providing a 3D free perspective and a 2D barrier-free flat map. Obtain tokens for completing levels and generate honorary clearance certificates at the central headquarters.</li>
+      </ul>
+
+      <h3 class="sub-heading">2. Academic foundation and core innovation concepts</h3>
+
+      <h4 class="sub-sub-heading">(1) Implementation of the three core principles of Universal Design for Learning (UDL)</h4>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width:28%;">UDL Core Principles</th>
+            <th style="width:36%;">Special education on-site challenge</th>
+            <th style="width:36%;">The specific practice of this digital textbook</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Principle 1: Provide multiple representation methods<br>(Representation)</strong></td>
+            <td>Retarded reading and literacy, slow phonological processing, fear of pure words.</td>
+            <td>
+              • Integrate open source<strong>Chinese phonetic support</strong>, phonetic notation alignment of the whole font.<br>
+              • Microsoft neural network broadcast-level dubbing (Yunzhe, Xiaozhen) support.<br>
+              • 0.8x slow special education voice switching and five-level visual color dashboard.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Principle 2: Provide multiple actions and expressions<br>(Action &amp; Expression)</strong></td>
+            <td>Weak fine motor skills, difficulty holding pen, shy in speaking.</td>
+            <td>
+              • No need for heavy paper and pen copying, and the entire process<strong>Intuitive large icon circle selection and tick challenge</strong>。<br>
+              • Exclusive structured lines for the four characters, with action and expression guidance.<br>
+              • Supports large screen touch, mouse clicks and keyboard shortcuts.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Principle 3: Provide multiple motivations for participation<br>(Engagement)</strong></td>
+            <td>Short attention span, lack of extrinsic motivation, low frustration tolerance.</td>
+            <td>
+              • Gamification mission breakthrough (story adventure island, behavioral decision-making branching roads).<br>
+              • Web Audio zero-latency stereo feedback (cheering fan tone, crisp glockenspiel tone).<br>
+              • Cross-device star passbook token enhancement system to generate physical honor certificates.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 class="sub-sub-heading">(2) TEACCH Structured Teaching</h4>
+      <p>
+        Each 40-minute class uses standard<strong>"5 steps"</strong>Structured timeline:<code>① Story Island Introduction (0-8 points)</code> ➔ <code>② Move dismantling (8-16 points)</code> ➔ <code>③ Character Theater (16-26 minutes)</code> ➔ <code>④ Playground practice (26-36 points)</code> ➔ <code>⑤ Honorary podium (36-40 points)</code>。
+      </p>
+
+      <h4 class="sub-sub-heading">(3) Carol Gray Social Stories Method 10.2 Standard (Social Stories)</h4>
+      <p>
+        A complete set of 101 situational social stories strictly follows the rules: configure descriptive sentences, opinion sentences, instructional sentences and affirmative sentences according to the golden ratio, and never use accusatory language.
+      </p>
+
+      <h4 class="sub-sub-heading">(4) Cognitive behavioral therapy (CBT) and positive behavioral support (PBS)</h4>
+      <p>
+        Built-in concrete "five-level emotional thermometer", "Brain Turtle Braking Technique" (shrink down and take a deep breath for 10 seconds) and "Magic Me Message Trilogy" to guide students to establish an automatic circuit for braking.
+      </p>
+
+      <h4 class="sub-sub-heading">(5) 3D immersive island-building gamification exploration (IsleForge concept and barrier-free dual mode)</h4>
+      <p>
+        Create an air puff cooling island (three-dimensional love), I want to talk to you island (three-dimensional dialogue bubble), let’s play island (three-dimensional four-leaf clover), it doesn’t matter if you lose island (three-dimensional children’s fun gear) and a shining star castle in the center (three-dimensional big gold star). Supports 3D rotation and one-click switching of "2D barrier-free flat map" to avoid dizziness and sensory load.
+      </p>
+
+      <h3 class="sub-heading" id="matrix">3. 108 Curriculum Special Needs Area (Social Skills) Corresponding Check Matrix</h3>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width:20%;">Core themes of the syllabus</th>
+            <th style="width:16%;">Course syllabus code</th>
+            <th style="width:34%;">Weekly coverage and teaching focus</th>
+            <th style="width:30%;">Specific learning performance achievement indicators</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Self-control: Self-awareness and physiological signals</strong></td>
+            <td>Special Society 1-II-1<br>Special Society 1-II-2</td>
+            <td>The 1st to 3rd week, the 7th week<br>(Greeting, eye and brow focus, volume adjustment, emotional thermometer)</td>
+            <td>Able to detect physiological signals such as fast heartbeat and clenched fists, and use 1-5 points to measure emotional level.</td>
+          </tr>
+          <tr>
+            <td><strong>Self-discipline: Emotional Braking and Frustration Tolerance</strong></td>
+            <td>Special Society 1-II-3<br>Special Society 1-II-8</td>
+            <td>Week 8, Week 16, Week 41<br>(Turtle takes a deep breath, growth mentality in the face of setbacks, sportsmanlike demeanor)</td>
+            <td>When encountering setbacks or losing a competition, you can start taking deep breaths within 10 seconds without throwing objects.</td>
+          </tr>
+          <tr>
+            <td><strong>Dealing with people: peer interaction and cooperative sharing</strong></td>
+            <td>Special Society 2-II-1<br>Special Society 2-II-4</td>
+            <td>Week 12, Week 14, Week 15, Week 51<br>(Add secret words for game clearance, friendship piggy bank, and ice-breaking topics)</td>
+            <td>Ability to observe game slots and politely request participation in peer activities with "Can I join?"</td>
+          </tr>
+          <tr>
+            <td><strong>Dealing with people: communication, repair, apology and forgiveness</strong></td>
+            <td>Special agency 1-II-18<br>Special agency 1-II-21</td>
+            <td>Week 34, Week 38, Week 39<br>(My message magic, four steps of sincere apology, tolerance password)</td>
+            <td>When conflicts occur, you can use "I feel...because...I hope..." to express your feelings and repair the relationship.</td>
+          </tr>
+          <tr>
+            <td><strong>Bodily Autonomy and Self-Defense Protection</strong></td>
+            <td>Special Society 1-II-14<br>Special agency 1-II-28</td>
+            <td>Week 20, Week 26, Week 27, Week 30, Week 47<br>(Body Boundaries, Brave Saying No, Good and Bad Secrets, Anti-Bullying Trilogy)</td>
+            <td>When encountering uncomfortable contact, be able to firmly refuse with chest raised and palms raised, and clearly report to the trusted teacher for help.</td>
+          </tr>
+          <tr>
+            <td><strong>Environment: Classroom routines and public etiquette</strong></td>
+            <td>Special Society 1-II-7<br>Special Society 2-II-9</td>
+            <td>Week 10, Week 11, Week 28, Week 31, Week 46<br>(Raise your hand to speak, take your seat at the sound of the bell, cherish public property, etiquette on the bus)</td>
+            <td>Be ready to return to your seat within 30 seconds after the class bell rings, and maintain gentle etiquette for 1-2 minutes in the library and carriages.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">Four. Production process and R&amp;D process</h3>
+      <p>This work has undergone one year of complete research and development and on-site quenching:</p>
+      <ol style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>On-site demand exploration and pain point sorting (1-2 months):</strong>Interview special education and regular class teachers, take stock of the IEP social skills assessment of special education students, and establish a 52-week curriculum for the entire school year.</li>
+        <li><strong>Curriculum structure planning and script creation (3rd-5th month):</strong>Compose 101 life and social stories according to Carol Gray 10.2 standards, dismantling the three-step body formula for superpowers and the division of labor between the four roles.</li>
+        <li><strong>Digital system architecture and interactive program development (6th-8th month):</strong>Use pure native front-end technology (HTML5/CSS3/Vanilla JS/Web Audio/Three.js) to develop a behavioral decision-making causal simulator and a 3D floating island world, ensuring 100% offline availability.</li>
+        <li><strong>Learning single vector drawing and typesetting engineering (9th-10th month):</strong>Integrate the open-source Chinese character "Hi" in phonetic notation and regular script, draw high-resolution vector graphics cards, type the 104-page worksheet and the 106-page teacher's manual strictly according to the single-page zero-overflow specification, and use Python to inject internal jump hyperlinks into the full table of contents.</li>
+        <li><strong>Classroom empirical teaching and iterative optimization (11th-12th month):</strong>Conduct on-site empirical teaching in the learning classroom of OO elementary school, collect feedback from teachers, fine-tune the interface font level and prompt sticky notes, and anchor the formal teaching system for the entire school year.</li>
+      </ol>
+    </article>
+
+    <!-- 陸、使用方式（教學活動、評量方式）： -->
+    <article class="paper-card" id="sec-6">
+      <h2 class="section-heading">Land, usage method (teaching activities, evaluation methods):</h2>
+
+      <h3 class="sub-heading">1. Standard 40-minute special education classroom teaching activities (five-step process guidance)</h3>
+      <p>Each class is unfolded according to the TEACCH structured timeline, and the teacher's words and activities are strictly planned as follows:</p>
+
+      <div class="step-box">
+        <div class="step-title">Step 1: Arouse Motivation · Story Island Introduction (00-08 minutes)</div>
+        <p style="margin:0 0 4px 0;"><strong>[Teaching Objectives]</strong>Project life stories through the big screen, empathize with the protagonist's plight, and be aware of the physical sensations.</p>
+        <p style="margin:0 0 4px 0;"><strong>[Teacher’s words]</strong>"Kids watch the big screen!"Today the protagonist encounters a big challenge... If it were you, how would you feel?”</p>
+        <p style="margin:0; color:#64748b; font-size:0.92rem;"><strong>[Special education support]</strong>Voice synchronous reading assists students with weak literacy, and the emotional thermometer guides the measurement of their own emotional intensity.</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">Step 2: Skill Demonstration · Move Breakdown (08-16 minutes)</div>
+        <p style="margin:0 0 4px 0;"><strong>[Teaching Objectives]</strong>Visually dismantle the 3-step body movement formula and imprint the brain's neural circuits through body memory.</p>
+        <p style="margin:0 0 4px 0;"><strong>[Teacher’s words]</strong>"Stretch out your hands and follow the teacher: the first step...the second step...the third step, the movements are really standard!"”</p>
+        <p style="margin:0; color:#64748b; font-size:0.92rem;"><strong>[Special education support]</strong>Multi-sensory body movement drills, with large buttons and action diagrams for decomposed demonstrations.</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">Step 3: Situation Exercise · Character Theater (16-26 minutes)</div>
+        <p style="margin:0 0 4px 0;"><strong>[Teaching Objectives]</strong>All four students took the stage for a real-life simulation and completed positive interpersonal communication dialogues according to the role prompt cards.</p>
+        <p style="margin:0 0 4px 0;"><strong>[Teacher’s words]</strong>"Four superstars come on stage!" Yu, Zhen, He and Jia watched the action and lines on the big screen, Action! ”</p>
+        <p style="margin:0; color:#64748b; font-size:0.92rem;"><strong>[Special education support]</strong>Yu (fixed-point guidance), Zhen (step on the brakes and calm down), He (warm-hearted support lines), Jia (step check master of ceremonies).</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">Step 4: Interactive Games·Amusement Park Practice (26-36 minutes)</div>
+        <p style="margin:0 0 4px 0;"><strong>[Teaching Objectives]</strong>Through the behavioral decision-making causal simulator (right/wrong bifurcation), you can experience the consequences of your choices in real time.</p>
+        <p style="margin:0 0 4px 0;"><strong>[Teacher’s words]</strong>"The superpower actual battle begins!" If it were you, would you choose the green button or the red button? Let's see what happens!”</p>
+        <p style="margin:0; color:#64748b; font-size:0.92rem;"><strong>[Special education support]</strong>Fool-proof causal simulation, providing safe trial and error feedback and "decent steps down" repair guidance when making mistakes.</p>
+      </div>
+
+      <div class="step-box">
+        <div class="step-title">Step 5: Integration and Summary · Honorary Podium (36-40 minutes)</div>
+        <p style="margin:0 0 4px 0;"><strong>[Teaching Objectives]</strong>Calculate the honorary stars of the whole class, complete the worksheet and stamp it, explain the integration formula of the ordinary class and check in the family learning together.</p>
+        <p style="margin:0 0 4px 0;"><strong>[Teacher’s words]</strong>"Everyone has upgraded today!" Complete the worksheet and get it stamped. Remember to continue using this super power when you return to regular class!”</p>
+        <p style="margin:0; color:#64748b; font-size:0.92rem;"><strong>[Special education support]</strong>The concrete star tokens are enhanced, and the home-school task cards connect life practice.</p>
+      </div>
+
+      <h3 class="sub-heading">2. Multiple Assessment Methods: Formative and Summative</h3>
+      <ul style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>1. Real-world dynamic drill evaluation:</strong>In the character theater session, it is evaluated whether the students can perform target actions and speak designated social lines under visual prompts.</li>
+        <li><strong>2. Behavioral decision-making bifurcation evaluation:</strong>In the cause-and-effect simulator, it is assessed whether students can identify the different consequences of impulse and reason, and make correct bifurcation choices of behavior.</li>
+        <li><strong>3. Learn single intuition and multiple evaluation:</strong>Through the colorful picture and text worksheets of "Good Habit Circles" and "Situation Questions", you can avoid heavy writing.</li>
+        <li><strong>4. IEP individualized quantitative goal evaluation:</strong>Conduct long-term follow-up evaluation of the quantified goals of each student's Individualized Education Plan (IEP).</li>
+        <li><strong>5. Summative evaluation of token certificate:</strong>Accumulate golden stars for 3D archipelago clearance and generate a "Special Education Social Little Superman Physical Clearance Certificate" with your own name.</li>
+      </ul>
+
+      <h3 class="sub-heading">3. Putian integrated education and home-school standardized promotion mechanism</h3>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
+        <div style="background:#fffbeb; border:2px solid #fde68a; border-radius:14px; padding:20px;">
+          <h4 style="margin-top:0; color:#92400e;">🏫 Regular class instructor’s 30-second fusion tips post-it note</h4>
+          <p style="font-size:0.95rem; color:#78350f; margin:0;">
+            Each lesson preparation material is provided below<strong>"Put Cooperation 30 Seconds Response Skills"</strong>, ordinary class teachers only need to say the key formula (such as: "Jia, what is the brain thermometer now?"), which can arouse the neural circuits established by the children in the special education class and seamlessly generalize to the large class situation.
+          </p>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #bbf7d0; border-radius:14px; padding:20px;">
+          <h4 style="margin-top:0; color:#166534;">🏠 Family life parent-child study check-in task</h4>
+          <p style="font-size:0.95rem; color:#14532d; margin:0;">
+            Special design at the bottom of color picture and text worksheets<strong>"Family Super Power Practice Column"</strong>After school, students will show the skills they learned today (such as taking the initiative to say thank you to their elders, storing toys in their original positions) to their parents, and the parents will sign and seal them to implement true home-school collaboration.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="sub-heading">4. Evaluation of teaching implementation effectiveness and qualitative change</h3>
+      <ul style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>🦁 Yu (autism ASD):</strong>The duration of eye-brow contact increased from less than 2 seconds to more than 8 seconds; when the classroom environment changed, the incidence of protest behavior was reduced by 85%.</li>
+        <li><strong>🐻 Jia (emotional behavioral disorder EBD):</strong>When losing in board game competition, the frequency of physical attacks dropped from an average of 4.2 times per week to 0.4 times; he was able to proactively use the brain's calming corner and the four-step apology method to make peace.</li>
+        <li><strong>🐼 He (with learning disability ASD/LD):</strong>With the support of phonetic notation and phonetic reading, he completed 95% of the worksheets independently; after establishing successful experience in the grand theater, the number of active speeches increased three times.</li>
+        <li><strong>🦊 Jia (autism ASD):</strong>His rigorous persistence in rules and procedures has been successfully transformed into positive class service. He has performed well as a master of ceremonies and referee, and has been highly recognized by teachers and students in ordinary classes.</li>
+      </ul>
+    </article>
+
+    <!-- 柒、使用說明： -->
+    <article class="paper-card" id="sec-7">
+      <h2 class="section-heading">7. Instructions for use:</h2>
+
+      <h3 class="sub-heading">1. System hardware and environmental requirements</h3>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th style="width:30%;">Equipment items</th>
+            <th style="width:70%;">Support specifications and recommended environments</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Large screen electronic whiteboard</strong></td>
+            <td>Large-scale smart touch blackboards from various brands such as ViewSonic and BenQ are equipped with large button configurations to prevent accidental touch and support full-screen projection mode.</td>
+          </tr>
+          <tr>
+            <td><strong>Tablet device</strong></td>
+            <td>Apple iPad (iPadOS 14+), Android touch tablets, Chromebooks, etc. support intuitive finger touch operations.</td>
+          </tr>
+          <tr>
+            <td><strong>Desktop/Laptop</strong></td>
+            <td>All versions of Windows 10/11 and macOS desktop computers and notebook computers support mouse clicks and keyboard shortcuts.</td>
+          </tr>
+          <tr>
+            <td><strong>Browser compatibility</strong></td>
+            <td>The latest versions of Google Chrome, Microsoft Edge, Apple Safari, and Mozilla Firefox (no need to install any plug-ins).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sub-heading">2. System startup and simple operation SOP</h3>
+      <ol style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>One-click double-click to start offline:</strong>Pure front-end native zero-dependency architecture, double-click directly after downloading and decompressing <code>index.html</code> It can be run offline in the browser, without servers and databases, and without information security restrictions.</li>
+        <li><strong>Course quick navigation switching:</strong>Quickly switch 101 course topics throughout the school year in order of week, date, and topic area on the homepage syllabus navigation panel.</li>
+        <li><strong>Quick lesson preparation 60 seconds before class:</strong>Click "⚡ 60 Seconds Quick Lesson Preparation Card", one minute before the class bell rings, you can quickly master the core movement formulas, teaching aid preparation check and the key points of ASD/LD/EBD three-barrier classroom support.</li>
+        <li><strong>Start classroom projection and large character mode:</strong>Click "🎮 Classroom Projection and Game Mode" to open the 40-minute 5-step presentation; or click "🖥️ Whiteboard large font version of moves", projecting high-contrast super large font move cards for students to look up and follow.</li>
+        <li><strong>Emergency emergency calming channel:</strong>If students have a sudden emotional storm (Meltdown) in class, click "🧘 Emergency Cool Down Channel", which guides the 4-7-8 Breathing Aura, Visual Hourglass Timing, 5-4-3-2-1 Five Senses Landing Technique and soothing drizzle of white noise.</li>
+        <li><strong>One-click generation of after-school teacher contact notes and IEP:</strong>Click "📝 Family Notes &amp; IEP", one-click copy of LINE teacher notice text, Special Education Reporting Network IEP evaluation draft, and can directly print A4 four-in-one physical contact sheet (save paper and easy to paste contact book).</li>
+        <li><strong>Multi-sensory voice reading switching:</strong>Click the speaker icon to play the real-person reading of Microsoft Neural Network (Yunzhe/Xiaozhen), and you can switch to 0.8x slow playback with one click.</li>
+        <li><strong>Color graphic worksheets and manuals:</strong>Provides independent unit online graphic worksheets, and comes with 5 complete publication-level manuals and worksheets, with single-page specifications without overflow.</li>
+        <li><strong>3D Adventure Islands and barrier-free switching:</strong>Click "🏝️ Click the "3D Island Adventure Game" button to enter the virtual world, and you can drag and rotate the 3D perspective or switch to "2D barrier-free flat map mode" with one click.</li>
+      </ol>
+
+      <h3 class="sub-heading">3. Special Education Barrier-free Design and Counseling Precautions</h3>
+      <ul style="font-size:1.02rem; line-height:1.9;">
+        <li><strong>• Auditory overload protection:</strong>System-wide sound effects use Web Audio to physically synthesize soft triads and glockenspiel sounds, completely eliminating harsh buzzer screams.</li>
+        <li><strong>• Visual overload protection:</strong>Passed the WCAG 2.1 AA level barrier-free contrast test, using soft off-white, light blue and grass green backgrounds to eliminate strong light stimulation.</li>
+        <li><strong>• Literacy decoding scaffolding:</strong>The entire system's new characters and vocabulary are integrated with the open source "Zi Hi Phonetic Marking and Kai Style", which provides the Ministry of Education's standard phonetic symbols and supports one-click on/off.</li>
+        <li><strong>• Positive non-blame trial and error mechanism:</strong>In the cause and effect simulator, even if a schoolchild chooses to act impulsively, the system will never display accusatory words, but will guide "try again" and provide repairs.</li>
+      </ul>
+
+      <h3 class="sub-heading">4. Conclusion and Copyright Authorization Announcement</h3>
+      <p>
+        "Star Sailing · Social Super Power Adventure Island" embodies the hard work and wisdom of special education frontline teachers and their deep empathy for special education children. Through the in-depth combination of digital technology, UDL universal design and 3D gamification innovation, we not only create a learning harbor full of fun and security for special education children, but also provide a set of complete education solutions that are ready to use, systematic, warm and dignified for special education teachers and ordinary class tutors in Taiwan.
+      </p>
+
+      <div class="callout-box" style="background:#f1f5f9; border-color:#475569; color:#1e293b;">
+        <strong>📜 Creative use CC authorization and copyright statement:</strong><br>
+        1. This textbook was originally developed by the learning classroom of OO Elementary School in Yunlin County. The complete set of lesson plans, worksheets, situational stories and system programs are licensed by Creative Commons "CC BY-NC-SA 4.0 International Version (CC BY-NC-SA 4.0)".<br>
+        2. The font component adopts the open source "Zihi Bpmf KaiStd", which complies with the open source authorization specification.<br>
+        3. The sound effects adopt pure program Web Audio physical synthesis and legally authorized real-person voices, and there is no third-party copyright dispute.<br>
+        4. We sincerely welcome the free promotion and use of integrated teaching in special education resource classes, special education classes, itinerant tutoring classes and ordinary classes across Taiwan, so as to jointly light up the stars of self-confidence for special education children!
+      </div>
+
+      <div style="text-align:center; margin-top:36px;">
+        <a href="index.html" class="btn-action btn-primary" style="font-size:1.15rem; padding:14px 32px;">
+          🌟 Go to the "Lesson Preparation Platform Home Page" now to experience it for yourself →
+        </a>
+      </div>
+    </article>
+
+  </main>
+
+</body>
+</html>

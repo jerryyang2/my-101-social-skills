@@ -23,6 +23,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Verify synchronized language editions
+        run: |
+          npm ci --prefix localization --ignore-scripts
+          python3 localization/verify_build.py
+          node localization/verify_english.cjs
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

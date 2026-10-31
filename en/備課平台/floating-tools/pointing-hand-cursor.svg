@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 64 64" role="img" aria-labelledby="cursor-title">
+  <title id="cursor-title">Social class love arrow cursor</title>
+  <path d="M8 6v42l12-12 11 23 12-6-11-22h18Z" fill="#fff6db" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+  <path d="M8 6v42l12-12 11 23 12-6-11-22h18Z" fill="#fff6db" stroke="#194f68" stroke-width="4" stroke-linejoin="round"/>
+  <path d="m14 19 23 10-13 1-8 8Z" fill="#68b5cd"/>
+  <path d="M48 9c-6-7-16 2-9 9l9 8 9-8c7-7-3-16-9-9Z" fill="#d97660" stroke="#194f68" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

@@ -75,6 +75,10 @@
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'course-open-button';
+        button.addEventListener('click', event => {
+          event.stopPropagation();
+          card.click();
+        });
         button.setAttribute('aria-label', `開啟教案：${courseTitle}`);
         const label = document.createElement('span');
         label.className = 'course-link-label';

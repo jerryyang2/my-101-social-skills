@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <title>Special teacher’s heart-to-heart love icon</title>
+  <defs>
+    <!-- Background subtle warm tile -->
+    <linearGradient id="tileBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#fff1f2"/>
+    </linearGradient>
+
+    <!-- Teacher's Big Heart: Deep Warm Loving Red -->
+    <linearGradient id="teacherHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff2a55"/>
+      <stop offset="40%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#9f1239"/>
+    </linearGradient>
+
+    <!-- Student's Small Heart: Warm Loving Coral Red -->
+    <linearGradient id="studentHeart" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="60%" stop-color="#e11d48"/>
+      <stop offset="100%" stop-color="#be123c"/>
+    </linearGradient>
+
+    <!-- Depth shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="3.5" flood-color="#881337" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Clean, high-contrast squircle tile ensuring visibility on dark/light browser themes -->
+  <rect x="3" y="3" width="122" height="122" rx="28" fill="url(#tileBg)" stroke="#fecdd3" stroke-width="4"/>
+
+  <g filter="url(#softShadow)">
+    <!-- Big Heart (Teacher) - Plump, bold, embracing with warm protection -->
+    <path d="M 48 30
+             C 42 12, 16 10, 8 28
+             C -1 49, 7 74, 30 96
+             C 38 103, 44 108, 48 111
+             C 52 108, 58 103, 66 96
+             C 89 74, 97 49, 88 28
+             C 80 10, 54 12, 48 30 Z"
+          fill="url(#teacherHeart)"
+          transform="rotate(-7 48 64)"/>
+
+    <!-- Small Heart (Student) - Nestled closely, interlocking with Teacher's heart -->
+    <!-- Crisp white stroke provides razor-sharp separation even at tiny 16x16 / 32x32 sizes -->
+    <path d="M 86 52
+             C 82 38, 64 36, 58 48
+             C 51 63, 57 80, 73 95
+             C 79 100, 83 104, 86 106
+             C 89 104, 93 100, 99 95
+             C 115 80, 121 63, 114 48
+             C 108 36, 90 38, 86 52 Z"
+          fill="url(#studentHeart)"
+          stroke="#ffffff"
+          stroke-width="8"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          transform="rotate(10 86 74)"/>
+  </g>
+
+  <!-- Gentle warm highlights on top lobes -->
+  <ellipse cx="32" cy="34" rx="8" ry="4.5" fill="#ffffff" opacity="0.4" transform="rotate(-35 32 34)"/>
+  <ellipse cx="78" cy="56" rx="5.5" ry="3" fill="#ffffff" opacity="0.45" transform="rotate(-15 78 56)"/>
+</svg>

@@ -1,0 +1,78 @@
+.site-brand-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; width: 100%; min-width: 0; }
+.site-language-switch { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; color: #315b47; font: 700 13px/1.4 system-ui, sans-serif; white-space: nowrap; }
+.site-language-switch select { appearance: auto; width: 122px; max-width: 100%; min-height: 44px; border: 1px solid #8ca683; border-radius: 9px; padding: 6px 10px; background: #fffdf7; color: #254d39; font: 600 14px/1.4 system-ui, sans-serif; cursor: pointer; }
+.site-language-switch select:focus-visible { outline: 3px solid #14749c; outline-offset: 3px; }
+.site-language-bar { display: flex; justify-content: flex-end; padding: 8px 24px; background: #fffdf7; }
+.social-classroom .classroom-header { grid-template-columns: auto minmax(0, 1fr) 200px auto; }
+.social-classroom .site-language-switch { flex-direction: column; align-items: flex-start; gap: 4px; font-size: .72rem; }
+.social-classroom .site-language-switch select { min-height: 36px; }
+.game-topbar .brand-section { flex-wrap: wrap; }
+.game-topbar .site-language-switch { margin-left: auto; }
+.book-reader-nav .site-language-switch { color: #315b47; }
+html[lang="en"] body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+html[lang="en"] :is(button, select, input, textarea) { font-family: inherit; }
+html[lang="en"] :is(.zhuyin-mode, .plain-text-mode) { font-family: inherit !important; letter-spacing: normal; }
+html[lang="en"] #zhuyinToggleBtn { display: none !important; }
+html[lang="en"] .social-garden .main-menu .btn { font-size: .83rem !important; line-height: 1.35; }
+html[lang="en"] .social-garden .menu-icon { width: 28px; height: 28px; }
+html[lang="en"] .brand-text h1 { letter-spacing: 0; }
+html[lang="en"] :is(.hero-title, .island-name) { overflow-wrap: anywhere; }
+html[lang="en"] .social-classroom .lesson-title-text { white-space: normal; line-height: 1.35; }
+html[lang="en"] .social-classroom .tool-group-actions { gap: 6px; }
+html[lang="en"] .social-classroom .classroom-controls .c-btn { font-size: .72rem; }
+html[lang="en"] .social-classroom .classroom-controls .c-icon-btn::after { content: "Full screen"; }
+html[lang="en"] .social-classroom .story-body { font-size: 1.25rem; line-height: 1.85 !important; }
+html[lang="en"] .social-classroom .step-dot { font-size: .76rem; }
+html[lang="en"] .calm-corner-modal { font-family: system-ui, sans-serif; }
+html[lang="en"] .calm-heading h2 { font-size: 1.12rem; }
+html[lang="en"] .grounding-item-box { font-size: .92rem; }
+html[lang="en"] .breathing-sub-text { max-width: 400px; }
+html[lang="en"] .book-cover :is(h1,h2) { line-height: 1.25; }
+@media (max-width: 1100px) {
+  .social-classroom .classroom-header { grid-template-columns: auto minmax(0, 1fr); }
+  .social-classroom .classroom-course-picker { grid-column: 1; }
+  .social-classroom .site-language-switch { justify-self: end; }
+}
+@media (max-width: 700px) {
+  .site-brand-row { gap: 10px; }
+  .site-language-switch { margin-left: auto; }
+  .site-language-switch select { width: 116px; }
+  .social-classroom .site-language-switch { flex-direction: row; align-items: center; }
+  html[lang="en"] .social-classroom .step-dot { font-size: .66rem; }
+  html[lang="en"] .calm-tab-btn { font-size: .78rem; }
+  html[lang="en"] .grounding-item-box { font-size: .82rem; }
+}
+@media print { .site-language-switch, .site-language-bar { display: none !important; } }
+html[lang="en"] .mft-ui[data-orientation] :is(.mft-tool,.mft-options-toggle,.mft-orientation,.mft-actions button) { font-size: 10px; line-height: 1.15; }
+html[lang="en"] .mft-ui[data-orientation] .mft-heading { max-width: 42px; overflow-wrap: break-word; font-size: 10px; }
+html[lang="en"] :is(.book-page,.lesson-page,.page,.worksheet-page) { height: auto !important; max-height: none !important; overflow: visible !important; }
+html[lang="en"] rt { display: none !important; }
+html[lang="en"] .hero-title .gradient-text { margin-left: .2em; }
+@media (min-width: 1101px) {
+  html[lang="en"] .social-classroom .classroom-controls { display: grid; grid-template-columns: 1.25fr 1fr 1fr .95fr; gap: 8px; }
+  html[lang="en"] .social-classroom .classroom-tool-group { min-width: 0; }
+  html[lang="en"] .social-classroom .tool-group-actions { flex-wrap: wrap; }
+  html[lang="en"] .social-classroom .classroom-controls .c-btn { padding: 5px 8px; }
+  html[lang="en"] .social-classroom .classroom-controls .tool-icon { width: 22px; height: 22px; }
+}
+html[lang="en"] :is(.lesson-page,.worksheet-page,.cover-page,.toc-page) { height: auto !important; max-height: none !important; overflow: visible !important; }
+html[lang="en"] :is(.lesson-page,.worksheet-page,.cover-page,.toc-page) * { min-width: 0; overflow-wrap: break-word; }
+html[lang="en"] .columns-middle { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+html[lang="en"] .box-header { flex-wrap: wrap; gap: 4px; }
+html[lang="en"] :is(.box-title,.box-tag,.toc-col-skill,.toc-col-domain,.toc-col-date) { white-space: normal; }
+@media print { html[lang="en"] :is(.lesson-page,.worksheet-page,.cover-page,.toc-page) { break-inside: auto !important; page-break-inside: auto !important; } }
+html[lang="en"] .grounding-item-box strong { margin-right: .25em; }
+/* Keep the planner's compact header and its language control together. */
+.social-garden .site-brand-row { flex: 0 0 270px; width: 270px; gap: 6px; }
+.social-garden .site-brand-row .brand { flex: 1 1 100%; }
+.social-garden .site-brand-row .site-language-switch { margin-left: 52px; }
+.social-garden .site-brand-row .site-language-switch > span { display: none; }
+.social-garden .site-brand-row .site-language-switch select { min-height: 32px; padding: 3px 8px; font-size: 12px; }
+@media (max-width: 1000px) {
+  .social-garden .site-brand-row { flex-basis: 210px; width: 210px; }
+}
+@media (max-width: 700px) {
+  .social-garden .site-brand-row { flex-basis: 142px; width: 142px; }
+  .social-garden .site-brand-row .site-language-switch { margin-left: 0; }
+  .social-garden .site-brand-row .site-language-switch select { width: 116px; }
+}

@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en" data-site-language="en">
+<head>
+  <meta charset="utf-8">
+  <script src="../../site-language.js?v=bf6816bcce93"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Social Skills Lesson Planner · OO Elementary School</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
+  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
+  <link rel="stylesheet" href="../../備課平台/styles.css">
+  <link rel="stylesheet" href="../../備課平台/teacher-tools.css?v=20261101-steady-breathing">
+  <link rel="stylesheet" href="../../備課平台/garden-theme.css?v=20261101-compact-header">
+  <link rel="stylesheet" href="../../備課平台/course-picker.css?v=20261031-one-scroll">
+  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=20261101-class-tools">
+  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
+  <script src="floating-tools/drawing.js?v=4c97d518ad72" defer></script>
+  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
+  <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
+  <link rel="stylesheet" href="../../site-language.css?v=298652311479">
+</head>
+<body class="social-garden">
+  <a class="skip-link" href="#dailyLesson">Skip to today's lesson</a>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <a class="brand" href="index.html" aria-label="Back to Lesson Planner">
+        <img class="brand-icon" src="favicon.svg" width="44" height="44" alt="">
+        <div class="brand-text">
+          <h1>My 101 Social Skills Lessons</h1>
+          <p>OO Elementary School · Social Skills Lesson Planner</p>
+        </div>
+      </a>
+      <nav class="header-actions main-menu" aria-label="Main menu">
+        <a class="btn menu-classroom" id="headerLaunchClassBtn" href="classroom.html"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg><span>Classroom &amp; Games</span></a>
+        <a class="btn menu-island" href="island-game.html" target="_blank" rel="noopener"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg><span>Island Adventure</span></a>
+        <button class="btn menu-copy" onclick="copyFullLesson()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#copy"></use></svg><span>Copy Lesson Plan</span></button>
+        <button class="btn menu-calm" onclick="openCalmCornerModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg><span>Calm Corner</span></button>
+        <button class="btn menu-communication" onclick="openCommunicationModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg><span>Family Notes &amp; IEP</span></button>
+        <button class="btn menu-add" onclick="openAddModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#add"></use></svg><span>Add a Lesson</span></button>
+        <a class="btn menu-home" href="../index.html"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg><span>Home</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- App Layout -->
+  <main class="app-layout">
+    <!-- Left Sidebar: Chronological Date Timeline -->
+    <aside class="sidebar">
+      <section class="course-picker" aria-label="Course selection">
+        <div class="course-picker-body">
+
+      <!-- 快速跳轉下拉選單 -->
+      <div class="sidebar-quick-jump">
+        <label for="sidebarDateDropdown" class="sidebar-quick-jump-label">
+          <span>⚡ Quickly select the number of weeks/classes:</span>
+          <span style="font-size:0.75rem; color:#64748b; font-weight:700;">(or click the card below)</span>
+        </label>
+        <select class="quick-jump-select" id="sidebarDateDropdown" title="Quickly switch weeks or specified dates"></select>
+      </div>
+
+      <!-- Course Completion Semester Progress Bar -->
+      <div class="course-progress-panel">
+        <div class="progress-info-row">
+          <span class="progress-info-title">📊 Teaching progress:</span>
+          <span class="progress-info-val" id="courseProgressText">0 / 49 lessons completed (0%)</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="courseProgressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- 4 Student Star Bank Chips -->
+      <details class="index-students-container">
+        <summary><span class="student-bank-label">⭐ Student Star Passbook</span><span class="disclosure-action"><span class="when-closed">Expand</span><span class="when-open">Collapse</span><span class="disclosure-chevron" aria-hidden="true"></span></span></summary>
+        <div class="index-students-grid" id="indexStudentsBar">
+          <!-- Rendered by app.js -->
+        </div>
+      </details>
+
+      <!-- Keyword Search -->
+      <div class="course-search-heading">
+        <label class="sidebar-field-label" for="searchInput">Search lessons</label>
+        <p id="course-search-status" class="course-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      </div>
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="searchInput" aria-label="Search by topic, keyword or date" placeholder="Find a lesson…">
+      </div>
+
+      <!-- Chronological Date Cards -->
+      <div class="date-list" id="dateList">
+        <!-- Rendered by app.js -->
+      </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- Right Main Area: Daily Lesson Briefing Content -->
+    <section class="main-content">
+
+      <!-- Storybook Child-Friendly Welcome Hero & Mascots -->
+      <section class="storybook-welcome-hero" aria-labelledby="gardenTitle">
+        <div class="garden-intro">
+          <span class="garden-eyebrow">Our social skills classroom</span>
+          <h2 id="gardenTitle">Making friends, <br><em>one conversation at a time.</em></h2>
+          <p>Let's practice speaking up and listening to each other.</p>
+          <a class="garden-start" href="#dailyLesson">Today's lesson <span aria-hidden="true">↓</span></a>
+        </div>
+        <figure class="garden-scene">
+          <div class="garden-stage" role="group" aria-label="Four animal companions, choose one to say hello">
+            <svg class="garden-landscape" viewBox="0 0 560 260" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#garden"></use></svg>
+            <button class="garden-friend friend-yu" id="card-yu" type="button" data-companion="yu" aria-label="Say hello to Yu" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#lion"></use></svg><span>Yu</span></button>
+            <button class="garden-friend friend-jun" id="card-jun" type="button" data-companion="jun" aria-label="Say hello to Jun" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#bear"></use></svg><span>Jun</span></button>
+            <button class="garden-friend friend-he" id="card-he" type="button" data-companion="he" aria-label="Say hello to He" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#panda"></use></svg><span>He</span></button>
+            <button class="garden-friend friend-jia" id="card-jia" type="button" data-companion="jia" aria-label="Say hello to Jia" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#fox"></use></svg><span>Jia</span></button>
+          </div>
+          <figcaption class="garden-greeting" aria-live="polite" aria-atomic="true">
+            <span id="gardenGreetingHint">Dear friends, let’s say hello!</span>
+            <span id="bubble-yu" hidden>"Take a deep breath, look between your eyebrows and say good morning loudly!"</span>
+            <span id="bubble-jun" hidden>"The turtle shrinks its shell and counts to ten, and the brain puts on the brakes!"</span>
+            <span id="bubble-he" hidden>"Smile and nod three times, let's learn slowly together!"</span>
+            <span id="bubble-jia" hidden>"Thank you for clearing the code, I am so happy to make friends!"</span>
+          </figcaption>
+        </figure>
+
+        <!-- Emotion Weather Station -->
+        <div class="emotion-weather-station" data-emotion="sunny">
+          <div class="emotion-station-header">
+            <span class="emotion-station-title">
+              <strong>How are you feeling today?</strong>
+              <span class="emotion-prompt">Choose the weather that feels like you.</span>
+            </span>
+            <span id="emotionSelectedStatus" style="font-size:0.82rem; font-weight:900; color:#0284c7; background:#e0f2fe; padding:2px 10px; border-radius:999px;">☀️ Sunny</span>
+          </div>
+          <div class="emotion-buttons-row" role="group" aria-label="Choose your mood today">
+            <button class="emotion-btn active" data-emotion="sunny" aria-pressed="true" onclick="selectEmotion('sunny', this)">
+              <span aria-hidden="true">☀️</span><strong>Sunny</strong><small>(full of energy)</small>
+            </button>
+            <button class="emotion-btn" data-emotion="breezy" aria-pressed="false" onclick="selectEmotion('breezy', this)">
+              <span aria-hidden="true">🌤️</span><strong>Breezy</strong><small>(calm and focused)</small>
+            </button>
+            <button class="emotion-btn" data-emotion="rainy" aria-pressed="false" onclick="selectEmotion('rainy', this)">
+              <span aria-hidden="true">🌧️</span><strong>Rainy</strong><small>(tired and sad)</small>
+            </button>
+            <button class="emotion-btn" data-emotion="stormy" aria-pressed="false" onclick="selectEmotion('stormy', this)">
+              <span aria-hidden="true">⚡</span><strong>Dark clouds and thunder</strong><small>(angry and anxious)</small>
+            </button>
+            <button class="emotion-btn" data-emotion="rainbow" aria-pressed="false" onclick="selectEmotion('rainbow', this)">
+              <span aria-hidden="true">🌈</span><strong>Rainbow</strong><small>(full of confidence)</small>
+            </button>
+          </div>
+          <div class="emotion-feedback-box" id="emotionFeedbackBox" role="status">
+            <span class="calming-breathing-dot"></span>
+            <span id="emotionFeedbackText">Great! Today, with full sunshine and energy, let’s use our social superpowers together!</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Banner -->
+      <article class="daily-banner" id="dailyLesson" tabindex="-1" aria-labelledby="bannerTitle">
+        <div class="washi-tape-strip washi-tape-yellow"></div>
+
+        <!-- 頂部快速切換週次／堂數工具列 (Quick Switcher Bar) -->
+        <div class="quick-course-nav-bar">
+          <div class="quick-nav-left">
+            <button type="button" class="nav-step-btn" onclick="stepBriefing(-1)" title="Switch to previous week/last class">
+              ◀ Previous week/class
+            </button>
+            <div class="quick-select-wrapper">
+              <span class="quick-select-icon">📅</span>
+              <select class="quick-select-dropdown" id="mainDateDropdown" title="Directly click the drop-down to select the week, class or date"></select>
+            </div>
+            <button type="button" class="nav-step-btn" onclick="stepBriefing(1)" title="Switch to next week/next class">
+              Next week / session ▶
+            </button>
+          </div>
+          <div class="quick-nav-right">
+            <span class="quick-nav-hint">💡 You can also directly click "📅 Classroom Lesson Preparation Process" card switching</span>
+          </div>
+        </div>
+
+        <div class="banner-meta">
+          <span class="date-pill" id="bannerDate">📅 2026-10-26 (1)</span>
+          <span class="curriculum-code" id="bannerCode">Special Needs Program Society 2-II-1</span>
+          <span style="font-size:0.85rem; font-weight:700; color:var(--text-muted);" id="bannerUnit">Unit 1: Self-discipline</span>
+        </div>
+        <h1 class="banner-title" id="bannerTitle">The Emotional Thermometer and My Body Signals</h1>
+        <p class="banner-summary" id="bannerSummary">Guide students to detect physiological signals such as rapid heartbeat and clenched fists, use a 1-5 point emotional thermometer to visualize anger, and establish braking awareness.</p>
+
+        <!-- Course Completion Direct Toggle Box -->
+        <div class="course-completion-box" id="bannerCompletionBox">
+          <label class="completion-checkbox-label">
+            <input type="checkbox" id="bannerCompletionCheckbox" class="completion-input" onchange="toggleCurrentCourseCompleted(this.checked)">
+            <span class="completion-checkmark-box"></span>
+            <div class="completion-label-text">
+              <span class="completion-main-title" id="completionMainTitle">Today's lesson: Not completed</span>
+              <span class="completion-sub-title" id="completionSubTitle">Click to directly check to complete, record the teaching progress and automatically synchronize to the cloud passbook and sidebar progress bar</span>
+            </div>
+          </label>
+          <div class="completion-status-pill" id="completionStatusPill">⬜ Not taught yet</div>
+        </div>
+
+        <div class="banner-badges" id="bannerBadges">
+          <!-- Rendered by app.js -->
+        </div>
+        <div class="lesson-actions">
+          <button class="btn btn-accent" onclick="launchClassroomForCurrent()">
+            Start this lesson <span aria-hidden="true">↗</span>
+          </button>
+          <a class="btn" id="bannerWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener">Open worksheet ↗</a>
+          <details class="teacher-menu lesson-tools">
+            <summary class="btn">Planning Tools <span aria-hidden="true">⌄</span></summary>
+            <div class="teacher-menu-panel">
+          <button class="btn" onclick="openQuickBriefingModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(217,119,6,0.35);" title="60-second quick summary before class (core action formulas, teaching aid review, ASD/LD/EBD three-barrier classroom support guide)">
+            ⚡ 60-Second Lesson Brief
+          </button>
+          <button class="btn" onclick="openWhiteboardModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #0284c7, #0369a1); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(2,132,199,0.35);" title="Start the electronic whiteboard/smart blackboard special large-size move projection card (large classes or students with low vision or attention deficit can understand it at a glance)">
+            🖥️ Large-Print Skill Card
+          </button>
+          <button class="btn" onclick="openCommunicationModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #4f46e5, #4338ca); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(79,70,229,0.35);" title="Generate today&#x27;s LINE contact book notification, Special Education Reporting Network IEP evaluation draft and A4 four-in-one entity contact list with one click">
+            📝 Teacher Contact Sheet (4 in 1)
+          </button>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <!-- Daily Rich Story Box -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#fef3c7; color:#b45309;">📖</div>
+            <h2 class="card-title" id="briefingStoryTitle">Today’s classroom situation story</h2>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <select id="indexVoiceGenderSelector" onchange="changeVoiceGender(this.value)" style="padding:4px 10px; border-radius:8px; border:1.5px solid #fed7aa; font-size:0.85rem; font-weight:700; color:#78350f; background:#fff7ed; cursor:pointer;" title="Choose a reading voice">
+              <option value="female">🌸 Gentle female voice</option>
+              <option value="male">👦 Friendly male voice</option>
+            </select>
+            <button class="btn btn-sm" id="indexStoryTtsBtn" onclick="toggleIndexStorySpeech()" style="background:#fef08a; color:#854d0e; font-weight:800; border:1.5px solid #facc15;" title="Click to read the full text of the story (click again to pause)">
+              🔊 Read the Story
+            </button>
+          </div>
+        </div>
+        <div id="briefingStoryContent" onclick="toggleIndexStorySpeech()" style="font-size:0.95rem; line-height:1.8; color:#334155; white-space:pre-line; cursor:pointer;" title="Click on the text of the story to read it directly!">
+          Loading...
+        </div>
+        <div style="margin-top:14px; padding:12px 16px; background:#f0fdfa; border:1px solid #99f6e4; border-radius:10px; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div style="flex:1;">
+            <strong style="color:#0f766e;">🤔 Class discussion guidance questions:</strong>
+            <span id="briefingStoryQuestion" onclick="toggleIndexQuestionSpeech()" style="color:#134e4a; font-weight:700; cursor:pointer;" title="Click on the title text to read it directly!"></span>
+          </div>
+          <button class="btn btn-sm" id="indexQuestionTtsBtn" onclick="toggleIndexQuestionSpeech()" style="background:#d1fae5; color:#065f46; font-weight:800; border:1.5px solid #6ee7b7; white-space:nowrap;" title="Click to read the question aloud">
+            🔊 Read the Question
+          </button>
+        </div>
+      </article>
+
+      <!-- Daily 4-Role Play Theater Box -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1; margin-top:20px;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#ede9fe; color:#6d28d9;">🎭</div>
+            <h2 class="card-title">Today’s four-character situation mini theater (action and dialogue drill)</h2>
+          </div>
+          <span style="font-size:0.85rem; font-weight:800; color:#64748b; background:#f1f5f9; padding:4px 10px; border-radius:999px;">
+            🦁Yu · 🐻Jun · 🐼He · 🦊Jia · Everyone has a role
+          </span>
+        </div>
+        <div id="briefingRoleplayContent" style="margin-top:10px;">
+          <!-- Rendered by app.js -->
+        </div>
+      </article>
+
+      <!-- 40-Min Lesson 5-Step Teacher Guidance & Manual -->
+      <article class="card" style="background:#ffffff; border:1px solid #cbd5e1; margin-top:20px;">
+        <div class="card-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div class="card-icon" style="background:#ccfbf1; color:#0f766e;">🏫</div>
+            <h2 class="card-title">40-minute 5-step classroom teaching guide (accurate teaching material operation and guidance skills)</h2>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <button class="btn btn-sm" onclick="toggleAllTeacherGuides(true)" style="background:#f1f5f9; color:#334155; font-weight:800; border:1px solid #cbd5e1;" title="Expand detailed guidance on all links">
+              📂 Expand all
+            </button>
+            <button class="btn btn-sm" onclick="toggleAllTeacherGuides(false)" style="background:#f1f5f9; color:#334155; font-weight:800; border:1px solid #cbd5e1;" title="Collapsing Guide">
+              📁 Collapse all
+            </button>
+          </div>
+        </div>
+        <div style="font-size:0.88rem; color:#64748b; margin-top:4px; font-weight:700;">
+          💡 Click on any link to expand or collapse detailed guidance; including large-screen button operations, verbatim speech skills, four-learner personalized support and classroom support reminders.
+        </div>
+        <div id="timelineList" style="margin-top:14px; display:flex; flex-direction:column; gap:12px;">
+          <!-- Rendered by app.js -->
+        </div>
+      </article>
+
+      <!-- 2-Column Detail Grid: Scaffolds & Visual Card Preview -->
+      <div class="detail-grid">
+
+        <!-- Differential Support Scaffolds -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#ede9fe; color:#6b21a8;">🧩</div>
+            <h2 class="card-title">Individualized differential support (special needs scaffolding)</h2>
+          </div>
+          <div class="scaffold-box">
+            <div class="scaffold-item scaffold-asd">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#0f766e;">🔹 Students with autism spectrum disorder (ASD)</span>
+                <span style="font-size:0.75rem; color:#0f766e; font-weight:700;">Visual flow/specific lines</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldAsd">Loading...</div>
+            </div>
+
+            <div class="scaffold-item scaffold-ld">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#6b21a8;">🔹 Students with Learning Disabilities (LD)</span>
+                <span style="font-size:0.75rem; color:#6b21a8; font-weight:700;">Reduction and writing-free / multi-sensory images</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldLd">Loading...</div>
+            </div>
+
+            <div class="scaffold-item scaffold-ebd">
+              <div class="scaffold-header">
+                <span class="scaffold-label" style="color:#991b1b;">🔹 Students with Emotional Disorders (EBD)</span>
+                <span style="font-size:0.75rem; color:#991b1b; font-weight:700;">Cool down channel/instant braking</span>
+              </div>
+              <div class="scaffold-body" id="scaffoldEbd">Loading...</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Visual Flashcard Projection Preview -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#e0f2fe; color:#0284c7;">🖼️</div>
+            <h2 class="card-title">Classroom projection visual cards (can be shown directly to schoolchildren)</h2>
+          </div>
+          <div class="visual-card-preview">
+            <div class="visual-card-title" id="visualCardTitle">Loading...</div>
+            <div class="visual-steps-grid" id="visualSteps">
+              <!-- Rendered by app.js -->
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Bottom 2-Column Grid: IEP & Checklist -->
+      <div class="detail-grid">
+
+        <!-- IEP Measurable Goal -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fef3c7; color:#b45309;">🎯</div>
+            <h2 class="card-title">Observable IEP Goals</h2>
+          </div>
+          <div class="iep-box">
+            <button class="copy-badge" onclick="copyIep()">📋 Copy</button>
+            <p id="iepText" style="line-height:1.7; margin-right:70px;">Loading...</p>
+          </div>
+
+          <div class="home-transfer-grid" style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div style="padding:16px; background:#fffbeb; border-radius:var(--radius-md); border:1.5px solid #fde68a; position:relative;">
+              <button class="copy-badge" onclick="copyRegularTip()" style="top:12px; right:12px;">📋 Copy formula</button>
+              <div style="font-weight:800; font-size:0.92rem; margin-bottom:8px; color:#92400e; display:flex; align-items:center; gap:6px;">
+                <span>🏫</span> General Classroom Cue:
+              </div>
+              <p id="regularTipText" style="font-size:0.88rem; color:#78350f; line-height:1.6; margin:0; padding-right:75px;"></p>
+            </div>
+            <div style="padding:16px; background:#f0fdf4; border-radius:var(--radius-md); border:1.5px solid #bbf7d0;">
+              <div style="font-weight:800; font-size:0.92rem; margin-bottom:8px; color:#166534; display:flex; align-items:center; gap:6px;">
+                <span>🏠</span> Home Practice Check-In:
+              </div>
+              <p id="homeTaskText" style="font-size:0.88rem; color:#14532d; line-height:1.6; margin:0;"></p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pre-Class Safety Checklist -->
+        <article class="card">
+          <div class="card-header">
+            <div class="card-icon" style="background:#fee2e2; color:#b91c1c;">🛡️</div>
+            <h2 class="card-title">Manual review of classroom support inspection before special education class</h2>
+          </div>
+          <div class="checklist">
+            <label class="check-item">
+              <input type="checkbox" id="chk_trigger" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>Emotional mine check:</strong>Did today's scenario drill avoid individual students' near-term acute landmines?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_cooldown" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>Cooling corner is clear:</strong>Are the calming corners and stress-reducing tools such as acupressure balls and hourglasses in the classroom ready?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_visual" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>Autism visual preview:</strong>Have you posted a flow chart on the whiteboard and informed you of the countdown time to the end of class in advance?</span>
+            </label>
+            <label class="check-item">
+              <input type="checkbox" id="chk_reading" onchange="handleCheck(this)">
+              <span class="check-item-text"><strong>Reading reduction for learning disabilities:</strong>Have long texts been excluded from the activities and replaced with images or spoken prompts?</span>
+            </label>
+          </div>
+        </article>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Add Briefing Modal -->
+  <div class="modal-overlay" id="addModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 style="font-size:1.25rem; font-weight:800;">➕ Add a Lesson</h2>
+        <button class="modal-close" onclick="closeAddModal()">&times;</button>
+      </div>
+      <form onsubmit="saveCustomBriefing(event)">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label>Lesson date</label>
+            <input type="date" id="newDate" required>
+          </div>
+          <div class="form-group">
+            <label>Unit</label>
+            <input type="text" id="newUnit" placeholder="Example: The second unit: dealing with people" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Lesson title</label>
+          <input type="text" id="newTitle" placeholder="Example: Learn to listen and take turns speaking
+Example: Society 2-II-3" required>
+        </div>
+
+        <div class="form-group">
+          <label>Curriculum code</label>
+          <input type="text" id="newCode" placeholder="Example: Social 2-II-3">
+        </div>
+
+        <div class="form-group">
+          <label>Learning goal summary</label>
+          <textarea id="newSummary" rows="2" placeholder="Briefly describe the core skills that students need to learn today..." required></textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+          <div class="form-group">
+            <label style="color:#0f766e;">ASD visual support</label>
+            <textarea id="newAsd" rows="2" placeholder="Picture card or sentence pattern..."></textarea>
+          </div>
+          <div class="form-group">
+            <label style="color:#6b21a8;">Learning support</label>
+            <textarea id="newLd" rows="2" placeholder="Reduction, verbal guidance..."></textarea>
+          </div>
+          <div class="form-group">
+            <label style="color:#991b1b;">Emotional support</label>
+            <textarea id="newEbd" rows="2" placeholder="Defense line, calm corner..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Example Measurable IEP Goal</label>
+          <textarea id="newIep" rows="2" placeholder="Under situational prompts, students can achieve an achievement rate of more than 80%."></textarea>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn" onclick="closeAddModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Lesson</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <canvas id="confettiCanvas"></canvas>
+  <button class="floating-calm-fab" onclick="openCalmCornerModal()" title="Quickly open the special education emotional calming channel (4-7-8 breathing halo, visual hourglass, five senses landing, white noise)">
+    <span>🧘</span>
+    <span>Calm Corner</span>
+  </button>
+  <script src="zhuyin.js?v=38bf7b846cc8"></script>
+  <script src="roleplay-data.js?v=78242e7a95d3"></script>
+  <script src="app.js?v=d9437ed7375f"></script>
+  <script src="teacher-tools.js?v=9f352d9e8b04"></script>
+  <script src="garden-ui.js?v=0715f19dd9c3"></script>
+</body>
+</html>

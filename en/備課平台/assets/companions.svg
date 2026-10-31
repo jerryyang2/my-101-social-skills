@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="garden" viewBox="0 0 560 260">
+    <g stroke="#526e49" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="474" cy="44" r="23" fill="#ffe39a" stroke="none"/>
+      <path d="M43 82c-7-15 12-27 23-18 4-22 37-20 39 1 22-6 29 20 10 24H47" fill="#fffaf0" stroke="none"/>
+      <path d="M20 173c29-38 78-43 115-35 57-51 111-38 153-18 52-31 117-17 140 11 41-7 93 9 112 49 22 57-109 72-263 64C126 254-9 221 20 173Z" fill="#b2d873"/>
+      <path d="M70 206c79 22 125-45 205-34 65 9 100 47 204 19" fill="none" stroke="#fff0c3" stroke-width="24"/>
+      <path d="m481 106 2 61m-2-43-15-10m16 25 14-12" fill="none" stroke-width="4"/>
+      <path d="M458 119c-28-27-3-48 13-48-4-30 38-32 43-10 30-6 46 30 21 43-9 25-42 30-59 15Z" fill="#6b9566"/>
+      <path d="M74 159v-32m0 16-11-9" fill="none" stroke-width="3"/>
+      <path d="M53 129c-21-21-4-42 15-38 6-28 36-19 33 0 27 9 10 47-15 38Z" fill="#88ad79"/>
+      <g fill="none"><path d="m43 190 4 7 5-14m69 39 5 7 5-14m302-5 5 7 5-14m64-24 4 7 5-14"/><path d="M377 132v18m-6-8h13"/></g>
+      <g fill="#f8df96"><circle cx="377" cy="132" r="6"/><circle cx="370" cy="137" r="6"/><circle cx="384" cy="137" r="6"/></g>
+      <circle cx="377" cy="138" r="4" fill="#a76d40"/>
+      <path d="m199 220 7-7 7 7-7 8Z" fill="#e6a27e"/>
+    </g>
+  </symbol>
+  <symbol id="lion" viewBox="0 0 120 150">
+    <g stroke="#5c4936" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="60" cy="144" rx="32" ry="4" fill="#526e49" opacity=".15" stroke="none"/>
+      <path d="M82 117q31 4 23-22" fill="none" stroke="#d4a65d" stroke-width="7"/><ellipse cx="104" cy="94" rx="6" ry="8" fill="#9c7753"/>
+      <ellipse cx="60" cy="113" rx="26" ry="26" fill="#f6b642"/><ellipse cx="60" cy="116" rx="15" ry="18" fill="#fff0c2" stroke="none"/>
+      <path d="m30 39 10-14 15 3 15-5 13 9 13 3 2 15 9 13-8 15-3 14-17 4-12 9-15-6-17-1-5-15-9-12 5-16Z" fill="#bf6a2e"/>
+      <circle cx="35" cy="48" r="10" fill="#e6c685"/><circle cx="85" cy="48" r="10" fill="#e6c685"/>
+      <ellipse cx="60" cy="66" rx="29" ry="28" fill="#ffce6e"/><ellipse cx="60" cy="79" rx="17" ry="12" fill="#fff0cd" stroke="none"/>
+      <path d="M38 105q-17-14-20-2t19 17" fill="#dfbc75"/><path d="M82 106q16-2 14 12" fill="none" stroke="#dfbc75" stroke-width="11"/>
+      <ellipse cx="42" cy="138" rx="14" ry="7" fill="#dfbc75"/><ellipse cx="78" cy="138" rx="14" ry="7" fill="#dfbc75"/>
+      <g fill="#5c4936" stroke="none"><circle cx="47" cy="64" r="3"/><circle cx="74" cy="64" r="3"/><path d="m55 76 5 5 5-5Z"/></g><path d="M60 81v4m-7-1q7 8 14 0" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="bear" viewBox="0 0 120 150">
+    <g stroke="#5c4936" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="60" cy="144" rx="32" ry="4" fill="#526e49" opacity=".15" stroke="none"/>
+      <g fill="#bc8553"><circle cx="34" cy="36" r="14"/><circle cx="86" cy="36" r="14"/><ellipse cx="60" cy="111" rx="28" ry="29"/><ellipse cx="41" cy="138" rx="15" ry="8"/><ellipse cx="79" cy="138" rx="15" ry="8"/><ellipse cx="60" cy="66" rx="34" ry="31"/></g>
+      <g fill="#ead0aa" stroke="none"><circle cx="34" cy="36" r="7"/><circle cx="86" cy="36" r="7"/><ellipse cx="60" cy="116" rx="17" ry="19"/><ellipse cx="60" cy="79" rx="17" ry="12"/></g>
+      <path d="M35 104q-19-12-20 0t20 14" fill="#b89472"/><path d="M85 105q18 0 13 14" fill="none" stroke="#b89472" stroke-width="11"/>
+      <g fill="#5c4936" stroke="none"><circle cx="46" cy="65" r="3"/><circle cx="74" cy="65" r="3"/><ellipse cx="60" cy="77" rx="5" ry="3"/></g><path d="M60 80v5m-7-1q7 8 14 0" fill="none"/>
+      <path d="m46 99 14 6 14-6-5 15H51Z" fill="#24979a"/>
+    </g>
+  </symbol>
+  <symbol id="panda" viewBox="0 0 120 150">
+    <g stroke="#47554b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="60" cy="144" rx="32" ry="4" fill="#526e49" opacity=".15" stroke="none"/>
+      <g fill="#47554b"><circle cx="34" cy="35" r="14"/><circle cx="86" cy="35" r="14"/><ellipse cx="41" cy="138" rx="14" ry="8"/><ellipse cx="79" cy="138" rx="14" ry="8"/></g>
+      <ellipse cx="60" cy="113" rx="27" ry="28" fill="#fcf4df"/><ellipse cx="60" cy="66" rx="34" ry="31" fill="#fcf4df"/>
+      <path d="M35 105q-18-12-20 0t20 15" fill="#47554b"/><path d="M85 105q18 0 13 15" fill="none" stroke="#47554b" stroke-width="11"/>
+      <g fill="#47554b" stroke="none"><ellipse cx="45" cy="65" rx="10" ry="13" transform="rotate(25 45 65)"/><ellipse cx="75" cy="65" rx="10" ry="13" transform="rotate(-25 75 65)"/><path d="m55 79 5 4 5-4Z"/></g>
+      <g fill="#fff" stroke="none"><circle cx="46" cy="64" r="3"/><circle cx="74" cy="64" r="3"/></g><path d="M60 83v4m-7-1q7 8 14 0" fill="none"/>
+      <path d="M60 130v-16m0 6q-14 0-13-10 12-2 13 10m1 1q12-13 18-4-6 10-18 4" fill="#94b17b" stroke="#526e49"/>
+    </g>
+  </symbol>
+  <symbol id="fox" viewBox="0 0 120 150">
+    <g stroke="#5c4936" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="60" cy="144" rx="32" ry="4" fill="#526e49" opacity=".15" stroke="none"/>
+      <path d="M78 125q40 13 34-37-18 4-25 24" fill="#ce8d56"/><path d="M112 88q3 20-2 29l-9-5-8 4q3-19 19-28Z" fill="#fff1d5"/>
+      <path d="M42 87q-17 45 18 52 33-6 18-52" fill="#ea843e"/><path d="m47 99 13 7 13-7-4 30H51Z" fill="#fff1d5" stroke="none"/>
+      <path d="m29 58-3-37 27 19h15l27-19-3 37q9 28-32 43-41-15-31-43Z" fill="#f08b45"/>
+      <path d="m31 68 29 15 29-15-4 15-25 16-25-16Z" fill="#fff1d5"/>
+      <path d="m34 47-1-15 12 11m30 0 12-11-1 15" fill="#e5b2a0" stroke="none"/>
+      <path d="m38 105-14 11 8 7" fill="none" stroke="#d99b63" stroke-width="10"/><path d="m82 104 9 16" fill="none" stroke="#d99b63" stroke-width="10"/>
+      <ellipse cx="43" cy="138" rx="13" ry="7" fill="#d99b63"/><ellipse cx="77" cy="138" rx="13" ry="7" fill="#d99b63"/>
+      <g fill="#5c4936" stroke="none"><circle cx="46" cy="63" r="3"/><circle cx="74" cy="63" r="3"/><path d="m55 80 5 5 5-5Z"/></g><path d="M60 85v3m-7-1q7 7 14 0" fill="none"/>
+    </g>
+  </symbol>
+</svg>

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="calm" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#effbf3"/>
+    <g stroke="#225b43" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M24 34C5 35 7 19 11 16c9 0 14 7 13 18Z" fill="#82cf88"/>
+      <path d="M24 34c19 1 17-15 13-18-9 0-14 7-13 18Z" fill="#4baa79"/>
+      <path d="M24 34c-14-8-11-21 0-27 11 6 14 19 0 27Z" fill="#b5df85"/>
+      <path d="M18 37h12m-6-10V15" fill="none"/>
+    </g>
+  </symbol>
+  <symbol id="communication" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#f7efff"/>
+    <g stroke="#513482" stroke-width="2" stroke-linejoin="round">
+      <path d="M10 11h23v18H20l-8 7v-7h-2Z" fill="#bca0ee"/>
+      <path d="M25 24h14v14h-3l1 5-7-5h-5Z" fill="#ffc86c"/>
+    </g>
+    <g fill="#513482"><circle cx="16" cy="20" r="1.6"/><circle cx="22" cy="20" r="1.6"/><circle cx="28" cy="20" r="1.6"/></g>
+  </symbol>
+  <symbol id="island" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#e5f7ff"/>
+    <path d="M5 37q19-7 38 0l-4 6H9Z" fill="#49abd0"/>
+    <ellipse cx="24" cy="35" rx="16" ry="5" fill="#f6ce78" stroke="#8d692a" stroke-width="1.7"/>
+    <path d="M22 33q7-10 3-22" fill="none" stroke="#986234" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#4ea873" stroke="#27734b" stroke-width="1.5" stroke-linejoin="round"><path d="M25 14Q9 3 7 20q10-6 18-6ZM25 14Q38 2 42 19q-9-5-17-5ZM25 14Q21 0 15 6q2 7 10 8ZM25 14q11-2 10 12-5-7-10-12Z"/></g>
+  </symbol>
+  <symbol id="classroom" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#fff8df"/>
+    <g stroke="#685031" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 33l-4 10m18-10 4 10M24 8V5" fill="none"/>
+      <rect x="7" y="8" width="34" height="25" rx="3" fill="#4b8f7c"/>
+      <path d="M15 15h18m-18 6h11m-11 6h6" stroke="#fff8df"/>
+      <path d="m31 23 8 7-4 1-2 4Z" fill="#ffc96d"/>
+    </g>
+  </symbol>
+  <symbol id="add" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#e9f7ff"/>
+    <g stroke="#295572" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 10h15v29H8q-3-2 0-5ZM23 10h13v28H23" fill="#6fb8e3"/>
+      <path d="M12 16h6m-6 6h6" stroke="#fff"/>
+      <circle cx="33" cy="32" r="11" fill="#ffc96d"/>
+      <path d="M33 26v12m-6-6h12"/>
+    </g>
+  </symbol>
+  <symbol id="copy" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#fff9e4"/>
+    <g stroke="#6c593b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="10" y="7" width="24" height="30" rx="3" fill="#edc47c"/>
+      <rect x="16" y="13" width="24" height="30" rx="3" fill="#fffdf5"/>
+      <path d="M22 22h12m-12 7h12m-12 7h8" stroke="#4284b5"/>
+      <path d="M16 7h12v8H16Z" fill="#84ac92"/>
+    </g>
+  </symbol>
+  <symbol id="home" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="23" fill="#fff0e6"/>
+    <g stroke="#804c38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 22h28v19H10Z" fill="#ffe0a3"/>
+      <path d="m6 23 18-17 18 17-5 3-13-13-13 13Z" fill="#e5795d"/>
+      <path d="M20 41V28h9v13" fill="#699d8b"/>
+      <path d="M13 27h4v6h-4Z" fill="#8bc8e1"/>
+      <circle cx="26" cy="35" r="1" fill="#fff" stroke="none"/>
+    </g>
+  </symbol>
+</svg>
