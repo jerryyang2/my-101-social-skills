@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
-  <link rel="stylesheet" href="garden-theme.css?v=20261031-color">
-  <link rel="stylesheet" href="course-picker.css?v=20261031-compact">
+  <link rel="stylesheet" href="garden-theme.css?v=20261031-sidebar">
+  <link rel="stylesheet" href="course-picker.css?v=20261031-sidebar">
   <link rel="stylesheet" href="floating-tools/tools.css?v=social-red-20261031">
   <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
   <script src="floating-tools/drawing.js?v=20261031-focus" defer></script>
@@ -47,8 +47,8 @@
   <main class="app-layout">
     <!-- Left Sidebar: Chronological Date Timeline -->
     <aside class="sidebar">
-      <details class="course-picker" open>
-        <summary class="course-picker-toggle"><span>選課與搜尋</span><span class="disclosure-action"><span class="when-closed">展開</span><span class="when-open">收合</span><span class="disclosure-chevron" aria-hidden="true"></span></span></summary>
+      <section class="course-picker" aria-labelledby="coursePickerTitle">
+        <h2 class="course-picker-title" id="coursePickerTitle">選課與搜尋</h2>
         <div class="course-picker-body">
 
       <!-- 快速跳轉下拉選單 -->
@@ -90,24 +90,14 @@
         <input type="search" id="searchInput" aria-label="搜尋課程主題、關鍵字或日期" placeholder="找一堂課…">
       </div>
 
-      <!-- Quick Filter Pills -->
-      <fieldset class="course-filter-set">
-        <legend>篩選支援類型 <span>單選</span></legend>
-        <div class="filter-pills">
-          <button type="button" class="pill active" data-filter="ALL" aria-pressed="true">全部課程</button>
-          <button type="button" class="pill" data-filter="ASD" aria-pressed="false">自閉症 (ASD)</button>
-          <button type="button" class="pill" data-filter="LD" aria-pressed="false">學障 (LD)</button>
-          <button type="button" class="pill" data-filter="EBD" aria-pressed="false">情障 (EBD)</button>
-        </div>
-      </fieldset>
-      <p id="course-filter-status" class="course-filter-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p id="course-search-status" class="course-search-status" role="status" aria-live="polite" aria-atomic="true"></p>
 
       <!-- Chronological Date Cards -->
       <div class="date-list" id="dateList">
         <!-- Rendered by app.js -->
       </div>
         </div>
-      </details>
+      </section>
     </aside>
 
     <!-- Right Main Area: Daily Lesson Briefing Content -->
@@ -496,6 +486,6 @@
   <script src="roleplay-data.js"></script>
   <script src="app.js?v=20261031-focus"></script>
   <script src="teacher-tools.js?v=20261031-focus"></script>
-  <script src="garden-ui.js?v=20261031-controls"></script>
+  <script src="garden-ui.js?v=20261031-sidebar"></script>
 </body>
 </html>

@@ -54,10 +54,8 @@
 .social-garden .teacher-menu-panel .btn { width: 100%; justify-content: flex-start; text-align: left; border-color: transparent !important; white-space: normal; }
 .social-garden .app-layout { max-width: 1504px; padding: 28px 32px 64px; grid-template-columns: 292px minmax(0, 1fr); gap: 28px; }
 .social-garden .sidebar { position: sticky; top: calc(var(--app-header-height, 158px) + 20px); height: auto; max-height: calc(100dvh - var(--app-header-height, 158px) - 40px); min-height: 0; overflow-y: auto; padding: 18px; border: 1px solid #a9b99d; border-radius: 14px; box-shadow: none; background: #fffdf7; }
-.social-garden .sidebar:has(.course-picker:not([open])) { height: auto; min-height: 0; }
 .social-garden .course-picker { min-height: 0; }
 .social-garden .sidebar-title { list-style: none; cursor: pointer; gap: 8px; margin-bottom: 16px; color: #2a503c; font-size: 1.1rem; font-weight: 800; }
-.social-garden .course-picker:not([open]) > summary { margin-bottom: 0; }
 .social-garden .course-picker-hint { font-size: .75rem; color: var(--text-muted); font-weight: 500; }
 .social-garden .course-picker-body { min-height: 0; display: flex; flex: 1; flex-direction: column; }
 .social-garden .sidebar-quick-jump { padding: 10px; border: 1px solid #8db9dc; border-left: 5px solid #3984b6; border-radius: 8px; background: #e4f2ff; box-shadow: none; }
@@ -77,16 +75,9 @@
 .social-garden .treasure-chest-card { border: 1px solid #b9c5aa; background: #f6f3e5; border-radius: 8px; box-shadow: none; }
 .social-garden .treasure-chest-card:hover { transform: none; }
 .social-garden .chest-btn-mini { width: 44px; height: 44px; font-size: 1.2rem; }
-.social-garden .chest-card-bottom { flex-wrap: wrap; padding: 4px; }
+.social-garden .chest-card-bottom { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; gap: 4px; flex-wrap: nowrap; padding: 4px; }
+.social-garden .chest-star-count { min-width: 0; font-variant-numeric: tabular-nums; }
 .social-garden .search-box input { min-height: 44px; background: #fff; border-color: #9eaf95; font-size: .9rem; }
-.social-garden .filter-pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; overflow: visible; padding: 3px; }
-.social-garden .pill { position: relative; display: flex; align-items: center; gap: 5px; min-height: 46px; padding: 7px 8px; border: 1px solid var(--filter-edge); border-radius: 8px; font-size: .85rem; line-height: 1.5; white-space: normal; text-align: left; color: var(--filter-ink); background: var(--filter-tint); }
-.social-garden .pill[data-filter="ALL"] { --filter-ink: #234e62; --filter-edge: #8baaba; --filter-tint: #e0edf4; }
-.social-garden .pill[data-filter="ASD"] { --filter-ink: #205880; --filter-edge: #8ab5db; --filter-tint: #dceeff; }
-.social-garden .pill[data-filter="LD"] { --filter-ink: #66438b; --filter-edge: #bda3dc; --filter-tint: #eee2fa; }
-.social-garden .pill[data-filter="EBD"] { --filter-ink: #8d402e; --filter-edge: #d8a08d; --filter-tint: #ffe5d9; }
-.social-garden .pill.active { background: var(--filter-tint); color: var(--filter-ink); outline: 2px solid var(--filter-ink); outline-offset: 1px; }
-.social-garden .pill.active::after { content: "✓"; position: absolute; right: 4px; top: 0; font-size: .7rem; font-weight: 900; }
 .social-garden .date-list { flex: none; min-height: 180px; max-height: max(200px, calc(100dvh - var(--app-header-height, 158px) - 490px)); scrollbar-width: thin; scrollbar-color: #a2b497 transparent; gap: 10px; }
 .social-garden .curriculum-group-header { background: #d9ecff !important; color: #215b88 !important; border: 1px solid #86b1d3; border-left: 5px solid #3984b6 !important; box-shadow: none !important; border-radius: 7px !important; font-size: .8rem !important; padding: 10px !important; }
 .social-garden .curriculum-group-header.legacy { background: #ffe5c7 !important; color: #894c1a !important; border-color: #d3a270; border-left-color: #bd762d !important; }
@@ -233,7 +224,6 @@
   .social-garden .course-progress-panel { margin-bottom: 8px; padding: 8px; }
   .social-garden .index-students-container { padding: 5px 8px; margin-bottom: 8px; }
   .social-garden .search-box { margin-bottom: 8px; }
-  .social-garden .filter-pills { margin-bottom: 8px; }
 }
 
 @media (max-width: 620px) {

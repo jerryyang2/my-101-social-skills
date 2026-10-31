@@ -32,23 +32,6 @@
     });
   });
 
-  document.querySelectorAll('.pill').forEach(button => {
-    button.addEventListener('click', () => {
-      document.querySelectorAll('.pill').forEach(option => {
-        option.setAttribute('aria-pressed', String(option === button));
-      });
-      courseList.scrollTop = 0;
-    });
-  });
-
-  const coursePicker = document.querySelector('.course-picker');
-  const compactLayout = window.matchMedia('(max-width: 960px)');
-  function updateCoursePicker() {
-    coursePicker.open = !compactLayout.matches;
-  }
-  compactLayout.addEventListener('change', updateCoursePicker);
-  updateCoursePicker();
-
   const teacherMenus = [...document.querySelectorAll('.teacher-menu')];
   document.addEventListener('click', event => {
     teacherMenus.forEach(menu => {
@@ -100,8 +83,8 @@
       }
     });
     const count = courseList.querySelectorAll('.date-card').length;
-    const selected = document.querySelector('.pill[aria-pressed="true"]')?.textContent.trim() || '全部課程';
-    document.getElementById('course-filter-status').textContent = `${selected} · 找到 ${count} 堂課`;
+    const searching = document.getElementById('searchInput').value.trim();
+    document.getElementById('course-search-status').textContent = searching ? `找到 ${count} 堂課` : `共 ${count} 堂課`;
   }
   courseList.addEventListener('keydown', event => {
     if (!event.target.matches('.date-card') || !['Enter', ' '].includes(event.key)) return;
