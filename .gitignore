@@ -66,3 +66,7 @@ GEMINI.md
 *.ai_rules*
 *.prompt*
 .env*
+
+# Local-only website guide and its source screenshots
+/Codex/website-guide/
+/output/pdf/我的101堂社交技巧課_網站使用手冊.pdf
