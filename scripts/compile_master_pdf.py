@@ -326,7 +326,7 @@ intro_html = f"""<!doctype html>
 <body>
 
   <!-- 封面 -->
-  <article class="worksheet-page cover-page">
+  <article class="worksheet-page cover-page" id="book-cover">
     <div>
       <div style="font-size:1.05rem; font-weight:bold; color:#1d4ed8; background:#eff6ff; border:2px solid #93c5fd; padding:6px 20px; border-radius:9999px; display:inline-block;">
         ★ OO國小學習教室 · 特殊需求領域（社會技巧）彩色學習單全集 ★
@@ -376,7 +376,7 @@ intro_html = f"""<!doctype html>
   </article>
 
   <!-- 目錄 (一·上)：第 01 週 ～ 第 26 週 -->
-  <article class="worksheet-page toc-page">
+  <article class="worksheet-page toc-page" id="toc-1">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">📚 目錄索引（一·上）：52 週社交技巧新課綱</span>
@@ -418,7 +418,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (一·下)：第 27 週 ～ 第 52 週 -->
-  <article class="worksheet-page toc-page">
+  <article class="worksheet-page toc-page" id="toc-2">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">📚 目錄索引（一·下）：52 週社交技巧新課綱</span>
@@ -460,7 +460,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (二·上)：第 53 課 ～ 第 77 課 -->
-  <article class="worksheet-page toc-page toc-page-ideas">
+  <article class="worksheet-page toc-page toc-page-ideas" id="toc-3">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">💡 目錄索引（二·上）：49 堂特殊情境疑難靈感庫</span>
@@ -500,7 +500,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (二·下)：第 78 課 ～ 第 101 課 -->
-  <article class="worksheet-page toc-page toc-page-ideas">
+  <article class="worksheet-page toc-page toc-page-ideas" id="toc-4">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">💡 目錄索引（二·下）：49 堂特殊情境疑難靈感庫</span>
@@ -684,7 +684,7 @@ with open(ws_html_path, "w", encoding="utf-8") as f:
 # Also save full book HTML to web directory
 ws_body = ws_html.split("<body>", 1)[1] if "<body>" in ws_html else ws_html
 with open(os.path.join(WEB_DIR, "all_worksheets_book.html"), "w", encoding="utf-8") as f:
-    f.write((intro_html.replace("</body>\n</html>", "") + ws_body).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
+    f.write((intro_html.replace("</body>\n</html>", "") + ws_body).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-reader">\n<script defer src="book-reader.js?v=20261031-reader"></script>\n</head>'))
 
 print("HTML files generated. Printing Part A (Intro: 1 Cover + 4 TOC pages)...")
 pdf_intro = "/tmp/part_intro.pdf"

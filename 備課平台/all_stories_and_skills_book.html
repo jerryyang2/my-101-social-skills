@@ -390,6 +390,8 @@ html, body {
 </style>
 <link rel="stylesheet" href="focus-mode.css?v=20261031-focus">
 <script defer src="focus-mode.js?v=20261031-focus"></script>
+<link rel="stylesheet" href="book-reader.css?v=20261031-reader">
+<script defer src="book-reader.js?v=20261031-reader"></script>
 </head>
 <body>
 
@@ -401,12 +403,12 @@ html, body {
     <span style="font-weight:900; font-size:0.92rem; color:#1e293b;">📖 故事島與超能力招式全集 (104頁)</span>
     <div style="display:flex; align-items:center; gap:8px;">
       <a href="#toc-1">📋 目錄</a>
-      <button type="button" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆️ 頂部</button>
+      <a href="#book-cover">⬆️ 頂部</a>
     </div>
   </nav>
 
   <!-- Page 1: 封面 -->
-  <article class="lesson-page cover-page">
+  <article class="lesson-page cover-page" id="book-cover">
     <div style="margin-top:12mm;">
       <div style="display:inline-block; background:#2563eb; color:#ffffff; padding:4px 18px; border-radius:9999px; font-size:1.05rem; font-weight:900; letter-spacing:1px; margin-bottom:12px;">
         🌱 OO國小學習教室 · 故事島與超能力招式全集
@@ -464,7 +466,7 @@ html, body {
   </article>
 
   <!-- Page 2: 目錄索引（一）52 週新課綱 -->
-  <article class="lesson-page toc-page">
+  <article class="lesson-page toc-page" id="toc-1">
     <div class="toc-title">
       <span>📚 目錄索引（一）：52 週特教新課綱進度表</span>
       <span style="font-size:0.85rem; color:#0f766e; font-weight:800;">按週次與教學日期排序 · 第 1 週～第 52 週</span>
@@ -790,7 +792,7 @@ html, body {
   </article>
 
   <!-- Page 3: 目錄索引（二）49 堂特殊情境疑難靈感庫專題 -->
-  <article class="lesson-page toc-page">
+  <article class="lesson-page toc-page" id="toc-2">
     <div class="toc-title">
       <span>💡 目錄索引（二）：49 堂特殊情境疑難靈感庫專題</span>
       <span style="font-size:0.85rem; color:#0f766e; font-weight:800;">7 大特教領域深度專題 · 第 53 課～第 101 課</span>

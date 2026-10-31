@@ -554,12 +554,12 @@ intro_html = f"""<!doctype html>
     <span style="font-weight:900; font-size:0.92rem; color:#1e293b;">🎭 角色劇場與遊樂場實戰全集 (104頁)</span>
     <div style="display:flex; align-items:center; gap:8px;">
       <a href="#toc-1">📋 目錄</a>
-      <button type="button" onclick="window.scrollTo({{top:0, behavior:'smooth'}})">⬆️ 頂部</button>
+      <a href="#book-cover">⬆️ 頂部</a>
     </div>
   </nav>
 
   <!-- Page 1: 封面 -->
-  <article class="lesson-page cover-page">
+  <article class="lesson-page cover-page" id="book-cover">
     <div style="margin-top:12mm;">
       <div style="display:inline-block; background:#8b5cf6; color:#ffffff; padding:4px 18px; border-radius:9999px; font-size:1.05rem; font-weight:900; letter-spacing:1px; margin-bottom:12px;">
         🌱 OO國小學習教室 · 角色大劇場與遊樂場實戰指南
@@ -617,7 +617,7 @@ intro_html = f"""<!doctype html>
   </article>
 
   <!-- Page 2: 目錄索引（一）52 週新課綱 -->
-  <article class="lesson-page toc-page">
+  <article class="lesson-page toc-page" id="toc-1">
     <div class="toc-title">
       <span>📚 目錄索引（一）：52 週特教新課綱大劇場與實戰進度表</span>
       <span style="font-size:0.85rem; color:#0f766e; font-weight:800;">按週次與教學日期排序 · 第 1 週～第 52 週</span>
@@ -650,7 +650,7 @@ intro_html += """
   </article>
 
   <!-- Page 3: 目錄索引（二）49 堂特殊情境疑難靈感庫專題 -->
-  <article class="lesson-page toc-page">
+  <article class="lesson-page toc-page" id="toc-2">
     <div class="toc-title">
       <span>💡 目錄索引（二）：49 堂特殊情境疑難靈感庫劇場與實戰</span>
       <span style="font-size:0.85rem; color:#0f766e; font-weight:800;">7 大特教領域深度專題 · 第 53 課～第 101 課</span>
@@ -835,7 +835,7 @@ with open(lessons_html_path, "w", encoding="utf-8") as f:
 lessons_body = lessons_html.split("<body>", 1)[1] if "<body>" in lessons_html else lessons_html
 full_book_html = intro_html.replace("</body>\n</html>", "") + lessons_body
 with open(os.path.join(WEB_DIR, "all_roleplay_and_games_book.html"), "w", encoding="utf-8") as f:
-    f.write(full_book_html.replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
+    f.write(full_book_html.replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-reader">\n<script defer src="book-reader.js?v=20261031-reader"></script>\n</head>'))
 
 print("📄 網頁生成完畢，開始以 Headless Chrome 列印 Part A (封面與目錄)...")
 pdf_intro = "/tmp/part_rp_intro.pdf"

@@ -61,13 +61,21 @@ for h_name in htmls:
     
     unique_hrefs = set(map(int, hrefs))
     unique_ids = set(map(int, ids))
+    all_hrefs = re.findall(r'href=["\']#([^"\']+)["\']', content)
+    all_ids = re.findall(r'id=["\']([^"\']+)["\']', content)
+    missing_targets = set(all_hrefs) - set(all_ids)
+    duplicate_ids = len(all_ids) != len(set(all_ids))
+    has_reader_assets = 'book-reader.js' in content and 'book-reader.css' in content
+    has_reader_targets = {'toc-1', 'book-cover'}.issubset(all_ids)
     
-    status = '✅ PASS' if (len(unique_hrefs) == 101 and len(unique_ids) == 101 and has_favicon) else '❌ FAIL'
+    status = '✅ PASS' if (len(unique_hrefs) == 101 and unique_hrefs == unique_ids and has_favicon and not missing_targets and not duplicate_ids and has_reader_assets and has_reader_targets) else '❌ FAIL'
     if status != '✅ PASS': all_html_ok = False
     print(f'{status} {h_name}: {len(unique_hrefs)}/101 目錄跳轉錨點, {len(unique_ids)}/101 課堂目標ID, Favicon關聯: {has_favicon}')
+    print(f'  導覽與閱讀模式：遺失錨點 {len(missing_targets)}，重複ID {duplicate_ids}，閱讀資源 {has_reader_assets}，目錄及封面 {has_reader_targets}')
 
 print('\n=== FINAL VERIFICATION RESULT ===')
 if all_pdf_ok and all_html_ok:
     print('🎉 ALL 5 DELIVERABLES 100% PERFECTLY VERIFIED!')
 else:
     print('⚠️ SOME VERIFICATIONS FAILED!')
+    raise SystemExit(1)

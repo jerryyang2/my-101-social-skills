@@ -575,7 +575,7 @@ intro_html = f"""<!doctype html>
 <body>
 
   <!-- 封面 -->
-  <article class="worksheet-page cover-page">
+  <article class="worksheet-page cover-page" id="book-cover">
     <div>
       <div style="font-size:1.15rem; font-weight:bold; color:#1d4ed8; background:#eff6ff; border:2.5px solid #93c5fd; padding:8px 24px; border-radius:9999px; display:inline-block;">
         ★ OO國小學習教室 · 特殊需求領域（社會技巧）注音學習單全集 ★
@@ -626,7 +626,7 @@ intro_html = f"""<!doctype html>
   </article>
 
   <!-- 目錄 (一·上)：第 01 週 ～ 第 26 週 -->
-  <article class="worksheet-page toc-page">
+  <article class="worksheet-page toc-page" id="toc-1">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">📚 目錄索引（一·上）：52 週社交技巧新課綱</span>
@@ -668,7 +668,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (一·下)：第 27 週 ～ 第 52 週 -->
-  <article class="worksheet-page toc-page">
+  <article class="worksheet-page toc-page" id="toc-2">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">📚 目錄索引（一·下）：52 週社交技巧新課綱</span>
@@ -710,7 +710,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (二·上)：第 53 課 ～ 第 77 課 -->
-  <article class="worksheet-page toc-page toc-page-ideas">
+  <article class="worksheet-page toc-page toc-page-ideas" id="toc-3">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">💡 目錄索引（二·上）：49 堂特殊情境疑難靈感庫</span>
@@ -750,7 +750,7 @@ intro_html += """    </div>
   </article>
 
   <!-- 目錄 (二·下)：第 78 課 ～ 第 101 課 -->
-  <article class="worksheet-page toc-page toc-page-ideas">
+  <article class="worksheet-page toc-page toc-page-ideas" id="toc-4">
     <div class="toc-header">
       <div class="toc-title-row">
         <span class="toc-title-main">💡 目錄索引（二·下）：49 堂特殊情境疑難靈感庫</span>
@@ -1101,7 +1101,7 @@ intro_body_match = re.search(r"<body>([\s\S]*?)</body>", intro_html)
 intro_body = intro_body_match.group(1) if intro_body_match else ""
 full_book_content = intro_body + "\n" + b1_content + "\n" + b2_content + "\n" + b3_content + "\n" + b4_content
 with open(full_html_path, "w", encoding="utf-8") as f_html:
-    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n</head>'))
+    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-reader">\n<script defer src="book-reader.js?v=20261031-reader"></script>\n</head>'))
 
 file_size_mb = os.path.getsize(output_pdf_path) / (1024 * 1024)
 print(f"🎉 MASTER B4 ZHUYIN WORKSHEETS PDF COMPILED SUCCESSFULLY!")
