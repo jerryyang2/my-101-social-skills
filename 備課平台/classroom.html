@@ -9,8 +9,8 @@
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="classroom.css">
-  <link rel="stylesheet" href="teacher-tools.css">
-  <link rel="stylesheet" href="classroom-theme.css?v=20261031-unified">
+  <link rel="stylesheet" href="teacher-tools.css?v=20261031-calm-fit">
+  <link rel="stylesheet" href="classroom-theme.css?v=20261031-teaching-toolbar">
   <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-cursor">
   <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
   <script src="floating-tools/drawing.js?v=20261031-social-cursor" defer></script>
@@ -33,75 +33,79 @@
 
     <label class="classroom-course-picker" for="dateDropdown"><span>換一堂課</span><select class="date-selector-select" id="dateDropdown" title="切換教學日期"></select></label>
 
-    <div class="classroom-controls">
-      <!-- Calm Corner Button -->
-      <button class="c-btn classroom-tool tool-calm" onclick="openCalmCornerModal()" title="開啟呼吸練習、沙漏計時與五感著陸">
-        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg>冷靜通道
-      </button>
-
-      <!-- Giant Whiteboard Mode -->
-      <button class="c-btn classroom-tool tool-whiteboard" onclick="openWhiteboardModal()" title="開啟大字號招式投影卡">
-        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>白板大字
-      </button>
-
-      <!-- Parent & IEP Slip Generator -->
-      <button class="c-btn classroom-tool tool-communication" onclick="openCommunicationModal()" title="開啟親師聯絡與 IEP 評量草稿">
-        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg>親師聯絡
-      </button>
-
-      <!-- Zhuyin Ruby Toggle -->
-      <button class="c-btn c-btn-accent" id="zhuyinToggleBtn" onclick="toggleZhuyin()" title="點擊開啟或關閉國字注音符號">
-        ㄅ 注音：開啟
-      </button>
-
-      <!-- Accessibility Speed Selector -->
-      <select class="c-btn" id="ttsSpeedSelector" onchange="changeTtsSpeed(this.value)" style="font-weight:800; background:#f0fdf4; border-color:#86efac; color:#166534;" title="切換特教語音朗讀速度（適合自閉症與聽覺處理需求）">
-        <option value="0.8">🐢 0.8x 慢速</option>
-        <option value="1.0" selected>⚡ 1.0x 正常</option>
-        <option value="1.2">🐇 1.2x 快速</option>
-      </select>
-
-      <!-- Font Zoom Button -->
-      <button class="c-btn" onclick="toggleSlideFontSize()" title="放大或還原投影片字級（通用設計 UDL 無障礙）" style="font-weight:900; padding:6px 10px;">
-        🔤 字級
-      </button>
-
-      <!-- 3D Island Game Shortcut -->
-      <a class="c-btn classroom-tool tool-island" href="island-game.html" target="_blank" rel="noopener" title="開啟 3D 社交冒險群島遊戲">
-        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>群島大冒險
-      </a>
-
-      <!-- Fullscreen Toggle (Icon Only) -->
-      <button class="c-btn c-icon-btn" onclick="toggleFullscreen()" title="切換全螢幕投影模式" aria-label="全螢幕">
+    <div class="classroom-controls" role="toolbar" aria-label="依上課流程排列的教學工具">
+      <div class="classroom-tool-group tools-present" role="group" aria-label="① 上課呈現">
+        <span class="tool-group-label">① 上課呈現</span>
+        <div class="tool-group-actions">
+<button class="c-btn c-icon-btn" onclick="toggleFullscreen()" title="切換全螢幕投影模式" aria-label="全螢幕">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
         </svg>
       </button>
-
-      <!-- Open in New Tab Fullscreen for Google Sites -->
-      <a class="c-btn" id="openExternalBtn" href="classroom.html" target="_blank" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="在獨立新分頁開啟（大螢幕投影最推薦，滿版無框框）">
+<button class="c-btn classroom-tool tool-whiteboard" onclick="openWhiteboardModal()" title="開啟大字號招式投影卡">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>白板大字
+      </button>
+<details class="classroom-reading-menu">
+            <summary class="c-btn">閱讀設定 <span aria-hidden="true">⌄</span></summary>
+            <div class="classroom-reading-panel">
+              <span class="reading-panel-title">依學生需要調整閱讀</span>
+<button class="c-btn c-btn-accent" id="zhuyinToggleBtn" onclick="toggleZhuyin()" title="點擊開啟或關閉國字注音符號">
+        ㄅ 注音：開啟
+      </button>
+<label class="reading-speed-label" for="ttsSpeedSelector">朗讀速度</label>
+<select class="c-btn" id="ttsSpeedSelector" onchange="changeTtsSpeed(this.value)" style="font-weight:800; background:#f0fdf4; border-color:#86efac; color:#166534;" title="切換特教語音朗讀速度（適合自閉症與聽覺處理需求）">
+        <option value="0.8">🐢 0.8x 慢速</option>
+        <option value="1.0" selected>⚡ 1.0x 正常</option>
+        <option value="1.2">🐇 1.2x 快速</option>
+      </select>
+<button class="c-btn" onclick="toggleSlideFontSize()" title="放大或還原投影片字級（通用設計 UDL 無障礙）" style="font-weight:900; padding:6px 10px;">
+        🔤 字級
+      </button>
+<a class="c-btn" id="openExternalBtn" href="classroom.html" target="_blank" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="在獨立新分頁開啟（大螢幕投影最推薦，滿版無框框）">
         ↗️ 獨立全頁
       </a>
-
-      <!-- Worksheet Shortcut -->
-      <a class="c-btn classroom-tool tool-worksheet" id="classWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener" title="開啟今日彩色圖文學習單">
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-practice" role="group" aria-label="② 練習活動">
+        <span class="tool-group-label">② 練習活動</span>
+        <div class="tool-group-actions">
+<a class="c-btn classroom-tool tool-worksheet" id="classWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener" title="開啟今日彩色圖文學習單">
         <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#copy"></use></svg>今日學習單
       </a>
-
-      <!-- Return to Briefing -->
-      <a class="c-btn classroom-tool tool-prep" href="index.html" id="classPrepLink">
-        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>返回備課平台
+<a class="c-btn classroom-tool tool-island" href="island-game.html" target="_blank" rel="noopener" title="開啟 3D 社交冒險群島遊戲">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>群島大冒險
       </a>
-
-      <!-- 🦁 4 Student Star Widget - Anchored to Far Right, Vertical Dropdown (上下垂直收合，完全不影響其他工具列按鍵) -->
-      <div class="students-star-widget" id="starWidget">
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-feedback" role="group" aria-label="③ 回饋紀錄">
+        <span class="tool-group-label">③ 回饋紀錄</span>
+        <div class="tool-group-actions">
+<div class="students-star-widget" id="starWidget">
         <button class="c-btn star-toggle-btn" id="starToggleBtn" onclick="toggleStarBar(event)" title="收合或展開學生星星列（上下垂直展開，不影響左側工具列按鈕）">
           <span>⭐ 星星</span>
           <span class="star-total-badge" id="classStarTotalBadge">共 0 顆</span>
           <span class="toggle-icon" id="starToggleIcon">▼ 展開</span>
         </button>
         <div class="students-bar" id="topStudentsBar">
-          <!-- Rendered by classroom.js -->
+            <!-- Rendered by classroom.js -->
+          </div>
+        </div>
+<button class="c-btn classroom-tool tool-communication" onclick="openCommunicationModal()" title="開啟親師聯絡與 IEP 評量草稿">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg>親師聯絡
+      </button>
+        </div>
+      </div>
+      <div class="classroom-tool-group tools-support" role="group" aria-label="隨時支援">
+        <span class="tool-group-label">隨時支援</span>
+        <div class="tool-group-actions">
+<button class="c-btn classroom-tool tool-calm" onclick="openCalmCornerModal()" title="開啟呼吸練習、沙漏計時與五感著陸">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg>冷靜通道
+      </button>
+<a class="c-btn classroom-tool tool-prep" href="index.html" id="classPrepLink">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>返回備課平台
+      </a>
         </div>
       </div>
     </div>
@@ -152,6 +156,6 @@
   <script src="zhuyin.js"></script>
   <script src="roleplay-data.js"></script>
   <script src="classroom.js?v=20261031-guide"></script>
-  <script src="teacher-tools.js?v=20261031-guide"></script>
+  <script src="teacher-tools.js?v=20261031-calm-fit"></script>
 </body>
 </html>

@@ -25,13 +25,13 @@
 .social-classroom .lesson-title-text { max-width: none; margin: 5px 0 0; font-size: .97rem; color: #263f34; }
 .classroom-course-picker { min-width: 0; font-size: .72rem; font-weight: 700; color: #58685d; }
 .social-classroom .date-selector-select { display: block; width: 100%; max-width: none; min-height: 36px; border: 1px solid #8ca683; border-radius: 8px; box-shadow: none; background: #edf3e7; color: #284f3b; margin-top: 4px; }
-.social-classroom .classroom-controls { grid-column: 1 / -1; justify-content: flex-start; gap: 8px; min-width: 0; }
+.social-classroom .classroom-controls { grid-column: 1 / -1; align-items: stretch; justify-content: flex-start; gap: 10px; min-width: 0; }
 .social-classroom .classroom-controls .c-btn { font-size: .75rem; }
 .social-classroom .classroom-controls .star-toggle-btn { gap: 3px; font-size: .7rem; }
 .social-classroom .c-btn { min-height: 38px; border-radius: 8px; border-width: 1px; box-shadow: 0 2px 0 #c9d2c3; padding: 6px 10px; font-weight: 700; }
 .social-classroom .c-btn:hover { transform: translateY(-1px); }
 .social-classroom .c-btn:active { transform: translateY(1px); }
-.social-classroom .classroom-controls > :not(.classroom-tool) { order: 1; }
+
 .social-classroom .classroom-tool { background: var(--tool-bg); color: var(--tool-ink, white); border-color: var(--tool-edge); box-shadow: 0 2px 0 var(--tool-edge); gap: 6px; }
 .social-classroom .classroom-tool:hover { background: var(--tool-bg); filter: brightness(1.07); }
 .tool-icon { width: 28px; height: 28px; flex-shrink: 0; }
@@ -41,7 +41,7 @@
 .tool-island { --tool-bg: #087997; --tool-edge: #07576d; }
 .tool-worksheet { --tool-bg: #ffedb1; --tool-edge: #bc974a; --tool-ink: #68491d; }
 .tool-prep { --tool-bg: #ffe0d2; --tool-edge: #bd8168; --tool-ink: #803f2c; }
-.social-classroom .students-star-widget { margin-left: auto; }
+.social-classroom .students-star-widget { margin: 0; }
 .social-classroom .students-bar { border: 1px solid #bca15b; border-radius: 12px; background: #fffdf7; max-height: min(480px, 70dvh); overflow-y: auto; }
 .social-classroom .c-btn-primary { background: #285d4b; border-color: #194735; box-shadow: 0 3px 0 #194735; }
 .social-classroom .c-btn-primary:hover { background: #194735; }
@@ -108,10 +108,10 @@ body.social-classroom.simulated-fullscreen .slide-canvas { max-height: none !imp
   .social-classroom .classroom-header { display: flex; flex-direction: column; align-items: stretch; padding: 14px; }
   .classroom-brand { padding-bottom: 10px; border-bottom: 1px solid #d7dbc5; }
   .social-classroom .lesson-title-text { white-space: normal; line-height: 1.6; }
-  .social-classroom .classroom-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .social-classroom .classroom-controls { display: grid; grid-template-columns: 1fr; gap: 8px; }
   .social-classroom .classroom-controls > * { min-width: 0; width: 100%; box-sizing: border-box; }
   .social-classroom .classroom-controls .c-btn { min-height: 44px; justify-content: center; font-size: .77rem; padding: 5px; }
-  .social-classroom .students-star-widget { grid-column: 1 / -1; margin: 0; }
+  .social-classroom .students-star-widget { margin: 0; }
   .social-classroom .students-bar { width: min(295px, calc(100vw - 40px)); }
   .social-classroom .classroom-controls .c-icon-btn { border-radius: 8px; }
   .social-classroom .slide-viewport { padding: 10px 10px 76px; overflow: visible; display: block; }
@@ -141,4 +141,34 @@ body.social-classroom.simulated-fullscreen .slide-canvas { max-height: none !imp
 
 @media (prefers-reduced-motion: reduce) {
   .social-classroom *, .social-classroom *::before, .social-classroom *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* 按上課流程分組；常用工具直接可見，閱讀設定按需展開。 */
+.classroom-tool-group { min-width: 0; padding: 7px 9px 9px; border: 1px solid #d5dfcb; border-radius: 12px; background: #f2f5eb; }
+.tool-group-label { display: block; margin-bottom: 6px; font-size: .7rem; font-weight: 700; line-height: 1.3; color: #52674d; }
+.tool-group-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; }
+.tools-support { margin-left: auto; background: #fffdf7; }
+.social-classroom .classroom-controls .c-btn { min-height: 44px; line-height: 1.4; text-align: center; }
+.social-classroom .classroom-controls .tool-icon { width: 26px; height: 26px; }
+.social-classroom .classroom-controls .c-icon-btn { width: auto; height: auto; padding: 6px 10px; gap: 6px; }
+.social-classroom .classroom-controls .c-icon-btn::after { content: "全螢幕"; }
+.classroom-reading-menu { position: relative; }
+.classroom-reading-menu > summary { display: flex; gap: 8px; list-style: none; cursor: pointer; }
+.classroom-reading-menu > summary::-webkit-details-marker { display: none; }
+.classroom-reading-menu[open] > summary { background: #e4f2ff; border-color: #14749c; }
+.classroom-reading-panel { position: absolute; left: 0; top: calc(100% + 10px); z-index: 300; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 10px; width: 340px; max-width: calc(100vw - 40px); padding: 14px; background: #fffdf7; border: 1px solid #8ca683; border-radius: 12px; box-shadow: 0 8px 24px #293f3424; }
+.reading-panel-title { grid-column: 1 / -1; font-size: .85rem; font-weight: 700; color: #285d4b; }
+.classroom-reading-panel #zhuyinToggleBtn { grid-column: 1 / -1; }
+.reading-speed-label { font-size: .8rem; color: #52674d; }
+.classroom-reading-panel .c-btn { justify-content: center; white-space: normal; }
+@media (max-width: 1100px) {
+  .social-classroom .classroom-controls { display: grid; grid-template-columns: 1fr 1fr; }
+  .tools-support { margin: 0; }
+}
+@media (max-width: 700px) {
+  .social-classroom .classroom-controls { grid-template-columns: 1fr; }
+  .tool-group-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .tools-present .tool-group-actions { grid-template-columns: 1fr 1fr 1fr; }
+  .classroom-reading-panel { left: auto; right: 0; }
+  .social-classroom .classroom-reading-panel .c-btn { min-height: 44px; }
 }

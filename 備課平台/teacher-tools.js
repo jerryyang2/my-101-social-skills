@@ -146,6 +146,7 @@
   let sensoryTotalSeconds = 180;
   let sensoryRunning = false;
   let breathingCycleCount = 0;
+  let calmReturnFocus = null;
 
   // 取得當前課程資料
   function getCurrentLessonBriefing() {
@@ -182,21 +183,26 @@
       createCalmCornerModalDOM();
       modal = document.getElementById('calmCornerModal');
     }
+    calmReturnFocus = document.activeElement;
+    document.body.classList.add('calm-corner-open');
     modal.style.display = 'flex';
     switchCalmTab('breathe');
-    startBreathingCycle();
+    document.getElementById('calmTabBtn-breathe').focus();
   };
 
   window.closeCalmCornerModal = function() {
     const modal = document.getElementById('calmCornerModal');
     if (modal) modal.style.display = 'none';
+    document.body.classList.remove('calm-corner-open');
+    calmReturnFocus?.focus();
     stopBreathingCycle();
     pauseSensoryTimer();
     CalmAudio.stopRain();
     const rainBtn = document.getElementById('calmRainToggleBtn');
     if (rainBtn) {
       rainBtn.classList.remove('active');
-      rainBtn.innerHTML = '🌧️ 播放細雨白噪音';
+      rainBtn.querySelector('.calm-button-label').textContent = '播放細雨白噪音';
+      rainBtn.setAttribute('aria-pressed', 'false');
     }
   };
 
@@ -206,8 +212,11 @@
     tabs.forEach(t => {
       const btn = document.getElementById(`calmTabBtn-${t}`);
       const pane = document.getElementById(`calmTabPane-${t}`);
-      if (btn) btn.classList.toggle('active', t === tabName);
-      if (pane) pane.style.display = (t === tabName) ? 'block' : 'none';
+      if (btn) {
+        btn.classList.toggle('active', t === tabName);
+        btn.setAttribute('aria-pressed', String(t === tabName));
+      }
+      if (pane) pane.style.display = (t === tabName) ? '' : 'none';
     });
 
     if (tabName === 'breathe') {
@@ -276,6 +285,12 @@
 
   // 視覺沙漏計時器控制 (1 / 3 / 5 分鐘)
   window.setSensoryTimerDuration = function(minutes) {
+    pauseSensoryTimer();
+    document.querySelectorAll('.timer-pill').forEach(btn => {
+      const selected = Number(btn.dataset.minutes) === minutes;
+      btn.classList.toggle('active', selected);
+      btn.setAttribute('aria-pressed', String(selected));
+    });
     sensoryTotalSeconds = minutes * 60;
     sensorySecondsLeft = sensoryTotalSeconds;
     sensoryRunning = false;
@@ -344,6 +359,7 @@
     const checkEl = document.getElementById(`groundingCheck-${index}`);
     if (!checkEl) return;
     const isChecked = checkEl.classList.toggle('checked');
+    checkEl.closest('button').setAttribute('aria-pressed', String(isChecked));
     CalmAudio.playChime();
 
     // 檢查是否全部完成
@@ -366,7 +382,8 @@
       const btn = document.getElementById('calmRainToggleBtn');
       if (btn) {
         btn.classList.toggle('active', isPlaying);
-        btn.innerHTML = isPlaying ? '🌧️ 停止細雨白噪音 (播放中)' : '🌧️ 播放細雨白噪音';
+        btn.querySelector('.calm-button-label').textContent = isPlaying ? '停止細雨白噪音' : '播放細雨白噪音';
+        btn.setAttribute('aria-pressed', String(isPlaying));
       }
     });
   };
@@ -378,23 +395,23 @@
     div.id = 'calmCornerModal';
     div.className = 'teacher-modal-overlay';
     div.innerHTML = `
-      <div class="teacher-modal-content calm-corner-modal">
+      <div class="teacher-modal-content calm-corner-modal" role="dialog" aria-modal="true" aria-labelledby="calmCornerTitle">
         <div class="teacher-modal-header" style="background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);">
-          <div style="display:flex; align-items:center; gap:10px;">
-            <span style="font-size:1.8rem;">🧘</span>
+          <div class="calm-heading">
+            <span class="calm-heading-icon" aria-hidden="true">🧘</span>
             <div>
-              <h2 style="margin:0; font-size:1.35rem; color:#ffffff;">特教即時冷靜通道 · 感官舒緩與情緒急救</h2>
-              <p style="margin:2px 0 0 0; font-size:0.85rem; color:#ccfbf1;">4-7-8 調息光環 · 沉浸視覺沙漏 · 5-4-3-2-1 著陸法 · 零刺激白噪音</p>
+              <h2 id="calmCornerTitle">特教即時冷靜通道 · 感官舒緩與情緒急救</h2>
+              <p class="calm-heading-subtitle">4-7-8 調息光環 · 沉浸視覺沙漏 · 5-4-3-2-1 著陸法 · 零刺激白噪音</p>
             </div>
           </div>
           <button class="modal-close-btn" onclick="closeCalmCornerModal()" title="關閉">✕</button>
         </div>
 
-        <div class="calm-tabs-nav">
-          <button id="calmTabBtn-breathe" class="calm-tab-btn active" onclick="switchCalmTab('breathe')">🌊 4-7-8 調息光環</button>
-          <button id="calmTabBtn-timer" class="calm-tab-btn" onclick="switchCalmTab('timer')">⏳ 沉浸視覺沙漏</button>
-          <button id="calmTabBtn-grounding" class="calm-tab-btn" onclick="switchCalmTab('grounding')">🖐️ 5-4-3-2-1 著陸法</button>
-          <button id="calmRainToggleBtn" class="calm-tab-btn rain-btn" onclick="toggleCalmRain()">🌧️ 播放細雨白噪音</button>
+        <div class="calm-tabs-nav" role="group" aria-label="選擇冷靜練習與背景聲音">
+          <button id="calmTabBtn-breathe" class="calm-tab-btn active" aria-pressed="true" onclick="switchCalmTab('breathe')"><span aria-hidden="true">🌊</span><span class="calm-button-label">4-7-8 調息光環</span></button>
+          <button id="calmTabBtn-timer" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('timer')"><span aria-hidden="true">⏳</span><span class="calm-button-label">沉浸視覺沙漏</span></button>
+          <button id="calmTabBtn-grounding" class="calm-tab-btn" aria-pressed="false" onclick="switchCalmTab('grounding')"><span aria-hidden="true">🖐️</span><span class="calm-button-label">5-4-3-2-1 著陸法</span></button>
+          <button id="calmRainToggleBtn" class="calm-tab-btn rain-btn" aria-pressed="false" onclick="toggleCalmRain()"><span aria-hidden="true">🌧️</span><span class="calm-button-label">播放細雨白噪音</span></button>
         </div>
 
         <div class="calm-modal-body">
@@ -422,16 +439,16 @@
           <div id="calmTabPane-timer" class="calm-tab-pane" style="display:none;">
             <div class="sensory-timer-card">
               <div class="timer-duration-pills">
-                <button class="timer-pill" onclick="setSensoryTimerDuration(1)">⏱️ 1 分鐘 (快速調息)</button>
-                <button class="timer-pill active" onclick="setSensoryTimerDuration(3)">⏱️ 3 分鐘 (常規冷靜)</button>
-                <button class="timer-pill" onclick="setSensoryTimerDuration(5)">⏱️ 5 分鐘 (深度著陸)</button>
+                <button class="timer-pill" data-minutes="1" aria-pressed="false" onclick="setSensoryTimerDuration(1)">⏱️ 1 分鐘 (快速調息)</button>
+                <button class="timer-pill active" data-minutes="3" aria-pressed="true" onclick="setSensoryTimerDuration(3)">⏱️ 3 分鐘 (常規冷靜)</button>
+                <button class="timer-pill" data-minutes="5" aria-pressed="false" onclick="setSensoryTimerDuration(5)">⏱️ 5 分鐘 (深度著陸)</button>
               </div>
               <div class="timer-display-huge" id="sensoryTimerText">03:00</div>
               <div class="sensory-progress-track">
                 <div class="sensory-progress-fill" id="sensoryTimerFill" style="width:0%;"></div>
               </div>
-              <div style="display:flex; justify-content:center; gap:12px; margin-top:20px;">
-                <button id="sensoryTimerToggleBtn" class="btn btn-primary" onclick="toggleSensoryTimer()" style="font-size:1.05rem; padding:10px 24px;">▶️ 開始冷靜倒數</button>
+              <div class="sensory-timer-actions">
+                <button id="sensoryTimerToggleBtn" class="btn btn-primary" onclick="toggleSensoryTimer()">▶️ 開始冷靜倒數</button>
                 <button class="btn btn-outline" onclick="resetSensoryTimer()">🔄 重設</button>
                 <button class="btn btn-outline" onclick="CalmAudio.playBowl()">🔔 鳴響頌缽</button>
               </div>
@@ -440,42 +457,56 @@
 
           <!-- Tab 3: 5-4-3-2-1 著陸法 -->
           <div id="calmTabPane-grounding" class="calm-tab-pane" style="display:none;">
-            <div style="margin-bottom:12px; font-weight:800; color:#0f766e; display:flex; justify-content:space-between;">
+            <div class="grounding-heading">
               <span>🖐️ 五感著陸急救術（幫助學童從急性恐慌/失控回歸當下現實）：</span>
               <span id="groundingStatusText" style="color:#0284c7;">完成進度：0 / 5 項</span>
             </div>
             <div class="grounding-list">
-              <div class="grounding-item-box" onclick="toggleGroundingCheck(5)">
-                <div class="grounding-check" id="groundingCheck-5"></div>
-                <div><strong>👁️ 5 樣看得到的東西：</strong>找到教室裡 5 個藍色或圓圓的物品，用手比一比。</div>
-              </div>
-              <div class="grounding-item-box" onclick="toggleGroundingCheck(4)">
-                <div class="grounding-check" id="groundingCheck-4"></div>
-                <div><strong>🖐️ 4 種摸得到的觸感：</strong>摸摸桌子、自己的衣服、水壺或椅背，感覺是平滑還是粗糙。</div>
-              </div>
-              <div class="grounding-item-box" onclick="toggleGroundingCheck(3)">
-                <div class="grounding-check" id="groundingCheck-3"></div>
-                <div><strong>👂 3 種聽得到的聲音：</strong>閉上眼睛聽聽看，電風扇轉動聲、窗外鳥鳴或老師說話聲。</div>
-              </div>
-              <div class="grounding-item-box" onclick="toggleGroundingCheck(2)">
-                <div class="grounding-check" id="groundingCheck-2"></div>
-                <div><strong>👃 2 種聞得到的氣味：</strong>聞聞自己的手帕、書本或空氣中乾淨的味道。</div>
-              </div>
-              <div class="grounding-item-box" onclick="toggleGroundingCheck(1)">
-                <div class="grounding-check" id="groundingCheck-1"></div>
-                <div><strong>👅 1 次深深的呼吸：</strong>把手放在肚皮上，感受吸氣時肚子圓滾滾，呼氣時慢慢放鬆。</div>
-              </div>
+              <button type="button" class="grounding-item-box" aria-pressed="false" onclick="toggleGroundingCheck(5)">
+                <span class="grounding-check" id="groundingCheck-5"></span>
+                <span><strong>👁️ 5 樣看得到的東西：</strong>找 5 個藍色或圓圓的物品，指給老師看。</span>
+              </button>
+              <button type="button" class="grounding-item-box" aria-pressed="false" onclick="toggleGroundingCheck(4)">
+                <span class="grounding-check" id="groundingCheck-4"></span>
+                <span><strong>🖐️ 4 種摸得到的觸感：</strong>摸桌子、衣服、水壺和椅背，感受觸感。</span>
+              </button>
+              <button type="button" class="grounding-item-box" aria-pressed="false" onclick="toggleGroundingCheck(3)">
+                <span class="grounding-check" id="groundingCheck-3"></span>
+                <span><strong>👂 3 種聽得到的聲音：</strong>聽聽風扇、鳥鳴或老師說話的聲音。</span>
+              </button>
+              <button type="button" class="grounding-item-box" aria-pressed="false" onclick="toggleGroundingCheck(2)">
+                <span class="grounding-check" id="groundingCheck-2"></span>
+                <span><strong>👃 2 種聞得到的氣味：</strong>聞聞手帕、書本或空氣的味道。</span>
+              </button>
+              <button type="button" class="grounding-item-box" aria-pressed="false" onclick="toggleGroundingCheck(1)">
+                <span class="grounding-check" id="groundingCheck-1"></span>
+                <span><strong>👅 1 次深深的呼吸：</strong>手放肚皮，吸氣時鼓起，呼氣時放鬆。</span>
+              </button>
             </div>
           </div>
 
         </div>
 
         <div class="teacher-modal-footer">
-          <span style="font-size:0.85rem; color:#64748b;">🛡️ 特教心法：學生情緒失控時，先處理情緒、再處理問題；先冷靜降溫、不說教評判。</span>
+          <span class="calm-footer-note">🛡️ 特教心法：學生情緒失控時，先處理情緒、再處理問題；先冷靜降溫、不說教評判。</span>
           <button class="btn btn-outline" onclick="closeCalmCornerModal()">完成並返回課堂</button>
         </div>
       </div>
     `;
+    div.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.stopPropagation();
+        closeCalmCornerModal();
+      } else if (event.key === 'Tab') {
+        const buttons = [...div.querySelectorAll('button')].filter(button => button.getClientRects().length);
+        const first = buttons[0], last = buttons[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    });
     document.body.appendChild(div);
   }
 
