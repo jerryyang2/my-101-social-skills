@@ -63,7 +63,7 @@ html[lang="en"] :is(.box-title,.box-tag,.toc-col-skill,.toc-col-domain,.toc-col-
 @media print { html[lang="en"] :is(.lesson-page,.worksheet-page,.cover-page,.toc-page) { break-inside: auto !important; page-break-inside: auto !important; } }
 html[lang="en"] .grounding-item-box strong { margin-right: .25em; }
 /* Keep the planner's compact header and its language control together. */
-.social-garden .site-brand-row { flex: 0 0 270px; width: 270px; gap: 6px; }
+.social-garden .site-brand-row { flex: 0 0 300px; width: 300px; gap: 6px; }
 .social-garden .site-brand-row .brand { flex: 1 1 100%; }
 .social-garden .site-brand-row .site-language-switch { margin-left: 52px; }
 .social-garden .site-brand-row .site-language-switch > span { display: none; }

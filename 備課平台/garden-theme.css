@@ -29,7 +29,7 @@
 .social-garden .brand { gap: 10px; flex: 0 0 250px; min-width: 0; }
 .social-garden a.brand { color: inherit; text-decoration: none; }
 .social-garden .brand-icon { background: none; box-shadow: none; border-radius: 0; flex-shrink: 0; }
-.social-garden .brand-text h1 { font-size: 1.05rem; line-height: 1.4; color: #254d39; letter-spacing: .03em; }
+.social-garden .brand-text h1 { font-size: 1.3rem; line-height: 1.4; color: #254d39; letter-spacing: .03em; }
 .social-garden .brand-text p { font-size: .68rem; line-height: 1.5; margin-top: 3px; }
 .social-garden .header-actions { gap: 10px; }
 .social-garden .btn { min-height: 44px; justify-content: center; padding: 8px 16px !important; border: 1px solid #6e896b !important; border-radius: 8px; font-size: .92rem !important; font-weight: 700 !important; background: #fffdf7 !important; color: #284f3b !important; box-shadow: none !important; transition: background .15s ease; }
@@ -236,7 +236,7 @@
   .social-garden .header-container { padding: 10px 12px; flex-wrap: nowrap; gap: 8px; }
   .social-garden .brand { flex-basis: 112px; gap: 6px; }
   .social-garden .brand-icon { width: 30px; height: 30px; }
-  .social-garden .brand-text h1 { font-size: .8rem; }
+  .social-garden .brand-text h1 { font-size: 1rem; }
   .social-garden .brand-text p { display: none; }
   .social-garden .main-menu .btn { flex-basis: 100px; }
   .social-garden .main-menu .btn { white-space: normal; }

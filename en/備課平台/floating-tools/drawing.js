@@ -161,7 +161,6 @@
           <path d="M14 16H62L38 54v4L62 96H14L38 58v-4Z" fill="none" stroke="#57818a" stroke-width="3" stroke-linejoin="round"/>
           <path d="M11 14v84m54-84v84" stroke="#b18547" stroke-width="4" stroke-linecap="round"/>
           <path d="M9 12H67M9 100H67" stroke="#825d32" stroke-width="8" stroke-linecap="round"/>
-          <path d="M19 23v10m0 46v7" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
           <line class="mft-hourglass-stream" x1="38" y1="50" x2="38" y2="92" stroke="#d49422" stroke-width="2" hidden/>
         </svg>
         <div class="mft-countdown-clock" role="timer" aria-live="off">05:00</div>
