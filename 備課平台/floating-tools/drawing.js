@@ -82,12 +82,24 @@
     const seconds = Math.ceil(Math.max(0, milliseconds) / 1000);
     return `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`;
   }
+  function hourglassSand(remaining, total) {
+    const fraction = total > 0 ? Math.max(0, Math.min(1, remaining / total)) : 0;
+    const width = 20 * Math.sqrt(fraction);
+    const upper = 50 - 30 * Math.sqrt(fraction);
+    const lower = 62 + 30 * Math.sqrt(fraction);
+    return {
+      topPoints: `${38 - width},${upper} ${38 + width},${upper} 38,50`,
+      bottomPoints: `18,92 58,92 ${38 + width},${lower} ${38 - width},${lower}`,
+      streamEnd: lower
+    };
+  }
   if (typeof module !== 'undefined' && module.exports) module.exports = {
     DrawingHistory,
     hitsMark,
     segmentDistance,
     Countdown,
-    timerText
+    timerText,
+    hourglassSand
   };
   if (typeof document === 'undefined') return;
   const handIconURL = new URL('./pointing-hand.svg?v=social-cursor-20261031', document.currentScript.src).href;
@@ -103,13 +115,28 @@
       <button type="button" data-timer-action="close" aria-label="收起並暫停倒數計時器">×</button>
     </header>
     <div class="mft-countdown-body">
-      <div class="mft-countdown-clock" role="timer" aria-live="off">05:00</div>
+      <div class="mft-countdown-visual">
+        <svg class="mft-countdown-hourglass" viewBox="0 0 76 112" aria-hidden="true">
+          <path d="M14 16H62L38 54ZM38 58 62 96H14Z" fill="#e8f3f4"/>
+          <polygon class="mft-hourglass-upper" fill="#dfa331"/>
+          <polygon class="mft-hourglass-lower" fill="#dfa331"/>
+          <path d="M14 16H62L38 54v4L62 96H14L38 58v-4Z" fill="none" stroke="#57818a" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M11 14v84m54-84v84" stroke="#b18547" stroke-width="4" stroke-linecap="round"/>
+          <path d="M9 12H67M9 100H67" stroke="#825d32" stroke-width="8" stroke-linecap="round"/>
+          <path d="M19 23v10m0 46v7" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+          <line class="mft-hourglass-stream" x1="38" y1="50" x2="38" y2="92" stroke="#d49422" stroke-width="2" hidden/>
+        </svg>
+        <div class="mft-countdown-clock" role="timer" aria-live="off">05:00</div>
+      </div>
       <label class="mft-countdown-minutes">設定 <input type="number" min="1" max="40" step="1" value="5" aria-label="倒數分鐘數，1 至 40 分鐘"> 分鐘</label>
       <div class="mft-countdown-actions"><button type="button" data-timer-action="toggle">開始</button><button type="button" data-timer-action="reset">重設</button></div>
       <p class="mft-countdown-status" role="status">準備開始</p>
     </div>`;
     document.body.append(root);
     const clock = root.querySelector('.mft-countdown-clock');
+    const upperSand = root.querySelector('.mft-hourglass-upper');
+    const lowerSand = root.querySelector('.mft-hourglass-lower');
+    const sandStream = root.querySelector('.mft-hourglass-stream');
     const input = root.querySelector('input');
     const toggle = root.querySelector('[data-timer-action=toggle]');
     const status = root.querySelector('.mft-countdown-status');
@@ -131,6 +158,11 @@
       const remaining = countdown.remaining(performance.now());
       if (countdown.running && remaining === 0) { countdown.pause(performance.now()); stopInterval(); }
       clock.textContent = timerText(remaining);
+      const sand = hourglassSand(remaining, countdown.minutes * 60000);
+      upperSand.setAttribute('points', sand.topPoints);
+      lowerSand.setAttribute('points', sand.bottomPoints);
+      sandStream.setAttribute('y2', sand.streamEnd);
+      sandStream.toggleAttribute('hidden', !countdown.running);
       clock.setAttribute('aria-label', `剩餘 ${Math.floor(Math.ceil(remaining / 1000) / 60)} 分 ${Math.ceil(remaining / 1000) % 60} 秒`);
       toggle.textContent = countdown.running ? '暫停' : remaining === countdown.minutes * 60000 || remaining === 0 ? '開始' : '繼續';
       root.dataset.finished = String(remaining === 0);

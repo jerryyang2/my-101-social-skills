@@ -431,11 +431,14 @@
               <div class="breathing-bubble-container">
                 <div id="breathingBubble" class="breathing-bubble inhale" aria-hidden="true">
                   <div class="bubble-inner-glow"></div>
+                  <span class="breathing-turtle">🐢</span>
                 </div>
-                <div id="breathingCountdown" class="breathing-countdown" role="timer" aria-live="off"><strong id="breathingSeconds">4</strong><span>秒</span></div>
               </div>
               <div class="breathing-text-area">
-                <div id="breathingInstruction" class="breathing-main-text" role="status" aria-live="polite">慢慢吸氣</div>
+                <div class="breathing-instruction-row">
+                  <div id="breathingInstruction" class="breathing-main-text" role="status" aria-live="polite">慢慢吸氣</div>
+                  <div id="breathingCountdown" class="breathing-countdown" role="timer" aria-live="off"><strong id="breathingSeconds">4</strong><span>秒</span></div>
+                </div>
                 <div id="breathingSubInstruction" class="breathing-sub-text">像是慢慢聞一朵香香的花，肚子鼓起來……</div>
                 <div id="breathingCycleCounter" class="breathing-cycle-pill">已完成 0 次深呼吸</div>
               </div>
