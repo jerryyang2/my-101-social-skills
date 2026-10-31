@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="island-game.css">
   <link rel="stylesheet" href="platform-theme.css?v=20261031-unified">
-  <link rel="stylesheet" href="island-navigation.css?v=20261031-compact">
+  <link rel="stylesheet" href="island-navigation.css?v=20261031-single-row">
   <script src="island-ui.js?v=20261031-compact" defer></script>
   <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-cursor">
   <script src="floating-tools/magnifier.js?v=social-cursor-20261031" defer></script>
@@ -26,7 +26,6 @@
 
   <!-- 頂部遊戲導覽列 (Topbar) -->
   <header class="game-topbar">
-    <div class="island-header-main">
     <div class="brand-section">
       <a class="brand-logo" href="index.html" aria-label="回到主備課平台"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg></a>
       <div class="brand-info">
@@ -37,48 +36,9 @@
         <p>我的101堂社交技巧課 · 在冒險裡練習交朋友</p>
       </div>
     </div>
-    <details class="platform-menu">
-      <summary>前往平台 <span aria-hidden="true">↗</span></summary>
-      <nav class="platform-navigation" aria-label="離開遊戲，前往其他平台">
-      <a class="platform-link" href="classroom.html">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
-        <span>課堂投影</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="platform-link" href="index.html">
-        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
-        <span>備課平台</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-      </a>
-      </nav>
-    </details>
-    </div>
-
     <div class="top-controls">
       <section class="adventure-tools" aria-labelledby="adventureToolsTitle">
-        <div class="adventure-tools-heading">
-          <h2 id="adventureToolsTitle">遊戲內工具</h2>
-          <details class="game-settings">
-            <summary aria-controls="gameSettingsPanel" aria-label="遊戲設定"><span aria-hidden="true">⚙️</span><span class="settings-label">遊戲設定</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
-            <div class="game-settings-panel" id="gameSettingsPanel">
-              <fieldset class="settings-section">
-                <legend>地圖與鏡頭</legend>
-                <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ 切換 2D 地圖</button>
-                <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="true">🎥 鏡頭跟隨：開</button>
-              </fieldset>
-              <fieldset class="settings-section">
-                <legend>遊戲音效</legend>
-                <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="true">🔊 音效：開</button>
-              </fieldset>
-              <fieldset class="settings-section">
-                <legend>背景天色</legend>
-                <div class="theme-switch-group">
-                  <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" aria-pressed="true">☀️ 晨光</button>
-                  <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" aria-pressed="false">🌅 夕照</button>
-                  <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" aria-pressed="false">🌌 夜海</button>
-                </div>
-              </fieldset>
-            </div>
-          </details>
-        </div>
+        <h2 id="adventureToolsTitle">遊戲內工具</h2>
         <div class="adventure-actions">
           <button type="button" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" aria-controls="passportModalOverlay">
             <span class="adventure-button-icon" aria-hidden="true">📘</span>
@@ -96,8 +56,43 @@
             <span class="adventure-button-arrow" aria-hidden="true">›</span>
           </button>
         </div>
+        <details class="game-settings">
+          <summary aria-controls="gameSettingsPanel" aria-label="遊戲設定"><span aria-hidden="true">⚙️</span><span class="settings-label">遊戲設定</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
+          <div class="game-settings-panel" id="gameSettingsPanel">
+            <fieldset class="settings-section">
+              <legend>地圖與鏡頭</legend>
+              <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ 切換 2D 地圖</button>
+              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="true">🎥 鏡頭跟隨：開</button>
+            </fieldset>
+            <fieldset class="settings-section">
+              <legend>遊戲音效</legend>
+              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="true">🔊 音效：開</button>
+            </fieldset>
+            <fieldset class="settings-section">
+              <legend>背景天色</legend>
+              <div class="theme-switch-group">
+                <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" aria-pressed="true">☀️ 晨光</button>
+                <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" aria-pressed="false">🌅 夕照</button>
+                <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" aria-pressed="false">🌌 夜海</button>
+              </div>
+            </fieldset>
+          </div>
+        </details>
       </section>
     </div>
+    <details class="platform-menu">
+      <summary>前往平台 <span aria-hidden="true">↗</span></summary>
+      <nav class="platform-navigation" aria-label="離開遊戲，前往其他平台">
+        <a class="platform-link" href="classroom.html">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
+          <span>課堂投影</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="platform-link" href="index.html">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
+          <span>備課平台</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </details>
   </header>
 
   <!-- RPG 冒險者頂部狀態 HUD 條 -->

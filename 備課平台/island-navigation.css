@@ -1,11 +1,10 @@
-[data-platform="island"] .game-topbar { padding: 8px 20px 10px; gap: 8px; }
-[data-platform="island"] .island-header-main { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-[data-platform="island"] .brand-section { min-width: 0; gap: 8px; }
+[data-platform="island"] .game-topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; padding: 8px 20px 10px; gap: 8px; }
+[data-platform="island"] .brand-section { grid-column: 1; grid-row: 1; min-width: 0; gap: 8px; }
 [data-platform="island"] .brand-logo { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
 [data-platform="island"] .brand-logo svg { width: 30px; height: 30px; }
 [data-platform="island"] .brand-info h1 { font-size: 1rem; line-height: 1.3; }
 [data-platform="island"] .brand-info :is(p, .badge-isleforge) { display: none; }
-[data-platform="island"] .platform-menu { position: relative; flex-shrink: 0; }
+[data-platform="island"] .platform-menu { grid-column: 2; grid-row: 1; position: relative; flex-shrink: 0; }
 [data-platform="island"] .platform-menu > summary { display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 6px 10px; color: var(--game-muted); font-size: .78rem; font-weight: 700; list-style: none; cursor: pointer; border-left: 1px dashed var(--game-line); }
 [data-platform="island"] .platform-menu > summary::-webkit-details-marker { display: none; }
 [data-platform="island"] .platform-navigation { position: absolute; top: calc(100% + 8px); right: 0; z-index: 70; display: grid; gap: 6px; width: 200px; padding: 10px; border: 1px solid var(--game-line); border-radius: 10px; background: var(--game-card); box-shadow: 0 8px 24px #20342b26; }
@@ -13,10 +12,9 @@
 [data-platform="island"] .platform-link svg { width: 26px; height: 26px; }
 [data-platform="island"] .platform-link:hover { background: var(--paper); border-color: #14749c; }
 [data-platform="island"] .platform-link-arrow { margin-left: auto; color: var(--game-muted); }
-[data-platform="island"] .top-controls { display: block; padding: 0; overflow: visible; min-width: 0; }
+[data-platform="island"] .top-controls { grid-column: 1 / -1; grid-row: 2; display: block; padding: 0; overflow: visible; min-width: 0; }
 [data-platform="island"] .adventure-tools { display: flex; align-items: stretch; gap: 8px; min-width: 0; }
-[data-platform="island"] .adventure-tools-heading { display: contents; }
-[data-platform="island"] .adventure-tools-heading h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+[data-platform="island"] .adventure-tools > h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 [data-platform="island"] .adventure-actions { display: flex; gap: 8px; min-width: 0; }
 [data-platform="island"] .adventure-action.c-game-btn { --action-color: #225777; --action-paper: #e4f2ff; --action-line: #85adca; min-height: 44px; gap: 6px; padding: 6px 14px; border: 1px solid var(--action-line); border-radius: 8px; background: var(--action-paper); color: var(--action-color); box-shadow: 0 2px 0 var(--action-line); white-space: nowrap; }
 [data-platform="island"] .adventure-action.btn-savecode { --action-color: #803f2c; --action-paper: #ffe0d2; --action-line: #bd8168; }
@@ -46,6 +44,13 @@
 [data-platform="island"] .hud-avatar { width: 32px; height: 32px; font-size: 1.5rem; }
 [data-platform="island"] .hud-exp-text { display: none; }
 [data-platform="island"] #map2DView { padding-top: 90px; }
+
+@media (min-width: 1000px) {
+  [data-platform="island"] .game-topbar { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 16px; }
+  [data-platform="island"] .brand-section { order: 0; flex-shrink: 0; margin-right: 12px; }
+  [data-platform="island"] .top-controls { order: 1; flex: 1 1 auto; }
+  [data-platform="island"] .platform-menu { order: 2; }
+}
 
 @media (max-width: 600px) {
   [data-platform="island"] .game-topbar { padding: 6px 10px 8px; gap: 6px; }
