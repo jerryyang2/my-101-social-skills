@@ -444,6 +444,8 @@
     // 建造群島
     buildArchipelago();
     sceneArt = window.SocialIslandArt.build(THREE, scene, islandMeshes, centerMesh, subIslandMeshes);
+    add3DLabel("🧊 Icebreaker Island", sceneArt.icebreaker, 6.5, false, null, () => visitIcebreaker());
+    labels[labels.length - 1].el.classList.add('icebreaker-label');
 
     // 建造 3D 冒險者角色
     buildPlayerCharacter();
@@ -1255,7 +1257,7 @@
   }
 
   // 3D 浮動標籤圖層
-  function add3DLabel(text, obj, yOffset, isCenter, islandIdx) {
+  function add3DLabel(text, obj, yOffset, isCenter, islandIdx, onActivate) {
     const el = document.createElement('button');
     el.type = 'button';
     el.className = `island-3d-label ${isCenter ? 'center' : ''}`;
@@ -1263,6 +1265,7 @@
     el.addEventListener('click', (e) => {
       e.stopPropagation();
       sfx.playClick();
+      if (onActivate) { onActivate(); return; }
       if (isCenter) {
         walkToAndTrigger(0, 0, () => openCitadelModal());
       } else {
@@ -1355,7 +1358,8 @@
       const isHoverSub = subIslandMeshes && raycaster.intersectObjects(subIslandMeshes, true).length > 0;
       const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
       const isHoverResident = sceneArt && raycaster.intersectObjects(sceneArt.residents, true).length > 0;
-      canvas.style.cursor = (isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
+      const isHoverIcebreaker = sceneArt && raycaster.intersectObject(sceneArt.icebreaker, true).length > 0;
+      canvas.style.cursor = (isHoverIcebreaker || isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
     });
 
     canvas.addEventListener('pointercancel', event => gestures.up(event, true));
@@ -1379,6 +1383,10 @@
       mouse.y = -((e.clientY - rect.top) / stage.clientHeight) * 2 + 1;
 
       raycaster.setFromCamera(mouse, camera);
+      if (sceneArt && raycaster.intersectObject(sceneArt.icebreaker, true).length) {
+        visitIcebreaker();
+        return;
+      }
       const residentHits = sceneArt ? raycaster.intersectObjects(sceneArt.residents, true) : [];
       if (residentHits.length) {
         let resident = residentHits[0].object;
@@ -1653,7 +1661,7 @@
     targetYaw = 0.4;
     targetPitch = 0.85;
     targetDist = window.SocialIslandExplorer.overviewDistance(camera?.aspect || 1);
-    cameraGoal?.set(0, 1.8, 0);
+    cameraGoal?.set(0, 1.8, 4);
     synchronizeCameraControls();
     closeQuestDrawer();
   }
@@ -2364,8 +2372,55 @@
       `;
     });
 
-    html += `</div>`;
+    html += `
+      <section class="island-2d-card icebreaker-map-card">
+        <h3>🧊 Icebreaker Island</h3>
+        <p>Warm up and say hello to a new friend.</p>
+        <button type="button" onclick="window.socialGame.openIcebreaker()">Choose a warm-up quest →</button>
+      </section>
+    </div>`;
     container.innerHTML = html;
+  }
+
+  function visitIcebreaker() {
+    if (!sceneArt || state.viewMode === '2d') { openIcebreaker(); return; }
+    const destination = sceneArt.icebreaker.position;
+    walkToAndTrigger(destination.x, destination.z, () => {
+      overviewActive = false;
+      state.cameraFollow = true;
+      cameraMode = 'bird';
+      targetYaw = 0.3;
+      targetPitch = 0.75;
+      targetDist = 32;
+      cameraGoal.y = 1.8;
+      synchronizeCameraControls();
+      openIcebreaker();
+    });
+  }
+
+  function openIcebreaker() {
+    const list = document.getElementById('icebreakerTasks');
+    list.replaceChildren();
+    [1, 2, 12, 51].forEach(week => {
+      const lesson = allWeeks.find(item => item.lessonNumber === week) || allWeeks[week - 1];
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.icebreakerWeek = String(week);
+      const number = document.createElement('span');
+      number.textContent = `Week ${week}`;
+      const title = document.createElement('strong');
+      title.textContent = lesson.title;
+      button.append(number, title);
+      button.addEventListener('click', () => {
+        document.getElementById('icebreakerDialog').close();
+        const index = ISLAND_THEMES.findIndex(theme => week >= theme.weeksRange[0] && week <= theme.weeksRange[1]);
+        openQuestDrawer(index, week);
+      });
+      list.appendChild(button);
+    });
+    document.body.classList.add('modal-open');
+    const dialog = document.getElementById('icebreakerDialog');
+    if (!dialog.open) dialog.showModal();
   }
 
   // 鏡頭跟隨開關
@@ -2583,7 +2638,9 @@
     toggleMotion,
     meetResident,
     openVisitors,
-    changeVisitor
+    changeVisitor,
+    visitIcebreaker,
+    openIcebreaker
   };
 
   // DOM 載入後啟動
@@ -2596,7 +2653,9 @@
       });
     });
     window.addEventListener('pagehide', saveLocalProgress);
-    if (window.location.hash === '#passport') {
+    if (window.location.hash === '#icebreaker') {
+      openIcebreaker();
+    } else if (window.location.hash === '#passport') {
       openPassportModal();
     } else if (window.location.hash === '#citadel') {
       openCitadelModal();

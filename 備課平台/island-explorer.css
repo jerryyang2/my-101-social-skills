@@ -12,6 +12,17 @@
 [data-platform="island"] .hud-stat-pill { padding: 5px 8px; }
 [data-platform="island"] .island-3d-label { font-family: inherit; border: 1px solid #adbc9e; border-radius: 8px; background: #fffcf0; color: #304d43; box-shadow: 0 2px 0 #81927d66; padding: 7px 10px; font-size: .75rem; min-height: 34px; }
 [data-platform="island"] .island-3d-label.center { background: #fff0bd; border-color: #b89b59; color: #705122; }
+[data-platform="island"] .island-3d-label.icebreaker-label { background: #dff4f7; border-color: #669aa9; color: #28586b; }
+[data-platform="island"] .explorer-console .icebreaker-shortcut { background: #e1f1f4; border-color: #6c9daa; color: #28586b; }
+.icebreaker-map-card { padding: 20px; background: #e8f5f5; border-color: #82afb9; }
+.icebreaker-map-card p { margin: 10px 0 16px; color: #426773; line-height: 1.6; }
+.icebreaker-map-card button { min-height: 44px; padding: 10px 14px; font: inherit; font-weight: 700; color: white; background: #3b7685; border: 1px solid #366575; border-radius: 8px; cursor: pointer; }
+.icebreaker-dialog .icebreaker-emblem { display: inline-grid; place-items: center; width: 56px; height: 56px; margin-bottom: 14px; background: #d9eef3; border: 1px solid #90b7c0; border-radius: 15px; font-size: 2rem; }
+.icebreaker-tasks { display: grid; gap: 9px; }
+.explorer-dialog .icebreaker-tasks button { display: grid; gap: 5px; text-align: left; background: #e8f2ee; color: #31584f; padding: 12px 14px; }
+.icebreaker-tasks button span { font-size: .75rem; color: #527b7e; }
+.icebreaker-tasks button strong { font-size: .9rem; line-height: 1.5; }
+.icebreaker-dialog .icebreaker-footnote { font-size: .75rem; color: #627267; margin: 16px 0 0; }
 [data-platform="island"] .explorer-console { position: absolute; top: calc(var(--island-header-height, 62px) + 42px); bottom: 0; right: 0; width: var(--console-width); height: calc(100dvh - var(--island-header-height, 62px) - 42px); z-index: 28; border-left: 1px solid #a8b79e; background: #fbf7eb; color: #314e43; }
 [data-platform="island"] .explorer-console > summary { display: none; }
 [data-platform="island"] .explorer-console-body { padding: 12px; height: calc(100dvh - var(--island-header-height, 62px) - 42px); overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; }

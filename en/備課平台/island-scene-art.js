@@ -155,6 +155,46 @@
       piece(marker, 'sphere', 0x9ba783, [0.7, 0.22, 0.5], [0, 0, 0]);
       piece(marker, 'sphere', 0xf4dfba, [0.3, 0.3, 0.25], [0.15, 0.2, 0]);
     }
+    const icebreaker = group(scene, [0, 0, 29]);
+    icebreaker.name = 'icebreaker-island';
+    icebreaker.userData.topY = 2.05;
+    piece(icebreaker, 'cylinder', 0xd7c6a3, [5.8, 1.45, 5.8], [0, 0.9, 0]);
+    piece(icebreaker, 'cylinder', 0xb9dce4, [6.1, 0.65, 6.1], [0, 1.7, 0]);
+    piece(icebreaker, 'cylinder', 0xffedc0, [3.8, 0.08, 3.8], [0, 2.07, 0]);
+    house(icebreaker, [-2.5, 2.05, -1.8], 0x447d94, 0.95);
+    flowers(icebreaker, [-2.6, 2.05, -0.9], 0xe19b79);
+    tree(icebreaker, [3.6, 2.05, -1.8], 0.95);
+    const welcome = group(icebreaker, [0.6, 2.05, 0.5]);
+    piece(welcome, 'sphere', 0x799c6a, [1.0, 0.65, 1.05], [0, 0.65, 0]);
+    piece(welcome, 'sphere', 0xb6ce8e, [0.65, 0.5, 0.55], [0, 0.9, 0.8]);
+    [-1, 1].forEach(side => {
+      piece(welcome, 'sphere', 0x304f47, [0.07, 0.09, 0.06], [side * 0.24, 1.05, 1.27]);
+      piece(welcome, 'sphere', 0xb6ce8e, [0.35, 0.2, 0.45], [side * 0.8, 0.2, 0.4]);
+      piece(welcome, 'sphere', 0xb6ce8e, [0.3, 0.2, 0.4], [side * 0.7, 0.2, -0.6]);
+    });
+    const turtleSmile = piece(welcome, 'smile', 0x304f47, [1.4, 1.4, 1.4], [0, 0.8, 1.3]);
+    turtleSmile.rotation.z = Math.PI;
+    animated.push({ object: welcome, type: 'friend', base: 2.05, phase: 4 });
+    const booth = group(icebreaker, [0, 2.05, -2.9]);
+    [-3.7, 3.7].forEach(offset => piece(booth, 'cylinder', 0x92764f, [0.09, 3.5, 0.09], [offset, 1.75, 0]));
+    piece(booth, 'box', 0x92764f, [7.5, 0.07, 0.07], [0, 3.45, 0]);
+    for (let banner = 0; banner < 9; banner++) {
+      const pennant = piece(booth, 'cone', [0xe6ad58, 0xd58c79, 0x83b5c1, 0x9eb67d][banner % 4], [0.27, 0.55, 0.07], [-3.25 + banner * 0.81, 3.1, 0]);
+      pennant.rotation.z = Math.PI;
+    }
+    for (let seat = 0; seat < 4; seat++) {
+      const angle = seat / 4 * Math.PI * 2 + 0.35;
+      piece(icebreaker, 'cylinder', [0xe6ad58, 0xd58c79, 0x83b5c1, 0x9eb67d][seat], [0.45, 0.4, 0.45], [Math.cos(angle) * 3.0, 2.28, Math.sin(angle) * 3.0]);
+    }
+    const dice = piece(icebreaker, 'box', 0xfff5db, [0.9, 0.9, 0.9], [3, 2.5, 1.5]);
+    dice.rotation.y = 0.3;
+    [-0.2, 0.2].forEach(offset => piece(dice, 'sphere', 0x47768b, [0.08, 0.08, 0.03], [offset, offset, 0.46]));
+    const dock = group(scene, [0, 0.95, 14.8]);
+    for (let plank = 0; plank < 24; plank++) piece(dock, 'box', plank % 2 ? 0xd1b181 : 0xc6a170, [1.7, 0.12, 0.68], [0, 0, (plank - 11.5) * 0.78]);
+    [-0.9, 0.9].forEach(side => {
+      piece(dock, 'box', 0x937956, [0.07, 0.07, 18.6], [side, 0.8, 0]);
+      [-8, -4, 0, 4, 8].forEach(offset => piece(dock, 'cylinder', 0x937956, [0.075, 1.0, 0.075], [side, 0.36, offset]));
+    });
     const waves = new three.Group();
     for (let wave = 0; wave < 40; wave++) {
       const angle = wave * 2.39996;
@@ -164,6 +204,7 @@
     scene.add(waves);
     return {
       residents,
+      icebreaker,
       animate(time, cameraPosition) {
         animated.forEach(item => {
           item.object.position.y = item.base + Math.sin(time * 0.8 + item.phase) * (item.type === 'boat' ? 0.1 : 0.035);
