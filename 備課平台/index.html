@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
-  <link rel="stylesheet" href="garden-theme.css?v=20261031">
+  <link rel="stylesheet" href="garden-theme.css?v=20261031-color">
 </head>
 <body class="social-garden">
   <a class="skip-link" href="#dailyLesson">跳到今天的課程</a>
@@ -25,20 +25,15 @@
           <p>OO國小學習教室 · 我的101堂社交技巧課</p>
         </div>
       </div>
-      <div class="header-actions">
-        <button class="btn calm-entry" onclick="openCalmCornerModal()"><span aria-hidden="true">◌</span> 先休息一下</button>
-        <a class="btn btn-accent" id="headerLaunchClassBtn" href="classroom.html">進入課堂 <span aria-hidden="true">↗</span></a>
-        <details class="teacher-menu">
-          <summary class="btn">老師工具 <span aria-hidden="true">⌄</span></summary>
-          <div class="teacher-menu-panel">
-            <button class="btn" onclick="openCommunicationModal()">親師聯絡與 IEP</button>
-            <button class="btn" onclick="openAddModal()">新增備課課程</button>
-            <button class="btn" onclick="copyFullLesson()">複製今日教案</button>
-            <a class="btn" href="island-game.html" target="_blank" rel="noopener">群島冒險遊戲 ↗</a>
-            <a class="btn" href="../index.html">返回網站首頁</a>
-          </div>
-        </details>
-      </div>
+      <nav class="header-actions main-menu" aria-label="主選單">
+        <button class="btn menu-calm" onclick="openCalmCornerModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg><span>冷靜通道</span></button>
+        <button class="btn menu-communication" onclick="openCommunicationModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg><span>親師聯絡與 IEP</span></button>
+        <a class="btn menu-island" href="island-game.html" target="_blank" rel="noopener"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg><span>群島大冒險</span></a>
+        <a class="btn menu-classroom" id="headerLaunchClassBtn" href="classroom.html"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg><span>課堂投影與遊戲</span></a>
+        <button class="btn menu-add" onclick="openAddModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#add"></use></svg><span>新增備課課程</span></button>
+        <button class="btn menu-copy" onclick="copyFullLesson()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#copy"></use></svg><span>複製今日教案</span></button>
+        <a class="btn menu-home" href="../index.html"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg><span>返回首頁</span></a>
+      </nav>
     </div>
   </header>
 
@@ -90,10 +85,10 @@
 
       <!-- Quick Filter Pills -->
       <div class="filter-pills">
-        <button class="pill active" data-filter="ALL">全部</button>
-        <button class="pill" data-filter="ASD">自閉症 (ASD)</button>
-        <button class="pill" data-filter="LD">學障 (LD)</button>
-        <button class="pill" data-filter="EBD">情障 (EBD)</button>
+        <button class="pill active" data-filter="ALL" aria-pressed="true"><span aria-hidden="true">▦</span> 全部課程</button>
+        <button class="pill" data-filter="ASD" aria-pressed="false"><span aria-hidden="true">◆</span> 自閉症 (ASD)</button>
+        <button class="pill" data-filter="LD" aria-pressed="false"><span aria-hidden="true">●</span> 學障 (LD)</button>
+        <button class="pill" data-filter="EBD" aria-pressed="false"><span aria-hidden="true">♥</span> 情障 (EBD)</button>
       </div>
 
       <!-- Chronological Date Cards -->
@@ -117,11 +112,11 @@
         </div>
         <figure class="garden-scene">
           <div class="garden-stage" role="group" aria-label="四位動物夥伴，選一位打招呼">
-            <svg class="garden-landscape" viewBox="0 0 560 260" aria-hidden="true"><use href="assets/companions.svg#garden"></use></svg>
-            <button class="garden-friend friend-yu" id="card-yu" type="button" data-companion="yu" aria-label="和小宇打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#lion"></use></svg><span>小宇</span></button>
-            <button class="garden-friend friend-jun" id="card-jun" type="button" data-companion="jun" aria-label="和小畯打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#bear"></use></svg><span>小畯</span></button>
-            <button class="garden-friend friend-he" id="card-he" type="button" data-companion="he" aria-label="和小和打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#panda"></use></svg><span>小和</span></button>
-            <button class="garden-friend friend-jia" id="card-jia" type="button" data-companion="jia" aria-label="和小嘉打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#fox"></use></svg><span>小嘉</span></button>
+            <svg class="garden-landscape" viewBox="0 0 560 260" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#garden"></use></svg>
+            <button class="garden-friend friend-yu" id="card-yu" type="button" data-companion="yu" aria-label="和小宇打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#lion"></use></svg><span>小宇</span></button>
+            <button class="garden-friend friend-jun" id="card-jun" type="button" data-companion="jun" aria-label="和小畯打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#bear"></use></svg><span>小畯</span></button>
+            <button class="garden-friend friend-he" id="card-he" type="button" data-companion="he" aria-label="和小和打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#panda"></use></svg><span>小和</span></button>
+            <button class="garden-friend friend-jia" id="card-jia" type="button" data-companion="jia" aria-label="和小嘉打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#fox"></use></svg><span>小嘉</span></button>
           </div>
           <figcaption class="garden-greeting" aria-live="polite" aria-atomic="true">
             <span id="gardenGreetingHint">點點小夥伴，打個招呼吧！</span>
@@ -133,7 +128,7 @@
         </figure>
 
         <!-- Emotion Weather Station -->
-        <div class="emotion-weather-station">
+        <div class="emotion-weather-station" data-emotion="sunny">
           <div class="emotion-station-header">
             <span class="emotion-station-title">
               <strong>今天心情怎麼樣？</strong>
@@ -142,19 +137,19 @@
             <span id="emotionSelectedStatus" style="font-size:0.82rem; font-weight:900; color:#0284c7; background:#e0f2fe; padding:2px 10px; border-radius:999px;">☀️ 陽光晴朗</span>
           </div>
           <div class="emotion-buttons-row" role="group" aria-label="選擇今天的心情">
-            <button class="emotion-btn active" aria-pressed="true" onclick="selectEmotion('sunny', this)">
+            <button class="emotion-btn active" data-emotion="sunny" aria-pressed="true" onclick="selectEmotion('sunny', this)">
               <span aria-hidden="true">☀️</span><strong>陽光晴朗</strong><small>(元氣充沛)</small>
             </button>
-            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('breezy', this)">
+            <button class="emotion-btn" data-emotion="breezy" aria-pressed="false" onclick="selectEmotion('breezy', this)">
               <span aria-hidden="true">🌤️</span><strong>舒適微風</strong><small>(平靜專注)</small>
             </button>
-            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('rainy', this)">
+            <button class="emotion-btn" data-emotion="rainy" aria-pressed="false" onclick="selectEmotion('rainy', this)">
               <span aria-hidden="true">🌧️</span><strong>偶陣小雨</strong><small>(疲累難過)</small>
             </button>
-            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('stormy', this)">
+            <button class="emotion-btn" data-emotion="stormy" aria-pressed="false" onclick="selectEmotion('stormy', this)">
               <span aria-hidden="true">⚡</span><strong>烏雲雷電</strong><small>(生氣著急)</small>
             </button>
-            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('rainbow', this)">
+            <button class="emotion-btn" data-emotion="rainbow" aria-pressed="false" onclick="selectEmotion('rainbow', this)">
               <span aria-hidden="true">🌈</span><strong>魔法彩虹</strong><small>(信心滿滿)</small>
             </button>
           </div>
@@ -490,6 +485,6 @@
   <script src="roleplay-data.js"></script>
   <script src="app.js"></script>
   <script src="teacher-tools.js"></script>
-  <script src="garden-ui.js?v=20261031"></script>
+  <script src="garden-ui.js?v=20261031-color"></script>
 </body>
 </html>

@@ -3,6 +3,12 @@
 
   const friends = [...document.querySelectorAll('[data-companion]')];
   const greetingHint = document.getElementById('gardenGreetingHint');
+  const header = document.querySelector('.app-header');
+  function updateHeaderHeight() {
+    document.documentElement.style.setProperty('--app-header-height', `${Math.ceil(header.getBoundingClientRect().height)}px`);
+  }
+  new ResizeObserver(updateHeaderHeight).observe(header);
+  updateHeaderHeight();
 
   function greetFriend(companionId) {
     greetingHint.hidden = true;
@@ -19,7 +25,16 @@
 
   document.querySelectorAll('.emotion-btn').forEach(button => {
     button.addEventListener('click', () => {
+      document.querySelector('.emotion-weather-station').dataset.emotion = button.dataset.emotion;
       document.querySelectorAll('.emotion-btn').forEach(option => {
+        option.setAttribute('aria-pressed', String(option === button));
+      });
+    });
+  });
+
+  document.querySelectorAll('.pill').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.pill').forEach(option => {
         option.setAttribute('aria-pressed', String(option === button));
       });
     });
@@ -52,7 +67,14 @@
 
   const courseList = document.getElementById('dateList');
   function labelCourses() {
-    courseList.querySelectorAll('.date-card').forEach(card => {
+    let section = 'weekly';
+    [...courseList.children].forEach(card => {
+      if (card.classList.contains('curriculum-group-header')) {
+        section = card.classList.contains('legacy') ? 'inspiration' : 'weekly';
+        return;
+      }
+      if (!card.classList.contains('date-card')) return;
+      card.dataset.courseSection = section;
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'group');
       card.setAttribute('aria-label', card.querySelector('.date-card-title').textContent);
@@ -66,4 +88,25 @@
   });
   new MutationObserver(labelCourses).observe(courseList, { childList: true });
   labelCourses();
+
+  const studentBank = document.getElementById('indexStudentsBar');
+  const companionIcons = { yu: 'lion', jun: 'bear', he: 'panda', jia: 'fox' };
+  function labelStudentAvatars() {
+    studentBank.querySelectorAll('.chest-avatar').forEach(avatar => {
+      const companionId = avatar.getAttribute('onclick').match(/highFiveMascot\('([a-z]+)'\)/)?.[1];
+      if (!companionIcons[companionId]) return;
+      avatar.dataset.companionAvatar = companionId;
+      avatar.setAttribute('role', 'button');
+      avatar.setAttribute('tabindex', '0');
+      avatar.setAttribute('aria-label', avatar.title);
+      avatar.innerHTML = `<svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#${companionIcons[companionId]}"></use></svg>`;
+    });
+  }
+  studentBank.addEventListener('keydown', event => {
+    if (!event.target.matches('[data-companion-avatar]') || !['Enter', ' '].includes(event.key)) return;
+    event.preventDefault();
+    event.target.click();
+  });
+  new MutationObserver(labelStudentAvatars).observe(studentBank, { childList: true });
+  labelStudentAvatars();
 })();
