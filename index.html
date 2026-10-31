@@ -14,10 +14,10 @@
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
 
-  <link rel="stylesheet" href="備課平台/platform-theme.css?v=20261031-unified">
-  <link rel="stylesheet" href="備課平台/floating-tools/tools.css?v=social-red-20261031">
+  <link rel="stylesheet" href="備課平台/platform-theme.css?v=20261031-portal-compact">
+  <link rel="stylesheet" href="備課平台/floating-tools/tools.css?v=20261031-social-circle">
   <script src="備課平台/floating-tools/magnifier.js?v=social-20261031" defer></script>
-  <script src="備課平台/floating-tools/drawing.js?v=20261031-font" defer></script>
+  <script src="備課平台/floating-tools/drawing.js?v=20261031-social-circle" defer></script>
   <link rel="stylesheet" href="備課平台/focus-mode.css?v=20261031-font">
   <script defer src="備課平台/focus-mode.js?v=20261031-font"></script>
 </head>
@@ -27,7 +27,7 @@
   <!-- Top App Navigation Header -->
   <header class="app-header">
     <div class="header-container">
-      <a href="index.html" class="brand">
+      <a href="備課平台/index.html" class="brand" aria-label="回到主備課平台">
         <div class="brand-icon-box"><img src="favicon.svg" alt="" width="48" height="48"></div>
         <div class="brand-text">
           <h1>
@@ -55,7 +55,7 @@
       <div class="hero-badge-pill">我們的社交練習課</div>
       
       <h1 class="hero-title">
-        交朋友，<br><span class="gradient-text">從一句話開始。</span>
+        交朋友，<span class="gradient-text">從一句話開始。</span>
       </h1>
 
       <p class="hero-subhead">
@@ -63,66 +63,29 @@
       </p>
 
       <p class="hero-lead">
-        聽一段故事、練一句好好說的話，再和同學試試看。老師可以在這裡備課，孩子可以看故事、玩遊戲，一起找到適合自己的交朋友方式。
+        往下看看教學入口、五本線上教材和教學設計，再挑適合今天的練習。
       </p>
 
-      <div class="hero-actions">
-        <a class="hero-btn-large primary" href="備課平台/index.html">
-          <span>老師備課，從這裡開始</span>
-          <span>→</span>
+      <nav class="hero-actions" aria-label="往下探索本頁內容">
+        <a class="hero-btn-large primary" href="#platform-overview">
+          <span>先看看教學入口</span>
+          <span aria-hidden="true">↓</span>
         </a>
-        <a class="hero-btn-large accent" href="備課平台/classroom.html">
-          <span>一起上課</span>
-          <span>→</span>
+        <a class="hero-btn-large accent" href="#course-books">
+          <span>看看五本線上教材</span>
+          <span aria-hidden="true">↓</span>
         </a>
+        <a class="hero-text-link" href="#teaching-support">教學設計與使用方式 ↓</a>
+      </nav>
       </div>
-      </div>
-      <figure class="portal-companions">
-        <figcaption>今天，也一起練習吧！</figcaption>
-        <div class="portal-friend-row">
-          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#lion"></use></svg><span>勇敢開口</span></div>
-          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#bear"></use></svg><span>慢慢來</span></div>
-          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#panda"></use></svg><span>好好聽</span></div>
-          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#fox"></use></svg><span>一起玩</span></div>
-        </div>
-        <p>每一小步，都值得一顆星星。</p>
-      </figure>
 
-      <!-- Key Metrics Stats Bar -->
-      <div class="stats-bar">
-        <div class="stat-card">
-          <div class="stat-num">101 堂</div>
-          <div class="stat-label">完整特教教案庫</div>
-          <div class="stat-desc">52週循序進度 + 49堂專題</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">40 分鐘</div>
-          <div class="stat-label">5 步結構化課堂引導</div>
-          <div class="stat-desc">故事➔招式➔劇場➔實戰➔學習單</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">3 大障別</div>
-          <div class="stat-label">差異化個別鷹架</div>
-          <div class="stat-desc">自閉症 ASD / 學障 LD / 情障 EBD</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">5 大本</div>
-          <div class="stat-label">出版級線上電子書</div>
-          <div class="stat-desc">故事、學習單和教學手冊</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">0 依賴</div>
-          <div class="stat-label">純前端免安裝</div>
-          <div class="stat-desc">觸控大屏 / 平板 / 電腦隨開即教</div>
-        </div>
-      </div>
     </section>
 
     <!-- SECTION 1: 四大核心互動應用系統 (Core Interactive Web Apps) -->
-    <section style="margin-bottom: 24px;">
+    <section id="platform-overview" aria-labelledby="platform-overview-title" style="margin-bottom: 24px;">
       <div class="section-head">
         <span class="section-tag">今天想怎麼練習？</span>
-        <h2 class="section-title">選一個入口，一起開始</h2>
+        <h2 class="section-title" id="platform-overview-title">選一個入口，一起開始</h2>
         <p class="section-desc">備課、上課、寫學習單，或到群島走走，都在這裡。</p>
       </div>
 
@@ -237,8 +200,37 @@
       </div>
     </section>
 
+      <!-- Key Metrics Stats Bar -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-num">101 堂</div>
+          <div class="stat-label">完整特教教案庫</div>
+          <div class="stat-desc">52週循序進度 + 49堂專題</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">40 分鐘</div>
+          <div class="stat-label">5 步結構化課堂引導</div>
+          <div class="stat-desc">故事➔招式➔劇場➔實戰➔學習單</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3 大障別</div>
+          <div class="stat-label">差異化個別鷹架</div>
+          <div class="stat-desc">自閉症 ASD / 學障 LD / 情障 EBD</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5 大本</div>
+          <div class="stat-label">出版級線上電子書</div>
+          <div class="stat-desc">故事、學習單和教學手冊</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">0 依賴</div>
+          <div class="stat-label">純前端免安裝</div>
+          <div class="stat-desc">觸控大屏 / 平板 / 電腦隨開即教</div>
+        </div>
+      </div>
+
     <!-- SECTION 2: 五大出版級線上高解析互動電子書 (5 Published Digital Handbooks) -->
-    <section class="books-section">
+    <section class="books-section" id="course-books">
       <div class="section-head">
         <span class="section-tag">課程小書架</span>
         <h2 class="section-title">故事、練習和老師的小幫手</h2>
@@ -339,7 +331,7 @@
     </section>
 
     <!-- SECTION 3: 特教專業設計理念與教學架構 -->
-    <section style="margin-bottom: 24px;">
+    <section id="teaching-support" style="margin-bottom: 24px;">
       <div class="section-head">
         <span class="section-tag">給老師的小提醒</span>
         <h2 class="section-title">每個孩子，都有適合的練習方式</h2>

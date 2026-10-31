@@ -44,32 +44,25 @@
 .social-portal .btn-classroom { --button-bg: #f5b23e; --button-edge: #b67c24; --button-ink: #482e0c; }
 .social-portal .btn-primary { --button-bg: #ffe0d2; --button-edge: #bd8168; --button-ink: #803f2c; }
 .social-portal :is(.btn, .hero-btn-large, .app-card-btn, .book-read-btn):hover { filter: brightness(.96); }
-.social-portal .portal-main { max-width: 1504px; margin: auto; padding: 36px 32px 64px; }
-.social-portal .hero-section { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 28px 40px; margin-bottom: 52px; }
-.social-portal .hero-badge-pill { color: #9a542b; font-size: .85rem; letter-spacing: .12em; font-weight: 700; margin-bottom: 12px; }
-.social-portal .hero-title { font-size: clamp(2rem, 3.8vw, 3.5rem); line-height: 1.35; letter-spacing: .035em; font-weight: 800; }
+.social-portal .portal-main { max-width: 1504px; margin: auto; padding: 24px 32px 64px; }
+.social-portal .hero-section { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--line); }
+.social-portal .hero-badge-pill { color: #9a542b; font-size: .85rem; letter-spacing: .12em; font-weight: 700; margin-bottom: 8px; }
+.social-portal .hero-title { font-size: clamp(1.8rem, 3.2vw, 2.25rem); line-height: 1.4; letter-spacing: .035em; font-weight: 800; }
 .social-portal .gradient-text { color: #285d4b; }
-.social-portal .hero-subhead { margin-top: 18px; font-size: 1.05rem; font-weight: 700; }
-.social-portal .hero-lead { color: var(--muted); max-width: 580px; margin: 12px 0 24px; font-size: .95rem; line-height: 1.9; }
-.social-portal .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.social-portal .hero-btn-large { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 48px; padding: 12px 18px; border: 1px solid #214d3e; border-radius: 10px; font-weight: 700; font-size: .95rem; background: #285d4b; color: white; box-shadow: 0 3px 0 #163e30; }
+.social-portal .hero-subhead { margin-top: 8px; font-size: 1rem; font-weight: 700; }
+.social-portal .hero-lead { color: var(--muted); max-width: 900px; margin: 6px 0 14px; font-size: .92rem; line-height: 1.8; }
+.social-portal .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.social-portal .hero-text-link { display: inline-flex; align-items: center; min-height: 44px; padding: 8px; color: #225777; font-size: .85rem; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.social-portal :is(#platform-overview, #course-books, #teaching-support) { scroll-margin-top: 24px; }
+.social-portal .hero-btn-large { display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 44px; padding: 10px 16px; border: 1px solid #214d3e; border-radius: 10px; font-weight: 700; font-size: .95rem; background: #285d4b; color: white; box-shadow: 0 3px 0 #163e30; }
 .social-portal .hero-btn-large.accent { color: #482e0c; background: #f5b23e; border-color: #b67c24; box-shadow: 0 3px 0 #b67c24; }
-.social-portal .portal-companions { position: relative; min-width: 0; border: 1px solid #b9c5aa; border-radius: 18px; padding: 28px 18px 22px; background: #fffdf7; box-shadow: 0 5px 0 #dfdfc9; text-align: center; }
-.social-portal .portal-companions figcaption { display: inline-block; padding: 6px 16px; background: #ffedb1; border: 1px solid #bc974a; border-radius: 8px; font-size: 1.05rem; font-weight: 700; color: #68491d; }
-.social-portal .portal-friend-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: 10px; margin: 24px 0 16px; }
-.social-portal .portal-friend svg { display: block; width: 100%; height: auto; max-height: 155px; }
-.social-portal .portal-friend span { display: block; padding: 5px 3px; background: #fff0c9; border: 1px solid #ceaa65; border-radius: 6px; font-size: .85rem; font-weight: 700; }
-.social-portal .portal-friend:nth-child(2) span { background: #ffe0d2; border-color: #ce9a82; }
-.social-portal .portal-friend:nth-child(3) span { background: #e1f3e8; border-color: #8dc4aa; }
-.social-portal .portal-friend:nth-child(4) span { background: #e4f2ff; border-color: #8db9dc; }
-.social-portal .portal-companions p { font-size: .85rem; color: var(--muted); }
-.social-portal .stats-bar { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+.social-portal .stats-bar { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 44px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
 .social-portal .stat-card { padding: 16px 12px; border-right: 1px solid #d8dfcb; text-align: center; }
 .social-portal .stat-card:last-child { border: 0; }
 .social-portal .stat-num { font-size: 1.25rem; color: #285d4b; font-weight: 800; }
 .social-portal .stat-label { font-size: .85rem; font-weight: 700; margin-top: 3px; }
 .social-portal .stat-desc { font-size: .72rem; color: var(--muted); margin-top: 4px; }
-.social-portal .section-head { margin-bottom: 22px; }
+.social-portal .section-head { margin-bottom: 18px; }
 .social-portal .section-tag { display: inline-block; color: #8a592c; font-size: .82rem; font-weight: 700; letter-spacing: .08em; margin-bottom: 6px; }
 .social-portal .section-title { font-size: 1.5rem; line-height: 1.5; color: var(--ink); }
 .social-portal .section-desc { color: var(--muted); font-size: .9rem; margin-top: 8px; }
@@ -195,7 +188,6 @@
   .social-portal .header-container { flex-direction: column; align-items: stretch; }
   .social-portal .apps-grid, .social-portal .books-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .social-portal .students-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .social-portal .hero-section { gap: 24px; }
   [data-platform="island"] .game-hud { left: auto; right: 20px; transform: none; max-width: calc(100% - 190px); }
   [data-platform="island"] .view-hints { bottom: 76px; max-width: calc(100% - 200px); }
 }
@@ -206,10 +198,7 @@
   .social-portal .brand-tag { display: block; margin-left: 0; }
   .social-portal .brand-text p { font-size: .72rem; }
   .social-portal .portal-main { padding: 28px 16px 48px; }
-  .social-portal .hero-section { grid-template-columns: minmax(0, 1fr); margin-bottom: 36px; }
-  .social-portal .hero-title { font-size: 2.3rem; }
-  .social-portal .portal-companions { padding: 22px 14px 18px; }
-  .social-portal .portal-friend svg { max-height: 130px; }
+  .social-portal .hero-title { font-size: 2rem; }
   .social-portal .stats-bar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .social-portal .stat-card { border-bottom: 1px solid #d8dfcb; }
   .social-portal .stat-card:last-child { grid-column: 1 / -1; }
@@ -243,10 +232,8 @@
   .social-portal .brand-text h1 { font-size: 1.05rem; }
   .social-portal .btn { padding: 8px; font-size: .8rem; gap: 5px; }
   .social-portal .btn svg { width: 26px; height: 26px; }
-  .social-portal .hero-actions { flex-direction: column; }
-  .social-portal .hero-title { font-size: 2rem; }
-  .social-portal .portal-friend-row { gap: 5px; }
-  .social-portal .portal-friend span { font-size: .7rem; }
+  .social-portal .hero-actions { align-items: stretch; flex-direction: column; }
+  .social-portal .hero-title { font-size: 1.8rem; }
   .social-portal .apps-grid, .social-portal .books-grid, .social-portal .students-grid { grid-template-columns: minmax(0, 1fr); }
   .social-portal .section-title { font-size: 1.25rem; }
   .social-portal .students-panel { padding: 20px 16px; }

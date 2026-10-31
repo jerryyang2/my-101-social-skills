@@ -183,7 +183,24 @@ html.mft-hand-mode body :not(:where(input,textarea,select,[contenteditable='true
 @media print { .mft-options { display: none !important; } }
 
 .mft-ui { bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); }
-.mft-ui .mft-launcher { background: #c43e36; color: white; }
-.mft-ui .mft-launcher:hover { background: #a82f29; }
+.mft-ui .mft-launcher { width: 60px; height: 60px; border: 2px solid #114e65; border-radius: 50%; background: #176b83; color: white; box-shadow: 0 4px 0 #114e65, 0 0 0 4px #fffdf7e6, 0 8px 24px #174c6433; }
+.mft-ui .mft-launcher:hover { background: #225777; }
+.mft-ui .mft-helper-icon { display: block; width: 40px; height: 40px; pointer-events: none; }
+.mft-ui[data-orientation] .mft-panel { border-color: #96b3c1; border-radius: 18px; background: #fffdf7; box-shadow: 0 4px 0 #c3d5db, 0 10px 30px #174c6426; }
+.mft-ui[data-orientation] .mft-brand-mark { display: flex; flex: 0 0 50px; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 50px; height: 50px; color: #225777; font-size: 11px; font-weight: 700; line-height: 1.2; }
+.mft-ui .mft-brand-mark img { display: block; pointer-events: none; }
+.mft-ui[data-orientation='vertical'] .mft-brand-mark { flex-basis: 50px; }
+.mft-ui[data-orientation] .mft-body { scrollbar-color: #82a6b8 #eef5f7; }
+.mft-ui[data-orientation] :is(.mft-move, .mft-collapse) { color: #225777; background: #e6f1f5; border-color: #b7ced8 !important; }
+.mft-ui[data-orientation] .mft-options-toggle { color: #68491d; background: #fff0c9; border-color: #c8a365; }
+.mft-ui[data-orientation] .mft-options-toggle[aria-expanded='true'] { background: #8c632b; color: #fff; }
+.mft-ui[data-orientation] .mft-tool[aria-pressed='true'], .mft-ui[data-orientation] .mft-actions [aria-pressed='true'] { background: #225777; color: white; border-color: #225777 !important; box-shadow: 0 2px 0 #163e56; }
+.mft-ui .mft-options { border-color: #96b3c1; background: #fffdf7; color: #263f4e; }
+.mft-ui .mft-options-header { color: #225777; }
+.mft-ui .mft-options-header button { background: #e6f1f5; color: #225777; }
+.mft-ui .mft-options .mft-settings { background: #f4f3e9; }
+.mft-ui .mft-width input { accent-color: #225777; }
+.high-contrast-mode .mft-ui .mft-options { background: #18181b; color: #fff; border-color: #facc15; }
+.high-contrast-mode .mft-ui .mft-options-header { color: #fff; }
 .mft-ui .mft-launcher[hidden], .mft-ui .mft-panel[hidden] { display: none !important; }
 @media (max-width: 560px) { .mft-ui { right: 12px; bottom: max(92px, calc(env(safe-area-inset-bottom) + 76px)); } }

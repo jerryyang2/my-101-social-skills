@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
-  <link rel="stylesheet" href="garden-theme.css?v=20261031-sidebar">
+  <link rel="stylesheet" href="garden-theme.css?v=20261031-home-link">
   <link rel="stylesheet" href="course-picker.css?v=20261031-rows">
-  <link rel="stylesheet" href="floating-tools/tools.css?v=social-red-20261031">
+  <link rel="stylesheet" href="floating-tools/tools.css?v=20261031-social-circle">
   <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261031-font" defer></script>
+  <script src="floating-tools/drawing.js?v=20261031-social-circle" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
 </head>
@@ -24,13 +24,13 @@
   <!-- Top App Header -->
   <header class="app-header">
     <div class="header-container">
-      <div class="brand">
+      <a class="brand" href="index.html" aria-label="回到主備課平台">
         <img class="brand-icon" src="favicon.svg" width="44" height="44" alt="">
         <div class="brand-text">
           <h1>我的101堂社交技巧課</h1>
           <p>OO國小學習教室 · 社交技巧備課平台</p>
         </div>
-      </div>
+      </a>
       <nav class="header-actions main-menu" aria-label="主選單">
         <button class="btn menu-calm" onclick="openCalmCornerModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg><span>冷靜通道</span></button>
         <button class="btn menu-communication" onclick="openCommunicationModal()"><svg class="menu-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg><span>親師聯絡與 IEP</span></button>
