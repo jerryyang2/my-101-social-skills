@@ -19,6 +19,7 @@ import os
 import re
 import shutil
 import subprocess
+import tempfile
 import pypdf
 import pypinyin
 from pypinyin import pinyin, Style, load_phrases_dict
@@ -36,7 +37,7 @@ TAIWAN_PHONETIC_DICT = {
 load_phrases_dict(TAIWAN_PHONETIC_DICT)
 
 WEB_DIR = os.path.join(os.path.dirname(__file__), "..", "備課平台")
-ARTIFACT_DIR = "output/artifacts"
+ARTIFACT_DIR = os.environ.get("SOCIAL_SKILLS_ARTIFACT_DIR") or os.path.join(tempfile.gettempdir(), "social-skills-artifacts")
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
 # 1. 讀取 worksheets-data.js

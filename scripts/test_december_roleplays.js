@@ -1,6 +1,7 @@
 import http from "http";
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { spawn } from "child_process";
 
 // Simple static server
@@ -83,7 +84,8 @@ server.listen(8089, async () => {
     await send("Runtime.enable");
 
     const testDates = ["2026-12-02", "2026-12-18", "2026-12-31"];
-    const artifactDir = "output/artifacts";
+    const artifactDir = process.env.SOCIAL_SKILLS_ARTIFACT_DIR || path.join(os.tmpdir(), "social-skills-artifacts");
+    fs.mkdirSync(artifactDir, { recursive: true });
 
     for (const d of testDates) {
       console.log(`\nTesting classroom for date: ${d}...`);

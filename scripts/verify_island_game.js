@@ -2,8 +2,10 @@ const { spawn } = require('child_process');
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
-const ARTIFACT_DIR = 'output/artifacts';
+const ARTIFACT_DIR = process.env.SOCIAL_SKILLS_ARTIFACT_DIR || path.join(os.tmpdir(), 'social-skills-artifacts');
+fs.mkdirSync(ARTIFACT_DIR, { recursive: true });
 
 async function main() {
   const chrome = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', [

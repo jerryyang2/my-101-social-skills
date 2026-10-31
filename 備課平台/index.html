@@ -10,27 +10,34 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
+  <link rel="stylesheet" href="garden-theme.css?v=20261031">
 </head>
-<body>
+<body class="social-garden">
+  <a class="skip-link" href="#dailyLesson">跳到今天的課程</a>
 
   <!-- Top App Header -->
   <header class="app-header">
     <div class="header-container">
       <div class="brand">
-        <div class="brand-icon">🌱</div>
+        <img class="brand-icon" src="favicon.svg" width="44" height="44" alt="">
         <div class="brand-text">
-          <h1>OO國小學習教室｜社交與溝通技巧 備課平台</h1>
-          <p>國小中年級 · 自閉症 (ASD) · 學習障礙 (LD) · 情緒障礙 (EBD) 差異化教學導航</p>
+          <h1>社交技巧備課平台</h1>
+          <p>OO國小學習教室 · 我的101堂社交技巧課</p>
         </div>
       </div>
       <div class="header-actions">
-        <button class="btn" onclick="openCalmCornerModal()" style="background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(16,185,129,0.35);" title="🚨 開啟急性情緒冷靜通道（4-7-8 呼吸光環、視覺沙漏、5-4-3-2-1 五感著陸法、舒緩雨聲白噪音）">🧘 冷靜通道</button>
-        <button class="btn" onclick="openCommunicationModal()" style="background:linear-gradient(135deg, #4f46e5, #4338ca); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(79,70,229,0.35);" title="📝 一鍵生成今日 LINE 聯絡簿通知、特教通報網 IEP 評量草稿與 A4 四合一實體聯絡單">📝 親師聯絡 & IEP</button>
-        <a class="btn" href="island-game.html" target="_blank" style="background:linear-gradient(135deg, #06b6d4, #0284c7); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(6,182,212,0.35);" title="啟動 3D 社交冒險群島遊戲（探索 4 大主題島嶼與 52 關超能力闖關，IsleForge 造島工坊概念）">🏝️ 3D群島大冒險遊戲</a>
-        <a class="btn btn-accent" id="headerLaunchClassBtn" href="classroom.html">🎮 課堂投影與遊戲模式</a>
-        <button class="btn btn-primary" onclick="openAddModal()">➕ 新增備課課程</button>
-        <button class="btn" onclick="copyFullLesson()">📋 複製今日教案</button>
-        <a class="btn" href="../index.html">🏠 返回首頁</a>
+        <button class="btn calm-entry" onclick="openCalmCornerModal()"><span aria-hidden="true">◌</span> 先休息一下</button>
+        <a class="btn btn-accent" id="headerLaunchClassBtn" href="classroom.html">進入課堂 <span aria-hidden="true">↗</span></a>
+        <details class="teacher-menu">
+          <summary class="btn">老師工具 <span aria-hidden="true">⌄</span></summary>
+          <div class="teacher-menu-panel">
+            <button class="btn" onclick="openCommunicationModal()">親師聯絡與 IEP</button>
+            <button class="btn" onclick="openAddModal()">新增備課課程</button>
+            <button class="btn" onclick="copyFullLesson()">複製今日教案</button>
+            <a class="btn" href="island-game.html" target="_blank" rel="noopener">群島冒險遊戲 ↗</a>
+            <a class="btn" href="../index.html">返回網站首頁</a>
+          </div>
+        </details>
       </div>
     </div>
   </header>
@@ -39,10 +46,9 @@
   <main class="app-layout">
     <!-- Left Sidebar: Chronological Date Timeline -->
     <aside class="sidebar">
-      <div class="sidebar-title">
-        <h2>📅 課堂備課歷程</h2>
-        <span style="font-size: 0.75rem; color: var(--text-muted);">按日期與週次排序</span>
-      </div>
+      <details class="course-picker" open>
+        <summary class="sidebar-title"><span>課程小書架</span><span class="course-picker-hint">選課與搜尋 <span aria-hidden="true">⌄</span></span></summary>
+        <div class="course-picker-body">
 
       <!-- 快速跳轉下拉選單 -->
       <div class="sidebar-quick-jump">
@@ -65,7 +71,8 @@
       </div>
 
       <!-- 4 Student Star Bank Chips -->
-      <div class="index-students-container">
+      <details class="index-students-container">
+        <summary>學生星星存摺 <span>展開查看</span></summary>
         <div class="index-students-header">
           <span>⭐ 四位學生代幣存摺：</span>
           <span style="font-size:0.7rem; color:#94a3b8; font-weight:normal;">點擊萌寵擊掌 · ±增減星星</span>
@@ -73,12 +80,12 @@
         <div class="index-students-grid" id="indexStudentsBar">
           <!-- Rendered by app.js -->
         </div>
-      </div>
+      </details>
 
       <!-- Keyword Search -->
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="搜尋主題、關鍵字或日期...">
+        <input type="search" id="searchInput" aria-label="搜尋課程主題、關鍵字或日期" placeholder="找一堂課…">
       </div>
 
       <!-- Quick Filter Pills -->
@@ -93,90 +100,65 @@
       <div class="date-list" id="dateList">
         <!-- Rendered by app.js -->
       </div>
+        </div>
+      </details>
     </aside>
 
     <!-- Right Main Area: Daily Lesson Briefing Content -->
     <section class="main-content">
       
       <!-- Storybook Child-Friendly Welcome Hero & Mascots -->
-      <section class="storybook-welcome-hero">
-        <div class="washi-tape-strip washi-tape-pink"></div>
-        <div class="hero-header-row">
-          <div class="hero-title-box">
-            <span style="font-size:2.4rem; filter:drop-shadow(0 3px 6px rgba(245,158,11,0.3));">🏰</span>
-            <div>
-              <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-                <h2 class="hero-main-title">OO國小特教學習教室 · 社交技巧超能力總部</h2>
-              </div>
-              <p class="hero-subtitle">四位小英雄伴學成長 🌟 點擊萌寵擊掌打氣、測量今日心情天氣瓶！</p>
-            </div>
-          </div>
-          <div style="display:flex; gap:8px; align-items:center;">
-            <button class="btn btn-sm" onclick="celebrateAllMascots()" style="background:#fef08a; border:2px solid #eab308; color:#854d0e; font-weight:900; border-radius:999px; box-shadow:0 3px 0 #ca8a04;">
-              ✨ 全員小英雄大擊掌！
-            </button>
-          </div>
+      <section class="storybook-welcome-hero" aria-labelledby="gardenTitle">
+        <div class="garden-intro">
+          <span class="garden-eyebrow">社交小森林</span>
+          <h2 id="gardenTitle">交朋友，<br><em>從一句話開始。</em></h2>
+          <p>一起練習表達，也練習聽懂彼此。</p>
+          <a class="garden-start" href="#dailyLesson">看今天的課 <span aria-hidden="true">↓</span></a>
         </div>
-
-        <!-- 4 Mascots Interactive Bar -->
-        <div class="mascots-interactive-bar">
-          <!-- 小宇 -->
-          <div class="mascot-avatar-card yu" id="card-yu" onclick="highFiveMascot('yu')" title="點擊跟勇敢小宇擊掌！">
-            <span class="mascot-face-anim">🦁</span>
-            <div class="mascot-name-tag">小宇 <span style="font-size:0.8rem;">⭐</span></div>
-            <span class="mascot-role-badge" style="background:#fef9c3; color:#854d0e;">ASD · 探索小隊長</span>
-            <div class="mascot-speech-bubble-pop" id="bubble-yu">「深呼吸，看著眉心大聲說早安！」</div>
+        <figure class="garden-scene">
+          <div class="garden-stage" role="group" aria-label="四位動物夥伴，選一位打招呼">
+            <svg class="garden-landscape" viewBox="0 0 560 260" aria-hidden="true"><use href="assets/companions.svg#garden"></use></svg>
+            <button class="garden-friend friend-yu" id="card-yu" type="button" data-companion="yu" aria-label="和小宇打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#lion"></use></svg><span>小宇</span></button>
+            <button class="garden-friend friend-jun" id="card-jun" type="button" data-companion="jun" aria-label="和小畯打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#bear"></use></svg><span>小畯</span></button>
+            <button class="garden-friend friend-he" id="card-he" type="button" data-companion="he" aria-label="和小和打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#panda"></use></svg><span>小和</span></button>
+            <button class="garden-friend friend-jia" id="card-jia" type="button" data-companion="jia" aria-label="和小嘉打招呼" aria-pressed="false"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg#fox"></use></svg><span>小嘉</span></button>
           </div>
-          <!-- 小畯 -->
-          <div class="mascot-avatar-card jun" id="card-jun" onclick="highFiveMascot('jun')" title="點擊跟活力小畯擊掌！">
-            <span class="mascot-face-anim">🐻</span>
-            <div class="mascot-name-tag">小畯 <span style="font-size:0.8rem;">🔥</span></div>
-            <span class="mascot-role-badge" style="background:#ffedd5; color:#9a3412;">EBD · 活力小英雄</span>
-            <div class="mascot-speech-bubble-pop" id="bubble-jun">「烏龜縮殼數到十，大腦踩煞車！」</div>
-          </div>
-          <!-- 小和 -->
-          <div class="mascot-avatar-card he" id="card-he" onclick="highFiveMascot('he')" title="點擊跟溫柔小和擊掌！">
-            <span class="mascot-face-anim">🐼</span>
-            <div class="mascot-name-tag">小和 <span style="font-size:0.8rem;">🌱</span></div>
-            <span class="mascot-role-badge" style="background:#d1fae5; color:#065f46;">ASD/LD · 溫柔引航員</span>
-            <div class="mascot-speech-bubble-pop" id="bubble-he">「微笑點頭三次，我們一起慢慢學！」</div>
-          </div>
-          <!-- 小嘉 -->
-          <div class="mascot-avatar-card jia" id="card-jia" onclick="highFiveMascot('jia')" title="點擊跟機智小嘉擊掌！">
-            <span class="mascot-face-anim">🦊</span>
-            <div class="mascot-name-tag">小嘉 <span style="font-size:0.8rem;">💡</span></div>
-            <span class="mascot-role-badge" style="background:#fef3c7; color:#92400e;">ASD · 機智探險家</span>
-            <div class="mascot-speech-bubble-pop" id="bubble-jia">「通關密語請謝謝，交朋友好開心！」</div>
-          </div>
-        </div>
+          <figcaption class="garden-greeting" aria-live="polite" aria-atomic="true">
+            <span id="gardenGreetingHint">點點小夥伴，打個招呼吧！</span>
+            <span id="bubble-yu" hidden>「深呼吸，看著眉心大聲說早安！」</span>
+            <span id="bubble-jun" hidden>「烏龜縮殼數到十，大腦踩煞車！」</span>
+            <span id="bubble-he" hidden>「微笑點頭三次，我們一起慢慢學！」</span>
+            <span id="bubble-jia" hidden>「通關密語請謝謝，交朋友好開心！」</span>
+          </figcaption>
+        </figure>
 
         <!-- Emotion Weather Station -->
         <div class="emotion-weather-station">
           <div class="emotion-station-header">
             <span class="emotion-station-title">
-              <span>🌤️ 今日心情天氣瓶：</span>
-              <span style="font-size:0.8rem; font-weight:700; color:#64748b;">小朋友，今天你心裡的微風吹向哪裡呢？（點擊測量）</span>
+              <strong>今天心情怎麼樣？</strong>
+              <span class="emotion-prompt">選一個最像你的天氣。</span>
             </span>
             <span id="emotionSelectedStatus" style="font-size:0.82rem; font-weight:900; color:#0284c7; background:#e0f2fe; padding:2px 10px; border-radius:999px;">☀️ 陽光晴朗</span>
           </div>
-          <div class="emotion-buttons-row">
-            <button class="emotion-btn active" onclick="selectEmotion('sunny', this)">
-              <span>☀️</span> 陽光晴朗 (元氣充沛)
+          <div class="emotion-buttons-row" role="group" aria-label="選擇今天的心情">
+            <button class="emotion-btn active" aria-pressed="true" onclick="selectEmotion('sunny', this)">
+              <span aria-hidden="true">☀️</span><strong>陽光晴朗</strong><small>(元氣充沛)</small>
             </button>
-            <button class="emotion-btn" onclick="selectEmotion('breezy', this)">
-              <span>🌤️</span> 舒適微風 (平靜專注)
+            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('breezy', this)">
+              <span aria-hidden="true">🌤️</span><strong>舒適微風</strong><small>(平靜專注)</small>
             </button>
-            <button class="emotion-btn" onclick="selectEmotion('rainy', this)">
-              <span>🌧️</span> 偶陣小雨 (疲累難過)
+            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('rainy', this)">
+              <span aria-hidden="true">🌧️</span><strong>偶陣小雨</strong><small>(疲累難過)</small>
             </button>
-            <button class="emotion-btn" onclick="selectEmotion('stormy', this)">
-              <span>⚡</span> 烏雲雷電 (生氣著急)
+            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('stormy', this)">
+              <span aria-hidden="true">⚡</span><strong>烏雲雷電</strong><small>(生氣著急)</small>
             </button>
-            <button class="emotion-btn" onclick="selectEmotion('rainbow', this)">
-              <span>🌈</span> 魔法彩虹 (信心滿滿)
+            <button class="emotion-btn" aria-pressed="false" onclick="selectEmotion('rainbow', this)">
+              <span aria-hidden="true">🌈</span><strong>魔法彩虹</strong><small>(信心滿滿)</small>
             </button>
           </div>
-          <div class="emotion-feedback-box" id="emotionFeedbackBox">
+          <div class="emotion-feedback-box" id="emotionFeedbackBox" role="status">
             <span class="calming-breathing-dot"></span>
             <span id="emotionFeedbackText">太棒了！今天帶著滿滿陽光能量，我們一起施展社交超能力！</span>
           </div>
@@ -184,7 +166,7 @@
       </section>
 
       <!-- Daily Banner -->
-      <article class="daily-banner">
+      <article class="daily-banner" id="dailyLesson" tabindex="-1" aria-labelledby="bannerTitle">
         <div class="washi-tape-strip washi-tape-yellow"></div>
 
         <!-- 頂部快速切換週次／堂數工具列 (Quick Switcher Bar) -->
@@ -230,10 +212,14 @@
         <div class="banner-badges" id="bannerBadges">
           <!-- Rendered by app.js -->
         </div>
-        <div style="margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
-          <button class="btn btn-accent" style="padding:10px 22px; font-size:1rem; box-shadow:0 4px 12px rgba(245,158,11,0.25);" onclick="launchClassroomForCurrent()">
-            🚀 立即開啟今日課堂互動簡報與遊戲模式 →
+        <div class="lesson-actions">
+          <button class="btn btn-accent" onclick="launchClassroomForCurrent()">
+            開始今天的課 <span aria-hidden="true">↗</span>
           </button>
+          <a class="btn" id="bannerWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener">開啟學習單 ↗</a>
+          <details class="teacher-menu lesson-tools">
+            <summary class="btn">備課小工具 <span aria-hidden="true">⌄</span></summary>
+            <div class="teacher-menu-panel">
           <button class="btn" onclick="openQuickBriefingModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(217,119,6,0.35);" title="課前 60 秒極速提要（核心動作口訣、教具檢核、ASD/LD/EBD 三障別防雷指南）">
             ⚡ 60 秒極速備課卡
           </button>
@@ -243,9 +229,8 @@
           <button class="btn" onclick="openCommunicationModal()" style="padding:10px 18px; font-size:1rem; background:linear-gradient(135deg, #4f46e5, #4338ca); color:#fff; font-weight:800; border:none; box-shadow:0 3px 10px rgba(79,70,229,0.35);" title="一鍵生成今日 LINE 聯絡簿通知、特教通報網 IEP 評量草稿與 A4 四合一實體聯絡單">
             📝 親師聯絡單 (4合1)
           </button>
-          <a class="btn" id="bannerWorksheetBtn" href="worksheet.html" target="_blank" style="padding:10px 20px; font-size:1rem; background:#fef08a; border:2px solid #eab308; color:#854d0e; font-weight:800; box-shadow:0 3px 0 #ca8a04;">
-            📄 開啟今日彩色圖文學習單 →
-          </a>
+            </div>
+          </details>
         </div>
       </article>
 
@@ -386,7 +371,7 @@
             <p id="iepText" style="line-height:1.7; margin-right:70px;">載入中...</p>
           </div>
 
-          <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="home-transfer-grid" style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
             <div style="padding:16px; background:#fffbeb; border-radius:var(--radius-md); border:1.5px solid #fde68a; position:relative;">
               <button class="copy-badge" onclick="copyRegularTip()" style="top:12px; right:12px;">📋 複製口訣</button>
               <div style="font-weight:800; font-size:0.92rem; margin-bottom:8px; color:#92400e; display:flex; align-items:center; gap:6px;">
@@ -505,5 +490,6 @@
   <script src="roleplay-data.js"></script>
   <script src="app.js"></script>
   <script src="teacher-tools.js"></script>
+  <script src="garden-ui.js?v=20261031"></script>
 </body>
 </html>
