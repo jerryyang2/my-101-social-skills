@@ -79,6 +79,13 @@ const targetStudents = [
   { id: "jun", name: "畯", emoji: "🐻", classKey: "s-jun", cardKey: "card-jun", color: "#8b5cf6" }
 ];
 
+function classroomCompanion(studentName) {
+  const companions = { "宇": "lion", "畯": "bear", "和": "panda", "嘉": "fox" };
+  const companion = companions[studentName];
+  if (!companion) return "";
+  return `<svg class="classroom-companion" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#${companion}"></use></svg>`;
+}
+
 let studentStars = JSON.parse(localStorage.getItem("student_stars") || '{"yu":0,"he":0,"jia":0,"jun":0}');
 
 // 課堂互動核心狀態
@@ -156,6 +163,7 @@ function updateStarBarState() {
   if (totalBadge) totalBadge.innerText = `共 ${total} 顆`;
 
   if (!widget) return;
+  document.getElementById("starToggleBtn").setAttribute("aria-expanded", String(!isStarBarCollapsed));
   if (isStarBarCollapsed) {
     widget.classList.add("collapsed");
     if (icon) icon.innerText = "▼ 展開";
@@ -284,7 +292,7 @@ function renderTopStudentBar() {
   const studentRows = targetStudents.map(s => `
     <div class="student-pill" style="border-left: 5px solid ${s.color};">
       <div class="student-pill-left">
-        <span class="pill-avatar">${s.emoji}</span>
+        <span class="pill-avatar">${classroomCompanion(s.name)}</span>
         <span class="pill-name-tag">${s.name}</span>
       </div>
       <div class="student-pill-right">
@@ -317,6 +325,9 @@ function renderTopStudentBar() {
 // 更新外部連結（獨立全頁視窗與今日學習單）
 function updateActionLinks() {
   if (!currentBriefing) return;
+  document.querySelectorAll("#classPrepLink, #classroomBrandLink, [data-return-to-prep]").forEach(link => {
+    link.href = `index.html?id=${encodeURIComponent(currentBriefing.id)}`;
+  });
   const openExternalBtn = document.getElementById("openExternalBtn");
   if (openExternalBtn) {
     openExternalBtn.href = `classroom.html?id=${encodeURIComponent(currentBriefing.id)}&slide=${currentSlideIndex}`;
@@ -397,13 +408,14 @@ function renderSlide() {
     document.getElementById("lessonDayBadge").innerText = `第 ${currentBriefing.lessonNumber} 週 · ${currentBriefing.date} (${currentBriefing.dayOfWeek})`;
   }
   document.getElementById("lessonTitleText").innerText = `${currentBriefing.unit} · ${formatCleanLessonTitle(currentBriefing)}`;
+  document.getElementById("lessonTitleText").title = document.getElementById("lessonTitleText").innerText;
 
   // 渲染步驟指示圓點
   const dotsContainer = document.getElementById("slideDots");
   dotsContainer.innerHTML = slideStages.map((s, idx) => `
-    <div class="step-dot ${idx === currentSlideIndex ? "active" : ""}" onclick="goToSlide(${idx})">
-      ${s.icon} ${s.name}
-    </div>
+    <button type="button" class="step-dot ${idx === currentSlideIndex ? "active" : ""}" onclick="goToSlide(${idx})" ${idx === currentSlideIndex ? 'aria-current="step"' : ''} aria-label="第 ${s.step} 步：${s.name}，${s.time}">
+      <span class="step-number" aria-hidden="true">${s.step}</span><span class="step-label">${s.name}<small>${s.time}</small></span>
+    </button>
   `).join("");
 
   // 渲染時間標籤
@@ -1029,7 +1041,7 @@ function renderSlideRolePlay(container) {
             <!-- Card Header: Student & Role Name -->
             <div class="rp-card-header" style="background:${r.studentColor}15; border-bottom:1.5px solid ${r.studentColor}40;">
               <div class="rp-student-tag" style="background:${r.studentColor}; color:#ffffff;">
-                ${r.studentEmoji} ${r.studentName}
+                ${classroomCompanion(r.studentName)} ${r.studentName}
               </div>
               <div class="rp-role-title" style="color:#0f172a;">
                 ${r.name}
@@ -1307,7 +1319,7 @@ function buildDecisionTreeGame(box) {
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; width:100%; margin-bottom:18px;">
       
       <!-- Option A: Impulsive -->
-      <div id="decisionCardImpulsive" onclick="triggerDecision('impulsive')" style="background:#fff; border:3px solid #fecaca; border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(239,68,68,0.08); text-align:left;">
+      <div id="decisionCardImpulsive" role="button" tabindex="0" onclick="triggerDecision('impulsive')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); this.click(); }" style="border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(239,68,68,0.08); text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span style="font-size:1.8rem;">💥</span>
           <strong style="font-size:1.15rem; color:#b91c1c;">${dt.impulsive.title}</strong>
@@ -1319,7 +1331,7 @@ function buildDecisionTreeGame(box) {
       </div>
 
       <!-- Option B: Super Skill -->
-      <div id="decisionCardSuper" onclick="triggerDecision('super')" style="background:#fff; border:3px solid #bbf7d0; border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(16,185,129,0.08); text-align:left;">
+      <div id="decisionCardSuper" role="button" tabindex="0" onclick="triggerDecision('super')" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); this.click(); }" style="border-radius:16px; padding:20px; cursor:pointer; transition:all 0.25s; box-shadow:0 4px 12px rgba(16,185,129,0.08); text-align:left;">
         <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
           <span style="font-size:1.8rem;">🌟</span>
           <strong style="font-size:1.15rem; color:#047857;">${dt.super_skill.title}</strong>
@@ -1762,8 +1774,8 @@ window.checkEmer = function(correct) {
 // Slide 4: 榮譽榜與獎勵 (專屬四位學生代幣板：宇、和、嘉、畯 · 高對比清楚姓名)
 function renderSlideReward(container) {
   const cardsHtml = targetStudents.map(s => `
-    <div class="student-score-card">
-      <div class="card-name-plate">${s.name}</div>
+    <div class="student-score-card" data-companion="${s.id}">
+      <div class="card-name-plate">${classroomCompanion(s.name)} ${s.name}</div>
       <div class="card-star-display">
         <span>⭐</span>
         <span id="score_${s.id}">${studentStars[s.id] || 0}</span>
@@ -1792,7 +1804,7 @@ function renderSlideReward(container) {
       <button class="c-btn" style="background:#fef2f2; border-color:#fecaca; color:#991b1b;" onclick="resetStudentStars()">
         🎁 獎勵兌換完畢（星星歸零）
       </button>
-      <a class="c-btn" href="index.html">
+      <a class="c-btn" href="index.html" data-return-to-prep>
         📋 返回備課平台首頁
       </a>
     </div>
@@ -2072,12 +2084,16 @@ window.toggleFullscreen = function() {
 // 鍵盤左右鍵 / 空白鍵換頁與快速鍵
 function setupKeyboard() {
   document.addEventListener("keydown", (e) => {
+    if (e.target.closest('[role="dialog"], .teacher-modal-overlay, [contenteditable="true"]')) return;
+    if (e.key === " " && e.target.closest('button, a, summary, [role="button"]')) return;
     if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT")) {
       return;
     }
     if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+      e.preventDefault();
       nextSlide();
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
       prevSlide();
     } else if (e.key === "f" || e.key === "F") {
       window.toggleFullscreen();

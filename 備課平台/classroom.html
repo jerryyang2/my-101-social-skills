@@ -10,30 +10,38 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="classroom.css">
   <link rel="stylesheet" href="teacher-tools.css">
+  <link rel="stylesheet" href="classroom-theme.css?v=20261031-unified">
 </head>
-<body>
+<body class="social-classroom">
+  <a class="classroom-skip-link" href="#slideMainContent">跳到課堂內容</a>
 
   <!-- Top Classroom Control Header -->
   <header class="classroom-header">
+    <a class="classroom-brand" href="index.html" id="classroomBrandLink">
+      <img src="favicon.svg" width="38" height="38" alt="">
+      <span><strong>我的101堂社交技巧課</strong><small>備課平台 <span aria-hidden="true">／</span> <b>課堂投影與遊戲</b></small></span>
+    </a>
     <div class="lesson-info">
       <span class="lesson-day-badge" id="lessonDayBadge">載入中...</span>
       <h1 class="lesson-title-text" id="lessonTitleText">課堂互動教學</h1>
     </div>
 
+    <label class="classroom-course-picker" for="dateDropdown"><span>換一堂課</span><select class="date-selector-select" id="dateDropdown" title="切換教學日期"></select></label>
+
     <div class="classroom-controls">
       <!-- Calm Corner Button -->
-      <button class="c-btn" onclick="openCalmCornerModal()" style="background:linear-gradient(135deg, #10b981, #059669); color:#fff; font-weight:900; border-color:#059669; box-shadow:0 2px 8px rgba(16,185,129,0.3);" title="突發情緒急救！開啟冷靜角（4-7-8 呼吸光環、視覺沙漏計時器、5-4-3-2-1 五感著陸、舒緩雨聲白噪音）">
-        🧘 冷靜角
+      <button class="c-btn classroom-tool tool-calm" onclick="openCalmCornerModal()" title="開啟呼吸練習、沙漏計時與五感著陸">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#calm"></use></svg>冷靜通道
       </button>
 
       <!-- Giant Whiteboard Mode -->
-      <button class="c-btn" onclick="openWhiteboardModal()" style="background:#e0f2fe; border-color:#0284c7; color:#0369a1; font-weight:900;" title="切換為電子白板超大字號招式投影卡（專供視知覺障礙、注意力分散學生）">
-        🖥️ 白板大字
+      <button class="c-btn classroom-tool tool-whiteboard" onclick="openWhiteboardModal()" title="開啟大字號招式投影卡">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>白板大字
       </button>
 
       <!-- Parent & IEP Slip Generator -->
-      <button class="c-btn" onclick="openCommunicationModal()" style="background:#ede9fe; border-color:#8b5cf6; color:#5b21b6; font-weight:900;" title="課後一鍵生成 LINE 家長聯絡、IEP 評量草稿與 4合1 實體小單">
-        📝 親師單
+      <button class="c-btn classroom-tool tool-communication" onclick="openCommunicationModal()" title="開啟親師聯絡與 IEP 評量草稿">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#communication"></use></svg>親師聯絡
       </button>
 
       <!-- Zhuyin Ruby Toggle -->
@@ -53,13 +61,9 @@
         🔤 字級
       </button>
 
-      <!-- Quick Switch Date Dropdown -->
-      <select class="date-selector-select" id="dateDropdown" title="切換教學日期"></select>
-
-
       <!-- 3D Island Game Shortcut -->
-      <a class="c-btn" href="island-game.html" target="_blank" style="background:linear-gradient(135deg, #06b6d4, #0284c7); color:#fff; font-weight:900; border-color:#0284c7; box-shadow:0 2px 8px rgba(2,132,199,0.3);" title="登陸 3D 社交冒險群島遊戲（IsleForge 造島工坊概念，探索 4 大主題島嶼與 52 關超能力）">
-        🏝️ 3D群島闖關
+      <a class="c-btn classroom-tool tool-island" href="island-game.html" target="_blank" rel="noopener" title="開啟 3D 社交冒險群島遊戲">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>群島大冒險
       </a>
 
       <!-- Fullscreen Toggle (Icon Only) -->
@@ -75,19 +79,19 @@
       </a>
 
       <!-- Worksheet Shortcut -->
-      <a class="c-btn" id="classWorksheetBtn" href="worksheet.html" target="_blank" style="background:#fef08a; border-color:#eab308; color:#854d0e; font-weight:900;" title="開啟今日彩色圖文學習單（適合課堂勾選與圈選練習）">
-        📄 今日學習單
+      <a class="c-btn classroom-tool tool-worksheet" id="classWorksheetBtn" href="worksheet.html" target="_blank" rel="noopener" title="開啟今日彩色圖文學習單">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#copy"></use></svg>今日學習單
       </a>
 
       <!-- Return to Briefing -->
-      <a class="c-btn c-btn-primary" href="index.html">
-        📋 備課筆記
+      <a class="c-btn classroom-tool tool-prep" href="index.html" id="classPrepLink">
+        <svg class="tool-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>返回備課平台
       </a>
 
       <!-- 🦁 4 Student Star Widget - Anchored to Far Right, Vertical Dropdown (上下垂直收合，完全不影響其他工具列按鍵) -->
       <div class="students-star-widget" id="starWidget">
         <button class="c-btn star-toggle-btn" id="starToggleBtn" onclick="toggleStarBar(event)" title="收合或展開學生星星列（上下垂直展開，不影響左側工具列按鈕）">
-          <span>⭐ 學生星星</span>
+          <span>⭐ 星星</span>
           <span class="star-total-badge" id="classStarTotalBadge">共 0 顆</span>
           <span class="toggle-icon" id="starToggleIcon">▼ 展開</span>
         </button>
@@ -112,14 +116,14 @@
       
       <!-- Slide Top Bar -->
       <div class="slide-top">
-        <div class="slide-step-indicator" id="slideDots">
+        <nav class="slide-step-indicator" id="slideDots" aria-label="課堂五個步驟">
           <!-- Rendered by classroom.js -->
-        </div>
+        </nav>
         <div class="slide-time-tag" id="slideTimeTag">00-08分</div>
       </div>
 
       <!-- Slide Main Interactive Content -->
-      <div class="slide-content" id="slideMainContent">
+      <div class="slide-content" id="slideMainContent" tabindex="-1">
         <!-- Rendered by classroom.js (Stories, Flashcards, Games, Rewards) -->
       </div>
 
@@ -142,7 +146,7 @@
   <script src="app.js"></script>
   <script src="zhuyin.js"></script>
   <script src="roleplay-data.js"></script>
-  <script src="classroom.js"></script>
+  <script src="classroom.js?v=20261031-unified"></script>
   <script src="teacher-tools.js"></script>
 </body>
 </html>
