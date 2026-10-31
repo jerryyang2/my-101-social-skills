@@ -1,4 +1,4 @@
-[data-platform="island"] { --console-width: 194px; height: 100dvh; }
+[data-platform="island"] { --console-width: 194px; position: fixed; inset: 0; height: 100dvh; }
 [data-platform="island"] :is(.explorer-console, .explorer-console-body, .explorer-dialog) { box-sizing: border-box; }
 [data-platform="island"] .game-topbar { flex-wrap: nowrap; gap: 10px; padding: 6px 14px; min-height: 58px; }
 [data-platform="island"] .brand-info h1 { font-size: .88rem; }
@@ -12,9 +12,9 @@
 [data-platform="island"] .hud-stat-pill { padding: 5px 8px; }
 [data-platform="island"] .island-3d-label { font-family: inherit; border: 1px solid #adbc9e; border-radius: 8px; background: #fffcf0; color: #304d43; box-shadow: 0 2px 0 #81927d66; padding: 7px 10px; font-size: .75rem; min-height: 34px; }
 [data-platform="island"] .island-3d-label.center { background: #fff0bd; border-color: #b89b59; color: #705122; }
-[data-platform="island"] .explorer-console { position: absolute; top: calc(var(--island-header-height, 62px) + 42px); bottom: 0; right: 0; width: var(--console-width); z-index: 28; border-left: 1px solid #a8b79e; background: #fbf7eb; color: #314e43; }
+[data-platform="island"] .explorer-console { position: absolute; top: calc(var(--island-header-height, 62px) + 42px); bottom: 0; right: 0; width: var(--console-width); height: calc(100dvh - var(--island-header-height, 62px) - 42px); z-index: 28; border-left: 1px solid #a8b79e; background: #fbf7eb; color: #314e43; }
 [data-platform="island"] .explorer-console > summary { display: none; }
-[data-platform="island"] .explorer-console-body { padding: 12px; height: 100%; overflow-y: auto; scrollbar-width: thin; }
+[data-platform="island"] .explorer-console-body { padding: 12px; height: calc(100dvh - var(--island-header-height, 62px) - 42px); overflow-y: auto; scrollbar-width: thin; overscroll-behavior: contain; }
 [data-platform="island"] .explorer-console h2 { font-size: .78rem; letter-spacing: .04em; margin: 6px 0 9px; }
 [data-platform="island"] .explorer-console h2:not(:first-child) { border-top: 1px dashed #bdc7ad; padding-top: 12px; margin-top: 14px; }
 [data-platform="island"] .explorer-console button { min-height: 40px; border: 1px solid #a6b8a4; border-radius: 7px; background: #fffdf6; color: #35544a; font: inherit; font-size: .76rem; font-weight: 700; cursor: pointer; padding: 6px 5px; }
@@ -68,7 +68,7 @@
   [data-platform="island"] .visitor-strip { padding: 4px 10px; font-size: .72rem; gap: 6px; }
   [data-platform="island"] .visitor-strip button { margin-left: auto; padding: 5px 8px; }
   [data-platform="island"] .visitor-strip strong { max-width: 7em; }
-  [data-platform="island"] .explorer-console { top: auto; bottom: 12px; right: 10px; width: 132px; border: 0; border-radius: 10px; }
+  [data-platform="island"] .explorer-console { top: auto; bottom: 12px; right: 10px; width: 132px; height: auto; border: 0; border-radius: 10px; }
   [data-platform="island"] .explorer-console > summary { display: flex; justify-content: space-between; align-items: center; min-height: 44px; padding: 9px 12px; font-size: .8rem; font-weight: 800; border: 1px solid #9aac90; border-radius: 9px; cursor: pointer; }
   [data-platform="island"] .explorer-console-body { position: absolute; bottom: 52px; right: 0; width: 210px; height: auto; max-height: calc(100dvh - var(--island-header-height) - 110px); border: 1px solid #9aac90; border-radius: 12px; background: #fbf7eb; box-shadow: 0 8px 32px #314c3b33; }
   [data-platform="island"] .rpg-hud-bar { top: calc(var(--island-header-height) + 50px); left: 8px; padding: 4px; max-width: calc(100% - 16px); }
