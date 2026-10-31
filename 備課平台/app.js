@@ -8783,6 +8783,17 @@ function getActiveBriefing() {
   return currentBriefings.find(b => b.id === activeBriefingId) || currentBriefings[0];
 }
 
+function getUpcomingBriefing(briefings, now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Taipei", year: "numeric", month: "2-digit", day: "2-digit"
+  }).formatToParts(now);
+  const calendar = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  const today = `${calendar.year}-${calendar.month}-${calendar.day}`;
+  const scheduled = briefings.filter(briefing => !briefing.legacy && /^\d{4}-\d{2}-\d{2}$/.test(briefing.date || ""))
+    .sort((first, second) => first.date.localeCompare(second.date));
+  return scheduled.find(briefing => briefing.date >= today) || scheduled[scheduled.length - 1] || briefings[0];
+}
+
 // 渲染側邊欄清單
 function renderSidebar() {
   const container = document.getElementById("dateList");
@@ -8926,6 +8937,7 @@ window.stepBriefing = function(delta) {
 window.selectBriefingById = function(id) {
   const found = currentBriefings.find(b => b.id === id);
   if (found) {
+    window.stopIndexSpeech?.();
     activeBriefingId = id;
     renderSidebar();
     renderMainContent();
@@ -9811,6 +9823,8 @@ window.stopIndexSpeech = function() {
     activeIndexSpeechTimer = null;
   }
   if (indexLiveAudio) {
+    indexLiveAudio.onended = null;
+    indexLiveAudio.onerror = null;
     try {
       indexLiveAudio.pause();
       indexLiveAudio.currentTime = 0;
@@ -9827,6 +9841,7 @@ window.stopIndexSpeech = function() {
 
 window.playIndexUniversalSpeech = async function(text, mode) {
   window.stopIndexSpeech();
+  const sessionId = indexSpeechSessionId;
 
   let cleanText = text
     .replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, "")
@@ -9843,7 +9858,7 @@ window.playIndexUniversalSpeech = async function(text, mode) {
   updateIndexTtsButtons();
 
   const preferredGender = localStorage.getItem("preferred_tts_gender") || "female";
-  const b = (typeof currentBriefing !== "undefined" && currentBriefing) ? currentBriefing : (typeof defaultBriefings !== "undefined" ? defaultBriefings[0] : null);
+  const b = getActiveBriefing();
   const audioKey = b ? b.id : "";
 
   // 1. 優先播放預錄廣播級配音員音檔
@@ -9851,9 +9866,8 @@ window.playIndexUniversalSpeech = async function(text, mode) {
     const staticAudioUrl = `audio/${mode}_${preferredGender}_${audioKey}.mp3`;
     let fallbackHandled = false;
     const fallbackToWebSpeech = () => {
-      if (fallbackHandled) return;
+      if (fallbackHandled || sessionId !== indexSpeechSessionId || indexSpeechMode !== mode) return;
       fallbackHandled = true;
-      indexLiveAudio = null;
       window.speakIndexQueue(cleanText, mode);
     };
 
@@ -9862,6 +9876,7 @@ window.playIndexUniversalSpeech = async function(text, mode) {
       indexLiveAudio = audio;
 
       audio.onended = () => {
+        if (sessionId !== indexSpeechSessionId || indexLiveAudio !== audio) return;
         indexSpeechMode = null;
         indexLiveAudio = null;
         updateIndexTtsButtons();
@@ -9875,7 +9890,7 @@ window.playIndexUniversalSpeech = async function(text, mode) {
       const p = audio.play();
       if (p !== undefined) {
         p.then(() => {
-          updateIndexTtsButtons();
+          if (sessionId === indexSpeechSessionId) updateIndexTtsButtons();
         }).catch(() => {
           fallbackToWebSpeech();
         });
@@ -10007,27 +10022,13 @@ window.changeVoiceGender = function(gender) {
   if (sel2) sel2.value = gender;
 };
 
-window.stopIndexSpeech = function() {
-  if (window.speechSynthesis) {
-    window.speechSynthesis.cancel();
-  }
-  window._indexActiveUtterances = [];
-  indexSpeechMode = null;
-  updateIndexTtsButtons();
-};
-
 window.speakIndexQueue = function(text, mode) {
+  window.stopIndexSpeech();
   if (!window.speechSynthesis) {
     alert("您的瀏覽器尚未支援語音朗讀功能，建議使用 Chrome 或 Edge 瀏覽器。");
     return;
   }
-  if (activeIndexSpeechTimer) {
-    clearTimeout(activeIndexSpeechTimer);
-    activeIndexSpeechTimer = null;
-  }
-  const sessionId = ++indexSpeechSessionId;
-  window.speechSynthesis.cancel();
-  window._indexActiveUtterances = [];
+  const sessionId = indexSpeechSessionId;
 
   let cleanText = text
     .replace(/[\u{1F300}-\u{1F9FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, "")
@@ -10104,7 +10105,8 @@ window.toggleIndexStorySpeech = function() {
   if (indexSpeechMode === "story") {
     window.stopIndexSpeech();
   } else {
-    const b = currentBriefing || briefingsData[0];
+    const b = getActiveBriefing();
+    if (!b) return;
     const story = b.story || { title: b.title, content: b.summary };
     const fullText = `${story.title}。${story.content}`;
     window.playIndexUniversalSpeech(fullText, "story");
@@ -10115,7 +10117,8 @@ window.toggleIndexQuestionSpeech = function() {
   if (indexSpeechMode === "question") {
     window.stopIndexSpeech();
   } else {
-    const b = currentBriefing || briefingsData[0];
+    const b = getActiveBriefing();
+    if (!b) return;
     const story = b.story || { question: "如果遇到這種狀況，你會怎麼做？" };
     window.playIndexUniversalSpeech(story.question, "question");
   }
@@ -10156,10 +10159,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return; // classroom.html 或其他頁面僅引入資料，不執行首頁初始化
   }
   loadSavedData();
+  activeBriefingId = getUpcomingBriefing(currentBriefings)?.id || activeBriefingId;
   const urlParams = new URLSearchParams(window.location.search);
   const targetId = urlParams.get("id") || urlParams.get("date") || urlParams.get("lesson");
   if (targetId) {
-    const found = defaultBriefings.find(b => b.id === targetId || b.date === targetId || String(b.lessonNumber) === targetId);
+    const found = currentBriefings.find(b => b.id === targetId || b.date === targetId || String(b.lessonNumber) === targetId);
     if (found) activeBriefingId = found.id;
   }
   setupFilters();
