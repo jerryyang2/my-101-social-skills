@@ -18,6 +18,11 @@
 .focus-toggle:hover { background: #e4f2ff; }
 .focus-toggle:focus-visible { outline: 3px solid #e69a16; outline-offset: 4px; }
 .lesson-focus .focus-toggle { background: #225777; color: white; }
+.focus-font-controls { position: fixed; left: 156px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 100020; display: flex; gap: 4px; padding: 3px; border: 1px solid #9eafa6; border-radius: 12px; background: #fffdf7; }
+.focus-font-controls[hidden] { display: none !important; }
+.focus-font-controls button { min-width: 44px; min-height: 44px; padding: 6px 10px; border: 0; border-radius: 8px; background: #e4f2ff; color: #225777; font: 700 16px/1.3 "PingFang TC", system-ui, sans-serif; cursor: pointer; touch-action: manipulation; }
+.focus-font-controls button:focus-visible { outline: 3px solid #e69a16; outline-offset: 2px; }
+.focus-font-controls button:disabled { opacity: .4; cursor: default; }
 .focus-fallback { position: fixed; inset: 0; overflow: auto; }
 .focus-fallback body { min-height: 100dvh; }
 
@@ -30,17 +35,23 @@ body.lesson-focus > :is(.app-header, .classroom-header, .manual-nav, .screen-too
 body.lesson-focus.social-classroom { height: 100dvh; min-height: 0; overflow: hidden; }
 body.lesson-focus.social-classroom .slide-viewport { flex: 1; min-height: 0; height: 100dvh !important; max-height: none !important; padding: 12px 64px 68px; }
 body.lesson-focus.social-classroom .slide-canvas { width: 100%; max-width: none; height: 100%; max-height: none !important; }
+.lesson-focus.social-classroom .step-dot { font-size: 13.6px; }
+.lesson-focus.social-classroom .step-number { font-size: 12.8px; }
+.lesson-focus.social-classroom .step-label small { font-size: 10px; }
 .lesson-focus .sheet-wrapper { padding: 20px 16px 84px; }
 .lesson-focus .manual-container { margin-top: 16px; padding-bottom: 84px; }
 .lesson-focus .portal-main { padding-bottom: 84px; }
 body:has(#stage) .focus-toggle { left: 50%; transform: translateX(-50%); }
+body:has(#stage) .focus-font-controls { left: 50%; bottom: 72px; transform: translateX(-50%); }
 
 @media (max-width: 700px) {
   .focus-toggle { padding: 10px 12px; font-size: 14px; }
-  body.lesson-focus.social-classroom .slide-viewport { padding: 8px 8px 68px; }
-  .lesson-focus.social-garden .main-content { padding: 16px 12px 84px; }
+  .focus-font-controls { left: 16px; bottom: 72px; }
+  body.lesson-focus.social-classroom .slide-viewport { padding: 8px 8px 132px; }
+  .lesson-focus.social-garden .main-content { padding: 16px 12px 144px; }
+  .lesson-focus .sheet-wrapper, .lesson-focus .manual-container, .lesson-focus .portal-main { padding-bottom: 144px; }
 }
 
 @media print {
-  .focus-toggle { display: none !important; }
+  .focus-toggle, .focus-font-controls { display: none !important; }
 }

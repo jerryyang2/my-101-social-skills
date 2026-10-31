@@ -7,6 +7,19 @@
     toggle.className = 'focus-toggle';
     toggle.setAttribute('aria-pressed', 'false');
     document.body.appendChild(toggle);
+    const fontControls = document.createElement('div');
+    fontControls.className = 'focus-font-controls';
+    fontControls.setAttribute('role', 'group');
+    fontControls.setAttribute('aria-label', '字級調整');
+    fontControls.hidden = true;
+    fontControls.innerHTML = '<button type="button" data-size="smaller" aria-label="縮小字級">A−</button><button type="button" data-size="reset" aria-label="還原字級" title="還原字級" aria-live="polite">100%</button><button type="button" data-size="larger" aria-label="放大字級">A＋</button>';
+    document.body.appendChild(fontControls);
+    const smaller = fontControls.querySelector('[data-size="smaller"]');
+    const larger = fontControls.querySelector('[data-size="larger"]');
+    const reset = fontControls.querySelector('[data-size="reset"]');
+    let fontScale = 100;
+    let rootFontSize = null;
+    let previousFontSize = '';
     let simulated = false;
     let pending = false;
     let previousFocus = null;
@@ -18,6 +31,15 @@
 
     function synchronize() {
       const active = Boolean(fullscreenElement() || simulated);
+      if (active && rootFontSize === null) {
+        previousFontSize = document.documentElement.style.fontSize;
+        rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+      } else if (!active && rootFontSize !== null) {
+        document.documentElement.style.fontSize = previousFontSize;
+        rootFontSize = null;
+      }
+      fontControls.hidden = !active;
+      applyFontScale();
       document.body.classList.toggle('lesson-focus', active);
       document.documentElement.classList.toggle('focus-fallback', simulated);
       toggle.textContent = active ? '⤡ 離開全螢幕' : '⛶ 全螢幕';
@@ -32,6 +54,27 @@
       }
       window.dispatchEvent(new Event('resize'));
     }
+
+    function applyFontScale() {
+      if (rootFontSize !== null) document.documentElement.style.fontSize = `${rootFontSize * fontScale / 100}px`;
+      smaller.disabled = fontScale <= 80;
+      larger.disabled = fontScale >= 180;
+      reset.textContent = `${fontScale}%`;
+      reset.setAttribute('aria-label', `還原字級，目前 ${fontScale}%`);
+    }
+
+    function resizeText(nextScale) {
+      fontScale = Math.max(80, Math.min(180, nextScale));
+      applyFontScale();
+      window.dispatchEvent(new Event('resize'));
+    }
+
+    smaller.addEventListener('click', () => resizeText(fontScale - 10));
+    larger.addEventListener('click', () => resizeText(fontScale + 10));
+    reset.addEventListener('click', () => resizeText(100));
+    fontControls.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') event.stopPropagation();
+    });
 
     async function toggleFocus() {
       if (pending) return;

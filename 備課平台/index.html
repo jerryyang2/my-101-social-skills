@@ -11,12 +11,12 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="teacher-tools.css">
   <link rel="stylesheet" href="garden-theme.css?v=20261031-sidebar">
-  <link rel="stylesheet" href="course-picker.css?v=20261031-sidebar">
+  <link rel="stylesheet" href="course-picker.css?v=20261031-rows">
   <link rel="stylesheet" href="floating-tools/tools.css?v=social-red-20261031">
   <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
-  <script src="floating-tools/drawing.js?v=20261031-focus" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=20261031-focus">
-  <script defer src="focus-mode.js?v=20261031-focus"></script>
+  <script src="floating-tools/drawing.js?v=20261031-font" defer></script>
+  <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
+  <script defer src="focus-mode.js?v=20261031-font"></script>
 </head>
 <body class="social-garden">
   <a class="skip-link" href="#dailyLesson">跳到今天的課程</a>
@@ -47,8 +47,7 @@
   <main class="app-layout">
     <!-- Left Sidebar: Chronological Date Timeline -->
     <aside class="sidebar">
-      <section class="course-picker" aria-labelledby="coursePickerTitle">
-        <h2 class="course-picker-title" id="coursePickerTitle">選課與搜尋</h2>
+      <section class="course-picker" aria-label="課程選擇">
         <div class="course-picker-body">
 
       <!-- 快速跳轉下拉選單 -->
@@ -74,10 +73,6 @@
       <!-- 4 Student Star Bank Chips -->
       <details class="index-students-container">
         <summary><span class="student-bank-label">⭐ 學生星星存摺</span><span class="disclosure-action"><span class="when-closed">展開</span><span class="when-open">收合</span><span class="disclosure-chevron" aria-hidden="true"></span></span></summary>
-        <div class="index-students-header">
-          <span>⭐ 四位學生代幣存摺：</span>
-          <span style="font-size:0.7rem; color:#94a3b8; font-weight:normal;">點擊萌寵擊掌 · ±增減星星</span>
-        </div>
         <div class="index-students-grid" id="indexStudentsBar">
           <!-- Rendered by app.js -->
         </div>

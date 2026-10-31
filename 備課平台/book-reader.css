@@ -28,28 +28,10 @@
   }
   .book-reader-nav a:hover { background: #e4f2ff; }
   .book-reader-nav a:focus-visible { outline: 3px solid #e69a16; outline-offset: 2px; }
-  .book-reader-notice {
-    position: fixed;
-    left: 50%;
-    bottom: 90px;
-    transform: translateX(-50%);
-    z-index: 100030;
-    width: max-content;
-    max-width: calc(100vw - 32px);
-    box-sizing: border-box;
-    margin: 0;
-    padding: 12px 16px;
-    border-radius: 10px;
-    color: white;
-    background: #263f34;
-    font: 600 16px/1.6 "PingFang TC", system-ui, sans-serif;
-    pointer-events: none;
-  }
-  .book-reader-notice[hidden] { display: none; }
 }
 
 @media print {
+  @page { margin: 0; }
   html, body { width: auto !important; height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; background: white !important; }
-  body > * { display: none !important; }
-  body::before { content: '本教材僅供線上閱讀，未提供列印版本。'; display: block; padding: 20mm; color: black; font: 16pt/1.6 sans-serif; }
+  body { display: none !important; }
 }

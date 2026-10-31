@@ -1,9 +1,3 @@
-.social-garden .course-picker-title {
-  display: block;
-  min-height: 48px; padding: 10px 12px; margin: 0 0 16px;
-  color: #244737; background: #edf1ec;
-  border: 1px solid #839b87; border-radius: 8px; font-size: 1rem; font-weight: 800;
-}
 .social-garden .index-students-container > summary::-webkit-details-marker { display: none; }
 .social-garden .disclosure-action { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; font-size: .8rem; font-weight: 700; color: #345543; }
 .social-garden .disclosure-action > :is(.when-open,.when-closed) { text-decoration: underline; text-underline-offset: 3px; }
@@ -19,7 +13,16 @@
 .social-garden .index-students-container > summary > .disclosure-action { color: #6a4b14; font-weight: 700; }
 .social-garden .index-students-container[open] > summary { border-bottom: 1px solid #d5bd87; }
 .social-garden .index-students-container > :not(summary) { margin-inline: 10px; }
-.social-garden .index-students-grid { width: auto; min-width: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); padding-bottom: 10px; }
+.social-garden .index-students-container > .index-students-grid { width: auto; min-width: 0; margin-inline: 6px; grid-template-columns: minmax(0, 1fr); padding-bottom: 6px; }
+.social-garden .treasure-chest-card { display: grid; grid-template-columns: minmax(0, 1fr) 112px; align-items: center; gap: 4px; padding: 4px; }
+.social-garden .chest-card-top { width: auto; min-width: 0; }
+.social-garden .chest-card-identity { gap: 2px; }
+.social-garden .chest-role { display: none; }
+.social-garden .chest-avatar[data-companion-avatar] { width: 26px; height: 32px; }
+.social-garden .chest-avatar svg { width: 24px; height: 30px; }
+.social-garden .chest-name, .social-garden .chest-star-count { font-size: .8rem; }
+.social-garden .chest-card-bottom { width: 112px; grid-template-columns: 32px minmax(0, 1fr) 32px; gap: 2px; padding: 0; background: transparent; }
+.social-garden .chest-btn-mini { width: 32px; height: 36px; font-size: 1.1rem; }
 .social-garden .sidebar-field-label { display: block; color: #314a40; font-size: .85rem; font-weight: 800; margin-bottom: 6px; }
 .social-garden .search-box input { border: 2px solid #718b7e; border-radius: 7px; box-shadow: inset 0 2px 3px #193c2710; }
 .social-garden .course-search-status { font-size: .74rem; color: #4b6156; margin: 6px 0 2px; }

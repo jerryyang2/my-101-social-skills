@@ -684,7 +684,7 @@ with open(ws_html_path, "w", encoding="utf-8") as f:
 # Also save full book HTML to web directory
 ws_body = ws_html.split("<body>", 1)[1] if "<body>" in ws_html else ws_html
 with open(os.path.join(WEB_DIR, "all_worksheets_book.html"), "w", encoding="utf-8") as f:
-    f.write((intro_html.replace("</body>\n</html>", "") + ws_body).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-reader">\n<script defer src="book-reader.js?v=20261031-reader"></script>\n</head>'))
+    f.write((intro_html.replace("</body>\n</html>", "") + ws_body).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-font">\n<script defer src="focus-mode.js?v=20261031-font"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-silent">\n<script defer src="book-reader.js?v=20261031-silent"></script>\n</head>'))
 
 print("HTML files generated. Printing Part A (Intro: 1 Cover + 4 TOC pages)...")
 pdf_intro = "/tmp/part_intro.pdf"

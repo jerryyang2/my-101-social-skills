@@ -1101,7 +1101,7 @@ intro_body_match = re.search(r"<body>([\s\S]*?)</body>", intro_html)
 intro_body = intro_body_match.group(1) if intro_body_match else ""
 full_book_content = intro_body + "\n" + b1_content + "\n" + b2_content + "\n" + b3_content + "\n" + b4_content
 with open(full_html_path, "w", encoding="utf-8") as f_html:
-    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-focus">\n<script defer src="focus-mode.js?v=20261031-focus"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-reader">\n<script defer src="book-reader.js?v=20261031-reader"></script>\n</head>'))
+    f_html.write(wrap_html(full_book_content).replace("</head>", '<link rel="stylesheet" href="focus-mode.css?v=20261031-font">\n<script defer src="focus-mode.js?v=20261031-font"></script>\n<link rel="stylesheet" href="book-reader.css?v=20261031-silent">\n<script defer src="book-reader.js?v=20261031-silent"></script>\n</head>'))
 
 file_size_mb = os.path.getsize(output_pdf_path) / (1024 * 1024)
 print(f"🎉 MASTER B4 ZHUYIN WORKSHEETS PDF COMPILED SUCCESSFULLY!")
