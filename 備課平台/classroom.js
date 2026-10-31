@@ -2084,6 +2084,7 @@ window.toggleFullscreen = function() {
 // 鍵盤左右鍵 / 空白鍵換頁與快速鍵
 function setupKeyboard() {
   document.addEventListener("keydown", (e) => {
+    if (e.target.closest('.mft-ui, .mft-editor')) return;
     if (e.target.closest('[role="dialog"], .teacher-modal-overlay, [contenteditable="true"]')) return;
     if (e.key === " " && e.target.closest('button, a, summary, [role="button"]')) return;
     if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "SELECT")) {

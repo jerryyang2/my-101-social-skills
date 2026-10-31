@@ -1399,6 +1399,7 @@
 
     // 鍵盤 WASD / 方向鍵行走控制
     window.addEventListener('keydown', e => {
+      if (e.target.closest('.mft-ui, .mft-editor')) return;
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       const speed = 1.4;
       if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
