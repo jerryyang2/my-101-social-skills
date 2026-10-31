@@ -17,11 +17,16 @@
       friend.setAttribute('aria-pressed', String(selected));
       document.getElementById(`bubble-${friend.dataset.companion}`).hidden = !selected;
     });
+    const dialogue = document.getElementById(`bubble-${companionId}`).textContent.trim();
+    if (window.speechSynthesis && typeof window.speakIndexQueue === 'function') {
+      window.speakIndexQueue(dialogue, 'greeting');
+    }
   }
 
   friends.forEach(friend => {
     friend.addEventListener('click', () => greetFriend(friend.dataset.companion));
   });
+  window.addEventListener('pagehide', () => window.stopIndexSpeech?.());
 
   document.querySelectorAll('.emotion-btn').forEach(button => {
     button.addEventListener('click', () => {

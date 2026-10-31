@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>社交小超人群島大冒險｜3D 特教互動 RPG 闖關遊戲 (IsleForge 概念)</title>
+  <title>群島大冒險｜我的101堂社交技巧課</title>
   
   <!-- 網站主題專屬 Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -13,24 +13,26 @@
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
   <link rel="stylesheet" href="island-game.css">
+  <link rel="stylesheet" href="platform-theme.css?v=20261031-unified">
+  <script src="island-ui.js?v=20261031-unified" defer></script>
   <link rel="stylesheet" href="floating-tools/tools.css?v=social-red-20261031">
   <script src="floating-tools/magnifier.js?v=social-20261031" defer></script>
   <script src="floating-tools/drawing.js?v=20261031-font" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
 </head>
-<body class="theme-cream">
+<body class="theme-cream" data-platform="island">
 
   <!-- 頂部遊戲導覽列 (Topbar) -->
   <header class="game-topbar">
     <div class="brand-section">
-      <div class="brand-logo">🏝️</div>
+      <div class="brand-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg></div>
       <div class="brand-info">
         <h1>
-          OO國小學習教室 · 社交小超人群島大冒險
-          <span class="badge-isleforge">IsleForge 3D 概念</span>
+          社交小超人 · 群島大冒險
+          <span class="badge-isleforge">一起闖關</span>
         </h1>
-        <p>國小特教 52 週社交溝通與情緒調適闖關遊戲 · ASD / EBD / LD 專屬</p>
+        <p>我的101堂社交技巧課 · 在冒險裡練習交朋友</p>
       </div>
     </div>
 
@@ -69,10 +71,10 @@
 
       <!-- 導航回主系統 -->
       <a class="c-game-btn btn-primary" href="classroom.html" title="前往課堂投影互動簡報模式">
-        🎮 課堂教學
+        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg> 課堂投影
       </a>
       <a class="c-game-btn" href="index.html" title="返回特教備課平台主控台">
-        📋 備課平台
+        <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg> 備課平台
       </a>
     </div>
   </header>
@@ -315,9 +317,9 @@
   <dialog class="start-dialog" id="startDialog">
     <div class="start-dialog-content">
       <div class="start-dialog-header">
-        <span style="font-size:2.2rem;">🏝️</span>
+        <svg class="island-welcome-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>
         <h2>建立你的社交小超人</h2>
-        <p>歡迎來到OO國小學習教室 3D 社交群島！選一個喜歡的特教小英雄造型出發吧！</p>
+        <p>選一個喜歡的造型，一起出發練習交朋友！</p>
       </div>
 
       <div class="start-form-group">
@@ -453,6 +455,6 @@
   <script src="three.min.js"></script>
   <script src="app.js?v=20261031-focus"></script>
   <script src="roleplay-data.js"></script>
-  <script src="island-game.js"></script>
+  <script src="island-game.js?v=20261031-unified"></script>
 </body>
 </html>

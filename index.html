@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OO國小學習教室｜我的101堂社交技巧課 · 全方位特教數位備課與多模態互動生態系</title>
+  <title>我的101堂社交技巧課｜OO國小學習教室</title>
   <meta name="description" content="OO國小學習教室「我的101堂社交技巧課」：專為國小中年級自閉症(ASD)、學習障礙(LD)、情緒行為障礙(EBD)設計之全方位特教數位備課平台、課堂大螢幕簡報、3D群島冒險遊戲與五大出版級高解析線上電子書。">
   
   <!-- 網站主題專屬 Favicon -->
@@ -14,1060 +14,79 @@
   <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
 
-  <style>
-    :root {
-      --primary: #06b6d4;
-      --primary-dark: #0891b2;
-      --primary-light: #cffafe;
-      --secondary: #3b82f6;
-      --secondary-dark: #1d4ed8;
-      --secondary-light: #dbeafe;
-      --accent: #f59e0b;
-      --accent-dark: #d97706;
-      --accent-light: #fef3c7;
-      --danger: #ef4444;
-      --danger-light: #fee2e2;
-      --emerald: #10b981;
-      --emerald-dark: #059669;
-      --emerald-light: #d1fae5;
-      --purple: #8b5cf6;
-      --purple-dark: #6d28d9;
-      --purple-light: #ede9fe;
-      --bg-main: #fefce8;
-      --bg-card: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #64748b;
-      --border: #fde68a;
-      --border-light: #fef3c7;
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --radius-full: 9999px;
-      --shadow-sm: 0 2px 0 #fed7aa;
-      --shadow: 0 4px 0 #fed7aa, 0 8px 24px rgba(0, 0, 0, 0.05);
-      --shadow-lg: 0 8px 0 #fde68a, 0 16px 32px rgba(245, 158, 11, 0.12);
-      --shadow-card: 0 4px 0 #fed7aa, 0 10px 25px -5px rgba(0, 0, 0, 0.06);
-      --shadow-card-hover: 0 8px 0 #f59e0b, 0 20px 35px -5px rgba(6, 182, 212, 0.18);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: "Chalkboard SE", "Comic Sans MS", "PingFang TC", "Noto Sans TC", system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #fffbeb 0%, #f0fdf4 50%, #eff6ff 100%);
-      background-attachment: fixed;
-      color: var(--text-main);
-      line-height: 1.65;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Top App Navigation Header */
-    .app-header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.08);
-    }
-
-    .header-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 12px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .brand-icon-box {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 10px rgba(6, 182, 212, 0.35);
-      border: 2px solid #ffffff;
-      flex-shrink: 0;
-      animation: gentlePulse 3s ease-in-out infinite;
-    }
-
-    @keyframes gentlePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    .brand-text h1 {
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand-text h1 .brand-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      border: 1px solid var(--primary);
-    }
-
-    .brand-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-top: 1px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: var(--radius-full);
-      font-size: 0.92rem;
-      font-weight: 800;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 2px solid transparent;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-    }
-
-    .btn-calm {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35);
-    }
-
-    .btn-manual {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
-    }
-
-    .btn-classroom {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
-    }
-
-    .btn-island {
-      background: linear-gradient(135deg, #06b6d4, #0284c7);
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(6, 182, 212, 0.35);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: #ffffff;
-      box-shadow: 0 4px 0 #0e7490, 0 8px 16px rgba(6, 182, 212, 0.35);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 6px 0 #0e7490, 0 12px 20px rgba(6, 182, 212, 0.45);
-    }
-
-    /* Main Container */
-    .portal-main {
-      flex: 1;
-      max-width: 1400px;
-      width: calc(100% - 36px);
-      margin: 0 auto;
-      padding: 36px 0 80px;
-    }
-
-    /* Hero Section */
-    .hero-section {
-      text-align: center;
-      padding: 32px 20px 48px;
-      position: relative;
-    }
-
-    .hero-badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 20px;
-      background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-full);
-      color: var(--accent-dark);
-      font-size: 0.92rem;
-      font-weight: 800;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 22px;
-      animation: floatBadge 3s ease-in-out infinite;
-    }
-
-    @keyframes floatBadge {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-
-    .hero-badge-pill span.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #10b981;
-      display: inline-block;
-      box-shadow: 0 0 8px #10b981;
-    }
-
-    .hero-title {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.25;
-      color: var(--text-main);
-      margin-bottom: 18px;
-    }
-
-    .hero-title .gradient-text {
-      background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #7c3aed 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    .hero-subhead {
-      font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-      font-weight: 800;
-      color: var(--accent-dark);
-      margin-bottom: 20px;
-    }
-
-    .hero-lead {
-      max-width: 920px;
-      margin: 0 auto 36px;
-      font-size: 1.1rem;
-      line-height: 1.85;
-      color: #334155;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 20px 28px;
-      border-radius: var(--radius-lg);
-      border: 2px solid #fde68a;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .hero-btn-large {
-      padding: 15px 32px;
-      font-size: 1.12rem;
-      font-weight: 900;
-      border-radius: var(--radius-full);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .hero-btn-large.primary {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: #ffffff;
-      box-shadow: 0 6px 0 #0e7490, 0 12px 25px rgba(6, 182, 212, 0.4);
-    }
-
-    .hero-btn-large.primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 0 #0e7490, 0 18px 30px rgba(6, 182, 212, 0.5);
-    }
-
-    .hero-btn-large.accent {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #ffffff;
-      box-shadow: 0 6px 0 #b45309, 0 12px 25px rgba(245, 158, 11, 0.4);
-    }
-
-    .hero-btn-large.accent:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 0 #b45309, 0 18px 30px rgba(245, 158, 11, 0.5);
-    }
-
-    .hero-btn-large.secondary {
-      background: #ffffff;
-      color: #1e293b;
-      border: 2px solid var(--border);
-      box-shadow: 0 6px 0 #fed7aa, 0 10px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .hero-btn-large.secondary:hover {
-      transform: translateY(-4px);
-      border-color: #f59e0b;
-      box-shadow: 0 10px 0 #fed7aa, 0 16px 28px rgba(245, 158, 11, 0.2);
-    }
-
-    /* Stats Bar */
-    .stats-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 0 auto 60px;
-      max-width: 1240px;
-    }
-
-    .stat-card {
-      background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px 16px;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.2s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-      border-color: #f59e0b;
-    }
-
-    .stat-num {
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--primary-dark);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .stat-label {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 4px;
-    }
-
-    .stat-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* Section Headers */
-    .section-head {
-      text-align: center;
-      margin-bottom: 36px;
-    }
-
-    .section-tag {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 900;
-      color: var(--primary-dark);
-      background: var(--primary-light);
-      padding: 4px 16px;
-      border-radius: var(--radius-full);
-      border: 1px solid var(--primary);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .section-title {
-      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
-      font-weight: 900;
-      color: var(--text-main);
-      margin-bottom: 10px;
-    }
-
-    .section-desc {
-      font-size: 1.05rem;
-      color: var(--text-muted);
-      max-width: 760px;
-      margin: 0 auto;
-      font-weight: 600;
-    }
-
-    /* Apps Grid (4 Core Interactive Systems) */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 24px;
-      margin-bottom: 72px;
-    }
-
-    .app-card {
-      background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 28px 24px 24px;
-      box-shadow: var(--shadow-card);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      overflow: hidden;
-    }
-
-    .app-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #06b6d4, #3b82f6);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .app-card.card-planner::before { background: linear-gradient(90deg, #06b6d4, #10b981); }
-    .app-card.card-classroom::before { background: linear-gradient(90deg, #f59e0b, #ef4444); }
-    .app-card.card-worksheet::before { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
-    .app-card.card-island::before { background: linear-gradient(90deg, #06b6d4, #0284c7); }
-
-    .app-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-card-hover);
-      border-color: #f59e0b;
-    }
-
-    .app-card:hover::before {
-      opacity: 1;
-    }
-
-    .app-card-top {
-      margin-bottom: 20px;
-    }
-
-    .app-card-badge-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-    }
-
-    .app-icon-circle {
-      width: 56px;
-      height: 56px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      border: 2px solid #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .app-pill-tag {
-      font-size: 0.78rem;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: var(--radius-full);
-      letter-spacing: 0.02em;
-    }
-
-    .pill-cyan { background: #cffafe; color: #0891b2; border: 1px solid #67e8f9; }
-    .pill-amber { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
-    .pill-blue { background: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
-    .pill-purple { background: #ede9fe; color: #6d28d9; border: 1px solid #c4b5fd; }
-    .pill-emerald { background: #d1fae5; color: #047857; border: 1px solid #6ee7b7; }
-
-    .app-card-title {
-      font-size: 1.42rem;
-      font-weight: 900;
-      color: #0f172a;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .app-card-subtitle {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-dark);
-      margin-bottom: 14px;
-    }
-
-    .app-card-desc {
-      font-size: 0.95rem;
-      color: #475569;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-
-    .app-feature-list {
-      list-style: none;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .app-feature-list li {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #334155;
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .app-feature-list li span.bullet {
-      color: var(--primary-dark);
-      font-size: 1rem;
-      line-height: 1.2;
-    }
-
-    .app-card-action {
-      margin-top: auto;
-    }
-
-    .app-card-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px 20px;
-      border-radius: var(--radius-lg);
-      font-size: 1rem;
-      font-weight: 900;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .app-card-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    .btn-card-cyan {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: #ffffff;
-      box-shadow: 0 4px 0 #0e7490;
-    }
-
-    .btn-card-amber {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #ffffff;
-      box-shadow: 0 4px 0 #b45309;
-    }
-
-    .btn-card-blue {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: #ffffff;
-      box-shadow: 0 4px 0 #1e40af;
-    }
-
-    .btn-card-sky {
-      background: linear-gradient(135deg, #0284c7, #0369a1);
-      color: #ffffff;
-      box-shadow: 0 4px 0 #075985;
-    }
-
-    /* Books Showcase Section (5 Digital Publications) */
-    .books-section {
-      background: rgba(255, 255, 255, 0.7);
-      border: 2px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 48px 32px;
-      box-shadow: var(--shadow);
-      margin-bottom: 72px;
-    }
-
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-    }
-
-    .book-card {
-      background: #ffffff;
-      border: 2px solid #e2e8f0;
-      border-radius: var(--radius-lg);
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.25s ease;
-      box-shadow: var(--shadow-sm);
-      position: relative;
-    }
-
-    .book-card:hover {
-      transform: translateY(-5px);
-      border-color: #06b6d4;
-      box-shadow: var(--shadow-card-hover);
-    }
-
-    .book-cover-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 14px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .book-spec-pill {
-      display: inline-block;
-      font-size: 0.74rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: var(--radius-full);
-      margin-bottom: 10px;
-    }
-
-    .book-title {
-      font-size: 1.15rem;
-      font-weight: 900;
-      color: #0f172a;
-      line-height: 1.35;
-      margin-bottom: 8px;
-    }
-
-    .book-desc {
-      font-size: 0.86rem;
-      color: #64748b;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .book-read-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 16px;
-      background: #f8fafc;
-      color: #0f172a;
-      border: 1.5px solid #cbd5e1;
-      border-radius: var(--radius-md);
-      font-size: 0.88rem;
-      font-weight: 800;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      margin-top: auto;
-    }
-
-    .book-card:hover .book-read-btn {
-      background: var(--primary);
-      color: #ffffff;
-      border-color: var(--primary);
-      box-shadow: 0 4px 10px rgba(6, 182, 212, 0.35);
-    }
-
-    /* Pedagogy & Competition Features */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      margin-bottom: 72px;
-    }
-
-    .feature-box {
-      background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 30px 26px;
-      box-shadow: var(--shadow-sm);
-      display: flex;
-      flex-direction: column;
-      transition: all 0.25s ease;
-    }
-
-    .feature-box:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-      border-color: #f59e0b;
-    }
-
-    .feature-box-icon {
-      font-size: 2.4rem;
-      margin-bottom: 14px;
-      display: inline-block;
-    }
-
-    .feature-box-title {
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: #0f172a;
-      margin-bottom: 12px;
-    }
-
-    .feature-box-desc {
-      font-size: 0.95rem;
-      color: #475569;
-      line-height: 1.75;
-      margin-bottom: 18px;
-    }
-
-    .feature-box-btn {
-      margin-top: auto;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.92rem;
-      font-weight: 800;
-      color: var(--primary-dark);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
-    .feature-box-btn:hover {
-      color: var(--secondary-dark);
-      text-decoration: underline;
-    }
-
-    /* Student Personas Scaffolding Bar */
-    .students-panel {
-      background: #ffffff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius-xl);
-      padding: 32px 28px;
-      margin-bottom: 72px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .students-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .student-card {
-      background: #f8fafc;
-      border: 1.5px solid #e2e8f0;
-      border-radius: var(--radius-lg);
-      padding: 18px 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .student-card:hover {
-      background: #ffffff;
-      border-color: var(--primary);
-      box-shadow: var(--shadow-sm);
-      transform: translateY(-2px);
-    }
-
-    .student-avatar {
-      font-size: 2rem;
-      flex-shrink: 0;
-      background: #ffffff;
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1.5px solid #cbd5e1;
-    }
-
-    .student-info h4 {
-      font-size: 1.05rem;
-      font-weight: 900;
-      color: #0f172a;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 4px;
-    }
-
-    .student-tag {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: var(--radius-full);
-      background: #e2e8f0;
-      color: #475569;
-    }
-
-    .student-scaffold {
-      font-size: 0.84rem;
-      color: #64748b;
-      line-height: 1.55;
-    }
-
-    /* Callout Banner */
-    .competition-callout {
-      background: linear-gradient(135deg, #0891b2 0%, #2563eb 50%, #7c3aed 100%);
-      border-radius: var(--radius-xl);
-      padding: 44px 36px;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
-      margin-bottom: 60px;
-    }
-
-    .callout-content {
-      max-width: 760px;
-    }
-
-    .callout-badge {
-      display: inline-block;
-      font-size: 0.82rem;
-      font-weight: 800;
-      padding: 4px 14px;
-      border-radius: var(--radius-full);
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      margin-bottom: 12px;
-    }
-
-    .callout-title {
-      font-size: clamp(1.5rem, 3vw, 2.1rem);
-      font-weight: 900;
-      line-height: 1.25;
-      margin-bottom: 10px;
-    }
-
-    .callout-text {
-      font-size: 1.02rem;
-      line-height: 1.7;
-      opacity: 0.95;
-    }
-
-    .callout-btn {
-      padding: 14px 30px;
-      background: #ffffff;
-      color: #1e3a8a;
-      border-radius: var(--radius-full);
-      font-size: 1.05rem;
-      font-weight: 900;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-      transition: all 0.2s ease;
-    }
-
-    .callout-btn:hover {
-      transform: scale(1.04);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
-    }
-
-    /* Footer */
-    footer {
-      background: #ffffff;
-      border-top: 2px solid var(--border);
-      padding: 40px 24px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: auto;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 16px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      color: var(--text-main);
-      font-size: 1.05rem;
-    }
-
-    .footer-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 8px 0;
-    }
-
-    .footer-tag {
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: var(--radius-full);
-      background: #f1f5f9;
-      color: #475569;
-      border: 1px solid #cbd5e1;
-    }
-
-    .footer-copy {
-      font-size: 0.85rem;
-      color: #64748b;
-      line-height: 1.6;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-      .header-container {
-        padding: 10px 16px;
-      }
-      .brand-text h1 {
-        font-size: 1.02rem;
-      }
-      .hero-section {
-        padding: 24px 12px 36px;
-      }
-      .hero-title {
-        font-size: 2.1rem;
-      }
-      .hero-lead {
-        padding: 16px 20px;
-        font-size: 1rem;
-      }
-      .books-section {
-        padding: 32px 18px;
-      }
-      .competition-callout {
-        padding: 32px 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .header-actions {
-        width: 100%;
-        justify-content: flex-start;
-      }
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-      .hero-btn-large {
-        width: 100%;
-        justify-content: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="備課平台/platform-theme.css?v=20261031-unified">
   <link rel="stylesheet" href="備課平台/floating-tools/tools.css?v=social-red-20261031">
   <script src="備課平台/floating-tools/magnifier.js?v=social-20261031" defer></script>
   <script src="備課平台/floating-tools/drawing.js?v=20261031-font" defer></script>
   <link rel="stylesheet" href="備課平台/focus-mode.css?v=20261031-font">
   <script defer src="備課平台/focus-mode.js?v=20261031-font"></script>
 </head>
-<body>
+<body class="social-portal">
+  <a class="skip-link" href="#main-content">跳到主要內容</a>
 
   <!-- Top App Navigation Header -->
   <header class="app-header">
     <div class="header-container">
       <a href="index.html" class="brand">
-        <div class="brand-icon-box">🌱</div>
+        <div class="brand-icon-box"><img src="favicon.svg" alt="" width="48" height="48"></div>
         <div class="brand-text">
           <h1>
-            OO國小學習教室｜我的101堂社交技巧課
-            <span class="brand-tag">特教多元教材</span>
+            我的101堂社交技巧課
+            <span class="brand-tag">OO國小學習教室</span>
           </h1>
-          <p>國小資源班中年級 · 特殊需求領域（社會技巧與溝通訓練）全方位數位備課與多模態互動生態系</p>
+          <p>一起練習表達、相處，也好好照顧自己的心情。</p>
         </div>
       </a>
       <div class="header-actions">
-        <a class="btn btn-calm" href="備課平台/index.html#calm" title="突發情緒急救！開啟 4-7-8 呼吸光環、視覺沙漏與五感著陸法">🧘 冷靜通道</a>
-        <a class="btn btn-island" href="備課平台/island-game.html" target="_blank" title="啟動 3D 社交群島大冒險遊戲（IsleForge造島工坊概念）">🏝️ 3D群島遊戲</a>
-        <a class="btn btn-classroom" href="備課平台/classroom.html" title="開啟電子白板與大螢幕課堂投影多模態簡報">🎮 課堂大螢幕投影</a>
-        <a class="btn btn-primary" href="備課平台/index.html" title="進入 101 堂特教社交技巧完整備課平台">🌱 進入主備課平台</a>
+        <a class="btn btn-calm" href="備課平台/index.html#calm"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#calm"></use></svg>冷靜通道</a>
+        <a class="btn btn-island" href="備課平台/island-game.html"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#island"></use></svg>群島大冒險</a>
+        <a class="btn btn-classroom" href="備課平台/classroom.html"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#classroom"></use></svg>課堂投影與遊戲</a>
+        <a class="btn btn-primary" href="備課平台/index.html"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#home"></use></svg>進入備課平台</a>
       </div>
     </div>
   </header>
 
   <!-- Main Portal Hub -->
-  <main class="portal-main">
+  <main class="portal-main" id="main-content">
 
     <!-- Hero Section -->
     <section class="hero-section">
-      <div class="hero-badge-pill">
-        <span class="dot"></span>
-        🏫 OO國小學習教室 · 特殊需求領域（社會技巧與溝通訓練）全方位數位教學平台
-      </div>
+      <div class="portal-hero-copy">
+      <div class="hero-badge-pill">我們的社交練習課</div>
       
       <h1 class="hero-title">
-        OO國小學習教室<br>
-        <span class="gradient-text">我的 101 堂社交技巧課</span>
+        交朋友，<br><span class="gradient-text">從一句話開始。</span>
       </h1>
 
       <p class="hero-subhead">
-        特教數位備課平台 · 課堂大螢幕簡報 · 3D群島遊戲 · 五大出版級線上電子書
+        101 堂小練習，陪孩子把「我知道」變成「我做得到」。
       </p>
 
       <p class="hero-lead">
-        專為國小資源班中年級<strong>自閉症 (ASD)</strong>、<strong>學習障礙 (LD)</strong> 與<strong>情緒行為障礙 (EBD)</strong> 學童研發。全面落實十二年國教特殊教育課綱（社會技巧領域）核心素養，融合 <strong>UDL 通用學習設計架構</strong>。系統規劃 <strong>52 週循序課堂進度</strong> ＋ <strong>49 堂情境疑難靈感庫</strong>，建構「情境故事 ➔ 3大招式 ➔ 角色劇場 ➔ 遊樂場實戰 ➔ 圖文學習單」課堂五步走，跨載具免安裝即開即用，自動對接特教通報網 IEP 評量與 LINE 親師聯絡單！
+        聽一段故事、練一句好好說的話，再和同學試試看。老師可以在這裡備課，孩子可以看故事、玩遊戲，一起找到適合自己的交朋友方式。
       </p>
 
       <div class="hero-actions">
         <a class="hero-btn-large primary" href="備課平台/index.html">
-          <span>🌱 進入特教備課主平台</span>
+          <span>老師備課，從這裡開始</span>
           <span>→</span>
         </a>
         <a class="hero-btn-large accent" href="備課平台/classroom.html">
-          <span>🎮 開啟課堂投影簡報</span>
-          <span>✨</span>
-        </a>
-        <a class="hero-btn-large secondary" href="備課平台/island-game.html" target="_blank">
-          <span>🏝️ 啟動 3D 社交冒險群島</span>
-          <span>🚀</span>
+          <span>一起上課</span>
+          <span>→</span>
         </a>
       </div>
+      </div>
+      <figure class="portal-companions">
+        <figcaption>今天，也一起練習吧！</figcaption>
+        <div class="portal-friend-row">
+          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#lion"></use></svg><span>勇敢開口</span></div>
+          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#bear"></use></svg><span>慢慢來</span></div>
+          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#panda"></use></svg><span>好好聽</span></div>
+          <div class="portal-friend"><svg viewBox="0 0 120 150" aria-hidden="true"><use href="備課平台/assets/companions.svg#fox"></use></svg><span>一起玩</span></div>
+        </div>
+        <p>每一小步，都值得一顆星星。</p>
+      </figure>
 
       <!-- Key Metrics Stats Bar -->
       <div class="stats-bar">
@@ -1089,7 +108,7 @@
         <div class="stat-card">
           <div class="stat-num">5 大本</div>
           <div class="stat-label">出版級線上電子書</div>
-          <div class="stat-desc">100% 同步 · 雙開高解析目錄跳轉</div>
+          <div class="stat-desc">故事、學習單和教學手冊</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">0 依賴</div>
@@ -1102,9 +121,9 @@
     <!-- SECTION 1: 四大核心互動應用系統 (Core Interactive Web Apps) -->
     <section style="margin-bottom: 24px;">
       <div class="section-head">
-        <span class="section-tag">Interactive Ecosystem</span>
-        <h2 class="section-title">🌟 四大核心互動應用系統</h2>
-        <p class="section-desc">從教師智慧備課、大螢幕沉浸教學、個別化隨堂評量到 3D 遊戲化探索，打造完整閉環特教生態系</p>
+        <span class="section-tag">今天想怎麼練習？</span>
+        <h2 class="section-title">選一個入口，一起開始</h2>
+        <p class="section-desc">備課、上課、寫學習單，或到群島走走，都在這裡。</p>
       </div>
 
       <div class="apps-grid">
@@ -1112,7 +131,7 @@
         <article class="app-card card-planner">
           <div class="app-card-top">
             <div class="app-card-badge-row">
-              <div class="app-icon-circle" style="background: #cffafe; color: #0891b2;">🌱</div>
+              <div class="app-icon-circle"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#communication"></use></svg></div>
               <span class="app-pill-tag pill-cyan">教師備課中心 · 即時導航</span>
             </div>
             <h3 class="app-card-title">特教備課導航主平台</h3>
@@ -1122,7 +141,7 @@
             </p>
             <ul class="app-feature-list">
               <li><span class="bullet">✔</span> 101 堂教案歷程時間軸與學期進度追蹤</li>
-              <li><span class="bullet">✔</span> ASD / LD / EBD 障別關鍵字秒速篩選</li>
+              <li><span class="bullet">✔</span> 依週次選課，也能輸入關鍵字找教案</li>
               <li><span class="bullet">✔</span> 一鍵生成特教通報網 IEP 草稿與 LINE 聯絡簿</li>
               <li><span class="bullet">✔</span> 四位學生個人代幣存摺即時記點與語音激勵</li>
             </ul>
@@ -1139,7 +158,7 @@
         <article class="app-card card-classroom">
           <div class="app-card-top">
             <div class="app-card-badge-row">
-              <div class="app-icon-circle" style="background: #fef3c7; color: #d97706;">🎮</div>
+              <div class="app-icon-circle"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#classroom"></use></svg></div>
               <span class="app-pill-tag pill-amber">電子白板 · 沉浸投影模式</span>
             </div>
             <h3 class="app-card-title">課堂大螢幕投影簡報</h3>
@@ -1166,7 +185,7 @@
         <article class="app-card card-worksheet">
           <div class="app-card-top">
             <div class="app-card-badge-row">
-              <div class="app-icon-circle" style="background: #dbeafe; color: #1d4ed8;">📄</div>
+              <div class="app-icon-circle"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#copy"></use></svg></div>
               <span class="app-pill-tag pill-blue">隨堂評量 · 圖文鷹架</span>
             </div>
             <h3 class="app-card-title">彩色圖文學習單中心</h3>
@@ -1193,8 +212,8 @@
         <article class="app-card card-island">
           <div class="app-card-top">
             <div class="app-card-badge-row">
-              <div class="app-icon-circle" style="background: #cffafe; color: #0284c7;">🏝️</div>
-              <span class="app-pill-tag pill-emerald">3D遊戲化 · IsleForge概念</span>
+              <div class="app-icon-circle"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="備課平台/assets/tool-icons.svg#island"></use></svg></div>
+              <span class="app-pill-tag pill-emerald">探索島嶼 · 練習相處</span>
             </div>
             <h3 class="app-card-title">3D 社交群島大冒險</h3>
             <p class="app-card-subtitle">3D Gamified Social Adventure Island</p>
@@ -1221,9 +240,9 @@
     <!-- SECTION 2: 五大出版級線上高解析互動電子書 (5 Published Digital Handbooks) -->
     <section class="books-section">
       <div class="section-head">
-        <span class="section-tag" style="background:#fef3c7; color:#d97706; border-color:#fde68a;">Digital Handbooks Collection</span>
-        <h2 class="section-title">📚 五大出版級線上高解析雙開電子書</h2>
-        <p class="section-desc">全冊連續編碼、雙開大版面排版、內建目錄錨點快速跳轉，100% 與最新課綱資料同步</p>
+        <span class="section-tag">課程小書架</span>
+        <h2 class="section-title">故事、練習和老師的小幫手</h2>
+        <p class="section-desc">五本教材都可以線上閱讀，點目錄就能找到需要的那一課。</p>
       </div>
 
       <div class="books-grid">
@@ -1234,7 +253,7 @@
             <span class="book-spec-pill pill-cyan">106 頁 B4 超大版面 · 嚴格直式</span>
             <h3 class="book-title">1. 全冊特教教師備課指引教學手冊</h3>
             <p class="book-desc">
-              雙開本 B4 直式規格 (250×353mm)，橫向儀表板極致平衡排版。完整收錄 101 課教案目標、十二年國教特教課綱代碼、IEP 指標、校園真實情境故事劇本與教師提問引導話術（非 A4 規格）。
+              B4 直式規格 (250×353mm)。收錄 101 課教案目標、特教課綱代碼、IEP 指標、校園情境故事與教師提問，備課時可以放在手邊對照。
             </p>
           </div>
           <div style="display:flex; gap:8px; margin-top:auto; flex-wrap:wrap;">
@@ -1252,7 +271,7 @@
             <span class="book-spec-pill pill-amber">106 頁 B4 字嗨注音版 · 嚴格直式</span>
             <h3 class="book-title">2. 101堂特教學習單 · 字嗨注音版</h3>
             <p class="book-desc">
-              專為學習障礙 (LD) 與低識字學生量身打造。全書採用開源「字嗨注音標楷體」，聲調注音排版精準，B4 直式大開本一課一頁不溢出，視知覺最友善（非 A4 規格）。
+              使用「字嗨注音標楷體」，讓需要注音協助的孩子也能跟著讀。B4 直式規格，一課一頁。
             </p>
           </div>
           <div style="display:flex; gap:8px; margin-top:auto; flex-wrap:wrap;">
@@ -1322,8 +341,8 @@
     <!-- SECTION 3: 特教專業設計理念與教學架構 -->
     <section style="margin-bottom: 24px;">
       <div class="section-head">
-        <span class="section-tag">Pedagogy & Framework</span>
-        <h2 class="section-title">🌱 特教專業教學架構與研發理念</h2>
+        <span class="section-tag">給老師的小提醒</span>
+        <h2 class="section-title">每個孩子，都有適合的練習方式</h2>
         <p class="section-desc">結合通用學習設計 (UDL)、急性情緒冷靜通道與個別化教育計畫 (IEP) 自動化生成</p>
       </div>
 
@@ -1447,7 +466,7 @@
       </div>
 
       <p class="footer-copy">
-        雲林縣OO國小 學習教室 老師編製 · 特殊需求領域（社會技巧與溝通訓練）全方位數位備課與多模態互動生態系<br>
+        OO國小學習教室 · 老師編製 · 一起練習表達與相處<br>
         版權所有 © 2026 OO國小學習教室 · 專供特教班、資源班與融合教育教學推廣應用
       </p>
     </div>

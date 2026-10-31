@@ -1442,19 +1442,21 @@
   // 主題光影切換
   function applyThemeColors(themeKey) {
     state.theme = themeKey;
-    document.body.className = `theme-${themeKey}`;
+    document.body.classList.remove('theme-cream', 'theme-sea', 'theme-night');
+    document.body.classList.add(`theme-${themeKey}`);
 
     // 更新頂部按鈕狀態
     document.querySelectorAll('.btn-theme-pill').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.theme === themeKey);
+      btn.setAttribute('aria-pressed', String(btn.dataset.theme === themeKey));
     });
 
     if (!scene || !seaMesh) return;
 
     if (themeKey === 'cream') {
-      scene.background = new THREE.Color(0xf6f0e4);
-      scene.fog = new THREE.Fog(0xf6f0e4, 55, 120);
-      seaMesh.material.color.setHex(0x38bdf8);
+      scene.background = new THREE.Color(0xfaf6e9);
+      scene.fog = new THREE.Fog(0xfaf6e9, 55, 120);
+      seaMesh.material.color.setHex(0x78b9c8);
       hemiLight.intensity = 0.7;
       sunLight.intensity = 0.88;
       sunLight.color.setHex(0xffedd5);
