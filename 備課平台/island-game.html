@@ -22,7 +22,7 @@
   <script src="floating-tools/drawing.js?v=20261101-class-tools" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=20261031-font"></script>
-  <link rel="stylesheet" href="island-explorer.css?v=20261101-icebreaker">
+  <link rel="stylesheet" href="island-explorer.css?v=20261101-paths-teamwork">
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
@@ -122,6 +122,7 @@
       <button type="button" data-map-toggle onclick="window.socialGame.toggleViewMode()">平面選島</button>
       <button type="button" data-motion-toggle aria-pressed="false" onclick="window.socialGame.toggleMotion()">暫停動態</button>
       <button type="button" class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()">🧊 破冰遊戲島</button>
+      <button type="button" class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()">🤝 合作任務島</button>
       <h2>和居民打招呼</h2>
       <div class="resident-directory" role="group" aria-label="島上居民">
         <button type="button" onclick="window.socialGame.meetResident(0)" aria-label="和宇獅獅打招呼">🦁</button>
@@ -508,6 +509,14 @@
     <div id="icebreakerTasks" class="icebreaker-tasks"></div>
     <p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
   </dialog>
+  <dialog id="teamworkDialog" class="explorer-dialog icebreaker-dialog teamwork-dialog" aria-labelledby="teamworkTitle">
+    <form method="dialog"><button class="explorer-close" aria-label="離開合作任務島">✕</button></form>
+    <span class="icebreaker-emblem" aria-hidden="true">🤝</span>
+    <h2 id="teamworkTitle">合作任務島</h2>
+    <p>一起分工，完成我們的任務。</p>
+    <div id="teamworkTasks" class="icebreaker-tasks"></div>
+    <p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
+  </dialog>
   <dialog id="visitorDialog" class="explorer-dialog" aria-labelledby="visitorTitle">
     <form method="dialog"><button class="explorer-close" aria-label="關閉訪客選單">✕</button></form>
     <h2 id="visitorTitle">一起來群島作客</h2>
@@ -530,8 +539,9 @@
   <script src="app.js?v=20261031-date-voice"></script>
   <script src="roleplay-data.js"></script>
   <script src="island-visitors.js?v=20261101-village"></script>
-  <script src="island-explorer.js?v=20261101-icebreaker"></script>
-  <script src="island-scene-art.js?v=20261101-icebreaker"></script>
-  <script src="island-game.js?v=20261101-icebreaker"></script>
+  <script src="island-explorer.js?v=20261101-paths-teamwork"></script>
+  <script src="island-paths.js?v=20261101-paths-teamwork"></script>
+  <script src="island-scene-art.js?v=20261101-paths-teamwork"></script>
+  <script src="island-game.js?v=20261101-paths-teamwork"></script>
 </body>
 </html>

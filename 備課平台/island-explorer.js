@@ -3,7 +3,7 @@
 
   const clamp = (value, minimum, maximum) => Math.max(minimum, Math.min(maximum, value));
   function overviewDistance(aspect = 1) {
-    return clamp(36 / Math.sin(Math.atan(Math.tan(Math.PI / 8) * Math.min(1, Math.max(0.35, aspect)))), 90, 220);
+    return clamp(39 / Math.sin(Math.atan(Math.tan(Math.PI / 8) * Math.min(1, Math.max(0.35, aspect)))), 96, 220);
   }
   function preset(mode, following, aspect) {
     const pitch = mode === 'top' ? Math.PI / 2 - 0.025 : mode === 'eye' ? 0.08 : 0.85;

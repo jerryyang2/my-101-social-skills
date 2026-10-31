@@ -109,13 +109,6 @@
       piece(bench, 'box', 0xd3b27b, [1.4, 0.4, 0.12], [0, 0.85, -0.23]);
       [-0.5, 0.5].forEach(offset => piece(bench, 'box', 0x6d7969, [0.12, 0.4, 0.4], [offset, 0.2, 0]));
       for (let paving = 0; paving < 4; paving++) piece(village, 'cylinder', 0xf2deb8, [0.25, 0.045, 0.2], [-0.2 + paving * 0.55, 0.06, 0.8]);
-      const bridge = group(scene, [island.position.x / 2, 0.83, island.position.z / 2]);
-      bridge.rotation.y = island.rotation.y;
-      for (let plank = 0; plank < 19; plank++) piece(bridge, 'box', plank % 2 ? 0xd1b181 : 0xc6a170, [1.6, 0.1, 0.62], [0, 0, (plank - 9) * 0.78]);
-      [-0.86, 0.86].forEach(side => {
-        piece(bridge, 'box', 0x937956, [0.07, 0.07, 14.8], [side, 0.8, 0]);
-        [-6, -2, 2, 6].forEach(offset => piece(bridge, 'cylinder', 0x937956, [0.075, 1.0, 0.075], [side, 0.36, offset]));
-      });
     });
     steppingStones.forEach(stone => {
       const passed = stone.children[1].material.color.getHex() === 0xfbbf24;
@@ -189,12 +182,96 @@
     const dice = piece(icebreaker, 'box', 0xfff5db, [0.9, 0.9, 0.9], [3, 2.5, 1.5]);
     dice.rotation.y = 0.3;
     [-0.2, 0.2].forEach(offset => piece(dice, 'sphere', 0x47768b, [0.08, 0.08, 0.03], [offset, offset, 0.46]));
-    const dock = group(scene, [0, 0.95, 14.8]);
-    for (let plank = 0; plank < 24; plank++) piece(dock, 'box', plank % 2 ? 0xd1b181 : 0xc6a170, [1.7, 0.12, 0.68], [0, 0, (plank - 11.5) * 0.78]);
-    [-0.9, 0.9].forEach(side => {
-      piece(dock, 'box', 0x937956, [0.07, 0.07, 18.6], [side, 0.8, 0]);
-      [-8, -4, 0, 4, 8].forEach(offset => piece(dock, 'cylinder', 0x937956, [0.075, 1.0, 0.075], [side, 0.36, offset]));
+    const teamwork = group(scene, [-29, 0, 0]);
+    teamwork.name = 'teamwork-island';
+    teamwork.userData.topY = 2.05;
+    piece(teamwork, 'cylinder', 0xd7c6a3, [5.8, 1.45, 5.8], [0, 0.9, 0]);
+    piece(teamwork, 'cylinder', 0xb3cb91, [6.1, 0.65, 6.1], [0, 1.7, 0]);
+    piece(teamwork, 'cylinder', 0xf8e8bd, [3.7, 0.08, 3.7], [0, 2.07, 0]);
+    house(teamwork, [-2.5, 2.05, -1.8], 0x668350, 0.85);
+    tree(teamwork, [3.2, 2.05, -2], 0.8);
+    flowers(teamwork, [-3.2, 2.05, 0], 0xe8b554);
+    const project = group(teamwork, [0.3, 2.05, 0.2]);
+    [[-0.65, 0.4, 0, 0xd88c70], [0.65, 0.4, 0, 0x709ca9], [0, 1.2, 0, 0xe0b85d]].forEach(([horizontal, vertical, depth, color]) => {
+      piece(project, 'box', color, [1.05, 0.8, 1.05], [horizontal, vertical, depth]);
+      piece(project, 'cylinder', color, [0.2, 0.15, 0.2], [horizontal, vertical + 0.47, depth]);
     });
+    [-2, 2.3].forEach((offset, index) => {
+      const banner = group(teamwork, [offset, 2.05, 2.4]);
+      piece(banner, 'cylinder', 0x8b7554, [0.06, 2.0, 0.06], [0, 1, 0]);
+      piece(banner, 'box', index ? 0x709ca9 : 0xe0b85d, [0.8, 0.65, 0.04], [0.4, 1.65, 0]);
+    });
+    const paths = window.SocialIslandPaths.build(islands, center, steppingStones, [icebreaker, teamwork]);
+    const boards = new Map();
+    function board(color, size, position, rotation) {
+      if (!boards.has(color)) boards.set(color, []);
+      boards.get(color).push({ size, position, rotation });
+    }
+    paths.edges.forEach(edge => {
+      const first = paths.nodes[edge.first], second = paths.nodes[edge.second];
+      const direction = new three.Vector3(second.x - first.x, second.y - first.y, second.z - first.z);
+      const rotation = new three.Quaternion().setFromUnitVectors(new three.Vector3(0, 0, 1), direction.clone().normalize());
+      if (edge.kind === 'path') {
+        board(0xf4deb1, [0.92, 0.09, edge.length + 0.12], [(first.x + second.x) / 2, (first.y + second.y) / 2 - 0.045, (first.z + second.z) / 2], rotation);
+      } else {
+        const count = Math.ceil(edge.length / 0.48);
+        const side = new three.Vector3(direction.z, 0, -direction.x).normalize();
+        for (let plank = 0; plank < count; plank++) {
+          const ratio = (plank + 0.5) / count;
+          board(plank % 2 ? 0xd1b181 : 0xc6a170, [1.25, 0.12, direction.length() / count + 0.015], [first.x + direction.x * ratio, first.y + direction.y * ratio - 0.06, first.z + direction.z * ratio], rotation);
+        }
+        [-0.67, 0.67].forEach(offset => {
+          board(0x937956, [0.055, 0.07, direction.length()], [(first.x + second.x) / 2 + side.x * offset, (first.y + second.y) / 2 + 0.55, (first.z + second.z) / 2 + side.z * offset], rotation);
+          for (let post = 0; post <= Math.ceil(edge.length / 3); post++) {
+            const ratio = post / Math.ceil(edge.length / 3);
+            board(0x937956, [0.07, 0.65, 0.07], [first.x + direction.x * ratio + side.x * offset, first.y + direction.y * ratio + 0.25, first.z + direction.z * ratio + side.z * offset], new three.Quaternion());
+          }
+        });
+      }
+    });
+    const walkwayGroup = group(scene, [0, 0, 0]);
+    walkwayGroup.name = 'walkable-paths';
+    boards.forEach((instances, color) => {
+      const mesh = new three.InstancedMesh(geometries.box, material(color), instances.length);
+      const transform = new three.Object3D();
+      instances.forEach((instance, index) => {
+        transform.position.set(...instance.position);
+        transform.scale.set(...instance.size);
+        transform.quaternion.copy(instance.rotation);
+        transform.updateMatrix();
+        mesh.setMatrixAt(index, transform.matrix);
+      });
+      walkwayGroup.add(mesh);
+    });
+    const walkers = [];
+    function pedestrian(index) {
+      const person = group(scene, [0, 0, 0], 1.05);
+      person.name = `strolling-resident-${index}`;
+      const shirt = [0xc97a60, 0x527f92, 0xd8a43e, 0x718f5f, 0x9380ac, 0x4d8f8c][index % 6];
+      const skin = [0xefc39b, 0xc99570, 0xa97453][index % 3];
+      piece(person, 'sphere', skin, [0.29, 0.32, 0.28], [0, 1.25, 0]);
+      piece(person, 'sphere', 0x5f4d42, [0.3, 0.18, 0.29], [0, 1.45, -0.035]);
+      piece(person, 'cylinder', shirt, [0.3, 0.62, 0.3], [0, 0.78, 0]);
+      const legs = [-1, 1].map(side => {
+        const leg = group(person, [side * 0.14, 0.48, 0]);
+        piece(leg, 'box', 0x465d67, [0.18, 0.4, 0.2], [0, -0.2, 0]);
+        piece(leg, 'sphere', 0xfff0ce, [0.12, 0.09, 0.19], [0, -0.4, 0.04]);
+        piece(person, 'sphere', skin, [0.1, 0.27, 0.1], [side * 0.36, 0.75, 0]);
+        piece(person, 'sphere', 0x3d4843, [0.035, 0.045, 0.025], [side * 0.1, 1.27, 0.265]);
+        return leg;
+      });
+      return { person, legs };
+    }
+    for (let index = 0; index < 14; index++) {
+      const model = pedestrian(index);
+      const loop = paths.loops[index % paths.loops.length];
+      const origin = paths.nodes[loop[index % loop.length]];
+      const destination = index < 7 ? paths.nodes[loop[(index + Math.floor(loop.length / 2)) % loop.length]] : paths.nodes[paths.loops[(index + 1) % paths.loops.length][0]];
+      const forward = paths.route(origin, destination);
+      const patrol = [...forward, ...forward.slice(0, -1).reverse()];
+      const length = patrol.reduce((total, point, pointIndex) => pointIndex ? total + Math.hypot(point.x - patrol[pointIndex - 1].x, point.z - patrol[pointIndex - 1].z) : total, 0);
+      walkers.push({ ...model, patrol, length, speed: 0.7 + index % 4 * 0.13, offset: index / 14 });
+    }
     const waves = new three.Group();
     for (let wave = 0; wave < 40; wave++) {
       const angle = wave * 2.39996;
@@ -205,7 +282,24 @@
     return {
       residents,
       icebreaker,
+      teamwork,
+      paths,
+      walkers,
       animate(time, cameraPosition) {
+        walkers.forEach(walker => {
+          let remaining = (time * walker.speed + walker.offset * walker.length) % walker.length;
+          for (let segment = 1; segment < walker.patrol.length; segment++) {
+            const first = walker.patrol[segment - 1], second = walker.patrol[segment];
+            const length = Math.hypot(second.x - first.x, second.z - first.z);
+            if (remaining > length) { remaining -= length; continue; }
+            const ratio = length ? remaining / length : 0;
+            walker.person.position.set(first.x + (second.x - first.x) * ratio, first.y + (second.y - first.y) * ratio + 0.02, first.z + (second.z - first.z) * ratio);
+            walker.person.rotation.y = Math.atan2(second.x - first.x, second.z - first.z);
+            walker.legs[0].rotation.x = Math.sin(time * walker.speed * 8) * 0.4;
+            walker.legs[1].rotation.x = -walker.legs[0].rotation.x;
+            break;
+          }
+        });
         animated.forEach(item => {
           item.object.position.y = item.base + Math.sin(time * 0.8 + item.phase) * (item.type === 'boat' ? 0.1 : 0.035);
           if (item.type === 'boat') item.object.rotation.z = Math.sin(time * 0.7) * 0.05;

@@ -22,7 +22,7 @@
   <script src="floating-tools/drawing.js?v=62cd9373ace9" defer></script>
   <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=20261031-font">
   <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
-  <link rel="stylesheet" href="../../備課平台/island-explorer.css?v=20261101-icebreaker">
+  <link rel="stylesheet" href="../../備課平台/island-explorer.css?v=20261101-paths-teamwork">
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
@@ -122,6 +122,7 @@
       <button type="button" data-map-toggle onclick="window.socialGame.toggleViewMode()">Flat map</button>
       <button type="button" data-motion-toggle aria-pressed="false" onclick="window.socialGame.toggleMotion()">Pause scenery</button>
       <button type="button" class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()">🧊 Icebreaker Island</button>
+      <button type="button" class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()">🤝 Teamwork Island</button>
       <h2>Meet the residents</h2>
       <div class="resident-directory" role="group" aria-label="Island residents">
         <button type="button" onclick="window.socialGame.meetResident(0)" aria-label="Meet Yu the Lion">🦁</button>
@@ -508,6 +509,14 @@
     <div id="icebreakerTasks" class="icebreaker-tasks"></div>
     <p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
   </dialog>
+  <dialog id="teamworkDialog" class="explorer-dialog icebreaker-dialog teamwork-dialog" aria-labelledby="teamworkTitle">
+    <form method="dialog"><button class="explorer-close" aria-label="Leave Teamwork Island">✕</button></form>
+    <span class="icebreaker-emblem" aria-hidden="true">🤝</span>
+    <h2 id="teamworkTitle">Teamwork Island</h2>
+    <p>Share the jobs and finish our mission together.</p>
+    <div id="teamworkTasks" class="icebreaker-tasks"></div>
+    <p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
+  </dialog>
   <dialog id="visitorDialog" class="explorer-dialog" aria-labelledby="visitorTitle">
     <form method="dialog"><button class="explorer-close" aria-label="Close visitor menu">✕</button></form>
     <h2 id="visitorTitle">Welcome, island visitors</h2>
@@ -530,8 +539,9 @@
   <script src="app.js?v=d9437ed7375f"></script>
   <script src="roleplay-data.js?v=78242e7a95d3"></script>
   <script src="island-visitors.js?v=d2f819b35c84"></script>
-  <script src="island-explorer.js?v=ceea0b1d5e67"></script>
-  <script src="island-scene-art.js?v=7abe8b340bfe"></script>
-  <script src="island-game.js?v=f5de0bc02a71"></script>
+  <script src="island-explorer.js?v=58f80beb7065"></script>
+  <script src="island-paths.js?v=e5e7e347b44a"></script>
+  <script src="island-scene-art.js?v=a251d44e33ea"></script>
+  <script src="island-game.js?v=81a345ebf174"></script>
 </body>
 </html>

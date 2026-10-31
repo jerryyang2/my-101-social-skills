@@ -387,6 +387,7 @@
   let playerLegR = null;
   let playerBodyMesh = null;
   let playerCapMesh = null;
+  let playerRoute = [];
 
   const stage = document.getElementById('stage');
   const canvas = document.getElementById('threeCanvas');
@@ -444,8 +445,10 @@
     // 建造群島
     buildArchipelago();
     sceneArt = window.SocialIslandArt.build(THREE, scene, islandMeshes, centerMesh, subIslandMeshes);
-    add3DLabel("🧊 Icebreaker Island", sceneArt.icebreaker, 6.5, false, null, () => visitIcebreaker());
+    add3DLabel("🧊 Icebreaker Island", sceneArt.icebreaker, false, null, () => visitIcebreaker());
     labels[labels.length - 1].el.classList.add('icebreaker-label');
+    add3DLabel("🤝 Teamwork Island", sceneArt.teamwork, false, null, () => visitTeamwork());
+    labels[labels.length - 1].el.classList.add('teamwork-label');
 
     // 建造 3D 冒險者角色
     buildPlayerCharacter();
@@ -721,8 +724,9 @@
     playerGroup.position.set(0, 2.2, 2.8);
     playerGroup.rotation.y = Math.PI; // 面向群島
     playerGroup.scale.set(1.35, 1.35, 1.35); // 角色視覺清晰化
-    state.playerPos = window.SocialIslandVisitors.active().position;
+    state.playerPos = sceneArt.paths.nearest(window.SocialIslandVisitors.active().position);
     state.playerTargetPos = { ...state.playerPos };
+    playerGroup.position.set(state.playerPos.x, state.playerPos.y, state.playerPos.z);
 
     scene.add(playerGroup);
   }
@@ -774,7 +778,7 @@
 
     scene.add(centerGroup);
     centerMesh = centerGroup;
-    add3DLabel("⭐ Star Castle", centerGroup, 8.5, true, -1);
+    add3DLabel("⭐ Star Castle", centerGroup, true, -1);
 
     // 2. 四大主題島嶼 (立體專屬外型：愛心、對話泡泡、四葉草、魔法齒輪)
     const islandRadius = 25;
@@ -907,14 +911,7 @@
 
       scene.add(mainIsland);
       islandMeshes.push(mainIsland);
-      add3DLabel(`${theme.name}`, mainIsland, 6.2, false, idx);
-
-      // 連接中央島的童話彩色浮橋
-      const bridgeLen = islandRadius - 10.2;
-      const bridge = makeBox(1.3, 0.18, bridgeLen, 0xd97706, 0, 0.6, 0);
-      bridge.position.set(posX / 2, 0.6, posZ / 2);
-      bridge.rotation.y = -angle + Math.PI / 2;
-      scene.add(bridge);
+      add3DLabel(`${theme.name}`, mainIsland, false, idx);
 
       // 環繞主島的 13 顆小週次圓潤布丁踏石島 (代表該島的 13 堂課)
       const [startW, endW] = theme.weeksRange;
@@ -1257,7 +1254,7 @@
   }
 
   // 3D 浮動標籤圖層
-  function add3DLabel(text, obj, yOffset, isCenter, islandIdx, onActivate) {
+  function add3DLabel(text, obj, isCenter, islandIdx, onActivate) {
     const el = document.createElement('button');
     el.type = 'button';
     el.className = `island-3d-label ${isCenter ? 'center' : ''}`;
@@ -1276,7 +1273,7 @@
       }
     });
     labelLayer.appendChild(el);
-    labels.push({ el, obj, yOffset });
+    labels.push({ el, obj, anchors: null });
   }
 
   function updateLabels() {
@@ -1289,8 +1286,14 @@
     const tempV = new THREE.Vector3();
 
     labels.forEach(item => {
+      if (!item.anchors) {
+        item.anchors = [];
+        item.obj.children.slice(0, 2).forEach(mesh => {
+          const vertices = mesh.geometry.attributes.position;
+          for (let index = 0; index < vertices.count; index++) item.anchors.push(new THREE.Vector3().fromBufferAttribute(vertices, index).applyMatrix4(mesh.matrixWorld));
+        });
+      }
       item.obj.getWorldPosition(tempV);
-      tempV.y += item.yOffset;
       tempV.project(camera);
 
       if (tempV.z > 1 || tempV.z < -1 || Math.abs(tempV.x) > 1.1 || Math.abs(tempV.y) > 1.1) {
@@ -1299,7 +1302,13 @@
       }
       item.el.style.display = 'flex';
       const x = (tempV.x * 0.5 + 0.5) * w;
-      const y = (-(tempV.y * 0.5) + 0.5) * h;
+      let bottom = -Infinity;
+      item.anchors.forEach(point => {
+        tempV.copy(point).project(camera);
+        if (tempV.z >= -1 && tempV.z <= 1) bottom = Math.max(bottom, (-tempV.y * 0.5 + 0.5) * h);
+      });
+      const y = bottom + 6;
+      if (!Number.isFinite(y) || y < 0 || y + item.el.offsetHeight > h) { item.el.style.display = 'none'; return; }
       item.el.style.left = `${x}px`;
       item.el.style.top = `${y}px`;
     });
@@ -1307,14 +1316,50 @@
 
   // 3D 冒險者行走邏輯
   function walkToAndTrigger(tx, tz, onArrive) {
-    if (Math.hypot(tx - state.playerPos.x, tz - state.playerPos.z) <= 0.15) {
+    if (!sceneArt?.paths) { if (typeof onArrive === 'function') onArrive(); return; }
+    const target = sceneArt.paths.destination({ x: tx, z: tz });
+    playerRoute = sceneArt.paths.route(state.playerPos, target);
+    state.playerTargetPos = { ...playerRoute[playerRoute.length - 1] };
+    if (Math.hypot(state.playerTargetPos.x - state.playerPos.x, state.playerTargetPos.z - state.playerPos.z) <= 0.01) {
+      playerRoute = [];
       state.onArriveCallback = null;
       if (typeof onArrive === 'function') onArrive();
       return;
     }
-    state.playerTargetPos.x = tx;
-    state.playerTargetPos.z = tz;
     state.onArriveCallback = onArrive;
+  }
+
+  function stepPlayer(horizontal, depth) {
+    if (!sceneArt?.paths) return;
+    const target = { x: state.playerPos.x + horizontal, z: state.playerPos.z + depth };
+    const route = sceneArt.paths.route(state.playerPos, target);
+    const length = route.reduce((total, point, index) => index ? total + Math.hypot(point.x - route[index - 1].x, point.z - route[index - 1].z) : total, 0);
+    if (length > Math.hypot(horizontal, depth) * 1.6) return;
+    playerRoute = route;
+    state.playerTargetPos = { ...route[route.length - 1] };
+    state.onArriveCallback = null;
+  }
+
+  function updatePlayerWalking(elapsed) {
+    if (!playerGroup) return;
+    const movement = window.SocialIslandPaths.advance(state.playerPos, playerRoute, elapsed * 8);
+    state.playerPos = movement.position;
+    state.isWalking = movement.traveled > 0;
+    if (movement.angle !== null) state.playerAngle = movement.angle;
+    if (state.isWalking) state.walkTime += elapsed * 9;
+    const stride = state.isWalking ? Math.sin(state.walkTime) : 0;
+    if (playerLegL && playerLegR) {
+      playerLegL.rotation.x = stride * 0.45;
+      playerLegR.rotation.x = -stride * 0.45;
+    }
+    playerGroup.position.set(state.playerPos.x, state.playerPos.y + Math.abs(stride) * 0.06, state.playerPos.z);
+    playerGroup.rotation.y = state.playerAngle;
+    if (state.isWalking && Math.random() < elapsed * 2) sfx.playStep();
+    if (movement.arrived && typeof state.onArriveCallback === 'function') {
+      const callback = state.onArriveCallback;
+      state.onArriveCallback = null;
+      callback();
+    }
   }
 
   // 視角控制器與 Raycaster 點擊
@@ -1359,7 +1404,8 @@
       const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
       const isHoverResident = sceneArt && raycaster.intersectObjects(sceneArt.residents, true).length > 0;
       const isHoverIcebreaker = sceneArt && raycaster.intersectObject(sceneArt.icebreaker, true).length > 0;
-      canvas.style.cursor = (isHoverIcebreaker || isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
+      const isHoverTeamwork = sceneArt && raycaster.intersectObject(sceneArt.teamwork, true).length > 0;
+      canvas.style.cursor = (isHoverTeamwork || isHoverIcebreaker || isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
     });
 
     canvas.addEventListener('pointercancel', event => gestures.up(event, true));
@@ -1383,6 +1429,10 @@
       mouse.y = -((e.clientY - rect.top) / stage.clientHeight) * 2 + 1;
 
       raycaster.setFromCamera(mouse, camera);
+      if (sceneArt && raycaster.intersectObject(sceneArt.teamwork, true).length) {
+        visitTeamwork();
+        return;
+      }
       if (sceneArt && raycaster.intersectObject(sceneArt.icebreaker, true).length) {
         visitIcebreaker();
         return;
@@ -1457,13 +1507,13 @@
       if (document.body.classList.contains('modal-open') || e.target.closest('.mft-ui, .mft-editor, button, input, textarea, select, summary, a, [contenteditable="true"]')) return;
       const speed = 1.4;
       if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
-        state.playerTargetPos.z -= speed;
+        stepPlayer(0, -speed);
       } else if (e.key === 's' || e.key === 'S' || e.key === 'ArrowDown') {
-        state.playerTargetPos.z += speed;
+        stepPlayer(0, speed);
       } else if (e.key === 'a' || e.key === 'A' || e.key === 'ArrowLeft') {
-        state.playerTargetPos.x -= speed;
+        stepPlayer(-speed, 0);
       } else if (e.key === 'd' || e.key === 'D' || e.key === 'ArrowRight') {
-        state.playerTargetPos.x += speed;
+        stepPlayer(speed, 0);
       }
       if (/^(ArrowUp|ArrowDown|ArrowLeft|ArrowRight|[wasd])$/i.test(e.key)) e.preventDefault();
     });
@@ -1475,13 +1525,13 @@
         const step = () => {
           const dir = btn.dataset.dir;
           const speed = 2.0;
-          if (dir === 'up') state.playerTargetPos.z -= speed;
-          if (dir === 'down') state.playerTargetPos.z += speed;
-          if (dir === 'left') state.playerTargetPos.x -= speed;
-          if (dir === 'right') state.playerTargetPos.x += speed;
-          if (dir === 'center') { state.playerTargetPos.x = 0; state.playerTargetPos.z = 0; }
+          if (dir === 'up') stepPlayer(0, -speed);
+          if (dir === 'down') stepPlayer(0, speed);
+          if (dir === 'left') stepPlayer(-speed, 0);
+          if (dir === 'right') stepPlayer(speed, 0);
+          if (dir === 'center') walkToAndTrigger(0, 0);
         };
-        btn.addEventListener('pointerdown', step);
+        btn.addEventListener('click', step);
       });
     }
   }
@@ -1541,47 +1591,7 @@
     if (!motionPaused) sceneryTime += elapsed;
 
     // 1. 冒險者行走插值與步伐動畫
-    if (playerGroup) {
-      const dx = state.playerTargetPos.x - state.playerPos.x;
-      const dz = state.playerTargetPos.z - state.playerPos.z;
-      const distToTarget = Math.sqrt(dx * dx + dz * dz);
-
-      if (distToTarget > 0.15) {
-        state.isWalking = true;
-        state.walkTime += 0.18;
-        const moveSpeed = Math.min(0.22, distToTarget * 0.1);
-        state.playerPos.x += (dx / distToTarget) * moveSpeed;
-        state.playerPos.z += (dz / distToTarget) * moveSpeed;
-        state.playerAngle = Math.atan2(dx, dz);
-
-        // 步伐擺動
-        if (playerLegL && playerLegR) {
-          playerLegL.rotation.x = Math.sin(state.walkTime * 5) * 0.45;
-          playerLegR.rotation.x = -Math.sin(state.walkTime * 5) * 0.45;
-        }
-        playerGroup.position.y = 2.2 + Math.abs(Math.sin(state.walkTime * 5)) * 0.12;
-
-        if (Math.random() < 0.08) sfx.playStep();
-      } else {
-        if (state.isWalking) {
-          state.isWalking = false;
-          if (playerLegL && playerLegR) {
-            playerLegL.rotation.x = 0;
-            playerLegR.rotation.x = 0;
-          }
-          playerGroup.position.y = 2.2;
-          if (typeof state.onArriveCallback === 'function') {
-            const cb = state.onArriveCallback;
-            state.onArriveCallback = null;
-            cb();
-          }
-        }
-      }
-
-      playerGroup.position.x = state.playerPos.x;
-      playerGroup.position.z = state.playerPos.z;
-      playerGroup.rotation.y = state.playerAngle;
-    }
+    updatePlayerWalking(elapsed);
 
     // 2. 視角旋轉平滑插值
     yaw += (targetYaw - yaw) * 0.08;
@@ -1661,7 +1671,7 @@
     targetYaw = 0.4;
     targetPitch = 0.85;
     targetDist = window.SocialIslandExplorer.overviewDistance(camera?.aspect || 1);
-    cameraGoal?.set(0, 1.8, 4);
+    cameraGoal?.set(-3, 1.8, 3);
     synchronizeCameraControls();
     closeQuestDrawer();
   }
@@ -2378,6 +2388,11 @@
         <p>Warm up and say hello to a new friend.</p>
         <button type="button" onclick="window.socialGame.openIcebreaker()">Choose a warm-up quest →</button>
       </section>
+      <section class="island-2d-card teamwork-map-card">
+        <h3>🤝 Teamwork Island</h3>
+        <p>Share the jobs and finish our mission together.</p>
+        <button type="button" onclick="window.socialGame.openTeamwork()">Choose a teamwork quest →</button>
+      </section>
     </div>`;
     container.innerHTML = html;
   }
@@ -2399,27 +2414,51 @@
   }
 
   function openIcebreaker() {
-    const list = document.getElementById('icebreakerTasks');
+    openIslandHub('icebreaker', [1, 2, 12, 51]);
+  }
+
+  function visitTeamwork() {
+    if (!sceneArt || state.viewMode === '2d') { openTeamwork(); return; }
+    const destination = sceneArt.teamwork.position;
+    walkToAndTrigger(destination.x, destination.z, () => {
+      overviewActive = false;
+      state.cameraFollow = true;
+      cameraMode = 'bird';
+      targetYaw = 0.3;
+      targetPitch = 0.75;
+      targetDist = 32;
+      cameraGoal.y = 1.8;
+      synchronizeCameraControls();
+      openTeamwork();
+    });
+  }
+
+  function openTeamwork() {
+    openIslandHub('teamwork', [14, 24, 40, 41]);
+  }
+
+  function openIslandHub(kind, weeks) {
+    const list = document.getElementById(`${kind}Tasks`);
     list.replaceChildren();
-    [1, 2, 12, 51].forEach(week => {
+    weeks.forEach(week => {
       const lesson = allWeeks.find(item => item.lessonNumber === week) || allWeeks[week - 1];
       const button = document.createElement('button');
       button.type = 'button';
-      button.dataset.icebreakerWeek = String(week);
+      button.dataset[`${kind}Week`] = String(week);
       const number = document.createElement('span');
       number.textContent = `Week ${week}`;
       const title = document.createElement('strong');
       title.textContent = lesson.title;
       button.append(number, title);
       button.addEventListener('click', () => {
-        document.getElementById('icebreakerDialog').close();
+        document.getElementById(`${kind}Dialog`).close();
         const index = ISLAND_THEMES.findIndex(theme => week >= theme.weeksRange[0] && week <= theme.weeksRange[1]);
         openQuestDrawer(index, week);
       });
       list.appendChild(button);
     });
     document.body.classList.add('modal-open');
-    const dialog = document.getElementById('icebreakerDialog');
+    const dialog = document.getElementById(`${kind}Dialog`);
     if (!dialog.open) dialog.showModal();
   }
 
@@ -2640,7 +2679,9 @@
     openVisitors,
     changeVisitor,
     visitIcebreaker,
-    openIcebreaker
+    openIcebreaker,
+    visitTeamwork,
+    openTeamwork
   };
 
   // DOM 載入後啟動
@@ -2653,7 +2694,9 @@
       });
     });
     window.addEventListener('pagehide', saveLocalProgress);
-    if (window.location.hash === '#icebreaker') {
+    if (window.location.hash === '#teamwork') {
+      openTeamwork();
+    } else if (window.location.hash === '#icebreaker') {
       openIcebreaker();
     } else if (window.location.hash === '#passport') {
       openPassportModal();
