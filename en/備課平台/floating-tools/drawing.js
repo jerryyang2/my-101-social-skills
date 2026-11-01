@@ -1031,7 +1031,7 @@
       open: () => toggle(true),
       close: () => toggle(false)
     };
-    toggle(innerWidth > 700 && !document.body.classList.contains('social-garden'));
+    toggle(innerWidth > 700 && !document.body.classList.contains('social-garden') && document.body.dataset.platform !== 'island');
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);else init();
 })();
