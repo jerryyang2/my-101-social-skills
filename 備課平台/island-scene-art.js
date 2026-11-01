@@ -259,20 +259,45 @@
     function pedestrian(index) {
       const person = group(scene, [0, 0, 0], 1.05);
       person.name = `strolling-resident-${index}`;
+      person.userData.walkerIndex = index;
       const shirt = [0xc97a60, 0x527f92, 0xd8a43e, 0x718f5f, 0x9380ac, 0x4d8f8c][index % 6];
       const skin = [0xefc39b, 0xc99570, 0xa97453][index % 3];
       piece(person, 'sphere', skin, [0.29, 0.32, 0.28], [0, 1.25, 0]);
       piece(person, 'sphere', 0x5f4d42, [0.3, 0.18, 0.29], [0, 1.45, -0.035]);
       piece(person, 'cylinder', shirt, [0.3, 0.62, 0.3], [0, 0.78, 0]);
+      const arms = [];
       const legs = [-1, 1].map(side => {
         const leg = group(person, [side * 0.14, 0.48, 0]);
         piece(leg, 'box', 0x465d67, [0.18, 0.4, 0.2], [0, -0.2, 0]);
         piece(leg, 'sphere', 0xfff0ce, [0.12, 0.09, 0.19], [0, -0.4, 0.04]);
-        piece(person, 'sphere', skin, [0.1, 0.27, 0.1], [side * 0.36, 0.75, 0]);
+        const arm = group(person, [side * 0.36, 0.98, 0]);
+        piece(arm, 'sphere', skin, [0.1, 0.27, 0.1], [0, -0.22, 0]);
+        arms.push(arm);
         piece(person, 'sphere', 0x3d4843, [0.035, 0.045, 0.025], [side * 0.1, 1.27, 0.265]);
         return leg;
       });
-      return { person, legs };
+      const uniform = window.SocialIslandEncounters?.profiles[index]?.uniform;
+      if (['post','driver','fire','coast','repair'].includes(uniform)) {
+        const color = uniform === 'fire' ? 0xe0ae3d : uniform === 'repair' ? 0xf6d35d : 0x3a667b;
+        piece(person, 'sphere', color, [0.33,0.18,0.31], [0,1.48,0]);
+        piece(person, 'box', color, [0.42,0.05,0.3], [0,1.45,0.2]);
+      }
+      if (['baker','chef','nurse'].includes(uniform)) {
+        piece(person,'cylinder',0xfffcf0,[0.33,0.22,0.33],[0,1.55,0]);
+        if (uniform !== 'nurse') piece(person,'sphere',0xfffcf0,[0.33,0.2,0.3],[0,1.7,0]);
+        piece(person,'box',0xfffcf0,[0.42,0.5,0.05],[0,0.74,0.27]);
+      }
+      if (uniform === 'garden') {
+        piece(person,'cylinder',0xdac27d,[0.5,0.05,0.5],[0,1.47,0]);
+        piece(person,'cylinder',0xdac27d,[0.3,0.2,0.3],[0,1.58,0]);
+      }
+      if (['post','library','music','shop'].includes(uniform)) piece(person,'box',0x9b6a44,[0.3,0.35,0.15],[-0.35,0.64,0.04]);
+      if (['cleaner','repair','coast'].includes(uniform)) {
+        piece(person,'box',0xf0d365,[0.5,0.07,0.08],[0,0.84,0.28]);
+        piece(person,'box',0xf0d365,[0.5,0.07,0.08],[0,0.63,0.28]);
+      }
+      if (uniform === 'coach') piece(person,'sphere',0xfff7df,[0.1,0.1,0.04],[0,0.96,0.3]);
+      return { person, legs, arms };
     }
     for (let index = 0; index < 14; index++) {
       const model = pedestrian(index);
@@ -282,7 +307,7 @@
       const forward = paths.route(origin, destination);
       const patrol = [...forward, ...forward.slice(0, -1).reverse()];
       const length = patrol.reduce((total, point, pointIndex) => pointIndex ? total + Math.hypot(point.x - patrol[pointIndex - 1].x, point.z - patrol[pointIndex - 1].z) : total, 0);
-      walkers.push({ ...model, patrol, length, speed: 0.7 + index % 4 * 0.13, offset: index / 14 });
+      walkers.push({ ...model, patrol, length, speed: 0.7 + index % 4 * 0.13, distance: index / 14 * length, greetingUntil: -1 });
     }
     const waves = new three.Group();
     for (let wave = 0; wave < 40; wave++) {
@@ -291,6 +316,7 @@
       piece(waves, 'box', 0xb5d9d3, [0.9 + wave % 3 * 0.4, 0.02, 0.065], [Math.cos(angle) * radius, 0.02, Math.sin(angle) * radius]);
     }
     scene.add(waves);
+    let previousTime = 0;
     return {
       residents,
       icebreaker,
@@ -298,8 +324,17 @@
       paths,
       walkers,
       animate(time, cameraPosition) {
+        const elapsed = Math.max(0,time-previousTime); previousTime=time;
         walkers.forEach(walker => {
-          let remaining = (time * walker.speed + walker.offset * walker.length) % walker.length;
+          const greeting = time < walker.greetingUntil;
+          walker.arms[1].rotation.z = greeting ? -1.7 + Math.sin(time*7)*0.2 : 0;
+          if (greeting) {
+            walker.legs.forEach(leg => {leg.rotation.x=0;});
+            if (walker.greetingTarget) walker.person.rotation.y=Math.atan2(walker.greetingTarget.x-walker.person.position.x,walker.greetingTarget.z-walker.person.position.z);
+            return;
+          }
+          walker.distance = (walker.distance + elapsed*walker.speed) % walker.length;
+          let remaining = walker.distance;
           for (let segment = 1; segment < walker.patrol.length; segment++) {
             const first = walker.patrol[segment - 1], second = walker.patrol[segment];
             const length = Math.hypot(second.x - first.x, second.z - first.z);

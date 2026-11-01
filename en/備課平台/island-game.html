@@ -22,7 +22,7 @@
 <link href="../../備課平台/focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=c99aea6c73bc"></script>
 <link href="../../備課平台/island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="../../備課平台/island-voyage.css?v=44ca0709a879" rel="stylesheet"/>
+<link href="../../備課平台/island-voyage.css?v=d028360013da" rel="stylesheet"/>
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -127,7 +127,12 @@
 <div id="labelLayer"></div>
 </div><div id="map2DView">
 <!-- 由 island-game.js 動態渲染 -->
-</div><div class="view-hints" id="moveHint">
+</div><p class="island-journey-status" id="islandJourneyStatus" role="status" hidden></p>
+<section class="encounter-card" id="islandEncounter" aria-labelledby="encounterName" hidden>
+<div class="encounter-top"><strong id="encounterName"></strong><button type="button" aria-label="Close neighbour greeting" onclick="window.socialGame.closeEncounter()">✕</button></div>
+<p id="encounterIntro" role="status"></p><p class="encounter-visitor" id="encounterVisitor"></p>
+<div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 Wave hello</button><button type="button" aria-label="Read neighbour dialogue aloud" onclick="window.socialGame.speakEncounter()">🔊</button></div>
+</section><div class="view-hints" id="moveHint">
     Choose an island to explore. Say hello to residents and balloons, too.
   </div></div><details class="explorer-console" open="">
 <summary>Explore tools <span aria-hidden="true">⌄</span></summary>
@@ -157,6 +162,8 @@
 <button aria-label="Meet Jia the Fox" onclick="window.socialGame.meetResident(3)" type="button">🦊</button>
 </div>
 <h2>Take a walk</h2>
+<label for="neighbourChoice">Meet the working neighbours</label><select id="neighbourChoice"><option value="">Nearby neighbour</option></select>
+<button type="button" onclick="window.socialGame.visitNeighbour()">👋 Visit a neighbour</button>
 <div id="explorerMovement"></div>
 <p>Walk with WASD / arrow keys<br/>Explore an island, then choose a week from its quest menu</p>
 </div>
@@ -508,7 +515,8 @@
 <script src="island-visitors.js?v=d2f819b35c84"></script>
 <script src="island-explorer.js?v=a688dbb47f99"></script>
 <script src="island-paths.js?v=70682ce42aa5"></script>
-<script src="island-scene-art.js?v=5e9c86705e90"></script>
-<script src="island-game.js?v=b1131b1f6ed7"></script>
+<script src="island-encounters.js?v=37d58c4e5ff3"></script>
+<script src="island-scene-art.js?v=6fb315f09458"></script>
+<script src="island-game.js?v=b6b519f69079"></script>
 </body>
 </html>

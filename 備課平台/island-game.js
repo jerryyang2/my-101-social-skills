@@ -386,6 +386,10 @@
   let playerBodyMesh = null;
   let playerCapMesh = null;
   let playerRoute = [];
+  let playerArmR = null, playerWaveUntil = -1;
+  let lessonJourney = null;
+  const encounterGate = window.SocialIslandEncounters.createGate();
+  let currentEncounter = -1, pendingNeighbour = -1, encounterClock = 0, lastEncounterCheck = 0;
 
   const stage = document.getElementById('stage');
   const canvas = document.getElementById('threeCanvas');
@@ -647,6 +651,12 @@
     playerBodyMesh = new THREE.Mesh(bodyGeo, bodyMat);
     playerBodyMesh.position.y = 0.72;
     playerGroup.add(playerBodyMesh);
+    [-1,1].forEach(side => {
+      const arm = new THREE.Group(); arm.position.set(side*0.36,0.95,0);
+      const hand = new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,0.43,6),new THREE.MeshLambertMaterial({color:0xfed7aa}));
+      hand.position.y=-0.2; arm.add(hand);playerGroup.add(arm);
+      if(side===1) playerArmR=arm;
+    });
 
     // 後背包
     const bagGeo = new THREE.BoxGeometry(0.3, 0.38, 0.2);
@@ -1155,6 +1165,7 @@
 
   // 3D 冒險者行走邏輯
   function walkToAndTrigger(tx, tz, onArrive) {
+    window.socialGame?.cancelJourney?.();
     if (!sceneArt?.paths) { if (typeof onArrive === 'function') onArrive(); return; }
     const target = sceneArt.paths.destination({ x: tx, z: tz });
     playerRoute = sceneArt.paths.route(state.playerPos, target);
@@ -1175,6 +1186,7 @@
     const route = sceneArt.paths.route(state.playerPos, target);
     const length = route.reduce((total, point, index) => index ? total + Math.hypot(point.x - route[index - 1].x, point.z - route[index - 1].z) : total, 0);
     if (length > Math.hypot(horizontal, depth) * 1.6) return;
+    window.socialGame?.cancelJourney?.();
     playerRoute = route;
     state.playerTargetPos = { ...route[route.length - 1] };
     if (length > 0.01) beginPlayerFollow();
@@ -1195,6 +1207,7 @@
     }
     playerGroup.position.set(state.playerPos.x, state.playerPos.y + Math.abs(stride) * 0.06, state.playerPos.z);
     playerGroup.rotation.y = state.playerAngle;
+    if (playerArmR) playerArmR.rotation.z=sceneryTime<playerWaveUntil ? -1.7+Math.sin(sceneryTime*7)*0.2 : 0;
     if (state.isWalking && Math.random() < elapsed * 2) sfx.playStep();
     if (movement.arrived && typeof state.onArriveCallback === 'function') {
       const callback = state.onArriveCallback;
@@ -1239,6 +1252,14 @@
       mouse.x = ((e.clientX - rect.left) / stage.clientWidth) * 2 - 1;
       mouse.y = -((e.clientY - rect.top) / stage.clientHeight) * 2 + 1;
       raycaster.setFromCamera(mouse, camera);
+      const walkers = sceneArt?.walkers || [];
+      const walkerHits = raycaster.intersectObjects(walkers.map(walker=>walker.person),true);
+      if (walkerHits.length) {
+        let person=walkerHits[0].object;
+        while(person.parent && person.userData.walkerIndex===undefined) person=person.parent;
+        visitWalker(person.userData.walkerIndex);
+        return;
+      }
       const isHoverBalloon = balloons && raycaster.intersectObjects(balloons, true).length > 0;
       const isHoverCenter = centerMesh && raycaster.intersectObject(centerMesh, true).length > 0;
       const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
@@ -1448,6 +1469,14 @@
     // 4. 空中巡航熱氣球軌道漫遊與微風浮沉擺動
     const time = sceneryTime * 1.6;
     sceneArt?.animate(sceneryTime, camera.position);
+    encounterClock=frameTime/1000;
+    if(encounterClock-lastEncounterCheck>.25) {
+      lastEncounterCheck=encounterClock;
+      if(currentEncounter<0 && pendingNeighbour<0 && state.viewMode==='3d' && state.cameraFollow && !document.body.classList.contains('modal-open')) {
+        const index=encounterGate.pick(state.playerPos,sceneArt?.walkers || [],encounterClock);
+        if(index>=0) greetWalker(index);
+      }
+    }
     balloons.forEach(b => {
       if (!motionPaused) b.userData.angle += b.userData.speed;
       b.position.x = Math.cos(b.userData.angle) * b.userData.radius;
@@ -1488,6 +1517,8 @@
   }
 
   function resetArchipelagoView() {
+    window.socialGame?.cancelJourney?.();
+    window.socialGame?.closeEncounter?.();
     playerRoute = [];
     state.playerTargetPos = { ...state.playerPos };
     state.onArriveCallback = null;
@@ -1586,16 +1617,20 @@
   // 6. 關卡抽屜與闖關邏輯 (Quest Drawer)
   // ==========================================
   function openQuestDrawer(islandIdx, weekNumber) {
+    if (!Number.isInteger(islandIdx) || !ISLAND_THEMES[islandIdx]) return;
+    const selectedWeek=weekNumber || ISLAND_THEMES[islandIdx].weeks[0];
+    if(!ISLAND_THEMES[islandIdx].weeks.includes(selectedWeek)) return;
     window.SocialIslandLayout?.set('play');
     document.body.classList.add('quest-open');
     state.activeIslandIndex = islandIdx;
-    state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeks[0];
+    state.activeWeekNumber = selectedWeek;
 
     const overlay = document.getElementById('questDrawerOverlay');
     if (!overlay) return;
     overlay.classList.add('active');
 
     renderQuestDrawerContent();
+    travelToLessonIsland(islandIdx,selectedWeek);
   }
 
   function closeQuestDrawer() {
@@ -1605,9 +1640,39 @@
   }
 
   function selectWeek(wNum) {
-    state.activeWeekNumber = wNum;
+    const index=ISLAND_THEMES.findIndex(theme=>theme.weeks.includes(wNum));
+    if(index<0) return;
     sfx.playClick();
-    renderQuestDrawerContent();
+    openQuestDrawer(index,wNum);
+  }
+
+  function cancelJourney() {
+    lessonJourney=null;
+    pendingNeighbour=-1;
+    const status=document.getElementById('islandJourneyStatus');
+    if(status) status.hidden=true;
+  }
+
+  function showJourneyStatus(job,arrived) {
+    if(lessonJourney!==job) return;
+    const status=document.getElementById('islandJourneyStatus');
+    if(!status) return;
+    status.hidden=false;
+    status.textContent=arrived ? `已抵達：${ISLAND_THEMES[job.index].shortName} · 第 ${job.week} 週` : `沿木橋前往：${ISLAND_THEMES[job.index].shortName} · 第 ${job.week} 週`;
+  }
+
+  function travelToLessonIsland(index,week) {
+    cancelJourney();
+    if(state.viewMode!=='3d' || !sceneArt?.paths || !islandMeshes[index]) return;
+    const job={index,week};
+    const destination=islandMeshes[index].position;
+    walkToAndTrigger(destination.x,destination.z,()=>{
+      if(lessonJourney!==job) return;
+      showJourneyStatus(job,true);
+      saveLocalProgress();
+    });
+    lessonJourney=job;
+    showJourneyStatus(job,playerRoute.length===0);
   }
 
   function renderQuestDrawerContent() {
@@ -2153,10 +2218,12 @@
   // 11. 2D 平面全地圖與無障礙導覽模式
   // ==========================================
   function toggleViewMode() {
+    closeEncounter();
     const map2D = document.getElementById('map2DView');
     const btn = document.getElementById('btnToggleView');
     if (state.viewMode === '2d' && !webglAvailable) return;
     if (state.viewMode === '3d') {
+      playerRoute=[];state.onArriveCallback=null;cancelJourney();
       state.viewMode = '2d';
       if (map2D) map2D.classList.add('active');
       if (btn) btn.textContent = '🌐 回到 3D 探索';
@@ -2172,6 +2239,7 @@
       control.disabled = !webglAvailable && state.viewMode === '2d';
     });
     if (!webglAvailable && btn) btn.disabled = true;
+    if(state.viewMode==='3d' && document.body.classList.contains('quest-open')) travelToLessonIsland(state.activeIslandIndex,state.activeWeekNumber);
   }
 
   function render2DMapView() {
@@ -2352,6 +2420,67 @@
     synchronizeCameraControls();
   }
 
+  function greetWalker(index) {
+    const profile=window.SocialIslandEncounters.profiles[index];
+    if(!profile) return;
+    pendingNeighbour=-1;
+    currentEncounter=index;
+    encounterGate.remember(index,encounterClock);
+    const walker=sceneArt?.walkers[index];
+    if(walker) {walker.greetingUntil=sceneryTime+6;walker.greetingTarget={...state.playerPos};}
+    playerWaveUntil=sceneryTime+3;
+    document.getElementById('encounterName').textContent=`${profile.icon} ${profile.role} · ${profile.name}`;
+    document.getElementById('encounterIntro').textContent=profile.intro;
+    document.getElementById('encounterVisitor').textContent=`${state.heroName}：「你好！」`;
+    document.getElementById('encounterReply').textContent=profile.reply;
+    document.getElementById('islandEncounter').hidden=false;
+  }
+
+  function replyEncounter(wave) {
+    const profile=window.SocialIslandEncounters.profiles[currentEncounter];
+    if(!profile) return;
+    document.getElementById('encounterVisitor').textContent=wave ? '👋 我揮手，向你打招呼。' : `${state.heroName}：「${profile.reply}」`;
+    document.getElementById('encounterIntro').textContent=profile.answer;
+    playerWaveUntil=sceneryTime+3;
+  }
+
+  function speakEncounter() {
+    if(currentEncounter<0) return;
+    speakText(document.getElementById('encounterName').textContent+'。'+document.getElementById('encounterIntro').textContent+'。'+document.getElementById('encounterVisitor').textContent);
+  }
+
+  function closeEncounter() {
+    const card=document.getElementById('islandEncounter');
+    if(!card) return;
+    const restoreFocus=card.contains(document.activeElement);
+    currentEncounter=-1;card.hidden=true;
+    if(restoreFocus) canvas.focus({preventScroll:true});
+  }
+
+  function visitWalker(index) {
+    const walker=sceneArt?.walkers[index];
+    if(!window.SocialIslandEncounters.profiles[index]) return;
+    closeEncounter();
+    if(!walker || state.viewMode==='2d') {greetWalker(index);return;}
+    walker.greetingUntil=sceneryTime+20;
+    walker.greetingTarget={...state.playerPos};
+    walkToAndTrigger(walker.person.position.x,walker.person.position.z,()=>greetWalker(index));
+    if(playerRoute.length) pendingNeighbour=index;
+  }
+
+  function visitNeighbour() {
+    const selected=document.getElementById('neighbourChoice').value;
+    let index=selected==='' ? 0 : Number(selected);
+    if(selected==='' && sceneArt?.walkers.length) {
+      let distance=Infinity;
+      sceneArt.walkers.forEach((walker,i)=>{
+        const gap=Math.hypot(walker.person.position.x-state.playerPos.x,walker.person.position.z-state.playerPos.z);
+        if(gap<distance) {distance=gap;index=i;}
+      });
+    }
+    visitWalker(index);
+  }
+
   function meetResident(index) {
     const theme = ISLAND_THEMES[index];
     if (!theme) return;
@@ -2515,14 +2644,23 @@
     visitIcebreaker,
     openIcebreaker,
     visitTeamwork,
-    openTeamwork
+    openTeamwork,
+    cancelJourney,
+    visitNeighbour,
+    closeEncounter,
+    replyEncounter,
+    speakEncounter
   };
 
   // DOM 載入後啟動
   window.addEventListener('DOMContentLoaded', () => {
-    const requestedWeek=Number(new URLSearchParams(location.search).get('week'));
-    if(Number.isInteger(requestedWeek) && requestedWeek>=1 && requestedWeek<=52){const index=ISLAND_THEMES.findIndex(t=>t.weeks.includes(requestedWeek));setTimeout(()=>openQuestDrawer(index,requestedWeek),300);}
     initThree();
+    window.SocialIslandEncounters.profiles.forEach((profile,index)=>{
+      const option=document.createElement('option');option.value=index;option.textContent=`${profile.icon} ${profile.role} · ${profile.name}`;
+      document.getElementById('neighbourChoice').appendChild(option);
+    });
+    const requestedWeek=Number(new URLSearchParams(location.search).get('week'));
+    if(Number.isInteger(requestedWeek) && requestedWeek>=1 && requestedWeek<=52){const index=ISLAND_THEMES.findIndex(t=>t.weeks.includes(requestedWeek));openQuestDrawer(index,requestedWeek);}
     document.getElementById('activeVisitorName').textContent = state.heroName;
     document.querySelectorAll('.explorer-dialog').forEach(dialog => {
       dialog.addEventListener('close', () => {
@@ -2530,6 +2668,7 @@
       });
     });
     window.addEventListener('pagehide', saveLocalProgress);
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden') saveLocalProgress();});
     if (window.location.hash === '#teamwork') {
       openTeamwork();
     } else if (window.location.hash === '#icebreaker') {

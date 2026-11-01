@@ -22,7 +22,7 @@
 <link href="focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=18654f750e1c"></script>
 <link href="island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="island-voyage.css?v=44ca0709a879" rel="stylesheet"/>
+<link href="island-voyage.css?v=d028360013da" rel="stylesheet"/>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -127,7 +127,12 @@
 <div id="labelLayer"></div>
 </div><div id="map2DView">
 <!-- 由 island-game.js 動態渲染 -->
-</div><div class="view-hints" id="moveHint">
+</div><p class="island-journey-status" id="islandJourneyStatus" role="status" hidden></p>
+<section class="encounter-card" id="islandEncounter" aria-labelledby="encounterName" hidden>
+<div class="encounter-top"><strong id="encounterName"></strong><button type="button" aria-label="收起路人招呼" onclick="window.socialGame.closeEncounter()">✕</button></div>
+<p id="encounterIntro" role="status"></p><p class="encounter-visitor" id="encounterVisitor"></p>
+<div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 揮手說你好</button><button type="button" aria-label="朗讀路人對話" onclick="window.socialGame.speakEncounter()">🔊</button></div>
+</section><div class="view-hints" id="moveHint">
     點島嶼出發，也可以點點居民和熱氣球。
   </div></div><details class="explorer-console" open="">
 <summary>巡島工具 <span aria-hidden="true">⌄</span></summary>
@@ -157,6 +162,8 @@
 <button aria-label="和嘉狐狸打招呼" onclick="window.socialGame.meetResident(3)" type="button">🦊</button>
 </div>
 <h2>帶訪客散散步</h2>
+<label for="neighbourChoice">認識路人的工作</label><select id="neighbourChoice"><option value="">附近路人</option></select>
+<button type="button" onclick="window.socialGame.visitNeighbour()">👋 拜訪路人</button>
 <div id="explorerMovement"></div>
 <p>WASD／方向鍵行走<br/>點島名探索，從任務選單選週次</p>
 </div>
@@ -508,7 +515,8 @@
 <script src="island-visitors.js?v=32e95e9dc67a"></script>
 <script src="island-explorer.js?v=a688dbb47f99"></script>
 <script src="island-paths.js?v=70682ce42aa5"></script>
-<script src="island-scene-art.js?v=5e9c86705e90"></script>
-<script src="island-game.js?v=1f35f56d680f"></script>
+<script src="island-encounters.js?v=8638eb67cf75"></script>
+<script src="island-scene-art.js?v=6fb315f09458"></script>
+<script src="island-game.js?v=8c43b09422a2"></script>
 </body>
 </html>

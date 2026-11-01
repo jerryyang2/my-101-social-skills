@@ -6,10 +6,10 @@ const acorn = require('../localization/node_modules/acorn');
 const root = path.join(__dirname, '..', '備課平台');
 const world = {window: {}};
 vm.createContext(world);
-for (const name of ['three.min.js', 'island-paths.js', 'island-scene-art.js', 'island-explorer.js']) vm.runInContext(fs.readFileSync(path.join(root, name), 'utf8'), world);
+for (const name of ['three.min.js', 'island-paths.js', 'island-encounters.js', 'island-scene-art.js', 'island-explorer.js']) vm.runInContext(fs.readFileSync(path.join(root, name), 'utf8'), world);
 const source = fs.readFileSync(path.join(root, 'island-game.js'), 'utf8');
 let themes;
-const wanted = new Set(['createNaturalShore', 'makeChubbySculptedIsland', 'beginPlayerFollow', 'setCameraPreset', 'resetArchipelagoView', 'walkToAndTrigger', 'stepPlayer']);
+const wanted = new Set(['createNaturalShore', 'makeChubbySculptedIsland', 'beginPlayerFollow', 'setCameraPreset', 'resetArchipelagoView', 'walkToAndTrigger', 'stepPlayer', 'openQuestDrawer', 'selectWeek', 'travelToLessonIsland', 'cancelJourney', 'showJourneyStatus', 'updatePlayerWalking']);
 function visit(node) {
   if (!node || typeof node !== 'object') return;
   if (node.type === 'FunctionDeclaration' && wanted.has(node.id.name)) vm.runInContext(source.slice(node.start, node.end), world);
@@ -65,3 +65,44 @@ world.state.viewMode='2d';world.beginPlayerFollow();assert.equal(world.state.cam
 const distances=[.4,.7,1,1.8,3].map(world.window.SocialIslandExplorer.overviewDistance);
 assert.ok(distances.every(x=>Number.isFinite(x)&&x>=86&&x<=180));
 console.log('PASS: six natural islands; 52 weeks retained in menus without 3D week markers; all routes supported; six connecting bridges; responsive overview; departure/manual follow and cancellable overview.');
+
+// A lesson opens its matching question while routing from the existing position.
+const status={hidden:true,textContent:''};const overlay={classList:{add(){}}};let rendered=0,saved=0;
+Object.assign(world,{ISLAND_THEMES:themes,islandMeshes:islands,lessonJourney:null,pendingNeighbour:-1,playerArmR:null,sceneryTime:0,playerGroup:new T.Group(),playerLegL:null,playerLegR:null,sfx:{playClick(){},playStep(){}},document:{body:{classList:{add(){}}},getElementById:id=>id==='islandJourneyStatus'?status:overlay},renderQuestDrawerContent(){rendered++},saveLocalProgress(){saved++}});
+world.window.socialGame={cancelJourney:world.cancelJourney};
+world.state.viewMode='3d';world.state.walkTime=0;
+for(let week=1;week<=52;week++) {
+  const index=themes.findIndex(theme=>theme.weeks.includes(week));
+  world.state.playerPos=art.paths.destination(islands[(index+1)%4].position);
+  const origin={...world.state.playerPos};world.openQuestDrawer(index,week);
+  assert.deepEqual({...world.state.playerPos},origin,'Opening a lesson must never teleport');
+  assert.equal(world.state.activeWeekNumber,week);assert.equal(world.state.activeIslandIndex,index);
+  assert.ok(world.playerRoute.length>1,'A different island starts a real route');
+  for(let frame=0;frame<2000 && world.playerRoute.length;frame++)world.updatePlayerWalking(.025);
+  const target=art.paths.destination(islands[index].position);
+  assert.ok(Math.hypot(world.state.playerPos.x-target.x,world.state.playerPos.z-target.z)<1e-6);
+  assert.ok(status.textContent.includes(String(week)));assert.equal(status.hidden,false);
+}
+world.openQuestDrawer(0,7);world.selectWeek(17);
+for(let frame=0;frame<2000 && world.playerRoute.length;frame++)world.updatePlayerWalking(.025);
+assert.equal(world.state.activeWeekNumber,17);assert.equal(world.state.activeIslandIndex,2);
+world.resetArchipelagoView();assert.equal(status.hidden,true);assert.equal(world.lessonJourney,null);
+world.state.viewMode='2d';const before={...world.state.playerPos};world.openQuestDrawer(1,1);
+assert.deepEqual({...world.state.playerPos},before);assert.equal(world.playerRoute.length,0);assert.equal(status.hidden,true);
+const validWeek=world.state.activeWeekNumber;world.openQuestDrawer(1,17);assert.equal(world.state.activeWeekNumber,validWeek,'Mismatched week/island cannot replace the lesson');
+// Neighbours only greet at ground-level proximity; repeated greetings are limited.
+const encounters=world.window.SocialIslandEncounters;
+assert.equal(new Set(Array.from(encounters.profiles,p=>p.role)).size,14);
+assert.ok(encounters.profiles.every(p=>p.intro&&p.reply&&p.answer&&p.uniform));
+const gate=encounters.createGate();const local=[{person:{position:{x:1,y:2,z:0}}}];
+assert.equal(gate.pick({x:0,y:2,z:0},local,0),-1);
+assert.equal(gate.pick({x:0,y:2,z:0},local,1),0);
+assert.equal(gate.pick({x:0,y:2,z:0},local,22),-1);
+assert.equal(gate.pick({x:0,y:6,z:0},local,62),-1);
+assert.equal(gate.pick({x:20,y:2,z:0},local,62),-1);
+assert.equal(gate.pick({x:0,y:2,z:0},local,62),0);
+const walker=art.walkers[0];art.animate(20,new T.Vector3());const resting=walker.person.position.clone();walker.greetingUntil=25;walker.greetingTarget={x:0,z:0};art.animate(22,new T.Vector3());
+assert.ok(walker.person.position.distanceTo(resting)<1e-6,'Greeting neighbours stand and wave');
+art.animate(22,new T.Vector3());assert.ok(walker.person.position.distanceTo(resting)<1e-6,'Paused scenery does not advance neighbours');
+art.animate(25.1,new T.Vector3());assert.ok(art.paths.nearest(walker.person.position).gap<1e-6);
+console.log('PASS: 52 matching lesson journeys without teleporting; rapid retargeting; overview cancellation; 2D fallback; 14 distinct occupations; proximity, height and cooldown; waving/pause/path support.');
