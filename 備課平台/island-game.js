@@ -399,7 +399,7 @@
   let sceneArt = null;
   let cameraMode = 'bird';
   let overviewActive = true;
-  let motionPaused = window.matchMedia('(prefers-reduced-motion: reduce)').matches || localStorage.getItem('social_quiet_mode') !== 'false';
+  let motionPaused = false;
   let sceneryTime = 0;
   let previousFrameTime = 0;
   let webglAvailable = false;
