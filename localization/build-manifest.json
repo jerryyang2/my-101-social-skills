@@ -8,7 +8,7 @@
     "備課平台/all_worksheets_zhuyin_b4.html": "735fb650fa33dd99f4e61b90c8c09e23baac1f0ee59341feb865b03d3c298ae7",
     "備課平台/classroom.html": "dc73132d15c49bcdbdca40909781ba80c1619b840fedd17f39b3760e0ce8155b",
     "備課平台/index.html": "0655f539f3f79303f71d731899981b7a7bed2b507c37720bcb8dc80c3e7e0ac4",
-    "備課平台/island-game.html": "135ec67d83830270966002aab70917d0da9f6fbd4c4141e1deddd1ba2d38dbb0",
+    "備課平台/island-game.html": "fd72413ebecd581c00155781f106847226940c4a2680bebe09278512232daa9e",
     "備課平台/manual.html": "4ff3110ff4cd04e9873bfa239ebc42ae95d9ff06c153b825472999c449b911f0",
     "備課平台/worksheet.html": "29ba255df61475f671b9d36bdc0b9a6cc798fb4a894928481c54969893f674e2",
     "備課平台/app.js": "24dfe9e04758d38a1c16dff471d86dbe9e0317a0027c37e792b15b8c16acd23e",
@@ -20,7 +20,7 @@
     "備課平台/garden-ui.js": "7bc19c569e6ea86cb500508f985ab855be97295833f8dd9b4fc710ce13bf8f75",
     "備課平台/island-encounters.js": "8638eb67cf751898d908a3fa7cc21f6688e7dd05796bcde76cffb877212509ef",
     "備課平台/island-explorer.js": "a688dbb47f9906fa8a539d28d70846668837259656538675756b245d528e958c",
-    "備課平台/island-game.js": "8c43b09422a222fc9c7552fa899cd79251fb6dd2013e7b893d0ee44e74d6f1c3",
+    "備課平台/island-game.js": "57d57ffd798eb1fddcf3ad569c26da074a3a706bb9b23f06207befb92756a813",
     "備課平台/island-paths.js": "70682ce42aa5441d5dd562c2807b5f146fd3979cb4216627621692d2ce3523a5",
     "備課平台/island-scene-art.js": "6fb315f09458711eb12893e88c6116457102dcb7106381da357028212e4636b0",
     "備課平台/island-ui.js": "fbfa49c33e5edf39762ec1c28ef8d8e2dc7145eb0c828746819acca73fa6673b",
@@ -39,10 +39,10 @@
   },
   "build_inputs": {
     "localization/build_english.py": "d065cab602fa4d7a1af69d9cfd8e22209ff0616683adce81d3a2e050ff8b7571",
-    "localization/catalog.json": "0944b75749392bac1cde34d9b72e3bea67216b808563b12efd554f0a2aa9a49f",
+    "localization/catalog.json": "5251aa6a7f96a7b5f53c6beb350217928fe7768e6ad486388ecf116722535caa",
     "localization/import_book_translations.py": "3295d631a903ad466de0be3e5d254dd72be333f915fd92e0514ec69105446d4d",
     "localization/js-nodes.cjs": "b1a8a1315df26fa536093b3689bae720d91e066dc5345218acdea23740974ad2",
-    "localization/overrides.en.json": "a0d670d381ab0f69dfeaaa7136ca30165207d691dd0d76dda5e3b52a89412279",
+    "localization/overrides.en.json": "982fb955f164ea2184e5f054b152fa14e0560145428856da9abcd730fc0d6eab",
     "localization/package-lock.json": "5e30ba2c3ed959cc40f26f854a7493148381931d76246dcc72f32348599c2e1d",
     "localization/package.json": "ffebd02eff7ae0a8f500bb8e5701af07ae8f1dc924074b93395d5f5750a5cf52",
     "localization/paragraphs.en.json": "78d6df4cebdc96402af0bb48c96292084edc9daf487afb0bdc16e69e74cee332",
@@ -77,8 +77,8 @@
     "en/備課平台/index.html": "44981d1484575a9d36a22eaa5db4963a8048c2ce4da8c44498360f4fe3fcf5c3",
     "en/備課平台/island-encounters.js": "37d58c4e5ff3d8dca9c0b6fca5647ce1ea9378c05475e0471fdf85c0f295eb8f",
     "en/備課平台/island-explorer.js": "a688dbb47f9906fa8a539d28d70846668837259656538675756b245d528e958c",
-    "en/備課平台/island-game.html": "a38b7015f52c244aca22881e3005e0522abc0126789c986e72dd73c1d1ebe478",
-    "en/備課平台/island-game.js": "b6b519f690791d7fa78cde58400a7a84989f2c0ee72344b08425d222784cecdb",
+    "en/備課平台/island-game.html": "9d1867ccce17fe51b51cc9c63fa386402cd13f343e1b752f21125f286fded395",
+    "en/備課平台/island-game.js": "bfa80b89f03111aae94841981030647293b92e72e449bfa89a899eb1d9c3b73b",
     "en/備課平台/island-paths.js": "70682ce42aa5441d5dd562c2807b5f146fd3979cb4216627621692d2ce3523a5",
     "en/備課平台/island-scene-art.js": "6fb315f09458711eb12893e88c6116457102dcb7106381da357028212e4636b0",
     "en/備課平台/island-ui.js": "5b45405eaad832c38b71f17f1aa23d6b4d3812fe00a1b63e055b6a7da7e4039c",
@@ -91,5 +91,5 @@
     "en/備課平台/worksheets-data.js": "a5e202e66997e5de3c9c205393d4a45ec8b54d8a26d8a509734c8ada79c9a34c",
     "en/備課平台/zhuyin.js": "38bf7b846cc8a0cd47219531485551e55fec97d41cb9480949d0c95b18a96a64"
   },
-  "translation_units": 9193
+  "translation_units": 9196
 }

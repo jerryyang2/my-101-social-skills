@@ -391,6 +391,7 @@
   let lessonJourney = null;
   const encounterGate = window.SocialIslandEncounters.createGate();
   let currentEncounter = -1, pendingNeighbour = -1, encounterClock = 0, lastEncounterCheck = 0;
+  let encounterReplied = false;
 
   const stage = document.getElementById('stage');
   const canvas = document.getElementById('threeCanvas');
@@ -2431,23 +2432,54 @@
     if(walker) {walker.greetingUntil=sceneryTime+6;walker.greetingTarget={...state.playerPos};}
     playerWaveUntil=sceneryTime+3;
     document.getElementById('encounterName').textContent=`${profile.icon} ${profile.role} · ${profile.name}`;
-    document.getElementById('encounterIntro').textContent=profile.intro;
-    document.getElementById('encounterVisitor').textContent=`${state.heroName}: “Hello!”`;
+    resetEncounterConversation(profile);
     document.getElementById('encounterReply').textContent=profile.reply;
     document.getElementById('islandEncounter').hidden=false;
   }
 
   function replyEncounter(wave) {
     const profile=window.SocialIslandEncounters.profiles[currentEncounter];
-    if(!profile) return;
-    document.getElementById('encounterVisitor').textContent=wave ? "👋 I wave to say hello." : `${state.heroName}：「${profile.reply}」`;
-    document.getElementById('encounterIntro').textContent=profile.answer;
+    if(!profile || encounterReplied) return;
+    encounterReplied=true;
+    appendEncounterLine(state.heroName,wave ? "👋 I wave to say hello." : profile.reply,true);
+    appendEncounterLine(`${profile.role} · ${profile.name}`,wave ? "Hello! Thanks for saying hi. Enjoy your day!" : profile.answer);
+    const choices=document.getElementById('encounterChoices');
+    const focusInChoices=choices.contains(document.activeElement);
+    choices.hidden=true;
+    document.getElementById('encounterRetry').hidden=false;
+    // Keep keyboard focus on a visible control after the reply choices disappear.
+    if(focusInChoices) document.getElementById('encounterRetry').focus({preventScroll:true});
+    const log=document.getElementById('encounterLog');log.scrollTop=log.scrollHeight;
     playerWaveUntil=sceneryTime+3;
+  }
+
+  function appendEncounterLine(speaker,text,visitor=false) {
+    const line=document.createElement('li');line.className=visitor ? 'encounter-line encounter-line-visitor' : 'encounter-line';
+    const name=document.createElement('span');name.className='encounter-speaker';name.textContent=speaker;
+    const bubble=document.createElement('p');bubble.className='encounter-bubble';bubble.textContent=text;
+    line.append(name,bubble);document.getElementById('encounterLog').appendChild(line);
+  }
+
+  function resetEncounterConversation(profile) {
+    encounterReplied=false;
+    document.getElementById('encounterLog').replaceChildren();
+    document.getElementById('encounterLog').scrollTop=0;
+    appendEncounterLine(`${profile.role} · ${profile.name}`,profile.intro);
+    document.getElementById('encounterChoices').hidden=false;
+    document.getElementById('encounterRetry').hidden=true;
+  }
+
+  function retryEncounter() {
+    const profile=window.SocialIslandEncounters.profiles[currentEncounter];
+    if(!profile) return;
+    resetEncounterConversation(profile);
+    document.getElementById('encounterReply').focus({preventScroll:true});
   }
 
   function speakEncounter() {
     if(currentEncounter<0) return;
-    speakText(document.getElementById('encounterName').textContent+'。'+document.getElementById('encounterIntro').textContent+'。'+document.getElementById('encounterVisitor').textContent);
+    const lines=document.getElementById('encounterLog').querySelectorAll('.encounter-line');
+    speakText(Array.from(lines,line=>line.querySelector('.encounter-speaker').textContent+'。'+line.querySelector('.encounter-bubble').textContent).join('\n'));
   }
 
   function closeEncounter() {
@@ -2650,6 +2682,7 @@
     visitNeighbour,
     closeEncounter,
     replyEncounter,
+    retryEncounter,
     speakEncounter
   };
 

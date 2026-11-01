@@ -22,7 +22,7 @@
 <link href="../../備課平台/focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=c99aea6c73bc"></script>
 <link href="../../備課平台/island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="../../備課平台/island-voyage.css?v=d028360013da" rel="stylesheet"/>
+<link href="../../備課平台/island-voyage.css?v=d779a2da9d68" rel="stylesheet"/>
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -130,8 +130,9 @@
 </div><p class="island-journey-status" id="islandJourneyStatus" role="status" hidden></p>
 <section class="encounter-card" id="islandEncounter" aria-labelledby="encounterName" hidden>
 <div class="encounter-top"><strong id="encounterName"></strong><button type="button" aria-label="Close neighbour greeting" onclick="window.socialGame.closeEncounter()">✕</button></div>
-<p id="encounterIntro" role="status"></p><p class="encounter-visitor" id="encounterVisitor"></p>
-<div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 Wave hello</button><button type="button" aria-label="Read neighbour dialogue aloud" onclick="window.socialGame.speakEncounter()">🔊</button></div>
+<ol id="encounterLog" class="encounter-log" role="log" aria-label="Read the conversation in order" aria-live="polite" aria-relevant="additions text"></ol>
+<div id="encounterChoices"><p class="encounter-prompt">Your turn: choose a reply or wave.</p><div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 Wave hello</button></div></div>
+<div class="encounter-footer"><button type="button" id="encounterRetry" onclick="window.socialGame.retryEncounter()" hidden>Try again</button><button type="button" onclick="window.socialGame.speakEncounter()">🔊 Read conversation in order</button></div>
 </section><div class="view-hints" id="moveHint">
     Choose an island to explore. Say hello to residents and balloons, too.
   </div></div><details class="explorer-console" open="">
@@ -517,6 +518,6 @@
 <script src="island-paths.js?v=70682ce42aa5"></script>
 <script src="island-encounters.js?v=37d58c4e5ff3"></script>
 <script src="island-scene-art.js?v=6fb315f09458"></script>
-<script src="island-game.js?v=b6b519f69079"></script>
+<script src="island-game.js?v=bfa80b89f031"></script>
 </body>
 </html>

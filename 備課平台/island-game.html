@@ -22,7 +22,7 @@
 <link href="focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=18654f750e1c"></script>
 <link href="island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="island-voyage.css?v=d028360013da" rel="stylesheet"/>
+<link href="island-voyage.css?v=d779a2da9d68" rel="stylesheet"/>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -130,8 +130,9 @@
 </div><p class="island-journey-status" id="islandJourneyStatus" role="status" hidden></p>
 <section class="encounter-card" id="islandEncounter" aria-labelledby="encounterName" hidden>
 <div class="encounter-top"><strong id="encounterName"></strong><button type="button" aria-label="收起路人招呼" onclick="window.socialGame.closeEncounter()">✕</button></div>
-<p id="encounterIntro" role="status"></p><p class="encounter-visitor" id="encounterVisitor"></p>
-<div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 揮手說你好</button><button type="button" aria-label="朗讀路人對話" onclick="window.socialGame.speakEncounter()">🔊</button></div>
+<ol id="encounterLog" class="encounter-log" role="log" aria-label="依序閱讀對話" aria-live="polite" aria-relevant="additions text"></ol>
+<div id="encounterChoices"><p class="encounter-prompt">換你回應，可以選一句話或揮手：</p><div class="encounter-actions"><button type="button" id="encounterReply" onclick="window.socialGame.replyEncounter(false)"></button><button type="button" onclick="window.socialGame.replyEncounter(true)">👋 揮手說你好</button></div></div>
+<div class="encounter-footer"><button type="button" id="encounterRetry" onclick="window.socialGame.retryEncounter()" hidden>再練一次</button><button type="button" onclick="window.socialGame.speakEncounter()">🔊 依序朗讀對話</button></div>
 </section><div class="view-hints" id="moveHint">
     點島嶼出發，也可以點點居民和熱氣球。
   </div></div><details class="explorer-console" open="">
@@ -517,6 +518,6 @@
 <script src="island-paths.js?v=70682ce42aa5"></script>
 <script src="island-encounters.js?v=8638eb67cf75"></script>
 <script src="island-scene-art.js?v=6fb315f09458"></script>
-<script src="island-game.js?v=8c43b09422a2"></script>
+<script src="island-game.js?v=57d57ffd798e"></script>
 </body>
 </html>

@@ -175,12 +175,11 @@ body[data-platform="island"].quest-open:is(.modal-open,.island-dialog-open) { ov
 
 /* A small, optional greeting stays inside the map half and never covers a quest. */
 .island-journey-status { position: absolute; z-index: 24; top: 52px; left: 12px; max-width: calc(100% - 30px); box-sizing: border-box; margin: 0; padding: 7px 11px; border: 1px solid #8caa95; border-radius: 10px; background: #f9f9e9ed; color: #31594a; font-size: .75rem; line-height: 1.5; pointer-events: none; }
-.encounter-card { position: absolute; z-index: 28; bottom: 46px; left: 12px; width: min(370px,calc(100% - 24px)); box-sizing: border-box; padding: 12px; background: #fffdf4f5; color: #294e40; border: 2px solid #92ad90; border-radius: 14px; box-shadow: 0 4px 14px #31594a25; font-size: .82rem; line-height: 1.6; text-align: left; }
+.encounter-card { position: absolute; z-index: 28; bottom: 46px; left: 12px; width: min(370px,calc(100% - 24px)); box-sizing: border-box; padding: 12px; background: #fffdf4; color: #294e40; border: 2px solid #92ad90; border-radius: 14px; box-shadow: 0 4px 14px #31594a25; font-size: .82rem; line-height: 1.6; text-align: left; }
 .encounter-card[hidden],.island-journey-status[hidden] { display: none; }
 .encounter-top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
 .encounter-top strong { font-size: .95rem; }
 .encounter-card p { margin: 5px 0; }
-.encounter-visitor { padding: 5px 9px; border-radius: 8px; background: #edf2df; }
 .encounter-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .encounter-card button { min-height: 36px; padding: 5px 9px; border: 1px solid #9bae8f; border-radius: 8px; background: #f5efd7; color: #355b48; font: inherit; cursor: pointer; }
 .encounter-top button { flex-shrink: 0; min-width: 36px; }
@@ -192,4 +191,27 @@ body:is(.modal-open,.island-dialog-open) .encounter-card { visibility: hidden; }
   .encounter-card { bottom: 8px; padding: 8px; font-size: .72rem; line-height: 1.4; max-height: calc(100% - 55px); overflow-y: auto; }
   .encounter-card button { min-height: 40px; }
   .island-journey-status { top: 48px; font-size: .65rem; }
+}
+
+/* Read the greeting, the visitor's response, then the neighbour's answer. */
+.encounter-card { display: flex; flex-direction: column; gap: 8px; width: min(400px,calc(100% - 24px)); max-height: min(470px,calc(100% - 70px)); }
+.encounter-top,.encounter-footer,#encounterChoices { flex-shrink: 0; }
+.encounter-log { display: flex; flex-direction: column; gap: 9px; min-height: 0; max-height: 250px; overflow-y: auto; overscroll-behavior: contain; padding: 2px 3px; margin: 0; list-style: none; }
+.encounter-line { align-self: flex-start; width: fit-content; max-width: 92%; }
+.encounter-speaker { display: block; margin: 0 3px 3px; font-size: .7rem; font-weight: 700; color: #536958; }
+.encounter-card .encounter-bubble { margin: 0; padding: 8px 10px; background: #f2eddd; border: 1px solid #dbd2b7; border-radius: 3px 12px 12px 12px; }
+.encounter-line-visitor { align-self: flex-end; }
+.encounter-line-visitor .encounter-speaker { text-align: right; }
+.encounter-card .encounter-line-visitor .encounter-bubble { background: #dfefde; border-color: #b8d1b3; border-radius: 12px 3px 12px 12px; }
+.encounter-card .encounter-prompt { font-size: .75rem; color: #536958; margin: 0; }
+.encounter-actions { margin-top: 5px; }
+.encounter-footer { display: flex; justify-content: space-between; gap: 6px; flex-wrap: wrap; border-top: 1px dashed #d2dbc6; padding-top: 7px; }
+.encounter-footer button:last-child { margin-left: auto; }
+@media(max-width:700px) {
+  .encounter-card { bottom: 62px; gap: 5px; overflow: hidden; max-height: calc(100% - 70px); }
+  body[data-platform="island"]:has(#islandEncounter:not([hidden])) #social-floating-tools { visibility: hidden; }
+  .encounter-log { max-height: 190px; gap: 6px; }
+  .encounter-speaker { font-size: .65rem; }
+  .encounter-card .encounter-bubble { padding: 6px 8px; }
+  .encounter-card .encounter-prompt { font-size: .7rem; }
 }
