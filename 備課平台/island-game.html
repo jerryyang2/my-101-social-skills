@@ -15,14 +15,14 @@
 <link href="island-game.css?v=b118cd533a50" rel="stylesheet"/>
 <link href="platform-theme.css?v=802836385dc0" rel="stylesheet"/>
 <link href="island-navigation.css?v=e35856585879" rel="stylesheet"/>
-<script defer="" src="island-ui.js?v=688cb395bf9c"></script>
+<script defer="" src="island-ui.js?v=fbfa49c33e5e"></script>
 <link href="floating-tools/tools.css?v=2dcf7d249058" rel="stylesheet"/>
 <script defer="" src="floating-tools/magnifier.js?v=e67586b45fe8"></script>
 <script defer="" src="floating-tools/drawing.js?v=7b921506c244"></script>
 <link href="focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=18654f750e1c"></script>
 <link href="island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="island-voyage.css?v=b941307077ca" rel="stylesheet"/>
+<link href="island-voyage.css?v=44ca0709a879" rel="stylesheet"/>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -160,34 +160,15 @@
 <div id="explorerMovement"></div>
 <p>WASD／方向鍵行走<br/>點島名探索，從任務選單選週次</p>
 </div>
-</details></div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">找到今天的小練習</p><h2 id="voyageDirectoryTitle">選一座島，開始自己的航線</h2></div><p>也可以直接選卡片，打開本島任務。</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>探索 01</small><strong>氣噗噗降溫島</strong><span>練習辨認心情，找到舒服的調節方法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>探索 02</small><strong>我想跟你說島</strong><span>說出自己的需要，也聽聽夥伴的想法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>探索 03</small><strong>我們一起玩島</strong><span>從加入遊戲到輪流分享，一起試試看。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>探索 04</small><strong>生活應變島</strong><span>遇到改變時，練習求助和保護自己。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>探索 05</small><strong>破冰遊戲島</strong><span>先打個招呼，用熟悉的小活動暖暖身。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>探索 06</small><strong>合作任務島</strong><span>和夥伴分工、等待，一起完成小挑戰。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
-
-
-<!-- RPG 冒險者頂部狀態 HUD 條 -->
-
-<!-- 3D 畫布主舞台 -->
-
-<!-- 操作指示提示列 -->
-
-<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
-<div class="virtual-dpad" id="virtualDpad">
-<button aria-label="向前走" class="dpad-btn dpad-up" data-dir="up">▲</button>
-<button aria-label="向左走" class="dpad-btn dpad-left" data-dir="left">◀</button>
-<button aria-label="回到中央" class="dpad-btn dpad-center" data-dir="center">●</button>
-<button aria-label="向右走" class="dpad-btn dpad-right" data-dir="right">▶</button>
-<button aria-label="向後走" class="dpad-btn dpad-down" data-dir="down">▼</button>
-</div>
-<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
-
-<!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
-<div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
-<aside class="quest-drawer">
+</details><!-- 與遊戲並排的本課題目區 -->
+<div class="quest-drawer-overlay" id="questDrawerOverlay">
+<aside class="quest-drawer" aria-labelledby="drawerTitle">
 <div class="drawer-header">
 <div class="drawer-header-left">
 <span class="drawer-island-badge" id="drawerIslandBadge">主題島嶼</span>
 <h2 class="drawer-title" id="drawerTitle">關卡考驗</h2>
 </div>
-<button aria-label="關閉" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="關閉抽屜">
+<button aria-label="關閉" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="關閉題目">
           ✕
         </button>
 </div>
@@ -212,6 +193,25 @@
 </div>
 </aside>
 </div>
+</div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">找到今天的小練習</p><h2 id="voyageDirectoryTitle">選一座島，開始自己的航線</h2></div><p>也可以直接選卡片，打開本島任務。</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>探索 01</small><strong>氣噗噗降溫島</strong><span>練習辨認心情，找到舒服的調節方法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>探索 02</small><strong>我想跟你說島</strong><span>說出自己的需要，也聽聽夥伴的想法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>探索 03</small><strong>我們一起玩島</strong><span>從加入遊戲到輪流分享，一起試試看。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>探索 04</small><strong>生活應變島</strong><span>遇到改變時，練習求助和保護自己。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>探索 05</small><strong>破冰遊戲島</strong><span>先打個招呼，用熟悉的小活動暖暖身。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>探索 06</small><strong>合作任務島</strong><span>和夥伴分工、等待，一起完成小挑戰。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
+
+
+<!-- RPG 冒險者頂部狀態 HUD 條 -->
+
+<!-- 3D 畫布主舞台 -->
+
+<!-- 操作指示提示列 -->
+
+<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+<div class="virtual-dpad" id="virtualDpad">
+<button aria-label="向前走" class="dpad-btn dpad-up" data-dir="up">▲</button>
+<button aria-label="向左走" class="dpad-btn dpad-left" data-dir="left">◀</button>
+<button aria-label="回到中央" class="dpad-btn dpad-center" data-dir="center">●</button>
+<button aria-label="向右走" class="dpad-btn dpad-right" data-dir="right">▶</button>
+<button aria-label="向後走" class="dpad-btn dpad-down" data-dir="down">▼</button>
+</div>
+<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+
 <!-- 冒險者護照與島章冊 (Passport Modal) -->
 <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
 <div class="passport-book-card">
@@ -509,6 +509,6 @@
 <script src="island-explorer.js?v=a688dbb47f99"></script>
 <script src="island-paths.js?v=70682ce42aa5"></script>
 <script src="island-scene-art.js?v=5e9c86705e90"></script>
-<script src="island-game.js?v=9a7017d68132"></script>
+<script src="island-game.js?v=1f35f56d680f"></script>
 </body>
 </html>

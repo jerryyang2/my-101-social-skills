@@ -34,6 +34,35 @@
   window.addEventListener('DOMContentLoaded', showLinkedDirectory);
   const consolePanel = document.querySelector('.explorer-console');
   if (window.matchMedia('(max-width: 700px)').matches) consolePanel.open = false;
+  const questPanel = document.getElementById('questDrawerOverlay');
+  let questOpen = false, questReturnFocus = null, previousConsoleOpen = consolePanel.open;
+  function synchronizeQuestPanel() {
+    const open = questPanel.classList.contains('active');
+    if (open === questOpen) return;
+    questOpen = open;
+    if (open) {
+      questReturnFocus = document.activeElement;
+      previousConsoleOpen = consolePanel.open;
+      consolePanel.open = false;
+      const heading = document.getElementById('drawerTitle');
+      heading.tabIndex = -1;
+      heading.focus({ preventScroll: true });
+    } else {
+      consolePanel.open = previousConsoleOpen;
+      if (questPanel.contains(document.activeElement)) {
+        const target = questReturnFocus?.isConnected && questReturnFocus.getClientRects().length ? questReturnFocus : document.getElementById('threeCanvas');
+        target.focus({ preventScroll: true });
+      }
+    }
+    window.dispatchEvent(new Event('resize'));
+  }
+  new MutationObserver(synchronizeQuestPanel).observe(questPanel, {attributes:true,attributeFilter:['class']});
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && questOpen && !document.querySelector('dialog[open], .modal-overlay.active')) {
+      event.preventDefault();
+      window.socialGame.closeQuestDrawer();
+    }
+  });
   document.getElementById('explorerMovement').appendChild(document.getElementById('virtualDpad'));
   new ResizeObserver(() => window.dispatchEvent(new Event('resize'))).observe(document.getElementById('stage'));
 
@@ -63,7 +92,7 @@
 
 // Keep keyboard focus inside the open island dialog and restore its entry point.
 (() => {
-  const overlays=['questDrawerOverlay','passportModalOverlay','saveCodeModalOverlay','modalCitadelOverlay'].map(id=>document.getElementById(id)).filter(Boolean);
+  const overlays=['passportModalOverlay','saveCodeModalOverlay','modalCitadelOverlay'].map(id=>document.getElementById(id)).filter(Boolean);
   const originalInert=new Map();let active=null,returnFocus=null;
   const controls=el=>[...el.querySelectorAll('button,input,select,textarea,a[href],summary,[tabindex]')].filter(x=>!x.disabled&&x.tabIndex>=0&&x.getClientRects().length);
   function update(){

@@ -15,14 +15,14 @@
 <link href="../../備課平台/island-game.css?v=b118cd533a50" rel="stylesheet"/>
 <link href="../../備課平台/platform-theme.css?v=802836385dc0" rel="stylesheet"/>
 <link href="../../備課平台/island-navigation.css?v=e35856585879" rel="stylesheet"/>
-<script defer="" src="island-ui.js?v=076d77a6c5fc"></script>
+<script defer="" src="island-ui.js?v=5b45405eaad8"></script>
 <link href="../../備課平台/floating-tools/tools.css?v=2dcf7d249058" rel="stylesheet"/>
 <script defer="" src="floating-tools/magnifier.js?v=e67586b45fe8"></script>
 <script defer="" src="floating-tools/drawing.js?v=a2898db33a43"></script>
 <link href="../../備課平台/focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=c99aea6c73bc"></script>
 <link href="../../備課平台/island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="../../備課平台/island-voyage.css?v=b941307077ca" rel="stylesheet"/>
+<link href="../../備課平台/island-voyage.css?v=44ca0709a879" rel="stylesheet"/>
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island" data-island-layout="play">
@@ -160,34 +160,15 @@
 <div id="explorerMovement"></div>
 <p>Walk with WASD / arrow keys<br/>Explore an island, then choose a week from its quest menu</p>
 </div>
-</details></div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">Find a little practice for today</p><h2 id="voyageDirectoryTitle">Choose an island and chart your own course</h2></div><p>You can also choose a card to open an island’s activities.</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>Explore 01</small><strong>Calm-Down Island</strong><span>Notice how you feel and find a comfortable way to regulate.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>Explore 02</small><strong>Let's Talk Island</strong><span>Share what you need and listen to your companions.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>Explore 03</small><strong>Let's Play Island</strong><span>Practice joining a game, sharing, and taking turns.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>Explore 04</small><strong>Daily Life and Change Island</strong><span>Practice asking for help and keeping yourself safe when things change.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>Explore 05</small><strong>Icebreaker Island</strong><span>Say hello and warm up with a familiar activity.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>Explore 06</small><strong>Teamwork Island</strong><span>Share roles, take turns, and work through a small challenge together.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
-
-
-<!-- RPG 冒險者頂部狀態 HUD 條 -->
-
-<!-- 3D 畫布主舞台 -->
-
-<!-- 操作指示提示列 -->
-
-<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
-<div class="virtual-dpad" id="virtualDpad">
-<button aria-label="Walk forward" class="dpad-btn dpad-up" data-dir="up">▲</button>
-<button aria-label="Walk left" class="dpad-btn dpad-left" data-dir="left">◀</button>
-<button aria-label="Return to the center" class="dpad-btn dpad-center" data-dir="center">●</button>
-<button aria-label="Walk right" class="dpad-btn dpad-right" data-dir="right">▶</button>
-<button aria-label="Walk back" class="dpad-btn dpad-down" data-dir="down">▼</button>
-</div>
-<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
-
-<!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
-<div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
-<aside class="quest-drawer">
+</details><!-- 與遊戲並排的本課題目區 -->
+<div class="quest-drawer-overlay" id="questDrawerOverlay">
+<aside class="quest-drawer" aria-labelledby="drawerTitle">
 <div class="drawer-header">
 <div class="drawer-header-left">
 <span class="drawer-island-badge" id="drawerIslandBadge">Theme Island</span>
 <h2 class="drawer-title" id="drawerTitle">Level test</h2>
 </div>
-<button aria-label="Close" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="Close drawer">
+<button aria-label="Close" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="Close lesson questions">
           ✕
         </button>
 </div>
@@ -212,6 +193,25 @@
 </div>
 </aside>
 </div>
+</div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">Find a little practice for today</p><h2 id="voyageDirectoryTitle">Choose an island and chart your own course</h2></div><p>You can also choose a card to open an island’s activities.</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>Explore 01</small><strong>Calm-Down Island</strong><span>Notice how you feel and find a comfortable way to regulate.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>Explore 02</small><strong>Let's Talk Island</strong><span>Share what you need and listen to your companions.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>Explore 03</small><strong>Let's Play Island</strong><span>Practice joining a game, sharing, and taking turns.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>Explore 04</small><strong>Daily Life and Change Island</strong><span>Practice asking for help and keeping yourself safe when things change.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>Explore 05</small><strong>Icebreaker Island</strong><span>Say hello and warm up with a familiar activity.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>Explore 06</small><strong>Teamwork Island</strong><span>Share roles, take turns, and work through a small challenge together.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
+
+
+<!-- RPG 冒險者頂部狀態 HUD 條 -->
+
+<!-- 3D 畫布主舞台 -->
+
+<!-- 操作指示提示列 -->
+
+<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+<div class="virtual-dpad" id="virtualDpad">
+<button aria-label="Walk forward" class="dpad-btn dpad-up" data-dir="up">▲</button>
+<button aria-label="Walk left" class="dpad-btn dpad-left" data-dir="left">◀</button>
+<button aria-label="Return to the center" class="dpad-btn dpad-center" data-dir="center">●</button>
+<button aria-label="Walk right" class="dpad-btn dpad-right" data-dir="right">▶</button>
+<button aria-label="Walk back" class="dpad-btn dpad-down" data-dir="down">▼</button>
+</div>
+<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+
 <!-- 冒險者護照與島章冊 (Passport Modal) -->
 <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
 <div class="passport-book-card">
@@ -509,6 +509,6 @@
 <script src="island-explorer.js?v=a688dbb47f99"></script>
 <script src="island-paths.js?v=70682ce42aa5"></script>
 <script src="island-scene-art.js?v=5e9c86705e90"></script>
-<script src="island-game.js?v=b6b3088fc32d"></script>
+<script src="island-game.js?v=b1131b1f6ed7"></script>
 </body>
 </html>

@@ -150,3 +150,25 @@ body[data-platform="island"] .voyage-layout-toggle { min-height: 40px; padding: 
   body[data-platform="island"] .voyage-layout-toggle { min-height: 40px; padding: 6px 8px; flex-shrink: 0; max-width: 100px; font-size: .75rem; white-space: normal; }
   body[data-platform="island"] .game-settings > summary { min-height: 40px; width: 40px; }
 }
+
+/* A lesson shares the screen with the live map instead of covering it. */
+body[data-platform="island"].quest-open .voyage-map-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+body[data-platform="island"].quest-open .voyage-map { grid-column: 1; grid-row: 1; }
+body[data-platform="island"] .quest-drawer-overlay { position: static; inset: auto; z-index: auto; grid-column: 2; grid-row: 1; min-width: 0; min-height: 0; overflow: hidden; border-left: 1px solid #b8cbb8; }
+body[data-platform="island"] .quest-drawer { position: static; inset: auto; width: 100%; height: 100%; min-width: 0; min-height: 0; box-shadow: none; animation: none; }
+body[data-platform="island"] .drawer-body { min-width: 0; min-height: 0; overscroll-behavior: contain; }
+body[data-platform="island"].quest-open .explorer-console { position: absolute; top: 10px; right: calc(50% + 10px); width: min(240px,calc(50% - 20px)); max-height: calc(100% - 20px); z-index: 30; overflow: auto; border: 1px solid #a5bca8; border-radius: 10px; box-shadow: 0 4px 15px #31574b20; }
+body[data-platform="island"].quest-open .explorer-console:not([open]) { width: auto; }
+body[data-platform="island"].quest-open .explorer-console > summary { display: flex; padding: 10px 13px; min-height: 44px; cursor: pointer; }
+body[data-platform="island"].quest-open .explorer-console-body { height: auto; max-height: none; }
+@media(max-width:700px) {
+  body[data-platform="island"].quest-open { height: auto; min-height: 100dvh; overflow-y: auto; display: block; }
+  body[data-platform="island"].quest-open .voyage-page { height: auto; }
+  body[data-platform="island"].quest-open .voyage-card { height: auto; display: block; }
+  body[data-platform="island"].quest-open .voyage-map-layout { grid-template-columns: minmax(0,1fr); grid-template-rows: 320px minmax(560px,75dvh); }
+  body[data-platform="island"].quest-open .quest-drawer-overlay { grid-column: 1; grid-row: 2; border-left: 0; border-top: 1px solid #b8cbb8; }
+  body[data-platform="island"].quest-open .explorer-console { right: 10px; width: min(260px,calc(100% - 20px)); max-height: 300px; }
+  body[data-platform="island"].quest-open .drawer-header { padding: 12px 16px; }
+}
+
+body[data-platform="island"].quest-open:is(.modal-open,.island-dialog-open) { overflow: hidden; }

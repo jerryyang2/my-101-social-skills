@@ -1331,7 +1331,7 @@
 
     // 鍵盤 WASD / 方向鍵行走控制
     window.addEventListener('keydown', e => {
-      if (document.body.classList.contains('modal-open') || e.target.closest('.mft-ui, .mft-editor, button, input, textarea, select, summary, a, [contenteditable="true"]')) return;
+      if (document.body.classList.contains('modal-open') || e.target.closest('#questDrawerOverlay, .mft-ui, .mft-editor, button, input, textarea, select, summary, a, [contenteditable="true"]')) return;
       const speed = 1.4;
       if (e.key === 'w' || e.key === 'W' || e.key === 'ArrowUp') {
         stepPlayer(0, -speed);
@@ -1587,7 +1587,8 @@
   // 6. 關卡抽屜與闖關邏輯 (Quest Drawer)
   // ==========================================
   function openQuestDrawer(islandIdx, weekNumber) {
-    document.body.classList.add('modal-open');
+    window.SocialIslandLayout?.set('play');
+    document.body.classList.add('quest-open');
     state.activeIslandIndex = islandIdx;
     state.activeWeekNumber = weekNumber || ISLAND_THEMES[islandIdx].weeks[0];
 
@@ -1599,7 +1600,7 @@
   }
 
   function closeQuestDrawer() {
-    document.body.classList.remove('modal-open');
+    document.body.classList.remove('quest-open');
     const overlay = document.getElementById('questDrawerOverlay');
     if (overlay) overlay.classList.remove('active');
   }
@@ -2526,7 +2527,7 @@
     document.getElementById('activeVisitorName').textContent = state.heroName;
     document.querySelectorAll('.explorer-dialog').forEach(dialog => {
       dialog.addEventListener('close', () => {
-        document.body.classList.toggle('modal-open', Boolean(document.querySelector('.quest-drawer-overlay.active, .modal-overlay.active, dialog[open]')));
+        document.body.classList.toggle('modal-open', Boolean(document.querySelector('.modal-overlay.active, dialog[open]')));
       });
     });
     window.addEventListener('pagehide', saveLocalProgress);
