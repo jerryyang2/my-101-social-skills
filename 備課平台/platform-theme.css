@@ -42,6 +42,7 @@
 .social-portal .btn-calm { --button-bg: #087650; --button-edge: #06563a; }
 .social-portal .btn-island { --button-bg: #087997; --button-edge: #07576d; }
 .social-portal .btn-classroom { --button-bg: #f5b23e; --button-edge: #b67c24; --button-ink: #482e0c; }
+.social-portal .btn-worksheet { --button-bg: #fff0b5; --button-edge: #b59746; --button-ink: #664b22; }
 .social-portal .btn-primary { --button-bg: #ffe0d2; --button-edge: #bd8168; --button-ink: #803f2c; }
 .social-portal :is(.btn, .hero-btn-large, .app-card-btn, .book-read-btn):hover { filter: brightness(.96); }
 .social-portal .portal-main { max-width: 1504px; margin: auto; padding: 24px 32px 64px; }

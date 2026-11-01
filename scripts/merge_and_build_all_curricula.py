@@ -17,7 +17,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__)))
 import curriculum_part1
 import curriculum_part2
 
-START_DATE = datetime.date(2026, 9, 1)
+START_DATE = datetime.date(2026, 9, 3)
 
 WEEKS_ALL = curriculum_part1.WEEKS_1_TO_26 + curriculum_part2.WEEKS_27_TO_52
 print(f"Total new weekly lessons: {len(WEEKS_ALL)}")
@@ -109,7 +109,7 @@ def build_new_briefings():
             "lessonNumber": week_num,
             "legacy": False,
             "date": date_str,
-            "dayOfWeek": "星期二",
+            "dayOfWeek": "星期四",
             "festival": w.get("festival", ""),
             "unit": w["unit"],
             "title": w["title"],
@@ -170,7 +170,7 @@ def build_new_roleplays():
             "lessonNumber": week_num,
             "legacy": False,
             "date": date_str,
-            "dayOfWeek": "星期二",
+            "dayOfWeek": "星期四",
             "festival": w.get("festival", ""),
             "unit": w["unit"],
             "title": w["title"],
@@ -287,7 +287,7 @@ def build_new_worksheets():
             "lessonNumber": week_num,
             "legacy": False,
             "date": date_str,
-            "dayOfWeek": "星期二",
+            "dayOfWeek": "星期四",
             "festival": w.get("festival", ""),
             "unit": w["unit"],
             "title": w["title"],

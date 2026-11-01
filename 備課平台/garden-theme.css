@@ -40,7 +40,7 @@
 .social-garden .main-menu .btn { min-width: 0; min-height: 76px; flex-direction: column; justify-content: center; gap: 4px; padding: 7px 4px !important; text-align: center; white-space: normal; background: var(--menu-bg) !important; color: var(--menu-ink, #fff) !important; border: 1px solid var(--menu-edge) !important; border-radius: 12px; box-shadow: 0 3px 0 var(--menu-edge) !important; line-height: 1.35; font-size: .84rem !important; }
 .social-garden .main-menu .btn:hover { background: var(--menu-hover) !important; }
 .social-garden .menu-icon { width: 28px; height: 28px; flex-shrink: 0; }
-.social-garden .menu-calm { --menu-bg: #087650; --menu-hover: #076645; --menu-edge: #06563a; }
+.social-garden .menu-worksheet { --menu-bg: #087650; --menu-hover: #076645; --menu-edge: #06563a; }
 .social-garden .menu-communication { --menu-bg: #6541bd; --menu-hover: #5636a5; --menu-edge: #482c8c; }
 .social-garden .menu-island { --menu-bg: #087997; --menu-hover: #086982; --menu-edge: #07576d; }
 .social-garden .menu-classroom { --menu-bg: #f5b23e; --menu-hover: #ffc25a; --menu-edge: #b67c24; --menu-ink: #482e0c; }

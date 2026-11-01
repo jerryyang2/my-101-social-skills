@@ -804,7 +804,7 @@ def build_all_unique_worksheets():
             "lessonNumber": wn,
             "legacy": False,
             "date": f"2026-09-{wn:02d}" if wn <= 26 else f"2027-02-{wn:02d}", # will be formatted cleanly
-            "dayOfWeek": "星期二",
+            "dayOfWeek": "星期四",
             "festival": w.get("festival", ""),
             "unit": w["unit"],
             "title": w["title"],
