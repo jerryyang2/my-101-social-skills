@@ -21,7 +21,7 @@
 ## 參賽資料與作品說明書同步
 
 - `參賽資料/` 只放已完成的送件PDF；TXT、Word、產製程式、截圖、檢核紀錄與舊稿保留在外，不混入送件資料夾。
-- 作品說明書唯一維護原稿為 `Codex/competition-entry/參賽說明書原稿.txt`。每次修改後，須用Codex隨附Python執行 `Codex/competition-entry/build_entry.py`，自動重建Word與PDF並同步 `參賽資料/○○國小_我的101堂社交技巧課.pdf`，再執行 `Codex/competition-entry/verify_entry_sync.py`，逐頁檢視渲染結果。
+- 作品說明書唯一維護原稿為 `Codex/competition-entry/參賽說明書原稿.txt`。每次修改後，須用Codex隨附Python執行 `Codex/competition-entry/build_entry.py`，自動重建Word與PDF並同步 `參賽資料/我的101堂社交技巧課_作品說明書.pdf`，再執行 `Codex/competition-entry/verify_entry_sync.py`，逐頁檢視渲染結果。
 - 網站使用手冊每次重新產製，亦須同步 `參賽資料/我的101堂社交技巧課_網站使用手冊.pdf`；既有手冊驗證腳本須核對此副本。
 - 本次五大電子書以網站及使用手冊中的實頁範例供審閱，不額外加入五本出版PDF。報名表、授權同意書等須填寫簽章的文件，未完成前不得宣稱送件資料已齊全或已送件。
 - 參賽資料、原稿與產物維持Git排除，只在未設定遠端的本機私有儲存庫存檔；送件檢查清單保留於 `Codex/competition-entry/送件檢查.md`。本規則同步更新 `AGENTS.md` 與 `GEMINI.md`。
