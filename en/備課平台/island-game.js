@@ -1137,6 +1137,15 @@
     });
   }
 
+  // 進場先看全景；開始行走才拉近並跟隨訪客。
+  function beginPlayerFollow() {
+    if (!camera || state.viewMode === '2d') return;
+    const reframe = !state.cameraFollow || overviewActive;
+    overviewActive = false;
+    state.cameraFollow = true;
+    if (reframe) setCameraPreset(cameraMode);
+  }
+
   // 3D 冒險者行走邏輯
   function walkToAndTrigger(tx, tz, onArrive) {
     if (!sceneArt?.paths) { if (typeof onArrive === 'function') onArrive(); return; }
@@ -1149,6 +1158,7 @@
       if (typeof onArrive === 'function') onArrive();
       return;
     }
+    beginPlayerFollow();
     state.onArriveCallback = onArrive;
   }
 
@@ -1160,6 +1170,7 @@
     if (length > Math.hypot(horizontal, depth) * 1.6) return;
     playerRoute = route;
     state.playerTargetPos = { ...route[route.length - 1] };
+    if (length > 0.01) beginPlayerFollow();
     state.onArriveCallback = null;
   }
 
@@ -1470,6 +1481,11 @@
   }
 
   function resetArchipelagoView() {
+    playerRoute = [];
+    state.playerTargetPos = { ...state.playerPos };
+    state.onArriveCallback = null;
+    state.isWalking = false;
+    window.SocialIslandLayout?.set('play');
     overviewActive = true;
     state.cameraFollow = false;
     cameraMode = 'bird';

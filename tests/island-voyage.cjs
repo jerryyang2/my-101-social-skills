@@ -9,7 +9,7 @@ vm.createContext(world);
 for (const name of ['three.min.js', 'island-paths.js', 'island-scene-art.js', 'island-explorer.js']) vm.runInContext(fs.readFileSync(path.join(root, name), 'utf8'), world);
 const source = fs.readFileSync(path.join(root, 'island-game.js'), 'utf8');
 let themes;
-const wanted = new Set(['createNaturalShore', 'makeChubbySculptedIsland']);
+const wanted = new Set(['createNaturalShore', 'makeChubbySculptedIsland', 'beginPlayerFollow', 'setCameraPreset', 'resetArchipelagoView', 'walkToAndTrigger', 'stepPlayer']);
 function visit(node) {
   if (!node || typeof node !== 'object') return;
   if (node.type === 'FunctionDeclaration' && wanted.has(node.id.name)) vm.runInContext(source.slice(node.start, node.end), world);
@@ -47,6 +47,21 @@ for(const island of [...islands,art.icebreaker,art.teamwork]) {
   assert.equal(layers.length,3);
   layers.forEach(layer=>assert.ok(layer.geometry.attributes.position.count>0));
 }
+// Exercise the real movement/camera transitions, including cancellation on overview.
+Object.assign(world, {camera:{aspect:1.5}, state:{viewMode:'3d',cameraFollow:false,playerPos:art.paths.destination(center.position)}, sceneArt:art, cameraMode:'bird', overviewActive:true, cameraGoal:new T.Vector3(), playerRoute:[], synchronizeCameraControls(){}, closeQuestDrawer(){}});
+world.walkToAndTrigger(islands[0].position.x,islands[0].position.z,()=>{});
+assert.equal(world.state.cameraFollow,true,'Following starts on departure, before arrival');
+assert.equal(world.overviewActive,false);
+assert.equal(world.targetDist,38);
+world.resetArchipelagoView();
+assert.equal(world.state.cameraFollow,false);
+assert.equal(world.overviewActive,true);
+assert.equal(world.playerRoute.length,0,'Overview cancels the remaining walk');
+assert.equal(world.state.onArriveCallback,null,'A canceled trip cannot later open a quest');
+for(const [x,z] of [[1,0],[-1,0],[0,1],[0,-1]]) {world.stepPlayer(x,z);if(world.state.cameraFollow)break;}
+assert.equal(world.state.cameraFollow,true,'Manual movement also starts following');
+world.resetArchipelagoView();
+world.state.viewMode='2d';world.beginPlayerFollow();assert.equal(world.state.cameraFollow,false,'Flat map never starts a 3D follow camera');
 const distances=[.4,.7,1,1.8,3].map(world.window.SocialIslandExplorer.overviewDistance);
 assert.ok(distances.every(x=>Number.isFinite(x)&&x>=86&&x<=180));
-console.log('PASS: six natural islands; 52 weeks retained in menus without 3D week markers; all routes supported; six connecting bridges; responsive overview framing.');
+console.log('PASS: six natural islands; 52 weeks retained in menus without 3D week markers; all routes supported; six connecting bridges; responsive overview; departure/manual follow and cancellable overview.');

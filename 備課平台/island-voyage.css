@@ -113,3 +113,40 @@ body[data-platform="island"]:is(.modal-open,.island-dialog-open) { overflow: hid
   body[data-platform="island"] .brand-info h1 { font-size:.8rem; line-height:1.5; }
   body[data-platform="island"] .brand-section .site-language-switch { grid-column:1/-1; justify-self:start; }
 }
+
+/* Enter directly into the map. The guide and six cards remain one click away. */
+body[data-platform="island"][data-island-layout="play"] {
+  height: 100dvh; min-height: 0; overflow: hidden;
+  display: grid; grid-template-rows: auto minmax(0,1fr);
+}
+body[data-platform="island"][data-island-layout="play"] .game-topbar { width: 100%; min-height: 62px; padding: 9px 22px; gap: 12px; }
+body[data-platform="island"][data-island-layout="play"] .brand-info p { display: none; }
+body[data-platform="island"][data-island-layout="play"] .voyage-page { width: 100%; height: 100%; min-height: 0; margin: 0; }
+body[data-platform="island"][data-island-layout="play"] :is(.voyage-intro,.voyage-welcome,.voyage-directory) { display: none; }
+body[data-platform="island"][data-island-layout="play"] .voyage-card { height: 100%; display: grid; grid-template-rows: auto minmax(0,1fr); border-radius: 0; border: 0; border-top: 1px solid #bdcbb9; box-shadow: none; }
+body[data-platform="island"][data-island-layout="play"] .voyage-traveler { padding: 7px 22px; gap: 7px 22px; }
+body[data-platform="island"][data-island-layout="play"] .voyage-map-layout { min-height: 0; position: relative; }
+body[data-platform="island"][data-island-layout="play"] .voyage-map { height: 100%; min-height: 0; }
+body[data-platform="island"][data-island-layout="play"] .explorer-console { min-height: 0; }
+body[data-platform="island"][data-island-layout="play"] .explorer-console-body { height: 100%; min-height: 0; }
+body[data-platform="island"] .voyage-layout-toggle { min-height: 40px; padding: 7px 12px; font-size: .8rem; color: #365e54; border: 1px solid #a7b99d; background: #ecf0dd; box-shadow: none; white-space: normal; }
+@media(max-width:700px) {
+  body[data-platform="island"][data-island-layout="play"] .game-topbar { padding: 8px 12px; min-height: 0; gap: 8px; }
+  body[data-platform="island"][data-island-layout="play"] .voyage-traveler { padding: 6px 12px; gap: 6px; }
+  body[data-platform="island"][data-island-layout="play"] .visitor-strip { flex-basis: auto; font-size: .75rem; }
+  body[data-platform="island"][data-island-layout="play"] .rpg-hud-bar { gap: 6px; }
+  body[data-platform="island"][data-island-layout="play"] .hud-exp-text { display: none; }
+  body[data-platform="island"][data-island-layout="play"] .explorer-console { position: absolute; top: 10px; right: 10px; width: min(260px,calc(100% - 20px)); max-height: calc(100% - 20px); border: 1px solid #a5bca8; border-radius: 10px; z-index: 30; overflow: auto; box-shadow: 0 4px 15px #31574b20; }
+  body[data-platform="island"][data-island-layout="play"] .explorer-console:not([open]) { width: auto; }
+  body[data-platform="island"][data-island-layout="play"] .explorer-console > summary { padding: 10px 13px; }
+  body[data-platform="island"][data-island-layout="play"] .explorer-console-body { height: auto; max-height: none; }
+  body[data-platform="island"][data-island-layout="play"] .voyage-map-caption span:last-child { display: none; }
+}
+@media(max-width:700px) {
+  body[data-platform="island"] .adventure-tools { align-items: center; gap: 5px; }
+  body[data-platform="island"] .adventure-actions { gap: 5px; flex: 0 0 auto; }
+  body[data-platform="island"] .adventure-action.c-game-btn { width: 40px; min-width: 40px; min-height: 40px; padding: 5px; flex: 0 0 40px; }
+  body[data-platform="island"] .adventure-button-copy { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  body[data-platform="island"] .voyage-layout-toggle { min-height: 40px; padding: 6px 8px; flex-shrink: 0; max-width: 100px; font-size: .75rem; white-space: normal; }
+  body[data-platform="island"] .game-settings > summary { min-height: 40px; width: 40px; }
+}

@@ -89,7 +89,7 @@ collect(acorn.parse(source, { ecmaVersion: 'latest' }));
 assert.equal(islandThemes.length, 4);
 const assignedWeeks = Array.from(islandThemes, theme => Array.from(theme.weeks)).flat().sort((a, b) => a - b);
 assert.deepEqual(assignedWeeks, Array.from({ length: 52 }, (_, index) => index + 1), 'Each scheduled week must belong to exactly one theme');
-const game = { sceneArt: art, state: { playerPos: destinations[1], playerTargetPos: {}, walkTime: 0 }, playerRoute: [], playerGroup: new three.Group(), playerLegL: new three.Group(), playerLegR: new three.Group(), window: context.window, sfx: { playStep() {} }, Math };
+const game = { beginPlayerFollow() {}, sceneArt: art, state: { playerPos: destinations[1], playerTargetPos: {}, walkTime: 0 }, playerRoute: [], playerGroup: new three.Group(), playerLegL: new three.Group(), playerLegR: new three.Group(), window: context.window, sfx: { playStep() {} }, Math };
 vm.createContext(game);
 for (const name of ['walkToAndTrigger', 'stepPlayer', 'updatePlayerWalking']) vm.runInContext(functions.get(name), game);
 let canceled = 0, arrived = 0;

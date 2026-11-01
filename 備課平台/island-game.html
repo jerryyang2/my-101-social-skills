@@ -15,17 +15,17 @@
 <link href="island-game.css?v=b118cd533a50" rel="stylesheet"/>
 <link href="platform-theme.css?v=802836385dc0" rel="stylesheet"/>
 <link href="island-navigation.css?v=e35856585879" rel="stylesheet"/>
-<script defer="" src="island-ui.js?v=a8bfe09be002"></script>
+<script defer="" src="island-ui.js?v=688cb395bf9c"></script>
 <link href="floating-tools/tools.css?v=2dcf7d249058" rel="stylesheet"/>
 <script defer="" src="floating-tools/magnifier.js?v=e67586b45fe8"></script>
 <script defer="" src="floating-tools/drawing.js?v=7b921506c244"></script>
 <link href="focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
 <script defer="" src="focus-mode.js?v=18654f750e1c"></script>
 <link href="island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
-<link href="island-voyage.css?v=37b1f643b383" rel="stylesheet"/>
+<link href="island-voyage.css?v=b941307077ca" rel="stylesheet"/>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
-<body class="theme-cream" data-platform="island">
+<body class="theme-cream" data-platform="island" data-island-layout="play">
 <!-- 頂部遊戲導覽列 (Topbar) -->
 <header class="game-topbar">
 <div class="brand-section">
@@ -40,6 +40,7 @@
 </div>
 <div class="top-controls">
 <section aria-labelledby="adventureToolsTitle" class="adventure-tools">
+<button class="c-game-btn voyage-layout-toggle" id="islandLayoutToggle" type="button" aria-expanded="false" aria-controls="islandDirectory">選島導覽</button>
 <h2 id="adventureToolsTitle">遊戲內工具</h2>
 <div class="adventure-actions">
 <button aria-controls="passportModalOverlay" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" type="button">
@@ -508,6 +509,6 @@
 <script src="island-explorer.js?v=a688dbb47f99"></script>
 <script src="island-paths.js?v=70682ce42aa5"></script>
 <script src="island-scene-art.js?v=5e9c86705e90"></script>
-<script src="island-game.js?v=3c21223fccae"></script>
+<script src="island-game.js?v=b26d95b6b788"></script>
 </body>
 </html>

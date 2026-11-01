@@ -12,6 +12,26 @@
   }
   new ResizeObserver(updateHeaderHeight).observe(header);
   updateHeaderHeight();
+  const layoutToggle = document.getElementById('islandLayoutToggle');
+  function setIslandLayout(layout, focusDirectory = false) {
+    const guide = layout === 'guide';
+    document.body.dataset.islandLayout = guide ? 'guide' : 'play';
+    layoutToggle.textContent = guide ? "Back to Full Map" : "Island Guide";
+    layoutToggle.setAttribute('aria-expanded', String(guide));
+    window.dispatchEvent(new Event('resize'));
+    if (guide && focusDirectory) {
+      const directory = document.getElementById('islandDirectory');
+      directory.scrollIntoView({ block: 'start' });
+      directory.querySelector('button')?.focus({ preventScroll: true });
+    } else if (!guide) window.scrollTo(0, 0);
+  }
+  layoutToggle.addEventListener('click', () => setIslandLayout(document.body.dataset.islandLayout === 'play' ? 'guide' : 'play', true));
+  window.SocialIslandLayout = { set: setIslandLayout };
+  function showLinkedDirectory() {
+    if (location.hash === '#islandDirectory') setIslandLayout('guide', true);
+  }
+  window.addEventListener('hashchange', showLinkedDirectory);
+  window.addEventListener('DOMContentLoaded', showLinkedDirectory);
   const consolePanel = document.querySelector('.explorer-console');
   if (window.matchMedia('(max-width: 700px)').matches) consolePanel.open = false;
   document.getElementById('explorerMovement').appendChild(document.getElementById('virtualDpad'));
