@@ -1,4 +1,4 @@
-name: Deploy Special Education Lesson Prep Platform to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -23,15 +23,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Verify synchronized language editions
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify language editions and island routes
         run: |
           npm ci --prefix localization --ignore-scripts
           python3 localization/verify_build.py
           node localization/verify_english.cjs
+          node tests/island-paths.cjs
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Prepare reviewed site files
+        shell: bash
+        run: |
+          mkdir _site
+          git archive HEAD | tar -xf - -C _site
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

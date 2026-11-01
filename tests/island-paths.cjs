@@ -78,12 +78,17 @@ assert.ok(art.walkers.every((walker, index) => walker.person.position.distanceTo
 const acorn = require(path.join(__dirname, '..', 'localization/node_modules/acorn'));
 const source = fs.readFileSync(path.join(root, 'island-game.js'), 'utf8');
 const functions = new Map();
+let islandThemes;
 function collect(node) {
   if (!node || typeof node !== 'object') return;
   if (node.type === 'FunctionDeclaration') functions.set(node.id.name, source.slice(node.start, node.end));
+  if (node.type === 'VariableDeclarator' && node.id.name === 'ISLAND_THEMES') islandThemes = vm.runInNewContext('(' + source.slice(node.init.start, node.init.end) + ')');
   Object.values(node).forEach(value => Array.isArray(value) ? value.forEach(collect) : collect(value));
 }
 collect(acorn.parse(source, { ecmaVersion: 'latest' }));
+assert.equal(islandThemes.length, 4);
+const assignedWeeks = Array.from(islandThemes, theme => Array.from(theme.weeks)).flat().sort((a, b) => a - b);
+assert.deepEqual(assignedWeeks, Array.from({ length: 52 }, (_, index) => index + 1), 'Each scheduled week must belong to exactly one theme');
 const game = { sceneArt: art, state: { playerPos: destinations[1], playerTargetPos: {}, walkTime: 0 }, playerRoute: [], playerGroup: new three.Group(), playerLegL: new three.Group(), playerLegR: new three.Group(), window: context.window, sfx: { playStep() {} }, Math };
 vm.createContext(game);
 for (const name of ['walkToAndTrigger', 'stepPlayer', 'updatePlayerWalking']) vm.runInContext(functions.get(name), game);
@@ -108,10 +113,10 @@ for (let index = 0; index < 100; index++) {
 const elements = new Map();
 function element() { return { children: [], dataset: {}, open: false, append(...children) { this.children.push(...children); }, appendChild(child) { this.children.push(child); }, replaceChildren() { this.children = []; }, addEventListener(name, callback) { this[name] = callback; }, showModal() { this.open = true; }, close() { this.open = false; } }; }
 const calls = [];
-const hubs = { document: { body: { classList: { add() {} } }, getElementById(id) { if (!elements.has(id)) elements.set(id, element()); return elements.get(id); }, createElement: element }, allWeeks: Array.from({ length: 52 }, (_, index) => ({ lessonNumber: index + 1, title: 'Lesson ' + (index + 1) })), ISLAND_THEMES: [[1,13],[14,26],[27,39],[40,52]].map(weeksRange => ({ weeksRange })), openQuestDrawer: (...args) => calls.push(args) };
+const hubs = { document: { body: { classList: { add() {} } }, getElementById(id) { if (!elements.has(id)) elements.set(id, element()); return elements.get(id); }, createElement: element }, allWeeks: Array.from({ length: 52 }, (_, index) => ({ lessonNumber: index + 1, title: 'Lesson ' + (index + 1) })), ISLAND_THEMES: islandThemes, openQuestDrawer: (...args) => calls.push(args) };
 vm.createContext(hubs);
 for (const name of ['openIslandHub', 'openIcebreaker', 'openTeamwork']) vm.runInContext(functions.get(name), hubs);
 hubs.openIcebreaker(); elements.get('icebreakerTasks').children.forEach(button => button.click());
 hubs.openTeamwork(); elements.get('teamworkTasks').children.forEach(button => button.click());
-assert.deepEqual(calls, [[0,1],[0,2],[0,12],[3,51],[1,14],[1,24],[3,40],[3,41]]);
-console.log(`PASS: ${routes} supported routes; all 52 weeks + six islands; interrupted movement/arrival once; manual steps; ground heights; 14 path-bound walkers/pause; four instanced road batches; both hubs retain eight original quest routes.`);
+assert.deepEqual(calls, [[1,1],[1,2],[2,12],[1,51],[2,14],[0,24],[2,40],[0,41]]);
+console.log(`PASS: ${routes} supported routes; all 52 weeks + six islands; interrupted movement/arrival once; manual steps; ground heights; 14 path-bound walkers/pause; four instanced road batches; both hubs route eight quests to their current themes.`);

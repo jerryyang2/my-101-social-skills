@@ -46,8 +46,6 @@ scripts/
 **/*competition*
 
 # AI & LLM Assistants (Gemini, ChatGPT, Claude, Copilot, Antigravity, Cursor)
-GEMINI.md
-*gemini*
 .gemini/
 */.gemini/
 *antigravity*
@@ -70,3 +68,16 @@ GEMINI.md
 # Local-only website guide and its source screenshots
 /Codex/website-guide/
 /output/pdf/我的101堂社交技巧課_網站使用手冊.pdf
+
+# Local project materials and build output
+/Codex/
+/output/
+/tmp/
+/private/
+/student-data/
+/exports/
+/backups/
+/notes.md
+/作品說明書/
+/參賽資料/
+/_site/
