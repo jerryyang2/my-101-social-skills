@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <script src="../site-language.js?v=bf6816bcce93"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OO國小學習教室｜每日彩色圖文學習單</title>
+  <script>if(new URLSearchParams(location.search).get('embed')==='classroom')document.documentElement.classList.add('classroom-sheet-embed');</script>
+<title>OO國小學習教室｜每日彩色圖文學習單</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon.png">
   <!-- 字嗨注音字型 CDN -->
@@ -607,6 +608,14 @@
   <script defer src="focus-mode.js?v=18654f750e1c"></script>
   <link rel="stylesheet" href="learning-support.css?v=dd1f88174fe3">
   <script src="learning-support.js?v=becf9c04e089" defer></script>
+<style>
+.classroom-sheet-embed :is(.toolbar-left,.mft-ui,.focus-toggle,.focus-font-controls,.learning-support-bar,.learning-launch,.site-language-switch) { display:none!important; }
+.classroom-sheet-embed .screen-toolbar { position:sticky; top:0; padding:8px 12px; gap:8px; z-index:20; }
+.classroom-sheet-embed .toolbar-right { width:100%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+.classroom-sheet-embed .sheet-wrapper { padding:12px; }
+.classroom-sheet-embed .worksheet-page { border-width:2px; padding:20px; box-shadow:none; }
+.classroom-sheet-embed .sheet-save-status { margin:8px 12px; font-size:.85rem; }
+</style>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body>

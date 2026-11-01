@@ -50,13 +50,13 @@
 .social-classroom .slide-canvas { width: min(1280px, 100%); height: 100%; min-height: 0; border: 2px solid #b9c5aa; border-radius: 18px; box-shadow: 0 5px 0 #d7dbc5; }
 .social-classroom .washi-tape-strip { display: none; }
 .social-classroom .slide-top { gap: 12px; padding: 12px 16px; background: #fffdf7; border-bottom: 1px solid #d7dbc5; }
-.social-classroom .slide-step-indicator { flex: 1; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 9px; min-width: 0; }
+.social-classroom .slide-step-indicator { flex: 1; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; min-width: 0; }
 .social-classroom .step-dot { display: flex; align-items: center; justify-content: center; gap: 7px; min-height: 48px; padding: 6px 8px; border: 1px solid var(--step-edge); border-radius: 10px; background: var(--step-bg); color: var(--step-ink); box-shadow: 0 2px 0 var(--step-edge); font-size: .85rem; line-height: 1.4; font-weight: 700; }
 .step-dot:nth-child(1) { --step-bg: #e4f2ff; --step-edge: #86afd1; --step-ink: #225777; --step-active: #14749c; }
 .step-dot:nth-child(2) { --step-bg: #fff0c9; --step-edge: #cba15c; --step-ink: #775012; --step-active: #8b5c12; }
 .step-dot:nth-child(3) { --step-bg: #eee6fc; --step-edge: #ac95d3; --step-ink: #59378a; --step-active: #6541bd; }
-.step-dot:nth-child(4) { --step-bg: #dff4ed; --step-edge: #7cb6a3; --step-ink: #245f4c; --step-active: #087650; }
-.step-dot:nth-child(5) { --step-bg: #ffe4d7; --step-edge: #d09a7c; --step-ink: #844429; --step-active: #a14f2c; }
+.step-dot:nth-child(5) { --step-bg: #dff4ed; --step-edge: #7cb6a3; --step-ink: #245f4c; --step-active: #087650; }
+.step-dot:nth-child(6) { --step-bg: #ffe4d7; --step-edge: #d09a7c; --step-ink: #844429; --step-active: #a14f2c; }
 .social-classroom .step-dot.active { background: var(--step-active); color: white; border-color: var(--step-active); box-shadow: 0 3px 0 var(--step-edge); }
 .step-number { width: 25px; height: 25px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; background: #ffffffd9; color: var(--step-ink); font-size: .8rem; }
 .step-label { display: flex; flex-direction: column; text-align: left; }
@@ -116,7 +116,7 @@ body.social-classroom.simulated-fullscreen .slide-canvas { max-height: none !imp
   .social-classroom .classroom-controls .c-icon-btn { border-radius: 8px; }
   .social-classroom .slide-viewport { padding: 10px 10px 76px; overflow: visible; display: block; }
   .social-classroom .slide-canvas { width: 100%; height: auto; min-height: 520px; }
-  .social-classroom .slide-step-indicator { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; }
+  .social-classroom .slide-step-indicator { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; }
   .social-classroom .step-dot { flex-direction: column; gap: 4px; font-size: .72rem; padding: 6px 3px; }
   .step-label { text-align: center; }
   .step-label small { display: none; }
@@ -171,4 +171,83 @@ body.social-classroom.simulated-fullscreen .slide-canvas { max-height: none !imp
   .tools-present .tool-group-actions { grid-template-columns: 1fr 1fr 1fr; }
   .classroom-reading-panel { left: auto; right: 0; }
   .social-classroom .classroom-reading-panel .c-btn { min-height: 44px; }
+}
+
+.step-dot:nth-child(4) { --step-bg:#fff4d7; --step-edge:#c8ad63; --step-ink:#705920; --step-active:#8c6d25; }
+
+/* 六步流程：分頁具有編號、說明與選取狀態。 */
+.game-master-wrapper { width: 100%; min-width: 0; }
+.game-master-wrapper .game-container { margin-left: auto; margin-right: auto; box-sizing: border-box; }
+.game-tabs-hint { margin: 0 0 8px; color: #58685d; font-size: .85rem; }
+.game-practice-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.game-practice-tab { display: flex; align-items: center; gap: 10px; min-width: 0; min-height: 94px; padding: 12px; border: 2px solid #b8c9bc; border-radius: 14px; background: #fff; color: #294b3c; box-shadow: 0 3px 0 #dce3d5; text-align: left; cursor: pointer; }
+.game-practice-tab:hover { background: #f0f7ed; border-color: #6c9978; }
+.game-practice-tab[aria-selected="true"] { background: #fff0bc; border-color: #a9771d; box-shadow: 0 3px 0 #cba15c; color: #68491d; }
+.game-tab-number { display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #e9f1e7; font-size: 1rem; font-weight: 800; }
+[aria-selected="true"] > .game-tab-number { background: #805c1c; color: white; }
+.game-tab-copy { flex: 1; min-width: 0; }
+.game-tab-copy strong { display: block; font-size: clamp(.85rem, 1.3vw, 1.05rem); line-height: 1.5; }
+.game-tab-copy small { display: block; margin-top: 4px; font-size: .75rem; line-height: 1.4; }
+.game-tab-state { align-self: flex-end; flex-shrink: 0; font-size: .65rem; font-weight: 700; }
+.class-island-entry { max-width: 720px; margin: 0 auto; padding: 30px 16px; line-height: 1.7; }
+.class-island-entry h2 { font-size: 1.4rem; }
+.class-island-entry .c-btn { display: inline-flex; margin-top: 12px; white-space: normal; }
+.social-classroom .worksheet-slide { padding: 10px; align-items: stretch; overflow: hidden; }
+.class-worksheet-intro { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-shrink: 0; text-align: left; font-size: .8rem; line-height: 1.5; }
+.class-worksheet-intro p { margin: 0; }
+.class-worksheet-intro .c-btn { flex-shrink: 0; }
+.class-worksheet-frame { display: block; width: 100%; min-height: 180px; flex: 1; margin-top: 8px; border: 1px solid #c9d5bc; border-radius: 10px; background: #fffdf7; }
+
+/* 星星與回饋紀錄採用同一種 −／分數／＋ 操作。 */
+.award-scoreboard { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: min(920px, 100%); }
+.award-actions { display: flex; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; max-width: 100%; }
+.award-actions .c-btn { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.award-score-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border: 2px solid var(--companion-edge); border-left-width: 6px; border-radius: 16px; background: var(--companion-bg); }
+.award-score-row[data-companion="yu"] { --companion-bg: #e4f2ff; --companion-edge: #86afd1; }
+.award-score-row[data-companion="he"] { --companion-bg: #dff4ed; --companion-edge: #7cb6a3; }
+.award-score-row[data-companion="jia"] { --companion-bg: #fff0c9; --companion-edge: #cba15c; }
+.award-score-row[data-companion="jun"] { --companion-bg: #eee6fc; --companion-edge: #ac95d3; }
+.award-student-name { display: flex; align-items: center; gap: 12px; font-size: 1.6rem; color: #263f34; }
+.award-score-controls { display: flex; align-items: center; gap: 10px; }
+.award-score-adjust { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; padding: 0; border-radius: 50%; font-size: 1.8rem; font-weight: 800; line-height: 1; cursor: pointer; box-shadow: 0 3px 0 #0002; }
+.award-minus { background: white; color: #cf343b; border: 2px solid #ff9fa7; }
+.award-plus { background: #f5a000; color: white; border: 2px solid #bd7900; }
+.award-score-adjust:hover { filter: brightness(.95); }
+.award-score-adjust:active { transform: translateY(2px); box-shadow: none; }
+.award-score-value { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 88px; padding: 7px 10px; box-sizing: border-box; border: 2px solid #f5d856; border-radius: 30px; background: #fff7bc; color: #75480f; font-size: 1.3rem; font-weight: 800; transition: transform .2s; }
+.award-slide .lesson-reflection { margin: 0 0 10px; padding: 8px 16px; font-size: .8rem; }
+.award-slide .lesson-reflection h2 { font-size: 1.05rem; }
+.award-slide .lesson-reflection p { margin: 3px 0; }
+.award-slide .lesson-reflection .c-btn { min-height: 32px; font-size: .75rem; }
+.award-slide .slide-title { font-size: 1.35rem; }
+.award-slide .slide-subtitle { margin: 2px 0 12px; font-size: .85rem; }
+@media (min-width: 701px) {
+  .award-slide .lesson-reflection { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; width: min(920px, 100%); box-sizing: border-box; text-align: left; }
+  .award-slide .lesson-reflection > :is(h2, p) { grid-column: 1; }
+  .award-slide .lesson-reflection .c-btn { grid-column: 2; grid-row: 1 / 4; align-self: center; }
+}
+@media (max-width: 1100px) {
+  .game-practice-tab { flex-wrap: wrap; padding: 10px; gap: 6px; }
+  .game-tab-state { width: 100%; text-align: right; }
+  .award-score-row { padding: 8px 10px; gap: 6px; }
+  .award-student-name { gap: 5px; font-size: 1.3rem; }
+  .award-score-controls { gap: 6px; }
+  .award-score-value { min-width: 74px; }
+}
+@media (max-width: 700px) {
+  .social-classroom .slide-step-indicator { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .step-label small { display: block; }
+  .game-practice-tabs { grid-template-columns: 1fr; gap: 8px; }
+  .game-practice-tab { min-height: 70px; flex-wrap: nowrap; }
+  .game-tab-state { width: auto; }
+  .game-tab-copy strong { font-size: .85rem; }
+  .class-worksheet-intro { flex-wrap: wrap; }
+  .class-worksheet-frame { flex: none; height: 70dvh; min-height: 400px; }
+  .award-scoreboard { grid-template-columns: 1fr; }
+  .award-score-controls { gap: 8px; }
+  .award-score-value { min-width: 76px; }
+  .award-student-name .classroom-companion { width: 36px; height: 46px; }
+  html[lang="en"] .award-student-name { flex-direction: column; gap: 0; font-size: .9rem; }
+  html[lang="en"] .award-score-controls { gap: 6px; }
+  html[lang="en"] .award-score-value { min-width: 70px; }
 }

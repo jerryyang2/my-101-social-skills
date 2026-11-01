@@ -307,13 +307,14 @@ function setupHeader() {
   };
 }
 
-// 投影片步驟清單定義 (兒童遊戲島 5 步走 · 包含四角色情境小劇場)
+// 投影片步驟清單定義 (兒童遊戲島 6 步走 · 包含四角色情境小劇場)
 const slideStages = [
   { step: 1, name: "故事島冒險", time: "00-08分", icon: "📖" },
   { step: 2, name: "超能力招式", time: "08-16分", icon: "💡" },
   { step: 3, name: "角色大劇場", time: "16-26分", icon: "🎭" },
-  { step: 4, name: "遊樂場實戰", time: "26-36分", icon: "🎮" },
-  { step: 5, name: "榮譽頒獎台", time: "36-40分", icon: "🏆" }
+  { step: 4, name: "學習單", time: "26-32分", icon: "📝" },
+  { step: 5, name: "遊樂場實戰", time: "32-39分", icon: "🎮" },
+  { step: 6, name: "榮譽頒獎台", time: "39-40分", icon: "🏆" }
 ];
 
 // 渲染投影片
@@ -342,6 +343,15 @@ function renderSlide() {
 
   // 渲染投影片主體內容
   const contentArea = document.getElementById("slideMainContent");
+  const previousWorksheet = document.getElementById('classWorksheetFrame');
+  if (previousWorksheet) {
+    try {
+      const context = new URL(previousWorksheet.contentWindow.location.href);
+      worksheetLearnersByLesson.set(context.searchParams.get('id'), context.searchParams.get('learner'));
+    } catch (_) { /* A loading worksheet has no learner context yet. */ }
+  }
+  contentArea.classList.toggle('worksheet-slide', currentSlideIndex === 3);
+  contentArea.classList.toggle('award-slide', currentSlideIndex === 5);
   contentArea.innerHTML = "";
   contentArea.scrollTop = 0; // 重設滾動條至最頂端，避免換頁時頂部標題被截斷
 
@@ -355,12 +365,11 @@ function renderSlide() {
     // Slide 3: 角色大劇場（專為 4 位特教學童量身打造之實戰情境劇本，明確動作與台詞）
     renderSlideRolePlay(contentArea);
   } else if (currentSlideIndex === 3) {
-    // Slide 4: 課堂互動遊戲 (Mini-Game)
-    renderSlideGame(contentArea);
+    renderSlideWorksheet(contentArea);
   } else if (currentSlideIndex === 4) {
-    // Slide 5: 榮譽榜與集點
+    renderSlideGame(contentArea);
+  } else if (currentSlideIndex === 5) {
     renderSlideReward(contentArea);
-
   }
 
   const currentUrl = new URL(location.href);
@@ -1011,7 +1020,7 @@ function renderSlideRolePlay(container) {
       <!-- Bottom Next Step Button -->
       <div style="display:flex; justify-content:center; margin-top:16px;">
         <button class="c-btn c-btn-primary" style="font-size:1.15rem; padding:12px 32px; font-weight:900;" onclick="nextSlide()">
-          🎮 劇場演練完成，進入實戰遊戲！ ›
+          📋 劇場演練完成，接著做學習單！ ›
         </button>
       </div>
 
@@ -1191,41 +1200,77 @@ function awardAllRoleplayStars() {
   showClassroomToast("🌟 太棒了！四位角色大明星各獲得 1 顆榮譽星星！");
 }
 
-let currentGameTab = "decision"; // "decision" | "special"
+const worksheetLearnersByLesson = new Map();
+function renderSlideWorksheet(container) {
+  const src = new URL('worksheet.html', location.href);
+  src.searchParams.set('id', currentBriefing.id);
+  src.searchParams.set('embed', 'classroom');
+  const learner = worksheetLearnersByLesson.get(currentBriefing.id);
+  if (learner) src.searchParams.set('learner', learner);
+  const bar = document.createElement('div');
+  bar.className = 'class-worksheet-intro';
+  const hint = document.createElement('p');
+  hint.textContent = '一起圈選、說說看，再實際練習；可切換學生，作答沿用同一份學習單紀錄。';
+  const link = document.createElement('a');
+  const standalone = new URL(src.href); standalone.searchParams.delete('embed');
+  link.className = 'c-btn'; link.href = standalone.href; link.target = '_blank'; link.rel = 'noopener';
+  link.textContent = '獨立開啟學習單 ↗';
+  link.addEventListener('click', () => {
+    const url = new URL(frame.contentWindow.location.href);
+    if (url.origin === location.origin && url.pathname === src.pathname) {
+      url.searchParams.delete('embed'); link.href = url.href;
+    }
+  });
+  bar.append(hint, link);
+  const frame = document.createElement('iframe');
+  frame.id = 'classWorksheetFrame'; frame.className = 'class-worksheet-frame';
+  frame.title = '本課彩色互動學習單'; frame.src = src.href;
+  container.append(bar, frame);
+}
 
+let currentGameTab = 'decision';
 window.switchGameTab = function(tab) {
+  if (!['decision','special','island'].includes(tab)) return;
   currentGameTab = tab;
   renderSlide();
+  document.getElementById('gameTab-' + tab)?.focus({preventScroll:true});
 };
 
-// Slide 4: 課堂互動遊戲 (整合行為因果決策樹與主題專屬遊戲)
+// Slide 5: three clearly numbered practice tabs.
 function renderSlideGame(container) {
-  const wrapper = document.createElement("div");
-  wrapper.className = "game-master-wrapper";
-  wrapper.style.cssText = "width:100%; display:flex; flex-direction:column; align-items:center;";
-
+  const wrapper = document.createElement('div');
+  wrapper.className = 'game-master-wrapper';
+  const tabs = [
+    {id:'decision',number:1,icon:'🧭',title:'想一想不同做法',description:'討論情境與選擇'},
+    {id:'special',number:2,icon:'🎮',title:'主題技能專屬互動遊戲',description:'動手練習本課招式'},
+    {id:'island',number:3,icon:'🏝️',title:'群島大冒險',description:'前往本課群島任務'}
+  ];
   wrapper.innerHTML = `
-    <div style="display:flex; justify-content:center; gap:12px; margin-bottom:18px; flex-wrap:wrap;">
-      <button class="c-btn ${currentGameTab === 'decision' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('decision')">
-        🧭 想一想不同做法
-      </button>
-      <button class="c-btn ${currentGameTab === 'special' ? 'c-btn-accent' : ''}" style="font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(0,0,0,0.08);" onclick="switchGameTab('special')">
-        🎮 主題技能專屬互動遊戲
-      </button>
-      <a class="c-btn" href="island-game.html" target="_blank" style="background:linear-gradient(135deg, #06b6d4, #0284c7); color:#fff; font-weight:900; font-size:1rem; padding:8px 22px; box-shadow:0 3px 8px rgba(6,182,212,0.25); text-decoration:none; display:inline-flex; align-items:center; gap:6px;" title="開啟 3D 社交群島冒險遊戲（IsleForge 概念，登陸本課專屬主題島與打倒觀念怪獸）">
-        🏝️ 登陸 3D 冒險島
-      </a>
+    <p class="game-tabs-hint" id="gameTabsHint">選一個練習分頁，點選下方卡片切換</p>
+    <div class="game-practice-tabs" role="tablist" aria-label="遊樂場三個練習分頁" aria-describedby="gameTabsHint">
+      ${tabs.map(tab => `<button type="button" role="tab" class="game-practice-tab" id="gameTab-${tab.id}" aria-controls="gameInnerContainer" aria-selected="${currentGameTab===tab.id}" tabindex="${currentGameTab===tab.id?0:-1}" onclick="switchGameTab('${tab.id}')"><span class="game-tab-number" aria-hidden="true">${tab.number}</span><span class="game-tab-copy"><strong>${tab.icon} ${tab.title}</strong><small>${tab.description}</small></span><span class="game-tab-state" aria-hidden="true">${currentGameTab===tab.id?'目前分頁':'點選切換'}</span></button>`).join('')}
     </div>
-    <div class="game-container" id="gameInnerContainer" style="width:100%; max-width:880px;"></div>
-  `;
-
+    <div class="game-container" id="gameInnerContainer" role="tabpanel" aria-labelledby="gameTab-${currentGameTab}" tabindex="0"></div>`;
   container.appendChild(wrapper);
-
-  const innerBox = wrapper.querySelector("#gameInnerContainer");
-  if (currentGameTab === "decision") {
-    buildDecisionTreeGame(innerBox);
-  } else {
-    buildSpecificThemedGame(innerBox);
+  wrapper.querySelector('[role="tablist"]').addEventListener('keydown', event => {
+    let index = tabs.findIndex(tab=>tab.id===currentGameTab);
+    if (event.key==='ArrowRight') index=(index+1)%tabs.length;
+    else if (event.key==='ArrowLeft') index=(index+tabs.length-1)%tabs.length;
+    else if (event.key==='Home') index=0;
+    else if (event.key==='End') index=tabs.length-1;
+    else return;
+    event.preventDefault(); event.stopPropagation(); switchGameTab(tabs[index].id);
+  });
+  const innerBox = wrapper.querySelector('#gameInnerContainer');
+  if (currentGameTab==='decision') buildDecisionTreeGame(innerBox);
+  else if (currentGameTab==='special') buildSpecificThemedGame(innerBox);
+  else {
+    const card=document.createElement('section'); card.className='class-island-entry';
+    const title=document.createElement('h2'); title.textContent='把本課方法帶到群島練一練';
+    const lesson=document.createElement('p'); lesson.textContent=formatCleanLessonTitle(currentBriefing);
+    const hint=document.createElement('p'); hint.textContent='開啟後，左邊探索島嶼，右邊進行任務。完成後切回這個投影分頁。';
+    const launch=document.createElement('a'); launch.className='c-btn c-btn-primary';launch.href='island-game.html';launch.target='_blank';launch.rel='noopener';launch.textContent='開啟群島任務（新分頁）↗';
+    card.append(title,lesson,hint,launch);innerBox.append(card);
   }
 }
 
@@ -1699,21 +1744,17 @@ window.checkEmer = function(correct) {
   }
 };
 
-// Slide 4: 榮譽榜與獎勵 (專屬四位學生代幣板：宇、和、嘉、畯 · 高對比清楚姓名)
+// Slide 6: 榮譽榜與獎勵（個別星星回饋）。
 function renderSlideReward(container) {
   const cardsHtml = targetStudents.map(s => `
-    <div class="student-score-card" data-companion="${s.id}">
-      <div class="card-name-plate">${classroomCompanion(s.name)} ${s.name}</div>
-      <div class="card-star-display">
-        <span>⭐</span>
-        <span id="score_${s.id}">${studentStars[s.id] || 0}</span>
+    <div class="award-score-row" data-companion="${s.id}">
+      <div class="award-student-name">${classroomCompanion(s.name)} <strong>${s.name}</strong></div>
+      <div class="award-score-controls">
+        <button type="button" class="award-score-adjust award-minus" onclick="minusStudentStar('${s.id}')" aria-label="${s.name}減少1顆星星">−</button>
+        <span class="award-score-value" aria-live="polite">⭐ <span id="score_${s.id}">${studentStars[s.id] || 0}</span></span>
+        <button type="button" class="award-score-adjust award-plus" onclick="addStudentStar('${s.id}')" aria-label="${s.name}增加1顆星星">＋</button>
       </div>
-      <div class="card-actions">
-        <button class="btn-minus-star" style="background:#fee2e2; border-color:#fca5a5; color:#991b1b; font-weight:800;" onclick="minusStudentStar('${s.id}')" title="更正誤加的 1 顆星星">更正 −1</button>
-        <button class="btn-add-star" onclick="addStudentStar('${s.id}')" title="獎勵 1 顆星星">+1 加點</button>
-      </div>
-    </div>
-  `).join("");
+    </div>`).join('');
 
   container.innerHTML = `
     <section class="lesson-reflection"><h2>今天想把哪個方法帶回生活？</h2>
@@ -1724,15 +1765,13 @@ function renderSlideReward(container) {
     <p class="slide-subtitle">教師可依約定肯定參與、求助與嘗試；星星不代表學習目標已達成。</p>
     
     <!-- 4 Student Scoreboard -->
-    <div class="student-scoreboard">
+    <div class="award-scoreboard">
       ${cardsHtml}
     </div>
 
     <!-- Management Tools -->
-    <div style="display:flex; justify-content:center; gap:16px; margin-top:20px; flex-wrap:wrap;">
-      <a class="c-btn" href="worksheet.html?id=${currentBriefing.id}" target="_blank" style="background:#fef08a; border-color:#eab308; color:#854d0e; font-weight:900;">
-        📄 開啟今日彩色圖文學習單
-      </a>
+    <div class="award-actions">
+      <button type="button" class="c-btn" onclick="awardAllRoleplayStars()">🎉 全員各 +1 ⭐</button>
       <button class="c-btn" style="background:#fef2f2; border-color:#fecaca; color:#991b1b;" onclick="resetStudentStars()">
         🎁 獎勵兌換完畢（星星歸零）
       </button>
@@ -1781,7 +1820,7 @@ window.resetStudentStars = function() {
     studentStars = { yu: 0, he: 0, jia: 0, jun: 0 };
     saveStudentStars();
     const el = document.getElementById("slideMainContent");
-    if (el && currentSlideIndex === 4) {
+    if (el && currentSlideIndex === 5) {
       renderSlideReward(el);
     }
   }
@@ -1815,6 +1854,7 @@ window.prevSlide = function() {
 };
 
 window.goToSlide = function(idx) {
+  if (!Number.isInteger(idx) || idx < 0 || idx >= slideStages.length) return;
   stopSpeech();
   sfx.playPop();
   currentSlideIndex = idx;
