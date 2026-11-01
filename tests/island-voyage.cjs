@@ -27,21 +27,12 @@ const islands = themes.map((theme, index) => {
   island.userData.islandIndex = index;
   return island;
 });
-const stones = themes.flatMap((theme, parentIslandIndex) => theme.weeks.map((weekNumber, subIndex) => {
-  const stone = new T.Group();
-  const angle = parentIslandIndex / 4 * Math.PI * 2 - Math.PI / 4 + subIndex / theme.weeks.length * Math.PI * 1.6 - Math.PI * .8;
-  const island = islands[parentIslandIndex];
-  stone.position.set(island.position.x+Math.cos(angle)*4.8,island.userData.topY-.06,island.position.z+Math.sin(angle)*4.8);
-  stone.userData = {parentIslandIndex,weekNumber,walkY:island.userData.topY+.24};
-  for (let i=0;i<2;i++) stone.add(new T.Mesh(new T.SphereGeometry(1),new T.MeshLambertMaterial({color:0xffffff})));
-  return stone;
-}));
-const art = world.window.SocialIslandArt.build(T,new T.Scene(),islands,center,stones,make);
-assert.equal(stones.length,52);
+const art = world.window.SocialIslandArt.build(T,new T.Scene(),islands,center,[],make);
+assert.deepEqual(Array.from(themes.flatMap(theme=>Array.from(theme.weeks))).sort((a,b)=>a-b),Array.from({length:52},(_,i)=>i+1),'All 52 weeks remain assigned to theme menus');
+assert.ok(!source.includes('subIslandMeshes'),'No per-week islands are created or interacted with in the 3D scene');
 assert.equal(art.paths.edges.filter(e=>e.kind==='bridge').length,6,'Only the six inter-island links are bridges');
-for (const stone of stones) {
-  const destination = art.paths.destination(stone.position);
-  assert.ok(Math.abs(destination.y-stone.userData.walkY)<1e-7,'Week trail must stay at the island walking height');
+for (const island of [...islands,art.icebreaker,art.teamwork]) {
+  const destination = art.paths.destination(island.position);
   const route = art.paths.route(center.position, destination);
   assert.ok(route.length > 1);
   for (let i=1;i<route.length;i++) {
@@ -58,4 +49,4 @@ for(const island of [...islands,art.icebreaker,art.teamwork]) {
 }
 const distances=[.4,.7,1,1.8,3].map(world.window.SocialIslandExplorer.overviewDistance);
 assert.ok(distances.every(x=>Number.isFinite(x)&&x>=86&&x<=180));
-console.log('PASS: six natural islands; 52 trail destinations retain walking heights; all routes supported; six connecting bridges; responsive overview framing.');
+console.log('PASS: six natural islands; 52 weeks retained in menus without 3D week markers; all routes supported; six connecting bridges; responsive overview framing.');

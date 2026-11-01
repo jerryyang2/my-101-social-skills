@@ -373,7 +373,6 @@
   // ==========================================
   let scene, camera, renderer, seaMesh, hemiLight, sunLight;
   let islandMeshes = [];
-  let subIslandMeshes = [];
   let centerMesh = null;
   let rotatingDecorations = [];
   let clouds = [];
@@ -443,7 +442,7 @@
 
     // 建造群島
     buildArchipelago();
-    sceneArt = window.SocialIslandArt.build(THREE, scene, islandMeshes, centerMesh, subIslandMeshes, (seed, color) => makeChubbySculptedIsland(createNaturalShore(seed), 1.9, color, 0xc6ae88));
+    sceneArt = window.SocialIslandArt.build(THREE, scene, islandMeshes, centerMesh, [], (seed, color) => makeChubbySculptedIsland(createNaturalShore(seed), 1.9, color, 0xc6ae88));
     add3DLabel('🧊 破冰遊戲島', sceneArt.icebreaker, false, null, () => visitIcebreaker());
     labels[labels.length - 1].el.classList.add('icebreaker-label');
     add3DLabel('🤝 合作任務島', sceneArt.teamwork, false, null, () => visitTeamwork());
@@ -602,27 +601,6 @@
     return group;
   }
 
-  // 建造 13 顆小週次圓潤布丁踏石島 (Chubby Sub-Island)
-  function makeChubbySubIsland(topColor = 0xffffff, cliffColor = 0xfed7aa) {
-    const g = new THREE.Group();
-    // 胖胖布丁基座
-    const baseGeo = new THREE.CylinderGeometry(1.15, 0.95, 0.65, 12);
-    const baseMat = new THREE.MeshLambertMaterial({ color: cliffColor });
-    const base = new THREE.Mesh(baseGeo, baseMat);
-    base.position.y = 0.32;
-    g.add(base);
-
-    // 頂部圓圓奶油蓋
-    const capGeo = new THREE.SphereGeometry(1.15, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2);
-    const capMat = new THREE.MeshLambertMaterial({ color: topColor });
-    const cap = new THREE.Mesh(capGeo, capMat);
-    cap.position.y = 0.55;
-    g.add(cap);
-
-    g.userData.topY = 0.85;
-    return g;
-  }
-
   // 棒棒糖糖果樹
   function makeLollipopTree(scale = 1, color = 0x22c55e) {
     const g = new THREE.Group();
@@ -759,7 +737,7 @@
     centerMesh = centerGroup;
     add3DLabel('⭐ 星星城堡', centerGroup, true, -1);
 
-    // 2. 四大主題島嶼 (立體專屬外型：愛心、對話泡泡、四葉草、魔法齒輪)
+    // 2. 四大主題島嶼（自然海岸與村落）
     const islandRadius = 25;
     ISLAND_THEMES.forEach((theme, idx) => {
       const angle = (idx / 4) * Math.PI * 2 - Math.PI / 4;
@@ -779,41 +757,7 @@
       islandMeshes.push(mainIsland);
       add3DLabel(`${theme.name}`, mainIsland, false, idx);
 
-      // 環繞主島的 13 顆小週次圓潤布丁踏石島 (代表該島的 13 堂課)
-      const islandWeeks = theme.weeks;
-      const subRadius = 4.8;
-      for (const [subIndex, w] of islandWeeks.entries()) {
-        const subAngle = angle + (subIndex / islandWeeks.length) * Math.PI * 1.6 - Math.PI * 0.8;
-        const subX = posX + Math.cos(subAngle) * subRadius;
-        const subZ = posZ + Math.sin(subAngle) * subRadius;
-
-        const isPassed = state.passedWeeks.has(w);
-        const subIsland = makeChubbySubIsland(isPassed ? 0xfbbf24 : 0xffffff, 0xfed7aa);
-        subIsland.scale.setScalar(0.35);
-        subIsland.position.set(subX, mainIsland.userData.topY - 0.06, subZ);
-        subIsland.userData.walkY = mainIsland.userData.topY + 0.24;
-        subIsland.userData.weekNumber = w;
-        subIsland.userData.parentIslandIndex = idx;
-        subIsland.userData.subCenter = { x: subX, z: subZ };
-
-        // 週次小旗幟 / 通關小金星
-        if (isPassed) {
-          const starIcon = new THREE.Mesh(
-            new THREE.OctahedronGeometry(0.38, 0),
-            new THREE.MeshPhongMaterial({ color: 0xf59e0b, shininess: 80, flatShading: true })
-          );
-          starIcon.position.set(0, subIsland.userData.topY + 0.45, 0);
-          subIsland.add(starIcon);
-          rotatingDecorations.push(starIcon);
-        } else {
-          const flag = makeBox(0.08, 0.85, 0.08, 0x475569, 0, subIsland.userData.topY, 0);
-          const banner = makeBox(0.35, 0.22, 0.04, 0x3b82f6, 0.18, subIsland.userData.topY + 0.65, 0);
-          subIsland.add(flag, banner);
-        }
-
-        scene.add(subIsland);
-        subIslandMeshes.push(subIsland);
-      }
+      // 週次由任務選單與平面選島提供，3D 場景只呈現主島。
     });
   }
 
@@ -1278,12 +1222,11 @@
       raycaster.setFromCamera(mouse, camera);
       const isHoverBalloon = balloons && raycaster.intersectObjects(balloons, true).length > 0;
       const isHoverCenter = centerMesh && raycaster.intersectObject(centerMesh, true).length > 0;
-      const isHoverSub = subIslandMeshes && raycaster.intersectObjects(subIslandMeshes, true).length > 0;
       const isHoverIsland = islandMeshes && raycaster.intersectObjects(islandMeshes, true).length > 0;
       const isHoverResident = sceneArt && raycaster.intersectObjects(sceneArt.residents, true).length > 0;
       const isHoverIcebreaker = sceneArt && raycaster.intersectObject(sceneArt.icebreaker, true).length > 0;
       const isHoverTeamwork = sceneArt && raycaster.intersectObject(sceneArt.teamwork, true).length > 0;
-      canvas.style.cursor = (isHoverTeamwork || isHoverIcebreaker || isHoverResident || isHoverBalloon || isHoverCenter || isHoverSub || isHoverIsland) ? 'pointer' : 'grab';
+      canvas.style.cursor = (isHoverTeamwork || isHoverIcebreaker || isHoverResident || isHoverBalloon || isHoverCenter || isHoverIsland) ? 'pointer' : 'grab';
     });
 
     canvas.addEventListener('pointercancel', event => gestures.up(event, true));
@@ -1342,20 +1285,6 @@
         if (centerIntersects.length > 0) {
           sfx.playClick();
           walkToAndTrigger(0, 2.8, () => openCitadelModal());
-          return;
-        }
-      }
-
-      // 檢查是否點擊週次小島
-      const subIntersects = raycaster.intersectObjects(subIslandMeshes, true);
-      if (subIntersects.length > 0) {
-        let root = subIntersects[0].object;
-        while (root.parent && root.userData.weekNumber === undefined) root = root.parent;
-        if (root.userData.weekNumber !== undefined) {
-          sfx.playClick();
-          const w = root.userData.weekNumber;
-          const pIdx = root.userData.parentIslandIndex;
-          walkToAndTrigger(root.position.x, root.position.z, () => openQuestDrawer(pIdx, w));
           return;
         }
       }
@@ -1512,11 +1441,8 @@
       if (!motionPaused) b.rotation.y += b.userData.rotSpeed;
     });
 
-    // 5. 海浪與小踏石浮島微幅起伏 (Bobbing Waves & Stepping Stones)
+    // 5. 海浪微幅起伏
     seaMesh.position.y = -0.2 + Math.sin(time) * 0.08;
-    subIslandMeshes.forEach((sub, i) => {
-      if (!Number.isFinite(sub.userData.walkY)) sub.position.y = Math.sin(time * 2 + i * 0.45) * 0.06;
-    });
 
     renderer.render(scene, camera);
     updateLabels();
@@ -1657,12 +1583,6 @@
     state.activeWeekNumber = wNum;
     sfx.playClick();
     renderQuestDrawerContent();
-
-    // 讓 3D 冒險者走向該週次小島
-    const subMesh = subIslandMeshes.find(m => m.userData.weekNumber === wNum);
-    if (subMesh) {
-      walkToAndTrigger(subMesh.position.x, subMesh.position.z);
-    }
   }
 
   function renderQuestDrawerContent() {
@@ -1953,12 +1873,6 @@
       chips.forEach((c, idx) => {
         if (ISLAND_THEMES[state.activeIslandIndex].weeks[idx] === wNum) c.classList.add('passed');
       });
-
-      // 更新 3D 週次小島外觀 (翻成金色)
-      const subMesh = subIslandMeshes.find(m => m.userData.weekNumber === wNum);
-      if (subMesh && subMesh.children[1]) {
-        subMesh.children[1].material.color.setHex(0xfbbf24);
-      }
 
       saveLocalProgress();
     }
