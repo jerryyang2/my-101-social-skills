@@ -1,547 +1,513 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en" data-site-language="en">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8"/>
   <script src="../../site-language.js?v=bf6816bcce93"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Island Adventure · My 101 Social Skills Lessons</title>
-
-  <!-- 網站主題專屬 Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="../../備課平台/favicon.png">
-  <link rel="apple-touch-icon" href="../../備課平台/favicon.png">
-
-  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="../../備課平台/island-game.css?v=c76fec47104c">
-  <link rel="stylesheet" href="../../備課平台/platform-theme.css?v=802836385dc0">
-  <link rel="stylesheet" href="../../備課平台/island-navigation.css?v=e35856585879">
-  <script src="island-ui.js?v=a8bfe09be002" defer></script>
-  <link rel="stylesheet" href="../../備課平台/floating-tools/tools.css?v=2dcf7d249058">
-  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
-  <script src="floating-tools/drawing.js?v=a2898db33a43" defer></script>
-  <link rel="stylesheet" href="../../備課平台/focus-mode.css?v=fd03ea1944fc">
-  <script defer src="focus-mode.js?v=c99aea6c73bc"></script>
-  <link rel="stylesheet" href="../../備課平台/island-explorer.css?v=ada226e53b18">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Island Adventure · My 101 Social Skills Lessons</title>
+<!-- 網站主題專屬 Favicon -->
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../備課平台/favicon.png" rel="alternate icon" type="image/png"/>
+<link href="../../備課平台/favicon.png" rel="apple-touch-icon"/>
+<!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css" rel="stylesheet"/>
+<link href="../../備課平台/island-game.css?v=c76fec47104c" rel="stylesheet"/>
+<link href="../../備課平台/platform-theme.css?v=802836385dc0" rel="stylesheet"/>
+<link href="../../備課平台/island-navigation.css?v=e35856585879" rel="stylesheet"/>
+<script defer="" src="island-ui.js?v=a8bfe09be002"></script>
+<link href="../../備課平台/floating-tools/tools.css?v=2dcf7d249058" rel="stylesheet"/>
+<script defer="" src="floating-tools/magnifier.js?v=e67586b45fe8"></script>
+<script defer="" src="floating-tools/drawing.js?v=a2898db33a43"></script>
+<link href="../../備課平台/focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
+<script defer="" src="focus-mode.js?v=c99aea6c73bc"></script>
+<link href="../../備課平台/island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
+<link href="../../備課平台/island-voyage.css?v=37b1f643b383" rel="stylesheet"/>
   <link rel="stylesheet" href="../../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
-
-  <!-- 頂部遊戲導覽列 (Topbar) -->
-  <header class="game-topbar">
-    <div class="brand-section">
-      <a class="brand-logo" href="index.html" aria-label="Back to Lesson Planner"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg></a>
-      <div class="brand-info">
-        <h1>
+<!-- 頂部遊戲導覽列 (Topbar) -->
+<header class="game-topbar">
+<div class="brand-section">
+<a aria-label="Back to Lesson Planner" class="brand-logo" href="index.html"><svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#island"></use></svg></a>
+<div class="brand-info">
+<h1>
           Social Skills Heroes · Island Adventure
           <span class="badge-isleforge">Let's explore</span>
-        </h1>
-        <p>My 101 Social Skills Lessons · Practice friendship through adventure</p>
-      </div>
-    </div>
-    <div class="top-controls">
-      <section class="adventure-tools" aria-labelledby="adventureToolsTitle">
-        <h2 id="adventureToolsTitle">Adventure Tools</h2>
-        <div class="adventure-actions">
-          <button type="button" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" aria-controls="passportModalOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">📘</span>
-            <span class="adventure-button-copy"><strong>My Passport</strong><small>View stamps and progress</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-          <button type="button" class="c-game-btn btn-savecode adventure-action" onclick="window.socialGame.openSaveCodeModal()" aria-controls="saveCodeModalOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">🔑</span>
-            <span class="adventure-button-copy"><strong>Save &amp; Continue</strong><small>Continue on another device</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-          <button type="button" class="c-game-btn btn-citadel adventure-action" onclick="window.socialGame.openCitadelModal()" aria-controls="modalCitadelOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">⭐</span>
-            <span class="adventure-button-copy"><strong>Star Castle</strong><small>View achievements and certificates</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-        </div>
-        <details class="game-settings">
-          <summary aria-controls="gameSettingsPanel" aria-label="Game Settings"><span aria-hidden="true">⚙️</span><span class="settings-label">Game Settings</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
-          <div class="game-settings-panel" id="gameSettingsPanel">
-            <fieldset class="settings-section">
-              <legend>Maps and Lenses</legend>
-              <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ Switch 2D map</button>
-              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="false">🎥 Camera Follow: Off</button>
-            </fieldset>
-            <fieldset class="settings-section">
-              <legend>Game sound effects</legend>
-              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="false">🔇 Sound Effect: Off</button>
-            </fieldset>
-            <fieldset class="settings-section">
-              <legend>Background sky color</legend>
-              <div class="theme-switch-group">
-                <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" aria-pressed="true">☀️ Morning light</button>
-                <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" aria-pressed="false">🌅 Sunset</button>
-                <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" aria-pressed="false">🌌 Night sea</button>
-              </div>
-            </fieldset>
-          </div>
-        </details>
-      </section>
-    </div>
-    <details class="platform-menu">
-      <summary>Go to platform <span aria-hidden="true">↗</span></summary>
-      <nav class="platform-navigation" aria-label="Leave the game and go to other platforms">
-        <a class="platform-link" href="classroom.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
-          <span>Classroom projection</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="platform-link" href="index.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
-          <span>Lesson Planner</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-        </a>
-      </nav>
-    </details>
-  </header>
-
-  <div class="visitor-strip">
-    <span aria-hidden="true">⚓</span><span>Visitor</span><strong id="activeVisitorName">Visitor 1</strong>
-    <button type="button" onclick="window.socialGame.openVisitors()">Switch / add visitor</button>
-  </div>
-
-  <details class="explorer-console" open>
-    <summary>Explore tools <span aria-hidden="true">⌄</span></summary>
-    <div class="explorer-console-body">
-      <h2>Explore the islands</h2>
-      <button type="button" class="explorer-overview" onclick="window.socialGame.resetArchipelagoView()">⌂ Overview</button>
-      <div class="camera-presets" role="group" aria-label="Camera view">
-        <button type="button" data-camera-preset="bird" aria-pressed="true" onclick="window.socialGame.setCameraPreset('bird')">Bird</button>
-        <button type="button" data-camera-preset="top" aria-pressed="false" onclick="window.socialGame.setCameraPreset('top')">Top</button>
-        <button type="button" data-camera-preset="eye" aria-pressed="false" onclick="window.socialGame.setCameraPreset('eye')">Eye</button>
-      </div>
-      <div class="camera-zoom" role="group" aria-label="Map zoom">
-        <button type="button" onclick="window.socialGame.zoomCamera(0.8)">+ Zoom in</button>
-        <button type="button" onclick="window.socialGame.zoomCamera(1.25)">− Zoom out</button>
-      </div>
-      <button type="button" data-camera-follow aria-pressed="false" onclick="window.socialGame.toggleFollowCamera()">Follow visitor: off</button>
-      <p id="cameraGestureHint">Drag to pan · pinch to zoom</p>
-      <button type="button" data-map-toggle onclick="window.socialGame.toggleViewMode()">Flat map</button>
-      <button type="button" data-motion-toggle aria-pressed="false" onclick="window.socialGame.toggleMotion()">Pause scenery</button>
-      <button type="button" class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()">🧊 Icebreaker Island</button>
-      <button type="button" class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()">🤝 Teamwork Island</button>
-      <h2>Meet the residents</h2>
-      <div class="resident-directory" role="group" aria-label="Island residents">
-        <button type="button" onclick="window.socialGame.meetResident(0)" aria-label="Meet Yu the Lion">🦁</button>
-        <button type="button" onclick="window.socialGame.meetResident(1)" aria-label="Meet Jun the Bear">🐻</button>
-        <button type="button" onclick="window.socialGame.meetResident(2)" aria-label="Meet He the Panda">🐼</button>
-        <button type="button" onclick="window.socialGame.meetResident(3)" aria-label="Meet Jia the Fox">🦊</button>
-      </div>
-      <h2>Take a walk</h2>
-      <div id="explorerMovement"></div>
-      <p>Walk with WASD / arrow keys<br>Choose an island or week to start a quest</p>
-    </div>
-  </details>
-
-  <!-- RPG 冒險者頂部狀態 HUD 條 -->
-  <aside class="rpg-hud-bar" id="rpgHud" aria-live="polite">
-    <div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="Click to customize the name and appearance of the adventurer">
-      <div class="hud-avatar" id="hudAvatar">🦖</div>
-      <div class="hud-hero-details">
-        <div class="hud-name-row">
-          <span class="hud-name" id="hudHeroName">Yu</span>
-          <span class="hud-lv-badge" id="hudHeroLv">Lv.1 trainee</span>
-        </div>
-        <div class="hud-exp-track">
-          <div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
-        </div>
-        <span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
-      </div>
-    </div>
-
-    <div class="hud-stat-pill" title="Accumulate social super power gold stars (special education tokens)">
-      <span class="hud-pill-icon">⭐</span>
-      <span class="hud-pill-val" id="hudTotalStars">0 pieces</span>
-    </div>
-
-    <div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="Stamp collection progress of the four major themed islands">
-      <span class="hud-pill-icon">🏝️</span>
-      <span class="hud-pill-val" id="hudStampCount">Stamps 0 / 4</span>
-    </div>
-  </aside>
-
-  <!-- 3D 畫布主舞台 -->
-  <main id="stage">
-    <canvas id="threeCanvas" tabindex="0" aria-label="3D social islands. Use arrow keys to walk, Explore tools to change the camera, or Flat map to choose a quest."></canvas>
-    <!-- 3D 世界空間浮動標籤圖層 -->
-    <div id="labelLayer"></div>
-  </main>
-
-  <!-- 操作指示提示列 -->
-  <div class="view-hints" id="moveHint">
+</h1>
+<p>My 101 Social Skills Lessons · Practice friendship through adventure</p>
+</div>
+</div>
+<div class="top-controls">
+<section aria-labelledby="adventureToolsTitle" class="adventure-tools">
+<h2 id="adventureToolsTitle">Adventure Tools</h2>
+<div class="adventure-actions">
+<button aria-controls="passportModalOverlay" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">📘</span>
+<span class="adventure-button-copy"><strong>My Passport</strong><small>View stamps and progress</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+<button aria-controls="saveCodeModalOverlay" class="c-game-btn btn-savecode adventure-action" onclick="window.socialGame.openSaveCodeModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">🔑</span>
+<span class="adventure-button-copy"><strong>Save &amp; Continue</strong><small>Continue on another device</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+<button aria-controls="modalCitadelOverlay" class="c-game-btn btn-citadel adventure-action" onclick="window.socialGame.openCitadelModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">⭐</span>
+<span class="adventure-button-copy"><strong>Star Castle</strong><small>View achievements and certificates</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+</div>
+<details class="game-settings">
+<summary aria-controls="gameSettingsPanel" aria-label="Game Settings"><span aria-hidden="true">⚙️</span><span class="settings-label">Game Settings</span><span aria-hidden="true" class="settings-chevron">⌄</span></summary>
+<div class="game-settings-panel" id="gameSettingsPanel">
+<fieldset class="settings-section">
+<legend>Maps and Lenses</legend>
+<button aria-controls="map2DView" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" type="button">🗺️ Switch 2D map</button>
+<button aria-pressed="false" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" type="button">🎥 Camera Follow: Off</button>
+</fieldset>
+<fieldset class="settings-section">
+<legend>Game sound effects</legend>
+<button aria-pressed="false" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" type="button">🔇 Sound Effect: Off</button>
+</fieldset>
+<fieldset class="settings-section">
+<legend>Background sky color</legend>
+<div class="theme-switch-group">
+<button aria-pressed="true" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" type="button">☀️ Morning light</button>
+<button aria-pressed="false" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" type="button">🌅 Sunset</button>
+<button aria-pressed="false" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" type="button">🌌 Night sea</button>
+</div>
+</fieldset>
+</div>
+</details>
+</section>
+</div>
+<details class="platform-menu">
+<summary>Go to platform <span aria-hidden="true">↗</span></summary>
+<nav aria-label="Leave the game and go to other platforms" class="platform-navigation">
+<a class="platform-link" href="classroom.html">
+<svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#classroom"></use></svg>
+<span>Classroom projection</span><span aria-hidden="true" class="platform-link-arrow">↗</span>
+</a>
+<a class="platform-link" href="index.html">
+<svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#home"></use></svg>
+<span>Lesson Planner</span><span aria-hidden="true" class="platform-link-arrow">↗</span>
+</a>
+</nav>
+</details>
+</header><main class="voyage-page" id="archipelago"><section aria-labelledby="voyageTitle" class="voyage-intro"><div><p class="voyage-kicker">Practice together. Grow together.</p><h2 id="voyageTitle">Which island shall we visit today?</h2><p>Cross the wooden bridges with your companions, and bring friendship skills into everyday life.</p></div><a class="voyage-directory-link" href="#islandDirectory">Choose an island <span aria-hidden="true">↘</span></a></section><section aria-label="Social skills archipelago exploration map" class="voyage-card"><div class="voyage-welcome"><div><p class="voyage-kicker">Welcome aboard</p><h2>Every island has something to practice together.</h2><p>Choose an island, enjoy the scenery, greet a resident, and try an activity.</p></div><span aria-hidden="true" class="voyage-seal">⚓</span></div><div class="voyage-traveler"><div class="visitor-strip">
+<span aria-hidden="true">⚓</span><span>Visitor</span><strong id="activeVisitorName">Visitor 1</strong>
+<button onclick="window.socialGame.openVisitors()" type="button">Switch / add visitor</button>
+</div><aside aria-live="polite" class="rpg-hud-bar" id="rpgHud">
+<div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="Click to customize the name and appearance of the adventurer">
+<div class="hud-avatar" id="hudAvatar">🦖</div>
+<div class="hud-hero-details">
+<div class="hud-name-row">
+<span class="hud-name" id="hudHeroName">Yu</span>
+<span class="hud-lv-badge" id="hudHeroLv">Lv.1 trainee</span>
+</div>
+<div class="hud-exp-track">
+<div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
+</div>
+<span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
+</div>
+</div>
+<div class="hud-stat-pill" title="Accumulate social super power gold stars (special education tokens)">
+<span class="hud-pill-icon">⭐</span>
+<span class="hud-pill-val" id="hudTotalStars">0 pieces</span>
+</div>
+<div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="Stamp collection progress of the four major themed islands">
+<span class="hud-pill-icon">🏝️</span>
+<span class="hud-pill-val" id="hudStampCount">Stamps 0 / 4</span>
+</div>
+</aside></div><div class="voyage-map-layout"><div class="voyage-map"><div class="voyage-map-caption" aria-hidden="true"><span>Six islands to explore</span><span>Take your time across the bridges.</span></div><div class="voyage-compass" aria-hidden="true">N<br/>✥</div><div aria-label="3D social skills archipelago map" id="stage" role="region">
+<canvas aria-label="3D social islands. Use arrow keys to walk, Explore tools to change the camera, or Flat map to choose a quest." id="threeCanvas" tabindex="0"></canvas>
+<!-- 3D 世界空間浮動標籤圖層 -->
+<div id="labelLayer"></div>
+</div><div id="map2DView">
+<!-- 由 island-game.js 動態渲染 -->
+</div><div class="view-hints" id="moveHint">
     Choose an island to explore. Say hello to residents and balloons, too.
-  </div>
+  </div></div><details class="explorer-console" open="">
+<summary>Explore tools <span aria-hidden="true">⌄</span></summary>
+<div class="explorer-console-body">
+<h2>Explore the islands</h2>
+<button class="explorer-overview" onclick="window.socialGame.resetArchipelagoView()" type="button">⌂ Overview</button>
+<div aria-label="Camera view" class="camera-presets" role="group">
+<button aria-pressed="true" data-camera-preset="bird" onclick="window.socialGame.setCameraPreset('bird')" type="button">Bird</button>
+<button aria-pressed="false" data-camera-preset="top" onclick="window.socialGame.setCameraPreset('top')" type="button">Top</button>
+<button aria-pressed="false" data-camera-preset="eye" onclick="window.socialGame.setCameraPreset('eye')" type="button">Eye</button>
+</div>
+<div aria-label="Map zoom" class="camera-zoom" role="group">
+<button onclick="window.socialGame.zoomCamera(0.8)" type="button">+ Zoom in</button>
+<button onclick="window.socialGame.zoomCamera(1.25)" type="button">− Zoom out</button>
+</div>
+<button aria-pressed="false" data-camera-follow="" onclick="window.socialGame.toggleFollowCamera()" type="button">Follow visitor: off</button>
+<p id="cameraGestureHint">Drag to pan · pinch to zoom</p>
+<button data-map-toggle="" onclick="window.socialGame.toggleViewMode()" type="button">Flat map</button>
+<button aria-pressed="false" data-motion-toggle="" onclick="window.socialGame.toggleMotion()" type="button">Pause scenery</button>
+<button class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()" type="button">🧊 Icebreaker Island</button>
+<button class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()" type="button">🤝 Teamwork Island</button>
+<h2>Meet the residents</h2>
+<div aria-label="Island residents" class="resident-directory" role="group">
+<button aria-label="Meet Yu the Lion" onclick="window.socialGame.meetResident(0)" type="button">🦁</button>
+<button aria-label="Meet Jun the Bear" onclick="window.socialGame.meetResident(1)" type="button">🐻</button>
+<button aria-label="Meet He the Panda" onclick="window.socialGame.meetResident(2)" type="button">🐼</button>
+<button aria-label="Meet Jia the Fox" onclick="window.socialGame.meetResident(3)" type="button">🦊</button>
+</div>
+<h2>Take a walk</h2>
+<div id="explorerMovement"></div>
+<p>Walk with WASD / arrow keys<br/>Choose an island or week to start a quest</p>
+</div>
+</details></div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">Find a little practice for today</p><h2 id="voyageDirectoryTitle">Choose an island and chart your own course</h2></div><p>You can also choose a card to open an island’s activities.</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>Explore 01</small><strong>Calm-Down Island</strong><span>Notice how you feel and find a comfortable way to regulate.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>Explore 02</small><strong>Let's Talk Island</strong><span>Share what you need and listen to your companions.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>Explore 03</small><strong>Let's Play Island</strong><span>Practice joining a game, sharing, and taking turns.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>Explore 04</small><strong>Daily Life and Change Island</strong><span>Practice asking for help and keeping yourself safe when things change.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>Explore 05</small><strong>Icebreaker Island</strong><span>Say hello and warm up with a familiar activity.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>Explore 06</small><strong>Teamwork Island</strong><span>Share roles, take turns, and work through a small challenge together.</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
 
-  <!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
-  <div class="virtual-dpad" id="virtualDpad">
-    <button class="dpad-btn dpad-up" data-dir="up" aria-label="Walk forward">▲</button>
-    <button class="dpad-btn dpad-left" data-dir="left" aria-label="Walk left">◀</button>
-    <button class="dpad-btn dpad-center" data-dir="center" aria-label="Return to the center">●</button>
-    <button class="dpad-btn dpad-right" data-dir="right" aria-label="Walk right">▶</button>
-    <button class="dpad-btn dpad-down" data-dir="down" aria-label="Walk back">▼</button>
-  </div>
 
-  <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
-  <div id="map2DView">
-    <!-- 由 island-game.js 動態渲染 -->
-  </div>
+<!-- RPG 冒險者頂部狀態 HUD 條 -->
 
-  <!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
-  <div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
-    <aside class="quest-drawer">
-      <div class="drawer-header">
-        <div class="drawer-header-left">
-          <span class="drawer-island-badge" id="drawerIslandBadge">Theme Island</span>
-          <h2 class="drawer-title" id="drawerTitle">Level test</h2>
-        </div>
-        <button class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="Close drawer" aria-label="Close">
+<!-- 3D 畫布主舞台 -->
+
+<!-- 操作指示提示列 -->
+
+<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+<div class="virtual-dpad" id="virtualDpad">
+<button aria-label="Walk forward" class="dpad-btn dpad-up" data-dir="up">▲</button>
+<button aria-label="Walk left" class="dpad-btn dpad-left" data-dir="left">◀</button>
+<button aria-label="Return to the center" class="dpad-btn dpad-center" data-dir="center">●</button>
+<button aria-label="Walk right" class="dpad-btn dpad-right" data-dir="right">▶</button>
+<button aria-label="Walk back" class="dpad-btn dpad-down" data-dir="down">▼</button>
+</div>
+<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+
+<!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
+<div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
+<aside class="quest-drawer">
+<div class="drawer-header">
+<div class="drawer-header-left">
+<span class="drawer-island-badge" id="drawerIslandBadge">Theme Island</span>
+<h2 class="drawer-title" id="drawerTitle">Level test</h2>
+</div>
+<button aria-label="Close" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="Close drawer">
           ✕
         </button>
-      </div>
-
-      <!-- 週次快速切換橫列 (Carousel) -->
-      <div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
-        <div class="weeks-carousel" id="weeksCarousel">
-          <!-- 由 JS 動態生成 -->
-        </div>
-      </div>
-
-      <!-- 抽屜主要滾動互動內容 -->
-      <div class="drawer-body" id="drawerDynamicBody">
-        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
-      </div>
-
-      <!-- 抽屜底部獎勵資訊 -->
-      <div class="drawer-footer">
-        <span class="quest-reward-hint">
+</div>
+<!-- 週次快速切換橫列 (Carousel) -->
+<div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+<div class="weeks-carousel" id="weeksCarousel">
+<!-- 由 JS 動態生成 -->
+</div>
+</div>
+<!-- 抽屜主要滾動互動內容 -->
+<div class="drawer-body" id="drawerDynamicBody">
+<!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
+</div>
+<!-- 抽屜底部獎勵資訊 -->
+<div class="drawer-footer">
+<span class="quest-reward-hint">
           🌟 Clearance reward: get +30 EXP, 3 social stars and exclusive Super Power Island Chapter
         </span>
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
           ✔️ Continue to patrol the island
         </button>
-      </div>
-    </aside>
-  </div>
-
-  <!-- 冒險者護照與島章冊 (Passport Modal) -->
-  <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
-    <div class="passport-book-card">
-      <div class="passport-header">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:1.8rem;">📘</span>
-          <div>
-            <h3>Social Superboy·Adventure Passport</h3>
-            <p>OO Elementary School Learning Classroom Special Needs Area (Social Skills) Learning History Archives</p>
-          </div>
-        </div>
-        <button class="drawer-close-btn" style="background:rgba(255,255,255,0.2); color:#fff;" onclick="window.socialGame.closePassportModal()">✕</button>
-      </div>
-
-      <div class="passport-body">
-        <!-- 護照個資卡 -->
-        <div class="passport-id-card">
-          <div class="passport-photo-box">
-            <div class="passport-avatar" id="passAvatar">🦖</div>
-            <div class="passport-level-tag" id="passLevel">Lv.1</div>
-          </div>
-          <div class="passport-info-grid">
-            <div class="info-row">
-              <span class="info-label">Adventurer codename:</span>
-              <span class="info-val" id="passHeroName">Yu classmate</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Current title:</span>
-              <span class="info-val" id="passHeroTitle">Social Adventure Trainee</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Accumulated experience value:</span>
-              <span class="info-val" id="passHeroExp">25 EXP</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Super power star:</span>
-              <span class="info-val" id="passHeroStars">0 ⭐</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">Affiliated special education group:</span>
-              <span class="info-val">OO elementary school learning classroom middle grade resource class</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 四大島章印記區 -->
-        <div class="stamps-section">
-          <h4 class="stamps-title">🏆 Four Themed Adventure Stamps (Practice History)</h4>
-          <div class="stamps-grid">
-            <!-- Stamp 1 -->
-            <div class="stamp-slot" id="stampSlot-0">
-              <div class="stamp-seal seal-volcano">
-                <span class="seal-icon">❤️</span>
-                <span class="seal-name">The seal of air puff and cooling</span>
-                <span class="seal-status" id="stampStatus-0">Not unlocked</span>
-              </div>
-            </div>
-            <!-- Stamp 2 -->
-            <div class="stamp-slot" id="stampSlot-1">
-              <div class="stamp-seal seal-comm">
-                <span class="seal-icon">💬</span>
-                <span class="seal-name">I want to tell you the seal</span>
-                <span class="seal-status" id="stampStatus-1">Not unlocked</span>
-              </div>
-            </div>
-            <!-- Stamp 3 -->
-            <div class="stamp-slot" id="stampSlot-2">
-              <div class="stamp-seal seal-friend">
-                <span class="seal-icon">🍀</span>
-                <span class="seal-name">Let’s play together</span>
-                <span class="seal-status" id="stampStatus-2">Not unlocked</span>
-              </div>
-            </div>
-            <!-- Stamp 4 -->
-            <div class="stamp-slot" id="stampSlot-3">
-              <div class="stamp-seal seal-flex">
-                <span class="seal-icon">⚙️</span>
-                <span class="seal-name">Daily Life and Change Stamp</span>
-                <span class="seal-status" id="stampStatus-3">Not unlocked</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="passport-footer">
-        <span style="font-size:0.85rem; color:#64748b;">
+</div>
+</aside>
+</div>
+<!-- 冒險者護照與島章冊 (Passport Modal) -->
+<div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
+<div class="passport-book-card">
+<div class="passport-header">
+<div style="display:flex; align-items:center; gap:10px;">
+<span style="font-size:1.8rem;">📘</span>
+<div>
+<h3>Social Superboy·Adventure Passport</h3>
+<p>OO Elementary School Learning Classroom Special Needs Area (Social Skills) Learning History Archives</p>
+</div>
+</div>
+<button class="drawer-close-btn" onclick="window.socialGame.closePassportModal()" style="background:rgba(255,255,255,0.2); color:#fff;">✕</button>
+</div>
+<div class="passport-body">
+<!-- 護照個資卡 -->
+<div class="passport-id-card">
+<div class="passport-photo-box">
+<div class="passport-avatar" id="passAvatar">🦖</div>
+<div class="passport-level-tag" id="passLevel">Lv.1</div>
+</div>
+<div class="passport-info-grid">
+<div class="info-row">
+<span class="info-label">Adventurer codename:</span>
+<span class="info-val" id="passHeroName">Yu classmate</span>
+</div>
+<div class="info-row">
+<span class="info-label">Current title:</span>
+<span class="info-val" id="passHeroTitle">Social Adventure Trainee</span>
+</div>
+<div class="info-row">
+<span class="info-label">Accumulated experience value:</span>
+<span class="info-val" id="passHeroExp">25 EXP</span>
+</div>
+<div class="info-row">
+<span class="info-label">Super power star:</span>
+<span class="info-val" id="passHeroStars">0 ⭐</span>
+</div>
+<div class="info-row">
+<span class="info-label">Affiliated special education group:</span>
+<span class="info-val">OO elementary school learning classroom middle grade resource class</span>
+</div>
+</div>
+</div>
+<!-- 四大島章印記區 -->
+<div class="stamps-section">
+<h4 class="stamps-title">🏆 Four Themed Adventure Stamps (Practice History)</h4>
+<div class="stamps-grid">
+<!-- Stamp 1 -->
+<div class="stamp-slot" id="stampSlot-0">
+<div class="stamp-seal seal-volcano">
+<span class="seal-icon">❤️</span>
+<span class="seal-name">The seal of air puff and cooling</span>
+<span class="seal-status" id="stampStatus-0">Not unlocked</span>
+</div>
+</div>
+<!-- Stamp 2 -->
+<div class="stamp-slot" id="stampSlot-1">
+<div class="stamp-seal seal-comm">
+<span class="seal-icon">💬</span>
+<span class="seal-name">I want to tell you the seal</span>
+<span class="seal-status" id="stampStatus-1">Not unlocked</span>
+</div>
+</div>
+<!-- Stamp 3 -->
+<div class="stamp-slot" id="stampSlot-2">
+<div class="stamp-seal seal-friend">
+<span class="seal-icon">🍀</span>
+<span class="seal-name">Let’s play together</span>
+<span class="seal-status" id="stampStatus-2">Not unlocked</span>
+</div>
+</div>
+<!-- Stamp 4 -->
+<div class="stamp-slot" id="stampSlot-3">
+<div class="stamp-seal seal-flex">
+<span class="seal-icon">⚙️</span>
+<span class="seal-name">Daily Life and Change Stamp</span>
+<span class="seal-status" id="stampStatus-3">Not unlocked</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="passport-footer">
+<span style="font-size:0.85rem; color:#64748b;">
           💡 After collecting the four themed island stamps, you can go to the central "Shining Star Castle" to unlock the "Special Education Superboy Honorary Pass Certificate"!
         </span>
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
           Confirm Passport
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
-  <div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
-    <div class="savecode-card">
-      <div class="savecode-header">
-        <h3>🔑 Adventure progress connection code</h3>
-        <button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
-      </div>
-      <div class="savecode-body">
-        <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
+</div>
+</div>
+</div>
+<!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
+<div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
+<div class="savecode-card">
+<div class="savecode-header">
+<h3>🔑 Adventure progress connection code</h3>
+<button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
+</div>
+<div class="savecode-body">
+<p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
           Progress is saved automatically in this browser. Before changing computers, tablets or classroom boards, copy the save code. Check the character and progress after loading it on the new device.
         </p>
-
-        <!-- 我的接關碼 -->
-        <div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
-          <div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
+<!-- 我的接關碼 -->
+<div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
+<div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
             📋 My current progress code:
           </div>
-          <div style="display:flex; gap:8px;">
-            <input type="text" id="mySaveCodeInput" readonly style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;">
-            <button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
+<div style="display:flex; gap:8px;">
+<input id="mySaveCodeInput" readonly="" style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;" type="text"/>
+<button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
               Copy code
             </button>
-          </div>
-        </div>
-
-        <!-- 讀取接關碼 -->
-        <div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
-          <div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
+</div>
+</div>
+<!-- 讀取接關碼 -->
+<div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
+<div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
             📥 Enter the connection code for other computers:
           </div>
-          <div style="display:flex; gap:8px;">
-            <input type="text" id="loadSaveCodeInput" placeholder="Please paste the 8-digit connection code here..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;">
-            <button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
+<div style="display:flex; gap:8px;">
+<input id="loadSaveCodeInput" placeholder="Please paste the 8-digit connection code here..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;" type="text"/>
+<button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
               Loading progress
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 初次登入或切換冒險者 Dialog -->
-  <dialog class="start-dialog" id="startDialog">
-    <div class="start-dialog-content">
-      <div class="start-dialog-header">
-        <svg class="island-welcome-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>
-        <h2>Build your social superman</h2>
-        <p>Choose a look you like and start practicing making friends together!</p>
-      </div>
-
-      <div class="start-form-group">
-        <label>Adventurer title/student name:</label>
-        <div style="display:flex; gap:8px; margin-bottom:10px;">
-          <input type="text" id="heroNameInput" maxlength="10" placeholder="For example: Yu, He, Light Speed Superman..." value="Yu" style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;">
-        </div>
-        <!-- OO特教生快速填入 Chip -->
-        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
-          <span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">Quick settings:</span>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Yu (ASD)&quot;, &#x27;dino&#x27;)">🦖 Yu (ASD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;He (LD)&quot;, &#x27;unicorn&#x27;)">🦄 He (LD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jia (EBD)&quot;, &#x27;lion&#x27;)">🦁 Jia (EBD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jun (ADHD)&quot;, &#x27;rocket&#x27;)">🚀 Jun (ADHD)</button>
-        </div>
-      </div>
-
-      <div class="start-form-group">
-        <label>Select a 3D adventure hero look:</label>
-        <div class="look-selection-grid">
-          <label class="look-card active" data-look="dino">
-            <input type="radio" name="heroLook" value="dino" checked hidden>
-            <span class="look-avatar">🦖</span>
-            <span class="look-name">Sprout little green dinosaur</span>
-            <span class="look-desc">Symbolizes vitality and growth, calmness and stability</span>
-          </label>
-          <label class="look-card" data-look="lion">
-            <input type="radio" name="heroLook" value="lion" hidden>
-            <span class="look-avatar">🦁</span>
-            <span class="look-name">Courage Red Mane Lion</span>
-            <span class="look-desc">Fight back anger and be filled with a sense of justice</span>
-          </label>
-          <label class="look-card" data-look="unicorn">
-            <input type="radio" name="heroLook" value="unicorn" hidden>
-            <span class="look-avatar">🦄</span>
-            <span class="look-name">Smart Blue Seahorse</span>
-            <span class="look-desc">Gentle, friendly, and good at listening</span>
-          </label>
-          <label class="look-card" data-look="rocket">
-            <input type="radio" name="heroLook" value="rocket" hidden>
-            <span class="look-avatar">🚀</span>
-            <span class="look-name">Charge Purple Rocket</span>
-            <span class="look-desc">Flexible and flexible, anti-frustration thinking</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="start-dialog-actions">
-        <button type="button" class="c-game-btn" onclick="window.socialGame.closeStartDialog()">
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 初次登入或切換冒險者 Dialog -->
+<dialog class="start-dialog" id="startDialog">
+<div class="start-dialog-content">
+<div class="start-dialog-header">
+<svg aria-hidden="true" class="island-welcome-icon" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#island"></use></svg>
+<h2>Build your social superman</h2>
+<p>Choose a look you like and start practicing making friends together!</p>
+</div>
+<div class="start-form-group">
+<label>Adventurer title/student name:</label>
+<div style="display:flex; gap:8px; margin-bottom:10px;">
+<input id="heroNameInput" maxlength="10" placeholder="For example: Yu, He, Light Speed Superman..." style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;" type="text" value="Yu"/>
+</div>
+<!-- OO特教生快速填入 Chip -->
+<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
+<span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">Quick settings:</span>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Yu (ASD)&quot;, &#x27;dino&#x27;)" type="button">🦖 Yu (ASD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;He (LD)&quot;, &#x27;unicorn&#x27;)" type="button">🦄 He (LD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jia (EBD)&quot;, &#x27;lion&#x27;)" type="button">🦁 Jia (EBD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero(&quot;Jun (ADHD)&quot;, &#x27;rocket&#x27;)" type="button">🚀 Jun (ADHD)</button>
+</div>
+</div>
+<div class="start-form-group">
+<label>Select a 3D adventure hero look:</label>
+<div class="look-selection-grid">
+<label class="look-card active" data-look="dino">
+<input checked="" hidden="" name="heroLook" type="radio" value="dino"/>
+<span class="look-avatar">🦖</span>
+<span class="look-name">Sprout little green dinosaur</span>
+<span class="look-desc">Symbolizes vitality and growth, calmness and stability</span>
+</label>
+<label class="look-card" data-look="lion">
+<input hidden="" name="heroLook" type="radio" value="lion"/>
+<span class="look-avatar">🦁</span>
+<span class="look-name">Courage Red Mane Lion</span>
+<span class="look-desc">Fight back anger and be filled with a sense of justice</span>
+</label>
+<label class="look-card" data-look="unicorn">
+<input hidden="" name="heroLook" type="radio" value="unicorn"/>
+<span class="look-avatar">🦄</span>
+<span class="look-name">Smart Blue Seahorse</span>
+<span class="look-desc">Gentle, friendly, and good at listening</span>
+</label>
+<label class="look-card" data-look="rocket">
+<input hidden="" name="heroLook" type="radio" value="rocket"/>
+<span class="look-avatar">🚀</span>
+<span class="look-name">Charge Purple Rocket</span>
+<span class="look-desc">Flexible and flexible, anti-frustration thinking</span>
+</label>
+</div>
+</div>
+<div class="start-dialog-actions">
+<button class="c-game-btn" onclick="window.socialGame.closeStartDialog()" type="button">
           Cancel
         </button>
-        <button type="button" class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;" type="button">
           🚀 Let’s go on an island adventure!
         </button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- 中央閃亮亮星星城堡與結業通關證書 Modal -->
-  <div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
-    <div class="citadel-card">
-      <div class="citadel-header">
-        <h2>⭐ Social Superboy · Shining Star Castle Hall of Honor</h2>
-        <button class="drawer-close-btn" style="color:#ffffff; background:rgba(255,255,255,0.2);" onclick="window.socialGame.closeCitadelModal()">
+</div>
+</div>
+</dialog>
+<!-- 中央閃亮亮星星城堡與結業通關證書 Modal -->
+<div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
+<div class="citadel-card">
+<div class="citadel-header">
+<h2>⭐ Social Superboy · Shining Star Castle Hall of Honor</h2>
+<button class="drawer-close-btn" onclick="window.socialGame.closeCitadelModal()" style="color:#ffffff; background:rgba(255,255,255,0.2);">
           ✕
         </button>
-      </div>
-
-      <div class="citadel-body">
-        <!-- 數據統計 -->
-        <div class="citadel-stats-grid">
-          <div class="stat-box">
-            <div class="stat-val" id="citadelPassedCount">0 / 52 off</div>
-            <div class="stat-label">Full semester clearance progress</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-val" id="citadelTotalStars">0 ⭐</div>
-            <div class="stat-label">Accumulated social super stars</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-val" id="citadelProgressPct">0%</div>
-            <div class="stat-label">Mastery achievement rate</div>
-          </div>
-        </div>
-
-        <!-- 結業證書預覽框 (數位榮譽認證) -->
-        <div class="certificate-preview-box">
-          <div class="cert-emblem">🏆</div>
-          <h3 class="cert-title">Special Education Social Superman · Honorary Pass Certificate</h3>
-          <div class="cert-input-row">
-            <span>This is to prove</span>
-            <input type="text" class="cert-name-input" id="certStudentName" placeholder="Student name" value="Example student">
-          </div>
-          <p class="cert-text">
+</div>
+<div class="citadel-body">
+<!-- 數據統計 -->
+<div class="citadel-stats-grid">
+<div class="stat-box">
+<div class="stat-val" id="citadelPassedCount">0 / 52 off</div>
+<div class="stat-label">Full semester clearance progress</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" id="citadelTotalStars">0 ⭐</div>
+<div class="stat-label">Accumulated social super stars</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" id="citadelProgressPct">0%</div>
+<div class="stat-label">Mastery achievement rate</div>
+</div>
+</div>
+<!-- 結業證書預覽框 (數位榮譽認證) -->
+<div class="certificate-preview-box">
+<div class="cert-emblem">🏆</div>
+<h3 class="cert-title">Special Education Social Superman · Honorary Pass Certificate</h3>
+<div class="cert-input-row">
+<span>This is to prove</span>
+<input class="cert-name-input" id="certStudentName" placeholder="Student name" type="text" value="Example student"/>
+</div>
+<p class="cert-text">
             During the social island activities, the learner explored situations, discussed different approaches and tried rehearsing the methods. This certificate recognises participation and effort. Use in daily life still requires observation by teachers and caregivers.
           </p>
-          <div class="cert-footer-row">
-            <div>
-              <span>Issuing unit:</span>OO Elementary School Learning Classroom·Teacher
+<div class="cert-footer-row">
+<div>
+<span>Issuing unit:</span>OO Elementary School Learning Classroom·Teacher
             </div>
-            <div>
-              <span>Issue date:</span><span id="certIssueDate">October 28, 2026</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
-        <div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
-          <button class="c-game-btn btn-primary" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.celebrateHero()">
+<div>
+<span>Issue date:</span><span id="certIssueDate">October 28, 2026</span>
+</div>
+</div>
+</div>
+<!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
+<div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.celebrateHero()" style="padding:10px 24px; font-size:1rem;">
             🎉 Honorary Applause Celebration (Cast Golden Ribbon)
           </button>
-          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.openPassportModal()">
+<button class="c-game-btn btn-citadel" onclick="window.socialGame.openPassportModal()" style="padding:10px 24px; font-size:1rem;">
             📘 View Adventure Passport
           </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
-  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
-
-  <!-- Level Up 橫幅特效 -->
-  <div class="levelup-banner" id="levelupBanner">
-    <div class="levelup-title">🎉 LEVEL UP!</div>
-    <div class="levelup-sub" id="levelupSub">Promoted to Lv.2 Super Power Beginner!</div>
-  </div>
-
-  <!-- Toast 訊息提示 -->
-  <div class="toast" id="toastMsg" role="status" aria-live="polite"></div>
-
-  <dialog id="icebreakerDialog" class="explorer-dialog icebreaker-dialog" aria-labelledby="icebreakerTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="Leave Icebreaker Island">✕</button></form>
-    <span class="icebreaker-emblem" aria-hidden="true">🧊</span>
-    <h2 id="icebreakerTitle">Icebreaker Island</h2>
-    <p>Warm up and say hello to a new friend.</p>
-    <div id="icebreakerTasks" class="icebreaker-tasks"></div>
-    <p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
-  </dialog>
-  <dialog id="teamworkDialog" class="explorer-dialog icebreaker-dialog teamwork-dialog" aria-labelledby="teamworkTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="Leave Teamwork Island">✕</button></form>
-    <span class="icebreaker-emblem" aria-hidden="true">🤝</span>
-    <h2 id="teamworkTitle">Teamwork Island</h2>
-    <p>Share the jobs and finish our mission together.</p>
-    <div id="teamworkTasks" class="icebreaker-tasks"></div>
-    <p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
-  </dialog>
-  <dialog id="visitorDialog" class="explorer-dialog" aria-labelledby="visitorTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="Close visitor menu">✕</button></form>
-    <h2 id="visitorTitle">Welcome, island visitors</h2>
-    <p>Each visitor has separate stars, stamps and progress. Data stays in this browser. Use the existing save code to continue on another device.</p>
-    <label for="visitorSelect">Choose a visitor</label>
-    <div class="visitor-form-row"><select id="visitorSelect"></select><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(false)">Switch</button></div>
-    <label for="visitorName">New visitor nickname (not a real name)</label>
-    <div class="visitor-form-row"><input id="visitorName" maxlength="32" autocomplete="off" placeholder="e.g. Starfish"><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(true)">Add &amp; go</button></div>
-    <p id="visitorMessage" role="status" aria-live="polite"></p>
-  </dialog>
-  <dialog id="residentDialog" class="explorer-dialog" aria-labelledby="residentName">
-    <form method="dialog"><button class="explorer-close" aria-label="Close greeting">✕</button></form>
-    <svg class="resident-portrait" viewBox="0 0 180 210" aria-hidden="true"><use id="residentPortrait" href="assets/companions.svg#lion"></use></svg>
-    <p class="resident-island" id="residentIsland"></p><h2 id="residentName"></h2><p id="residentGreeting"></p>
-    <button type="button" id="residentQuest">See this island's quests →</button>
-  </dialog>
-
-  <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
-  <script src="../../備課平台/three.min.js?v=9274bbcec8d9"></script>
-  <script src="app.js?v=0d03bd94f7cb"></script>
-  <script src="roleplay-data.js?v=932e758fca75"></script>
-  <script src="island-visitors.js?v=d2f819b35c84"></script>
-  <script src="island-explorer.js?v=58f80beb7065"></script>
-  <script src="island-paths.js?v=e5e7e347b44a"></script>
-  <script src="island-scene-art.js?v=a251d44e33ea"></script>
-  <script src="island-game.js?v=0aac46d88811"></script>
+</div>
+</div>
+</div>
+</div>
+<!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<!-- Level Up 橫幅特效 -->
+<div class="levelup-banner" id="levelupBanner">
+<div class="levelup-title">🎉 LEVEL UP!</div>
+<div class="levelup-sub" id="levelupSub">Promoted to Lv.2 Super Power Beginner!</div>
+</div>
+<!-- Toast 訊息提示 -->
+<div aria-live="polite" class="toast" id="toastMsg" role="status"></div>
+<dialog aria-labelledby="icebreakerTitle" class="explorer-dialog icebreaker-dialog" id="icebreakerDialog">
+<form method="dialog"><button aria-label="Leave Icebreaker Island" class="explorer-close">✕</button></form>
+<span aria-hidden="true" class="icebreaker-emblem">🧊</span>
+<h2 id="icebreakerTitle">Icebreaker Island</h2>
+<p>Warm up and say hello to a new friend.</p>
+<div class="icebreaker-tasks" id="icebreakerTasks"></div>
+<p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
+</dialog>
+<dialog aria-labelledby="teamworkTitle" class="explorer-dialog icebreaker-dialog teamwork-dialog" id="teamworkDialog">
+<form method="dialog"><button aria-label="Leave Teamwork Island" class="explorer-close">✕</button></form>
+<span aria-hidden="true" class="icebreaker-emblem">🤝</span>
+<h2 id="teamworkTitle">Teamwork Island</h2>
+<p>Share the jobs and finish our mission together.</p>
+<div class="icebreaker-tasks" id="teamworkTasks"></div>
+<p class="icebreaker-footnote">Continue with the existing quests, stars and saved progress.</p>
+</dialog>
+<dialog aria-labelledby="visitorTitle" class="explorer-dialog" id="visitorDialog">
+<form method="dialog"><button aria-label="Close visitor menu" class="explorer-close">✕</button></form>
+<h2 id="visitorTitle">Welcome, island visitors</h2>
+<p>Each visitor has separate stars, stamps and progress. Data stays in this browser. Use the existing save code to continue on another device.</p>
+<label for="visitorSelect">Choose a visitor</label>
+<div class="visitor-form-row"><select id="visitorSelect"></select><button data-visitor-action="" onclick="window.socialGame.changeVisitor(false)" type="button">Switch</button></div>
+<label for="visitorName">New visitor nickname (not a real name)</label>
+<div class="visitor-form-row"><input autocomplete="off" id="visitorName" maxlength="32" placeholder="e.g. Starfish"/><button data-visitor-action="" onclick="window.socialGame.changeVisitor(true)" type="button">Add &amp; go</button></div>
+<p aria-live="polite" id="visitorMessage" role="status"></p>
+</dialog>
+<dialog aria-labelledby="residentName" class="explorer-dialog" id="residentDialog">
+<form method="dialog"><button aria-label="Close greeting" class="explorer-close">✕</button></form>
+<svg aria-hidden="true" class="resident-portrait" viewbox="0 0 180 210"><use href="assets/companions.svg#lion" id="residentPortrait"></use></svg>
+<p class="resident-island" id="residentIsland"></p><h2 id="residentName"></h2><p id="residentGreeting"></p>
+<button id="residentQuest" type="button">See this island's quests →</button>
+</dialog>
+<!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
+<script src="../../備課平台/three.min.js?v=9274bbcec8d9"></script>
+<script src="app.js?v=0d03bd94f7cb"></script>
+<script src="roleplay-data.js?v=932e758fca75"></script>
+<script src="island-visitors.js?v=d2f819b35c84"></script>
+<script src="island-explorer.js?v=a688dbb47f99"></script>
+<script src="island-paths.js?v=70682ce42aa5"></script>
+<script src="island-scene-art.js?v=5e9c86705e90"></script>
+<script src="island-game.js?v=29d421123ea0"></script>
 </body>
 </html>

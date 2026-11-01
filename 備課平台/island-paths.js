@@ -35,8 +35,8 @@
       connect(hub(angleOf(island.position, center.position)), perimeter(inward), 'bridge');
       destinations.push({ input: island.position, node: perimeter(inward + Math.PI * 0.75) });
       weeks.forEach(stone => {
-        const node = addNode({ x: stone.position.x, y: 1.02, z: stone.position.z });
-        connect(perimeter(angleOf(stone.position, island.position)), node, 'bridge');
+        const node = addNode({ x: stone.position.x, y: stone.userData.walkY ?? 1.02, z: stone.position.z });
+        connect(perimeter(angleOf(stone.position, island.position)), node, stone.userData.walkY ? 'path' : 'bridge');
         destinations.push({ input: stone.position, node });
       });
     });

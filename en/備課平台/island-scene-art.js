@@ -1,14 +1,14 @@
 (() => {
   'use strict';
 
-  function build(three, scene, islands, center, steppingStones) {
+  function build(three, scene, islands, center, steppingStones, terrainFactory) {
     const materials = new Map();
     const geometries = {
       box: new three.BoxGeometry(1, 1, 1),
       sphere: new three.SphereGeometry(1, 10, 8),
       cylinder: new three.CylinderGeometry(1, 1, 1, 10),
       cone: new three.ConeGeometry(1, 1, 4),
-      leaf: new three.SphereGeometry(1, 7, 5),
+      leaf: new three.IcosahedronGeometry(1, 1),
       smile: new three.TorusGeometry(0.12, 0.025, 5, 12, Math.PI)
     };
     const residents = [];
@@ -94,12 +94,18 @@
     }
     islands.forEach((island, index) => {
       const top = island.userData.topY;
-      island.scale.set(1.4, 1, 1.4);
-      island.children.slice(0, 2).forEach((mesh, layer) => { mesh.material = material(layer ? landColors[index] : 0xd6bd92); });
-      island.children.slice(2, 8).forEach(puff => { puff.material = material(0xcbd8c4); puff.scale.set(1, 0.5, 1); });
+      if (!island.userData.voyageTerrain) {
+        island.scale.set(1.4, 1, 1.4);
+        island.children.slice(0, 2).forEach((mesh, layer) => { mesh.material = material(layer ? landColors[index] : 0xd6bd92); });
+        island.children.slice(2, 8).forEach(puff => { puff.material = material(0xcbd8c4); puff.scale.set(1, 0.5, 1); });
+      }
       const village = group(island, [0, top, 0]);
       piece(village, 'cylinder', 0xf3dfb5, [1.55, 0.06, 1.35], [0, 0.035, 2.0]);
-      house(village, [-1.65, 0, -1.35], roofColors[index], 0.72);
+      house(village, [-1.65, 0, -1.35], roofColors[index], 1.35);
+      tree(village, [2.3, 0, -2.1], 1.1);
+      tree(village, [-3.1, 0, 0.2], 0.8);
+      tree(village, [0.5, 0, -3.0], 0.85);
+      flowers(village, [1.2, 0, -1.7], 0xe0b978);
       flowers(village, [-1.8, 0, -0.4], [0xdd8b74, 0x81b8c6, 0xf0bf68, 0xb99cc3][index]);
       const friend = animal(village, [0.2, 0, 2.15], index, index);
       friend.rotation.y = 0.25;
@@ -151,10 +157,13 @@
     const icebreaker = group(scene, [0, 0, 29]);
     icebreaker.name = 'icebreaker-island';
     icebreaker.userData.topY = 2.05;
+    if (terrainFactory) icebreaker.add(terrainFactory(12, 0xb9cdd0));
+    else {
     piece(icebreaker, 'cylinder', 0xd7c6a3, [5.8, 1.45, 5.8], [0, 0.9, 0]);
     piece(icebreaker, 'cylinder', 0xb9dce4, [6.1, 0.65, 6.1], [0, 1.7, 0]);
     piece(icebreaker, 'cylinder', 0xffedc0, [3.8, 0.08, 3.8], [0, 2.07, 0]);
-    house(icebreaker, [-2.5, 2.05, -1.8], 0x447d94, 0.95);
+    }
+    house(icebreaker, [-2.5, 2.05, -1.8], 0x447d94, 1.25);
     flowers(icebreaker, [-2.6, 2.05, -0.9], 0xe19b79);
     tree(icebreaker, [3.6, 2.05, -1.8], 0.95);
     const welcome = group(icebreaker, [0.6, 2.05, 0.5]);
@@ -185,10 +194,13 @@
     const teamwork = group(scene, [-29, 0, 0]);
     teamwork.name = 'teamwork-island';
     teamwork.userData.topY = 2.05;
+    if (terrainFactory) teamwork.add(terrainFactory(15, 0xb6c598));
+    else {
     piece(teamwork, 'cylinder', 0xd7c6a3, [5.8, 1.45, 5.8], [0, 0.9, 0]);
     piece(teamwork, 'cylinder', 0xb3cb91, [6.1, 0.65, 6.1], [0, 1.7, 0]);
     piece(teamwork, 'cylinder', 0xf8e8bd, [3.7, 0.08, 3.7], [0, 2.07, 0]);
-    house(teamwork, [-2.5, 2.05, -1.8], 0x668350, 0.85);
+    }
+    house(teamwork, [-2.5, 2.05, -1.8], 0x668350, 1.1);
     tree(teamwork, [3.2, 2.05, -2], 0.8);
     flowers(teamwork, [-3.2, 2.05, 0], 0xe8b554);
     const project = group(teamwork, [0.3, 2.05, 0.2]);

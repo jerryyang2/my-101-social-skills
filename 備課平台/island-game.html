@@ -1,547 +1,513 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8"/>
   <script src="../site-language.js?v=bf6816bcce93"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>群島大冒險｜我的101堂社交技巧課</title>
-  
-  <!-- 網站主題專屬 Favicon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-
-  <!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css">
-  <link rel="stylesheet" href="island-game.css?v=c76fec47104c">
-  <link rel="stylesheet" href="platform-theme.css?v=802836385dc0">
-  <link rel="stylesheet" href="island-navigation.css?v=e35856585879">
-  <script src="island-ui.js?v=a8bfe09be002" defer></script>
-  <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
-  <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
-  <script src="floating-tools/drawing.js?v=7b921506c244" defer></script>
-  <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
-  <script defer src="focus-mode.js?v=18654f750e1c"></script>
-  <link rel="stylesheet" href="island-explorer.css?v=ada226e53b18">
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>群島大冒險｜我的101堂社交技巧課</title>
+<!-- 網站主題專屬 Favicon -->
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="favicon.png" rel="alternate icon" type="image/png"/>
+<link href="favicon.png" rel="apple-touch-icon"/>
+<!-- 引入 字嗨注音標楷 (Bpmf Zihi Kai Std) 開源注音字型 -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/bpmf-zihi-kai-std@latest/index.css" rel="stylesheet"/>
+<link href="island-game.css?v=c76fec47104c" rel="stylesheet"/>
+<link href="platform-theme.css?v=802836385dc0" rel="stylesheet"/>
+<link href="island-navigation.css?v=e35856585879" rel="stylesheet"/>
+<script defer="" src="island-ui.js?v=a8bfe09be002"></script>
+<link href="floating-tools/tools.css?v=2dcf7d249058" rel="stylesheet"/>
+<script defer="" src="floating-tools/magnifier.js?v=e67586b45fe8"></script>
+<script defer="" src="floating-tools/drawing.js?v=7b921506c244"></script>
+<link href="focus-mode.css?v=fd03ea1944fc" rel="stylesheet"/>
+<script defer="" src="focus-mode.js?v=18654f750e1c"></script>
+<link href="island-explorer.css?v=ada226e53b18" rel="stylesheet"/>
+<link href="island-voyage.css?v=37b1f643b383" rel="stylesheet"/>
   <link rel="stylesheet" href="../site-language.css?v=912671c22595">
 </head>
 <body class="theme-cream" data-platform="island">
-
-  <!-- 頂部遊戲導覽列 (Topbar) -->
-  <header class="game-topbar">
-    <div class="brand-section">
-      <a class="brand-logo" href="index.html" aria-label="回到主備課平台"><svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg></a>
-      <div class="brand-info">
-        <h1>
+<!-- 頂部遊戲導覽列 (Topbar) -->
+<header class="game-topbar">
+<div class="brand-section">
+<a aria-label="回到主備課平台" class="brand-logo" href="index.html"><svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#island"></use></svg></a>
+<div class="brand-info">
+<h1>
           社交小超人 · 群島大冒險
           <span class="badge-isleforge">一起闖關</span>
-        </h1>
-        <p>我的101堂社交技巧課 · 在冒險裡練習交朋友</p>
-      </div>
-    </div>
-    <div class="top-controls">
-      <section class="adventure-tools" aria-labelledby="adventureToolsTitle">
-        <h2 id="adventureToolsTitle">遊戲內工具</h2>
-        <div class="adventure-actions">
-          <button type="button" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" aria-controls="passportModalOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">📘</span>
-            <span class="adventure-button-copy"><strong>我的護照</strong><small>看島章與闖關進度</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-          <button type="button" class="c-game-btn btn-savecode adventure-action" onclick="window.socialGame.openSaveCodeModal()" aria-controls="saveCodeModalOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">🔑</span>
-            <span class="adventure-button-copy"><strong>儲存與接關</strong><small>換裝置也能繼續玩</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-          <button type="button" class="c-game-btn btn-citadel adventure-action" onclick="window.socialGame.openCitadelModal()" aria-controls="modalCitadelOverlay">
-            <span class="adventure-button-icon" aria-hidden="true">⭐</span>
-            <span class="adventure-button-copy"><strong>星星城堡</strong><small>看成就與通關證書</small></span>
-            <span class="adventure-button-arrow" aria-hidden="true">›</span>
-          </button>
-        </div>
-        <details class="game-settings">
-          <summary aria-controls="gameSettingsPanel" aria-label="遊戲設定"><span aria-hidden="true">⚙️</span><span class="settings-label">遊戲設定</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary>
-          <div class="game-settings-panel" id="gameSettingsPanel">
-            <fieldset class="settings-section">
-              <legend>地圖與鏡頭</legend>
-              <button type="button" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" aria-controls="map2DView">🗺️ 切換 2D 地圖</button>
-              <button type="button" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" aria-pressed="false">🎥 鏡頭跟隨：關</button>
-            </fieldset>
-            <fieldset class="settings-section">
-              <legend>遊戲音效</legend>
-              <button type="button" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" aria-pressed="false">🔇 音效：關</button>
-            </fieldset>
-            <fieldset class="settings-section">
-              <legend>背景天色</legend>
-              <div class="theme-switch-group">
-                <button type="button" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" aria-pressed="true">☀️ 晨光</button>
-                <button type="button" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" aria-pressed="false">🌅 夕照</button>
-                <button type="button" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" aria-pressed="false">🌌 夜海</button>
-              </div>
-            </fieldset>
-          </div>
-        </details>
-      </section>
-    </div>
-    <details class="platform-menu">
-      <summary>前往平台 <span aria-hidden="true">↗</span></summary>
-      <nav class="platform-navigation" aria-label="離開遊戲，前往其他平台">
-        <a class="platform-link" href="classroom.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#classroom"></use></svg>
-          <span>課堂投影</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="platform-link" href="index.html">
-          <svg viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#home"></use></svg>
-          <span>備課平台</span><span class="platform-link-arrow" aria-hidden="true">↗</span>
-        </a>
-      </nav>
-    </details>
-  </header>
-
-  <div class="visitor-strip">
-    <span aria-hidden="true">⚓</span><span>登島訪客</span><strong id="activeVisitorName">訪客 1</strong>
-    <button type="button" onclick="window.socialGame.openVisitors()">切換／新增訪客</button>
-  </div>
-
-  <details class="explorer-console" open>
-    <summary>巡島工具 <span aria-hidden="true">⌄</span></summary>
-    <div class="explorer-console-body">
-      <h2>看看這片群島</h2>
-      <button type="button" class="explorer-overview" onclick="window.socialGame.resetArchipelagoView()">⌂ 回到全景</button>
-      <div class="camera-presets" role="group" aria-label="視角切換">
-        <button type="button" data-camera-preset="bird" aria-pressed="true" onclick="window.socialGame.setCameraPreset('bird')">鳥瞰</button>
-        <button type="button" data-camera-preset="top" aria-pressed="false" onclick="window.socialGame.setCameraPreset('top')">俯瞰</button>
-        <button type="button" data-camera-preset="eye" aria-pressed="false" onclick="window.socialGame.setCameraPreset('eye')">平視</button>
-      </div>
-      <div class="camera-zoom" role="group" aria-label="地圖縮放">
-        <button type="button" onclick="window.socialGame.zoomCamera(0.8)">＋ 放大</button>
-        <button type="button" onclick="window.socialGame.zoomCamera(1.25)">− 縮小</button>
-      </div>
-      <button type="button" data-camera-follow aria-pressed="false" onclick="window.socialGame.toggleFollowCamera()">跟隨訪客：關</button>
-      <p id="cameraGestureHint">拖曳移動畫面・雙指縮放</p>
-      <button type="button" data-map-toggle onclick="window.socialGame.toggleViewMode()">平面選島</button>
-      <button type="button" data-motion-toggle aria-pressed="false" onclick="window.socialGame.toggleMotion()">暫停動態</button>
-      <button type="button" class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()">🧊 破冰遊戲島</button>
-      <button type="button" class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()">🤝 合作任務島</button>
-      <h2>和居民打招呼</h2>
-      <div class="resident-directory" role="group" aria-label="島上居民">
-        <button type="button" onclick="window.socialGame.meetResident(0)" aria-label="和宇獅獅打招呼">🦁</button>
-        <button type="button" onclick="window.socialGame.meetResident(1)" aria-label="和畯熊熊打招呼">🐻</button>
-        <button type="button" onclick="window.socialGame.meetResident(2)" aria-label="和和貓熊打招呼">🐼</button>
-        <button type="button" onclick="window.socialGame.meetResident(3)" aria-label="和嘉狐狸打招呼">🦊</button>
-      </div>
-      <h2>帶訪客散散步</h2>
-      <div id="explorerMovement"></div>
-      <p>WASD／方向鍵行走<br>點島嶼或週次，前往原本的任務</p>
-    </div>
-  </details>
-
-  <!-- RPG 冒險者頂部狀態 HUD 條 -->
-  <aside class="rpg-hud-bar" id="rpgHud" aria-live="polite">
-    <div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="點擊自訂冒險者名稱與造型">
-      <div class="hud-avatar" id="hudAvatar">🦖</div>
-      <div class="hud-hero-details">
-        <div class="hud-name-row">
-          <span class="hud-name" id="hudHeroName">小宇</span>
-          <span class="hud-lv-badge" id="hudHeroLv">Lv.1 見習生</span>
-        </div>
-        <div class="hud-exp-track">
-          <div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
-        </div>
-        <span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
-      </div>
-    </div>
-
-    <div class="hud-stat-pill" title="累積社交超能力金星（特教代幣）">
-      <span class="hud-pill-icon">⭐</span>
-      <span class="hud-pill-val" id="hudTotalStars">0 顆</span>
-    </div>
-
-    <div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="四大主題島嶼集章進度">
-      <span class="hud-pill-icon">🏝️</span>
-      <span class="hud-pill-val" id="hudStampCount">島章 0 / 4</span>
-    </div>
-  </aside>
-
-  <!-- 3D 畫布主舞台 -->
-  <main id="stage">
-    <canvas id="threeCanvas" tabindex="0" aria-label="立體社交群島。方向鍵移動訪客；巡島工具可切換視角，平面選島可直接選擇關卡。"></canvas>
-    <!-- 3D 世界空間浮動標籤圖層 -->
-    <div id="labelLayer"></div>
-  </main>
-
-  <!-- 操作指示提示列 -->
-  <div class="view-hints" id="moveHint">
+</h1>
+<p>我的101堂社交技巧課 · 在冒險裡練習交朋友</p>
+</div>
+</div>
+<div class="top-controls">
+<section aria-labelledby="adventureToolsTitle" class="adventure-tools">
+<h2 id="adventureToolsTitle">遊戲內工具</h2>
+<div class="adventure-actions">
+<button aria-controls="passportModalOverlay" class="c-game-btn btn-passport adventure-action" onclick="window.socialGame.openPassportModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">📘</span>
+<span class="adventure-button-copy"><strong>我的護照</strong><small>看島章與闖關進度</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+<button aria-controls="saveCodeModalOverlay" class="c-game-btn btn-savecode adventure-action" onclick="window.socialGame.openSaveCodeModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">🔑</span>
+<span class="adventure-button-copy"><strong>儲存與接關</strong><small>換裝置也能繼續玩</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+<button aria-controls="modalCitadelOverlay" class="c-game-btn btn-citadel adventure-action" onclick="window.socialGame.openCitadelModal()" type="button">
+<span aria-hidden="true" class="adventure-button-icon">⭐</span>
+<span class="adventure-button-copy"><strong>星星城堡</strong><small>看成就與通關證書</small></span>
+<span aria-hidden="true" class="adventure-button-arrow">›</span>
+</button>
+</div>
+<details class="game-settings">
+<summary aria-controls="gameSettingsPanel" aria-label="遊戲設定"><span aria-hidden="true">⚙️</span><span class="settings-label">遊戲設定</span><span aria-hidden="true" class="settings-chevron">⌄</span></summary>
+<div class="game-settings-panel" id="gameSettingsPanel">
+<fieldset class="settings-section">
+<legend>地圖與鏡頭</legend>
+<button aria-controls="map2DView" class="c-game-btn" id="btnToggleView" onclick="window.socialGame.toggleViewMode()" type="button">🗺️ 切換 2D 地圖</button>
+<button aria-pressed="false" class="c-game-btn" id="btnToggleFollow" onclick="window.socialGame.toggleFollowCamera()" type="button">🎥 鏡頭跟隨：關</button>
+</fieldset>
+<fieldset class="settings-section">
+<legend>遊戲音效</legend>
+<button aria-pressed="false" class="c-game-btn" id="btnToggleSound" onclick="window.socialGame.toggleSound()" type="button">🔇 音效：關</button>
+</fieldset>
+<fieldset class="settings-section">
+<legend>背景天色</legend>
+<div class="theme-switch-group">
+<button aria-pressed="true" class="btn-theme-pill active" data-theme="cream" onclick="window.socialGame.setTheme('cream')" type="button">☀️ 晨光</button>
+<button aria-pressed="false" class="btn-theme-pill" data-theme="sea" onclick="window.socialGame.setTheme('sea')" type="button">🌅 夕照</button>
+<button aria-pressed="false" class="btn-theme-pill" data-theme="night" onclick="window.socialGame.setTheme('night')" type="button">🌌 夜海</button>
+</div>
+</fieldset>
+</div>
+</details>
+</section>
+</div>
+<details class="platform-menu">
+<summary>前往平台 <span aria-hidden="true">↗</span></summary>
+<nav aria-label="離開遊戲，前往其他平台" class="platform-navigation">
+<a class="platform-link" href="classroom.html">
+<svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#classroom"></use></svg>
+<span>課堂投影</span><span aria-hidden="true" class="platform-link-arrow">↗</span>
+</a>
+<a class="platform-link" href="index.html">
+<svg aria-hidden="true" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#home"></use></svg>
+<span>備課平台</span><span aria-hidden="true" class="platform-link-arrow">↗</span>
+</a>
+</nav>
+</details>
+</header><main class="voyage-page" id="archipelago"><section aria-labelledby="voyageTitle" class="voyage-intro"><div><p class="voyage-kicker">一起練習，一起長大</p><h2 id="voyageTitle">今天，想去哪座島？</h2><p>和小夥伴沿著木橋散散步，把交朋友的方法帶回生活。</p></div><a class="voyage-directory-link" href="#islandDirectory">選一座島出發 <span aria-hidden="true">↘</span></a></section><section aria-label="社交群島探索地圖" class="voyage-card"><div class="voyage-welcome"><div><p class="voyage-kicker">歡迎登島</p><h2>每一座島，都有一起練習的小事。</h2><p>選一座島，看看風景、和居民打招呼，再挑一個任務試試。</p></div><span aria-hidden="true" class="voyage-seal">⚓</span></div><div class="voyage-traveler"><div class="visitor-strip">
+<span aria-hidden="true">⚓</span><span>登島訪客</span><strong id="activeVisitorName">訪客 1</strong>
+<button onclick="window.socialGame.openVisitors()" type="button">切換／新增訪客</button>
+</div><aside aria-live="polite" class="rpg-hud-bar" id="rpgHud">
+<div class="hud-hero-badge" onclick="window.socialGame.openStartDialog()" title="點擊自訂冒險者名稱與造型">
+<div class="hud-avatar" id="hudAvatar">🦖</div>
+<div class="hud-hero-details">
+<div class="hud-name-row">
+<span class="hud-name" id="hudHeroName">小宇</span>
+<span class="hud-lv-badge" id="hudHeroLv">Lv.1 見習生</span>
+</div>
+<div class="hud-exp-track">
+<div class="hud-exp-fill" id="hudExpFill" style="width: 25%;"></div>
+</div>
+<span class="hud-exp-text" id="hudExpText">25 / 100 EXP</span>
+</div>
+</div>
+<div class="hud-stat-pill" title="累積社交超能力金星（特教代幣）">
+<span class="hud-pill-icon">⭐</span>
+<span class="hud-pill-val" id="hudTotalStars">0 顆</span>
+</div>
+<div class="hud-stat-pill" onclick="window.socialGame.openPassportModal()" style="cursor:pointer;" title="四大主題島嶼集章進度">
+<span class="hud-pill-icon">🏝️</span>
+<span class="hud-pill-val" id="hudStampCount">島章 0 / 4</span>
+</div>
+</aside></div><div class="voyage-map-layout"><div class="voyage-map"><div class="voyage-map-caption" aria-hidden="true"><span>六座社交小島</span><span>沿著木橋，慢慢走。</span></div><div class="voyage-compass" aria-hidden="true">N<br/>✥</div><div aria-label="立體社交群島地圖" id="stage" role="region">
+<canvas aria-label="立體社交群島。方向鍵移動訪客；巡島工具可切換視角，平面選島可直接選擇關卡。" id="threeCanvas" tabindex="0"></canvas>
+<!-- 3D 世界空間浮動標籤圖層 -->
+<div id="labelLayer"></div>
+</div><div id="map2DView">
+<!-- 由 island-game.js 動態渲染 -->
+</div><div class="view-hints" id="moveHint">
     點島嶼出發，也可以點點居民和熱氣球。
-  </div>
+  </div></div><details class="explorer-console" open="">
+<summary>巡島工具 <span aria-hidden="true">⌄</span></summary>
+<div class="explorer-console-body">
+<h2>看看這片群島</h2>
+<button class="explorer-overview" onclick="window.socialGame.resetArchipelagoView()" type="button">⌂ 回到全景</button>
+<div aria-label="視角切換" class="camera-presets" role="group">
+<button aria-pressed="true" data-camera-preset="bird" onclick="window.socialGame.setCameraPreset('bird')" type="button">鳥瞰</button>
+<button aria-pressed="false" data-camera-preset="top" onclick="window.socialGame.setCameraPreset('top')" type="button">俯瞰</button>
+<button aria-pressed="false" data-camera-preset="eye" onclick="window.socialGame.setCameraPreset('eye')" type="button">平視</button>
+</div>
+<div aria-label="地圖縮放" class="camera-zoom" role="group">
+<button onclick="window.socialGame.zoomCamera(0.8)" type="button">＋ 放大</button>
+<button onclick="window.socialGame.zoomCamera(1.25)" type="button">− 縮小</button>
+</div>
+<button aria-pressed="false" data-camera-follow="" onclick="window.socialGame.toggleFollowCamera()" type="button">跟隨訪客：關</button>
+<p id="cameraGestureHint">拖曳移動畫面・雙指縮放</p>
+<button data-map-toggle="" onclick="window.socialGame.toggleViewMode()" type="button">平面選島</button>
+<button aria-pressed="false" data-motion-toggle="" onclick="window.socialGame.toggleMotion()" type="button">暫停動態</button>
+<button class="icebreaker-shortcut" onclick="window.socialGame.visitIcebreaker()" type="button">🧊 破冰遊戲島</button>
+<button class="teamwork-shortcut" onclick="window.socialGame.visitTeamwork()" type="button">🤝 合作任務島</button>
+<h2>和居民打招呼</h2>
+<div aria-label="島上居民" class="resident-directory" role="group">
+<button aria-label="和宇獅獅打招呼" onclick="window.socialGame.meetResident(0)" type="button">🦁</button>
+<button aria-label="和畯熊熊打招呼" onclick="window.socialGame.meetResident(1)" type="button">🐻</button>
+<button aria-label="和和貓熊打招呼" onclick="window.socialGame.meetResident(2)" type="button">🐼</button>
+<button aria-label="和嘉狐狸打招呼" onclick="window.socialGame.meetResident(3)" type="button">🦊</button>
+</div>
+<h2>帶訪客散散步</h2>
+<div id="explorerMovement"></div>
+<p>WASD／方向鍵行走<br/>點島嶼或週次，前往原本的任務</p>
+</div>
+</details></div></section><section aria-labelledby="voyageDirectoryTitle" class="voyage-directory" id="islandDirectory"><div class="voyage-section-heading"><div><p class="voyage-kicker">找到今天的小練習</p><h2 id="voyageDirectoryTitle">選一座島，開始自己的航線</h2></div><p>也可以直接選卡片，打開本島任務。</p></div><div class="voyage-island-grid"><button class="voyage-island-card" data-island-card="01" onclick="window.socialGame.openQuestDrawer(0)" type="button"><span aria-hidden="true" class="voyage-card-icon">❤️</span><span class="voyage-card-copy"><small>探索 01</small><strong>氣噗噗降溫島</strong><span>練習辨認心情，找到舒服的調節方法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="02" onclick="window.socialGame.openQuestDrawer(1)" type="button"><span aria-hidden="true" class="voyage-card-icon">💬</span><span class="voyage-card-copy"><small>探索 02</small><strong>我想跟你說島</strong><span>說出自己的需要，也聽聽夥伴的想法。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="03" onclick="window.socialGame.openQuestDrawer(2)" type="button"><span aria-hidden="true" class="voyage-card-icon">🍀</span><span class="voyage-card-copy"><small>探索 03</small><strong>我們一起玩島</strong><span>從加入遊戲到輪流分享，一起試試看。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="04" onclick="window.socialGame.openQuestDrawer(3)" type="button"><span aria-hidden="true" class="voyage-card-icon">⚙️</span><span class="voyage-card-copy"><small>探索 04</small><strong>生活應變島</strong><span>遇到改變時，練習求助和保護自己。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="05" onclick="window.socialGame.openIcebreaker()" type="button"><span aria-hidden="true" class="voyage-card-icon">🧊</span><span class="voyage-card-copy"><small>探索 05</small><strong>破冰遊戲島</strong><span>先打個招呼，用熟悉的小活動暖暖身。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button><button class="voyage-island-card" data-island-card="06" onclick="window.socialGame.openTeamwork()" type="button"><span aria-hidden="true" class="voyage-card-icon">🤝</span><span class="voyage-card-copy"><small>探索 06</small><strong>合作任務島</strong><span>和夥伴分工、等待，一起完成小挑戰。</span></span><span aria-hidden="true" class="voyage-card-arrow">↗</span></button></div></section></main>
 
-  <!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
-  <div class="virtual-dpad" id="virtualDpad">
-    <button class="dpad-btn dpad-up" data-dir="up" aria-label="向前走">▲</button>
-    <button class="dpad-btn dpad-left" data-dir="left" aria-label="向左走">◀</button>
-    <button class="dpad-btn dpad-center" data-dir="center" aria-label="回到中央">●</button>
-    <button class="dpad-btn dpad-right" data-dir="right" aria-label="向右走">▶</button>
-    <button class="dpad-btn dpad-down" data-dir="down" aria-label="向後走">▼</button>
-  </div>
 
-  <!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
-  <div id="map2DView">
-    <!-- 由 island-game.js 動態渲染 -->
-  </div>
+<!-- RPG 冒險者頂部狀態 HUD 條 -->
 
-  <!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
-  <div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
-    <aside class="quest-drawer">
-      <div class="drawer-header">
-        <div class="drawer-header-left">
-          <span class="drawer-island-badge" id="drawerIslandBadge">主題島嶼</span>
-          <h2 class="drawer-title" id="drawerTitle">關卡考驗</h2>
-        </div>
-        <button class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="關閉抽屜" aria-label="關閉">
+<!-- 3D 畫布主舞台 -->
+
+<!-- 操作指示提示列 -->
+
+<!-- 行動裝置與觸控螢幕虛擬方向鍵 (Virtual Touch Controls) -->
+<div class="virtual-dpad" id="virtualDpad">
+<button aria-label="向前走" class="dpad-btn dpad-up" data-dir="up">▲</button>
+<button aria-label="向左走" class="dpad-btn dpad-left" data-dir="left">◀</button>
+<button aria-label="回到中央" class="dpad-btn dpad-center" data-dir="center">●</button>
+<button aria-label="向右走" class="dpad-btn dpad-right" data-dir="right">▶</button>
+<button aria-label="向後走" class="dpad-btn dpad-down" data-dir="down">▼</button>
+</div>
+<!-- 2D 平面全地圖模式容器 (Reduced Motion / 低硬體友善) -->
+
+<!-- 關卡冒險抽屜 (Quest Drawer Modal) -->
+<div class="quest-drawer-overlay" id="questDrawerOverlay" onclick="if(event.target===this) window.socialGame.closeQuestDrawer()">
+<aside class="quest-drawer">
+<div class="drawer-header">
+<div class="drawer-header-left">
+<span class="drawer-island-badge" id="drawerIslandBadge">主題島嶼</span>
+<h2 class="drawer-title" id="drawerTitle">關卡考驗</h2>
+</div>
+<button aria-label="關閉" class="drawer-close-btn" onclick="window.socialGame.closeQuestDrawer()" title="關閉抽屜">
           ✕
         </button>
-      </div>
-
-      <!-- 週次快速切換橫列 (Carousel) -->
-      <div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
-        <div class="weeks-carousel" id="weeksCarousel">
-          <!-- 由 JS 動態生成 -->
-        </div>
-      </div>
-
-      <!-- 抽屜主要滾動互動內容 -->
-      <div class="drawer-body" id="drawerDynamicBody">
-        <!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
-      </div>
-
-      <!-- 抽屜底部獎勵資訊 -->
-      <div class="drawer-footer">
-        <span class="quest-reward-hint">
+</div>
+<!-- 週次快速切換橫列 (Carousel) -->
+<div style="padding: 12px 24px 0; background: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+<div class="weeks-carousel" id="weeksCarousel">
+<!-- 由 JS 動態生成 -->
+</div>
+</div>
+<!-- 抽屜主要滾動互動內容 -->
+<div class="drawer-body" id="drawerDynamicBody">
+<!-- 由 JS 動態生成 NPC引言、CBT 抉擇、主題小遊戲、課堂問答 -->
+</div>
+<!-- 抽屜底部獎勵資訊 -->
+<div class="drawer-footer">
+<span class="quest-reward-hint">
           🌟 通關獎勵：獲得 +30 EXP、3 顆社交星與專屬超能力島章
         </span>
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.closeQuestDrawer()">
           ✔️ 繼續巡島
         </button>
-      </div>
-    </aside>
-  </div>
-
-  <!-- 冒險者護照與島章冊 (Passport Modal) -->
-  <div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
-    <div class="passport-book-card">
-      <div class="passport-header">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span style="font-size:1.8rem;">📘</span>
-          <div>
-            <h3>社交小超人 · 冒險通行護照</h3>
-            <p>OO國小學習教室 特殊需求領域（社會技巧）學習歷程檔案</p>
-          </div>
-        </div>
-        <button class="drawer-close-btn" style="background:rgba(255,255,255,0.2); color:#fff;" onclick="window.socialGame.closePassportModal()">✕</button>
-      </div>
-
-      <div class="passport-body">
-        <!-- 護照個資卡 -->
-        <div class="passport-id-card">
-          <div class="passport-photo-box">
-            <div class="passport-avatar" id="passAvatar">🦖</div>
-            <div class="passport-level-tag" id="passLevel">Lv.1</div>
-          </div>
-          <div class="passport-info-grid">
-            <div class="info-row">
-              <span class="info-label">冒險者代號：</span>
-              <span class="info-val" id="passHeroName">小宇 同學</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">目前稱號：</span>
-              <span class="info-val" id="passHeroTitle">社交冒險見習生</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">累積經驗值：</span>
-              <span class="info-val" id="passHeroExp">25 EXP</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">超能力星星：</span>
-              <span class="info-val" id="passHeroStars">0 ⭐</span>
-            </div>
-            <div class="info-row">
-              <span class="info-label">所屬特教學群：</span>
-              <span class="info-val">OO國小學習教室 中年級資源班</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 四大島章印記區 -->
-        <div class="stamps-section">
-          <h4 class="stamps-title">🏆 四大主題冒險島章（練習歷程）</h4>
-          <div class="stamps-grid">
-            <!-- Stamp 1 -->
-            <div class="stamp-slot" id="stampSlot-0">
-              <div class="stamp-seal seal-volcano">
-                <span class="seal-icon">❤️</span>
-                <span class="seal-name">氣噗噗降溫之印</span>
-                <span class="seal-status" id="stampStatus-0">未解鎖</span>
-              </div>
-            </div>
-            <!-- Stamp 2 -->
-            <div class="stamp-slot" id="stampSlot-1">
-              <div class="stamp-seal seal-comm">
-                <span class="seal-icon">💬</span>
-                <span class="seal-name">我想跟你說之印</span>
-                <span class="seal-status" id="stampStatus-1">未解鎖</span>
-              </div>
-            </div>
-            <!-- Stamp 3 -->
-            <div class="stamp-slot" id="stampSlot-2">
-              <div class="stamp-seal seal-friend">
-                <span class="seal-icon">🍀</span>
-                <span class="seal-name">我們一起玩之印</span>
-                <span class="seal-status" id="stampStatus-2">未解鎖</span>
-              </div>
-            </div>
-            <!-- Stamp 4 -->
-            <div class="stamp-slot" id="stampSlot-3">
-              <div class="stamp-seal seal-flex">
-                <span class="seal-icon">⚙️</span>
-                <span class="seal-name">生活應變之印</span>
-                <span class="seal-status" id="stampStatus-3">未解鎖</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="passport-footer">
-        <span style="font-size:0.85rem; color:#64748b;">
+</div>
+</aside>
+</div>
+<!-- 冒險者護照與島章冊 (Passport Modal) -->
+<div class="modal-overlay" id="passportModalOverlay" onclick="if(event.target===this) window.socialGame.closePassportModal()">
+<div class="passport-book-card">
+<div class="passport-header">
+<div style="display:flex; align-items:center; gap:10px;">
+<span style="font-size:1.8rem;">📘</span>
+<div>
+<h3>社交小超人 · 冒險通行護照</h3>
+<p>OO國小學習教室 特殊需求領域（社會技巧）學習歷程檔案</p>
+</div>
+</div>
+<button class="drawer-close-btn" onclick="window.socialGame.closePassportModal()" style="background:rgba(255,255,255,0.2); color:#fff;">✕</button>
+</div>
+<div class="passport-body">
+<!-- 護照個資卡 -->
+<div class="passport-id-card">
+<div class="passport-photo-box">
+<div class="passport-avatar" id="passAvatar">🦖</div>
+<div class="passport-level-tag" id="passLevel">Lv.1</div>
+</div>
+<div class="passport-info-grid">
+<div class="info-row">
+<span class="info-label">冒險者代號：</span>
+<span class="info-val" id="passHeroName">小宇 同學</span>
+</div>
+<div class="info-row">
+<span class="info-label">目前稱號：</span>
+<span class="info-val" id="passHeroTitle">社交冒險見習生</span>
+</div>
+<div class="info-row">
+<span class="info-label">累積經驗值：</span>
+<span class="info-val" id="passHeroExp">25 EXP</span>
+</div>
+<div class="info-row">
+<span class="info-label">超能力星星：</span>
+<span class="info-val" id="passHeroStars">0 ⭐</span>
+</div>
+<div class="info-row">
+<span class="info-label">所屬特教學群：</span>
+<span class="info-val">OO國小學習教室 中年級資源班</span>
+</div>
+</div>
+</div>
+<!-- 四大島章印記區 -->
+<div class="stamps-section">
+<h4 class="stamps-title">🏆 四大主題冒險島章（練習歷程）</h4>
+<div class="stamps-grid">
+<!-- Stamp 1 -->
+<div class="stamp-slot" id="stampSlot-0">
+<div class="stamp-seal seal-volcano">
+<span class="seal-icon">❤️</span>
+<span class="seal-name">氣噗噗降溫之印</span>
+<span class="seal-status" id="stampStatus-0">未解鎖</span>
+</div>
+</div>
+<!-- Stamp 2 -->
+<div class="stamp-slot" id="stampSlot-1">
+<div class="stamp-seal seal-comm">
+<span class="seal-icon">💬</span>
+<span class="seal-name">我想跟你說之印</span>
+<span class="seal-status" id="stampStatus-1">未解鎖</span>
+</div>
+</div>
+<!-- Stamp 3 -->
+<div class="stamp-slot" id="stampSlot-2">
+<div class="stamp-seal seal-friend">
+<span class="seal-icon">🍀</span>
+<span class="seal-name">我們一起玩之印</span>
+<span class="seal-status" id="stampStatus-2">未解鎖</span>
+</div>
+</div>
+<!-- Stamp 4 -->
+<div class="stamp-slot" id="stampSlot-3">
+<div class="stamp-seal seal-flex">
+<span class="seal-icon">⚙️</span>
+<span class="seal-name">生活應變之印</span>
+<span class="seal-status" id="stampStatus-3">未解鎖</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="passport-footer">
+<span style="font-size:0.85rem; color:#64748b;">
           💡 集滿四大主題島章，即可前往中央「閃亮亮星星城堡」解鎖「特教小超人榮譽通關證書」！
         </span>
-        <button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.closePassportModal()">
           確認護照
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
-  <div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
-    <div class="savecode-card">
-      <div class="savecode-header">
-        <h3>🔑 冒險進度接關碼</h3>
-        <button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
-      </div>
-      <div class="savecode-body">
-        <p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
+</div>
+</div>
+</div>
+<!-- 接關碼存檔與讀取 Modal (Save Code Modal) -->
+<div class="modal-overlay" id="saveCodeModalOverlay" onclick="if(event.target===this) window.socialGame.closeSaveCodeModal()">
+<div class="savecode-card">
+<div class="savecode-header">
+<h3>🔑 冒險進度接關碼</h3>
+<button class="drawer-close-btn" onclick="window.socialGame.closeSaveCodeModal()">✕</button>
+</div>
+<div class="savecode-body">
+<p style="font-size:0.92rem; color:#475569; margin-bottom:14px; line-height:1.6;">
           進度會自動保存在這個瀏覽器。更換電腦、平板或教室白板前，請先複製接關碼；在新裝置載入後再核對角色與進度。
         </p>
-
-        <!-- 我的接關碼 -->
-        <div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
-          <div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
+<!-- 我的接關碼 -->
+<div style="background:#f1f5f9; padding:12px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">
+<div style="font-size:0.8rem; font-weight:800; color:#64748b; margin-bottom:6px;">
             📋 我的目前進度接關碼：
           </div>
-          <div style="display:flex; gap:8px;">
-            <input type="text" id="mySaveCodeInput" readonly style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;">
-            <button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
+<div style="display:flex; gap:8px;">
+<input id="mySaveCodeInput" readonly="" style="flex:1; font-family:monospace; font-size:1.05rem; font-weight:800; padding:8px 12px; border-radius:8px; border:1px solid #94a3b8; background:#fff; color:#0f172a;" type="text"/>
+<button class="c-game-btn btn-primary" onclick="window.socialGame.copySaveCode()">
               複製代碼
             </button>
-          </div>
-        </div>
-
-        <!-- 讀取接關碼 -->
-        <div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
-          <div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
+</div>
+</div>
+<!-- 讀取接關碼 -->
+<div style="background:#fefce8; padding:12px; border-radius:12px; border:1px solid #fde68a;">
+<div style="font-size:0.8rem; font-weight:800; color:#b45309; margin-bottom:6px;">
             📥 輸入其他電腦的接關碼：
           </div>
-          <div style="display:flex; gap:8px;">
-            <input type="text" id="loadSaveCodeInput" placeholder="請在此貼上 8 碼接關碼..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;">
-            <button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
+<div style="display:flex; gap:8px;">
+<input id="loadSaveCodeInput" placeholder="請在此貼上 8 碼接關碼..." style="flex:1; font-family:monospace; font-size:1rem; font-weight:700; padding:8px 12px; border-radius:8px; border:1px solid #f59e0b; background:#fff;" type="text"/>
+<button class="c-game-btn btn-accent" onclick="window.socialGame.loadSaveCode()">
               載入進度
             </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 初次登入或切換冒險者 Dialog -->
-  <dialog class="start-dialog" id="startDialog">
-    <div class="start-dialog-content">
-      <div class="start-dialog-header">
-        <svg class="island-welcome-icon" viewBox="0 0 48 48" aria-hidden="true"><use href="assets/tool-icons.svg#island"></use></svg>
-        <h2>建立你的社交小超人</h2>
-        <p>選一個喜歡的造型，一起出發練習交朋友！</p>
-      </div>
-
-      <div class="start-form-group">
-        <label>冒險者稱號／學生姓名：</label>
-        <div style="display:flex; gap:8px; margin-bottom:10px;">
-          <input type="text" id="heroNameInput" maxlength="10" placeholder="例如：小宇、小鶴、光速超人..." value="小宇" style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;">
-        </div>
-        <!-- OO特教生快速填入 Chip -->
-        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
-          <span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">快捷設定：</span>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小宇 (ASD)', 'dino')">🦖 小宇 (ASD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小鶴 (LD)', 'unicorn')">🦄 小鶴 (LD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小嘉 (EBD)', 'lion')">🦁 小嘉 (EBD)</button>
-          <button type="button" class="preset-name-pill" onclick="window.socialGame.setPresetHero('小駿 (ADHD)', 'rocket')">🚀 小駿 (ADHD)</button>
-        </div>
-      </div>
-
-      <div class="start-form-group">
-        <label>選擇 3D 冒險英雄造型：</label>
-        <div class="look-selection-grid">
-          <label class="look-card active" data-look="dino">
-            <input type="radio" name="heroLook" value="dino" checked hidden>
-            <span class="look-avatar">🦖</span>
-            <span class="look-name">新芽小綠恐龍</span>
-            <span class="look-desc">象徵生機成長，冷靜沉穩</span>
-          </label>
-          <label class="look-card" data-look="lion">
-            <input type="radio" name="heroLook" value="lion" hidden>
-            <span class="look-avatar">🦁</span>
-            <span class="look-name">勇氣紅鬃獅</span>
-            <span class="look-desc">擊退怒火，充滿正義感</span>
-          </label>
-          <label class="look-card" data-look="unicorn">
-            <input type="radio" name="heroLook" value="unicorn" hidden>
-            <span class="look-avatar">🦄</span>
-            <span class="look-name">智慧藍海馬</span>
-            <span class="look-desc">溫和友善，善於傾聽</span>
-          </label>
-          <label class="look-card" data-look="rocket">
-            <input type="radio" name="heroLook" value="rocket" hidden>
-            <span class="look-avatar">🚀</span>
-            <span class="look-name">衝鋒紫火箭</span>
-            <span class="look-desc">彈性靈活，抗挫思考</span>
-          </label>
-        </div>
-      </div>
-
-      <div class="start-dialog-actions">
-        <button type="button" class="c-game-btn" onclick="window.socialGame.closeStartDialog()">
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 初次登入或切換冒險者 Dialog -->
+<dialog class="start-dialog" id="startDialog">
+<div class="start-dialog-content">
+<div class="start-dialog-header">
+<svg aria-hidden="true" class="island-welcome-icon" viewbox="0 0 48 48"><use href="assets/tool-icons.svg#island"></use></svg>
+<h2>建立你的社交小超人</h2>
+<p>選一個喜歡的造型，一起出發練習交朋友！</p>
+</div>
+<div class="start-form-group">
+<label>冒險者稱號／學生姓名：</label>
+<div style="display:flex; gap:8px; margin-bottom:10px;">
+<input id="heroNameInput" maxlength="10" placeholder="例如：小宇、小鶴、光速超人..." style="flex:1; padding:10px 14px; border-radius:10px; border:1.5px solid #cbd5e1; font-size:1rem; font-weight:800;" type="text" value="小宇"/>
+</div>
+<!-- OO特教生快速填入 Chip -->
+<div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;">
+<span style="font-size:0.78rem; font-weight:800; color:#64748b; line-height:2;">快捷設定：</span>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero('小宇 (ASD)', 'dino')" type="button">🦖 小宇 (ASD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero('小鶴 (LD)', 'unicorn')" type="button">🦄 小鶴 (LD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero('小嘉 (EBD)', 'lion')" type="button">🦁 小嘉 (EBD)</button>
+<button class="preset-name-pill" onclick="window.socialGame.setPresetHero('小駿 (ADHD)', 'rocket')" type="button">🚀 小駿 (ADHD)</button>
+</div>
+</div>
+<div class="start-form-group">
+<label>選擇 3D 冒險英雄造型：</label>
+<div class="look-selection-grid">
+<label class="look-card active" data-look="dino">
+<input checked="" hidden="" name="heroLook" type="radio" value="dino"/>
+<span class="look-avatar">🦖</span>
+<span class="look-name">新芽小綠恐龍</span>
+<span class="look-desc">象徵生機成長，冷靜沉穩</span>
+</label>
+<label class="look-card" data-look="lion">
+<input hidden="" name="heroLook" type="radio" value="lion"/>
+<span class="look-avatar">🦁</span>
+<span class="look-name">勇氣紅鬃獅</span>
+<span class="look-desc">擊退怒火，充滿正義感</span>
+</label>
+<label class="look-card" data-look="unicorn">
+<input hidden="" name="heroLook" type="radio" value="unicorn"/>
+<span class="look-avatar">🦄</span>
+<span class="look-name">智慧藍海馬</span>
+<span class="look-desc">溫和友善，善於傾聽</span>
+</label>
+<label class="look-card" data-look="rocket">
+<input hidden="" name="heroLook" type="radio" value="rocket"/>
+<span class="look-avatar">🚀</span>
+<span class="look-name">衝鋒紫火箭</span>
+<span class="look-desc">彈性靈活，抗挫思考</span>
+</label>
+</div>
+</div>
+<div class="start-dialog-actions">
+<button class="c-game-btn" onclick="window.socialGame.closeStartDialog()" type="button">
           取消
         </button>
-        <button type="button" class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.submitStartHero()" style="padding:10px 24px;" type="button">
           🚀 出發登島冒險！
         </button>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- 中央閃亮亮星星城堡與結業通關證書 Modal -->
-  <div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
-    <div class="citadel-card">
-      <div class="citadel-header">
-        <h2>⭐ 社交小超人 · 閃亮亮星星城堡 榮譽殿堂</h2>
-        <button class="drawer-close-btn" style="color:#ffffff; background:rgba(255,255,255,0.2);" onclick="window.socialGame.closeCitadelModal()">
+</div>
+</div>
+</dialog>
+<!-- 中央閃亮亮星星城堡與結業通關證書 Modal -->
+<div class="modal-overlay" id="modalCitadelOverlay" onclick="if(event.target===this) window.socialGame.closeCitadelModal()">
+<div class="citadel-card">
+<div class="citadel-header">
+<h2>⭐ 社交小超人 · 閃亮亮星星城堡 榮譽殿堂</h2>
+<button class="drawer-close-btn" onclick="window.socialGame.closeCitadelModal()" style="color:#ffffff; background:rgba(255,255,255,0.2);">
           ✕
         </button>
-      </div>
-
-      <div class="citadel-body">
-        <!-- 數據統計 -->
-        <div class="citadel-stats-grid">
-          <div class="stat-box">
-            <div class="stat-val" id="citadelPassedCount">0 / 52 關</div>
-            <div class="stat-label">全學期通關進度</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-val" id="citadelTotalStars">0 ⭐</div>
-            <div class="stat-label">累積社交超人星</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-val" id="citadelProgressPct">0%</div>
-            <div class="stat-label">精熟達成率</div>
-          </div>
-        </div>
-
-        <!-- 結業證書預覽框 (數位榮譽認證) -->
-        <div class="certificate-preview-box">
-          <div class="cert-emblem">🏆</div>
-          <h3 class="cert-title">特教社交小超人 · 榮譽通關證書</h3>
-          <div class="cert-input-row">
-            <span>茲證明</span>
-            <input type="text" class="cert-name-input" id="certStudentName" placeholder="學生姓名" value="王小宇 同學">
-          </div>
-          <p class="cert-text">
+</div>
+<div class="citadel-body">
+<!-- 數據統計 -->
+<div class="citadel-stats-grid">
+<div class="stat-box">
+<div class="stat-val" id="citadelPassedCount">0 / 52 關</div>
+<div class="stat-label">全學期通關進度</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" id="citadelTotalStars">0 ⭐</div>
+<div class="stat-label">累積社交超人星</div>
+</div>
+<div class="stat-box">
+<div class="stat-val" id="citadelProgressPct">0%</div>
+<div class="stat-label">精熟達成率</div>
+</div>
+</div>
+<!-- 結業證書預覽框 (數位榮譽認證) -->
+<div class="certificate-preview-box">
+<div class="cert-emblem">🏆</div>
+<h3 class="cert-title">特教社交小超人 · 榮譽通關證書</h3>
+<div class="cert-input-row">
+<span>茲證明</span>
+<input class="cert-name-input" id="certStudentName" placeholder="學生姓名" type="text" value="王小宇 同學"/>
+</div>
+<p class="cert-text">
             在社交群島活動中，願意探索情境、討論不同做法，並嘗試把方法演練出來。此證書肯定參與與努力；生活中的運用，仍由教師與照顧者持續觀察。
           </p>
-          <div class="cert-footer-row">
-            <div>
-              <span>頒發單位：</span>OO國小學習教室 · 老師
+<div class="cert-footer-row">
+<div>
+<span>頒發單位：</span>OO國小學習教室 · 老師
             </div>
-            <div>
-              <span>頒發日期：</span><span id="certIssueDate">2026 年 10 月 28 日</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
-        <div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
-          <button class="c-game-btn btn-primary" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.celebrateHero()">
+<div>
+<span>頒發日期：</span><span id="certIssueDate">2026 年 10 月 28 日</span>
+</div>
+</div>
+</div>
+<!-- 證書互動操作列 (純數位互動，無 PDF 下載或列印按鈕) -->
+<div style="display:flex; justify-content:center; gap:14px; margin-top:14px;">
+<button class="c-game-btn btn-primary" onclick="window.socialGame.celebrateHero()" style="padding:10px 24px; font-size:1rem;">
             🎉 榮譽喝采慶祝（施放金彩帶）
           </button>
-          <button class="c-game-btn btn-citadel" style="padding:10px 24px; font-size:1rem;" onclick="window.socialGame.openPassportModal()">
+<button class="c-game-btn btn-citadel" onclick="window.socialGame.openPassportModal()" style="padding:10px 24px; font-size:1rem;">
             📘 查閱冒險護照
           </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
-  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
-
-  <!-- Level Up 橫幅特效 -->
-  <div class="levelup-banner" id="levelupBanner">
-    <div class="levelup-title">🎉 LEVEL UP!</div>
-    <div class="levelup-sub" id="levelupSub">晉升為 Lv.2 超能力初心者！</div>
-  </div>
-
-  <!-- Toast 訊息提示 -->
-  <div class="toast" id="toastMsg" role="status" aria-live="polite"></div>
-
-  <dialog id="icebreakerDialog" class="explorer-dialog icebreaker-dialog" aria-labelledby="icebreakerTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="離開破冰遊戲島">✕</button></form>
-    <span class="icebreaker-emblem" aria-hidden="true">🧊</span>
-    <h2 id="icebreakerTitle">破冰遊戲島</h2>
-    <p>先暖暖身，和新朋友打個招呼。</p>
-    <div id="icebreakerTasks" class="icebreaker-tasks"></div>
-    <p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
-  </dialog>
-  <dialog id="teamworkDialog" class="explorer-dialog icebreaker-dialog teamwork-dialog" aria-labelledby="teamworkTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="離開合作任務島">✕</button></form>
-    <span class="icebreaker-emblem" aria-hidden="true">🤝</span>
-    <h2 id="teamworkTitle">合作任務島</h2>
-    <p>一起分工，完成我們的任務。</p>
-    <div id="teamworkTasks" class="icebreaker-tasks"></div>
-    <p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
-  </dialog>
-  <dialog id="visitorDialog" class="explorer-dialog" aria-labelledby="visitorTitle">
-    <form method="dialog"><button class="explorer-close" aria-label="關閉訪客選單">✕</button></form>
-    <h2 id="visitorTitle">一起來群島作客</h2>
-    <p>每位訪客各有自己的星星、島章和進度。資料只留在這個瀏覽器；換裝置時，使用原本的接關碼。</p>
-    <label for="visitorSelect">選一位訪客</label>
-    <div class="visitor-form-row"><select id="visitorSelect"></select><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(false)">切換訪客</button></div>
-    <label for="visitorName">新增訪客暱稱（不用真名）</label>
-    <div class="visitor-form-row"><input id="visitorName" maxlength="32" autocomplete="off" placeholder="例如：小海星"><button type="button" data-visitor-action onclick="window.socialGame.changeVisitor(true)">新增並出發</button></div>
-    <p id="visitorMessage" role="status" aria-live="polite"></p>
-  </dialog>
-  <dialog id="residentDialog" class="explorer-dialog" aria-labelledby="residentName">
-    <form method="dialog"><button class="explorer-close" aria-label="結束打招呼">✕</button></form>
-    <svg class="resident-portrait" viewBox="0 0 180 210" aria-hidden="true"><use id="residentPortrait" href="assets/companions.svg#lion"></use></svg>
-    <p class="resident-island" id="residentIsland"></p><h2 id="residentName"></h2><p id="residentGreeting"></p>
-    <button type="button" id="residentQuest">看看這座島的任務 →</button>
-  </dialog>
-
-  <!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
-  <script src="three.min.js?v=9274bbcec8d9"></script>
-  <script src="app.js?v=24dfe9e04758"></script>
-  <script src="roleplay-data.js?v=4338402053e8"></script>
-  <script src="island-visitors.js?v=32e95e9dc67a"></script>
-  <script src="island-explorer.js?v=58f80beb7065"></script>
-  <script src="island-paths.js?v=e5e7e347b44a"></script>
-  <script src="island-scene-art.js?v=a251d44e33ea"></script>
-  <script src="island-game.js?v=319b306b3d98"></script>
+</div>
+</div>
+</div>
+</div>
+<!-- 升級與慶祝滿版特效圖層 (Confetti Canvas) -->
+<canvas class="confetti-canvas" id="confettiCanvas"></canvas>
+<!-- Level Up 橫幅特效 -->
+<div class="levelup-banner" id="levelupBanner">
+<div class="levelup-title">🎉 LEVEL UP!</div>
+<div class="levelup-sub" id="levelupSub">晉升為 Lv.2 超能力初心者！</div>
+</div>
+<!-- Toast 訊息提示 -->
+<div aria-live="polite" class="toast" id="toastMsg" role="status"></div>
+<dialog aria-labelledby="icebreakerTitle" class="explorer-dialog icebreaker-dialog" id="icebreakerDialog">
+<form method="dialog"><button aria-label="離開破冰遊戲島" class="explorer-close">✕</button></form>
+<span aria-hidden="true" class="icebreaker-emblem">🧊</span>
+<h2 id="icebreakerTitle">破冰遊戲島</h2>
+<p>先暖暖身，和新朋友打個招呼。</p>
+<div class="icebreaker-tasks" id="icebreakerTasks"></div>
+<p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
+</dialog>
+<dialog aria-labelledby="teamworkTitle" class="explorer-dialog icebreaker-dialog teamwork-dialog" id="teamworkDialog">
+<form method="dialog"><button aria-label="離開合作任務島" class="explorer-close">✕</button></form>
+<span aria-hidden="true" class="icebreaker-emblem">🤝</span>
+<h2 id="teamworkTitle">合作任務島</h2>
+<p>一起分工，完成我們的任務。</p>
+<div class="icebreaker-tasks" id="teamworkTasks"></div>
+<p class="icebreaker-footnote">接到原本的任務，星星和通關進度照常保留。</p>
+</dialog>
+<dialog aria-labelledby="visitorTitle" class="explorer-dialog" id="visitorDialog">
+<form method="dialog"><button aria-label="關閉訪客選單" class="explorer-close">✕</button></form>
+<h2 id="visitorTitle">一起來群島作客</h2>
+<p>每位訪客各有自己的星星、島章和進度。資料只留在這個瀏覽器；換裝置時，使用原本的接關碼。</p>
+<label for="visitorSelect">選一位訪客</label>
+<div class="visitor-form-row"><select id="visitorSelect"></select><button data-visitor-action="" onclick="window.socialGame.changeVisitor(false)" type="button">切換訪客</button></div>
+<label for="visitorName">新增訪客暱稱（不用真名）</label>
+<div class="visitor-form-row"><input autocomplete="off" id="visitorName" maxlength="32" placeholder="例如：小海星"/><button data-visitor-action="" onclick="window.socialGame.changeVisitor(true)" type="button">新增並出發</button></div>
+<p aria-live="polite" id="visitorMessage" role="status"></p>
+</dialog>
+<dialog aria-labelledby="residentName" class="explorer-dialog" id="residentDialog">
+<form method="dialog"><button aria-label="結束打招呼" class="explorer-close">✕</button></form>
+<svg aria-hidden="true" class="resident-portrait" viewbox="0 0 180 210"><use href="assets/companions.svg#lion" id="residentPortrait"></use></svg>
+<p class="resident-island" id="residentIsland"></p><h2 id="residentName"></h2><p id="residentGreeting"></p>
+<button id="residentQuest" type="button">看看這座島的任務 →</button>
+</dialog>
+<!-- 引入 Three.js 與核心邏輯 (純離線支援) -->
+<script src="three.min.js?v=9274bbcec8d9"></script>
+<script src="app.js?v=24dfe9e04758"></script>
+<script src="roleplay-data.js?v=4338402053e8"></script>
+<script src="island-visitors.js?v=32e95e9dc67a"></script>
+<script src="island-explorer.js?v=a688dbb47f99"></script>
+<script src="island-paths.js?v=70682ce42aa5"></script>
+<script src="island-scene-art.js?v=5e9c86705e90"></script>
+<script src="island-game.js?v=43229c804d86"></script>
 </body>
 </html>
