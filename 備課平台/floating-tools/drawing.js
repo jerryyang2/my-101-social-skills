@@ -811,7 +811,7 @@
         event.preventDefault();
         return;
       }
-      toggle(innerWidth > 700);
+      toggle(true);
     });
     host.addEventListener('click', event => {
       const button = event.target.closest('button');
@@ -1031,7 +1031,7 @@
       open: () => toggle(true),
       close: () => toggle(false)
     };
-    toggle(innerWidth > 700);
+    toggle(innerWidth > 700 && !document.body.classList.contains('social-garden'));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);else init();
 })();
