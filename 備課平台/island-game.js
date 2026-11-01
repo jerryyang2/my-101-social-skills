@@ -1097,7 +1097,15 @@
     const w = stage.clientWidth, h = stage.clientHeight;
     const tempV = new THREE.Vector3();
 
-    const placed = [];
+    const stageRect = stage.getBoundingClientRect();
+    const hint = document.getElementById('moveHint');
+    const bottomLimit = h - (hint?.getClientRects().length ? hint.getBoundingClientRect().height + 32 : 10);
+    const placed = [...document.querySelectorAll('.mft-launcher, .focus-toggle, .explorer-console > summary')]
+      .filter(element => element.getClientRects().length)
+      .map(element => {
+        const rect = element.getBoundingClientRect();
+        return {left:rect.left-stageRect.left, right:rect.right-stageRect.left, top:rect.top-stageRect.top, bottom:rect.bottom-stageRect.top};
+      });
     labels.forEach(item => {
       if (!item.anchors) {
         item.anchors = [];
@@ -1122,11 +1130,11 @@
         tempV.copy(point).project(camera);
         if (tempV.z >= -1 && tempV.z <= 1) bottom = Math.max(bottom, (-tempV.y * 0.5 + 0.5) * h);
       });
-      let y = overviewActive ? Math.min(bottom + 6, h - item.el.offsetHeight - 10) : bottom + 6;
+      let y = overviewActive ? Math.min(bottom + 6, bottomLimit - item.el.offsetHeight) : bottom + 6;
       if (overviewActive) {
         const width = item.el.offsetWidth, height = item.el.offsetHeight;
-        const clear = top => top >= 42 && top + height <= h - 8 && placed.every(rect => x + half + 4 <= rect.left || x - half - 4 >= rect.right || top + height + 4 <= rect.top || top - 4 >= rect.bottom);
-        const candidate = Array.from({length: 21}, (_, index) => index ? Math.ceil(index / 2) * 14 * (index % 2 ? 1 : -1) : 0).map(offset => y + offset).find(clear);
+        const clear = top => top >= 42 && top + height <= bottomLimit && placed.every(rect => x + half + 4 <= rect.left || x - half - 4 >= rect.right || top + height + 4 <= rect.top || top - 4 >= rect.bottom);
+        const candidate = Array.from({length: Math.ceil(h / 14) * 2 + 1}, (_, index) => index ? Math.ceil(index / 2) * 14 * (index % 2 ? 1 : -1) : 0).map(offset => y + offset).find(clear);
         if (candidate !== undefined) y = candidate;
         placed.push({left:x-half, right:x+half, top:y, bottom:y+height});
       }
