@@ -1224,6 +1224,7 @@ function renderSlideWorksheet(container) {
   bar.append(hint, link);
   const frame = document.createElement('iframe');
   frame.id = 'classWorksheetFrame'; frame.className = 'class-worksheet-frame';
+  frame.setAttribute('data-focus-font', '');
   frame.title = '本課彩色互動學習單'; frame.src = src.href;
   container.append(bar, frame);
 }

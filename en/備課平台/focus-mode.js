@@ -24,6 +24,7 @@
     let pending = false;
     let previousFocus = null;
     let previousScroll = null;
+    const embeddedFontSizes = new WeakMap();
 
     function fullscreenElement() {
       return document.fullscreenElement || document.webkitFullscreenElement;
@@ -57,6 +58,25 @@
 
     function applyFontScale() {
       if (rootFontSize !== null) document.documentElement.style.fontSize = `${rootFontSize * fontScale / 100}px`;
+      // Embedded worksheets have their own rem units and do not inherit ours.
+      document.querySelectorAll('iframe[data-focus-font]').forEach(frame => {
+        try {
+          const child = frame.contentDocument;
+          if (!child?.documentElement || !child.defaultView) return;
+          const root = child.documentElement;
+          let original = embeddedFontSizes.get(child);
+          if (rootFontSize !== null) {
+            if (!original) {
+              original = { inline: root.style.fontSize, base: parseFloat(child.defaultView.getComputedStyle(root).fontSize) || 16 };
+              embeddedFontSizes.set(child, original);
+            }
+            root.style.fontSize = `${original.base * fontScale / 100}px`;
+          } else if (original) {
+            root.style.fontSize = original.inline;
+            embeddedFontSizes.delete(child);
+          }
+        } catch (_) { /* Leave inaccessible embedded documents alone. */ }
+      });
       smaller.disabled = fontScale <= 80;
       larger.disabled = fontScale >= 180;
       reset.textContent = `${fontScale}%`;
@@ -72,6 +92,9 @@
     smaller.addEventListener('click', () => resizeText(fontScale - 10));
     larger.addEventListener('click', () => resizeText(fontScale + 10));
     reset.addEventListener('click', () => resizeText(100));
+    document.addEventListener('load', event => {
+      if (event.target.matches?.('iframe[data-focus-font]')) applyFontScale();
+    }, true);
     fontControls.addEventListener('keydown', event => {
       if (event.key !== 'Escape') event.stopPropagation();
     });

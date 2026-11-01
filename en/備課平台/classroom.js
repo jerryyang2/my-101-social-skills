@@ -1226,6 +1226,7 @@ function renderSlideWorksheet(container) {
   bar.append(hint, link);
   const frame = document.createElement('iframe');
   frame.id = 'classWorksheetFrame'; frame.className = 'class-worksheet-frame';
+  frame.setAttribute('data-focus-font', '');
   frame.title = "Interactive worksheet for this lesson"; frame.src = src.href;
   container.append(bar, frame);
 }
