@@ -1729,7 +1729,7 @@
       bodyBox.innerHTML = `
         <!-- NPC 守護夥伴引言 -->
         <div class="npc-dialog-card">
-          <div class="npc-avatar">${t.mascot.split(' ')[0]}</div>
+          <div class="npc-avatar"><svg width="48" height="52" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#${['lion','bear','panda','fox'][state.activeIslandIndex]}"></use></svg></div>
           <div class="npc-content">
             <div class="npc-name-tag">
               <span>${t.mascot} · ${t.mascotRole}</span>
@@ -2518,7 +2518,7 @@
     if (!theme) return;
     const dialog = document.getElementById('residentDialog');
     document.getElementById('residentName').textContent = theme.mascot;
-    document.getElementById('residentPortrait').setAttribute('href', `assets/companions.svg#${['lion', 'bear', 'panda', 'fox'][index]}`);
+    document.getElementById('residentPortrait').setAttribute('href', `assets/companions.svg?v=20261103-portraits#${['lion', 'bear', 'panda', 'fox'][index]}`);
     document.getElementById('residentIsland').textContent = theme.name;
     document.getElementById('residentGreeting').textContent = theme.subtitle;
     document.getElementById('residentQuest').onclick = () => {

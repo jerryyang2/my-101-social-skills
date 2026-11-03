@@ -79,6 +79,9 @@
       transform: translateY(-1px);
     }
 
+    .student-chip { display:inline-flex; align-items:center; justify-content:center; gap:6px; }
+    .student-portrait { width:26px; height:32px; flex-shrink:0; vertical-align:middle; }
+
     /* Printable A4 Container */
     .sheet-wrapper {
       padding: 20px 16px 40px;
@@ -634,10 +637,10 @@
       <!-- Quick Student Picker -->
       <div class="student-quick-pick">
         <span style="font-weight:900; font-size:0.85rem; color:#64748b;">Student:</span>
-        <button class="student-chip active" onclick="pickStudent(&quot;Yu&quot;)">Yu 🦁</button>
-        <button class="student-chip" onclick="pickStudent(&quot;He&quot;)">He 🐼</button>
-        <button class="student-chip" onclick="pickStudent(&quot;Jia&quot;)">Jia 🦊</button>
-        <button class="student-chip" onclick="pickStudent(&quot;Jun&quot;)">Jun 🐻</button>
+        <button class="student-chip active" onclick="pickStudent(&quot;Yu&quot;)">Yu <svg class="student-portrait" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#lion"></use></svg></button>
+        <button class="student-chip" onclick="pickStudent(&quot;He&quot;)">He <svg class="student-portrait" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#panda"></use></svg></button>
+        <button class="student-chip" onclick="pickStudent(&quot;Jia&quot;)">Jia <svg class="student-portrait" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#fox"></use></svg></button>
+        <button class="student-chip" onclick="pickStudent(&quot;Jun&quot;)">Jun <svg class="student-portrait" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#bear"></use></svg></button>
       </div>
 
       <!-- Zhuyin Toggle -->

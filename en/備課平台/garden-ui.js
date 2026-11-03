@@ -112,7 +112,7 @@
       avatar.setAttribute('role', 'button');
       avatar.setAttribute('tabindex', '0');
       avatar.setAttribute('aria-label', avatar.title);
-      avatar.innerHTML = `<svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#${companionIcons[companionId]}"></use></svg>`;
+      avatar.innerHTML = `<svg viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#${companionIcons[companionId]}"></use></svg>`;
     });
   }
   studentBank.addEventListener('keydown', event => {
@@ -122,4 +122,20 @@
   });
   new MutationObserver(labelStudentAvatars).observe(studentBank, { childList: true });
   labelStudentAvatars();
+
+  const roleplay = document.getElementById('briefingRoleplayContent');
+  function labelRoleplayPortraits() {
+    const portraits = { '🦁': 'lion', '🐻': 'bear', '🐼': 'panda', '🦊': 'fox' };
+    roleplay.querySelectorAll('span').forEach(badge => {
+      const label = badge.textContent.trim();
+      const species = portraits[label.split(/\s/)[0]];
+      if (!species || badge.querySelector('svg')) return;
+      badge.style.display = 'inline-flex'; badge.style.alignItems = 'center'; badge.style.gap = '6px';
+      badge.innerHTML = `<svg width="28" height="35" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#${species}"></use></svg>${label.replace(/^\S+\s*/,'')}`;
+    });
+  }
+  if (roleplay) {
+    new MutationObserver(labelRoleplayPortraits).observe(roleplay, { childList: true });
+    labelRoleplayPortraits();
+  }
 })();

@@ -251,7 +251,11 @@
   .social-garden .garden-start { margin-top: 12px; }
   .social-garden .garden-scene { margin: 0 0 16px; padding: 8px 8px 10px; border: 1px solid #6e896b; border-radius: 12px; }
   .social-garden .garden-stage { min-height: 180px; }
-  .social-garden .garden-friend { --friend-size: 66px; }
+  .social-garden .garden-friend { --friend-size: clamp(50px,17vw,66px); }
+  .social-garden .friend-yu { left: 14%; }
+  .social-garden .friend-jun { left: 38%; }
+  .social-garden .friend-he { left: 62%; }
+  .social-garden .friend-jia { left: 86%; }
   .social-garden .garden-greeting { font-size: .85rem; }
   .social-garden .emotion-weather-station { padding: 12px 10px; }
   .social-garden .emotion-station-title { display: block; }

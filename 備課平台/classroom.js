@@ -87,7 +87,7 @@ function classroomCompanion(studentName) {
   const companions = { "宇": "lion", "畯": "bear", "和": "panda", "嘉": "fox" };
   const companion = companions[studentName];
   if (!companion) return "";
-  return `<svg class="classroom-companion" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261031-color#${companion}"></use></svg>`;
+  return `<svg class="classroom-companion" viewBox="0 0 120 150" aria-hidden="true"><use href="assets/companions.svg?v=20261103-portraits#${companion}"></use></svg>`;
 }
 
 let studentStars = JSON.parse(localStorage.getItem("student_stars") || '{"yu":0,"he":0,"jia":0,"jun":0}');
