@@ -606,7 +606,7 @@
   </style>
   <link rel="stylesheet" href="floating-tools/tools.css?v=2dcf7d249058">
   <script src="floating-tools/magnifier.js?v=e67586b45fe8" defer></script>
-  <script src="floating-tools/drawing.js?v=7b921506c244" defer></script>
+  <script src="floating-tools/drawing.js?v=f272da9b6797" defer></script>
   <link rel="stylesheet" href="focus-mode.css?v=fd03ea1944fc">
   <script defer src="focus-mode.js?v=9f0d54dadb28"></script>
   <link rel="stylesheet" href="learning-support.css?v=dd1f88174fe3">
@@ -726,7 +726,7 @@
 
       let html = "";
       if (newIds.length > 0) {
-        html += `<optgroup label="🌟 52 週特教社交技巧學習單（每週一課）">`;
+        html += `<optgroup label="🌟 52 週特教社會技巧學習單（每週一課）">`;
         html += newIds.map(id => {
           const item = dailyWorksheets[id];
           return `<option value="${id}" ${id === currentSheetId ? "selected" : ""}>
@@ -828,7 +828,7 @@
       container.innerHTML = `
         <!-- Top Badge -->
         <div class="sheet-header-badge">
-          <span class="school-tag">🏫 115年OO國小學習教室 · 社交技巧與溝通訓練 成長學習單</span>
+          <span class="school-tag">🏫 115年OO國小學習教室 · 社會技巧與溝通訓練 成長學習單</span>
           <span class="unit-badge">${data.unit}</span>
         </div>
 

@@ -597,7 +597,7 @@
     const contexts = { rehearsal:'課堂演練', class:'普通班／校園', home:'家庭回饋' };
     const observations = records.length ? records.map(r => `• ${contexts[r.context]}：${r.target}；${levelNames[r.level]}。${r.note}`).join('\n') : '尚未填寫本日觀察，請依實際授課情形補寫；目前不判定已達標。';
     const home = b.homeTask?.action || '和孩子約定一個願意嘗試的生活練習；沒有機會也可回報。';
-    document.getElementById('commLineText').value = `【社交技巧親師聯絡草稿】
+    document.getElementById('commLineText').value = `【社會技巧親師聯絡草稿】
 日期：${date}　學生代號：${learner}
 課程主題：${b.title}
 練習重點：${b.visualCard?.steps?.map(x=>x.text).join(' → ') || b.summary || ''}
@@ -615,7 +615,7 @@ ${observations}
 生活類化：只列已收回的普通班／家庭回饋；沒有回饋時記為待追蹤，不推定已學會。
 後續調整：＿＿＿＿（提示、活動或環境支持）`;
     const slips = document.getElementById('commSlipsGrid');
-    slips.innerHTML = `<div class="print-slip-card"><div class="slip-header">社交技巧生活練習建議</div><div class="slip-title">${escapeText(b.title)}</div><div class="slip-body"><p>${escapeText(home)}</p><p>回饋：□ 有機會嘗試　□ 尚無機會　□ 希望再協助</p><p>孩子的回應或需要：＿＿＿＿＿＿＿＿</p></div><div class="slip-footer">不以簽章判定學生達標；教師可再追蹤提示與實際表現。</div></div>`.repeat(4);
+    slips.innerHTML = `<div class="print-slip-card"><div class="slip-header">社會技巧生活練習建議</div><div class="slip-title">${escapeText(b.title)}</div><div class="slip-body"><p>${escapeText(home)}</p><p>回饋：□ 有機會嘗試　□ 尚無機會　□ 希望再協助</p><p>孩子的回應或需要：＿＿＿＿＿＿＿＿</p></div><div class="slip-footer">不以簽章判定學生達標；教師可再追蹤提示與實際表現。</div></div>`.repeat(4);
     document.querySelectorAll('[onclick^="copyComm"]').forEach(button=>button.disabled=false);
     document.getElementById('commCopyStatus').textContent = records.length ? '已帶入所選日期與學生代號的觀察；請再覆核文字。' : '沒有觀察時保留待填，不自動寫成已實施或已達標。';
   }

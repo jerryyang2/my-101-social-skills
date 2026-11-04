@@ -277,7 +277,7 @@ function setupHeader() {
 
   let html = "";
   if (newWeeks.length > 0) {
-    html += `<optgroup label="🌟 52 週社交技巧與溝通訓練新課綱（每週一課）">`;
+    html += `<optgroup label="🌟 52 週社會技巧與溝通訓練新課綱（每週一課）">`;
     html += newWeeks.map(b => `
       <option value="${b.id}" ${b.id === currentBriefing.id ? "selected" : ""}>
         第 ${b.lessonNumber} 週 · ${formatCleanLessonTitle(b)} (${b.date})

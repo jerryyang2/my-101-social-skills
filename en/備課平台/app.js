@@ -4279,6 +4279,7 @@ const defaultBriefings = [
   },
   {
     "id": "b-week-44",
+    "useBrowserSpeech": true,
     "lessonNumber": 44,
     "legacy": false,
     "date": "2027-07-01",
@@ -5071,6 +5072,7 @@ const defaultBriefings = [
   },
   {
     "id": "b-week-52",
+    "useBrowserSpeech": true,
     "lessonNumber": 52,
     "legacy": false,
     "date": "2027-08-26",

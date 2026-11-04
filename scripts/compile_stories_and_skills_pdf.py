@@ -446,7 +446,7 @@ intro_html = f"""<!doctype html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <title>101堂特教社交技巧故事島與超能力招式全集·封面與目錄</title>
+  <title>101堂特教社會技巧故事島與超能力招式全集·封面與目錄</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" type="image/png" href="favicon.png">
   <style>{css}</style>
@@ -472,7 +472,7 @@ intro_html = f"""<!doctype html>
         🌱 OO國小學習教室 · 故事島與超能力招式全集
       </div>
       <h1 style="font-size:2.35rem; font-weight:900; color:#1e3a8a; margin:0 0 10px 0; line-height:1.25;">
-        特教社交技巧與溝通訓練<br>
+        特教社會技巧與溝通訓練<br>
         <span style="color:#d97706; font-size:2.1rem;">【故事島冒險 暨 超能力招式】</span><br>
         101堂課全彩教學指南
       </h1>
@@ -766,7 +766,7 @@ writer.add_outline_item("📚 目錄索引（一）：52週新課綱", 1)
 writer.add_outline_item("💡 目錄索引（二）：49堂靈感專題庫", 2)
 
 # Parent Bookmark 1: 52週新課綱
-parent_weeks = writer.add_outline_item("🌟 第一部分：52 週社交技巧與溝通訓練新課綱", 3)
+parent_weeks = writer.add_outline_item("🌟 第一部分：52 週社會技巧與溝通訓練新課綱", 3)
 for idx, b in enumerate(weeks):
     ln = b.get("lessonNumber")
     t = clean_title(b)
@@ -898,9 +898,9 @@ for r, y in enumerate(ys2):
 
 print(f"✅ Successfully injected {total_links_added} clickable PDF link annotations to TOC pages 1 & 2!")
 
-final_pdf_web = os.path.join(WEB_DIR, "101堂特教社交技巧故事島與超能力招式全集.pdf")
+final_pdf_web = os.path.join(WEB_DIR, "101堂特教社會技巧故事島與超能力招式全集.pdf")
 final_pdf_short = os.path.join(WEB_DIR, "special_ed_101_stories_and_skills.pdf")
-final_pdf_art = os.path.join(ARTIFACT_DIR, "101堂特教社交技巧故事島與超能力招式全集.pdf")
+final_pdf_art = os.path.join(ARTIFACT_DIR, "101堂特教社會技巧故事島與超能力招式全集.pdf")
 
 with open(final_pdf_web, "wb") as f:
     writer.write(f)

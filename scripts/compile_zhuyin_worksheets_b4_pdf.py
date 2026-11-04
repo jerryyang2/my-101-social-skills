@@ -585,7 +585,7 @@ intro_html = f"""<!doctype html>
     </div>
     <div style="margin:20px 0;">
       <div style="font-size:3.3rem; margin-bottom:8px;">🏫 🦁 🐻 🐼 🦊</div>
-      <h1 style="font-size:2.4rem; font-weight:900; color:#1e3a8a; margin:0 0 10px 0;">國小特殊教育資源班 · 社交技巧與溝通訓練</h1>
+      <h1 style="font-size:2.4rem; font-weight:900; color:#1e3a8a; margin:0 0 10px 0;">國小特殊教育資源班 · 社會技巧與溝通訓練</h1>
       <h2 style="font-size:1.55rem; font-weight:800; color:#047857; margin:0 0 14px 0;">全學年 101 堂國字注音彩色學習單完整彙編手冊（注音版）</h2>
       <div style="font-size:1.12rem; font-weight:900; color:#92400e; background:#fef3c7; border:2.5px solid #f59e0b; padding:8px 28px; border-radius:9999px; display:inline-block;">
         52 週常態循序課綱 ＋ 49 堂特殊情境疑難靈感庫（全冊共 106 頁 · B4 大開本單面精印）
@@ -631,7 +631,7 @@ intro_html = f"""<!doctype html>
   <article class="worksheet-page toc-page" id="toc-1">
     <div class="toc-header">
       <div class="toc-title-row">
-        <span class="toc-title-main">📚 目錄索引（一·上）：52 週社交技巧新課綱</span>
+        <span class="toc-title-main">📚 目錄索引（一·上）：52 週社會技巧新課綱</span>
         <span class="toc-subtitle-badge">第 01 週 ～ 第 26 週 · 第一學期循序課綱</span>
       </div>
       <div class="toc-column-headers">
@@ -664,7 +664,7 @@ for k in weeks_p1:
 
 intro_html += """    </div>
     <div class="toc-footer-info">
-      <span>🏫 國小特教班社交技巧與溝通訓練 · 全學年注音版手冊</span>
+      <span>🏫 國小特教班社會技巧與溝通訓練 · 全學年注音版手冊</span>
       <span>本頁收錄：第 01 週 ～ 第 26 週 · 冊內頁碼 P.6 ～ P.31</span>
     </div>
   </article>
@@ -673,7 +673,7 @@ intro_html += """    </div>
   <article class="worksheet-page toc-page" id="toc-2">
     <div class="toc-header">
       <div class="toc-title-row">
-        <span class="toc-title-main">📚 目錄索引（一·下）：52 週社交技巧新課綱</span>
+        <span class="toc-title-main">📚 目錄索引（一·下）：52 週社會技巧新課綱</span>
         <span class="toc-subtitle-badge">第 27 週 ～ 第 52 週 · 第二學期循序課綱</span>
       </div>
       <div class="toc-column-headers">
@@ -706,7 +706,7 @@ for k in weeks_p2:
 
 intro_html += """    </div>
     <div class="toc-footer-info">
-      <span>🏫 國小特教班社交技巧與溝通訓練 · 全學年注音版手冊</span>
+      <span>🏫 國小特教班社會技巧與溝通訓練 · 全學年注音版手冊</span>
       <span>本頁收錄：第 27 週 ～ 第 52 週 · 冊內頁碼 P.32 ～ P.57</span>
     </div>
   </article>
@@ -855,7 +855,7 @@ def generate_lesson_article(k):
     <!-- Worksheet {d['id']} (Lesson {ln}) -->
     <article class="worksheet-page" id="lesson-{ln}" style="--border-color: {color};">
       <div class="sheet-header-badge">
-        <span class="school-tag">🏫 115年OO國小學習教室 · 社交技巧與溝通訓練 成長學習單（注音版）</span>
+        <span class="school-tag">🏫 115年OO國小學習教室 · 社會技巧與溝通訓練 成長學習單（注音版）</span>
         <span class="unit-badge">{unit}</span>
       </div>
       <div class="sheet-title-row">
@@ -1002,7 +1002,7 @@ writer.add_outline_item("目錄（二·上）：第 53 課 ～ 第 77 課（特�
 writer.add_outline_item("目錄（二·下）：第 78 課 ～ 第 101 課（特殊情境疑難靈感庫）", page_number=4, parent=toc_parent)
 
 # Part 1: 52 週常態課綱 (Pages 6 to 57)
-part1_parent = writer.add_outline_item("📘 第一部分：52 週社交技巧循序課綱（含日期進度）", page_number=5)
+part1_parent = writer.add_outline_item("📘 第一部分：52 週社會技巧循序課綱（含日期進度）", page_number=5)
 for i, k in enumerate(weeks):
     item = ws[k]
     t = get_clean_title(item)

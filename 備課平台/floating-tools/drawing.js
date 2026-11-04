@@ -336,14 +336,14 @@
       if (localStorage.getItem('social-floating-orientation') === 'vertical') orientation = 'vertical';
     } catch (unusedValue) {}
     host.dataset.orientation = orientation;
-    host.setAttribute('aria-label', '社交課小幫手');
+    host.setAttribute('aria-label', '社會技巧課小幫手');
     host.innerHTML = `
-      <button type="button" class="mft-launcher" aria-label="開啟社交課小幫手" aria-expanded="false" aria-controls="mft-panel" title="點一下開啟社交課小幫手；拖曳移動，方向鍵微調位置">
+      <button type="button" class="mft-launcher" aria-label="開啟社會技巧課小幫手" aria-expanded="false" aria-controls="mft-panel" title="點一下開啟社會技巧課小幫手；拖曳移動，方向鍵微調位置">
         <span class="mft-launch-icon"><img class="mft-helper-icon" src="${helperIconURL}" alt="" aria-hidden="true" draggable="false" width="40" height="40"></span>
       </button>
       <section id="mft-panel" class="mft-panel" aria-label="課堂畫記工具列" hidden>
         <header class="mft-header">
-          <button type="button" class="mft-brand-mark" aria-label="拖移社交課小幫手" title="拖曳社交課圖示移動；方向鍵微調，Home 回到右下角"><img src="${helperIconURL}" alt="" draggable="false" width="26" height="26"><span>社交課</span></button>
+          <button type="button" class="mft-brand-mark" aria-label="拖移社會技巧課小幫手" title="拖曳社會技巧課圖示移動；方向鍵微調，Home 回到右下角"><img src="${helperIconURL}" alt="" draggable="false" width="26" height="26"><span>社會技巧課</span></button>
           <button type="button" class="mft-orientation" data-action="orientation"></button>
         </header>
         <div class="mft-body">
@@ -362,7 +362,7 @@
         <button type="button" class="mft-icon-button mft-collapse" data-action="collapse" aria-label="收合畫記工具列" title="收合並回到游標模式">${icon('collapse')}</button>
       </section>
       <section id="mft-options" class="mft-options" aria-label="畫記工具設定" hidden>
-        <div class="mft-options-header"><strong>社交課工具設定</strong><button type="button" data-action="close-settings" aria-label="關閉工具設定">${icon('close')}</button></div>
+        <div class="mft-options-header"><strong>社會技巧課工具設定</strong><button type="button" data-action="close-settings" aria-label="關閉工具設定">${icon('close')}</button></div>
           <div class="mft-lens-settings" hidden><div class="mft-zoom-settings">
             <label>倍率 <input type="range" min="1.5" max="4" value="2" step="0.5" aria-label="放大倍率" aria-valuetext="2 倍"><output aria-live="polite">2×</output></label>
           </div>
