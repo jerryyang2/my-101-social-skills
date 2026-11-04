@@ -331,10 +331,7 @@
     const host = document.createElement('aside');
     host.id = 'social-floating-tools';
     host.className = 'mft-ui';
-    let orientation = 'horizontal';
-    try {
-      if (localStorage.getItem('social-floating-orientation') === 'vertical') orientation = 'vertical';
-    } catch (unusedValue) {}
+    let orientation = 'vertical';
     host.dataset.orientation = orientation;
     host.setAttribute('aria-label', '社會技巧課小幫手');
     host.innerHTML = `
@@ -629,6 +626,7 @@
       if (opened) clampPosition(bounds.left, bounds.top);
     }
     function toggle(open) {
+      if (open && !opened) setOrientation('vertical', false);
       const bounds = host.getBoundingClientRect();
       if (open && !opened) compactPosition = {
         x: bounds.left,
@@ -642,8 +640,8 @@
       setOptionsOpen(false);
       if (!open) setTool('cursor');
       const position = open ? {
-        x: bounds.left,
-        y: bounds.top
+        x: window.innerWidth - host.getBoundingClientRect().width - 8,
+        y: 8
       } : compactPosition || {
         x: bounds.left,
         y: bounds.top
@@ -988,7 +986,8 @@
     });
     window.addEventListener('resize', () => {
       const bounds = host.getBoundingClientRect();
-      if (host.style.left) clampPosition(bounds.left, bounds.top);
+      if (opened && orientation === 'vertical') clampPosition(window.innerWidth - bounds.width - 8, bounds.top);
+      else if (host.style.left) clampPosition(bounds.left, bounds.top);
       closeEditor();
       updateSizeLimit();
       positionOptions();
@@ -1031,7 +1030,7 @@
       open: () => toggle(true),
       close: () => toggle(false)
     };
-    toggle(innerWidth > 700 && !document.body.classList.contains('social-garden') && document.body.dataset.platform !== 'island');
+    toggle(document.body.classList.contains('social-classroom'));
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);else init();
 })();
