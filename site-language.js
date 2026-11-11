@@ -1,99 +1,184 @@
 (() => {
   'use strict';
-  const root = new URL('.', document.currentScript.src);
-  const key = 'social_skills_language';
-  const pageURL = new URL(location.href);
-  const sourcePath = decodeURIComponent(pageURL.pathname.slice(root.pathname.length));
-  const current = sourcePath.startsWith('en/') ? 'en' : 'zh-Hant';
-  const requested = pageURL.searchParams.get('lang');
-  let remembered = null;
-  let storageAvailable = true;
-  try { remembered = localStorage.getItem(key); } catch (_) { storageAvailable = false; }
-  const valid = value => value === 'en' || value === 'zh-Hant';
-  const language = valid(requested) ? requested : valid(remembered) ? remembered : 'zh-Hant';
-  if (valid(requested)) {
-    try { localStorage.setItem(key, language); } catch (_) { storageAvailable = false; }
-  }
-  function editionURL(url, next) {
-    const relative = decodeURIComponent(url.pathname.slice(root.pathname.length)).replace(/^en\//, '');
-    url.pathname = root.pathname + (next === 'en' ? 'en/' : '') + relative;
-    if (storageAvailable) url.searchParams.delete('lang');
-    else url.searchParams.set('lang', next);
-    return url;
-  }
-  // File previews and print renderers use the edition encoded in their file path.
-  if (/^https?:$/.test(location.protocol) && current !== language) {
-    location.replace(editionURL(pageURL, language));
-    return;
-  }
-  document.documentElement.lang = current;
-  window.SiteLanguage = {
-    language: current,
-    englishVoice(gender = 'female') {
-      const voices = window.speechSynthesis?.getVoices().filter(v => /^en[-_]/i.test(v.lang)) || [];
-      const matches = gender === 'male' ? /daniel|alex|aaron|fred|david|george|\bmale\b/i : /samantha|victoria|karen|susan|zira|female/i;
-      return voices.find(v => matches.test(v.name)) || voices.find(v => /^en[-_]US$/i.test(v.lang)) || voices[0] || null;
-    }
+
+  // 只在正式 GitHub Pages 網站收集資料
+  if (location.hostname !== 'jerryyang2.github.io') return;
+
+  const googleTagId = 'GTM-MQQCK9V3';
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
   };
-  function contextURL() {
-    const url = new URL(location.href);
-    if (document.body.classList.contains('social-classroom')) {
-      if (typeof currentBriefing !== 'undefined' && currentBriefing?.id) url.searchParams.set('id', currentBriefing.id);
-      if (typeof currentSlideIndex === 'number') url.searchParams.set('slide', currentSlideIndex);
-    } else if (document.body.classList.contains('social-garden') && typeof getActiveBriefing === 'function') {
-      const lesson = getActiveBriefing();
-      if (lesson?.id) url.searchParams.set('id', lesson.id);
-    }
-    const chapters = [...document.querySelectorAll('[id^="lesson-"]')];
-    const chapter = chapters.filter(el => el.getBoundingClientRect().top <= 160).pop();
-    if (chapter) url.hash = chapter.id;
-    return url;
+
+  const googleTag = document.createElement('script');
+  googleTag.async = true;
+  googleTag.src =
+    'https://www.googletagmanager.com/gtm.js?id=' +
+    encodeURIComponent(googleTagId);
+  googleTag.dataset.socialSkillsGoogleTag = 'true';
+  (document.head || document.documentElement).appendChild(googleTag);
+
+  window.gtag('js', new Date());
+
+  const knownInteractions = {
+    classWorksheetBtn: 'open_worksheet',
+    classPrepLink: 'return_to_planner',
+    classroomBrandLink: 'return_to_planner',
+    dateDropdown: 'lesson_selector',
+    nextBtn: 'next_classroom_step',
+    participationLaunch: 'participation_support',
+    prevBtn: 'previous_classroom_step',
+    questionTtsBtn: 'read_question',
+    siteLanguageSelect: 'language_selector',
+    starToggleBtn: 'star_feedback',
+    storyTtsBtn: 'read_story'
+  };
+
+  function safeToken(value, fallback) {
+    const token = String(value || '')
+      .trim()
+      .replace(/[^a-zA-Z0-9_-]+/g, '_')
+      .replace(/^_+|_+$/g, '')
+      .slice(0, 80);
+
+    return token || fallback;
   }
-  function mount() {
-    if (document.getElementById('siteLanguageSelect')) return;
-    const label = document.createElement('label');
-    label.className = 'site-language-switch';
-    const text = document.createElement('span');
-    text.textContent = current === 'en' ? 'Language' : '語言';
-    const select = document.createElement('select');
-    select.id = 'siteLanguageSelect';
-    select.setAttribute('aria-label', current === 'en' ? 'Website language' : '網站語言');
-    for (const [value, name] of [['en', 'English'], ['zh-Hant', '繁體中文']]) {
-      const option = document.createElement('option');
-      option.value = value;
-      option.textContent = name;
-      select.appendChild(option);
+
+  function interactionName(element) {
+    if (element.id && knownInteractions[element.id]) {
+      return knownInteractions[element.id];
     }
-    select.value = current;
-    select.addEventListener('change', () => {
-      const next = select.value;
-      if (!valid(next)) return;
-      try { localStorage.setItem(key, next); } catch (_) { storageAvailable = false; }
-      window.speechSynthesis?.cancel();
-      location.assign(editionURL(contextURL(), next));
+
+    if (element.id) {
+      return safeToken(element.id, element.tagName.toLowerCase());
+    }
+
+    const className = [...element.classList]
+      .slice(0, 2)
+      .join('_');
+
+    return safeToken(
+      className,
+      element.tagName.toLowerCase()
+    );
+  }
+
+  function sendEvent(name, parameters = {}) {
+    window.gtag('event', name, {
+      page_path: location.pathname,
+      site_language:
+        document.documentElement.lang || 'zh-Hant',
+      ...parameters
     });
-    label.append(text, select);
-    const classroom = document.querySelector('.classroom-header');
-    const brand = document.querySelector('.header-container > .brand');
-    const island = document.querySelector('.game-topbar .brand-section');
-    const secondary = document.querySelector('.screen-toolbar .toolbar-right, .manual-nav, .reader-toolbar, .book-reader-nav');
-    if (classroom) classroom.insertBefore(label, classroom.querySelector('.classroom-controls'));
-    else if (brand) {
-      const row = document.createElement('div'); row.className = 'site-brand-row';
-      brand.replaceWith(row); row.append(brand, label);
-    } else if (island) island.append(label);
-    else if (secondary) secondary.append(label);
-    else { const bar=document.createElement('div'); bar.className='site-language-bar'; bar.append(label); document.body.prepend(bar); }
-    // Without storage permission, carry the choice through ordinary site links.
-    if (!storageAvailable) document.addEventListener('click', event => {
-      const link = event.target.closest('a[href]');
-      if (!link) return;
-      const url = new URL(link.href);
-      if (url.origin === location.origin && url.pathname.startsWith(root.pathname) && /\.html$/.test(url.pathname)) {
-        url.searchParams.set('lang', current); link.href = url;
-      }
-    }, {capture: true});
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => queueMicrotask(mount));
-  else mount();
+
+  document.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+
+    const element = event.target.closest(
+      'a[href], button, [role="button"], ' +
+      'input[type="button"], input[type="submit"]'
+    );
+
+    if (
+      !element ||
+      element.closest('[data-analytics-ignore]')
+    ) {
+      return;
+    }
+
+    const name = interactionName(element);
+
+    if (element.matches('a[href]')) {
+      const destination = new URL(
+        element.href,
+        location.href
+      );
+
+      const internal =
+        destination.origin === location.origin;
+
+      const lessonId =
+        destination.searchParams.get('id');
+
+      const parameters = {
+        interaction_name: name,
+        destination_host: destination.hostname,
+        destination_path: destination.pathname,
+        destination_section: safeToken(
+          destination.hash.slice(1),
+          'none'
+        )
+      };
+
+      if (
+        lessonId &&
+        /^[a-zA-Z0-9_-]{1,80}$/.test(lessonId)
+      ) {
+        parameters.destination_lesson_id =
+          lessonId;
+      }
+
+      sendEvent(
+        internal
+          ? 'navigation_click'
+          : 'outbound_navigation',
+        parameters
+      );
+
+      return;
+    }
+
+    sendEvent('tool_click', {
+      interaction_name: name
+    });
+  }, { capture: true });
+
+  document.addEventListener('change', event => {
+    if (
+      !(event.target instanceof HTMLSelectElement)
+    ) {
+      return;
+    }
+
+    const select = event.target;
+
+    if (select.id === 'siteLanguageSelect') {
+      sendEvent('language_change', {
+        selected_language: safeToken(
+          select.value,
+          'unknown'
+        )
+      });
+      return;
+    }
+
+    if (
+      select.id === 'dateDropdown' &&
+      /^[a-zA-Z0-9_-]{1,80}$/.test(select.value)
+    ) {
+      sendEvent('lesson_select', {
+        lesson_id: select.value
+      });
+      return;
+    }
+
+    sendEvent('selection_change', {
+      interaction_name: interactionName(select),
+      selected_index: select.selectedIndex
+    });
+  });
+
+  const lessonId =
+    new URL(location.href).searchParams.get('id');
+
+  if (
+    lessonId &&
+    /^[a-zA-Z0-9_-]{1,80}$/.test(lessonId)
+  ) {
+    sendEvent('lesson_open', {
+      lesson_id: lessonId
+    });
+  }
 })();
